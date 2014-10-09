@@ -3,12 +3,12 @@
   <display-name>app_name</display-name>
 	<context-param>
       <param-name>javax.ws.rs.core.Application</param-name>
-      <param-value>br.com.login.cardapio.beachstop.ws.service.ServiceApplication</param-value>
+      <param-value>br.com.login.cardapio.ws.service.ServiceApplication</param-value>
    </context-param>
    
      <context-param>
         <param-name>resteasy.providers</param-name>
-        <param-value>br.com.login.cardapio.beachstop.ws.exception.ApplicationExceptionHandler</param-value>
+        <param-value>br.com.login.cardapio.ws.exception.ApplicationExceptionHandler</param-value>
 	</context-param>
 
    <listener>
