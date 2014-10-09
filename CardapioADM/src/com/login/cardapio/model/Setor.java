@@ -1,9 +1,15 @@
 package com.login.cardapio.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import br.com.topsys.database.hibernate.TSActiveRecordAb;
@@ -23,6 +29,10 @@ public class Setor extends TSActiveRecordAb<Setor> {
 
 	private String descricao;
 
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "usuarios_setores", joinColumns = { @JoinColumn(name = "setor_id") }, inverseJoinColumns = { @JoinColumn(name = "usuario_id") })
+	private List<Usuario> listUsuario;
+
 	public Long getId() {
 		return id;
 	}
@@ -37,6 +47,14 @@ public class Setor extends TSActiveRecordAb<Setor> {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	public List<Usuario> getListUsuario() {
+		return listUsuario;
+	}
+
+	public void setListUsuario(List<Usuario> listUsuario) {
+		this.listUsuario = listUsuario;
 	}
 
 	@Override
@@ -62,5 +80,5 @@ public class Setor extends TSActiveRecordAb<Setor> {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}	
+	}
 }

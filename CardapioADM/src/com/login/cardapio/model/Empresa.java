@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
@@ -42,14 +41,9 @@ public class Empresa extends TSActiveRecordAb<Empresa> {
 	@OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL)
 	private List<Permissao> permissoes;
 
-	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
-	@OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL)
-	private List<Metrica> metricas;
-
-	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
-	@OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL)
-	@OrderBy("ordem ASC")
-	private List<EmpresaCategoriaCardapio> categorias;
+	// @Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
+	// @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL)
+	// private List<Metrica> metricas;
 
 	@Column(name = "nome")
 	private String nome;
@@ -144,14 +138,6 @@ public class Empresa extends TSActiveRecordAb<Empresa> {
 		this.permissoes = pPermissoes;
 	}
 
-	public List<EmpresaCategoriaCardapio> getCategorias() {
-		return categorias;
-	}
-
-	public void setCategorias(List<EmpresaCategoriaCardapio> categorias) {
-		this.categorias = categorias;
-	}
-
 	public String getNome() {
 		return nome;
 	}
@@ -240,12 +226,29 @@ public class Empresa extends TSActiveRecordAb<Empresa> {
 		this.quantidadeMesa = quantidadeMesa;
 	}
 
-	public List<Metrica> getMetricas() {
-		return metricas;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
 	}
 
-	public void setMetricas(List<Metrica> metricas) {
-		this.metricas = metricas;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Empresa other = (Empresa) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
 	}
 
 }
