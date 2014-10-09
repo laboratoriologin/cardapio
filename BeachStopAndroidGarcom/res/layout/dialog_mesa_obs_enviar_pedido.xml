@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/branco"
+    android:minHeight="250dp"
+    android:minWidth="150dp" >
+
+    <EditText
+        android:id="@+id/dialog_mesa_obs_enviar_pedido_text_view_mesa"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="@string/mesa"
+        android:inputType="number" >
+    </EditText>
+
+    <EditText
+        android:id="@+id/dialog_mesa_obs_enviar_pedido_text_view_observacao"
+        android:layout_width="fill_parent"
+        android:layout_height="120dp"
+        android:layout_below="@+id/dialog_mesa_obs_enviar_pedido_text_view_mesa"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="@string/obs"
+        android:inputType="textMultiLine" >
+    </EditText>
+
+    <Button
+        android:id="@+id/dialog_mesa_obs_enviar_pedido_button_cancelar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/dialog_mesa_obs_enviar_pedido_text_view_observacao"
+        android:layout_below="@+id/dialog_mesa_obs_enviar_pedido_text_view_observacao"
+        android:layout_marginLeft="2dp"
+        android:background="#C19E97"
+        android:drawablePadding="10dp"
+        android:padding="5dp"
+        android:text="@string/cancelarPedido"
+        android:textColor="#634C47"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/dialog_mesa_obs_enviar_pedido_button_enviar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/dialog_mesa_obs_enviar_pedido_text_view_observacao"
+        android:layout_below="@+id/dialog_mesa_obs_enviar_pedido_text_view_observacao"
+        android:layout_marginRight="2dp"
+        android:background="#2175B1"
+        android:padding="5dp"
+        android:text="@string/enviar_pedido"
+        android:textColor="#0B405F"
+        android:textSize="20dp" />
+
+</RelativeLayout>

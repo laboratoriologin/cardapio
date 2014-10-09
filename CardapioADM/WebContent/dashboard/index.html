@@ -1,0 +1,233 @@
+﻿<html>
+<head>
+<title>Painel Controle - Cardápio</title>
+<link href="CSS/ResetCSS.css" rel="stylesheet" type="text/css" />
+<link href="CSS/PadraoCSS.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="JS/jquery.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		$(".tab_content").hide();
+		$(".tab_content:first").show();
+
+		$("ul.tabs li").click(function() {
+			$("ul.tabs li").removeClass("active");
+			$(this).addClass("active");
+			$(".tab_content").hide();
+			var activeTab = $(this).attr("rel");
+			$("#" + activeTab).fadeIn();
+		});
+	});
+</script>
+<script type="text/javascript">
+	function display_c() {
+		var refresh = 1000; // Refresh rate in milli seconds
+		mytime = setTimeout('display_ct()', refresh)
+	}
+
+	function display_ct() {
+		var strcount
+		var x = new Date()
+		var x1 = x.getDate() + "/" + x.getMonth() + "/" + x.getYear();
+		x1 = x1 + " - " + x.getHours() + ":" + x.getMinutes() + ":"
+				+ x.getSeconds();
+		document.getElementById('ct').innerHTML = x1;
+
+		tt = display_c();
+	}
+</script>
+
+</head>
+<body onload="display_ct();">
+
+
+	<div id="Geral">
+		<div id="Topo">
+
+			<div class="fl">
+				<div class="outer-element">
+					<div class="inner-element">
+						<img src="./IMG/logo_meu_cardapio.png" />
+					</div>
+				</div>
+			</div>
+
+
+			<div class="fr">
+				<div class="outer-element">
+					<div class="inner-element">
+						<div id="PainelDataHora">
+							<span id='ct'></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div id="container">
+
+			<ul class="tabs">
+				<li class="active" rel="tab1">Recentes</li>
+				<li rel="tab2">Mesas</li>
+
+			</ul>
+
+			<div class="tab_container">
+
+				<div id="tab1" class="tab_content">
+					<p>
+
+						<strong>
+							<div id="PainelEsquerdo">
+								<div id="alertaChamado" class="alertaCinza">
+									<div id="moduloChamadoUm" class="moduloChamadoUm">
+
+										<div id="txtChamado" class="tituloAletaPedido">Chamado</div>
+										<div id="txtMesa" class="tituloMesa">Mesa 1</div>
+									</div>
+
+									<div id="moduloChamadoDois" class="moduloChamadoDois">
+
+										<div id="tituloAletaPedido" class="tituloAletaPedido">Garçons</div>
+										<div id="nomeT1" class="conteudoFuncionario">Américo Sérgio Bernardo</div>
+
+									</div>
+
+									<div id="Div1" class="moduloChamadoTres">
+
+										<!-- <div id="Div3" class="conteudoAlerta">Alerta Chamar Garçom</div>-->
+										<!--<input value="Alerta Chamar Garçom" type="button" class="conteudoAlerta" title="Alerta Chamar Garçom" />-->
+										<button class="conteudoAlerta">Alerta Chamar Garçom</button>
+									</div>
+								</div>
+								<div id="Div2" class="alertaAmarelo">
+									<div id="Div6" class="moduloChamadoUm">
+
+										<div id="Div7" class="tituloAletaPedido">Alerta</div>
+										<div id="Div8" class="tituloMesa">Mesa 20</div>
+									</div>
+
+									<div id="Div9" class="moduloChamadoDois">
+
+										<div id="Div10" class="tituloAletaPedido">Garçons</div>
+										<div id="Div11" class="conteudoFuncionario">Não há garçom associado</div>
+
+									</div>
+
+									<div id="Div17" class="moduloChamadoTres">
+
+
+										<button class="conteudoAlerta">Associar garçom</button>
+
+
+									</div>
+								</div>
+
+								<div id="Div21" class="alertaVermelho">
+									<div id="Div22" class="moduloChamadoUm">
+
+										<div id="Div23" class="tituloAletaPedido">Chamado</div>
+										<div id="Div24" class="tituloMesa">Mesa 7</div>
+									</div>
+
+									<div id="Div25" class="moduloChamadoDois"></div>
+
+									<div id="Div33" class="moduloChamadoTres">
+
+
+										<button class="conteudoAlerta">Alerta Fechar Conta</button>
+
+
+									</div>
+								</div>
+
+								<div id="Div4" class="alertaVermelho">
+									<div id="Div5" class="moduloChamadoUm">
+
+										<div id="Div12" class="tituloAletaPedido">Chamado</div>
+										<div id="Div13" class="tituloMesa">Mesa 10</div>
+									</div>
+
+									<div id="Div14" class="moduloChamadoDois">
+										<div id="Div19" class="tituloAletaPedido">Garçons</div>
+										<div id="Div20" class="conteudoFuncionario">Américo Sérgio Bernardo</div>
+
+									</div>
+
+									<div id="Div15" class="moduloChamadoTres">
+
+
+										<button class="conteudoAlerta">Alerta Fechar Conta</button>
+
+
+									</div>
+								</div>
+
+
+								<div id="pedidoAmarelo" class="alertaAmarelo">
+									<div id="Div16" class="moduloChamadoUm">
+
+										<div id="Div18" class="tituloAletaPedido">Pedido</div>
+
+
+										<div id="Div3" class="tituloAletaPedido">Itens</div>
+										<div id="Div26" class="conteudoItens">1 Refrigerante Antarctica</div>
+										<div id="Div31" class="conteudoItens">1 Pizza Peperonni Grande</div>
+										<div id="Div32" class="conteudoItens">1 Mousse de Maracujá</div>
+										<div id="Div34" class="conteudoItens">1 Suco de Laranja</div>
+									</div>
+									<select class="cbxPedido">
+										<option class="comboBoxEntrega">Novo</option>
+										<option>Preparo</option>
+										<option class="comboBoxEntrega">Entregue</option>
+									</select>
+									<div id="Div27" class="moduloChamadoDois">
+
+										<div id="Div28" class="tituloAletaPedido">Garçons</div>
+										<div id="Div29" class="conteudoFuncionario">Não há garçom associado</div>
+
+									</div>
+
+									<div id="Div30" class="moduloChamadoTres">
+
+
+										<button class="conteudoAlerta">Associar garçom</button>
+
+
+									</div>
+								</div>
+
+
+
+							</div>
+
+
+							<div id="PainelDireito">
+								<div id="PainelMesa">Mesas &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; Garçom</div>
+								<div id="listaGarcon">
+									<div class="listaGarcon">01 &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; Gerônimo</div>
+									<div class="listaGarcon">02 &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; Jorge Agenor</div>
+									<div class="listaGarcon">03 &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; José Maria</div>
+									<div class="listaGarcon">05 &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; José Carlos</div>
+									<div class="listaGarcon">10 &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; Zenaldo</div>
+									<div class="listaGarcon">37 &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; Leonardo</div>
+									<div class="listaGarcon">10 &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; Patrício</div>
+								</div>
+							</div>
+						</strong>
+					</p>
+
+				</div>
+				<!-- #tab1 -->
+				<div id="tab2" class="tab_content">
+					<input type="submit" value="1" class="Mesa" /> <input type="submit" value="2" class="Mesa" /> <input type="submit" value="3" class="Mesa" /> <input type="submit" value="4" class="Mesa" /> <input type="submit" value="5" class="Mesa" /> <input type="submit" value="6" class="Mesa" /> <input type="submit" value="7" class="Mesa" /> <input type="submit" value="8" class="Mesa" /> <input type="submit" value="9" class="Mesa" /> <input type="submit" value="10" class="Mesa" /> <input type="submit" value="11" class="Mesa" /> <input type="submit" value="12" class="Mesa" /> <input type="submit" value="13" class="Mesa" /> <br />
+				</div>
+				<!-- #tab2 -->
+			</div>
+			<!-- .tab_container -->
+		</div>
+		<!-- #container -->
+	</div>
+</body>
+</html>

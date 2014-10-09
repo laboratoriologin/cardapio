@@ -1,0 +1,184 @@
+
+<ui:composition template="/resources/templates/templateCRUD.xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
+
+	<ui:param name="mbean" value="${empresaFaces}" />
+	<ui:param name="mbeanModel" value="${empresaFaces.crudModel}" />
+	<ui:param name="mbeanPesquisaModel" value="${empresaFaces.crudPesquisaModel}" />
+	<ui:param name="reload" value="true" />
+
+	<ui:define name="cadastro">
+
+		<h:inputHidden value="#{mbeanModel.latitude}" id="latitude" />
+		<h:inputHidden value="#{mbeanModel.longitude}" id="longitude" />
+
+		<h:panelGrid columns="1" style="width:50%">
+
+			<p:outputLabel for="nome" value="Nome da Empresa" />
+			<p:inputText id="nome" required="true" requiredMessage="Nome: Campo obrigatório" maxlength="50" value="#{mbeanModel.nome}" styleClass="coluna90" />
+			<p:outputLabel for="key" value="Chave de acesso Mobile" />
+			<p:inputText id="key" required="true" requiredMessage="Chave: Campo obrigatório" maxlength="20" value="#{mbeanModel.keyMobile}" styleClass="coluna20" />
+			<p:outputLabel for="cnpj" value="CNPJ" />
+			<p:inputText id="cnpj" required="true" requiredMessage="CNPJ: Campo obrigatório" maxlength="18" value="#{mbeanModel.cnpj}" styleClass="coluna20" />
+			<p:outputLabel for="email" value="E-mail" />
+			<p:inputText id="email" required="true" requiredMessage="E-mail: Campo obrigatório" maxlength="100" value="#{mbeanModel.email}" styleClass="coluna40" />
+			<p:outputLabel for="mesas" value="Quantidade de mesas" />
+			<p:inputText id="mesas" required="true" requiredMessage="Quantidade de mesas: Campo obrigatório" maxlength="4" value="#{mbeanModel.quantidadeMesa}" styleClass="coluna10" onkeyup="return Mascara(this,Integer)" />
+			<p:outputLabel for="dadosImobiliaria" value="Dados do restaurante" />
+			<p:editor id="dadosImobiliaria" value="#{mbeanModel.dadosEmpresa}" width="600" />
+		</h:panelGrid>
+
+		<h:panelGrid columns="1" style="width:60%">
+
+			<p:commandButton rendered="#{mbean.admLogado}" value="Adicionar Permissão" icon="ui-icon-plus" action="#{mbean.addPermissao}" />
+
+			<p:outputPanel rendered="#{mbean.admLogado}" id="panelPermissaoUpdate" autoUpdate="true">
+
+				<p:dataTable id="gridPermissao" emptyMessage="Nenhuma permissão adicionada" value="#{mbeanModel.permissoes}" var="permissao">
+
+					<p:column headerText="Menu" styleClass="coluna80">
+						<p:selectOneMenu id="menu" value="#{permissao.menu.id}" required="true" requiredMessage="Menu: Campo obrigat�rio" style="width:100%">
+							<f:selectItem itemLabel="Não Selecionado" itemValue="" />
+							<f:selectItems value="#{mbean.comboMenus}" />
+						</p:selectOneMenu>
+					</p:column>
+
+					<p:column headerText="Inserir" style="text-align: center" styleClass="coluna5">
+						<p:selectBooleanCheckbox value="#{permissao.flagInserir}" />
+					</p:column>
+
+					<p:column headerText="Alterar" style="text-align: center" styleClass="coluna5">
+						<p:selectBooleanCheckbox value="#{permissao.flagAlterar}" />
+					</p:column>
+
+					<p:column headerText="Excluir" style="text-align: center" styleClass="coluna5">
+						<p:selectBooleanCheckbox value="#{permissao.flagExcluir}" />
+					</p:column>
+
+					<p:column headerText="Remover" style="text-align: center" styleClass="coluna5">
+						<p:commandLink action="#{mbean.delPermissao}" process="@this">
+							<h:graphicImage value="../resources/images/delete16.png" style="border: 0px" />
+							<f:setPropertyActionListener target="#{mbean.permissaoSelecionada}" value="#{permissao}" />
+						</p:commandLink>
+					</p:column>
+
+				</p:dataTable>
+
+			</p:outputPanel>
+
+			<br />
+			<br />
+			<p:tabView cache="false" activeIndex="0" id="tvEspec" style="width: 600;height: 400;">
+
+				<p:tab title="Marque local">
+					<div id="map" style="width: 100%; height: 400px"></div>
+				</p:tab>
+
+				<p:tab title="Métricas">
+					<h:panelGrid columns="1" style="width:50%">
+						<ui:repeat var="linha" value="#{mbeanModel.metricas}">
+							<p:outputLabel value="#{linha.tipoAlerta.descricao}" />
+							<p:inputText required="true" requiredMessage="Métricas obrigatórias" maxlength="50" value="#{linha.valor}" styleClass="coluna90" />
+						</ui:repeat>
+					</h:panelGrid>
+				</p:tab>
+
+			</p:tabView>
+
+		</h:panelGrid>
+
+
+		<script type="text/javascript">
+			var currentMarker = null;
+			var map = null;
+
+			function startMap(lat, lng, zoom, marker) {
+
+				var mapOptions = {
+					zoom : zoom,
+					center : new google.maps.LatLng(lat, lng),
+					mapTypeId : google.maps.MapTypeId.ROADMAP
+				};
+				map = new google.maps.Map(document.getElementById('map'),
+						mapOptions);
+
+				google.maps.event.addListener(map, 'click', function(e) {
+					placeMarker(e.latLng, map);
+				});
+
+				if (marker) {
+					placeMarker(mapOptions.center, map);
+				}
+			}
+
+			function placeMarker(position, map) {
+				if (currentMarker == null) {
+					currentMarker = new google.maps.Marker({
+						position : position,
+						map : map
+					});
+				} else {
+					currentMarker.setPosition(position);
+				}
+				document.getElementById('tabview:latitude').value = position
+						.lat();
+				document.getElementById('tabview:longitude').value = position
+						.lng();
+				map.panTo(position);
+			}
+
+			function onPositionUpdate(position) {
+
+				var lat = position.coords.latitude;
+				var lng = position.coords.longitude;
+
+				startMap(lat, lng, 9, false);
+			}
+
+			$(document)
+					.ready(
+							function() {
+
+								var latAux = document
+										.getElementById('tabview:latitude').value;
+								var lngAux = document
+										.getElementById('tabview:longitude').value;
+
+								if (latAux == "") {
+									if (navigator.geolocation) {
+										navigator.geolocation
+												.getCurrentPosition(onPositionUpdate);
+									} else {
+										alert("Problemas de geoposicionamento do navegador.");
+									}
+								} else {
+									startMap(latAux, lngAux, 16, true);
+								}
+
+							});
+		</script>
+
+
+	</ui:define>
+
+
+
+	<ui:define name="pesquisaCampos">
+
+		<h:panelGrid columns="1" style="width:50%">
+
+			<p:outputLabel for="descricaoPesquisa" value="Descrição" />
+			<p:inputText id="descricaoPesquisa" value="#{mbeanPesquisaModel.nome}" styleClass="coluna90" />
+
+		</h:panelGrid>
+
+	</ui:define>
+
+	<ui:define name="colunasTabela">
+
+		<p:column headerText="Descrição">
+			<h:outputText value="#{linha.nome}" />
+		</p:column>
+
+	</ui:define>
+
+</ui:composition>

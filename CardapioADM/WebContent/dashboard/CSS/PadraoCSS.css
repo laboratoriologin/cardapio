@@ -1,0 +1,379 @@
+﻿body {
+	font-family: 'Century Gothic';
+	min-height: 100%;
+	overflow: hidden;
+}
+
+#Geral {
+	min-width: 590px;
+}
+
+#Topo {
+	height: 96px;
+	background-image: url(../IMG/BackTopo.png);
+	background-color: #4F3833;
+}
+
+#Separador {
+	background-color: #385600;
+	height: 5px;
+	float: none;
+	margin-top: 19px;
+}
+
+#PainelEsquerdo {
+	*width: 80%;
+	width: 75%;
+	height: 85%;
+	_height: 600px;
+	background-color: green;
+	display: grid;
+	float: left;
+	background-color: #f2dcb3;
+	overflow: scroll;
+	scrollbar-face-color: #B6A689;
+	scrollbar-shadow-color: #B6A689;
+	scrollbar-highlight-color: #B6A689;
+	scrollbar-3dlight-color: #B6A689;
+	scrollbar-darkshadow-color: #B6A689;
+	scrollbar-track-color: #B6A689;
+	scrollbar-arrow-color: #654D48;
+}
+
+#pnlRecentes {
+	width: 80%;
+	height: 800px;
+	background-color: green;
+	display: grid;
+	float: left;
+}
+
+#PainelDireito {
+	width: 20%;
+	height: 85%;
+	float: left;
+	background-color: #f2dcb3;
+}
+
+/*
+#Logo {
+    width: 210px;
+    height: 56px;
+    background-repeat: no-repeat;
+    background-image: url(../IMG/logo_meu_cardapio.png);
+    margin: 10px 0px 0px 30px;
+    float: left;
+}*/
+.fl {
+	float: left;
+}
+
+.fr {
+	float: right;
+}
+
+.outer-element {
+	display: table-cell;
+	height: 96px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.inner-element {
+	display: inline-block;
+	margin-left: 30px;
+	margin-right: 30px;
+}
+
+#PainelDataHora {
+	text-align: center;
+	color: #fff;	
+}
+
+.AbaSelecionada {
+	background: #385600;
+	color: #FFF;
+	display: inline;
+	float: left;
+	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	height: 100%;
+	text-decoration: none;
+	width: 50%;
+	padding-right: 0;
+	padding-left: 0;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-indent: 50px;
+}
+
+.AbaNaoSelecionada {
+	background: #644D48;
+	color: #FFF;
+	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	text-decoration: none;
+	float: right;
+	width: 50%;
+	display: inline;
+	height: 100%;
+	padding-right: 0;
+	padding-left: 0;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-indent: 50px;
+}
+
+#Abas {
+	height: 20px;
+}
+
+.txtDataHora {
+	margin: 20px 0px 0px 0px;
+}
+
+/*Tab*/
+ul.tabs {
+	margin: 0;
+	padding: 0;
+	float: left;
+	list-style: none;
+	height: 32px;
+	border-bottom: 5px solid #385700;
+	border-left: 1px solid #999999;
+	width: 100%;
+	background-color: #F2DCB3;
+	color: #FFF;
+	font-family: 'Century Gothic';
+}
+
+ul.tabs li {
+	float: left;
+	margin: 0;
+	cursor: pointer;
+	padding: 0px 51px;
+	height: 31px;
+	line-height: 31px;
+	border: 1px solid #999999;
+	border-left: none;
+	background: #654D48;
+	overflow: hidden;
+	position: relative;
+	width: 319px;
+	height: 32px;
+	font-family: 'Century Gothic';
+	text-align: center;
+	font-size: 26px;
+}
+
+ul.tabs li:hover {
+	background: #CCCCCC;
+}
+
+ul.tabs li.active {
+	background: #385600;
+	border-bottom: 1px solid #FFFFFF;
+}
+
+.tab_container {
+	border: 1px solid #999999;
+	border-top: none;
+	clear: both;
+	float: left;
+	width: 100%;
+	background-color: #f2dcb3;
+	height: 100%;
+}
+
+.tab_content {
+	padding: 20px;
+	font-size: 1.2em;
+	display: none;
+}
+
+#container {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.alertaCinza {
+	width: 321px;
+	height: auto;
+	background-color: #868686;
+	border: 5px solid white;
+	overflow: hidden;
+	margin: 5px 0px 0px 10px;
+	float: left;
+}
+
+.alertaAmarelo {
+	width: 321px;
+	height: auto;
+	background-color: #EDDA54;
+	border: 5px solid white;
+	overflow: hidden;
+	margin: 5px 0px 0px 10px;
+	float: left;
+}
+
+.alertaVermelho {
+	width: 321px;
+	height: auto;
+	background-color: #A50000;
+	border: 5px solid white;
+	overflow: hidden;
+	color: #FFFFFF;
+	margin: 5px 0px 0px 10px;
+	float: left;
+}
+
+.moduloChamadoUm {
+	width: 75px;
+	float: left;
+	margin: 15px;
+}
+
+.moduloChamadoDois {
+	width: 55px;
+	float: left;
+	padding: 15px 0px 0px 24px;
+}
+
+.moduloChamadoTres {
+	width: 70px;
+	float: right;
+	background-color: white;
+	overflow: hidden;
+	bottom: 0px;
+	vertical-align: sub;
+}
+
+.tituloAletaPedido {
+	font-size: 20px;
+}
+
+.tituloMesa {
+	font-size: 16px;
+	margin: 15px 0;
+}
+
+.conteudoFuncionario {
+	margin-top: 2px;
+	font-size: 14px;
+	white-space: normal !important;
+}
+
+.conteudoItens {
+	margin-top: 2px;
+	font-weight: lighter;
+	font-size: 12px;
+	white-space: normal !important;
+}
+
+.conteudoAlerta {
+	background-color: transparent;
+	border: none;
+	font-size: 14px;
+	width: 70px;
+	height: 101px;
+	padding: 13px 0px 0px 0px;
+	cursor: pointer;
+	white-space: normal !important;
+}
+
+#PainelMesa {
+	width: 241px;
+	height: 47px;
+	background-color: #B6A689;
+	padding-top: 15px;
+	margin: 0 15px;
+	font-family: 'Century Gothic';
+	text-align: center;
+	color: #574039;
+}
+
+.listaGarcon {
+	background-color: #EDDA54;
+	width: 203px;
+	*width: 243px;
+	height: 27px;
+	border: 2px solid white;
+	font-family: 'Century Gothic';
+	margin: 0 15px;
+	padding: 5px 0px 0px 35px;
+}
+
+.Mesa {
+	float: left;
+	width: 78px;
+	height: 78px;
+	background-color: #FFFFFF;
+	font-size: xx-large;
+	text-align: center;
+	vertical-align: central;
+	margin: 20px;
+	cursor: pointer;
+}
+
+.Mesa:hover {
+	float: left;
+	width: 78px;
+	height: 78px;
+	background-color: #385600 !important;
+	font-size: xx-large;
+	color: #FFFFFF;
+	text-align: center;
+	vertical-align: central;
+	margin: 20px;
+}
+
+.cbxPedido {
+	width: 156px;
+	height: 32px;
+	float: right;
+	border: 0px;
+}
+
+.cbxPedido comboBoxEntrega {
+	background-color: #56852F;
+}
+
+/*============================== LOGIN ===========================================================*/
+#GeralLogin {
+	background-image: url("../IMG/BackTopo.png");
+}
+
+#painelLogin {
+	margin-left: 35%;
+	margin-top: 5%;
+	color: #F2DCB3;
+	text-align: left;
+	font-family: 'Century Gothic';
+}
+
+.loginText {
+	width: 300px;
+	height: 39px;
+	background-color: #F2DCB3;
+	margin: 10px 0px;
+	border: none;
+	text-indent: 13px;
+}
+
+.lblLogin {
+	font-size: 20px;
+}
+
+.lblEntrar {
+	font-size: 15px;
+	margin-right: 30px;
+}
+
+#btnEntrar {
+	background-image: url("../IMG/bg_botao.png");
+	width: 148px;
+	height: 35px;
+	font-size: 20px;
+	color: #385700;
+	border: none;
+	font-family: 'Century Gothic';
+	font-weight: bold;
+}

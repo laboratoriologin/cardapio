@@ -1,0 +1,18 @@
+App Cardápio Garçom
+Geisa
+
+-----------------------
+*****Observações*******
+-----------------------
+
+Arquivos de imagem  disponíveis em:
+
+http://10.0.0.16:8080/Design/appCardapioGarcom
+
+
+*Android Observação:
+Arquivos no tamanho padrão estão na pasta "hdpi" os demais tamanhos são as variações de resolução/tipo de dispositivo (tablet etc)
+
+
+*iOS  Observação:
+Arquivos no tamanho padrão estão na pasta "@1x"

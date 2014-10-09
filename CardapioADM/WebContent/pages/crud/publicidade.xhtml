@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="/resources/templates/templateCRUD.xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
+
+	<ui:param name="mbean" value="${publicidadeFaces}" />
+	<ui:param name="mbeanModel" value="${publicidadeFaces.crudModel}" />
+	<ui:param name="mbeanPesquisaModel" value="${publicidadeFaces.crudPesquisaModel}" />
+
+	<ui:define name="cadastro">
+
+		<h:panelGrid columns="1" style="width:50%">
+
+			<p:outputLabel for="nome" value="Nome" />
+			<p:inputText id="nome" required="true" requiredMessage="Nome Campo obrigatário" maxlength="50" value="#{mbeanModel.nome}" styleClass="coluna50" />
+
+			<p:outputLabel for="link" value="Link" />
+			<p:inputText id="link" required="false" maxlength="50" value="#{mbeanModel.link}" styleClass="coluna50" />
+
+			<p:outputLabel for="tipoPublicidade" value="Tipo Publicidade" />
+			<p:selectOneMenu id="tipoPublicidade" value="#{mbeanModel.tipoPublicidade.id}" required="true" requiredMessage="Tipo Publicidade Campo obrigatório" style="width:50%">
+				<f:selectItem itemLabel="Não Selecionado" itemValue="" />
+				<f:selectItems value="#{mbean.comboTipoPublicidade}" />
+			</p:selectOneMenu>
+
+			<p:outputLabel for="preco" value="Preço" />
+			<p:inputText id="preco" required="false" maxlength="50" value="#{mbeanModel.preco}" styleClass="coluna20" />
+
+			<p:outputLabel for="descricao" value="Descrição" />
+			<p:inputText id="descricao" required="true" requiredMessage="Descrição Campo obrigatário" maxlength="50" value="#{mbeanModel.descricao}" styleClass="coluna90" />
+
+			<p:fieldset legend="Banner" style="width:95%">
+
+				<p:fileUpload id="uploadArquivo" label="Adicionar Imagem" fileUploadListener="#{mbean.uploadMidias}" auto="true" multiple="false" allowTypes="/(\.|\/)(|jpe?g|png)$/" process="@this" style="width: 95%" />
+
+				<br />
+				<p:outputPanel autoUpdate="true">
+					<img src="/arquivos_cardapio/#{mbeanModel.imagem}" style="max-height: 95px; max-width: 245px" alt="Logomarca" />
+				</p:outputPanel>
+			</p:fieldset>
+
+			<p:fieldset legend="Agendamento" style="width:95%">
+				<p:outputLabel for="dataVigenciaInicial" value="Inicio" />
+				<p:calendar value="#{mbeanModel.vigenciaInicial}" pattern="dd/MM/yyyy" navigator="true" id="dataVigenciaInicial" />
+
+				<p:outputLabel for="dataVigenciaFinal" value="Fim" style="margin-left: 50px;" />
+				<p:calendar value="#{mbeanModel.vigenciaFinal}" pattern="dd/MM/yyyy" navigator="true" id="dataVigenciaFinal" />
+
+				<br />
+				<br />
+				<br />
+
+				<p:selectOneMenu id="tipoAgendamento" value="#{mbean.tipoAgenda.id}" style="width:50%">
+					<p:ajax event="change" process="@this" global="false" />
+					<f:selectItems value="#{mbean.comboTipoAgenda}" />
+				</p:selectOneMenu>
+
+				<br />
+
+				<p:outputPanel autoUpdate="true" style="margin-top: 10px;">
+
+					<h:panelGroup rendered="#{mbean.tipoAgenda.diariamente}">
+
+					</h:panelGroup>
+
+					<h:panelGroup rendered="#{mbean.tipoAgenda.semanalmente}">
+					
+						<p:selectManyCheckbox id="lineDirection" value="#{mbean.selectedOptionsDiaSemana}" >
+							<f:selectItem itemLabel="Domingo" itemValue="1" />
+							<f:selectItem itemLabel="Segunda" itemValue="2" />
+							<f:selectItem itemLabel="Terça" itemValue="3" />
+							<f:selectItem itemLabel="Quarta" itemValue="4" />
+							<f:selectItem itemLabel="Quinta" itemValue="5" />
+							<f:selectItem itemLabel="Sexta" itemValue="6" />
+							<f:selectItem itemLabel="Sábado" itemValue="7" />
+						</p:selectManyCheckbox>
+						
+					</h:panelGroup>
+
+					<h:panelGroup rendered="#{mbean.tipoAgenda.mensalmente}">
+					
+						<p:panelGrid columns="2">
+						
+							<p:outputLabel for="inicio" value="Inicio" style="margin-left: 50px;" />							
+							<p:outputLabel for="fim" value="Fim" style="margin-left: 50px;" />
+							
+							<p:inputText id="inicio" maxlength="50"  styleClass="coluna90" onkeyup="return Mascara(this, Integer)" value="#{mbean.inicio}"/>
+							<p:inputText id="fim" maxlength="50"  styleClass="coluna90" onkeyup="return Mascara(this, Integer)" value="#{mbean.fim}"/>							
+						
+						</p:panelGrid>						
+										
+					</h:panelGroup>
+
+				</p:outputPanel>
+
+			</p:fieldset>
+
+		</h:panelGrid>
+
+		<h:panelGrid columns="1" style="width:60%">
+		</h:panelGrid>
+
+
+	</ui:define>
+
+	<ui:define name="pesquisaCampos">
+
+		<h:panelGrid columns="1" style="width:50%">
+
+			<p:outputLabel for="nomePesquisa" value="Nome" />
+			<p:inputText id="nomePesquisa" value="#{mbeanPesquisaModel.nome}" styleClass="coluna90" />
+			<p:outputLabel for="descricaoPesquisa" value="Descrição" />
+			<p:inputText id="descricaoPesquisa" value="#{mbeanPesquisaModel.descricao}" styleClass="coluna90" />
+
+		</h:panelGrid>
+
+	</ui:define>
+
+	<ui:define name="colunasTabela">
+
+		<p:column headerText="Descrição">
+			<h:outputText value="#{linha.nome}" />
+			<h:outputText value="#{linha.descricao}" />
+		</p:column>
+
+	</ui:define>
+
+</ui:composition>

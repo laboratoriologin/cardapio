@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_list_view_item_categoria_cardapio_linear_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/branco"
+    android:orientation="horizontal"
+    android:scrollbars="none"
+    android:weightSum="2" >
+
+    <ImageView
+        android:id="@+id/fragment_list_view_item_categoria_cardapio_image_view"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_weight="1"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/placeholder"
+        android:scaleType="fitXY"
+        android:scrollbars="none" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/branco"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:scrollbars="none" >
+
+        <TextView
+            android:id="@+id/fragment_list_view_item_categoria_cardapio_text_view_nome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:ellipsize="end"
+            android:lines="1"
+            android:maxLines="1"
+            android:scrollbars="none"
+            android:textColor="@color/marrom_claro"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/fragment_list_view_item_categoria_cardapio_text_view_ingrediente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:ellipsize="end"
+            android:lines="6"
+            android:maxLines="6"
+            android:scrollbars="none"
+            android:textColor="@color/marrom_claro"
+            android:textSize="10sp" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

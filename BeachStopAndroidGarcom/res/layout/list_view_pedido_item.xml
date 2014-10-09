@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/padding_small"
+    android:paddingRight="@dimen/padding_small"
+    android:paddingTop="@dimen/padding_small" >
+
+    <RelativeLayout
+        android:id="@+id/flist_view_alerta_item_relative_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white" >
+
+        <TextView
+            android:id="@+id/list_view_pedido_item_text_view_mesa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="5dp"
+            android:textSize="20sp" />
+
+        <TableLayout
+            android:id="@+id/list_view_pedido_item_table_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/list_view_pedido_item_text_view_mesa"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:scrollbars="none"
+            android:shrinkColumns="*"
+            android:stretchColumns="*" />
+
+        <LinearLayout
+            android:id="@+id/list_view_pedido_item_separator"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/list_view_pedido_item_table_layout"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:background="@android:color/darker_gray"
+            android:orientation="vertical" />
+
+        <TextView
+            android:id="@+id/list_view_pedido_item_text_view_observacoes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/list_view_pedido_item_separator"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:text="@string/observacoes"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/list_view_pedido_item_text_view_observacao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/list_view_pedido_item_text_view_observacoes"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/padding_small"
+            android:textColor="#A50000"
+            android:textSize="20sp"
+            android:textStyle="italic" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/list_view_pedido_item_text_view_observacao"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <ImageButton
+                android:id="@+id/list_view_pedido_item_button_editar"
+                android:layout_width="65dp"
+                android:layout_height="@dimen/actionbar_item_height"
+                android:layout_margin="5dp"
+                android:background="#C19E97"
+                android:src="@drawable/ic_editar"
+                android:padding="5dp" />
+
+            <ImageButton
+                android:id="@+id/list_view_pedido_item_button_cancelar"
+                android:layout_width="65dp"
+                android:layout_height="@dimen/actionbar_item_height"
+                android:layout_margin="5dp"
+                android:background="#C19E97"
+                android:src="@drawable/ic_remover"
+                android:padding="5dp"
+                android:textSize="17sp" />
+
+            <ImageButton
+                android:id="@+id/list_view_pedido_item_button_aprovar"
+                android:layout_width="65dp"
+                android:layout_height="@dimen/actionbar_item_height"
+                android:layout_margin="5dp"
+                android:background="#2175B1"
+                android:src="@drawable/ic_aprovar"
+                android:padding="5dp"
+                android:text="@string/aprovar"
+                android:textColor="#385600"
+                android:textSize="17sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

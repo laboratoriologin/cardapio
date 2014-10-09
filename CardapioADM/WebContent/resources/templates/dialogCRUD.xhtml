@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:component xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:ui="http://java.sun.com/jsf/facelets"
+              xmlns:p="http://primefaces.org/ui">
+
+
+  <p:confirmDialog message="Confirma exclusão do registro?" appendTo="@(body)" header="Aviso" severity="alert" widgetVar="cdExcluir">
+	    
+	    <p:commandButton value="Sim" onclick="cdExcluir.hide()" action="#{mbean.deleteEvent}" update="@form" process="@this" />
+	    <p:commandButton value="Não" onclick="cdExcluir.hide()" />
+	    
+  </p:confirmDialog>
+
+</ui:component>

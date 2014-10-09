@@ -1,0 +1,92 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_system"
+    android:orientation="vertical"
+    tools:context=".PedidoActivity" >
+
+    <com.login.beachstop.android.garcom.view.ActionBar
+        android:id="@+id/actionbar"
+        style="@style/ActionBar"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp" >
+
+        <ImageView
+            android:id="@+id/imagem_action_bar"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="35dp"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitXY"
+            android:src="@drawable/bt_menu_pedidos" />
+
+        <TextView
+            android:id="@+id/text_view_action_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="3dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/imagem_action_bar"
+            android:text="@string/pedido"
+            android:textColor="@color/branco"
+            android:textSize="30sp" />
+
+        <ImageView
+            android:id="@+id/imagem_action_bar_enviar"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:contentDescription="@string/app_name"
+            android:gravity="center"
+            android:scaleType="fitXY"
+            android:src="@drawable/bt_enviar" />
+    </com.login.beachstop.android.garcom.view.ActionBar>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:padding="5dp" >
+
+        <EditText
+            android:id="@+id/activity_pedido_edittext_pesquisa_codigo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/cod_produto"
+            android:inputType="number" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/activity_pedido_relativelayout_item_cardapio"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="3dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" >
+
+        <ListView
+            android:id="@+id/activity_pedido_listview_item_cardapio"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@+id/activity_pedido_quickscroll"
+            android:divider="#F2DBB3"
+            android:dividerHeight="@dimen/size_divider"
+            android:drawSelectorOnTop="false"
+            android:overScrollMode="never"
+            android:scrollbars="none" />
+
+        <com.login.beachstop.android.garcom.quickscroll.QuickScroll
+            android:id="@+id/activity_pedido_quickscroll"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+
+</LinearLayout>

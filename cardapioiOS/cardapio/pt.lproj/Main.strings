@@ -1,0 +1,57 @@
+
+/* Class = "IBUILabel"; text = "Total:"; ObjectID = "1DN-Ha-pna"; */
+"1DN-Ha-pna.text" = "Total:";
+
+/* Class = "IBUITabBarItem"; title = "Sobre o restaurante"; ObjectID = "29A-el-X5A"; */
+"29A-el-X5A.title" = "Sobre o restaurante";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "30q-0z-2dO"; */
+"30q-0z-2dO.text" = "Label";
+
+/* Class = "IBUILabel"; text = "Não há pedidos a enviar!"; ObjectID = "AFB-op-wFT"; */
+"AFB-op-wFT.text" = "Não há pedidos a enviar!";
+
+/* Class = "IBUITabBarItem"; title = "Pedidos"; ObjectID = "Efd-j6-8oX"; */
+"Efd-j6-8oX.title" = "Pedidos";
+
+/* Class = "IBUIButton"; normalTitle = "Não enviados"; ObjectID = "I6C-9n-7rb"; */
+"I6C-9n-7rb.normalTitle" = "Não enviados";
+
+/* Class = "IBUITabBarItem"; title = "Check In"; ObjectID = "I9K-Hc-OfD"; */
+"I9K-Hc-OfD.title" = "Check In";
+
+/* Class = "IBUIButton"; normalTitle = "Pedir conta"; ObjectID = "IIN-fU-Kkb"; */
+"IIN-fU-Kkb.normalTitle" = "Pedir conta";
+
+/* Class = "IBUITabBarItem"; title = "Chamar garçom"; ObjectID = "Kir-tk-Bgb"; */
+"Kir-tk-Bgb.title" = "Chamar garçom";
+
+/* Class = "IBUILabel"; text = "Parcial:"; ObjectID = "Krj-fo-i14"; */
+"Krj-fo-i14.text" = "Parcial:";
+
+/* Class = "IBUIButton"; normalTitle = "Fazer Check In"; ObjectID = "Nkr-dV-NGX"; */
+"Nkr-dV-NGX.normalTitle" = "Fazer Check In";
+
+/* Class = "IBUILabel"; text = "Esta é a mesa:"; ObjectID = "O1J-hU-fMx"; */
+"O1J-hU-fMx.text" = "Esta é a mesa:";
+
+/* Class = "IBUIButton"; normalTitle = "Enviar pedido ao garçom"; ObjectID = "PdM-vj-JQc"; */
+"PdM-vj-JQc.normalTitle" = "Enviar pedido ao garçom";
+
+/* Class = "IBUIButton"; normalTitle = "Enviados ao garçom"; ObjectID = "QHy-rx-4pf"; */
+"QHy-rx-4pf.normalTitle" = "Enviados ao garçom";
+
+/* Class = "IBUIButton"; normalTitle = "Pedir a conta"; ObjectID = "gsi-A1-T05"; */
+"gsi-A1-T05.normalTitle" = "Pedir a conta";
+
+/* Class = "IBUITabBarItem"; title = "Cardápio"; ObjectID = "lJq-6I-fv1"; */
+"lJq-6I-fv1.title" = "Cardápio";
+
+/* Class = "IBUILabel"; text = "10%"; ObjectID = "oPO-TY-JU0"; */
+"oPO-TY-JU0.text" = "10%";
+
+/* Class = "IBUILabel"; text = "Nenhum pedido enviado!"; ObjectID = "pey-ov-MNc"; */
+"pey-ov-MNc.text" = "Nenhum pedido enviado!";
+
+/* Class = "IBUIButton"; normalTitle = "Chamar garçom"; ObjectID = "rC1-aq-eTt"; */
+"rC1-aq-eTt.normalTitle" = "Chamar garçom";
