@@ -1,10 +1,16 @@
 package com.login.cardapio.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
 
 import br.com.topsys.database.hibernate.TSActiveRecordAb;
 
@@ -23,6 +29,10 @@ public class GrupoUsuario extends TSActiveRecordAb<GrupoUsuario> {
 
 	private String descricao;
 
+	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
+	@OneToMany(mappedBy = "grupoUsuario", cascade = CascadeType.ALL)
+	private List<Permissao> permissoes;
+
 	public Long getId() {
 		return id;
 	}
@@ -37,6 +47,14 @@ public class GrupoUsuario extends TSActiveRecordAb<GrupoUsuario> {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	public List<Permissao> getPermissoes() {
+		return permissoes;
+	}
+
+	public void setPermissoes(List<Permissao> permissoes) {
+		this.permissoes = permissoes;
 	}
 
 	@Override
@@ -62,5 +80,5 @@ public class GrupoUsuario extends TSActiveRecordAb<GrupoUsuario> {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}	
+	}
 }

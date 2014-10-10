@@ -1,10 +1,9 @@
 package com.login.cardapio.servlet;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import net.glxn.qrgen.QRCode;
 import net.glxn.qrgen.image.ImageType;
 
+import com.login.cardapio.model.Empresa;
 import com.login.cardapio.model.Usuario;
 import com.login.cardapio.util.Constantes;
 
@@ -56,34 +56,43 @@ public class QrCode extends HttpServlet {
 		if (usuario == null) {
 			return;
 		}
-		
-//		for (int i = 100; i <= 200; i++) {
-//			
-//			ByteArrayOutputStream out = QRCode.from("mesa=" + i + "&empresa=" + usuario.getEmpresa().getKeyMobile()).to(ImageType.PNG).withSize(500, 500).stream();
-//			FileOutputStream fos = new FileOutputStream(new File("c:\\qrcode\\" + i +".png"));
-//			
-//			try {
-//				out.writeTo(fos);
-//			} catch (IOException ioe) {
-//				// Handle exception here
-//				ioe.printStackTrace();
-//			} finally {
-//				fos.close();
-//			}
-//			
-//		}
 
-		ByteArrayOutputStream out = QRCode.from("mesa=" + qrtext + "&empresa=" + usuario.getEmpresa().getKeyMobile()).to(ImageType.PNG).stream();
+		// for (int i = 100; i <= 200; i++) {
+		//
+		// ByteArrayOutputStream out = QRCode.from("mesa=" + i + "&empresa=" +
+		// usuario.getEmpresa().getKeyMobile()).to(ImageType.PNG).withSize(500,
+		// 500).stream();
+		// FileOutputStream fos = new FileOutputStream(new File("c:\\qrcode\\" +
+		// i +".png"));
+		//
+		// try {
+		// out.writeTo(fos);
+		// } catch (IOException ioe) {
+		// // Handle exception here
+		// ioe.printStackTrace();
+		// } finally {
+		// fos.close();
+		// }
+		//
+		// }
 
-		response.setContentType("image/png");
-		response.setContentLength(out.size());
+		List<Empresa> listEmpresa = new Empresa().findAll("id");
+		if (listEmpresa.size() != 0) {
 
-		OutputStream outStream = response.getOutputStream();
+			Empresa empresa = listEmpresa.get(0);
 
-		outStream.write(out.toByteArray());
+			ByteArrayOutputStream out = QRCode.from("mesa=" + qrtext + "&empresa=" + empresa.getKeyMobile()).to(ImageType.PNG).stream();
 
-		outStream.flush();
-		outStream.close();
+			response.setContentType("image/png");
+			response.setContentLength(out.size());
+
+			OutputStream outStream = response.getOutputStream();
+
+			outStream.write(out.toByteArray());
+
+			outStream.flush();
+			outStream.close();
+		}
 	}
 
 }

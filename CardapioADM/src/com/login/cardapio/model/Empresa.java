@@ -37,9 +37,9 @@ public class Empresa extends TSActiveRecordAb<Empresa> {
 	/**
 	 * Propriedade lista de permissões do objeto Grupo(Grupo de usuários).
 	 */
-	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
-	@OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL)
-	private List<Permissao> permissoes;
+//	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
+//	@OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL)
+//	private List<Permissao> permissoes;
 
 	// @Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
 	// @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL)
@@ -115,27 +115,6 @@ public class Empresa extends TSActiveRecordAb<Empresa> {
 	 */
 	public final void setDescricao(final String pDescricao) {
 		this.descricao = pDescricao;
-	}
-
-	/**
-	 * Obtém a propriedade lista de permissões do objeto Grupo(Grupo de
-	 * usuários).
-	 * 
-	 * @return Lista de permissões.
-	 */
-	public final List<Permissao> getPermissoes() {
-		return permissoes;
-	}
-
-	/**
-	 * Seta a propriedade lista de permissões do objeto Grupo(Grupo de
-	 * usuários).
-	 * 
-	 * @param pPermissoes
-	 *            Lista de permissões.
-	 */
-	public final void setPermissoes(final List<Permissao> pPermissoes) {
-		this.permissoes = pPermissoes;
 	}
 
 	public String getNome() {

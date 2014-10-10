@@ -55,8 +55,6 @@ public class PublicidadeFaces extends CrudFaces<Publicidade> {
 	@Override
 	protected void prePersist() {
 
-		super.getCrudModel().setEmpresa(UsuarioUtil.obterUsuarioConectado().getEmpresa());
-
 		super.getCrudModel().setAgenda(new HashSet<Agenda>());
 		Agenda agenda;
 		if ( TipoAgenda.DIARIAMENTE.equals(this.tipoAgenda.getId()) ) {
@@ -118,8 +116,7 @@ public class PublicidadeFaces extends CrudFaces<Publicidade> {
 
 	@Override
 	public String limparPesquisa() {
-		String retorno = super.limparPesquisa();
-		super.getCrudPesquisaModel().setEmpresa(UsuarioUtil.obterUsuarioConectado().getEmpresa());
+		String retorno = super.limparPesquisa();		
 		return retorno;
 	}
 

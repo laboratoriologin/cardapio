@@ -47,10 +47,6 @@ public class Publicidade extends TSActiveRecordAb<Publicidade> {
 	private Date vigenciaFinal;		
 
 	@ManyToOne
-	@JoinColumn(name = "id_empresa")
-	private Empresa empresa;
-
-	@ManyToOne
 	@JoinColumn(name = "id_tipo_publicidade")
 	private TipoPublicidade tipoPublicidade;
 	
@@ -128,14 +124,6 @@ public class Publicidade extends TSActiveRecordAb<Publicidade> {
 
 	public void setVigenciaFinal(Date  vigenciaFinal) {
 		this.vigenciaFinal = vigenciaFinal;
-	}
-
-	public Empresa getEmpresa() {
-		return empresa;
-	}
-
-	public void setEmpresa(Empresa empresa) {
-		this.empresa = empresa;
 	}
 
 	public TipoPublicidade getTipoPublicidade() {

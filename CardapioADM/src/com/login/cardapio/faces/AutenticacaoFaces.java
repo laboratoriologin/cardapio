@@ -65,10 +65,10 @@ public class AutenticacaoFaces extends TSMainFaces {
 
 	private void carregarMenu() {
 
-		menus = new Menu().pesquisarCabecalhos(UsuarioUtil.obterUsuarioConectado().getEmpresa().getId());
+		menus = new Menu().pesquisarCabecalhos(UsuarioUtil.obterUsuarioConectado().getGrupoUsuario().getId());
 
 		Permissao permissao = new Permissao();
-		permissao.setEmpresa(UsuarioUtil.obterUsuarioConectado().getEmpresa());
+		permissao.setGrupoUsuario(UsuarioUtil.obterUsuarioConectado().getGrupoUsuario());
 		permissoes = permissao.pesquisarPermissoes();
 
 	}
