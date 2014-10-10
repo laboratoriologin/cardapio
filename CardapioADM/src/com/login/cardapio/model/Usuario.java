@@ -10,11 +10,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+
+import org.hibernate.annotations.Cascade;
 
 import br.com.topsys.database.hibernate.TSActiveRecordAb;
 import br.com.topsys.util.TSUtil;
@@ -67,9 +68,9 @@ public class Usuario extends TSActiveRecordAb<Usuario> {
 	@Column(name = "telefone_contato")
 	private String telefoneContato;
 
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "usuarios_setores", joinColumns = { @JoinColumn(name = "usuario_id") }, inverseJoinColumns = { @JoinColumn(name = "setor_id") })
-	private List<Setor> listSetor;
+	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+	private List<UsuarioSetor> listUsuarioSetor;
 
 	@Transient
 	private String confirmaSenha;
@@ -206,12 +207,12 @@ public class Usuario extends TSActiveRecordAb<Usuario> {
 		this.confirmaSenha = confirmaSenha;
 	}
 
-	public List<Setor> getListSetor() {
-		return listSetor;
+	public List<UsuarioSetor> getListUsuarioSetor() {
+		return listUsuarioSetor;
 	}
 
-	public void setListSetor(List<Setor> listSetor) {
-		this.listSetor = listSetor;
+	public void setListUsuarioSetor(List<UsuarioSetor> listUsuarioSetor) {
+		this.listUsuarioSetor = listUsuarioSetor;
 	}
 
 	@Override

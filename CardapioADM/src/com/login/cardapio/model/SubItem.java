@@ -10,10 +10,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
 
 import br.com.topsys.database.hibernate.TSActiveRecordAb;
 
@@ -47,9 +48,9 @@ public class SubItem extends TSActiveRecordAb<SubItem> {
 	@Column(name = "flag_ativo")
 	private Boolean flagAtivo;
 
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "kits_sub_itens", joinColumns = { @JoinColumn(name = "sub_item_id") }, inverseJoinColumns = { @JoinColumn(name = "kit_id") })
-	private List<Kit> listKit;
+	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
+	@OneToMany(mappedBy = "subItem", cascade = CascadeType.ALL)
+	private List<KitSubItem> listKitSubItem;
 
 	@Override
 	public Long getId() {
@@ -117,12 +118,12 @@ public class SubItem extends TSActiveRecordAb<SubItem> {
 		this.flagAtivo = flagAtivo;
 	}
 
-	public List<Kit> getListKit() {
-		return listKit;
+	public List<KitSubItem> getListKit() {
+		return listKitSubItem;
 	}
 
-	public void setListKit(List<Kit> listKit) {
-		this.listKit = listKit;
+	public void setListKit(List<KitSubItem> listKitSubItem) {
+		this.listKitSubItem = listKitSubItem;
 	}
 
 	@Override

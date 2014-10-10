@@ -1,22 +1,18 @@
 package com.login.cardapio.model;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.Cascade;
 
 import br.com.topsys.database.hibernate.TSActiveRecordAb;
 
 @Entity
-@Table(name = "setores")
-public class Setor extends TSActiveRecordAb<Setor> {
+@Table(name = "usuarios_setores")
+public class UsuarioSetor extends TSActiveRecordAb<UsuarioSetor> {
 
 	/**
 	 * 
@@ -27,11 +23,13 @@ public class Setor extends TSActiveRecordAb<Setor> {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	private String descricao;
+	@ManyToOne
+	@JoinColumn(name = "usuario_id")
+	private Usuario usuario;
 
-	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
-	@OneToMany(mappedBy = "setor", cascade = CascadeType.ALL)
-	private List<UsuarioSetor> listUsuarioSetor;
+	@ManyToOne
+	@JoinColumn(name = "setor_id")
+	private Setor setor;
 
 	public Long getId() {
 		return id;
@@ -41,20 +39,20 @@ public class Setor extends TSActiveRecordAb<Setor> {
 		this.id = id;
 	}
 
-	public String getDescricao() {
-		return descricao;
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
-	public List<UsuarioSetor> getListUsuarioSetor() {
-		return listUsuarioSetor;
+	public Setor getSetor() {
+		return setor;
 	}
 
-	public void setListUsuarioSetor(List<UsuarioSetor> listUsuarioSetor) {
-		this.listUsuarioSetor = listUsuarioSetor;
+	public void setSetor(Setor setor) {
+		this.setor = setor;
 	}
 
 	@Override
@@ -73,7 +71,7 @@ public class Setor extends TSActiveRecordAb<Setor> {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Setor other = (Setor) obj;
+		UsuarioSetor other = (UsuarioSetor) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -81,4 +79,5 @@ public class Setor extends TSActiveRecordAb<Setor> {
 			return false;
 		return true;
 	}
+
 }
