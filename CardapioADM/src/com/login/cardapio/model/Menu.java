@@ -114,7 +114,7 @@ public final class Menu extends TSActiveRecordAb<Menu> {
 
 	public List<Menu> pesquisarCabecalhos(Long grupoID) {
 
-		return findBySQL("select * from menus m where menu_id is null and flag_ativo = 1 and exists (select 1 from menus m2, permissoes p where m2.menu_id = m.id and m2.id = p.menu_id and p.empresa_id = ?) order by ordem, descricao", grupoID);
+		return findBySQL("select * from menus m where menu_id is null and flag_ativo = 1 and exists (select 1 from menus m2, permissoes p where m2.menu_id = m.id and m2.id = p.menu_id and p.grupo_usuario_id = ?) order by ordem, descricao", grupoID);
 
 	}
 

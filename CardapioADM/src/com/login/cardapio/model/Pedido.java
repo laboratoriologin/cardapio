@@ -1,5 +1,7 @@
 package com.login.cardapio.model;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,8 +36,8 @@ public class Pedido extends TSActiveRecordAb<Pedido> {
 	private Conta conta;
 
 	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
-	@OneToMany(mappedBy = "peiddo", cascade = CascadeType.ALL)
-	private PedidoSubItem listPedidoSubItem;
+	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
+	private List<PedidoSubItem> listPedidoSubItem;
 
 	public Long getId() {
 		return id;
@@ -61,11 +63,11 @@ public class Pedido extends TSActiveRecordAb<Pedido> {
 		this.conta = conta;
 	}
 
-	public PedidoSubItem getListPedidoSubItem() {
+	public List<PedidoSubItem> getListPedidoSubItem() {
 		return listPedidoSubItem;
 	}
 
-	public void setListPedidoSubItem(PedidoSubItem listPedidoSubItem) {
+	public void setListPedidoSubItem(List<PedidoSubItem> listPedidoSubItem) {
 		this.listPedidoSubItem = listPedidoSubItem;
 	}
 

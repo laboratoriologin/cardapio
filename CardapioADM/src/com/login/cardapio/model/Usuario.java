@@ -219,7 +219,22 @@ public class Usuario extends TSActiveRecordAb<Usuario> {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((celular == null) ? 0 : celular.hashCode());
+		result = prime * result + ((confirmaSenha == null) ? 0 : confirmaSenha.hashCode());
+		result = prime * result + ((contato == null) ? 0 : contato.hashCode());
+		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((endereco == null) ? 0 : endereco.hashCode());
+		result = prime * result + ((flagAtivo == null) ? 0 : flagAtivo.hashCode());
+		result = prime * result + ((grupoUsuario == null) ? 0 : grupoUsuario.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((listUsuarioSetor == null) ? 0 : listUsuarioSetor.hashCode());
+		result = prime * result + ((login == null) ? 0 : login.hashCode());
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + ((rg == null) ? 0 : rg.hashCode());
+		result = prime * result + ((senha == null) ? 0 : senha.hashCode());
+		result = prime * result + ((telefone == null) ? 0 : telefone.hashCode());
+		result = prime * result + ((telefoneContato == null) ? 0 : telefoneContato.hashCode());
 		return result;
 	}
 
@@ -232,12 +247,86 @@ public class Usuario extends TSActiveRecordAb<Usuario> {
 		if (getClass() != obj.getClass())
 			return false;
 		Usuario other = (Usuario) obj;
+		if (celular == null) {
+			if (other.celular != null)
+				return false;
+		} else if (!celular.equals(other.celular))
+			return false;
+		if (confirmaSenha == null) {
+			if (other.confirmaSenha != null)
+				return false;
+		} else if (!confirmaSenha.equals(other.confirmaSenha))
+			return false;
+		if (contato == null) {
+			if (other.contato != null)
+				return false;
+		} else if (!contato.equals(other.contato))
+			return false;
+		if (cpf == null) {
+			if (other.cpf != null)
+				return false;
+		} else if (!cpf.equals(other.cpf))
+			return false;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
+		if (endereco == null) {
+			if (other.endereco != null)
+				return false;
+		} else if (!endereco.equals(other.endereco))
+			return false;
+		if (flagAtivo == null) {
+			if (other.flagAtivo != null)
+				return false;
+		} else if (!flagAtivo.equals(other.flagAtivo))
+			return false;
+		if (grupoUsuario == null) {
+			if (other.grupoUsuario != null)
+				return false;
+		} else if (!grupoUsuario.equals(other.grupoUsuario))
+			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
+		if (listUsuarioSetor == null) {
+			if (other.listUsuarioSetor != null)
+				return false;
+		} else if (!listUsuarioSetor.equals(other.listUsuarioSetor))
+			return false;
+		if (login == null) {
+			if (other.login != null)
+				return false;
+		} else if (!login.equals(other.login))
+			return false;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		if (rg == null) {
+			if (other.rg != null)
+				return false;
+		} else if (!rg.equals(other.rg))
+			return false;
+		if (senha == null) {
+			if (other.senha != null)
+				return false;
+		} else if (!senha.equals(other.senha))
+			return false;
+		if (telefone == null) {
+			if (other.telefone != null)
+				return false;
+		} else if (!telefone.equals(other.telefone))
+			return false;
+		if (telefoneContato == null) {
+			if (other.telefoneContato != null)
+				return false;
+		} else if (!telefoneContato.equals(other.telefoneContato))
+			return false;
 		return true;
 	}
-
 }

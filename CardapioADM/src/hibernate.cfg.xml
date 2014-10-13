@@ -10,7 +10,7 @@
 		<property name="current_session_context_class">thread</property>
 
 		<property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
-		<property name="hibernate.connection.datasource">java:/comp/env/jdbc/bdCardapio</property>
+		<property name="hibernate.connection.datasource">java:/comp/env/jdbc/bdCardapioV2</property>
 		<property name="hibernate.query.substitutions">true 1, false 0</property>
 
 		<property name="hibernate.show_sql">true</property>

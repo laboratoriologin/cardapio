@@ -21,9 +21,6 @@
 				<f:selectItems value="#{mbean.comboTipoPublicidade}" />
 			</p:selectOneMenu>
 
-			<p:outputLabel for="preco" value="Preço" />
-			<p:inputText id="preco" required="false" maxlength="50" value="#{mbeanModel.preco}" styleClass="coluna20" />
-
 			<p:outputLabel for="descricao" value="Descrição" />
 			<p:inputText id="descricao" required="true" requiredMessage="Descrição Campo obrigatário" maxlength="50" value="#{mbeanModel.descricao}" styleClass="coluna90" />
 
@@ -62,8 +59,8 @@
 					</h:panelGroup>
 
 					<h:panelGroup rendered="#{mbean.tipoAgenda.semanalmente}">
-					
-						<p:selectManyCheckbox id="lineDirection" value="#{mbean.selectedOptionsDiaSemana}" >
+
+						<p:selectManyCheckbox id="lineDirection" value="#{mbean.selectedOptionsDiaSemana}">
 							<f:selectItem itemLabel="Domingo" itemValue="1" />
 							<f:selectItem itemLabel="Segunda" itemValue="2" />
 							<f:selectItem itemLabel="Terça" itemValue="3" />
@@ -72,21 +69,21 @@
 							<f:selectItem itemLabel="Sexta" itemValue="6" />
 							<f:selectItem itemLabel="Sábado" itemValue="7" />
 						</p:selectManyCheckbox>
-						
+
 					</h:panelGroup>
 
 					<h:panelGroup rendered="#{mbean.tipoAgenda.mensalmente}">
-					
+
 						<p:panelGrid columns="2">
-						
-							<p:outputLabel for="inicio" value="Inicio" style="margin-left: 50px;" />							
+
+							<p:outputLabel for="inicio" value="Inicio" style="margin-left: 50px;" />
 							<p:outputLabel for="fim" value="Fim" style="margin-left: 50px;" />
-							
-							<p:inputText id="inicio" maxlength="50"  styleClass="coluna90" onkeyup="return Mascara(this, Integer)" value="#{mbean.inicio}"/>
-							<p:inputText id="fim" maxlength="50"  styleClass="coluna90" onkeyup="return Mascara(this, Integer)" value="#{mbean.fim}"/>							
-						
-						</p:panelGrid>						
-										
+
+							<p:inputText id="inicio" maxlength="50" styleClass="coluna90" onkeyup="return Mascara(this, Integer)" value="#{mbean.inicio}" />
+							<p:inputText id="fim" maxlength="50" styleClass="coluna90" onkeyup="return Mascara(this, Integer)" value="#{mbean.fim}" />
+
+						</p:panelGrid>
+
 					</h:panelGroup>
 
 				</p:outputPanel>
