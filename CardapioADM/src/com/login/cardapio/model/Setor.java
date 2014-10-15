@@ -33,6 +33,10 @@ public class Setor extends TSActiveRecordAb<Setor> {
 	@OneToMany(mappedBy = "setor", cascade = CascadeType.ALL)
 	private List<UsuarioSetor> listUsuarioSetor;
 
+	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
+	@OneToMany(mappedBy = "setor", cascade = CascadeType.ALL)
+	private List<Mesa> listMesa;
+
 	public Long getId() {
 		return id;
 	}
@@ -55,6 +59,14 @@ public class Setor extends TSActiveRecordAb<Setor> {
 
 	public void setListUsuarioSetor(List<UsuarioSetor> listUsuarioSetor) {
 		this.listUsuarioSetor = listUsuarioSetor;
+	}
+
+	public List<Mesa> getListMesa() {
+		return listMesa;
+	}
+
+	public void setListMesa(List<Mesa> listMesa) {
+		this.listMesa = listMesa;
 	}
 
 	@Override
