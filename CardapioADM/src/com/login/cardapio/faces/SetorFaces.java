@@ -1,6 +1,7 @@
 package com.login.cardapio.faces;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -21,6 +22,23 @@ public class SetorFaces extends CrudFaces<Setor> {
 	protected void init() {
 		this.clearFields();
 		setFieldOrdem("descricao");
+	}
+
+	@Override
+	protected String detail() {
+		
+		super.detail();
+		
+		List<Mesa> mesas = getCrudModel().getListMesa();
+
+		if (!mesas.isEmpty()) {
+
+			this.mesaMenor = mesas.get(0).getNumero();
+			this.mesaMaior = mesas.get(getCrudModel().getListMesa().size() - 1).getNumero();
+
+		}
+
+		return null;
 	}
 
 	@Override

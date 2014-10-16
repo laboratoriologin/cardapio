@@ -18,7 +18,7 @@ public class EmpresaFaces extends CrudFaces<Empresa> {
 	@PostConstruct
 	protected void init() {
 		this.clearFields();
-		setFieldOrdem("descricao");
+		setFieldOrdem("nome");
 	}
 
 	@Override

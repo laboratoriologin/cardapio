@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.Cascade;
 
@@ -28,6 +29,9 @@ public class Setor extends TSActiveRecordAb<Setor> {
 	private Long id;
 
 	private String descricao;
+
+	@Transient
+	private Boolean selecionado;
 
 	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
 	@OneToMany(mappedBy = "setor", cascade = CascadeType.ALL)
@@ -67,6 +71,14 @@ public class Setor extends TSActiveRecordAb<Setor> {
 
 	public void setListMesa(List<Mesa> listMesa) {
 		this.listMesa = listMesa;
+	}
+
+	public Boolean getSelecionado() {
+		return selecionado;
+	}
+
+	public void setSelecionado(Boolean selecionado) {
+		this.selecionado = selecionado;
 	}
 
 	@Override
