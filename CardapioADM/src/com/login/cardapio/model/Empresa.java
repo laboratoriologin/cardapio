@@ -1,5 +1,7 @@
 package com.login.cardapio.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -143,6 +145,18 @@ public class Empresa extends TSActiveRecordAb<Empresa> {
 		this.keyCardapio = keyCardapio;
 	}
 
+	public Empresa getEmpresa() {
+
+		List<Empresa> listEmpresa = findBySQL("select top 1 * from empresas order by id");
+
+		if (listEmpresa.size() != 0) {
+			return listEmpresa.get(0);
+		} else {
+			return new Empresa();
+		}
+
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -166,6 +180,6 @@ public class Empresa extends TSActiveRecordAb<Empresa> {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}	
+	}
 
 }
