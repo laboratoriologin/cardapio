@@ -160,8 +160,16 @@ public class Item extends TSActiveRecordAb<Item> {
 			return false;
 		return true;
 	}
-	
-	
+
+	public List<Item> findByCategoria() {
+
+		String nomeFiltro = TSUtil.isEmpty(this.nome) ? null : "%" + this.nome.toLowerCase() + "%";
+
+		Long categoriaFiltro = TSUtil.isEmpty(this.categoria) ? null : TSUtil.tratarLong(this.categoria.getId());
+
+		return this.find("SELECT i FROM Item i, Categoria ECC where i.categoria.id = ECC.id and lower(i.nome) like coalesce(?,lower(i.nome)) and ECC.id = coalesce(?,ECC.id)", "i.nome", nomeFiltro, categoriaFiltro);
+
+	}
 
 	// @Override
 	// public List<Item> findByModel(String... fieldsOrderBy) {
