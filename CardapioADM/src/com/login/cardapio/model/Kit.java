@@ -33,6 +33,8 @@ public class Kit extends TSActiveRecordAb<Kit> {
 
 	private String descricao;
 
+	private String imagem;
+
 	private BigDecimal desconto;
 
 	private Long ordem;
@@ -100,6 +102,14 @@ public class Kit extends TSActiveRecordAb<Kit> {
 
 	public void setListKitSubItem(List<KitSubItem> listKitSubItem) {
 		this.listKitSubItem = listKitSubItem;
+	}
+
+	public String getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
 	}
 
 	@Override
