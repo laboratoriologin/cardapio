@@ -14,14 +14,13 @@ import javax.imageio.ImageIO;
 
 import org.apache.commons.io.FilenameUtils;
 import org.primefaces.event.FileUploadEvent;
+import org.primefaces.event.SelectEvent;
 
 import br.com.topsys.exception.TSSystemException;
 import br.com.topsys.util.TSUtil;
 
 import com.login.cardapio.model.Kit;
 import com.login.cardapio.model.KitSubItem;
-import com.login.cardapio.model.Menu;
-import com.login.cardapio.model.Permissao;
 import com.login.cardapio.model.SubItem;
 import com.login.cardapio.util.CardapioUtil;
 import com.login.cardapio.util.Constantes;
@@ -36,6 +35,7 @@ public class KitFaces extends CrudFaces<Kit> {
 
 	private static final long serialVersionUID = 1L;
 	private SubItem subItemSelecionado;
+	private KitSubItem kitSubItemSelecionado;
 
 	@PostConstruct
 	protected void init() {
@@ -52,13 +52,36 @@ public class KitFaces extends CrudFaces<Kit> {
 		return null;
 	}
 
-	public String addSubItem() {
+	public List<String> completeText(String query) {
+
+		return new SubItem().findByNomeItemSubItem(query);
+
+	}
+
+	public void addSubItem(SelectEvent event) {
 
 		KitSubItem kitSubItem = new KitSubItem();
 
-		kitSubItem.setSubItem(new SubItem());
+		kitSubItem.setSubItem(this.getSubItemSelecionado());
+		kitSubItem.setKit(getCrudModel());
 
-		return null;
+		if (TSUtil.isEmpty(getCrudModel().getListKitSubItem())) {
+			getCrudModel().setListKitSubItem(new ArrayList<KitSubItem>());
+		}
+
+		if (!this.getCrudModel().getListKitSubItem().contains(kitSubItem)) {
+
+			this.getCrudModel().getListKitSubItem().add(kitSubItem);
+
+		} else {
+
+			CardapioUtil.addErrorMessage("Esse subitem já foi adicionado");
+		}
+
+	}
+
+	public void delSubItem() {
+		getCrudModel().getListKitSubItem().remove(this.kitSubItemSelecionado);
 	}
 
 	public void uploadMidias(FileUploadEvent event) {
@@ -121,6 +144,22 @@ public class KitFaces extends CrudFaces<Kit> {
 
 	public void setComboArea(List<SelectItem> comboArea) {
 		this.comboArea = comboArea;
+	}
+
+	public SubItem getSubItemSelecionado() {
+		return subItemSelecionado;
+	}
+
+	public void setSubItemSelecionado(SubItem subItemSelecionado) {
+		this.subItemSelecionado = subItemSelecionado;
+	}
+
+	public KitSubItem getKitSubItemSelecionado() {
+		return kitSubItemSelecionado;
+	}
+
+	public void setKitSubItemSelecionado(KitSubItem kitSubItemSelecionado) {
+		this.kitSubItemSelecionado = kitSubItemSelecionado;
 	}
 
 }

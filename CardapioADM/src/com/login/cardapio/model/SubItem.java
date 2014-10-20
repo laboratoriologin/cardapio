@@ -1,6 +1,7 @@
 package com.login.cardapio.model;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -126,13 +127,28 @@ public class SubItem extends TSActiveRecordAb<SubItem> {
 	public void setListKit(List<KitSubItem> listKitSubItem) {
 		this.listKitSubItem = listKitSubItem;
 	}
-	
+
 	public List<SubItem> findByItem() {
 
 		Long itemFiltro = TSUtil.isEmpty(this.item) ? null : TSUtil.tratarLong(this.item.getId());
 
 		return this.find("SELECT s FROM SubItem s, Item i where s.item.id = i.id and i.id = coalesce(?,i.id)", "s.nome", itemFiltro);
 
+	}
+
+	public List<String> findByNomeItemSubItem(String query) {
+
+		List<String> listNomeItem = new ArrayList<String>();
+
+		String nome = TSUtil.isEmpty(query) ? null : "%" + query + "%";
+
+		List<SubItem> listSubItem = this.find("SELECT s FROM SubItem s, Item i where s.item.id = i.id and (i.nome + ' - ' + s.nome) like coalesce(?,(i.nome + ' - ' + s.nome)) ", "i.nome", nome);
+
+		for (SubItem subItem : listSubItem) {
+			listNomeItem.add(subItem.getItem().getNome() + " - " + subItem.getNome());
+		}
+
+		return listNomeItem;
 	}
 
 	@Override
@@ -207,4 +223,5 @@ public class SubItem extends TSActiveRecordAb<SubItem> {
 			return false;
 		return true;
 	}
+
 }
