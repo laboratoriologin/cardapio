@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pre-dex-items>
+
+    <item
+        dex="/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/pre-dexed/debug/classes-bb9be605fe85c8e4b8ea23493ab5067296d098da.jar"
+        jar="/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="8694693636ab36910c8100ce527c258ff3ebece0"/>
+    <item
+        dex="/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/pre-dexed/debug/socialauth-android-3.2-4998426d56bbad8565e653828495158552afcb7a.jar"
+        jar="/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/libs/socialauth-android-3.2.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="50cb8f7d8602c2de0b42f01ccba940985192aaa7"/>
+    <item
+        dex="/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/pre-dexed/debug/android-integration-c4b518d405986f2934ea16b6f9649038c54ca8e5.jar"
+        jar="/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/libs/android-integration.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="02824baabca4e2a00de975c9a95079eb5c67bfa5"/>
+    <item
+        dex="/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/pre-dexed/debug/classes-df38148532c8ad812d22d8bd21a952e5fb8ae026.jar"
+        jar="/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/galeriaImg/unspecified/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="2a9c7bab4ae8ed579ac8c9e5feab767b88d49f2b"/>
+    <item
+        dex="/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/pre-dexed/debug/socialauth-4.4-ed9c36b315fe58ab8b97ae208d5f56c1b2681f1c.jar"
+        jar="/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/libs/socialauth-4.4.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="a867292683d6086af72c7cac181892e118058989"/>
+    <item
+        dex="/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/pre-dexed/debug/support-annotations-20.0.0-bca9cd8c8082330ef7549e0398af852faae531fd.jar"
+        jar="/Applications/Android Studio.app/sdk/extras/android/m2repository/com/android/support/support-annotations/20.0.0/support-annotations-20.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa"/>
+    <item
+        dex="/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/pre-dexed/debug/droidpersistence-6c974e6984e0e552511515453985b72017f72237.jar"
+        jar="/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/libs/droidpersistence.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="c0ee13054d3c9672d4f76a2fc7a9842057bf85c9"/>
+    <item
+        dex="/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/pre-dexed/debug/internal_impl-20.0.0-4a6cb8886991ce8ffb6a7e459a5cfee565d9d4a1.jar"
+        jar="/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/libs/internal_impl-20.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d"/>
+
+</pre-dex-items>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/bt_menu_checkin" android:state_selected="true"/>
+    <item android:drawable="@drawable/bt_menu_checkin"/>
+
+</selector><!-- From: file:/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/drawable/tab_check_in.xml -->

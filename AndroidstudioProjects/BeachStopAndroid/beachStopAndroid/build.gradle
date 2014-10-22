@@ -1,0 +1,28 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion '20.0.0'
+
+    defaultConfig {
+        applicationId "com.login.beachstop.android"
+        minSdkVersion 8
+        targetSdkVersion 18
+    }
+
+    buildTypes {
+        release {
+            runProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+}
+
+dependencies {
+    compile project(':galeriaImg')
+    compile files('libs/android-integration.jar')
+    compile files('libs/droidpersistence.jar')
+    compile 'com.android.support:support-v4:20.0.0'
+    compile files('libs/socialauth-android-3.2.jar')
+    compile files('libs/socialauth-4.4.jar')
+}

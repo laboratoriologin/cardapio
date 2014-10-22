@@ -1,0 +1,16 @@
+<resources>
+
+    <string name="app_name">BeachStop</string>
+    <string name="escolher">Incluir</string>
+    <string name="finalizar_pedido">Pedir</string>
+    <string name="ingredientes">Ingredientes</string>
+    <string name="sobre_o_prato">Sobre o prato</string>
+    <string name="acompanhamentos">Acompanhamentos</string>
+    <string name="tempo_medio">Tempo médio \nde preparo</string>
+    <string name="enviar_pedido">Enviar o pedido</string>
+    <string name="enviar_conta">Solicitar a conta</string>
+    <string name="call_garcom">Chamar Garçom</string>
+    <string name="app_id">600470246741282</string>
+    <string name="no_network_connection_toast">Erro na internet!</string>
+
+</resources>
