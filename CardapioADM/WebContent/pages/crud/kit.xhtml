@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ui:composition template="/resources/templates/templateCRUD.xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:f="http://java.sun.com/jsf/core">
+<ui:composition template="/resources/templates/templateCRUD.xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
 
 	<ui:param name="mbean" value="${kitFaces}" />
 	<ui:param name="mbeanModel" value="${kitFaces.crudModel}" />
-	<ui:param name="mbeanPesquisaModel"
-		value="${kitFaces.crudPesquisaModel}" />
+	<ui:param name="mbeanPesquisaModel" value="${kitFaces.crudPesquisaModel}" />
 	<ui:param name="reload" value="true" />
 
 	<ui:define name="cadastro">
@@ -16,50 +11,81 @@
 		<h:panelGrid columns="1" style="width:50%">
 
 			<p:outputLabel for="nome" value="Nome" />
-			<p:inputText id="nome" required="true"
-				requiredMessage="Nome: Campo obrigatório" maxlength="50"
-				value="#{mbeanModel.nome}" styleClass="coluna50" />
+			<p:inputText id="nome" required="true" requiredMessage="Nome: Campo obrigatório" maxlength="50" value="#{mbeanModel.nome}" styleClass="coluna50" />
 
 			<p:outputLabel for="descricao" value="Descrição" />
-			<p:inputText id="descricao" required="true"
-				requiredMessage="Descrição: Campo obrigatório" maxlength="50"
-				value="#{mbeanModel.descricao}" styleClass="coluna50" />
+			<p:inputTextarea rows="5" maxlength="50" requiredMessage="Descrição: Campo obrigatório" required="true" id="descricao" value="#{mbeanModel.descricao}" styleClass="coluna50" />
 
 			<p:outputLabel for="ordem" value="Ordem de Exibição" />
-			<p:inputText id="ordem" required="true"
-				onkeyup="return Mascara(this,Integer)"
-				requiredMessage="Ordem: Campo obrigatório" maxlength="50"
-				value="#{mbeanModel.ordem}" styleClass="coluna20" />
+			<p:inputText id="ordem" required="true" onkeyup="return Mascara(this,Integer)" requiredMessage="Ordem: Campo obrigatório" maxlength="50" value="#{mbeanModel.ordem}" styleClass="coluna20" />
 
 			<p:outputLabel for="desconto" value="Desconto" />
-			<p:inputText id="desconto" required="true"
-				onkeyup="return mascaraMoeda(this)"
-				requiredMessage="Desconto: Campo obrigatório" maxlength="10"
-				value="#{mbeanModel.desconto}" styleClass="coluna20">
-				<f:convertNumber maxFractionDigits="2" locale="pt_BR"/>
+			<p:inputText id="desconto" required="true" onkeyup="return mascaraMoeda(this)" requiredMessage="Desconto: Campo obrigatório" maxlength="10" value="#{mbeanModel.desconto}" styleClass="coluna20">
+				<f:convertNumber maxFractionDigits="2" locale="pt_BR" />
 
 			</p:inputText>
 
 			<p:outputLabel for="flagAtivo" value="Ativo?" />
-			<p:selectBooleanCheckbox id="flagAtivo"
-				value="#{mbeanModel.flagAtivo}" />
-
+			<p:selectBooleanCheckbox id="flagAtivo" value="#{mbeanModel.flagAtivo}" />
 
 
 			<p:fieldset legend="Imagem" style="width:95%">
 
-				<p:fileUpload id="uploadArquivo" label="Adicionar Imagem"
-					fileUploadListener="#{mbean.uploadMidias}" auto="true"
-					multiple="false" allowTypes="/(\.|\/)(|jpe?g|png)$/"
-					process="@this" style="width: 95%" />
+				<p:fileUpload id="uploadArquivo" label="Adicionar Imagem" fileUploadListener="#{mbean.uploadMidias}" auto="true" multiple="false" allowTypes="/(\.|\/)(|jpe?g|png)$/" process="@this" style="width: 95%" />
 
-				<br />
-				<br />
-				<br />
-				<p:outputPanel autoUpdate="true">
-					<img src="/arquivos_cardapio/#{mbeanModel.imagem}"
-						style="max-height: 95px; max-width: 245px" alt="Categoria Imagem" />
+				<p:outputPanel autoUpdate="true" style="margin-top: 20px;">
+					<img src="/arquivos_cardapio/#{mbeanModel.imagem}" style="max-height: 95px; max-width: 245px" alt="Categoria Imagem" />
 				</p:outputPanel>
+			</p:fieldset>
+
+			<p:separator style="margin-top: 15px; margin-bottom: 15px" />
+
+			<p:fieldset legend="Sub-Itens" id="addSubItemPanel">
+
+				<h:panelGrid columns="2" styleClass="coluna50">
+
+					<p:outputLabel for="nomeSubItem" value="Subitem" />
+					<p:autoComplete id="nomeSubItem" minQueryLength="3" size="80" value="#{mbean.subItemSelecionado}" forceSelection="true" completeMethod="#{mbean.completeText}">
+						<p:ajax event="query" global="false"/>
+						<p:ajax event="itemSelect" global="false"  process="@this addSubItemPanel" listener="#{mbean.addSubItem}" update="nomeSubItem" />
+						<f:converter converterId="subItemConverter" />
+					</p:autoComplete>
+
+				</h:panelGrid>
+
+
+				<h:panelGrid columns="1" styleClass="coluna100">
+
+					<p:outputPanel id="panelItemUpdate" autoUpdate="true">
+
+						<p:dataTable id="gridItem" emptyMessage="Nenhum subitem adicionado" value="${mbean.crudModel.listKitSubItem}" var="listKitSubItem" style="margin-top: 15px; margin-bottom: 15px">
+
+							<p:column headerText="Código" styleClass="coluna35">
+								<h:outputLabel value="#{listKitSubItem.subItem.codigo}" />
+							</p:column>
+
+							<p:column headerText="Nome" styleClass="coluna45">
+								<h:outputLabel value="#{listKitSubItem.subItem.item.nome} - #{listKitSubItem.subItem.nome}" />
+							</p:column>
+
+							<p:column headerText="Valor" styleClass="coluna45">
+								<h:outputLabel value="#{listKitSubItem.subItem.valor}" />
+							</p:column>
+
+
+							<p:column headerText="Remover" style="text-align: center" styleClass="coluna10">
+								<p:commandLink action="#{mbean.delSubItem}" process="@this">
+									<h:graphicImage value="../resources/images/delete16.png" style="border: 0px" />
+									<f:setPropertyActionListener target="#{mbean.kitSubItemSelecionado}" value="#{listKitSubItem}" />
+								</p:commandLink>
+							</p:column>
+
+						</p:dataTable>
+
+					</p:outputPanel>
+
+				</h:panelGrid>
+
 			</p:fieldset>
 
 		</h:panelGrid>
@@ -71,8 +97,7 @@
 		<h:panelGrid columns="1" style="width:50%">
 
 			<p:outputLabel for="descricaoPesquisa" value="Descrição" />
-			<p:inputText id="descricaoPesquisa"
-				value="#{mbeanPesquisaModel.descricao}" styleClass="coluna90" />
+			<p:inputText id="descricaoPesquisa" value="#{mbeanPesquisaModel.descricao}" styleClass="coluna90" />
 
 		</h:panelGrid>
 

@@ -1,0 +1,149 @@
+<ui:composition template="/resources/templates/templateCRUD.xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
+
+	<ui:param name="mbean" value="${itemFaces}" />
+	<ui:param name="mbeanModel" value="${itemFaces.crudModel}" />
+	<ui:param name="mbeanPesquisaModel" value="${itemFaces.crudPesquisaModel}" />
+	<ui:param name="reload" value="true" />
+
+	<ui:define name="cadastro">
+
+		<h:panelGrid style="width:60%">
+
+			<p:outputLabel for="nome" value="Nome" />
+			<p:inputText id="nome" required="true" requiredMessage="Nome: Campo obrigatório" maxlength="50" value="#{mbeanModel.nome}" style="width:40%" />
+
+			<p:outputLabel for="flagAtivo" value="Ativo?" />
+			<p:selectBooleanCheckbox id="flagAtivo" value="#{mbeanModel.flagAtivo}" />
+
+			<p:outputLabel for="ordem" value="Ordem" />
+			<p:inputText id="ordem" required="true" requiredMessage="Ordem: Campo obrigatório" maxlength="2" value="#{mbeanModel.ordem}" style="width:40%" />
+
+			<p:outputLabel for="menu" value="Categoria" />
+			<p:selectOneMenu id="menu" value="#{mbeanModel.categoria.id}" required="true" requiredMessage="Categoria: Campo obrigatório" style="width:42.5%" styleClass="coluna90">
+				<f:selectItem itemLabel="Não Selecionado" itemValue="" />
+				<f:selectItems value="#{mbean.comboCategoria}" />
+			</p:selectOneMenu>
+
+			<p:outputLabel for="tempoPreparo" value="Tempo médio prepraro (Minutos)" />
+			<p:inputText id="tempoPreparo" required="false" maxlength="50" value="#{mbeanModel.tempoPreparo}" style="width:40%" />
+
+			<br />
+
+			<p:accordionPanel activeIndex="-1" styleClass="coluna100" cache="false" multiple="true" dynamic="false">
+				<p:tab title="Descrição">
+					<p:inputTextarea rows="5" id="descricao" value="#{mbeanModel.descricao}" style="width:90%" />
+				</p:tab>
+				<p:tab title="Ingredientes">
+					<p:inputTextarea rows="5" id="ingredientes" value="#{mbeanModel.ingrediente}" style="width:90%" />
+				</p:tab>
+			</p:accordionPanel>
+
+			<p:separator style="margin-top: 15px; margin-bottom: 15px" />
+
+			<p:fieldset legend="Vincular Imagem" style="width:95%">
+				<p:fileUpload id="uploadArquivo" label="Adicionar Imagem" fileUploadListener="#{mbean.uploadMidias}" auto="true" multiple="false" allowTypes="/(\.|\/)(|jpg|png)$/" process="@this" style="width: 95%" />
+				<br />
+				<p:outputPanel autoUpdate="true">
+					<img src="/arquivos_cardapio/#{mbeanModel.imagem}" style="max-height: 95px; max-width: 245px" alt="Imagem" />
+				</p:outputPanel>
+			</p:fieldset>
+
+			<p:separator style="margin-top: 15px; margin-bottom: 15px" />
+
+			<p:fieldset legend="Sub-Itens" id="addSubItemPanel">
+
+				<div align="right">
+					<p:commandButton id="btnNovaEspec" value="Novo Item" icon="novo" action="#{mbean.limparSubItem}" process="@this" update="addSubItemPanel" style="height:28px; width: 120px;" />
+				</div>
+
+				<h:panelGrid columns="2" styleClass="coluna50">
+
+					<p:outputLabel for="nomeSubItem" value="Nome" />
+					<p:outputLabel for="valorSubItem" value="Valor" />
+
+					<p:inputText id="nomeSubItem" maxlength="50" value="${mbean.subItemSelecionado.nome}" styleClass="coluna90" target="#{mbean.subItemSelecionado}" />
+					<p:inputText id="valorSubItem" maxlength="50" value="${mbean.subItemSelecionado.valor}" styleClass="coluna90" target="#{mbean.subItemSelecionado}" onkeyup="return mascaraMoeda(this)">
+						<f:convertNumber type="number" pattern="#,###,##0.##" locale="pt_BR" minFractionDigits="2" />
+					</p:inputText>
+
+					<p:outputLabel for="descricaoSubItem" value="Descrição" />
+					<p:outputLabel for="codigoSubItem" value="Código" />
+
+					<p:inputText id="descricaoSubItem" maxlength="50" value="${mbean.subItemSelecionado.descricao}" styleClass="coluna90" target="#{mbean.subItemSelecionado}" />
+					<p:inputText id="codigoSubItem" maxlength="50" value="${mbean.subItemSelecionado.codigo}" styleClass="coluna90" target="#{mbean.subItemSelecionado}" />
+
+
+					<p:outputLabel for="ordemSubItem" value="Ordem" />
+					<p:outputLabel for="flagAtivoSubItem" value="Ativo?" />
+
+					<p:inputText id="ordemSubItem" maxlength="2" value="${mbean.subItemSelecionado.ordem}" styleClass="coluna90" target="#{mbean.subItemSelecionado}" />
+					<p:selectBooleanCheckbox id="flagAtivoSubItem" value="${mbean.subItemSelecionado.flagAtivo}" />
+				</h:panelGrid>
+
+
+				<h:panelGrid columns="1" styleClass="coluna100">
+
+					<p:commandButton value="Adicionar item" icon="ui-icon-plus" process="@this addSubItemPanel" action="#{mbean.addSubItem}" style="margin-top: 15px; margin-bottom: 15px" update="nomeSubItem valorSubItem descricaoSubItem codigoSubItem ordemSubItem flagAtivoSubItem" />
+
+					<p:outputPanel id="panelItemUpdate" autoUpdate="true">
+
+						<p:dataTable id="gridItem" emptyMessage="Nenhum subitem adicionado" value="${mbean.crudModel.subItens}" var="subItem">
+
+							<p:column headerText="Código" styleClass="coluna35">
+								<h:outputLabel value="#{subItem.codigo}" />
+							</p:column>
+
+							<p:column headerText="Nome" styleClass="coluna45">
+								<h:outputLabel value="#{subItem.nome}" />
+							</p:column>
+
+							<p:column headerText="Valor" styleClass="coluna45">
+								<h:outputLabel value="#{subItem.valor}" />
+							</p:column>
+
+
+							<p:column headerText="Remover" style="text-align: center" styleClass="coluna10">
+								<p:commandLink action="#{mbean.delSubItem}" process="@this">
+									<h:graphicImage value="../resources/images/delete16.png" style="border: 0px" />
+									<f:setPropertyActionListener target="#{mbean.subItemSelecionado}" value="#{subItem}" />
+								</p:commandLink>
+							</p:column>
+
+						</p:dataTable>
+
+					</p:outputPanel>
+
+				</h:panelGrid>
+
+			</p:fieldset>
+
+		</h:panelGrid>
+
+	</ui:define>
+
+
+
+	<ui:define name="pesquisaCampos">
+
+		<h:panelGrid columns="1" style="width:50%">
+
+			<p:outputLabel for="descricaoPesquisa" value="Nome" />
+			<p:inputText id="descricaoPesquisa" value="#{mbeanPesquisaModel.nome}" styleClass="coluna90" />
+			<p:outputLabel for="categoriaPesquisa" value="Categoria" />
+			<p:selectOneMenu id="categoriaPesquisa" value="#{mbeanPesquisaModel.categoria.id}" style="width:40%" styleClass="coluna90">
+				<f:selectItem itemLabel="Não Selecionado" itemValue="" />
+				<f:selectItems value="#{mbean.comboCategoria}" />
+			</p:selectOneMenu>
+		</h:panelGrid>
+
+	</ui:define>
+
+	<ui:define name="colunasTabela">
+
+		<p:column headerText="Descrição">
+			<h:outputText value="#{linha.nome}" />
+		</p:column>
+
+	</ui:define>
+
+</ui:composition>

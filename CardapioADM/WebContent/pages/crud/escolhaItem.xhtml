@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
+	<h:form>
+
+		<h:panelGrid style="padding: 15px;">
+
+			<p:outputLabel for="menu" value="Categoria" />
+			<p:selectOneMenu id="menu" value="#{escolhaItemFaces.categoriaSelecionada.id}" style="width:42.5%" styleClass="coluna90">
+				<f:selectItem itemLabel="Não Selecionado" itemValue="" />
+				<f:selectItems value="#{escolhaItemFaces.comboCategoria}" />
+				<p:ajax event="change" update="panel" listener="#{escolhaItemFaces.findItem}" />
+			</p:selectOneMenu>
+
+			<p:panel id="panel" header="Selecione os itens que deseja no seu aplicativo. Ordene as linhas de acordo com a exibição do aplicativo" style="width:85%; margin-top: 35px; margin-bottom: 15px;">
+
+				<p:dataTable value="#{escolhaItemFaces.listItem}" var="item" style="width:90%">
+
+					<p:column style="width:10%" headerText="Ativo?">
+						<p:selectBooleanCheckbox value="#{item.flagAtivo}" />
+					</p:column>
+					<p:column style="width:60%" headerText="Item">
+						#{item.nome}
+					</p:column>
+
+					<p:column style="width:15%" headerText="Ordem de exibição">
+						<p:spinner value="#{item.ordem}" size="2" min="0" stepFactor="1" onkeyup="return Mascara(this,Integer)" />
+					</p:column>
+
+				</p:dataTable>
+
+			</p:panel>
+
+			<p:commandButton id="btnAlterar" value="Alterar" icon="salvar" action="#{escolhaItemFaces.updateEvent}" update="@form" style="height:28px; width: 110px;margin-left: 2px;" />
+
+		</h:panelGrid>
+
+	</h:form>
+
+
+</ui:composition>

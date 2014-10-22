@@ -1,5 +1,10 @@
 # cache for current jar dependency. DO NOT EDIT.
 # format is <lastModified> <length> <SHA-1> <path>
 # Encoding is UTF-8
+<<<<<<< HEAD
 1412615855000 621451 5896b0a4e377ac4242eb2bc785220c1c4fc052f4 /Users/login/Documents/dev/repositorio_git/cardapio/BeachStopAndroid/libs/android-support-v4.jar
 1408450584000 621451 5896b0a4e377ac4242eb2bc785220c1c4fc052f4 /Users/login/Documents/dev/Projetos/SmartImob/library/libs/android-support-v4.jar
+=======
+1412855059404 621451 5896b0a4e377ac4242eb2bc785220c1c4fc052f4 C:\Login\PROJETO\CardapioGIT\BeachStopAndroid\libs\android-support-v4.jar
+1394196324737 621451 5896b0a4e377ac4242eb2bc785220c1c4fc052f4 C:\Login\PROJETO\SmartImob\Trunk\Fontes\JakeWharton-Android-ViewPagerIndicator-8cd549f\library\libs\android-support-v4.jar
+>>>>>>> f842fe6abe27d0bea93dc0e4ac1b27c061066ee7
