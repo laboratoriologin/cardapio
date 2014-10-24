@@ -31,6 +31,16 @@ public class CategoriaDAO  implements RestDAO<Categoria> {
 		return broker.getCollectionBean(Categoria.class, "area.id", "descricao", "flagAtivo", "id", "imagem", "ordem");
 
 	}
+	
+	public List<Categoria> getAtivos() {
+
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+
+		broker.setPropertySQL("categoriadao.findativo");
+
+		return broker.getCollectionBean(Categoria.class, "area.id", "descricao", "flagAtivo", "id", "imagem", "ordem");
+
+	}
 
 	@Override
 	public Categoria insert(Categoria model) throws TSApplicationException {
