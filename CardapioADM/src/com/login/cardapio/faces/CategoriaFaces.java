@@ -35,8 +35,7 @@ public class CategoriaFaces extends CrudFaces<Categoria> {
 	@PostConstruct
 	protected void init() {
 		this.clearFields();
-		setFieldOrdem("descricao");
-		this.getCrudModel().setArea(new Area());
+		setFieldOrdem("descricao");		
 		this.comboArea = super.initCombo(new Area().findByModel("descricao"), "id", "descricao");
 	}
 

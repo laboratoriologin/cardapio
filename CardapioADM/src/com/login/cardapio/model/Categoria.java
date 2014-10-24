@@ -37,6 +37,10 @@ public class Categoria extends TSActiveRecordAb<Categoria> {
 
 	private String imagem;
 
+	public Categoria() {
+		setArea(new Area());
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -108,6 +112,6 @@ public class Categoria extends TSActiveRecordAb<Categoria> {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}	
+	}
 
 }
