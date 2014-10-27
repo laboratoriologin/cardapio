@@ -28,8 +28,8 @@ public class PublicidadeDAO  implements RestDAO<Publicidade> {
 
 		broker.setPropertySQL("publicidadedao.findall");
 
-		return broker.getCollectionBean(Publicidade.class, "descricao", "id", "imagem", "link", "nome", "tipoPublicidade.id", "vigenciaFinal", "vigenciaInicial");
-
+		return broker.getCollectionBean(Publicidade.class, "id", "tipoAgenda", "nome", "descricao", "imagem", "link","valor");
+		
 	}
 
 	@Override

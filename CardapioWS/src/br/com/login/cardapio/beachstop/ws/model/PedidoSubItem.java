@@ -1,7 +1,11 @@
 package br.com.login.cardapio.beachstop.ws.model;
 
+import java.util.List;
+
 import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import org.jboss.resteasy.annotations.Form;
 
 @SuppressWarnings("serial")
 @XmlRootElement(name ="pedidosubitem")
@@ -49,6 +53,28 @@ public final class PedidoSubItem extends RestModel {
 
 	public void setValorUnitario(Double valorUnitario) {
 		this.valorUnitario=valorUnitario;
+	}
+	
+	@Form(prefix = "logs")
+	private List<Log> logs;
+
+	public List<Log> getLogs() {
+		return logs;
+	}
+
+	public void setLogs(List<Log> logs) {
+		this.logs = logs;
+	}
+	
+	@FormParam("status")
+	private Status status;
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 
 	public PedidoSubItem(){}
