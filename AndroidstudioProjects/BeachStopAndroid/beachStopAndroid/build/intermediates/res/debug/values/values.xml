@@ -216,16 +216,23 @@
     <!-- From: file:/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/values/strings.xml -->
     <eat-comment />
 
+    <string name="Salvar">Salvar</string>
     <string name="acompanhamentos">Acompanhamentos</string>
+    <string name="aniversario">Aniversário</string>
     <string name="app_id">600470246741282</string>
     <string name="app_name">BeachStop</string>
     <string name="call_garcom">Chamar Garçom</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="celular">Celular</string>
+    <string name="email">Email</string>
     <string name="enviar_conta">Solicitar a conta</string>
     <string name="enviar_pedido">Enviar o pedido</string>
     <string name="escolher">Incluir</string>
     <string name="finalizar_pedido">Pedir</string>
     <string name="ingredientes">Ingredientes</string>
     <string name="no_network_connection_toast">Erro na internet!</string>
+    <string name="nome">Nome</string>
+    <string name="saudacao_cadastro_cliente">Olá! Bem vindo ao BeachStop ipitanga, para sua comodida, gostariamos de sabger quem você é!</string>
     <string name="sobre_o_prato">Sobre o prato</string>
     <string name="tempo_medio">Tempo médio \nde preparo</string>
     <!-- From: file:/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/values/styles.xml -->

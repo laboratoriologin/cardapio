@@ -2,15 +2,15 @@ package com.login.beachstop.android.network.http;
 
 import android.os.AsyncTask;
 
-import com.login.beachstop.android.model.ServerRequest;
-import com.login.beachstop.android.model.ServerResponse;
+import com.login.beachstop.android.models.ServerRequest;
+import com.login.beachstop.android.models.ServerResponse;
 
 /**
  * Created by Argus on 23/10/2014.
  */
 public class HttpTask extends AsyncTask<ServerRequest, Void, ServerResponse> {
 
-    protected Observable observable;
+    protected ResponseListener listener;
 
     @Override
     protected ServerResponse doInBackground(ServerRequest... params) {

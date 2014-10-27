@@ -1,6 +1,6 @@
 package com.login.beachstop.android.managers.sqlite;
 
-import com.login.beachstop.android.model.Cliente;
+import com.login.beachstop.android.models.Cliente;
 
 import org.droidpersistence.dao.TableDefinition;
 

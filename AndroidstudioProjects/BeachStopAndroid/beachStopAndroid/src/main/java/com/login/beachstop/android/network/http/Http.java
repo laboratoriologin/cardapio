@@ -1,6 +1,6 @@
 package com.login.beachstop.android.network.http;
 
-import com.login.beachstop.android.model.ServerResponse;
+import com.login.beachstop.android.models.ServerResponse;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;

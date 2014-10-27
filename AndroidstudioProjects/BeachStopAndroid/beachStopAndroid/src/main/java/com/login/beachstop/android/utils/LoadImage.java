@@ -5,6 +5,8 @@ import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.widget.ImageView;
 
+import com.login.beachstop.android.utils.DrawableManager;
+
 public class LoadImage extends AsyncTask<String, Void, Drawable> {
 	
 	private ImageView image;

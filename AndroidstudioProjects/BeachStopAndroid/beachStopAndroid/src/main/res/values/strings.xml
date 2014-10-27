@@ -12,5 +12,12 @@
     <string name="call_garcom">Chamar Garçom</string>
     <string name="app_id">600470246741282</string>
     <string name="no_network_connection_toast">Erro na internet!</string>
+    <string name="saudacao_cadastro_cliente">Olá! Bem vindo ao BeachStop ipitanga, para sua comodida, gostariamos de sabger quem você é!</string>
+    <string name="nome">Nome</string>
+    <string name="email">Email</string>
+    <string name="celular">Celular</string>
+    <string name="aniversario">Aniversário</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="Salvar">Salvar</string>
 
 </resources>

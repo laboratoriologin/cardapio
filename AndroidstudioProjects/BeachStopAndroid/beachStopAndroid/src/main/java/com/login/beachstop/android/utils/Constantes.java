@@ -6,6 +6,7 @@ public final class Constantes {
 	}
 	public static final String IMAGE_CACHE = "thumbs";
 	public static final String KEY_SERVLET = "5Mu1tL0g1N";
+    public static final String SHARED_PREFS = "prefs";
 	
 	// public static final String URL = "http://177.1.212.50:9004/CardapioADM/servlet";
 	// public static final String URL_IMG = "http://177.1.212.50:9004/arquivos_cardapio/";
@@ -40,6 +41,7 @@ public final class Constantes {
 	public static final String MSG_ERRO_GRAVE_SISTEMA = "Ops! Falha grave no sistema!";
 	public static final String MSG_ERRO_VALIDACAO_SISTEMA = "Ops! Ocorreu um erro no sistema, tente novamente!";
 	public static final String MSG_ERRO_READ_QR_CODE = "Erro de leitura, tente novamente!";
+    public static final String MSG_ERRO_PARSE = "Erro no parse do objeto!";
 
 	public static final String MSG_SAUDACAO_UM = "Preparando pratos para você!";
 	public static final String MSG_SAUDACAO_DOIS = "Buscando atualizações!";
@@ -47,5 +49,6 @@ public final class Constantes {
 	public static final String INPUTSTREAM = "INPUTSTREAM";
 	public static final String FILETYPE = "FILETYPE";
 	public static final String FILENAME = "FILENAME";
+
 
 }

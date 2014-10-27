@@ -2,6 +2,7 @@ package com.login.beachstop.android;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import android.widget.TabHost;
 
 import com.login.beachstop.android.managers.sqlite.dao.DataManager;
+import com.login.beachstop.android.utils.Constantes;
 
 public class CardapioApp extends Application implements LocationListener {
 
@@ -17,6 +19,7 @@ public class CardapioApp extends Application implements LocationListener {
     private LocationManager locationManager;
     private TabHost mTabHost;
     private DataManager dataManager;
+    private String keyCardapio;
 
     @Override
     public void onCreate() {
@@ -89,5 +92,25 @@ public class CardapioApp extends Application implements LocationListener {
 
     public void setDataManager(DataManager dataManager) {
         this.dataManager = dataManager;
+    }
+
+    public String getKeyCardapio() {
+
+        if (this.keyCardapio == null) {
+
+            this.keyCardapio = getSharedPreferences(Constantes.SHARED_PREFS, 0).getString(Constantes.KEY_CARDAPIO, null);
+
+        }
+
+        return this.keyCardapio;
+
+    }
+
+    public void setKeyCardapio(String keyCardapio) {
+
+        this.keyCardapio = keyCardapio;
+
+        SharedPreferences.Editor editor = getSharedPreferences(Constantes.SHARED_PREFS, 0).edit();
+        editor.putString(Constantes.KEY_CARDAPIO, this.keyCardapio);
     }
 }
