@@ -33,4 +33,12 @@ public class DefaultActivity extends FragmentActivity {
     public DataManager getDataManager() {
         return ((CardapioApp) getApplication()).getDataManager();
     }
+
+    public String getKeyCardapio() {
+        return ((CardapioApp) getApplication()).getKeyCardapio();
+    }
+
+    public void setKeyCardapio(String keyCardapio) {
+        ((CardapioApp) getApplication()).setKeyCardapio(keyCardapio);
+    }
 }

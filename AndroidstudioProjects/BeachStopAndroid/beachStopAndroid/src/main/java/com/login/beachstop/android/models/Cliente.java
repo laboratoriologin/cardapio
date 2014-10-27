@@ -1,9 +1,7 @@
-package com.login.beachstop.android.model;
+package com.login.beachstop.android.models;
 
 import org.droidpersistence.annotation.Column;
 import org.droidpersistence.annotation.Table;
-
-import java.io.Serializable;
 
 /**
  * Created by Argus on 22/10/2014.

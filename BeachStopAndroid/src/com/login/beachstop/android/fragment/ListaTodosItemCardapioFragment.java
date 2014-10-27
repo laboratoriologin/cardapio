@@ -22,12 +22,12 @@ import com.login.beachstop.android.HomeActivity;
 import com.login.beachstop.android.adapter.ExpandableListViewTodosItensCardapioAdapter;
 import com.login.beachstop.android.business.BusinessResult;
 import com.login.beachstop.android.business.ItemCardapioBS;
-import com.login.beachstop.android.exception.PersistException;
 import com.login.beachstop.android.model.CatagoriaCardapio;
 import com.login.beachstop.android.model.CategoriaCardapioItem;
 import com.login.beachstop.android.model.CategoriaCardapioItemSys;
 import com.login.beachstop.android.model.ItemCardapio;
 import com.login.beachstop.android.model.ServerResponse;
+import com.login.beachstop.android.sqlite.exception.PersistException;
 import com.login.beachstop.android.util.Constantes;
 import com.login.beachstop.android.view.ActionBar;
 

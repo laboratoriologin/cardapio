@@ -9,7 +9,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.login.beachstop.android.exception.PersistException;
 import com.login.beachstop.android.model.Conta;
 import com.login.beachstop.android.model.ItemCardapio;
 import com.login.beachstop.android.model.ItemCardapioSubItem;
@@ -23,6 +22,7 @@ import com.login.beachstop.android.sqlite.ItemCardapioTableDefinition;
 import com.login.beachstop.android.sqlite.OpenHelper;
 import com.login.beachstop.android.sqlite.PedidoItemTableDefinition;
 import com.login.beachstop.android.sqlite.PedidoTableDefinition;
+import com.login.beachstop.android.sqlite.exception.PersistException;
 
 public class DataManager {
 

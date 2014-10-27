@@ -1,4 +1,4 @@
-package com.login.beachstop.android.model;
+package com.login.beachstop.android.models;
 
 import org.droidpersistence.annotation.Column;
 

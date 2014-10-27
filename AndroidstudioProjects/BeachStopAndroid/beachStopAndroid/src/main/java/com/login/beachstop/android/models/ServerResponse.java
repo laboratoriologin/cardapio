@@ -1,4 +1,4 @@
-package com.login.beachstop.android.model;
+package com.login.beachstop.android.models;
 
 import android.util.SparseArray;
 
@@ -11,6 +11,7 @@ public class ServerResponse {
     public static final int SC_PRECONDITION_FAILED = 412;
     public static final int SC_INTERNAL_SERVER_ERROR = 500;
     public static final int SC_NOT_NET = 0;
+    public static final int SC_ERRO_PARSE = -1;
 
     private SparseArray<String> hasMapErro;
 
@@ -35,6 +36,7 @@ public class ServerResponse {
         this.hasMapErro.put(SC_INTERNAL_SERVER_ERROR, Constantes.MSG_ERRO_GRAVE_SISTEMA);
         this.hasMapErro.put(SC_NOT_NET, Constantes.MSG_ERRO_NET);
         this.hasMapErro.put(SC_PRECONDITION_FAILED, this.msgPreConditionFail);
+        this.hasMapErro.put(SC_ERRO_PARSE, Constantes.MSG_ERRO_PARSE);
     }
 
     public int getStatusCode() {

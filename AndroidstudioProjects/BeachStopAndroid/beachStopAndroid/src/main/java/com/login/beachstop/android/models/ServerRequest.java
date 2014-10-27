@@ -1,4 +1,4 @@
-package com.login.beachstop.android.model;
+package com.login.beachstop.android.models;
 
 import org.apache.http.NameValuePair;
 

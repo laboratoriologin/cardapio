@@ -24,6 +24,8 @@ public class OpenHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         try {
             new ClienteTableDefinition().onCreate(db);
+            new CategoriaTableDefinition().onCreate(db);
+            new KitTableDefinition().onCreate(db);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -34,6 +36,8 @@ public class OpenHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         try {
             new ClienteTableDefinition().onUpgrade(db, oldVersion, newVersion);
+            new CategoriaTableDefinition().onUpgrade(db, oldVersion, newVersion);
+            new KitTableDefinition().onUpgrade(db, oldVersion, newVersion);
         } catch (Exception e) {
             e.printStackTrace();
         }

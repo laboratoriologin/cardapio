@@ -1,9 +1,10 @@
 package com.login.beachstop.android.network;
 
-import com.login.beachstop.android.model.Base;
-import com.login.beachstop.android.model.ServerRequest;
-import com.login.beachstop.android.model.ServerResponse;
+import com.login.beachstop.android.models.Base;
+import com.login.beachstop.android.models.ServerRequest;
+import com.login.beachstop.android.models.ServerResponse;
 import com.login.beachstop.android.network.http.HttpTask;
+import com.login.beachstop.android.network.http.ResponseListener;
 import com.login.beachstop.android.utils.Constantes;
 
 import org.apache.http.NameValuePair;
@@ -15,6 +16,10 @@ import java.util.List;
  * Created by Argus on 24/10/2014.
  */
 public abstract class ObjectRequest<T extends Base> extends HttpTask {
+
+    public ObjectRequest(ResponseListener listener) {
+        this.listener = listener;
+    }
 
     public void post(T obj) {
 
@@ -65,7 +70,7 @@ public abstract class ObjectRequest<T extends Base> extends HttpTask {
     protected void onPostExecute(ServerResponse result) {
         try {
             handleResponse(result);
-            observable.observe(result);
+            listener.onResult(result);
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
