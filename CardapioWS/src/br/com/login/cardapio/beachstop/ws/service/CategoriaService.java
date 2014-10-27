@@ -19,16 +19,14 @@ public class CategoriaService extends RestService<Categoria> {
 	}
 
 	@GET
-	@Path("/ativo/{fields : (/.*?)?}")
+	@Path("/ativo")
 	@Produces("application/json; charset=UTF-8")
-	public List<Categoria> getAll(@PathParam(value = "fields") String fields) {
+	public List<Categoria> getAll() {
 
 		List<Categoria> listCardapio;
 
 		listCardapio = new CategoriaDAO().getAtivos();
-		
-		this.configureReturnObjects(listCardapio, fields);
-		
+				
 		return listCardapio;
 
 	}
