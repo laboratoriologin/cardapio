@@ -17,7 +17,191 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: com.login.beachstop.android" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4ef57485-465d-4331-91d4-7302393ad71d" name="Default" comment="" />
+    <list default="true" id="4ef57485-465d-4331-91d4-7302393ad71d" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/res/drawable/Thumbs.db" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/Argus.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/model/Base.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/managers/sqlite/dao/CategoriaDAO.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/managers/sqlite/CategoriaTableDefinition.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/model/Cliente.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/managers/sqlite/dao/ClienteDAO.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/network/ClienteRequest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/managers/sqlite/ClienteTableDefinition.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/managers/sqlite/dao/DataManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/network/http/Http.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/network/http/HttpTask.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/network/ObjectRequest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/network/http/Observable.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/managers/sqlite/OpenHelper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/model/ServerRequest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/utils/Utilitarios.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/build/intermediates/dex/debug/classes.dex" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/build/intermediates/pre-dexed/debug/android-integration-c4b518d405986f2934ea16b6f9649038c54ca8e5.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/build/intermediates/pre-dexed/debug/classes-bb9be605fe85c8e4b8ea23493ab5067296d098da.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/build/intermediates/pre-dexed/debug/classes-df38148532c8ad812d22d8bd21a952e5fb8ae026.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/build/intermediates/pre-dexed/debug/droidpersistence-6c974e6984e0e552511515453985b72017f72237.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/build/intermediates/pre-dexed/debug/internal_impl-20.0.0-4a6cb8886991ce8ffb6a7e459a5cfee565d9d4a1.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/build/intermediates/pre-dexed/debug/socialauth-4.4-ed9c36b315fe58ab8b97ae208d5f56c1b2681f1c.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/build/intermediates/pre-dexed/debug/socialauth-android-3.2-4998426d56bbad8565e653828495158552afcb7a.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/build/intermediates/pre-dexed/debug/support-annotations-20.0.0-bca9cd8c8082330ef7549e0398af852faae531fd.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/build/outputs/apk/beachStopAndroid-debug-unaligned.apk" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/build/outputs/apk/beachStopAndroid-debug.apk" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/CallGarcomActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/CheckInActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/HomeActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/MainActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/PedidoActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/SobreRestauranteActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/adapter/ContaItemAdapter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/adapter/ExpandableListViewTodosItensCardapioAdapter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/adapter/GridItensItemCardapioAdapter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/adapter/GridItensItemCategoriaCardapioAdapter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/adapter/GridItensItemMenuAdapter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/adapter/ListItensItemCategoriaCardapioAdapter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/adapter/PedidoItemAdapter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/adapter/PublicidadeFragmentAdapter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/adapter/ViewPagerAdapter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/business/AlertaBS.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/business/BusinessResult.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/business/CardapioBS.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/business/ContaBS.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/business/EmpresaBS.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/business/ItemCardapioBS.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/business/Observable.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/business/PedidoBS.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/business/PublicidadeBS.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/exception/PersistException.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/fragment/CardapioFragment.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/fragment/DetalheItemCardapioFragment.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/fragment/ITabFragmentPedido.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/fragment/ListaItemCardapioFragment.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/fragment/ListaTodosItemCardapioFragment.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/fragment/PublicidadeActivityFragmentAdapter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/fragment/TabFragmentConta.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/fragment/TabFragmentGridItemCardapio.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/fragment/TabFragmentListItemCardapio.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/fragment/TabFragmentPedido.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/model/CatagoriaCardapio.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/model/CategoriaCardapioItem.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/model/CategoriaCardapioItemSys.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/model/Conta.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/model/Empresa.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/model/ItemCardapio.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/model/ItemCardapioSubItem.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/model/Pedido.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/model/PedidoItem.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/model/Publicidade.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/sqlite/CategoriaCardapioItemTableDefinition.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/sqlite/ChaveCardapioEmpresaTableDefinition.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/sqlite/ContaTableDefinition.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/sqlite/ItemCardapioSubItemTableDefinition.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/sqlite/ItemCardapioTableDefinition.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/sqlite/OpenHelper.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/sqlite/PedidoItemTableDefinition.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/sqlite/PedidoTableDefinition.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/sqlite/dao/CategoriaCardapioItemDAO.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/sqlite/dao/ChaveCardapioEmpresaDAO.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/sqlite/dao/ContaDAO.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/sqlite/dao/DataManager.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/sqlite/dao/ItemCardapioDAO.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/sqlite/dao/ItemCardapioSubItemDAO.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/sqlite/dao/PedidoDAO.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/sqlite/dao/PedidoItemDAO.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/util/HttpUtil.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/util/JSONAlertaUtil.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/util/JSONCardapioUtil.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/util/JSONCheckContaAbertaUtil.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/util/JSONContaAllUtil.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/util/JSONContaUtil.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/util/JSONEmpresaUtil.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/util/JSONItemCardapioUtil.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/util/JSONPedidoUtil.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/util/JSONPublicidadeUtil.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/util/Utilitarios.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/view/ActionBar.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/actionbar.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/actionbar_item.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/activity_call_garcom.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/activity_checkin.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/activity_fragment_publicidade.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/activity_home.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/activity_main.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/activity_pedido.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/activity_sobre_restaurante.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/dialog_obs_enviar_pedido.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/fragment_cardapio.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/fragment_detalhe_item_cardapio.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/fragment_detalhe_item_cardapio_linha_sub_item.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/fragment_expandable_list_view_todos_item_cardapio_child.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/fragment_expandable_list_view_todos_item_cardapio_parent.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/fragment_grid_view_item_cardapio.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/fragment_grid_view_item_categoria_cardapio.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/fragment_list_view_item_categoria_cardapio.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/fragment_lista_item_cardapio.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/fragment_lista_todos_item_cardapio.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/grid_view_item_menu.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/tab_fragment_conta.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/tab_fragment_conta_item_adapter.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/tab_fragment_grid_item_cardapio.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/tab_fragment_list_item_cardapio.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/tab_fragment_pedido.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/tab_fragment_pedido_item_adapter.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/tab_indicator.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/tabs_bg.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/tabs_bg_pedido.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/galeriaImg/build/generated/source/buildConfig/debug/com/viewpagerindicator/BuildConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/galeriaImg/build/generated/source/r/debug/com/viewpagerindicator/R.java" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/util/Constantes.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/utils/Constantes.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/util/CryptoUtil.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/utils/CryptoUtil.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/util/DrawableManager.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/utils/DrawableManager.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/util/LoadImage.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/utils/LoadImage.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/util/image/AsyncTask.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/utils/image/AsyncTask.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/util/image/DiskLruCache.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/utils/image/DiskLruCache.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/util/image/ImageCache.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/utils/image/ImageCache.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/util/image/ImageFetcher.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/utils/image/ImageFetcher.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/util/image/ImageResizer.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/utils/image/ImageResizer.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/util/image/ImageWorker.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/utils/image/ImageWorker.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/util/image/RecyclingBitmapDrawable.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/utils/image/RecyclingBitmapDrawable.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/util/image/RecyclingImageView.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/utils/image/RecyclingImageView.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/util/image/Utils.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/utils/image/Utils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../CardapioADM/build/classes/com/login/cardapio/faces/CategoriaFaces.class" afterPath="$PROJECT_DIR$/../../CardapioADM/build/classes/com/login/cardapio/faces/CategoriaFaces.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../CardapioADM/build/classes/com/login/cardapio/faces/EmpresaFaces.class" afterPath="$PROJECT_DIR$/../../CardapioADM/build/classes/com/login/cardapio/faces/EmpresaFaces.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../CardapioADM/build/classes/com/login/cardapio/faces/EscolhaCategoriaFaces.class" afterPath="$PROJECT_DIR$/../../CardapioADM/build/classes/com/login/cardapio/faces/EscolhaCategoriaFaces.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../CardapioADM/build/classes/com/login/cardapio/util/Utilitarios.class" afterPath="$PROJECT_DIR$/../../CardapioADM/build/classes/com/login/cardapio/util/Utilitarios.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/galeriaImg/unspecified/classes.jar" afterPath="$PROJECT_DIR$/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/galeriaImg/unspecified/classes.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/model_data.bin" afterPath="$PROJECT_DIR$/build/intermediates/model_data.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../CardapioADM/.classpath" afterPath="$PROJECT_DIR$/../../CardapioADM/.classpath" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.gitignore" afterPath="$PROJECT_DIR$/../../.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/CardapioApp.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/CardapioApp.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../CardapioADM/src/com/login/cardapio/faces/CategoriaFaces.java" afterPath="$PROJECT_DIR$/../../CardapioADM/src/com/login/cardapio/faces/CategoriaFaces.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/DefaultActivity.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/DefaultActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../CardapioADM/src/com/login/cardapio/faces/EmpresaFaces.java" afterPath="$PROJECT_DIR$/../../CardapioADM/src/com/login/cardapio/faces/EmpresaFaces.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../CardapioADM/src/com/login/cardapio/faces/EscolhaCategoriaFaces.java" afterPath="$PROJECT_DIR$/../../CardapioADM/src/com/login/cardapio/faces/EscolhaCategoriaFaces.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../CardapioADM/src/com/login/cardapio/faces/EscolhaItemFaces.java" afterPath="$PROJECT_DIR$/../../CardapioADM/src/com/login/cardapio/faces/EscolhaItemFaces.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../CardapioADM/src/com/login/cardapio/faces/EscolhaKitFaces.java" afterPath="$PROJECT_DIR$/../../CardapioADM/src/com/login/cardapio/faces/EscolhaKitFaces.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../CardapioADM/src/com/login/cardapio/faces/EscolhaSubItemFaces.java" afterPath="$PROJECT_DIR$/../../CardapioADM/src/com/login/cardapio/faces/EscolhaSubItemFaces.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../CardapioADM/src/com/login/cardapio/faces/ItemFaces.java" afterPath="$PROJECT_DIR$/../../CardapioADM/src/com/login/cardapio/faces/ItemFaces.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../CardapioADM/src/com/login/cardapio/faces/KitFaces.java" afterPath="$PROJECT_DIR$/../../CardapioADM/src/com/login/cardapio/faces/KitFaces.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/build/generated/source/r/debug/com/login/beachstop/android/R.java" afterPath="$PROJECT_DIR$/beachStopAndroid/build/generated/source/r/debug/com/login/beachstop/android/R.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/model/ServerResponse.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/model/ServerResponse.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/SplashActivity.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/SplashActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../CardapioADM/src/com/login/cardapio/util/Utilitarios.java" afterPath="$PROJECT_DIR$/../../CardapioADM/src/com/login/cardapio/util/Utilitarios.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/activity_splash.xml" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/activity_splash.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/beachStopAndroid.iml" afterPath="$PROJECT_DIR$/beachStopAndroid/beachStopAndroid.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/build.gradle" afterPath="$PROJECT_DIR$/beachStopAndroid/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/galeriaImg/galeriaImg.iml" afterPath="$PROJECT_DIR$/galeriaImg/galeriaImg.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/galeriaImg/unspecified/res/values/values.xml" afterPath="$PROJECT_DIR$/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/galeriaImg/unspecified/res/values/values.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/galeriaImg/unspecified/res/color/vpi__dark_theme.xml" afterPath="$PROJECT_DIR$/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/galeriaImg/unspecified/res/color/vpi__dark_theme.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/galeriaImg/unspecified/res/color/vpi__light_theme.xml" afterPath="$PROJECT_DIR$/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/galeriaImg/unspecified/res/color/vpi__light_theme.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/galeriaImg/unspecified/res/drawable/vpi__tab_indicator.xml" afterPath="$PROJECT_DIR$/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/galeriaImg/unspecified/res/drawable/vpi__tab_indicator.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="BeachStopAndroid.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -38,63 +222,15 @@
     <favorites_list name="BeachStopAndroid" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="build.gradle" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/beachStopAndroid/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="330" max-vertical-offset="510">
-              <caret line="22" column="38" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="beachStopAndroid.iml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/beachStopAndroid/beachStopAndroid.iml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="240" max-vertical-offset="1455">
-              <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="91" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/AndroidManifest.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.68085104" vertical-offset="0" max-vertical-offset="1335">
-              <caret line="32" column="23" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="settings.gradle" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/settings.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="120">
-              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gradlew" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gradlew">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2550">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
       <setting name="OPEN_NEW_TAB" value="true" />
     </FindUsagesManager>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="GradleLocalSettings">
     <option name="tasksExpandState">
@@ -132,6 +268,474 @@
     </option>
     <option name="availableTasks">
       <map>
+        <entry key="$PROJECT_DIR$">
+          <value>
+            <list>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="compileDebugJava" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="generateReleaseAssets" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="generateDebugTestSources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="preReleaseBuild" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Extracts Android annotations for the debug variant into the archive file" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="extractDebugAnnotations" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="packageRelease" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="generateReleaseBuildConfig" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="processDebugManifest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="generateDebugResources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="compileDebugTestJava" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="mergeReleaseAssets" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="mergeReleaseProguardFiles" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Extracts Android annotations for the release variant into the archive file" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="extractReleaseAnnotations" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles all variants of all applications and secondary packages." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="assemble" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="prepareReleaseDependencies" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="dexDebugTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="dexRelease" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles and tests this project and all projects that depend on it." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="buildDependents" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="compileReleaseRenderscript" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Installs and runs the tests for Build 'debug' on connected devices." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="connectedAndroidTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare com.android.support:support-v4:20.0.0" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="prepareComAndroidSupportSupportV42000Library" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="checkReleaseManifest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="prepareDebugDependencies" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="processDebugTestManifest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="processReleaseManifest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="mergeDebugResources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="packageReleaseLocalJar" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the Android dependencies of the project" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="androidDependencies" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="preDebugBuild" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="generateDebugTestResValues" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Runs lint on the Debug build" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="lintDebug" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="generateDebugResValues" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="compileDebugTestNdk" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="packageDebug" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="generateDebugAssets" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Runs lint on just the fatal issues in the Release build" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="lintVitalRelease" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="processDebugJavaRes" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare BeachStopAndroid:galeriaImg:unspecified" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="prepareBeachStopAndroidGaleriaImgUnspecifiedLibrary" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="generateReleaseResources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="packageReleaseRenderscript" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="mergeDebugAssets" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles all Debug builds" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="assembleDebug" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles all Release builds" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="assembleRelease" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="validateDebugSigning" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="generateReleaseSources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="processDebugResources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="processReleaseResources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Runs lint on the Release build" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="lintRelease" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="copyDebugLint" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="generateDebugTestResources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="preDexRelease" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="mergeReleaseResources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="generateDebugSources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles a bundle containing the library in Release." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="bundleRelease" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="packageReleaseJar" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="compileDebugTestAidl" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Uninstall all applications." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="uninstallAll" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="generateDebugTestAssets" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles the Test build for the Debug build" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="assembleDebugTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="processDebugTestJavaRes" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="packageDebugRenderscript" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Runs all checks." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="check" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="preDexDebug" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="packageDebugJar" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Runs all device checks on currently connected devices." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="connectedCheck" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Deletes the build directory." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="clean" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="packageDebugTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="packageDebugLocalJar" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles and tests this project." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="build" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="copyReleaseLint" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="packageDebugJniLibs" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Runs all device checks using Device Providers and Test Servers." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="deviceCheck" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="generateDebugTestBuildConfig" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="compileLint" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Uninstalls the Debug build" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="uninstallDebug" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles and tests this project and all projects it depends on." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="buildNeeded" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Installs the Test build for the Debug build" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="installDebugTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="compileReleaseNdk" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="compileDebugAidl" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="mergeDebugProguardFiles" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="mergeDebugTestResources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="compileDebugNdk" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="processDebugTestResources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="compileReleaseAidl" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="compileDebugRenderscript" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="preBuild" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Uninstalls the Test build for the Debug build" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="uninstallDebugTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="zipalignDebug" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="compileReleaseJava" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="generateReleaseResValues" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="packageReleaseJniLibs" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Installs the Debug build" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="installDebug" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="generateDebugBuildConfig" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="mergeDebugTestAssets" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="preDexDebugTest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Uninstalls the Release build" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="uninstallRelease" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="checkDebugManifest" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="processReleaseJavaRes" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the signing info for each variant" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="signingReport" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Runs lint on all variants." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="lint" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles a bundle containing the library in Debug." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="bundleDebug" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="assembleDefault" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="dexDebug" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="compileDebugTestRenderscript" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="packageDebugResources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="preDebugTestBuild" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="prepareDebugTestDependencies" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="packageReleaseResources" />
+              </ExternalTaskPojo>
+            </list>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/beachStopAndroid">
           <value>
             <list>
@@ -939,7 +1543,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="5655938752000" />
+        <entry key="$PROJECT_DIR$" value="5656388127000" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -1326,8 +1930,6 @@
     </navigator>
     <panes>
       <pane id="AndroidView" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -1382,8 +1984,40 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BeachStopAndroid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BeachStopAndroid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="beachStopAndroid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1429,6 +2063,19 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -1454,19 +2101,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -1575,7 +2209,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1440" y="22" width="1440" height="874" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1585,10 +2219,10 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32921174" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3298153" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31835687" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31794196" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32822478" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1610,15 +2244,15 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32921174" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29721814" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32921174" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32921174" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -1630,8 +2264,8 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.49459043" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32921174" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -1659,6 +2293,48 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/beachStopAndroid/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="330" max-vertical-offset="510">
+          <caret line="22" column="38" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/beachStopAndroid/beachStopAndroid.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="240" max-vertical-offset="1470">
+          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="480" max-vertical-offset="840">
+          <caret line="32" column="23" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
+          <folding>
+            <element signature="e#1547#1565#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/settings.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="120">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gradlew">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2550">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/beachStopAndroid/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
           <caret line="22" column="38" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
           <folding />
@@ -1677,7 +2353,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="1335">
           <caret line="32" column="23" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
-          <folding />
+          <folding>
+            <element signature="e#1547#1565#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1717,7 +2395,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="1335">
           <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
-          <folding />
+          <folding>
+            <element signature="e#1547#1565#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1737,13 +2417,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/util/JSONItemCardapioUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="166" max-vertical-offset="2160">
-          <caret line="41" column="20" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/import-summary.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1230">
@@ -1758,52 +2431,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/util/JSONContaUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14778325" vertical-offset="0" max-vertical-offset="1020">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/util/HttpUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2505">
-          <caret line="77" column="31" selection-start-line="77" selection-start-column="31" selection-end-line="77" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/util/JSONCardapioUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="915">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/util/JSONItemCardapioUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3861066" vertical-offset="166" max-vertical-offset="2160">
-          <caret line="41" column="20" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="315">
           <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/CheckInActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9939759" vertical-offset="0" max-vertical-offset="3420">
-          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.60053265" vertical-offset="44" max-vertical-offset="795">
-          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1824,7 +2455,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/settings.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="120">
+        <state vertical-scroll-proportion="0.0625" vertical-offset="0" max-vertical-offset="480">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding />
         </state>
@@ -1840,17 +2471,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/beachStopAndroid/beachStopAndroid.iml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1455">
-          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="91" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="240" max-vertical-offset="1470">
+          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="64" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.68085104" vertical-offset="0" max-vertical-offset="1335">
-          <caret line="32" column="23" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="840">
+          <caret line="20" column="22" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
+          <folding>
+            <element signature="e#1547#1565#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/managers/sqlite/dao/CategoriaDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="405">
+          <caret line="22" column="38" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/SplashActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2248394" vertical-offset="510" max-vertical-offset="2595">
+          <caret line="52" column="59" selection-start-line="52" selection-start-column="59" selection-end-line="52" selection-end-column="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

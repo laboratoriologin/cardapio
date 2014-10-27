@@ -16,6 +16,7 @@ import org.apache.commons.io.FilenameUtils;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.event.SelectEvent;
 
+import br.com.topsys.exception.TSApplicationException;
 import br.com.topsys.exception.TSSystemException;
 import br.com.topsys.util.TSUtil;
 
@@ -24,6 +25,7 @@ import com.login.cardapio.model.KitSubItem;
 import com.login.cardapio.model.SubItem;
 import com.login.cardapio.util.CardapioUtil;
 import com.login.cardapio.util.Constantes;
+import com.login.cardapio.util.Utilitarios;
 
 @ViewScoped
 @ManagedBean(name = "kitFaces")
@@ -42,6 +44,20 @@ public class KitFaces extends CrudFaces<Kit> {
 		this.clearFields();
 		setFieldOrdem("nome");
 
+	}
+	
+	@Override
+	protected void prePersist() {
+		// TODO Auto-generated method stub
+		super.prePersist();
+		
+		try {
+			Utilitarios.gerarNovoCodigoCardapio();
+		} catch (TSApplicationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			this.addErrorMessage("Erro no sistema, entre em contato com o administrador, Erro: 0101!");
+		}
 	}
 
 	@Override
