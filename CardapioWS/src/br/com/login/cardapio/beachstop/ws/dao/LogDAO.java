@@ -3,6 +3,7 @@ package br.com.login.cardapio.beachstop.ws.dao;
 import java.util.List;
 
 import br.com.login.cardapio.beachstop.ws.model.Log;
+import br.com.login.cardapio.beachstop.ws.model.PedidoSubItem;
 import br.com.topsys.database.TSDataBaseBrokerIf;
 import br.com.topsys.database.factory.TSDataBaseBrokerFactory;
 import br.com.topsys.exception.TSApplicationException;
@@ -29,6 +30,16 @@ public class LogDAO  implements RestDAO<Log> {
 		broker.setPropertySQL("logdao.findall");
 
 		return broker.getCollectionBean(Log.class, "horario", "id", "pedidoSubItem.id", "status.id", "usuario.id");
+
+	}
+	
+	public List<Log> getAll(PedidoSubItem pedido) {
+
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+
+		broker.setPropertySQL("logdao.findallbypedido", pedido.getId());
+
+		return broker.getCollectionBean(Log.class, "id", "usuario.id", "usuario.nome", "status.id", "status.descricao", "horario");
 
 	}
 

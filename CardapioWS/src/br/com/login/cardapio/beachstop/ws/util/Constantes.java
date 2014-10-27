@@ -16,4 +16,8 @@ public final class Constantes {
 	public static final Long TIPO_ALERTA_GARCOM = 1L;
 	public static final Long TIPO_ALERTA_CONTA = 2L;
 	public static final Long TIPO_ALERTA_PEDIDOS = 3L;
+	public static final Long PEDIDO_PENDENTE_APROVACAO = 1L;
+	public static final Long PEDIDO_PENDENTE_ENTREGA = 2L;
+	public static final Long PEDIDO_ENTREGUE = 3L;
+	public static final Long PEDIDO_CANCELADO = 4L;
 }

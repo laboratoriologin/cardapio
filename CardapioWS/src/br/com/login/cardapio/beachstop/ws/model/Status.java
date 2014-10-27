@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @SuppressWarnings("serial")
 @XmlRootElement(name ="status")
 public final class Status extends RestModel {
-
+	
 	@FormParam("descricao")
 	private String descricao;
 
@@ -22,5 +22,9 @@ public final class Status extends RestModel {
 
 	public Status(String id){
 		this.id = Long.valueOf(id);
+	}
+	
+	public Status(Long id){
+		this.id = id;
 	}
 }
