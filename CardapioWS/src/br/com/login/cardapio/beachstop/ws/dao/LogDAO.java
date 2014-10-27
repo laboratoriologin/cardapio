@@ -3,11 +3,11 @@ package br.com.login.cardapio.beachstop.ws.dao;
 import java.util.List;
 
 import br.com.login.cardapio.beachstop.ws.model.Log;
+import br.com.login.cardapio.beachstop.ws.model.Pedido;
 import br.com.login.cardapio.beachstop.ws.model.PedidoSubItem;
 import br.com.topsys.database.TSDataBaseBrokerIf;
 import br.com.topsys.database.factory.TSDataBaseBrokerFactory;
 import br.com.topsys.exception.TSApplicationException;
-import br.com.topsys.util.TSUtil;
 
 public class LogDAO  implements RestDAO<Log> {
 
@@ -50,7 +50,7 @@ public class LogDAO  implements RestDAO<Log> {
 
 		model.setId(broker.getSequenceNextValue("dbo.logs "));
 
-		broker.setPropertySQL("logdao.insert",model.getHorario(), model.getPedidoSubItem().getId(), model.getStatus().getId(), model.getUsuario().getId());
+		broker.setPropertySQL("logdao.insert", model.getPedidoSubItem().getId(), model.getStatus().getId(), model.getUsuario().getId());
 
 		broker.execute();
 
@@ -81,5 +81,24 @@ public class LogDAO  implements RestDAO<Log> {
 		broker.execute();
 
 	}
+	
+	public void insert(Pedido pedido) throws TSApplicationException {
+
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+
+		broker.beginTransaction();
+
+		for (PedidoSubItem item : pedido.getSubItens()) {
+
+			broker.setPropertySQL("logdao.insert", pedido.getUsuario().getId(), item.getId(), item.getStatus().getId());
+
+			broker.execute();
+
+		}
+
+		broker.endTransaction();
+
+	}
+	
 
 }
