@@ -20,7 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4ef57485-465d-4331-91d4-7302393ad71d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/galeriaImg/unspecified/classes.jar" afterPath="$PROJECT_DIR$/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/galeriaImg/unspecified/classes.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/src/com/login/beachstop/android/sqlite/exception/PersistException.java" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/src/com/login/beachstop/android/sqlite/exception/PersistException.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -1905,7 +1904,11 @@
       <created>1414437450971</created>
       <updated>1414437450971</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Construção da V2">
+      <created>1414437874598</created>
+      <updated>1414437874598</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">

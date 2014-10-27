@@ -7,4 +7,4 @@
     <item android:state_focused="true" android:color="@android:color/white" />
     <item android:state_pressed="true" android:color="@android:color/white" />
     <item android:color="#f8f8f8" />
-</selector><!-- From: file:/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/drawable/tab_text_selector.xml -->
+</selector><!-- From: file:/C:/Login/PROJETO/CardapioGIT/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/drawable/tab_text_selector.xml -->

@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
      Copyright (C) 2010 Johan Nilsson <http://markupartist.com>
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,8 +18,8 @@
     style="@style/ActionBarItem"
     android:layout_gravity="center"
     android:background="@drawable/actionbar_btn"
-    android:contentDescription="lol"
+    android:contentDescription="@string/app_name"
     android:scaleType="centerInside"
     android:singleLine="true"
     android:visibility="visible" />
-<!-- From: file:/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/layout/actionbar_item.xml -->
+<!-- From: file:/C:/Login/PROJETO/CardapioGIT/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/layout/actionbar_item.xml -->

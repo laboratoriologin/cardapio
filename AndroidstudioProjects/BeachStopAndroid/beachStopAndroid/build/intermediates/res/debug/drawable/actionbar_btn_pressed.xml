@@ -19,4 +19,4 @@
         android:startColor="@color/actionbar_background_item_pressed_start"
         android:endColor="@color/actionbar_background_item_pressed_end"
         android:angle="-90"/>
-</shape><!-- From: file:/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/drawable/actionbar_btn_pressed.xml -->
+</shape><!-- From: file:/C:/Login/PROJETO/CardapioGIT/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/drawable/actionbar_btn_pressed.xml -->

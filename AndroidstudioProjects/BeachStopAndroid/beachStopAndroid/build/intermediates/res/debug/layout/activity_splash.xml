@@ -1,6 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/activity_splash_imagem_welcome"
@@ -44,4 +44,4 @@
         android:textSize="10sp"
         android:visibility="invisible" />
 
-</RelativeLayout><!-- From: file:/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/layout/activity_splash.xml -->
+</RelativeLayout><!-- From: file:/C:/Login/PROJETO/CardapioGIT/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/layout/activity_splash.xml -->

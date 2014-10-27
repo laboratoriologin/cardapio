@@ -4,4 +4,4 @@
     <item android:drawable="@drawable/bt_menu_sobre_restaurante" android:state_selected="true"/>
     <item android:drawable="@drawable/bt_menu_sobre_restaurante"/>
 
-</selector><!-- From: file:/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/drawable/tab_sobre_restaurante.xml -->
+</selector><!-- From: file:/C:/Login/PROJETO/CardapioGIT/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/drawable/tab_sobre_restaurante.xml -->

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- From: file:/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/galeriaImg/unspecified/res/values/values.xml -->
+    <!-- From: file:/C:/Login/PROJETO/CardapioGIT/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/galeriaImg/unspecified/res/values/values.xml -->
     <eat-comment />
 
     <attr name="centered" format="boolean" />
@@ -14,7 +14,7 @@
     <bool name="default_line_indicator_centered">true</bool>
     <bool name="default_title_indicator_selected_bold">true</bool>
     <bool name="default_underline_indicator_fades">true</bool>
-    <!-- From: file:/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/values/colors.xml -->
+    <!-- From: file:/C:/Login/PROJETO/CardapioGIT/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/values/colors.xml -->
     <eat-comment />
 
     <color name="actionbar_background_end">#3B5998</color>
@@ -26,7 +26,7 @@
     <color name="actionbar_title_color">#FFFFFF</color>
     <color name="bg_system">#F3F3AD</color>
     <color name="branco">#FFFFFF</color>
-    <!-- From: file:/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/galeriaImg/unspecified/res/values/values.xml -->
+    <!-- From: file:/C:/Login/PROJETO/CardapioGIT/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/galeriaImg/unspecified/res/values/values.xml -->
     <eat-comment />
 
     <color name="default_circle_indicator_fill_color">#FFFFFFFF</color>
@@ -38,7 +38,7 @@
     <color name="default_title_indicator_selected_color">#FFFFFFFF</color>
     <color name="default_title_indicator_text_color">#BBFFFFFF</color>
     <color name="default_underline_indicator_selected_color">#FF33B5E5</color>
-    <!-- From: file:/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/values/colors.xml -->
+    <!-- From: file:/C:/Login/PROJETO/CardapioGIT/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/values/colors.xml -->
     <eat-comment />
 
     <color name="marrom">#321A09</color>
@@ -49,7 +49,7 @@
     <color name="tabTransparent">#10ffffff</color>
     <color name="transparent">#00000000</color>
     <color name="verde">#2175B1</color>
-    <!-- From: file:/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/galeriaImg/unspecified/res/values/values.xml -->
+    <!-- From: file:/C:/Login/PROJETO/CardapioGIT/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/galeriaImg/unspecified/res/values/values.xml -->
     <eat-comment />
 
     <color name="vpi__background_holo_dark">#ff000000</color>
@@ -167,7 +167,7 @@
         <!-- Style of the underline indicator. -->
         <attr name="vpiUnderlinePageIndicatorStyle" format="reference" />
     </declare-styleable>
-    <!-- From: file:/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/values/dimens.xml -->
+    <!-- From: file:/C:/Login/PROJETO/CardapioGIT/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/values/dimens.xml -->
     <eat-comment />
 
     <dimen name="actionbar_height">50dip</dimen>
@@ -177,7 +177,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="corner_radius">8dp</dimen>
     <dimen name="corner_radius_zero">0dp</dimen>
-    <!-- From: file:/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/galeriaImg/unspecified/res/values/values.xml -->
+    <!-- From: file:/C:/Login/PROJETO/CardapioGIT/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/galeriaImg/unspecified/res/values/values.xml -->
     <eat-comment />
 
     <dimen name="default_circle_indicator_radius">3dp</dimen>
@@ -193,7 +193,7 @@
     <dimen name="default_title_indicator_text_size">15dp</dimen>
     <dimen name="default_title_indicator_title_padding">5dp</dimen>
     <dimen name="default_title_indicator_top_padding">7dp</dimen>
-    <!-- From: file:/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/values/dimens.xml -->
+    <!-- From: file:/C:/Login/PROJETO/CardapioGIT/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/values/dimens.xml -->
     <eat-comment />
 
     <dimen name="padding_large">16dp</dimen>
@@ -205,7 +205,7 @@
     <dimen name="tab_space_plus1">3dp</dimen>
     <dimen name="tab_space_top">4dp</dimen>
     <dimen name="tab_space_unselected_top">6sp</dimen>
-    <!-- From: file:/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/galeriaImg/unspecified/res/values/values.xml -->
+    <!-- From: file:/C:/Login/PROJETO/CardapioGIT/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/galeriaImg/unspecified/res/values/values.xml -->
     <eat-comment />
 
     <integer name="default_circle_indicator_orientation">0</integer>
@@ -213,22 +213,29 @@
     <integer name="default_title_indicator_line_position">0</integer>
     <integer name="default_underline_indicator_fade_delay">300</integer>
     <integer name="default_underline_indicator_fade_length">400</integer>
-    <!-- From: file:/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Login/PROJETO/CardapioGIT/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/values/strings.xml -->
     <eat-comment />
 
+    <string name="Salvar">Salvar</string>
     <string name="acompanhamentos">Acompanhamentos</string>
+    <string name="aniversario">Aniversário</string>
     <string name="app_id">600470246741282</string>
     <string name="app_name">BeachStop</string>
     <string name="call_garcom">Chamar Garçom</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="celular">Celular</string>
+    <string name="email">Email</string>
     <string name="enviar_conta">Solicitar a conta</string>
     <string name="enviar_pedido">Enviar o pedido</string>
     <string name="escolher">Incluir</string>
     <string name="finalizar_pedido">Pedir</string>
     <string name="ingredientes">Ingredientes</string>
     <string name="no_network_connection_toast">Erro na internet!</string>
+    <string name="nome">Nome</string>
+    <string name="saudacao_cadastro_cliente">Olá! Bem vindo ao BeachStop ipitanga, para sua comodida, gostariamos de sabger quem você é!</string>
     <string name="sobre_o_prato">Sobre o prato</string>
     <string name="tempo_medio">Tempo médio \nde preparo</string>
-    <!-- From: file:/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/values/styles.xml -->
+    <!-- From: file:/C:/Login/PROJETO/CardapioGIT/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/values/styles.xml -->
     <eat-comment />
 
     <style name="ActionBar">
@@ -267,7 +274,7 @@
     <style name="AppTheme" parent="android:Theme.Light.NoTitleBar">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
-    <!-- From: file:/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/galeriaImg/unspecified/res/values/values.xml -->
+    <!-- From: file:/C:/Login/PROJETO/CardapioGIT/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/galeriaImg/unspecified/res/values/values.xml -->
     <eat-comment />
 
     <style name="TextAppearance.TabPageIndicator" parent="Widget">
@@ -298,7 +305,7 @@
         <item name="android:textSize">12sp</item>
         <item name="android:maxLines">1</item>
     </style>
-    <!-- From: file:/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/values/styles.xml -->
+    <!-- From: file:/C:/Login/PROJETO/CardapioGIT/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/values/styles.xml -->
     <eat-comment />
 
     <style name="dialog_title_style" parent="android:Widget.TextView">

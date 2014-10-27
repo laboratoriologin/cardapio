@@ -4,4 +4,4 @@
     <item android:drawable="@drawable/bt_menu_cardapio" android:state_selected="true"/>
     <item android:drawable="@drawable/bt_menu_cardapio"/>
 
-</selector><!-- From: file:/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/drawable/tab_cardapio.xml -->
+</selector><!-- From: file:/C:/Login/PROJETO/CardapioGIT/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/drawable/tab_cardapio.xml -->
