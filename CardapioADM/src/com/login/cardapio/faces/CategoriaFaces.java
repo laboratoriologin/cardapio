@@ -14,6 +14,7 @@ import javax.imageio.ImageIO;
 import org.apache.commons.io.FilenameUtils;
 import org.primefaces.event.FileUploadEvent;
 
+import br.com.topsys.exception.TSApplicationException;
 import br.com.topsys.exception.TSSystemException;
 import br.com.topsys.util.TSUtil;
 
@@ -21,6 +22,7 @@ import com.login.cardapio.model.Area;
 import com.login.cardapio.model.Categoria;
 import com.login.cardapio.util.CardapioUtil;
 import com.login.cardapio.util.Constantes;
+import com.login.cardapio.util.Utilitarios;
 
 @ViewScoped
 @ManagedBean(name = "categoriaFaces")
@@ -43,6 +45,19 @@ public class CategoriaFaces extends CrudFaces<Categoria> {
 	public String limparPesquisa() {
 		String retorno = super.limparPesquisa();
 		return retorno;
+	}
+	
+	@Override
+	protected void prePersist() {	
+		super.prePersist();
+		
+		try {
+			Utilitarios.gerarNovoCodigoCardapio();
+		} catch (TSApplicationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			this.addErrorMessage("Erro no sistema, entre em contato com o administrador, Erro: 0101!");
+		}
 	}
 
 	public void uploadMidias(FileUploadEvent event) {

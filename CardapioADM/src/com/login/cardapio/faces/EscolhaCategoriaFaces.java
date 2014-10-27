@@ -10,6 +10,7 @@ import br.com.topsys.exception.TSApplicationException;
 import br.com.topsys.web.faces.TSMainFaces;
 
 import com.login.cardapio.model.Categoria;
+import com.login.cardapio.util.Utilitarios;
 
 @SuppressWarnings("serial")
 @ManagedBean
@@ -27,9 +28,17 @@ public class EscolhaCategoriaFaces extends TSMainFaces {
 		this.setListCategoria(new Categoria().findAll("id"));
 
 	}
-
+	
 	@Override
 	protected String update() throws TSApplicationException {
+		
+		try {
+			Utilitarios.gerarNovoCodigoCardapio();
+		} catch (TSApplicationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			this.addErrorMessage("Erro no sistema, entre em contato com o administrador, Erro: 0101!");
+		}
 
 		for (Categoria categoria : listCategoria) {
 			categoria.update();

@@ -23,13 +23,21 @@ public class EmpresaFaces extends TSMainFaces {
 		super.clearFields();
 
 		this.setEmpresa(new Empresa().getEmpresa());
-
+		
 	}
 
 	@Override
 	protected String update() throws TSApplicationException {
+		
+		if(this.getEmpresa().getId() == null){
+			
+			this.getEmpresa().setId(1l);
+			this.getEmpresa().save();
+			
+		}else{
 
-		this.empresa.update();
+			this.getEmpresa().update();
+		}
 
 		return null;
 

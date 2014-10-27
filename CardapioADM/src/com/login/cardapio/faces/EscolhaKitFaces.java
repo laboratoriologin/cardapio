@@ -10,6 +10,7 @@ import br.com.topsys.exception.TSApplicationException;
 import br.com.topsys.web.faces.TSMainFaces;
 
 import com.login.cardapio.model.Kit;
+import com.login.cardapio.util.Utilitarios;
 
 @SuppressWarnings("serial")
 @ManagedBean
@@ -30,6 +31,14 @@ public class EscolhaKitFaces extends TSMainFaces {
 
 	@Override
 	protected String update() throws TSApplicationException {
+		
+		try {
+			Utilitarios.gerarNovoCodigoCardapio();
+		} catch (TSApplicationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			this.addErrorMessage("Erro no sistema, entre em contato com o administrador, Erro: 0101!");
+		}
 
 		for (Kit kit : this.listKit) {
 			kit.update();
