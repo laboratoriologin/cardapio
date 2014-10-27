@@ -10,9 +10,7 @@
   </component>
   <component name="AndroidLayoutPreviewToolWindow">
     <option name="state">
-      <GlobalState>
-        <option name="visible" value="false" />
-      </GlobalState>
+      <GlobalState />
     </option>
   </component>
   <component name="AndroidLayouts">
@@ -22,212 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4ef57485-465d-4331-91d4-7302393ad71d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/views/actionbar/ActionBar.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/CadastroClienteActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/models/Categoria.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/network/CategoriaRequest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/models/Empresa.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/network/EmpresaRequest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/models/Kit.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/managers/sqlite/dao/KitDAO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/managers/sqlite/KitTableDefinition.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/network/http/ResponseListener.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/actionbar.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/actionbar_item.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/activity_cadastro_cliente.xml" />
-      <change type="DELETED" beforePath="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\src\main\java\com\login\beachstop\android\network\http\Observable.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Login\PROJETO\CardapioGIT\BeachStopAndroid\bin\classes\com\login\beachstop\android\CallGarcomActivity$1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Login\PROJETO\CardapioGIT\BeachStopAndroid\bin\classes\com\login\beachstop\android\CheckInActivity$1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Login\PROJETO\CardapioGIT\BeachStopAndroid\bin\classes\com\login\beachstop\android\SplashActivity$1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Login\PROJETO\CardapioGIT\BeachStopAndroid\bin\classes\com\login\beachstop\android\SplashActivity$2.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Login\PROJETO\CardapioGIT\BeachStopAndroid\bin\classes\com\login\beachstop\android\adapter\PedidoItemAdapter$1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Login\PROJETO\CardapioGIT\BeachStopAndroid\bin\classes\com\login\beachstop\android\adapter\PedidoItemAdapter$2.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Login\PROJETO\CardapioGIT\BeachStopAndroid\bin\classes\com\login\beachstop\android\adapter\PedidoItemAdapter$3.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Login\PROJETO\CardapioGIT\BeachStopAndroid\bin\classes\com\login\beachstop\android\exception\PersistException.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Login\PROJETO\CardapioGIT\BeachStopAndroid\bin\classes\com\login\beachstop\android\fragment\CardapioFragment$1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Login\PROJETO\CardapioGIT\BeachStopAndroid\bin\classes\com\login\beachstop\android\fragment\CardapioFragment$2.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Login\PROJETO\CardapioGIT\BeachStopAndroid\bin\classes\com\login\beachstop\android\fragment\CardapioFragment$3.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Login\PROJETO\CardapioGIT\BeachStopAndroid\bin\classes\com\login\beachstop\android\fragment\ListaTodosItemCardapioFragment$1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Login\PROJETO\CardapioGIT\BeachStopAndroid\bin\classes\com\login\beachstop\android\fragment\TabFragmentConta$1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Login\PROJETO\CardapioGIT\BeachStopAndroid\bin\classes\com\login\beachstop\android\fragment\TabFragmentGridItemCardapio$1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Login\PROJETO\CardapioGIT\BeachStopAndroid\bin\classes\com\login\beachstop\android\fragment\TabFragmentGridItemCardapio$2.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Login\PROJETO\CardapioGIT\BeachStopAndroid\bin\classes\com\login\beachstop\android\fragment\TabFragmentListItemCardapio$1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Login\PROJETO\CardapioGIT\BeachStopAndroid\bin\classes\com\login\beachstop\android\fragment\TabFragmentListItemCardapio$2.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Login\PROJETO\CardapioGIT\BeachStopAndroid\bin\classes\com\login\beachstop\android\fragment\TabFragmentPedido$1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Login\PROJETO\CardapioGIT\BeachStopAndroid\bin\classes\com\login\beachstop\android\fragment\TabFragmentPedido$2.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Login\PROJETO\CardapioGIT\BeachStopAndroid\bin\classes\com\login\beachstop\android\util\image\AsyncTask$1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Login\PROJETO\CardapioGIT\BeachStopAndroid\bin\classes\com\login\beachstop\android\util\image\AsyncTask$2.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Login\PROJETO\CardapioGIT\BeachStopAndroid\bin\classes\com\login\beachstop\android\util\image\AsyncTask$3.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Login\PROJETO\CardapioGIT\BeachStopAndroid\bin\classes\com\login\beachstop\android\util\image\AsyncTask$SerialExecutor$1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Login\PROJETO\CardapioGIT\BeachStopAndroid\bin\classes\com\login\beachstop\android\util\image\DiskLruCache$1.class" afterPath="" />
-      <change type="DELETED" beforePath="C:\Login\PROJETO\CardapioGIT\BeachStopAndroid\bin\classes\com\login\beachstop\android\util\image\ImageCache$1.class" afterPath="" />
-      <change type="MOVED" beforePath="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\src\main\java\com\login\beachstop\android\model\Base.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/models/Base.java" />
-      <change type="MOVED" beforePath="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\src\main\java\com\login\beachstop\android\model\Cliente.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/models/Cliente.java" />
-      <change type="MOVED" beforePath="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\src\main\java\com\login\beachstop\android\model\ServerRequest.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/models/ServerRequest.java" />
-      <change type="MOVED" beforePath="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\src\main\java\com\login\beachstop\android\model\ServerResponse.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/models/ServerResponse.java" />
-      <change type="MOVED" beforePath="C:\Login\PROJETO\CardapioGIT\BeachStopAndroid\src\com\login\beachstop\android\exception\PersistException.java" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/src/com/login/beachstop/android/sqlite/exception/PersistException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/view/ActionBar$AbstractAction.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/view/ActionBar$AbstractAction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/view/ActionBar$Action.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/view/ActionBar$Action.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/view/ActionBar$ActionList.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/view/ActionBar$ActionList.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/view/ActionBar$IntentAction.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/view/ActionBar$IntentAction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/view/ActionBar.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/view/ActionBar.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/business/AlertaBS.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/business/AlertaBS.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/AsyncTask$AsyncTaskResult.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/AsyncTask$AsyncTaskResult.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/AsyncTask$InternalHandler.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/AsyncTask$InternalHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/AsyncTask$SerialExecutor.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/AsyncTask$SerialExecutor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/AsyncTask$Status.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/AsyncTask$Status.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/AsyncTask$WorkerRunnable.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/AsyncTask$WorkerRunnable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/AsyncTask.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/AsyncTask.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/BuildConfig.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/BuildConfig.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/business/BusinessResult.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/business/BusinessResult.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/CallGarcomActivity.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/CallGarcomActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/CardapioApp.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/CardapioApp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/business/CardapioBS.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/business/CardapioBS.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/fragment/CardapioFragment$MessageListener.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/fragment/CardapioFragment$MessageListener.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/fragment/CardapioFragment.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/fragment/CardapioFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/model/CatagoriaCardapio.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/model/CatagoriaCardapio.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/model/CategoriaCardapioItem.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/model/CategoriaCardapioItem.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/sqlite/dao/CategoriaCardapioItemDAO.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/sqlite/dao/CategoriaCardapioItemDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/model/CategoriaCardapioItemSys.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/model/CategoriaCardapioItemSys.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/sqlite/CategoriaCardapioItemTableDefinition.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/sqlite/CategoriaCardapioItemTableDefinition.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/sqlite/dao/ChaveCardapioEmpresaDAO.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/sqlite/dao/ChaveCardapioEmpresaDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/sqlite/ChaveCardapioEmpresaTableDefinition.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/sqlite/ChaveCardapioEmpresaTableDefinition.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/CheckInActivity$MessageListener.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/CheckInActivity$MessageListener.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/CheckInActivity$ResponseListener.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/CheckInActivity$ResponseListener.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/CheckInActivity.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/CheckInActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/Constantes.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/Constantes.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/model/Conta.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/model/Conta.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/business/ContaBS.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/business/ContaBS.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/sqlite/dao/ContaDAO.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/sqlite/dao/ContaDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/adapter/ContaItemAdapter.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/adapter/ContaItemAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/sqlite/ContaTableDefinition.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/sqlite/ContaTableDefinition.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/CryptoUtil.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/CryptoUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/sqlite/dao/DataManager.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/sqlite/dao/DataManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/DefaultActivity.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/DefaultActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/fragment/DetalheItemCardapioFragment$MessageListener.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/fragment/DetalheItemCardapioFragment$MessageListener.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/fragment/DetalheItemCardapioFragment$ResponseListener.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/fragment/DetalheItemCardapioFragment$ResponseListener.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/fragment/DetalheItemCardapioFragment$RowSubItem.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/fragment/DetalheItemCardapioFragment$RowSubItem.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/fragment/DetalheItemCardapioFragment.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/fragment/DetalheItemCardapioFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/DiskLruCache$Editor$FaultHidingOutputStream.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/DiskLruCache$Editor$FaultHidingOutputStream.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/DiskLruCache$Editor.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/DiskLruCache$Editor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/DiskLruCache$Entry.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/DiskLruCache$Entry.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/DiskLruCache$Snapshot.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/DiskLruCache$Snapshot.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/DiskLruCache.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/DiskLruCache.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/DrawableManager.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/DrawableManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/model/Empresa.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/model/Empresa.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/business/EmpresaBS.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/business/EmpresaBS.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/adapter/ExpandableListViewTodosItensCardapioAdapter.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/adapter/ExpandableListViewTodosItensCardapioAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/adapter/GridItensItemCardapioAdapter.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/adapter/GridItensItemCardapioAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/adapter/GridItensItemCategoriaCardapioAdapter.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/adapter/GridItensItemCategoriaCardapioAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/adapter/GridItensItemMenuAdapter.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/adapter/GridItensItemMenuAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/HomeActivity.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/HomeActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/HttpUtil.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/HttpUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/ImageCache$ImageCacheParams.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/ImageCache$ImageCacheParams.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/ImageCache$RetainFragment.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/ImageCache$RetainFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/ImageCache.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/ImageCache.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/ImageFetcher.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/ImageFetcher.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/ImageResizer.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/ImageResizer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/ImageWorker$AsyncDrawable.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/ImageWorker$AsyncDrawable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/ImageWorker$BitmapWorkerTask.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/ImageWorker$BitmapWorkerTask.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/ImageWorker$CacheAsyncTask.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/ImageWorker$CacheAsyncTask.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/ImageWorker.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/ImageWorker.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/model/ItemCardapio.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/model/ItemCardapio.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/business/ItemCardapioBS.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/business/ItemCardapioBS.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/sqlite/dao/ItemCardapioDAO.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/sqlite/dao/ItemCardapioDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/model/ItemCardapioSubItem.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/model/ItemCardapioSubItem.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/sqlite/dao/ItemCardapioSubItemDAO.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/sqlite/dao/ItemCardapioSubItemDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/sqlite/ItemCardapioSubItemTableDefinition.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/sqlite/ItemCardapioSubItemTableDefinition.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/sqlite/ItemCardapioTableDefinition.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/sqlite/ItemCardapioTableDefinition.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/JSONAlertaUtil.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/JSONAlertaUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/JSONCardapioUtil.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/JSONCardapioUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/JSONCheckContaAbertaUtil.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/JSONCheckContaAbertaUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/JSONContaAllUtil.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/JSONContaAllUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/JSONContaUtil.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/JSONContaUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/JSONEmpresaUtil.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/JSONEmpresaUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/JSONItemCardapioUtil.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/JSONItemCardapioUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/JSONPedidoUtil.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/JSONPedidoUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/JSONPublicidadeUtil.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/JSONPublicidadeUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/adapter/ListItensItemCategoriaCardapioAdapter.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/adapter/ListItensItemCategoriaCardapioAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/fragment/ListaItemCardapioFragment$TabFactory.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/fragment/ListaItemCardapioFragment$TabFactory.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/fragment/ListaItemCardapioFragment$TabInfo.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/fragment/ListaItemCardapioFragment$TabInfo.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/fragment/ListaItemCardapioFragment.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/fragment/ListaItemCardapioFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/fragment/ListaTodosItemCardapioFragment.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/fragment/ListaTodosItemCardapioFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/LoadImage.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/LoadImage.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/MainActivity.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/MainActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/business/Observable.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/business/Observable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/sqlite/OpenHelper.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/sqlite/OpenHelper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/model/Pedido.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/model/Pedido.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/PedidoActivity$TabFactory.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/PedidoActivity$TabFactory.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/PedidoActivity$TabInfo.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/PedidoActivity$TabInfo.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/PedidoActivity.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/PedidoActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/business/PedidoBS.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/business/PedidoBS.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/sqlite/dao/PedidoDAO.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/sqlite/dao/PedidoDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/model/PedidoItem.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/model/PedidoItem.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/adapter/PedidoItemAdapter.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/adapter/PedidoItemAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/sqlite/dao/PedidoItemDAO.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/sqlite/dao/PedidoItemDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/sqlite/PedidoItemTableDefinition.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/sqlite/PedidoItemTableDefinition.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/sqlite/PedidoTableDefinition.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/sqlite/PedidoTableDefinition.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/model/Publicidade.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/model/Publicidade.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/fragment/PublicidadeActivityFragmentAdapter.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/fragment/PublicidadeActivityFragmentAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/business/PublicidadeBS.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/business/PublicidadeBS.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/adapter/PublicidadeFragmentAdapter.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/adapter/PublicidadeFragmentAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/R$attr.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/R$attr.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/viewpagerindicator/R$attr.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/viewpagerindicator/R$attr.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/R$bool.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/R$bool.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/viewpagerindicator/R$bool.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/viewpagerindicator/R$bool.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/R$color.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/R$color.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/viewpagerindicator/R$color.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/viewpagerindicator/R$color.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/R$dimen.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/R$dimen.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/viewpagerindicator/R$dimen.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/viewpagerindicator/R$dimen.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/R$drawable.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/R$drawable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/viewpagerindicator/R$drawable.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/viewpagerindicator/R$drawable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/R$id.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/viewpagerindicator/R$id.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/viewpagerindicator/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/R$integer.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/R$integer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/viewpagerindicator/R$integer.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/viewpagerindicator/R$integer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/R$layout.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/R$string.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/R$string.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/R$style.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/R$style.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/viewpagerindicator/R$style.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/viewpagerindicator/R$style.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/R$styleable.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/R$styleable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/viewpagerindicator/R$styleable.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/viewpagerindicator/R$styleable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/R.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/R.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/viewpagerindicator/R.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/viewpagerindicator/R.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/RecyclingBitmapDrawable.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/RecyclingBitmapDrawable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/RecyclingImageView.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/RecyclingImageView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/model/ServerResponse.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/model/ServerResponse.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/SobreRestauranteActivity.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/SobreRestauranteActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/SplashActivity.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/SplashActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/fragment/TabFragmentConta.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/fragment/TabFragmentConta.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/fragment/TabFragmentGridItemCardapio.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/fragment/TabFragmentGridItemCardapio.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/fragment/TabFragmentListItemCardapio.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/fragment/TabFragmentListItemCardapio.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/fragment/TabFragmentPedido.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/fragment/TabFragmentPedido.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/Utilitarios.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/Utilitarios.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/Utils.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/util/image/Utils.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/adapter/ViewPagerAdapter.class" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/bin/classes/com/login/beachstop/android/adapter/ViewPagerAdapter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/galeriaImg/unspecified/classes.jar" afterPath="$PROJECT_DIR$/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/galeriaImg/unspecified/classes.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/model_data.bin" afterPath="$PROJECT_DIR$/build/intermediates/model_data.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/CardapioApp.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/CardapioApp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/managers/sqlite/dao/CategoriaDAO.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/managers/sqlite/dao/CategoriaDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/managers/sqlite/CategoriaTableDefinition.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/managers/sqlite/CategoriaTableDefinition.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/managers/sqlite/dao/ClienteDAO.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/managers/sqlite/dao/ClienteDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/network/ClienteRequest.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/network/ClienteRequest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/managers/sqlite/ClienteTableDefinition.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/managers/sqlite/ClienteTableDefinition.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/utils/Constantes.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/utils/Constantes.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/managers/sqlite/dao/DataManager.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/managers/sqlite/dao/DataManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/src/com/login/beachstop/android/sqlite/dao/DataManager.java" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/src/com/login/beachstop/android/sqlite/dao/DataManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/DefaultActivity.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/DefaultActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/network/http/Http.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/network/http/Http.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/network/http/HttpTask.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/network/http/HttpTask.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/src/com/login/beachstop/android/fragment/ListaItemCardapioFragment.java" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/src/com/login/beachstop/android/fragment/ListaItemCardapioFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/src/com/login/beachstop/android/fragment/ListaTodosItemCardapioFragment.java" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/src/com/login/beachstop/android/fragment/ListaTodosItemCardapioFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/utils/LoadImage.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/utils/LoadImage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/network/ObjectRequest.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/network/ObjectRequest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/managers/sqlite/OpenHelper.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/managers/sqlite/OpenHelper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/CadastroClienteActivity.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/CadastroClienteActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../BeachStopAndroid/src/com/login/beachstop/android/sqlite/exception/PersistException.java" afterPath="$PROJECT_DIR$/../../BeachStopAndroid/src/com/login/beachstop/android/sqlite/exception/PersistException.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/build/generated/source/r/debug/com/login/beachstop/android/R.java" afterPath="$PROJECT_DIR$/beachStopAndroid/build/generated/source/r/debug/com/login/beachstop/android/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/SplashActivity.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/SplashActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/res/values/strings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/activity_cadastro_cliente.xml" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/activity_cadastro_cliente.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="BeachStopAndroid.iws" />
@@ -256,14 +52,51 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ActionBar.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/views/actionbar/ActionBar.java">
+      <file leaf-file-name="CadastroClienteActivity.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/CadastroClienteActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.36932516" vertical-offset="651" max-vertical-offset="4913">
-              <caret line="56" column="13" selection-start-line="56" selection-start-column="13" selection-end-line="56" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.44513714" vertical-offset="0" max-vertical-offset="833">
+              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SplashActivity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/SplashActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1425" max-vertical-offset="2227">
+              <caret line="196" column="8" selection-start-line="196" selection-start-column="8" selection-end-line="196" selection-end-column="61" />
+              <folding>
+                <element signature="method#verificarClienteCadastrado#0;class#SplashActivity#0" expanded="false" />
+                <element signature="method#setStatusApresentacao#0;class#SplashActivity#0" expanded="false" />
+                <element signature="method#startDados#0;class#SplashActivity#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_cadastro_cliente.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/activity_cadastro_cliente.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.1111112" vertical-offset="1898" max-vertical-offset="2703">
+              <caret line="115" column="0" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Cliente.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/models/Cliente.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918">
+              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1511,12 +1344,12 @@
         <option value="$PROJECT_DIR$/beachStopAndroid/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/views/actionbar/OnClickListener.java" />
         <option value="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/views/actionbar/ActionBar.java" />
-        <option value="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/activity_cadastro_cliente.xml" />
         <option value="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/utils/LoadImage.java" />
-        <option value="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/CadastroClienteActivity.java" />
         <option value="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/network/ClienteRequest.java" />
         <option value="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/actionbar.xml" />
         <option value="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/actionbar_item.xml" />
+        <option value="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/activity_cadastro_cliente.xml" />
+        <option value="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/CadastroClienteActivity.java" />
       </list>
     </option>
   </component>
@@ -2066,7 +1899,11 @@
       <created>1414176478408</created>
       <updated>1414176478409</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Construção da V2">
+      <created>1414436224219</created>
+      <updated>1414436224219</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -2114,7 +1951,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32995737" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28640777" sideWeight="0.4991708" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28640777" sideWeight="0.4991708" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32822478" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
@@ -2139,7 +1976,8 @@
       <TodoPanelSettings />
     </option>
     <MESSAGE value="Teste" />
-    <option name="LAST_COMMIT_MESSAGE" value="Teste" />
+    <MESSAGE value="Construção da V2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Construção da V2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2147,13 +1985,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/utils/image/RecyclingBitmapDrawable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1496">
-          <caret line="16" column="48" selection-start-line="16" selection-start-column="48" selection-end-line="16" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/utils/image/RecyclingImageView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1207">
@@ -2207,6 +2038,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.32" vertical-offset="638" max-vertical-offset="2567">
           <caret line="73" column="13" selection-start-line="73" selection-start-column="13" selection-end-line="73" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2214,6 +2046,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.39631903" vertical-offset="0" max-vertical-offset="815">
           <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2221,6 +2056,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.08343558" vertical-offset="0" max-vertical-offset="815">
           <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2238,6 +2074,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.12515338" vertical-offset="0" max-vertical-offset="815">
           <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2245,6 +2082,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="289">
           <caret line="9" column="48" selection-start-line="9" selection-start-column="48" selection-end-line="9" selection-end-column="48" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2252,6 +2090,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="782">
           <caret line="12" column="39" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="39" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2314,6 +2153,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5214724" vertical-offset="0" max-vertical-offset="815">
           <caret line="30" column="19" selection-start-line="30" selection-start-column="19" selection-end-line="30" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2328,6 +2168,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.08478803" vertical-offset="0" max-vertical-offset="2091">
           <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2335,6 +2176,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.12515338" vertical-offset="0" max-vertical-offset="815">
           <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2352,6 +2194,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5214724" vertical-offset="0" max-vertical-offset="815">
           <caret line="30" column="25" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2397,18 +2240,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/DefaultActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="680">
-          <caret line="37" column="21" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/managers/sqlite/dao/DataManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="18" max-vertical-offset="833">
           <caret line="43" column="17" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2423,6 +2261,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.604908" vertical-offset="0" max-vertical-offset="815">
           <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2447,18 +2286,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/SplashActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="920" max-vertical-offset="2227">
-          <caret line="123" column="24" selection-start-line="123" selection-start-column="24" selection-end-line="123" selection-end-column="24" />
-          <folding>
-            <element signature="method#verificarClienteCadastrado#0;class#SplashActivity#0" expanded="false" />
-            <element signature="method#setStatusApresentacao#0;class#SplashActivity#0" expanded="false" />
-            <element signature="method#startDados#0;class#SplashActivity#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/utils/LoadImage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.24862888" vertical-offset="0" max-vertical-offset="646">
@@ -2467,40 +2294,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/activity_cadastro_cliente.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.3648915" vertical-offset="521" max-vertical-offset="2686">
-          <caret line="131" column="23" selection-start-line="131" selection-start-column="23" selection-end-line="131" selection-end-column="23" />
-          <folding>
-            <element signature="e#957#986#0" expanded="true" />
-            <element signature="e#1025#1055#0" expanded="true" />
-            <element signature="e#1207#1225#0" expanded="true" />
-            <element signature="e#1854#1889#0" expanded="true" />
-            <element signature="e#2151#2165#0" expanded="true" />
-            <element signature="e#2665#2680#0" expanded="true" />
-            <element signature="e#3261#3278#0" expanded="true" />
-            <element signature="e#3858#3879#0" expanded="true" />
-            <element signature="e#5234#5252#0" expanded="true" />
-            <element signature="e#5865#5881#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/network/EmpresaRequest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.95318353" vertical-offset="35" max-vertical-offset="935">
           <caret line="41" column="61" selection-start-line="41" selection-start-column="61" selection-end-line="41" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/models/Cliente.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28519195" vertical-offset="65" max-vertical-offset="918">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -2522,26 +2319,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/network/ClienteRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16087751" vertical-offset="65" max-vertical-offset="714">
-          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
-          <folding>
-            <element signature="e#522#523#0" expanded="true" />
-            <element signature="e#553#554#0" expanded="true" />
-            <element signature="e#698#713#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/CadastroClienteActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.559415" vertical-offset="0" max-vertical-offset="547">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2569,8 +2346,75 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/views/actionbar/ActionBar.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36932516" vertical-offset="651" max-vertical-offset="4913">
-          <caret line="56" column="13" selection-start-line="56" selection-start-column="13" selection-end-line="56" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.6404908" vertical-offset="651" max-vertical-offset="4913">
+          <caret line="71" column="49" selection-start-line="71" selection-start-column="49" selection-end-line="71" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/network/ClienteRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="680">
+          <caret line="15" column="53" selection-start-line="15" selection-start-column="53" selection-end-line="15" selection-end-column="53" />
+          <folding>
+            <element signature="e#698#713#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/models/Cliente.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/beachStopAndroid/build/generated/source/r/debug/com/login/beachstop/android/R.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34362933" vertical-offset="8573" max-vertical-offset="23171">
+          <caret line="525" column="32" selection-start-line="525" selection-start-column="32" selection-end-line="525" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/DefaultActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12515338" vertical-offset="0" max-vertical-offset="815">
+          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="12" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/activity_cadastro_cliente.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.1111112" vertical-offset="1898" max-vertical-offset="2703">
+          <caret line="115" column="0" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/SplashActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1425" max-vertical-offset="2227">
+          <caret line="196" column="8" selection-start-line="196" selection-start-column="8" selection-end-line="196" selection-end-column="61" />
+          <folding>
+            <element signature="method#verificarClienteCadastrado#0;class#SplashActivity#0" expanded="false" />
+            <element signature="method#setStatusApresentacao#0;class#SplashActivity#0" expanded="false" />
+            <element signature="method#startDados#0;class#SplashActivity#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/CadastroClienteActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44513714" vertical-offset="0" max-vertical-offset="833">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

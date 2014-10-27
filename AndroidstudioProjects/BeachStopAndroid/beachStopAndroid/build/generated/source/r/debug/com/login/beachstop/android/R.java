@@ -482,25 +482,33 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int yammer=0x7f02006a;
     }
     public static final class id {
-        public static final int actionbar=0x7f060005;
-        public static final int activity_cadastro_cliente_button_cancelar=0x7f060010;
-        public static final int activity_cadastro_cliente_button_salvar=0x7f060011;
-        public static final int activity_cadastro_cliente_edit_text_celular=0x7f06000d;
-        public static final int activity_cadastro_cliente_edit_text_data_nascimento=0x7f06000f;
-        public static final int activity_cadastro_cliente_edit_text_email=0x7f06000b;
-        public static final int activity_cadastro_cliente_edit_text_nome=0x7f060009;
-        public static final int activity_cadastro_cliente_text_view_celular=0x7f06000c;
-        public static final int activity_cadastro_cliente_text_view_data_nascimento=0x7f06000e;
-        public static final int activity_cadastro_cliente_text_view_email=0x7f06000a;
-        public static final int activity_cadastro_cliente_text_view_nome=0x7f060008;
-        public static final int activity_cadastro_cliente_text_view_saudacao=0x7f060007;
-        public static final int activity_splash_image_button=0x7f060013;
-        public static final int activity_splash_imagem_welcome=0x7f060012;
-        public static final int activity_splash_progressBar=0x7f060015;
-        public static final int activity_splash_textView=0x7f060014;
+        public static final int actionbar=0x7f06000d;
+        public static final int actionbar_actions=0x7f06000b;
+        public static final int actionbar_home=0x7f060006;
+        public static final int actionbar_home_bg=0x7f060008;
+        public static final int actionbar_home_btn=0x7f060009;
+        public static final int actionbar_home_is_back=0x7f06000a;
+        public static final int actionbar_home_logo=0x7f060007;
+        public static final int actionbar_item=0x7f06000c;
+        public static final int activity_cadastro_cliente_button_cancelar=0x7f060018;
+        public static final int activity_cadastro_cliente_button_salvar=0x7f060019;
+        public static final int activity_cadastro_cliente_edit_text_celular=0x7f060015;
+        public static final int activity_cadastro_cliente_edit_text_data_nascimento=0x7f060017;
+        public static final int activity_cadastro_cliente_edit_text_email=0x7f060013;
+        public static final int activity_cadastro_cliente_edit_text_nome=0x7f060011;
+        public static final int activity_cadastro_cliente_text_view_celular=0x7f060014;
+        public static final int activity_cadastro_cliente_text_view_data_nascimento=0x7f060016;
+        public static final int activity_cadastro_cliente_text_view_email=0x7f060012;
+        public static final int activity_cadastro_cliente_text_view_nome=0x7f060010;
+        public static final int activity_cadastro_cliente_text_view_saudacao=0x7f06000f;
+        public static final int activity_splash_image_button=0x7f06001b;
+        public static final int activity_splash_imagem_welcome=0x7f06001a;
+        public static final int activity_splash_progressBar=0x7f06001d;
+        public static final int activity_splash_textView=0x7f06001c;
         public static final int bottom=0x7f060003;
-        public static final int imagem_action_bar=0x7f060006;
+        public static final int imagem_action_bar=0x7f06000e;
         public static final int none=0x7f060000;
+        public static final int screen=0x7f060005;
         public static final int top=0x7f060004;
         public static final int triangle=0x7f060001;
         public static final int underline=0x7f060002;
@@ -513,8 +521,10 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int default_underline_indicator_fade_length=0x7f080004;
     }
     public static final class layout {
-        public static final int activity_cadastro_cliente=0x7f030000;
-        public static final int activity_splash=0x7f030001;
+        public static final int actionbar=0x7f030000;
+        public static final int actionbar_item=0x7f030001;
+        public static final int activity_cadastro_cliente=0x7f030002;
+        public static final int activity_splash=0x7f030003;
     }
     public static final class string {
         public static final int Salvar=0x7f090000;

@@ -131,7 +131,8 @@
                     android:padding="10dp"
                     android:text="@string/cancelar"
                     android:textColor="#0B405F"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:onClick="cancelar"/>
 
                 <Button
                     android:id="@+id/activity_cadastro_cliente_button_salvar"
