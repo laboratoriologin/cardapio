@@ -501,14 +501,28 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int activity_cadastro_cliente_text_view_email=0x7f060012;
         public static final int activity_cadastro_cliente_text_view_nome=0x7f060010;
         public static final int activity_cadastro_cliente_text_view_saudacao=0x7f06000f;
-        public static final int activity_splash_image_button=0x7f06001b;
-        public static final int activity_splash_imagem_welcome=0x7f06001a;
-        public static final int activity_splash_progressBar=0x7f06001d;
-        public static final int activity_splash_textView=0x7f06001c;
+        public static final int activity_checkin_progres_bar=0x7f06001e;
+        public static final int activity_checkin_share=0x7f060021;
+        public static final int activity_checkin_text_view_boas_vindas=0x7f06001b;
+        public static final int activity_checkin_text_view_lbl_mesa=0x7f06001c;
+        public static final int activity_checkin_text_view_lbl_msg=0x7f06001f;
+        public static final int activity_checkin_text_view_mesa=0x7f06001d;
+        public static final int activity_checkin_text_view_qr_code=0x7f060020;
+        public static final int activity_sobre_restaurante_web_view=0x7f060022;
+        public static final int activity_splash_image_button=0x7f060024;
+        public static final int activity_splash_imagem_welcome=0x7f060023;
+        public static final int activity_splash_progressBar=0x7f060026;
+        public static final int activity_splash_textView=0x7f060025;
         public static final int bottom=0x7f060003;
+        public static final int icon=0x7f060027;
         public static final int imagem_action_bar=0x7f06000e;
         public static final int none=0x7f060000;
         public static final int screen=0x7f060005;
+        public static final int tabsImagemView=0x7f06002a;
+        public static final int tabsLayout=0x7f060029;
+        public static final int tabsText=0x7f06002b;
+        public static final int text_view_action_bar=0x7f06001a;
+        public static final int title=0x7f060028;
         public static final int top=0x7f060004;
         public static final int triangle=0x7f060001;
         public static final int underline=0x7f060002;
@@ -524,7 +538,13 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int actionbar=0x7f030000;
         public static final int actionbar_item=0x7f030001;
         public static final int activity_cadastro_cliente=0x7f030002;
-        public static final int activity_splash=0x7f030003;
+        public static final int activity_checkin=0x7f030003;
+        public static final int activity_main=0x7f030004;
+        public static final int activity_sobre_restaurante=0x7f030005;
+        public static final int activity_splash=0x7f030006;
+        public static final int tab_indicator=0x7f030007;
+        public static final int tabs_bg=0x7f030008;
+        public static final int tabs_bg_pedido=0x7f030009;
     }
     public static final class string {
         public static final int Salvar=0x7f090000;

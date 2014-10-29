@@ -1964,37 +1964,51 @@ bold
                 type="layout" />
             <file
                 name="actionbar_item"
-<<<<<<< HEAD
                 path="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\src\main\res\layout\actionbar_item.xml"
-=======
-                path="/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/layout/actionbar_item.xml"
->>>>>>> a3e78070ae6e706a5f106da6e822a777bb137074
                 qualifiers=""
                 type="layout" />
             <file
                 name="activity_cadastro_cliente"
-<<<<<<< HEAD
                 path="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\src\main\res\layout\activity_cadastro_cliente.xml"
-=======
-                path="/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/layout/activity_cadastro_cliente.xml"
->>>>>>> a3e78070ae6e706a5f106da6e822a777bb137074
+                qualifiers=""
+                type="layout" />
+            <file
+                name="activity_checkin"
+                path="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\src\main\res\layout\activity_checkin.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="activity_main"
+                path="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\src\main\res\layout\activity_main.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="activity_sobre_restaurante"
+                path="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\src\main\res\layout\activity_sobre_restaurante.xml"
                 qualifiers=""
                 type="layout" />
             <file
                 name="activity_splash"
-<<<<<<< HEAD
                 path="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\src\main\res\layout\activity_splash.xml"
                 qualifiers=""
                 type="layout" />
             <file
-                path="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\src\main\res\values\colors.xml"
-=======
-                path="/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/layout/activity_splash.xml"
+                name="tabs_bg"
+                path="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\src\main\res\layout\tabs_bg.xml"
                 qualifiers=""
                 type="layout" />
             <file
-                path="/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/values/colors.xml"
->>>>>>> a3e78070ae6e706a5f106da6e822a777bb137074
+                name="tabs_bg_pedido"
+                path="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\src\main\res\layout\tabs_bg_pedido.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="tab_indicator"
+                path="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\src\main\res\layout\tab_indicator.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                path="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\src\main\res\values\colors.xml"
                 qualifiers="" >
                 <color name="actionbar_title" >#FFFFFF
                 </color>
@@ -2070,7 +2084,6 @@ bold
             <file
                 path="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\src\main\res\values\strings.xml"
                 qualifiers="" >
-<<<<<<< HEAD
                 <string name="email" >Email
                 </string>
                 <string name="ingredientes" >Ingredientes
@@ -2086,13 +2099,6 @@ bold
                 <string name="tempo_medio" >Tempo médio \nde preparo
                 </string>
                 <string name="call_garcom" >Chamar Garçom
-=======
-                <string name="no_network_connection_toast" >Erro na internet!
-                </string>
-                <string name="nome" >Nome
-                </string>
-                <string name="Salvar" >Salvar
->>>>>>> a3e78070ae6e706a5f106da6e822a777bb137074
                 </string>
                 <string name="aniversario" >Aniversário
                 </string>
@@ -2104,8 +2110,7 @@ bold
                 </string>
                 <string name="app_id" >600470246741282
                 </string>
-<<<<<<< HEAD
-                <string name="saudacao_cadastro_cliente" >Olá! Bem vindo ao BeachStop ipitanga, para sua comodida, gostariamos de sabger quem você é!
+                <string name="saudacao_cadastro_cliente" >Olá! Bem vindo ao BeachStop Ipitanga, para sua comodida, gostariamos de saber quem é você!
                 </string>
                 <string name="Salvar" >Salvar
                 </string>
@@ -2116,29 +2121,6 @@ bold
                 <string name="enviar_conta" >Solicitar a conta
                 </string>
                 <string name="enviar_pedido" >Enviar o pedido
-=======
-                <string name="aniversario" >Aniversário
-                </string>
-                <string name="finalizar_pedido" >Pedir
-                </string>
-                <string name="ingredientes" >Ingredientes
-                </string>
-                <string name="enviar_pedido" >Enviar o pedido
-                </string>
-                <string name="saudacao_cadastro_cliente" >Olá! Bem vindo ao BeachStop ipitanga, para sua comodida, gostariamos de sabger quem você é!
-                </string>
-                <string name="email" >Email
-                </string>
-                <string name="call_garcom" >Chamar Garçom
-                </string>
-                <string name="celular" >Celular
-                </string>
-                <string name="cancelar" >Cancelar
-                </string>
-                <string name="acompanhamentos" >Acompanhamentos
-                </string>
-                <string name="sobre_o_prato" >Sobre o prato
->>>>>>> a3e78070ae6e706a5f106da6e822a777bb137074
                 </string>
             </file>
             <file
