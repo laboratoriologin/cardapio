@@ -8,7 +8,7 @@ import br.com.topsys.database.factory.TSDataBaseBrokerFactory;
 import br.com.topsys.exception.TSApplicationException;
 import br.com.topsys.util.TSUtil;
 
-public class ContaDAO  implements RestDAO<Conta> {
+public class ContaDAO implements RestDAO<Conta> {
 
 	@Override
 	public Conta get(Long id) {
@@ -19,6 +19,24 @@ public class ContaDAO  implements RestDAO<Conta> {
 
 		return (Conta) broker.getObjectBean(Conta.class, "cliente.id", "dataAbertura", "dataFechamento", "id", "numero", "qtdPessoa", "tipoConta");
 
+	}
+
+	public Conta getByNumeroTipoConta(Integer numero, Boolean tipoMesa, Boolean isAnalitico) {
+
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+
+		broker.setPropertySQL("contadao.getbynumerotipoconta", numero, tipoMesa);
+
+		Conta conta = (Conta) broker.getObjectBean(Conta.class, "cliente.id", "dataAbertura", "dataFechamento", "id", "numero", "qtdPessoa", "tipoConta");
+
+		if (conta != null && isAnalitico) {
+
+			// TODO: Incluir os pedidos e os subitens do pedido para a conta ser
+			// carregada de forma analítica
+
+		}
+
+		return conta;
 	}
 
 	@Override
@@ -39,7 +57,7 @@ public class ContaDAO  implements RestDAO<Conta> {
 
 		model.setId(broker.getSequenceNextValue("dbo.contas "));
 
-		broker.setPropertySQL("contadao.insert",model.getCliente().getId(), model.getDataAbertura(), model.getDataFechamento(), model.getNumero(), model.getQtdPessoa(), model.getTipoConta());
+		broker.setPropertySQL("contadao.insert", model.getCliente().getId(), model.getDataAbertura(), model.getDataFechamento(), model.getNumero(), model.getQtdPessoa(), model.getTipoConta());
 
 		broker.execute();
 

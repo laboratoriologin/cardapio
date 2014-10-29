@@ -58,6 +58,7 @@ public abstract class RestService<T extends RestModel> {
 
 	@POST
 	@Path("")
+	@Produces("application/json; charset=UTF-8")
 	public T insert(@Form T form) throws ApplicationException {
 		try {
 
@@ -79,7 +80,7 @@ public abstract class RestService<T extends RestModel> {
 
 	@PUT
 	@Path("/{id}")
-	@Produces("application/json")
+	@Produces("application/json; charset=UTF-8")
 	public T update(@Form T form, @PathParam("id") Long id) throws ApplicationException {
 
 		try {

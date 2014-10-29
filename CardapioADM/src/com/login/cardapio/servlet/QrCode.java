@@ -57,25 +57,6 @@ public class QrCode extends HttpServlet {
 			return;
 		}
 
-		// for (int i = 100; i <= 200; i++) {
-		//
-		// ByteArrayOutputStream out = QRCode.from("mesa=" + i + "&empresa=" +
-		// usuario.getEmpresa().getKeyMobile()).to(ImageType.PNG).withSize(500,
-		// 500).stream();
-		// FileOutputStream fos = new FileOutputStream(new File("c:\\qrcode\\" +
-		// i +".png"));
-		//
-		// try {
-		// out.writeTo(fos);
-		// } catch (IOException ioe) {
-		// // Handle exception here
-		// ioe.printStackTrace();
-		// } finally {
-		// fos.close();
-		// }
-		//
-		// }
-
 		List<Empresa> listEmpresa = new Empresa().findAll("id");
 		if (listEmpresa.size() != 0) {
 
