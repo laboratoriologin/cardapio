@@ -53,5 +53,12 @@ public final class Constantes {
 
     }
 
+    public interface TipoCategoriaCardapio {
+
+        Long ITEM = 1l;
+        Long KIT = 2l;
+        Long TODOS = 3l;
+
+    }
 
 }

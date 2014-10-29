@@ -1,10 +1,12 @@
 package br.com.login.cardapio.beachstop.ws.model;
 
+import java.util.List;
+
 import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @SuppressWarnings("serial")
-@XmlRootElement(name ="item")
+@XmlRootElement(name = "item")
 public final class Item extends RestModel {
 
 	@FormParam("categoria")
@@ -15,7 +17,7 @@ public final class Item extends RestModel {
 	}
 
 	public void setCategoria(Categoria categoria) {
-		this.categoria=categoria;
+		this.categoria = categoria;
 	}
 
 	@FormParam("descricao")
@@ -26,7 +28,7 @@ public final class Item extends RestModel {
 	}
 
 	public void setDescricao(String descricao) {
-		this.descricao=descricao;
+		this.descricao = descricao;
 	}
 
 	@FormParam("flagativo")
@@ -37,7 +39,7 @@ public final class Item extends RestModel {
 	}
 
 	public void setFlagAtivo(Boolean flagAtivo) {
-		this.flagAtivo=flagAtivo;
+		this.flagAtivo = flagAtivo;
 	}
 
 	@FormParam("image")
@@ -48,7 +50,7 @@ public final class Item extends RestModel {
 	}
 
 	public void setImage(String image) {
-		this.image=image;
+		this.image = image;
 	}
 
 	@FormParam("ingrediente")
@@ -59,7 +61,7 @@ public final class Item extends RestModel {
 	}
 
 	public void setIngrediente(String ingrediente) {
-		this.ingrediente=ingrediente;
+		this.ingrediente = ingrediente;
 	}
 
 	@FormParam("nome")
@@ -70,7 +72,7 @@ public final class Item extends RestModel {
 	}
 
 	public void setNome(String nome) {
-		this.nome=nome;
+		this.nome = nome;
 	}
 
 	@FormParam("ordem")
@@ -81,7 +83,7 @@ public final class Item extends RestModel {
 	}
 
 	public void setOrdem(Integer ordem) {
-		this.ordem=ordem;
+		this.ordem = ordem;
 	}
 
 	@FormParam("tempopreparo")
@@ -92,12 +94,24 @@ public final class Item extends RestModel {
 	}
 
 	public void setTempoPreparo(Integer tempoPreparo) {
-		this.tempoPreparo=tempoPreparo;
+		this.tempoPreparo = tempoPreparo;
 	}
 
-	public Item(){}
+	@FormParam("subitens")
+	private List<SubItem> subItens;
 
-	public Item(String id){
+	public List<SubItem> getSubItens() {
+		return subItens;
+	}
+
+	public void setSubItens(List<SubItem> subItens) {
+		this.subItens = subItens;
+	}
+
+	public Item() {
+	}
+
+	public Item(String id) {
 		this.id = Long.valueOf(id);
 	}
 }

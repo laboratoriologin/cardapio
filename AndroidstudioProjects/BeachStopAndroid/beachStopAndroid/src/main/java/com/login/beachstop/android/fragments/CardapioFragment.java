@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -16,12 +17,14 @@ import android.widget.Toast;
 
 import com.login.beachstop.android.CardapioActivity;
 import com.login.beachstop.android.R;
+import com.login.beachstop.android.models.Categoria;
 import com.login.beachstop.android.models.Publicidade;
 import com.login.beachstop.android.models.ServerResponse;
 import com.login.beachstop.android.network.PublicidadeRequest;
 import com.login.beachstop.android.network.http.ResponseListener;
 import com.login.beachstop.android.utils.Constantes;
 import com.login.beachstop.android.views.actionbar.ActionBar;
+import com.login.beachstop.android.views.adapters.GridCategoriaAdapter;
 import com.login.beachstop.android.views.adapters.PublicidadeFragmentAdapter;
 import com.viewpagerindicator.PageIndicator;
 
@@ -39,11 +42,12 @@ public class CardapioFragment extends Fragment {
     private View view;
     private CardapioActivity activity;
     private List<Publicidade> publicidades = null;
+    private List<Categoria> categorias;
     private ViewPager viewPagerMidia = null;
     private PageIndicator mIndicator = null;
     private PublicidadeFragmentAdapter publicidadeFragmentAdapter = null;
     private GridView gridViewMenu;
-    private GridItensItemCardapioAdapter gridItensItemMenuAdapter;
+    private GridCategoriaAdapter gridCategoriaAdapter;
     private Handler handler;
     private Runnable runnable;
     private int position;
@@ -134,25 +138,33 @@ public class CardapioFragment extends Fragment {
 
         new PublicidadeRequest(listenerGetPublicidade).get(null);
 
-        this.gridItensItemMenuAdapter = new GridItensItemCardapioAdapter(this.activity, this.activity.getListaItemCardapio(), new CatagoriaCardapio());
-        this.gridViewMenu.setAdapter(gridItensItemMenuAdapter);
+        this.categorias = this.activity.getDataManager().getCategoriaDAO().getAll();
+
+        this.gridCategoriaAdapter = new GridCategoriaAdapter(this.activity, this.categorias);
+        this.gridViewMenu.setAdapter(this.gridCategoriaAdapter);
 
         this.gridViewMenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 
-                ImageView imageView = (ImageView) v.findViewById(R.id.grid_view_item_menu_image_view);
-                CategoriaCardapioItemSys itemMenu = (CategoriaCardapioItemSys) imageView.getTag();
+                ImageView imageView = (ImageView) v.findViewById(R.id.adapter_grid_view_categoria_image_view);
+                Categoria categoria = (Categoria) imageView.getTag();
 
-                if (ListaItemCardapioFragment.class.equals(itemMenu.getClasse())) {
+                if (Constantes.TipoCategoriaCardapio.ITEM == categoria.getTipoCategoria()) {
 
-                    goToFragmentListaItemCardapio(itemMenu);
+                    goToItemFragment(categoria);
 
-                } else if (ListaTodosItemCardapioFragment.class.equals(itemMenu.getClasse())) {
+                } else if (Constantes.TipoCategoriaCardapio.TODOS == categoria.getTipoCategoria()) {
 
-                    goToFragmentListaTodosItemCardapio(itemMenu);
+                    goToFragmentListaTodosItemCardapio(categoria);
+
+                } else if (Constantes.TipoCategoriaCardapio.KIT == categoria.getTipoCategoria()) {
+
+                    goToItemFragment(categoria);
 
                 }
             }
+
         });
 
         this.viewPagerMidia.setOnTouchListener(new View.OnTouchListener() {
@@ -170,39 +182,31 @@ public class CardapioFragment extends Fragment {
         return view;
     }
 
-    private void goToFragmentListaTodosItemCardapio(CategoriaCardapioItemSys itemMenu) {
+    private void goToFragmentListaTodosItemCardapio(Categoria categoria) {
 
-        ListaTodosItemCardapioFragment newFragment = new ListaTodosItemCardapioFragment();
+        ItemAllFragment newFragment = new ItemAllFragment();
         Bundle args = new Bundle();
-        args.putSerializable(Constantes.ARG_CATEGORIA_CARDAPIO, itemMenu);
+        args.putSerializable(Constantes.ARG_CATEGORIA_CARDAPIO, categoria);
         newFragment.setArguments(args);
         FragmentTransaction transaction = this.activity.getSupportFragmentManager().beginTransaction();
 
-        transaction.replace(R.id.activity_home_fragment_layout, newFragment);
+        transaction.replace(R.id.activity_cardapio_fragment_layout, newFragment);
         transaction.addToBackStack(null);
 
         transaction.commit();
     }
 
-    public void goToFragmentListaItemCardapio(CategoriaCardapioItemSys itemMenu) {
-        // If the frag is not available, we're in the one-pane layout and must
-        // swap frags...
+    public void goToItemFragment(Categoria categoria) {
 
-        // Create fragment and give it an argument for the selected article
-        ListaItemCardapioFragment newFragment = new ListaItemCardapioFragment();
+        ItemFragment newFragment = new ItemFragment();
         Bundle args = new Bundle();
-        args.putSerializable(Constantes.ARG_CATEGORIA_CARDAPIO, itemMenu);
+        args.putSerializable(Constantes.ARG_CATEGORIA_CARDAPIO, categoria);
         newFragment.setArguments(args);
         FragmentTransaction transaction = this.activity.getSupportFragmentManager().beginTransaction();
 
-        // Replace whatever is in the fragment_container view with this
-        // fragment,
-        // and add the transaction to the back stack so the user can navigate
-        // back
-        transaction.replace(R.id.activity_home_fragment_layout, newFragment);
+        transaction.replace(R.id.activity_cardapio_fragment_layout, newFragment);
         transaction.addToBackStack(null);
 
-        // Commit the transaction
         transaction.commit();
     }
 

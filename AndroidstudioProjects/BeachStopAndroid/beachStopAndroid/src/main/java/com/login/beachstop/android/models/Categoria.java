@@ -34,6 +34,12 @@ public class Categoria extends Base {
     @Column(name = "IMAGEM")
     private String imagem;
 
+    @Column(name = "TIPO_CATEGORIA")
+    private Long tipoCategoria;
+
+    @Column(name = "RESOURCE_IMG")
+    private int resourceImg;
+
     public Categoria() {
         setServiceName("categorias");
     }
@@ -97,5 +103,21 @@ public class Categoria extends Base {
     @Override
     public void setServiceName(String serviceName) {
         this.serviceName = serviceName;
+    }
+
+    public Long getTipoCategoria() {
+        return tipoCategoria;
+    }
+
+    public void setTipoCategoria(Long tipoCategoria) {
+        this.tipoCategoria = tipoCategoria;
+    }
+
+    public int getResourceImg() {
+        return resourceImg;
+    }
+
+    public void setResourceImg(int resourceImg) {
+        this.resourceImg = resourceImg;
     }
 }

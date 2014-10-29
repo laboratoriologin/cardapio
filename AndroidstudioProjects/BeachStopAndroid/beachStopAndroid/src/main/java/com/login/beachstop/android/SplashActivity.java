@@ -37,7 +37,12 @@ public class SplashActivity extends DefaultActivity {
                     try {
 
                         textView.setText(Constantes.MSG_SAUDACAO_UM);
-                        getDataManager().getCategoriaDAO().save((List<Categoria>) serverResponse.getReturnObject());
+
+                        List<Categoria> categorias = (List<Categoria>) serverResponse.getReturnObject();
+
+                        configCategoria(categorias);
+
+                        getDataManager().getCategoriaDAO().save(categorias);
 
                         verificarClienteCadastrado();
 
@@ -109,6 +114,38 @@ public class SplashActivity extends DefaultActivity {
             }
         }
     };
+
+    private void configCategoria(List<Categoria> categorias) {
+
+        for (Categoria categoria : categorias) {
+
+            categoria.setTipoCategoria(Constantes.TipoCategoriaCardapio.ITEM);
+
+        }
+
+        Categoria categoria = new Categoria();
+        categoria.setId(98l);
+        categoria.setTipoCategoria(Constantes.TipoCategoriaCardapio.KIT);
+        categoria.setArea(1l);
+        categoria.setDescricao("Kit");
+        categoria.setFlagAtivo(true);
+        categoria.setOrdem(98l);
+        categoria.setResourceImg(R.drawable.bt_home_todos_pratos);
+
+        categorias.add(categoria);
+
+        categoria = new Categoria();
+        categoria.setId(99l);
+        categoria.setTipoCategoria(Constantes.TipoCategoriaCardapio.TODOS);
+        categoria.setArea(1l);
+        categoria.setDescricao("Todos");
+        categoria.setFlagAtivo(true);
+        categoria.setOrdem(99l);
+        categoria.setResourceImg(R.drawable.bt_home_todos_pratos);
+
+        categorias.add(categoria);
+
+    }
 
     private void verificarClienteCadastrado() {
 

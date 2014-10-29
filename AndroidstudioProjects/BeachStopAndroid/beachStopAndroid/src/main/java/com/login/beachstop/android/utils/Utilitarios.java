@@ -19,6 +19,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Collection;
 
 public class Utilitarios {
 
@@ -157,5 +158,22 @@ public class Utilitarios {
             throw e;
         }
         return date;
+    }
+
+    public static String joinToString(Collection<?> collection, CharSequence separator) {
+
+        if (collection.isEmpty()) {
+            return "";
+        } else {
+            StringBuilder sepValueBuilder = new StringBuilder();
+            for (Object obj : collection) {
+                // Append the valuen and the separator even if it's the las
+                // element
+                sepValueBuilder.append(obj).append(separator);
+            }
+            // Remove the last separator
+            sepValueBuilder.setLength(sepValueBuilder.length() - separator.length());
+            return sepValueBuilder.toString();
+        }
     }
 }

@@ -1,5 +1,6 @@
 package com.login.beachstop.android.views.adapters;
 
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,9 @@ import android.widget.ImageView;
 import com.login.beachstop.android.DefaultActivity;
 import com.login.beachstop.android.R;
 import com.login.beachstop.android.models.Categoria;
+import com.login.beachstop.android.utils.Constantes;
+import com.login.beachstop.android.utils.DrawableManager;
+import com.login.beachstop.android.utils.LoadImage;
 
 import java.util.List;
 
@@ -35,9 +39,19 @@ public class GridCategoriaAdapter extends BaseAdapter {
 
         ImageView imgViewItem = (ImageView) convertView.findViewById(R.id.adapter_grid_view_categoria_image_view);
 
-        imgViewItem.setBackgroundResource(itemMenu.getResourceImg());
+        Drawable img = DrawableManager.getDrawableManager().getDrawable(Constantes.URL_IMG + categoria.getImagem());
 
-        imgViewItem.setTag(categoria.getDescricao());
+        if (img == null) {
+
+            new LoadImage(imgViewItem, convertView.getContext()).execute(Constantes.URL_IMG + categoria.getImagem());
+
+        } else {
+
+            imgViewItem.setImageDrawable(img);
+
+        }
+
+        imgViewItem.setTag(categoria);
 
         return convertView;
     }
