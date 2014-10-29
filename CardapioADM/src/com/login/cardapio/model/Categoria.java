@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import br.com.topsys.database.hibernate.TSActiveRecordAb;
 
@@ -36,6 +37,9 @@ public class Categoria extends TSActiveRecordAb<Categoria> {
 	private Area area;
 
 	private String imagem;
+
+	@Transient
+	private String imagemTopo;
 
 	public Categoria() {
 		setArea(new Area());
@@ -87,6 +91,17 @@ public class Categoria extends TSActiveRecordAb<Categoria> {
 
 	public void setImagem(String imagem) {
 		this.imagem = imagem;
+	}
+
+	public String getImagemTopo() {
+		if (imagem!=null) {
+			return "topo_"+imagem;
+		}
+		return imagemTopo;
+	}
+
+	public void setImagemTopo(String imagemTopo) {
+		this.imagemTopo = imagemTopo;
 	}
 
 	@Override
