@@ -1,7 +1,9 @@
 package com.login.beachstop.android.models;
 
 import org.droidpersistence.annotation.Column;
+import org.droidpersistence.annotation.PrimaryKey;
 import org.droidpersistence.annotation.Table;
+import org.droidpersistence.annotation.Transient;
 
 import java.math.BigDecimal;
 
@@ -11,6 +13,13 @@ import java.math.BigDecimal;
 @SuppressWarnings("serial")
 @Table(name = "KIT")
 public class Kit extends Base {
+
+    @PrimaryKey
+    @Column(name = "ID")
+    protected Long id;
+
+    @Transient
+    protected String serviceName;
 
     @Column(name = "NOME")
     private String nome;
@@ -88,5 +97,25 @@ public class Kit extends Base {
 
     public void setDescontoBigDecimal(BigDecimal desconto) {
         this.setDescricao(descricao.toString());
+    }
+
+    @Override
+    public Long getId() {
+        return this.id;
+    }
+
+    @Override
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Override
+    public String getServiceName() {
+        return this.serviceName;
+    }
+
+    @Override
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
     }
 }

@@ -22,9 +22,9 @@ import java.util.List;
 public class SplashActivity extends DefaultActivity {
 
     private final int SPLASH_MILIS = 1000;
-    private ProgressBar progressBar;
-    private TextView textView;
-    private ImageButton imageButton;
+    protected ProgressBar progressBar;
+    protected TextView textView;
+    protected ImageButton imageButton;
     private ResponseListener responseCategorias = new ResponseListener() {
 
         @Override
@@ -36,6 +36,7 @@ public class SplashActivity extends DefaultActivity {
 
                     try {
 
+                        textView.setText(Constantes.MSG_SAUDACAO_UM);
                         getDataManager().getCategoriaDAO().save((List<Categoria>) serverResponse.getReturnObject());
 
                         verificarClienteCadastrado();
@@ -80,6 +81,7 @@ public class SplashActivity extends DefaultActivity {
 
                             if (getDataManager().getCategoriaDAO().deleteAll() && getDataManager().getKitDAO().deleteAll()) {
 
+                                textView.setText(Constantes.MSG_SAUDACAO_UM);
                                 new CategoriaRequest(responseCategorias).getAtivo();
 
                             } else {
@@ -111,9 +113,13 @@ public class SplashActivity extends DefaultActivity {
     private void verificarClienteCadastrado() {
 
         if (!getDataManager().getClienteDAO().hasCliente()) {
+
             goToCadastroCliente();
+
         } else {
+
             goCardapio();
+
         }
 
     }
@@ -146,11 +152,9 @@ public class SplashActivity extends DefaultActivity {
 
     private void setStatusApresentacao(boolean isVisibleProgressBar, boolean isVisibleTextView, String textApresentacao, boolean isVisibleImageButton) {
 
-        if (isVisibleProgressBar) {
-            progressBar.setVisibility(ProgressBar.VISIBLE);
-        } else {
-            progressBar.setVisibility(ProgressBar.GONE);
-        }
+        progressBar.setVisibility(isVisibleProgressBar ? ProgressBar.VISIBLE : ProgressBar.GONE);
+
+        imageButton.setVisibility(isVisibleImageButton ? ImageButton.VISIBLE : ImageButton.GONE);
 
         if (isVisibleTextView) {
             textView.setVisibility(TextView.VISIBLE);
@@ -159,11 +163,7 @@ public class SplashActivity extends DefaultActivity {
             textView.setVisibility(TextView.GONE);
         }
 
-        if (isVisibleImageButton) {
-            imageButton.setVisibility(ImageButton.VISIBLE);
-        } else {
-            imageButton.setVisibility(ImageButton.GONE);
-        }
+
     }
 
     private void startDados() {
@@ -185,9 +185,9 @@ public class SplashActivity extends DefaultActivity {
 
     private void goCardapio() {
 
-//        Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
-//        SplashActivity.this.startActivity(mainIntent);
-//        SplashActivity.this.finish();
+        Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
+        SplashActivity.this.startActivity(mainIntent);
+        SplashActivity.this.finish();
 
     }
 

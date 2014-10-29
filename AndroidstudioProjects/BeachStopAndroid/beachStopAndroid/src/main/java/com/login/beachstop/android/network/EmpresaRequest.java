@@ -27,32 +27,59 @@ public class EmpresaRequest extends ObjectRequest<Empresa> {
         this.execute(serverRequest);
     }
 
+    public void getHtml() {
+
+        String urlgetAtivo = Constantes.URL_WS + "/" + new Empresa().getServiceName() + "/1/htmlEmpresa";
+
+        ServerRequest serverRequest = new ServerRequest(ServerRequest.GET, urlgetAtivo, null);
+
+        this.execute(serverRequest);
+    }
+
     @Override
     protected void handleResponse(ServerResponse serverResponse) {
 
         if (serverResponse.isOK()) {
 
             Empresa empresa;
+            JSONObject jsonEmpresa;
 
             try {
 
-                Long keyCardapio = ((JSONObject) serverResponse.getReturnObject()).getJSONObject("empresa").getLong(Constantes.KEY_CARDAPIO);
+                if (((JSONObject) serverResponse.getReturnObject()).has("empresa")) {
 
-                empresa = new Empresa();
-                empresa.setKeyCardapio(keyCardapio.toString());
+                    jsonEmpresa = ((JSONObject) serverResponse.getReturnObject()).getJSONObject("empresa");
 
-                serverResponse.setReturnObject(empresa);
+                    empresa = new Empresa();
+                    empresa.setId(jsonEmpresa.has("id") ? jsonEmpresa.getLong("id") : null);
+                    empresa.setEmail(jsonEmpresa.has("email") ? jsonEmpresa.getString("email") : "");
+                    empresa.setEndereco(jsonEmpresa.has("endereco") ? jsonEmpresa.getString("endereco") : "");
+                    empresa.setHtml(jsonEmpresa.has("htmlEmpresa") ? jsonEmpresa.getString("htmlEmpresa") : "");
+                    empresa.setKeyCardapio((jsonEmpresa.has("keyCardapio") ? jsonEmpresa.getLong("keyCardapio") : "").toString());
+                    empresa.setKeyMobile(jsonEmpresa.has("keyMobile") ? jsonEmpresa.getString("keyMobile") : "");
+                    empresa.setLatitude((jsonEmpresa.has("latitude") ? jsonEmpresa.getLong("latitude") : "").toString());
+                    empresa.setLongitude((jsonEmpresa.has("longitude") ? jsonEmpresa.getLong("longitude") : "").toString());
+                    empresa.setNome(jsonEmpresa.has("nome") ? jsonEmpresa.getString("nome") : "");
+                    empresa.setTelefone((jsonEmpresa.has("telefone") ? jsonEmpresa.getLong("telefone") : "").toString());
+
+
+                    serverResponse.setReturnObject(empresa);
+
+                } else {
+
+                    serverResponse.setReturnObject(new Empresa());
+
+                }
 
 
             } catch (JSONException e) {
-                e.printStackTrace();
 
+                e.printStackTrace();
                 serverResponse.setStatusCode(-1);
             }
 
         }
 
     }
-
 
 }

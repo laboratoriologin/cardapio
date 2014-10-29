@@ -1,7 +1,14 @@
 package com.login.beachstop.android.models;
 
 import org.droidpersistence.annotation.Column;
+import org.droidpersistence.annotation.PrimaryKey;
 import org.droidpersistence.annotation.Table;
+import org.droidpersistence.annotation.Transient;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by Argus on 22/10/2014.
@@ -9,6 +16,13 @@ import org.droidpersistence.annotation.Table;
 @SuppressWarnings("serial")
 @Table(name = "CLIENTE")
 public class Cliente extends Base {
+
+    @PrimaryKey
+    @Column(name = "ID")
+    protected Long id;
+
+    @Transient
+    protected String serviceName;
 
     @Column(name = "NOME")
     private String nome;
@@ -61,11 +75,41 @@ public class Cliente extends Base {
         this.dataNascimento = dataNascimento;
     }
 
+    public Date getDataNascimentoTypeDate() {
+        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            return (Date) formatter.parse(getDataNascimento());
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public String getToken() {
         return token;
     }
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    @Override
+    public Long getId() {
+        return this.id;
+    }
+
+    @Override
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Override
+    public String getServiceName() {
+        return this.serviceName;
+    }
+
+    @Override
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
     }
 }

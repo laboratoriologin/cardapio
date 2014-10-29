@@ -107,17 +107,11 @@
             android:ems="10"
             android:inputType="date" />
 
-        <LinearLayout
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="bottom"
-            android:gravity="bottom"
-            android:orientation="horizontal">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="bottom"
                 android:gravity="bottom">
 
                 <Button
@@ -128,27 +122,28 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:background="#3286B1"
-                    android:padding="10dp"
+                    android:onClick="cancelar"
+                    android:padding="5dp"
                     android:text="@string/cancelar"
-                    android:textColor="#0B405F"
-                    android:textSize="20sp"
-                    android:onClick="cancelar"/>
-
-                <Button
-                    android:id="@+id/activity_cadastro_cliente_button_salvar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:background="#3286B1"
-                    android:padding="10dp"
-                    android:text="@string/Salvar"
                     android:textColor="#0B405F"
                     android:textSize="20sp" />
 
-            </RelativeLayout>
-        </LinearLayout>
+            <Button
+                android:id="@+id/activity_cadastro_cliente_button_salvar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:background="#3286B1"
+                android:onClick="salvar"
+                android:padding="5dp"
+                android:text="@string/Salvar"
+                android:textColor="#0B405F"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
+
     </LinearLayout>
 
 </LinearLayout>

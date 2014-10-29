@@ -1,4 +1,4 @@
-package com.login.beachstop.android.util;
+package com.login.beachstop.android.utils;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;

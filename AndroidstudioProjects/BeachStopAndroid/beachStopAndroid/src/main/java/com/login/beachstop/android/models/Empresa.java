@@ -1,7 +1,9 @@
 package com.login.beachstop.android.models;
 
 import org.droidpersistence.annotation.Column;
+import org.droidpersistence.annotation.PrimaryKey;
 import org.droidpersistence.annotation.Table;
+import org.droidpersistence.annotation.Transient;
 
 /**
  * Created by Argus on 22/10/2014.
@@ -9,6 +11,13 @@ import org.droidpersistence.annotation.Table;
 @SuppressWarnings("serial")
 @Table(name = "EMPRESA")
 public class Empresa extends Base {
+
+    @PrimaryKey
+    @Column(name = "ID")
+    protected Long id;
+
+    @Transient
+    protected String serviceName;
 
     @Column(name = "NOME")
     private String nome;
@@ -122,5 +131,25 @@ public class Empresa extends Base {
 
     public void setKeyCardapio(String keyCardapio) {
         this.keyCardapio = keyCardapio;
+    }
+
+    @Override
+    public Long getId() {
+        return this.id;
+    }
+
+    @Override
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Override
+    public String getServiceName() {
+        return this.serviceName;
+    }
+
+    @Override
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
     }
 }

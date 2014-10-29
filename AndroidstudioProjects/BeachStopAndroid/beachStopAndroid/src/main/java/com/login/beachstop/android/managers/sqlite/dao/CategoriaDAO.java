@@ -9,7 +9,7 @@ import java.util.List;
 
 public class CategoriaDAO extends DroidDao<Categoria, Long> {
 
-    DataManager dataManager;
+    protected DataManager dataManager;
 
     public CategoriaDAO(TableDefinition<Categoria> tableDefinition, DataManager dataManager) {
         super(Categoria.class, tableDefinition, dataManager.getDatabase());

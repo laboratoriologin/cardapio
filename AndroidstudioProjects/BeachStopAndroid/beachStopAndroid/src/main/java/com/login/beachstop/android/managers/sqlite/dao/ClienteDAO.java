@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ClienteDAO extends DroidDao<Cliente, Long> {
 
-    DataManager dataManager;
+    protected DataManager dataManager;
 
     public ClienteDAO(TableDefinition<Cliente> tableDefinition, DataManager dataManager) {
         super(Cliente.class, tableDefinition, dataManager.getDatabase());

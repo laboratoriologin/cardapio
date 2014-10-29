@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.login.beachstop.android.managers.sqlite.CategoriaTableDefinition;
 import com.login.beachstop.android.managers.sqlite.ClienteTableDefinition;
+import com.login.beachstop.android.managers.sqlite.ContaTableDefinition;
 import com.login.beachstop.android.managers.sqlite.KitTableDefinition;
 import com.login.beachstop.android.managers.sqlite.OpenHelper;
 
@@ -15,6 +16,7 @@ public class DataManager {
     private ClienteDAO clienteDAO;
     private CategoriaDAO categoriaDAO;
     private KitDAO kitDAO;
+    private ContaDAO contaDAO;
 
     public DataManager(Context context) {
 
@@ -23,6 +25,7 @@ public class DataManager {
         this.setClienteDAO(new ClienteDAO(new ClienteTableDefinition(), this));
         this.setCategoriaDAO(new CategoriaDAO(new CategoriaTableDefinition(), this));
         this.setKitDAO(new KitDAO(new KitTableDefinition(), this));
+        this.setContaDAO(new ContaDAO(new ContaTableDefinition(), this));
     }
 
     public ClienteDAO getClienteDAO() {
@@ -55,5 +58,13 @@ public class DataManager {
 
     public void setKitDAO(KitDAO kitDAO) {
         this.kitDAO = kitDAO;
+    }
+
+    public ContaDAO getContaDAO() {
+        return contaDAO;
+    }
+
+    public void setContaDAO(ContaDAO contaDAO) {
+        this.contaDAO = contaDAO;
     }
 }

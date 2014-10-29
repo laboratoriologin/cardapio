@@ -1,7 +1,5 @@
 package com.login.beachstop.android.models;
 
-import org.droidpersistence.annotation.Column;
-
 import java.io.Serializable;
 
 /**
@@ -9,25 +7,12 @@ import java.io.Serializable;
  */
 public abstract class Base implements Serializable {
 
-    @Column(name = "ID")
-    protected Long id;
+    public abstract Long getId();
 
-    protected String serviceName;
+    public abstract void setId(Long id);
 
+    public abstract String getServiceName();
 
-    public Long getId() {
-        return id;
-    }
+    public abstract void setServiceName(String serviceName);
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getServiceName() {
-        return serviceName;
-    }
-
-    public void setServiceName(String serviceName) {
-        this.serviceName = serviceName;
-    }
 }

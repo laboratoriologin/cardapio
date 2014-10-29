@@ -17,7 +17,7 @@ public class KitDAO extends DroidDao<Kit, Long> {
         this.dataManager = dataManager;
     }
 
-    public int getQtdCategoria() {
+    public int getQtdKit() {
 
         List<Kit> kit = this.getAll();
 
