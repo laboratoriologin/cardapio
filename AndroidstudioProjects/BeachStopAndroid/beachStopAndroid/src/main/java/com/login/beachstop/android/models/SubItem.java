@@ -4,6 +4,8 @@ import org.droidpersistence.annotation.Column;
 import org.droidpersistence.annotation.PrimaryKey;
 import org.droidpersistence.annotation.Transient;
 
+import java.math.BigDecimal;
+
 /**
  * Created by Argus on 29/10/2014.
  */
@@ -32,6 +34,9 @@ public class SubItem extends Base {
 
     @Column(name = "ORDEM")
     private Long ordem;
+
+    @Transient
+    private Long qtdSelecionado;
 
     public SubItem() {
 
@@ -76,6 +81,10 @@ public class SubItem extends Base {
         this.valor = valor;
     }
 
+    public void setValor(BigDecimal valor) {
+        this.valor = valor.toString();
+    }
+
     public String getDescricao() {
         return descricao;
     }
@@ -106,5 +115,17 @@ public class SubItem extends Base {
 
     public void setOrdem(Long ordem) {
         this.ordem = ordem;
+    }
+
+    public Long getQtdSelecionado() {
+        return qtdSelecionado;
+    }
+
+    public void setQtdSelecionado(Long qtdSelecionado) {
+        this.qtdSelecionado = qtdSelecionado;
+    }
+
+    public BigDecimal getValorBigDecimal() {
+        return new BigDecimal(valor);
     }
 }

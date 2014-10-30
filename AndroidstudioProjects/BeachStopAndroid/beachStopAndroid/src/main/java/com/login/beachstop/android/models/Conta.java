@@ -1,9 +1,10 @@
 package com.login.beachstop.android.models;
 
 import org.droidpersistence.annotation.Column;
-import org.droidpersistence.annotation.PrimaryKey;
 import org.droidpersistence.annotation.Table;
 import org.droidpersistence.annotation.Transient;
+
+import java.util.List;
 
 /**
  * Created by Argus on 28/10/2014.
@@ -32,6 +33,15 @@ public class Conta extends Base {
 
     @Column(name = "NUMERO")
     private Long numero;
+
+    @Transient
+    private List<Pedido> pedidos;
+
+    @Transient
+    private String valorTotal;
+
+    @Transient
+    private String valorTotalPago;
 
     public Conta() {
         setServiceName("contas");
@@ -100,5 +110,29 @@ public class Conta extends Base {
     @Override
     public void setServiceName(String serviceName) {
         this.serviceName = serviceName;
+    }
+
+    public List<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
+
+    public String getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(String valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
+    public String getValorTotalPago() {
+        return valorTotalPago;
+    }
+
+    public void setValorTotalPago(String valorTotalPago) {
+        this.valorTotalPago = valorTotalPago;
     }
 }

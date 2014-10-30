@@ -21,13 +21,13 @@ import java.util.List;
 /**
  * Created by Argus on 29/10/2014.
  */
-public class ExpandableAllCategoriaItemAdapter extends BaseExpandableListAdapter {
+public class CategoriaItemExpandableAdapter extends BaseExpandableListAdapter {
 
     private CardapioActivity activity;
     private LayoutInflater inflater;
     private List<Categoria> parentItems;
 
-    public ExpandableAllCategoriaItemAdapter(CardapioActivity activity, List<Categoria> parentItems) {
+    public CategoriaItemExpandableAdapter(CardapioActivity activity, List<Categoria> parentItems) {
         this.activity = activity;
         this.parentItems = parentItems;
         this.inflater = LayoutInflater.from(this.activity);

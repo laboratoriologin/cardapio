@@ -18,7 +18,7 @@ import com.login.beachstop.android.models.Item;
 import com.login.beachstop.android.utils.Constantes;
 import com.login.beachstop.android.utils.image.ImageCache.ImageCacheParams;
 import com.login.beachstop.android.utils.image.ImageFetcher;
-import com.login.beachstop.android.views.adapters.ListItemAdapter;
+import com.login.beachstop.android.views.adapters.ItemListAdapter;
 
 import java.util.List;
 
@@ -31,7 +31,7 @@ public class ItemListFragment extends Fragment {
     private View view;
     private CardapioActivity cardapioActivity;
     private Categoria categoria;
-    private ListItemAdapter listItemAdapter;
+    private ItemListAdapter itemListAdapter;
     private ListView listView;
     private ImageFetcher mImageFetcher;
 
@@ -62,8 +62,8 @@ public class ItemListFragment extends Fragment {
         this.view = inflater.inflate(R.layout.fragment_item_list, container, false);
 
         this.listView = (ListView) this.view.findViewById(R.id.fragment_item_list_list_view);
-        this.listItemAdapter = new ListItemAdapter(this.view.getContext(), itens, mImageFetcher);
-        this.listView.setAdapter(this.listItemAdapter);
+        this.itemListAdapter = new ItemListAdapter(this.view.getContext(), itens, mImageFetcher);
+        this.listView.setAdapter(this.itemListAdapter);
 
         this.listView.setOnItemClickListener(new OnItemClickListener() {
             @Override

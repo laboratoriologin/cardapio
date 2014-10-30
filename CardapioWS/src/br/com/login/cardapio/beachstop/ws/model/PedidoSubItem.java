@@ -1,5 +1,6 @@
 package br.com.login.cardapio.beachstop.ws.model;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.ws.rs.FormParam;
@@ -8,7 +9,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import org.jboss.resteasy.annotations.Form;
 
 @SuppressWarnings("serial")
-@XmlRootElement(name ="pedidosubitem")
+@XmlRootElement(name = "pedidosubitem")
 public final class PedidoSubItem extends RestModel {
 
 	@FormParam("pedido")
@@ -19,7 +20,7 @@ public final class PedidoSubItem extends RestModel {
 	}
 
 	public void setPedido(Pedido pedido) {
-		this.pedido=pedido;
+		this.pedido = pedido;
 	}
 
 	@FormParam("quantidade")
@@ -30,7 +31,7 @@ public final class PedidoSubItem extends RestModel {
 	}
 
 	public void setQuantidade(Integer quantidade) {
-		this.quantidade=quantidade;
+		this.quantidade = quantidade;
 	}
 
 	@FormParam("subitem")
@@ -41,7 +42,7 @@ public final class PedidoSubItem extends RestModel {
 	}
 
 	public void setSubItem(SubItem subItem) {
-		this.subItem=subItem;
+		this.subItem = subItem;
 	}
 
 	@FormParam("valorunitario")
@@ -52,9 +53,20 @@ public final class PedidoSubItem extends RestModel {
 	}
 
 	public void setValorUnitario(Double valorUnitario) {
-		this.valorUnitario=valorUnitario;
+		this.valorUnitario = valorUnitario;
 	}
-	
+
+	@FormParam("valorCalculado")
+	private BigDecimal valorCalculado;
+
+	public BigDecimal getValorCalculado() {
+		return valorCalculado;
+	}
+
+	public void setValorCalculado(BigDecimal valorCalculado) {
+		this.valorCalculado = valorCalculado;
+	}
+
 	@Form(prefix = "logs")
 	private List<Log> logs;
 
@@ -65,7 +77,7 @@ public final class PedidoSubItem extends RestModel {
 	public void setLogs(List<Log> logs) {
 		this.logs = logs;
 	}
-	
+
 	@FormParam("status")
 	private Status status;
 
@@ -77,9 +89,10 @@ public final class PedidoSubItem extends RestModel {
 		this.status = status;
 	}
 
-	public PedidoSubItem(){}
+	public PedidoSubItem() {
+	}
 
-	public PedidoSubItem(String id){
+	public PedidoSubItem(String id) {
 		this.id = Long.valueOf(id);
 	}
 }

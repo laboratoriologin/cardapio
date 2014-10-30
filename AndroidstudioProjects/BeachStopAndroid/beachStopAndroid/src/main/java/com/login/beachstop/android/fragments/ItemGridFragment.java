@@ -18,7 +18,7 @@ import com.login.beachstop.android.models.Item;
 import com.login.beachstop.android.utils.Constantes;
 import com.login.beachstop.android.utils.image.ImageCache.ImageCacheParams;
 import com.login.beachstop.android.utils.image.ImageFetcher;
-import com.login.beachstop.android.views.adapters.GridItemAdapter;
+import com.login.beachstop.android.views.adapters.ItemGridAdapter;
 
 import java.util.List;
 
@@ -31,7 +31,7 @@ public class ItemGridFragment extends Fragment {
     private View view;
     private CardapioActivity cardapioActivity;
     private Categoria categoria;
-    private GridItemAdapter gridItemAdapter;
+    private ItemGridAdapter itemGridAdapter;
     private GridView gridView;
     private ImageFetcher mImageFetcher;
 
@@ -57,8 +57,8 @@ public class ItemGridFragment extends Fragment {
 
         this.gridView = (GridView) this.view.findViewById(R.id.fragment_item_grid_grid_view);
 
-        this.gridItemAdapter = new GridItemAdapter(this.view.getContext(), itens, this.mImageFetcher);
-        this.gridView.setAdapter(this.gridItemAdapter);
+        this.itemGridAdapter = new ItemGridAdapter(this.view.getContext(), itens, this.mImageFetcher);
+        this.gridView.setAdapter(this.itemGridAdapter);
 
         this.gridView.setOnItemClickListener(new OnItemClickListener() {
             @Override

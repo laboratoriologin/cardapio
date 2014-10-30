@@ -3,10 +3,12 @@ package br.com.login.cardapio.beachstop.ws.model;
 import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 @SuppressWarnings("serial")
-@XmlRootElement(name ="conta")
+@XmlRootElement(name = "conta")
 public final class Conta extends RestModel {
 
 	@FormParam("cliente")
@@ -17,7 +19,7 @@ public final class Conta extends RestModel {
 	}
 
 	public void setCliente(Cliente cliente) {
-		this.cliente=cliente;
+		this.cliente = cliente;
 	}
 
 	@FormParam("dataabertura")
@@ -28,7 +30,7 @@ public final class Conta extends RestModel {
 	}
 
 	public void setDataAbertura(Date dataAbertura) {
-		this.dataAbertura=dataAbertura;
+		this.dataAbertura = dataAbertura;
 	}
 
 	@FormParam("datafechamento")
@@ -39,7 +41,7 @@ public final class Conta extends RestModel {
 	}
 
 	public void setDataFechamento(Date dataFechamento) {
-		this.dataFechamento=dataFechamento;
+		this.dataFechamento = dataFechamento;
 	}
 
 	@FormParam("numero")
@@ -50,7 +52,7 @@ public final class Conta extends RestModel {
 	}
 
 	public void setNumero(Integer numero) {
-		this.numero=numero;
+		this.numero = numero;
 	}
 
 	@FormParam("qtdpessoa")
@@ -61,8 +63,30 @@ public final class Conta extends RestModel {
 	}
 
 	public void setQtdPessoa(Integer qtdPessoa) {
-		this.qtdPessoa=qtdPessoa;
+		this.qtdPessoa = qtdPessoa;
 	}
+	
+	@FormParam("valor")
+	private BigDecimal valor;
+
+	public BigDecimal getValor() {
+		return valor;
+	}
+
+	public void setValor(BigDecimal valor) {
+		this.valor = valor;
+	}
+	
+	@FormParam("valorPago")
+	private BigDecimal valorPago;
+
+	public BigDecimal getValorPago() {
+		return valorPago;
+	}
+
+	public void setValorPago(BigDecimal valorPago) {
+		this.valorPago = valorPago;
+	}	
 
 	@FormParam("tipoconta")
 	private Boolean tipoConta;
@@ -71,13 +95,21 @@ public final class Conta extends RestModel {
 		return tipoConta;
 	}
 
-	public void setTipoConta(Boolean tipoConta) {
-		this.tipoConta=tipoConta;
+	@FormParam("pedidosubitens")
+	private List<PedidoSubItem> pedidoSubItens;
+
+	public List<PedidoSubItem> getPedidoSubItens() {
+		return pedidoSubItens;
 	}
 
-	public Conta(){}
+	public void setPedidoSubItens(List<PedidoSubItem> pedidoSubItens) {
+		this.pedidoSubItens = pedidoSubItens;
+	}
 
-	public Conta(String id){
+	public Conta() {
+	}
+
+	public Conta(String id) {
 		this.id = Long.valueOf(id);
 	}
 }

@@ -1,11 +1,16 @@
 package com.login.beachstop.android.network;
 
 import com.login.beachstop.android.models.Conta;
+import com.login.beachstop.android.models.Pedido;
+import com.login.beachstop.android.models.PedidoSubItem;
+import com.login.beachstop.android.models.ServerRequest;
 import com.login.beachstop.android.models.ServerResponse;
 import com.login.beachstop.android.network.http.ResponseListener;
+import com.login.beachstop.android.utils.Constantes;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -20,6 +25,16 @@ public class ContaRequest extends ObjectRequest<Conta> {
     public ContaRequest(ResponseListener listener) {
         super(listener);
     }
+
+    public void get(Long contaId) {
+
+        String urlgetAtivo = Constantes.URL_WS + "/" + new Conta().getServiceName() + "/" + contaId.toString();
+
+        ServerRequest serverRequest = new ServerRequest(ServerRequest.GET, urlgetAtivo, null);
+
+        this.execute(serverRequest);
+    }
+
 
     @Override
     protected List<NameValuePair> createParameters(Conta conta) {
@@ -53,6 +68,33 @@ public class ContaRequest extends ObjectRequest<Conta> {
                     conta.setDataAbertura((jsonObject.has("dataabertura") ? jsonObject.getString("dataabertura") : "").toString());
                     conta.setDataFechamento((jsonObject.has("datafechamento") ? jsonObject.getString("datafechamento") : "").toString());
                     conta.setNumero(jsonObject.has("numero") ? jsonObject.getLong("numero") : null);
+                    conta.setValorTotal((jsonObject.has("valor") ? jsonObject.getBoolean("valor") : "").toString());
+                    conta.setValorTotalPago((jsonObject.has("valorPago") ? jsonObject.getBoolean("valorPago") : "").toString());
+
+                    if (jsonObject.has("pedidosubitens")) {
+
+                        JSONArray jsonArrayPedidoSubItem = jsonObject.getJSONArray("pedidosubitens");
+
+                        Pedido pedido = new Pedido();
+                        pedido.setPedidoSubItens(new ArrayList<PedidoSubItem>());
+                        PedidoSubItem pedidoSubItem;
+
+                        for (int i = 0; i < jsonArrayPedidoSubItem.length(); i++) {
+
+                            pedidoSubItem = new PedidoSubItem();
+                            pedidoSubItem.setQuantidade(jsonArrayPedidoSubItem.getJSONObject(i).getLong("quantidade"));
+                            pedidoSubItem.setValorTotal(jsonArrayPedidoSubItem.getJSONObject(i).getString("valorCalculado"));
+                            pedidoSubItem.setValorUnitario(jsonArrayPedidoSubItem.getJSONObject(i).getString("valorunitario"));
+
+                            pedidoSubItem.setSubItemId(jsonArrayPedidoSubItem.getJSONObject(i).getJSONObject("subitem").getLong("id"));
+
+                            pedido.getPedidoSubItens().add(pedidoSubItem);
+
+                        }
+
+                        conta.getPedidos().add(pedido);
+
+                    }
 
                     serverResponse.setReturnObject(conta);
 

@@ -30,7 +30,7 @@ public class MainActivity extends TabActivity {
         addTab("Cardápio", R.drawable.tab_cardapio, CardapioActivity.class);
         addTab("Sobre o Restaurante", R.drawable.tab_sobre_restaurante, SobreRestauranteActivity.class);
         addTab("Check in", R.drawable.tab_check_in, CheckInActivity.class);
-        // addTab("Meus pedidos", R.drawable.tab_pedido, PedidoActivity.class);
+        addTab("Meus pedidos", R.drawable.tab_pedido, PedidoActivity.class);
         // addTab("Garçom", R.drawable.bt_chamar_garcom,
         // CallGarcomActivity.class);
 

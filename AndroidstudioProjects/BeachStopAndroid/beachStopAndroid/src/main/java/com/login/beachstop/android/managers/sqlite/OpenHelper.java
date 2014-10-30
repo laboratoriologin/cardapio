@@ -31,6 +31,8 @@ public class OpenHelper extends SQLiteOpenHelper {
             new ContaTableDefinition().onCreate(db);
             new ItemTableDefinition().onCreate(db);
             new SubItemTableDefinition().onCreate(db);
+            new PedidoTableDefinition().onCreate(db);
+            new PedidoSubItemTableDefinition().onCreate(db);
 
         } catch (Exception e) {
 
@@ -51,6 +53,8 @@ public class OpenHelper extends SQLiteOpenHelper {
             new ContaTableDefinition().onUpgrade(db, oldVersion, newVersion);
             new ItemTableDefinition().onUpgrade(db, oldVersion, newVersion);
             new SubItemTableDefinition().onUpgrade(db, oldVersion, newVersion);
+            new PedidoTableDefinition().onUpgrade(db, oldVersion, newVersion);
+            new PedidoSubItemTableDefinition().onUpgrade(db, oldVersion, newVersion);
 
         } catch (Exception e) {
 

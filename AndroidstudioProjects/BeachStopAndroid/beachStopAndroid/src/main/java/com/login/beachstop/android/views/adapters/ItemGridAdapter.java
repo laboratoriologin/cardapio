@@ -18,13 +18,13 @@ import java.util.List;
 /**
  * Created by Argus on 29/10/2014.
  */
-public class GridItemAdapter extends BaseAdapter {
+public class ItemGridAdapter extends BaseAdapter {
 
     private LayoutInflater mInflater;
     private List<Item> itens;
     private ImageFetcher mImageFetcher;
 
-    public GridItemAdapter(Context context, List<Item> itens, ImageFetcher imageFetcher) {
+    public ItemGridAdapter(Context context, List<Item> itens, ImageFetcher imageFetcher) {
 
         this.itens = itens;
         this.mInflater = LayoutInflater.from(context);

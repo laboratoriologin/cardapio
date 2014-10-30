@@ -18,13 +18,13 @@ import java.util.List;
 /**
  * Created by Argus on 29/10/2014.
  */
-public class ListItemAdapter extends BaseAdapter {
+public class ItemListAdapter extends BaseAdapter {
 
     private LayoutInflater mInflater;
     private List<Item> itens;
     private ImageFetcher mImageFetcher;
 
-    public ListItemAdapter(Context context, List<Item> itens, ImageFetcher imageFetcher) {
+    public ItemListAdapter(Context context, List<Item> itens, ImageFetcher imageFetcher) {
 
         this.itens = itens;
         this.mInflater = LayoutInflater.from(context);

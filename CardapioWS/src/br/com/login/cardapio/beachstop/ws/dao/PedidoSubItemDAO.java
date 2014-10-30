@@ -2,6 +2,7 @@ package br.com.login.cardapio.beachstop.ws.dao;
 
 import java.util.List;
 
+import br.com.login.cardapio.beachstop.ws.model.Conta;
 import br.com.login.cardapio.beachstop.ws.model.Pedido;
 import br.com.login.cardapio.beachstop.ws.model.PedidoSubItem;
 import br.com.login.cardapio.beachstop.ws.util.Constantes;
@@ -30,6 +31,16 @@ public class PedidoSubItemDAO implements RestDAO<PedidoSubItem> {
 		broker.setPropertySQL("pedidosubitemdao.findall");
 
 		return broker.getCollectionBean(PedidoSubItem.class, "id", "pedido.id", "quantidade", "subItem.id", "valorUnitario");
+
+	}
+	
+	public List<PedidoSubItem> getAll(Conta conta) {
+
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+
+		broker.setPropertySQL("pedidosubitemdao.findallbyconta", conta.getId());
+
+		return broker.getCollectionBean(PedidoSubItem.class, "id", "pedido.id", "quantidade", "subItem.id", "valorUnitario", "valorCalculado");
 
 	}
 

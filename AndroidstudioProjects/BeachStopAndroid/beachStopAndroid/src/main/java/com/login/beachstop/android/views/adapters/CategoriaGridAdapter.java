@@ -19,12 +19,12 @@ import java.util.List;
 /**
  * Created by Argus on 29/10/2014.
  */
-public class GridCategoriaAdapter extends BaseAdapter {
+public class CategoriaGridAdapter extends BaseAdapter {
 
     private LayoutInflater mInflater;
     private List<Categoria> categorias;
 
-    public GridCategoriaAdapter(DefaultActivity context, List<Categoria> categorias) {
+    public CategoriaGridAdapter(DefaultActivity context, List<Categoria> categorias) {
 
         this.mInflater = LayoutInflater.from(context);
         this.categorias = categorias;

@@ -23,7 +23,7 @@ import com.login.beachstop.android.network.ItemRequest;
 import com.login.beachstop.android.network.http.ResponseListener;
 import com.login.beachstop.android.utils.Constantes;
 import com.login.beachstop.android.views.actionbar.ActionBar;
-import com.login.beachstop.android.views.adapters.ExpandableAllCategoriaItemAdapter;
+import com.login.beachstop.android.views.adapters.CategoriaItemExpandableAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +37,7 @@ public class ItemAllFragment extends Fragment {
     private View view;
     private ImageView imageViewTopoActionBar;
     private ExpandableListView expandableListView;
-    private ExpandableAllCategoriaItemAdapter expandableAllCategoriaItemAdapter;
+    private CategoriaItemExpandableAdapter categoriaItemExpandableAdapter;
     private List<Categoria> categorias;
     private Categoria categoria = new Categoria();
     private ProgressBar progressbar;
@@ -167,8 +167,8 @@ public class ItemAllFragment extends Fragment {
     }
 
     private void startExpamdableList() {
-        this.expandableAllCategoriaItemAdapter = new ExpandableAllCategoriaItemAdapter(this.cardapioActivity, this.categorias);
-        this.expandableListView.setAdapter(this.expandableAllCategoriaItemAdapter);
+        this.categoriaItemExpandableAdapter = new CategoriaItemExpandableAdapter(this.cardapioActivity, this.categorias);
+        this.expandableListView.setAdapter(this.categoriaItemExpandableAdapter);
         setVisibility(true);
     }
 

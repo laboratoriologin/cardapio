@@ -3,6 +3,7 @@ package br.com.login.cardapio.beachstop.ws.dao;
 import java.util.List;
 
 import br.com.login.cardapio.beachstop.ws.model.Conta;
+import br.com.login.cardapio.beachstop.ws.model.PedidoSubItem;
 import br.com.topsys.database.TSDataBaseBrokerIf;
 import br.com.topsys.database.factory.TSDataBaseBrokerFactory;
 import br.com.topsys.exception.TSApplicationException;
@@ -17,7 +18,23 @@ public class ContaDAO implements RestDAO<Conta> {
 
 		broker.setPropertySQL("contadao.get", id);
 
-		return (Conta) broker.getObjectBean(Conta.class, "cliente.id", "dataAbertura", "dataFechamento", "id", "numero", "qtdPessoa", "tipoConta");
+		Conta conta = (Conta) broker.getObjectBean(Conta.class, "cliente.id", "dataAbertura", "dataFechamento", "id", "numero", "qtdPessoa", "tipoConta");
+
+		if (conta != null) {
+
+			conta.setPedidoSubItens(new PedidoSubItemDAO().getAll(conta));
+
+			for (PedidoSubItem pedidoSubItem : conta.getPedidoSubItens()) {
+
+				conta.setValor(conta.getValor().add(pedidoSubItem.getValorCalculado()));
+
+			}
+
+			conta.setValorPago(new PagamentoDAO().getValorTotalPagoByConta(conta).getValor());
+
+		}
+
+		return conta;
 
 	}
 

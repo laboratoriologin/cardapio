@@ -24,7 +24,7 @@ import com.login.beachstop.android.network.PublicidadeRequest;
 import com.login.beachstop.android.network.http.ResponseListener;
 import com.login.beachstop.android.utils.Constantes;
 import com.login.beachstop.android.views.actionbar.ActionBar;
-import com.login.beachstop.android.views.adapters.GridCategoriaAdapter;
+import com.login.beachstop.android.views.adapters.CategoriaGridAdapter;
 import com.login.beachstop.android.views.adapters.PublicidadeFragmentAdapter;
 import com.viewpagerindicator.PageIndicator;
 
@@ -47,7 +47,7 @@ public class CardapioFragment extends Fragment {
     private PageIndicator mIndicator = null;
     private PublicidadeFragmentAdapter publicidadeFragmentAdapter = null;
     private GridView gridViewMenu;
-    private GridCategoriaAdapter gridCategoriaAdapter;
+    private CategoriaGridAdapter categoriaGridAdapter;
     private Handler handler;
     private Runnable runnable;
     private int position;
@@ -140,8 +140,8 @@ public class CardapioFragment extends Fragment {
 
         this.categorias = this.activity.getDataManager().getCategoriaDAO().getAll();
 
-        this.gridCategoriaAdapter = new GridCategoriaAdapter(this.activity, this.categorias);
-        this.gridViewMenu.setAdapter(this.gridCategoriaAdapter);
+        this.categoriaGridAdapter = new CategoriaGridAdapter(this.activity, this.categorias);
+        this.gridViewMenu.setAdapter(this.categoriaGridAdapter);
 
         this.gridViewMenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
