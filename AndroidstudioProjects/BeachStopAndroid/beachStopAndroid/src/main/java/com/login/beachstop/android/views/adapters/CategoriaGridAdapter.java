@@ -39,15 +39,26 @@ public class CategoriaGridAdapter extends BaseAdapter {
 
         ImageView imgViewItem = (ImageView) convertView.findViewById(R.id.adapter_grid_view_categoria_image_view);
 
-        Drawable img = DrawableManager.getDrawableManager().getDrawable(Constantes.URL_IMG + categoria.getImagem());
+        if (Constantes.TipoCategoriaCardapio.ITEM == categoria.getTipoCategoria()) {
 
-        if (img == null) {
+            Drawable img = DrawableManager.getDrawableManager().getDrawable(Constantes.URL_IMG + categoria.getImagem());
 
-            new LoadImage(imgViewItem, convertView.getContext()).execute(Constantes.URL_IMG + categoria.getImagem());
+            if (img == null) {
+
+                new LoadImage(imgViewItem, convertView.getContext()).execute(Constantes.URL_IMG + categoria.getImagem());
+
+            } else {
+
+                imgViewItem.setImageDrawable(img);
+
+            }
+        } else if (Constantes.TipoCategoriaCardapio.KIT == categoria.getTipoCategoria()) {
+
+            imgViewItem.setImageResource(categoria.getResourceImg());
 
         } else {
 
-            imgViewItem.setImageDrawable(img);
+            imgViewItem.setImageResource(categoria.getResourceImg());
 
         }
 
