@@ -33,6 +33,7 @@ public class DataManager {
 
         SQLiteOpenHelper openHelper = new OpenHelper(context, "cardapio", null, 1);
         this.setDatabase(openHelper.getWritableDatabase());
+
         this.setClienteDAO(new ClienteDAO(new ClienteTableDefinition(), this));
         this.setCategoriaDAO(new CategoriaDAO(new CategoriaTableDefinition(), this));
         this.setKitDAO(new KitDAO(new KitTableDefinition(), this));

@@ -1,6 +1,7 @@
 package com.login.beachstop.android.models;
 
 import org.droidpersistence.annotation.Column;
+import org.droidpersistence.annotation.PrimaryKey;
 import org.droidpersistence.annotation.Table;
 import org.droidpersistence.annotation.Transient;
 
@@ -13,6 +14,7 @@ import java.util.List;
 @Table(name = "CONTA")
 public class Conta extends Base {
 
+    @PrimaryKey
     @Column(name = "ID")
     protected Long id;
 

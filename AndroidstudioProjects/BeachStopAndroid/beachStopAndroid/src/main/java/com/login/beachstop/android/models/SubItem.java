@@ -2,6 +2,7 @@ package com.login.beachstop.android.models;
 
 import org.droidpersistence.annotation.Column;
 import org.droidpersistence.annotation.PrimaryKey;
+import org.droidpersistence.annotation.Table;
 import org.droidpersistence.annotation.Transient;
 
 import java.math.BigDecimal;
@@ -9,6 +10,8 @@ import java.math.BigDecimal;
 /**
  * Created by Argus on 29/10/2014.
  */
+@SuppressWarnings("serial")
+@Table(name = "SUB_ITEM")
 public class SubItem extends Base {
 
     @PrimaryKey

@@ -1973,6 +1973,11 @@ bold
                 qualifiers=""
                 type="layout" />
             <file
+                name="activity_cardapio"
+                path="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\src\main\res\layout\activity_cardapio.xml"
+                qualifiers=""
+                type="layout" />
+            <file
                 name="activity_checkin"
                 path="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\src\main\res\layout\activity_checkin.xml"
                 qualifiers=""
@@ -1983,6 +1988,11 @@ bold
                 qualifiers=""
                 type="layout" />
             <file
+                name="activity_pedido"
+                path="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\src\main\res\layout\activity_pedido.xml"
+                qualifiers=""
+                type="layout" />
+            <file
                 name="activity_sobre_restaurante"
                 path="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\src\main\res\layout\activity_sobre_restaurante.xml"
                 qualifiers=""
@@ -1990,6 +2000,96 @@ bold
             <file
                 name="activity_splash"
                 path="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\src\main\res\layout\activity_splash.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="adapter_expandable_all_categoria_item_child"
+                path="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\src\main\res\layout\adapter_expandable_all_categoria_item_child.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="adapter_expandable_all_categoria_item_parent"
+                path="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\src\main\res\layout\adapter_expandable_all_categoria_item_parent.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="adapter_grid_view_categoria"
+                path="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\src\main\res\layout\adapter_grid_view_categoria.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="adapter_grid_view_item"
+                path="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\src\main\res\layout\adapter_grid_view_item.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="adapter_list_sub_item"
+                path="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\src\main\res\layout\adapter_list_sub_item.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="adapter_list_view_item"
+                path="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\src\main\res\layout\adapter_list_view_item.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="fragment_cardapio"
+                path="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\src\main\res\layout\fragment_cardapio.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="fragment_conta"
+                path="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\src\main\res\layout\fragment_conta.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="fragment_conta_table_row"
+                path="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\src\main\res\layout\fragment_conta_table_row.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="fragment_item"
+                path="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\src\main\res\layout\fragment_item.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="fragment_item_all"
+                path="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\src\main\res\layout\fragment_item_all.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="fragment_item_detalhe"
+                path="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\src\main\res\layout\fragment_item_detalhe.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="fragment_item_detalhe_table_row"
+                path="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\src\main\res\layout\fragment_item_detalhe_table_row.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="fragment_item_grid"
+                path="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\src\main\res\layout\fragment_item_grid.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="fragment_item_list"
+                path="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\src\main\res\layout\fragment_item_list.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="fragment_pedido"
+                path="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\src\main\res\layout\fragment_pedido.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="fragment_pedido_dialog"
+                path="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\src\main\res\layout\fragment_pedido_dialog.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="fragment_publicidade"
+                path="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\src\main\res\layout\fragment_publicidade.xml"
                 qualifiers=""
                 type="layout" />
             <file

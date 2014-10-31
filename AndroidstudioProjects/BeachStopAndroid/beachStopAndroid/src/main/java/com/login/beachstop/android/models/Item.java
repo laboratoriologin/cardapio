@@ -2,6 +2,7 @@ package com.login.beachstop.android.models;
 
 import org.droidpersistence.annotation.Column;
 import org.droidpersistence.annotation.PrimaryKey;
+import org.droidpersistence.annotation.Table;
 import org.droidpersistence.annotation.Transient;
 
 import java.util.List;
@@ -9,27 +10,38 @@ import java.util.List;
 /**
  * Created by Argus on 29/10/2014.
  */
+@SuppressWarnings("serial")
+@Table(name = "ITEM")
 public class Item extends Base {
 
     @PrimaryKey
     @Column(name = "ID")
     private Long id;
+
     @Transient
     private String serviceName;
+
     @Column(name = "NOME")
     private String nome;
+
     @Column(name = "DESCRICAO")
     private String descricao;
+
     @Column(name = "INGREDIENTE")
     private String ingrediente;
+
     @Column(name = "IMAGEM")
     private String imagem;
+
     @Column(name = "TEMPO_PREPARO")
     private String tempoPreparo;
+
     @Column(name = "ORDEM")
     private String ordem;
+
     @Column(name = "CATEGORIA_ID")
     private Long categoriaId;
+
     @Transient
     private List<SubItem> subItens;
 

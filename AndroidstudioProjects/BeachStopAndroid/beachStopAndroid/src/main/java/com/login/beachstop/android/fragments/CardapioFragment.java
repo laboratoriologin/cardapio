@@ -136,7 +136,7 @@ public class CardapioFragment extends Fragment {
         this.mIndicator = (PageIndicator) this.view.findViewById(R.id.fragment_cardapio_view_pager_midia_indicator);
         this.gridViewMenu = (GridView) this.view.findViewById(R.id.fragment_cardapio_grid_view_menu);
 
-        new PublicidadeRequest(listenerGetPublicidade).get(null);
+        new PublicidadeRequest(listenerGetPublicidade).get(new Publicidade());
 
         this.categorias = this.activity.getDataManager().getCategoriaDAO().getAll();
 
