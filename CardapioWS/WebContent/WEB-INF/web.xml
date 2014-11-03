@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>app_name</display-name>
@@ -29,4 +30,37 @@
       <url-pattern>/*</url-pattern>
    </servlet-mapping>
   
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>app_name</display-name>
+	<context-param>
+      <param-name>javax.ws.rs.core.Application</param-name>
+      <param-value>br.com.login.cardapio.ws.service.ServiceApplication</param-value>
+   </context-param>
+   
+     <context-param>
+        <param-name>resteasy.providers</param-name>
+        <param-value>br.com.login.cardapio.ws.exception.ApplicationExceptionHandler</param-value>
+	</context-param>
+
+   <listener>
+      <listener-class>
+         org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap
+      </listener-class>
+   </listener>
+
+   <servlet>
+      <servlet-name>Resteasy</servlet-name>
+      <servlet-class>
+         org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher
+      </servlet-class>
+   </servlet>
+
+   <servlet-mapping>
+      <servlet-name>Resteasy</servlet-name>
+      <url-pattern>/*</url-pattern>
+   </servlet-mapping>
+  
+>>>>>>> 7977dc9ec146544ee8c770337f780d242577bc13
 </web-app>
