@@ -75,7 +75,6 @@
 		62695A60199B905F002C1799 /* logo_topo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62695A5E199B905F002C1799 /* logo_topo@2x.png */; };
 		62695A63199B91A0002C1799 /* CLNoTextTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 62695A62199B91A0002C1799 /* CLNoTextTitleView.m */; };
 		62695A65199B928F002C1799 /* CLNoTextTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62695A64199B928F002C1799 /* CLNoTextTitleView.xib */; };
-		626C5231192693BC00E72734 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 626C522B192693BC00E72734 /* libzbar.a */; };
 		626C5232192693BD00E72734 /* zbar-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 626C522D192693BC00E72734 /* zbar-back.png */; };
 		626C5233192693BD00E72734 /* zbar-help.html in Resources */ = {isa = PBXBuildFile; fileRef = 626C522E192693BC00E72734 /* zbar-help.html */; };
 		626C5234192693BD00E72734 /* zbar-helpicons.png in Resources */ = {isa = PBXBuildFile; fileRef = 626C522F192693BC00E72734 /* zbar-helpicons.png */; };
@@ -442,7 +441,6 @@
 				626C52371926954100E72734 /* AVFoundation.framework in Frameworks */,
 				62E7F2A619140EE600A93235 /* libsqlite3.0.dylib in Frameworks */,
 				6201AB8118F85627005B5DB9 /* CoreGraphics.framework in Frameworks */,
-				626C5231192693BC00E72734 /* libzbar.a in Frameworks */,
 				6201AB8318F85627005B5DB9 /* UIKit.framework in Frameworks */,
 				6201AB7F18F85627005B5DB9 /* Foundation.framework in Frameworks */,
 				BA7DC7A0FBD14FCA9E99F122 /* libPods.a in Frameworks */,
