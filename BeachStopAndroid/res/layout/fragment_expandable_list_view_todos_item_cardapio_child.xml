@@ -20,7 +20,6 @@
             android:id="@+id/fragment_expandable_list_view_todos_item_cardapio_child_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toLeftOf="@+id/fragment_expandable_list_view_todos_item_cardapio_child_table_layout_sub_item"            
             android:layout_alignParentLeft="true"
             android:singleLine="false"
             android:layout_marginLeft="10dp"

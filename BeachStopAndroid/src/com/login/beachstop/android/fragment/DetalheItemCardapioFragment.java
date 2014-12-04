@@ -39,6 +39,7 @@ import com.login.beachstop.android.util.Constantes;
 import com.login.beachstop.android.util.DrawableManager;
 import com.login.beachstop.android.util.LoadImage;
 import com.login.beachstop.android.util.Utilitarios;
+import com.login.beachstop.android.util.image.ImageFetcher;
 import com.login.beachstop.android.view.ActionBar;
 
 public class DetalheItemCardapioFragment extends Fragment {
@@ -49,6 +50,7 @@ public class DetalheItemCardapioFragment extends Fragment {
 	private List<RowSubItem> listRowSubItem;
 	private ImageView imageView;
 	private SocialAuthAdapter socialAuthAdapter;
+	private ImageFetcher mImageFetcher;
 
 	@Override
 	public void onAttach(Activity activity) {
@@ -63,46 +65,44 @@ public class DetalheItemCardapioFragment extends Fragment {
 		super.onCreate(savedInstanceState);
 		this.view = inflater.inflate(R.layout.fragment_detalhe_item_cardapio, container, false);
 
+		this.mImageFetcher = new ImageFetcher(this.getActivity().getBaseContext(), 500);
+		this.mImageFetcher.setLoadingImage(R.drawable.placeholder);
+		this.mImageFetcher.addImageCache(this.getActivity(), Constantes.IMAGE_CACHE);
+
 		((ActionBar) this.view.findViewById(R.id.actionbar)).setDisplayHomeAsUpEnabled(Boolean.TRUE);
 		((TextView) (this.view.findViewById(R.id.actionbar)).findViewById(R.id.text_view_action_bar)).setText(this.itemCardapio.getNome());
 
 		((TextView) this.view.findViewById(R.id.fragment_detalhe_item_cardapio_text_view_descricao)).setText(itemCardapio.getDescricao());
 		((TextView) this.view.findViewById(R.id.fragment_detalhe_item_cardapio_text_view_ingredientes)).setText(itemCardapio.getIngredientes());
-		
-		if (itemCardapio.getGuarnicoes().length() == 0){
-			
+
+		if (itemCardapio.getGuarnicoes().length() == 0) {
+
 			((TextView) this.view.findViewById(R.id.fragment_detalhe_item_cardapio_text_view_acompanhamentos)).setVisibility(TextView.GONE);
 			((TextView) this.view.findViewById(R.id.fragment_detalhe_item_cardapio_text_view_lbl_acompanhamentos)).setVisibility(TextView.GONE);
-			
-		}else{
-			
+
+		} else {
+
 			((TextView) this.view.findViewById(R.id.fragment_detalhe_item_cardapio_text_view_acompanhamentos)).setText(itemCardapio.getGuarnicoes());
 		}
-		
 
 		this.imageView = (ImageView) this.view.findViewById(R.id.fragment_detalhe_item_cardapio_image_view);
 
 		if (itemCardapio.getImagem().length() != 0) {
 
-			Drawable img = DrawableManager.getDrawableManager().getDrawable(Constantes.URL_IMG + itemCardapio.getImagem());
+			this.mImageFetcher.loadImage(Constantes.URL_IMG + itemCardapio.getImagem(), imageView);
 
-			if (img == null) {
-				new LoadImage(this.imageView, this.view.getContext()).execute(Constantes.URL_IMG + itemCardapio.getImagem());
-			} else {
-				imageView.setImageDrawable(img);
-			}
 		}
 
-		if (itemCardapio.getTempoMedioPreparo().toString().length() == 0){
-			
+		if (itemCardapio.getTempoMedioPreparo().toString().length() == 0) {
+
 			((TextView) this.view.findViewById(R.id.fragment_detalhe_item_cardapio_text_view_tempo_preparo)).setVisibility(TextView.GONE);
-			((TextView) this.view.findViewById(R.id.fragment_detalhe_item_cardapio_text_view_lbl_tempo_preparo)).setVisibility(TextView.GONE);			
-			
-		}else{
-			
+			((TextView) this.view.findViewById(R.id.fragment_detalhe_item_cardapio_text_view_lbl_tempo_preparo)).setVisibility(TextView.GONE);
+
+		} else {
+
 			((TextView) this.view.findViewById(R.id.fragment_detalhe_item_cardapio_text_view_tempo_preparo)).setText(itemCardapio.getTempoMedioPreparo().toString() + " Mim");
 		}
-		
+
 		socialAuthAdapter = new SocialAuthAdapter(new ResponseListener());
 
 		// Add providers

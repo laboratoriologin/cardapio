@@ -165,14 +165,20 @@ public class CardapioFragment extends Fragment implements BusinessResult {
 			this.handler = new Handler();
 			this.runnable = new Runnable() {
 				public void run() {
-					if ((position + 1) >= listPublicidade.size()) {
-						position = 0;
-					} else {
-						position = position + 1;
+
+					try {
+
+						if ((position + 1) >= listPublicidade.size()) {
+							position = 0;
+						} else {
+							position = position + 1;
+						}
+						viewPagerMidia.setCurrentItem(position, true);
+						mIndicator.setCurrentItem(position);
+						handler.postDelayed(runnable, TIME_SLIDE);
+					} catch (Exception ex) {
+						// erro inesperado, fragment pode ter sido destruído
 					}
-					viewPagerMidia.setCurrentItem(position, true);
-					mIndicator.setCurrentItem(position);
-					handler.postDelayed(runnable, TIME_SLIDE);
 				}
 			};
 
@@ -230,7 +236,7 @@ public class CardapioFragment extends Fragment implements BusinessResult {
 	public void onResume() {
 		super.onResume(); // Always call the superclass method first
 		if (handler != null) {
-			//handler.postDelayed(runnable, TIME_SLIDE);
+			// handler.postDelayed(runnable, TIME_SLIDE);
 		}
 	}
 

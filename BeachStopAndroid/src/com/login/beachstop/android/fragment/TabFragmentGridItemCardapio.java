@@ -2,6 +2,7 @@ package com.login.beachstop.android.fragment;
 
 import java.util.List;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -42,7 +43,7 @@ public class TabFragmentGridItemCardapio extends Fragment {
 		ImageCacheParams mImageCacheParams = new ImageCacheParams(this.getActivity().getBaseContext(), Constantes.IMAGE_CACHE);
 		mImageCacheParams.setMemCacheSizePercent(0.50f);
 
-		this.mImageFetcher = new ImageFetcher(this.getActivity().getBaseContext(),500);		
+		this.mImageFetcher = new ImageFetcher(this.getActivity().getBaseContext(), 500);
 		this.mImageFetcher.setLoadingImage(R.drawable.placeholder);
 		this.mImageFetcher.addImageCache(this.getActivity(), Constantes.IMAGE_CACHE);
 
@@ -55,28 +56,14 @@ public class TabFragmentGridItemCardapio extends Fragment {
 		this.gridView = (GridView) this.view.findViewById(R.id.tab_fragment_grid_view_item_cardapio);
 		this.gridItensItemCategoriaCardapioAdapter = new GridItensItemCategoriaCardapioAdapter(this.view.getContext(), listItemCardapio, this.mImageFetcher);
 		this.gridView.setAdapter(this.gridItensItemCategoriaCardapioAdapter);
+
 		this.gridView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int posicaoClicada, long arg3) {
 
 				ItemCardapio itemCardapio = listItemCardapio.get(posicaoClicada);
 
-				DetalheItemCardapioFragment newFragment = new DetalheItemCardapioFragment();
-				Bundle args = new Bundle();
-				args.putSerializable(Constantes.ARG_ITEM_CARDAPIO, itemCardapio);
-				newFragment.setArguments(args);
-				FragmentTransaction transaction = homeActivity.getSupportFragmentManager().beginTransaction();
-
-				// Replace whatever is in the fragment_container view with this
-				// fragment,
-				// and add the transaction to the back stack so the user can
-				// navigate
-				// back
-				transaction.replace(R.id.activity_home_fragment_layout, newFragment);
-				transaction.addToBackStack(null);
-
-				// Commit the transaction
-				transaction.commit();
+				detailItem(itemCardapio);
 
 			}
 		});
@@ -97,7 +84,34 @@ public class TabFragmentGridItemCardapio extends Fragment {
 			}
 		});
 
+		if (this.listItemCardapio.size() == 1) {
+
+			this.detailItem(this.listItemCardapio.get(0));
+
+		}
+
 		return view;
+	}
+
+	private void detailItem(ItemCardapio itemCardapio) {
+
+		DetalheItemCardapioFragment newFragment = new DetalheItemCardapioFragment();
+		Bundle args = new Bundle();
+		args.putSerializable(Constantes.ARG_ITEM_CARDAPIO, itemCardapio);
+		newFragment.setArguments(args);
+		FragmentTransaction transaction = homeActivity.getSupportFragmentManager().beginTransaction();
+
+		// Replace whatever is in the fragment_container view with this
+		// fragment,
+		// and add the transaction to the back stack so the user can
+		// navigate
+		// back
+		transaction.add(R.id.activity_home_fragment_layout, newFragment);
+		transaction.addToBackStack(null);
+
+		// Commit the transaction
+		transaction.commit();
+
 	}
 
 	@Override

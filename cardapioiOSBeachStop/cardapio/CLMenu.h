@@ -16,6 +16,7 @@ const int CAMPizzas            = 5;
 const int CAMPratosMar         = 6;
 const int CAMPratosTerra       = 7;
 const int CAMSobremesa         = 8;
+const int CAMPastel            = 14;
 const int CAMTodosPratos       = 0;
 
 @interface CLMenu : NSObject

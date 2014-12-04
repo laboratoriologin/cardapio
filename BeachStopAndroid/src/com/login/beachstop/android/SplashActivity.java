@@ -125,9 +125,9 @@ public class SplashActivity extends DefaultActivity implements BusinessResult {
 				} else {
 
 					super.setListaItemCardapio((List<CategoriaCardapioItem>) serverResponse.getReturnObject());
-					CategoriaCardapioItem itemCategoriaCardapio = new CategoriaCardapioItem();
-					itemCategoriaCardapio.setId(0l);
-					super.getListaItemCardapio().add(itemCategoriaCardapio);
+//					CategoriaCardapioItem itemCategoriaCardapio = new CategoriaCardapioItem();
+//					itemCategoriaCardapio.setId(0l);
+//					super.getListaItemCardapio().add(itemCategoriaCardapio);
 
 					try {
 						for (CategoriaCardapioItem item : super.getListaItemCardapio()) {

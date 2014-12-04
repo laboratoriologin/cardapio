@@ -119,14 +119,16 @@ NSInteger const CLBadRequest = 412;
 }
 
 - (IBAction)checkIn:(id)sender {
+
+    if([AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo] == AVAuthorizationStatusDenied){
+        [self.view addInfoMessage:@"Habilite a permissão de câmera para este aplicativo" stickTime:3];
+        return;
+    }
     
     ZBarReaderViewController *reader = [ZBarReaderViewController new];
     
     reader.readerDelegate = self;
-    
-    [reader.scanner setSymbology: 0
-                          config: ZBAR_CFG_ENABLE
-                              to: 0];
+
     [reader.scanner setSymbology: ZBAR_QRCODE
                           config: ZBAR_CFG_ENABLE
                               to: 1];

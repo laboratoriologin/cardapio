@@ -9,6 +9,14 @@ package com.login.beachstop.android;
 
 public final class R {
     public static final class attr {
+        /** <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int alpha_factor=0x7f010020;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -17,6 +25,14 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int centered=0x7f010006;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int circular_parallax=0x7f010023;
         /**  Screen edge padding. 
          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
@@ -143,6 +159,14 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int gapWidth=0x7f010010;
+        /** <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int inner_parallax_factor=0x7f010021;
         /**  Position of the line. 
          <p>Must be one of the following constant values.</p>
 <table>
@@ -176,6 +200,22 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int pageColor=0x7f01000b;
+        /** <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int parallax_factor=0x7f01001f;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int parallax_views_num=0x7f010022;
         /**  Radius of the circles. This is also the spacing between circles. 
          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
@@ -401,93 +441,95 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int bt_home_entradas=0x7f020014;
         public static final int bt_home_grelhados=0x7f020015;
         public static final int bt_home_massas=0x7f020016;
-        public static final int bt_home_petiscos=0x7f020017;
-        public static final int bt_home_pizza=0x7f020018;
-        public static final int bt_home_pratos_da_terra=0x7f020019;
-        public static final int bt_home_pratos_do_mar=0x7f02001a;
-        public static final int bt_home_saladas=0x7f02001b;
-        public static final int bt_home_sobremesas=0x7f02001c;
-        public static final int bt_home_sugestao_chef=0x7f02001d;
-        public static final int bt_home_todos_pratos=0x7f02001e;
-        public static final int bt_ler_qr_code=0x7f02001f;
-        public static final int bt_menu_cardapio=0x7f020020;
-        public static final int bt_menu_check_in=0x7f020021;
-        public static final int bt_menu_checkin=0x7f020022;
-        public static final int bt_menu_pedidos=0x7f020023;
-        public static final int bt_menu_sobre_restaurante=0x7f020024;
-        public static final int bt_refresh=0x7f020025;
-        public static final int bt_voltar=0x7f020026;
-        public static final int email=0x7f020027;
-        public static final int facebook=0x7f020028;
-        public static final int flickr=0x7f020029;
-        public static final int foursquare=0x7f02002a;
-        public static final int google=0x7f02002b;
-        public static final int googleplus=0x7f02002c;
-        public static final int ic_launcher=0x7f02002d;
-        public static final int ic_launcher_a=0x7f02002e;
-        public static final int icone_chamados=0x7f02002f;
-        public static final int icone_check_in=0x7f020030;
-        public static final int icone_checkin=0x7f020031;
-        public static final int icone_checkin_55x42_verde=0x7f020032;
-        public static final int icone_compartilhar=0x7f020033;
-        public static final int icone_conta=0x7f020034;
-        public static final int icone_detalhes=0x7f020035;
-        public static final int icone_enviar=0x7f020036;
-        public static final int icone_galeria=0x7f020037;
-        public static final int icone_lista=0x7f020038;
-        public static final int icone_mais=0x7f020039;
-        public static final int icone_pessoa=0x7f02003a;
-        public static final int icone_topo_acompanhamentos=0x7f02003b;
-        public static final int icone_topo_bebidas=0x7f02003c;
-        public static final int icone_topo_comida_oriental=0x7f02003d;
-        public static final int icone_topo_diversos=0x7f02003e;
-        public static final int icone_topo_entradas=0x7f02003f;
-        public static final int icone_topo_grelhados=0x7f020040;
-        public static final int icone_topo_massas=0x7f020041;
-        public static final int icone_topo_pizza=0x7f020042;
-        public static final int icone_topo_pratos_do_mar=0x7f020043;
-        public static final int icone_topo_saladas=0x7f020044;
-        public static final int icone_topo_sobremesas=0x7f020045;
-        public static final int icone_topo_sugestao_chef=0x7f020046;
-        public static final int icone_topo_todos_pratos=0x7f020047;
-        public static final int instagram=0x7f020048;
-        public static final int linkedin=0x7f020049;
-        public static final int logo_topo=0x7f02004a;
-        public static final int logo_topo_old=0x7f02004b;
-        public static final int mms=0x7f02004c;
-        public static final int myspace=0x7f02004d;
-        public static final int placeholder=0x7f02004e;
-        public static final int runkeeper=0x7f02004f;
-        public static final int salesforce=0x7f020050;
-        public static final int seta_para_direita=0x7f020051;
-        public static final int seta_para_esquerda=0x7f020052;
-        public static final int splash=0x7f020053;
-        public static final int tab_bg_selected=0x7f020054;
-        public static final int tab_bg_selector=0x7f020055;
-        public static final int tab_bg_unselected=0x7f020056;
-        public static final int tab_cardapio=0x7f020057;
-        public static final int tab_check_in=0x7f020058;
-        public static final int tab_focus=0x7f020059;
-        public static final int tab_indicator=0x7f02005a;
-        public static final int tab_pedido=0x7f02005b;
-        public static final int tab_press=0x7f02005c;
-        public static final int tab_selected=0x7f02005d;
-        public static final int tab_sobre_restaurante=0x7f02005e;
-        public static final int tab_text_selector=0x7f02005f;
-        public static final int tab_unselected=0x7f020060;
-        public static final int twitter=0x7f020061;
-        public static final int vpi__tab_indicator=0x7f020062;
-        public static final int vpi__tab_selected_focused_holo=0x7f020063;
-        public static final int vpi__tab_selected_holo=0x7f020064;
-        public static final int vpi__tab_selected_pressed_holo=0x7f020065;
-        public static final int vpi__tab_unselected_focused_holo=0x7f020066;
-        public static final int vpi__tab_unselected_holo=0x7f020067;
-        public static final int vpi__tab_unselected_pressed_holo=0x7f020068;
-        public static final int yahoo=0x7f020069;
-        public static final int yammer=0x7f02006a;
+        public static final int bt_home_pasteis=0x7f020017;
+        public static final int bt_home_petiscos=0x7f020018;
+        public static final int bt_home_pizza=0x7f020019;
+        public static final int bt_home_pratos_da_terra=0x7f02001a;
+        public static final int bt_home_pratos_do_mar=0x7f02001b;
+        public static final int bt_home_saladas=0x7f02001c;
+        public static final int bt_home_sobremesas=0x7f02001d;
+        public static final int bt_home_sugestao_chef=0x7f02001e;
+        public static final int bt_home_todos_pratos=0x7f02001f;
+        public static final int bt_ler_qr_code=0x7f020020;
+        public static final int bt_menu_cardapio=0x7f020021;
+        public static final int bt_menu_check_in=0x7f020022;
+        public static final int bt_menu_checkin=0x7f020023;
+        public static final int bt_menu_pedidos=0x7f020024;
+        public static final int bt_menu_sobre_restaurante=0x7f020025;
+        public static final int bt_refresh=0x7f020026;
+        public static final int bt_voltar=0x7f020027;
+        public static final int email=0x7f020028;
+        public static final int facebook=0x7f020029;
+        public static final int flickr=0x7f02002a;
+        public static final int foursquare=0x7f02002b;
+        public static final int google=0x7f02002c;
+        public static final int googleplus=0x7f02002d;
+        public static final int ic_launcher=0x7f02002e;
+        public static final int ic_launcher_a=0x7f02002f;
+        public static final int icone_chamados=0x7f020030;
+        public static final int icone_check_in=0x7f020031;
+        public static final int icone_checkin=0x7f020032;
+        public static final int icone_checkin_55x42_verde=0x7f020033;
+        public static final int icone_compartilhar=0x7f020034;
+        public static final int icone_conta=0x7f020035;
+        public static final int icone_detalhes=0x7f020036;
+        public static final int icone_enviar=0x7f020037;
+        public static final int icone_galeria=0x7f020038;
+        public static final int icone_lista=0x7f020039;
+        public static final int icone_mais=0x7f02003a;
+        public static final int icone_pessoa=0x7f02003b;
+        public static final int icone_topo_acompanhamentos=0x7f02003c;
+        public static final int icone_topo_bebidas=0x7f02003d;
+        public static final int icone_topo_comida_oriental=0x7f02003e;
+        public static final int icone_topo_diversos=0x7f02003f;
+        public static final int icone_topo_entradas=0x7f020040;
+        public static final int icone_topo_grelhados=0x7f020041;
+        public static final int icone_topo_massas=0x7f020042;
+        public static final int icone_topo_pasteis=0x7f020043;
+        public static final int icone_topo_pizza=0x7f020044;
+        public static final int icone_topo_pratos_do_mar=0x7f020045;
+        public static final int icone_topo_saladas=0x7f020046;
+        public static final int icone_topo_sobremesas=0x7f020047;
+        public static final int icone_topo_sugestao_chef=0x7f020048;
+        public static final int icone_topo_todos_pratos=0x7f020049;
+        public static final int instagram=0x7f02004a;
+        public static final int linkedin=0x7f02004b;
+        public static final int logo_topo=0x7f02004c;
+        public static final int logo_topo_old=0x7f02004d;
+        public static final int mms=0x7f02004e;
+        public static final int myspace=0x7f02004f;
+        public static final int placeholder=0x7f020050;
+        public static final int runkeeper=0x7f020051;
+        public static final int salesforce=0x7f020052;
+        public static final int seta_para_direita=0x7f020053;
+        public static final int seta_para_esquerda=0x7f020054;
+        public static final int splash=0x7f020055;
+        public static final int tab_bg_selected=0x7f020056;
+        public static final int tab_bg_selector=0x7f020057;
+        public static final int tab_bg_unselected=0x7f020058;
+        public static final int tab_cardapio=0x7f020059;
+        public static final int tab_check_in=0x7f02005a;
+        public static final int tab_focus=0x7f02005b;
+        public static final int tab_indicator=0x7f02005c;
+        public static final int tab_pedido=0x7f02005d;
+        public static final int tab_press=0x7f02005e;
+        public static final int tab_selected=0x7f02005f;
+        public static final int tab_sobre_restaurante=0x7f020060;
+        public static final int tab_text_selector=0x7f020061;
+        public static final int tab_unselected=0x7f020062;
+        public static final int twitter=0x7f020063;
+        public static final int vpi__tab_indicator=0x7f020064;
+        public static final int vpi__tab_selected_focused_holo=0x7f020065;
+        public static final int vpi__tab_selected_holo=0x7f020066;
+        public static final int vpi__tab_selected_pressed_holo=0x7f020067;
+        public static final int vpi__tab_unselected_focused_holo=0x7f020068;
+        public static final int vpi__tab_unselected_holo=0x7f020069;
+        public static final int vpi__tab_unselected_pressed_holo=0x7f02006a;
+        public static final int yahoo=0x7f02006b;
+        public static final int yammer=0x7f02006c;
     }
     public static final class id {
-        public static final int RelativeLayout1=0x7f04004c;
+        public static final int RelativeLayout1=0x7f04004a;
         public static final int actionbar=0x7f04000d;
         public static final int actionbar_actions=0x7f04000b;
         public static final int actionbar_home=0x7f040006;
@@ -520,77 +562,75 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int fragment_cardapio_view_pager_midia_indicator=0x7f040025;
         public static final int fragment_detalhe_item_cardapio_button_compartilhar=0x7f040027;
         public static final int fragment_detalhe_item_cardapio_image_view=0x7f040028;
-        public static final int fragment_detalhe_item_cardapio_scroll_view=0x7f040029;
-        public static final int fragment_detalhe_item_cardapio_table_layout_sub_item=0x7f04002c;
-        public static final int fragment_detalhe_item_cardapio_text_view_acompanhamentos=0x7f040030;
-        public static final int fragment_detalhe_item_cardapio_text_view_descricao=0x7f04002b;
-        public static final int fragment_detalhe_item_cardapio_text_view_ingredientes=0x7f04002e;
-        public static final int fragment_detalhe_item_cardapio_text_view_lbl_acompanhamentos=0x7f04002f;
-        public static final int fragment_detalhe_item_cardapio_text_view_lbl_ingredientes=0x7f04002d;
-        public static final int fragment_detalhe_item_cardapio_text_view_lbl_sobre_prato=0x7f04002a;
-        public static final int fragment_detalhe_item_cardapio_text_view_lbl_tempo_preparo=0x7f040031;
-        public static final int fragment_detalhe_item_cardapio_text_view_tempo_preparo=0x7f040032;
-        public static final int fragment_expandable_list_view_todos_item_cardapio_child_relative_layout=0x7f040036;
-        public static final int fragment_expandable_list_view_todos_item_cardapio_child_relative_layout_branco=0x7f040037;
-        public static final int fragment_expandable_list_view_todos_item_cardapio_child_table_layout_sub_item=0x7f040039;
-        public static final int fragment_expandable_list_view_todos_item_cardapio_child_text_view=0x7f040038;
-        public static final int fragment_expandable_list_view_todos_item_cardapio_parent_image_view=0x7f04003b;
-        public static final int fragment_expandable_list_view_todos_item_cardapio_parent_relative_layout=0x7f04003a;
-        public static final int fragment_expandable_list_view_todos_item_cardapio_parent_text_view=0x7f04003c;
-        public static final int fragment_grid_view_item_categoria_cardapio_image_view=0x7f040040;
-        public static final int fragment_grid_view_item_categoria_cardapio_relative_layout=0x7f04003f;
-        public static final int fragment_grid_view_item_categoria_cardapio_text_view_descricao=0x7f040042;
-        public static final int fragment_grid_view_item_categoria_cardapio_text_view_nome=0x7f040041;
-        public static final int fragment_list_view_item_categoria_cardapio_image_view=0x7f040044;
-        public static final int fragment_list_view_item_categoria_cardapio_linear_layout=0x7f040043;
-        public static final int fragment_list_view_item_categoria_cardapio_text_view_ingrediente=0x7f040046;
-        public static final int fragment_list_view_item_categoria_cardapio_text_view_nome=0x7f040045;
-        public static final int fragment_lista_todos_item_cardapio_expandable_list_view_todos_item=0x7f04004a;
-        public static final int fragment_lista_todos_item_cardapio_linear_layout=0x7f040048;
-        public static final int fragment_lista_todos_item_cardapio_progress_bar=0x7f040049;
-        public static final int grid_view_item_menu_image_view=0x7f04003e;
-        public static final int grid_view_item_menu_relative_layout=0x7f04004b;
-        public static final int icon=0x7f040067;
+        public static final int fragment_detalhe_item_cardapio_table_layout_sub_item=0x7f04002b;
+        public static final int fragment_detalhe_item_cardapio_text_view_acompanhamentos=0x7f04002f;
+        public static final int fragment_detalhe_item_cardapio_text_view_descricao=0x7f04002a;
+        public static final int fragment_detalhe_item_cardapio_text_view_ingredientes=0x7f04002d;
+        public static final int fragment_detalhe_item_cardapio_text_view_lbl_acompanhamentos=0x7f04002e;
+        public static final int fragment_detalhe_item_cardapio_text_view_lbl_ingredientes=0x7f04002c;
+        public static final int fragment_detalhe_item_cardapio_text_view_lbl_sobre_prato=0x7f040029;
+        public static final int fragment_detalhe_item_cardapio_text_view_lbl_tempo_preparo=0x7f040030;
+        public static final int fragment_detalhe_item_cardapio_text_view_tempo_preparo=0x7f040031;
+        public static final int fragment_expandable_list_view_todos_item_cardapio_child_relative_layout=0x7f040035;
+        public static final int fragment_expandable_list_view_todos_item_cardapio_child_relative_layout_branco=0x7f040036;
+        public static final int fragment_expandable_list_view_todos_item_cardapio_child_text_view=0x7f040037;
+        public static final int fragment_expandable_list_view_todos_item_cardapio_parent_image_view=0x7f040039;
+        public static final int fragment_expandable_list_view_todos_item_cardapio_parent_relative_layout=0x7f040038;
+        public static final int fragment_expandable_list_view_todos_item_cardapio_parent_text_view=0x7f04003a;
+        public static final int fragment_grid_view_item_categoria_cardapio_image_view=0x7f04003e;
+        public static final int fragment_grid_view_item_categoria_cardapio_relative_layout=0x7f04003d;
+        public static final int fragment_grid_view_item_categoria_cardapio_text_view_descricao=0x7f040040;
+        public static final int fragment_grid_view_item_categoria_cardapio_text_view_nome=0x7f04003f;
+        public static final int fragment_list_view_item_categoria_cardapio_image_view=0x7f040042;
+        public static final int fragment_list_view_item_categoria_cardapio_linear_layout=0x7f040041;
+        public static final int fragment_list_view_item_categoria_cardapio_text_view_ingrediente=0x7f040044;
+        public static final int fragment_list_view_item_categoria_cardapio_text_view_nome=0x7f040043;
+        public static final int fragment_lista_todos_item_cardapio_expandable_list_view_todos_item=0x7f040048;
+        public static final int fragment_lista_todos_item_cardapio_linear_layout=0x7f040046;
+        public static final int fragment_lista_todos_item_cardapio_progress_bar=0x7f040047;
+        public static final int grid_view_item_menu_image_view=0x7f04003c;
+        public static final int grid_view_item_menu_relative_layout=0x7f040049;
+        public static final int icon=0x7f040065;
         public static final int imagem_action_bar=0x7f04000e;
-        public static final int linha_sub_item_table_row=0x7f040033;
-        public static final int linha_sub_item_text_view_descricao=0x7f040034;
-        public static final int linha_sub_item_text_view_valor=0x7f040035;
+        public static final int linha_sub_item_table_row=0x7f040032;
+        public static final int linha_sub_item_text_view_descricao=0x7f040033;
+        public static final int linha_sub_item_text_view_valor=0x7f040034;
         public static final int none=0x7f040000;
-        public static final int progressBar=0x7f040047;
-        public static final int publicidadeActivityFragmentAdapter_relativeLayout=0x7f04003d;
+        public static final int progressBar=0x7f040045;
+        public static final int publicidadeActivityFragmentAdapter_relativeLayout=0x7f04003b;
         public static final int screen=0x7f040005;
         public static final int tab_fragment_conta_button_enviar_conta=0x7f040011;
-        public static final int tab_fragment_conta_checkbox_gorjeta=0x7f040050;
-        public static final int tab_fragment_conta_item_adapeter_linear_layout=0x7f040053;
-        public static final int tab_fragment_conta_item_adapeter_text_view_nome=0x7f040054;
-        public static final int tab_fragment_conta_item_adapeter_text_view_qtd=0x7f040056;
-        public static final int tab_fragment_conta_item_adapeter_text_view_valor_total=0x7f040057;
-        public static final int tab_fragment_conta_item_adapeter_text_view_valor_unitario=0x7f040055;
-        public static final int tab_fragment_conta_linear_layout_valor=0x7f04004e;
-        public static final int tab_fragment_conta_list_view_item_conta=0x7f04004d;
-        public static final int tab_fragment_conta_text_view_lbl_parcial=0x7f040052;
-        public static final int tab_fragment_conta_text_view_sem_conta=0x7f04004f;
-        public static final int tab_fragment_conta_text_view_valor=0x7f040051;
-        public static final int tab_fragment_grid_view_item_cardapio=0x7f040058;
-        public static final int tab_fragment_list_view_item_cardapio=0x7f040059;
-        public static final int tab_fragment_pedido_button_enviar_pedido=0x7f04005e;
-        public static final int tab_fragment_pedido_item_adapeter_image_view_seta_esquerda=0x7f040062;
-        public static final int tab_fragment_pedido_item_adapeter_linear_layout=0x7f040061;
-        public static final int tab_fragment_pedido_item_adapeter_seta_direita=0x7f040064;
-        public static final int tab_fragment_pedido_item_adapeter_text_view_descricao=0x7f040065;
-        public static final int tab_fragment_pedido_item_adapeter_text_view_menos=0x7f040066;
-        public static final int tab_fragment_pedido_item_adapeter_text_view_qtd=0x7f040063;
-        public static final int tab_fragment_pedido_linear_layout=0x7f04005a;
-        public static final int tab_fragment_pedido_linear_layout_valor=0x7f04005c;
-        public static final int tab_fragment_pedido_list_view_item_pedido=0x7f04005b;
-        public static final int tab_fragment_pedido_text_view_lbl_parcial=0x7f04005f;
-        public static final int tab_fragment_pedido_text_view_sem_pedido=0x7f04005d;
-        public static final int tab_fragment_pedido_text_view_valor=0x7f040060;
-        public static final int tabsImagemView=0x7f04006a;
-        public static final int tabsLayout=0x7f040069;
-        public static final int tabsText=0x7f04006b;
+        public static final int tab_fragment_conta_checkbox_gorjeta=0x7f04004e;
+        public static final int tab_fragment_conta_item_adapeter_linear_layout=0x7f040051;
+        public static final int tab_fragment_conta_item_adapeter_text_view_nome=0x7f040052;
+        public static final int tab_fragment_conta_item_adapeter_text_view_qtd=0x7f040054;
+        public static final int tab_fragment_conta_item_adapeter_text_view_valor_total=0x7f040055;
+        public static final int tab_fragment_conta_item_adapeter_text_view_valor_unitario=0x7f040053;
+        public static final int tab_fragment_conta_linear_layout_valor=0x7f04004c;
+        public static final int tab_fragment_conta_list_view_item_conta=0x7f04004b;
+        public static final int tab_fragment_conta_text_view_lbl_parcial=0x7f040050;
+        public static final int tab_fragment_conta_text_view_sem_conta=0x7f04004d;
+        public static final int tab_fragment_conta_text_view_valor=0x7f04004f;
+        public static final int tab_fragment_grid_view_item_cardapio=0x7f040056;
+        public static final int tab_fragment_list_view_item_cardapio=0x7f040057;
+        public static final int tab_fragment_pedido_button_enviar_pedido=0x7f04005c;
+        public static final int tab_fragment_pedido_item_adapeter_image_view_seta_esquerda=0x7f040060;
+        public static final int tab_fragment_pedido_item_adapeter_linear_layout=0x7f04005f;
+        public static final int tab_fragment_pedido_item_adapeter_seta_direita=0x7f040062;
+        public static final int tab_fragment_pedido_item_adapeter_text_view_descricao=0x7f040063;
+        public static final int tab_fragment_pedido_item_adapeter_text_view_menos=0x7f040064;
+        public static final int tab_fragment_pedido_item_adapeter_text_view_qtd=0x7f040061;
+        public static final int tab_fragment_pedido_linear_layout=0x7f040058;
+        public static final int tab_fragment_pedido_linear_layout_valor=0x7f04005a;
+        public static final int tab_fragment_pedido_list_view_item_pedido=0x7f040059;
+        public static final int tab_fragment_pedido_text_view_lbl_parcial=0x7f04005d;
+        public static final int tab_fragment_pedido_text_view_sem_pedido=0x7f04005b;
+        public static final int tab_fragment_pedido_text_view_valor=0x7f04005e;
+        public static final int tabsImagemView=0x7f040068;
+        public static final int tabsLayout=0x7f040067;
+        public static final int tabsText=0x7f040069;
         public static final int text_view_action_bar=0x7f04000f;
-        public static final int title=0x7f040068;
+        public static final int title=0x7f040066;
         public static final int top=0x7f040004;
         public static final int triangle=0x7f040001;
         public static final int underline=0x7f040002;
@@ -637,18 +677,28 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int tabs_bg_pedido=0x7f03001e;
     }
     public static final class string {
-        public static final int acompanhamentos=0x7f0a0005;
-        public static final int app_id=0x7f0a000a;
-        public static final int app_name=0x7f0a0000;
-        public static final int call_garcom=0x7f0a0009;
-        public static final int enviar_conta=0x7f0a0008;
-        public static final int enviar_pedido=0x7f0a0007;
-        public static final int escolher=0x7f0a0001;
-        public static final int finalizar_pedido=0x7f0a0002;
-        public static final int ingredientes=0x7f0a0003;
-        public static final int no_network_connection_toast=0x7f0a000b;
-        public static final int sobre_o_prato=0x7f0a0004;
-        public static final int tempo_medio=0x7f0a0006;
+        public static final int acompanhamentos=0x7f0a000f;
+        public static final int app_id=0x7f0a0014;
+        public static final int app_name=0x7f0a000a;
+        public static final int call_garcom=0x7f0a0013;
+        public static final int define_parallaxscroll=0x7f0a0000;
+        public static final int enviar_conta=0x7f0a0012;
+        public static final int enviar_pedido=0x7f0a0011;
+        public static final int escolher=0x7f0a000b;
+        public static final int finalizar_pedido=0x7f0a000c;
+        public static final int ingredientes=0x7f0a000d;
+        public static final int library_parallaxscroll_author=0x7f0a0001;
+        public static final int library_parallaxscroll_authorWebsite=0x7f0a0002;
+        public static final int library_parallaxscroll_isOpenSource=0x7f0a0008;
+        public static final int library_parallaxscroll_libraryDescription=0x7f0a0004;
+        public static final int library_parallaxscroll_libraryName=0x7f0a0003;
+        public static final int library_parallaxscroll_libraryVersion=0x7f0a0005;
+        public static final int library_parallaxscroll_libraryWebsite=0x7f0a0006;
+        public static final int library_parallaxscroll_licenseId=0x7f0a0007;
+        public static final int library_parallaxscroll_repositoryLink=0x7f0a0009;
+        public static final int no_network_connection_toast=0x7f0a0015;
+        public static final int sobre_o_prato=0x7f0a000e;
+        public static final int tempo_medio=0x7f0a0010;
     }
     public static final class style {
         public static final int ActionBar=0x7f090007;
@@ -1009,6 +1059,98 @@ containing a value of this type.
           @attr name com.login.beachstop.android:unselectedColor
         */
         public static final int LinePageIndicator_unselectedColor = 4;
+        /** Attributes that can be used with a ParallaxScroll.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #ParallaxScroll_alpha_factor com.login.beachstop.android:alpha_factor}</code></td><td></td></tr>
+           <tr><td><code>{@link #ParallaxScroll_circular_parallax com.login.beachstop.android:circular_parallax}</code></td><td></td></tr>
+           <tr><td><code>{@link #ParallaxScroll_inner_parallax_factor com.login.beachstop.android:inner_parallax_factor}</code></td><td></td></tr>
+           <tr><td><code>{@link #ParallaxScroll_parallax_factor com.login.beachstop.android:parallax_factor}</code></td><td></td></tr>
+           <tr><td><code>{@link #ParallaxScroll_parallax_views_num com.login.beachstop.android:parallax_views_num}</code></td><td></td></tr>
+           </table>
+           @see #ParallaxScroll_alpha_factor
+           @see #ParallaxScroll_circular_parallax
+           @see #ParallaxScroll_inner_parallax_factor
+           @see #ParallaxScroll_parallax_factor
+           @see #ParallaxScroll_parallax_views_num
+         */
+        public static final int[] ParallaxScroll = {
+            0x7f01001f, 0x7f010020, 0x7f010021, 0x7f010022,
+            0x7f010023
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.login.beachstop.android.R.attr#alpha_factor}
+          attribute's value can be found in the {@link #ParallaxScroll} array.
+
+
+          <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.login.beachstop.android:alpha_factor
+        */
+        public static final int ParallaxScroll_alpha_factor = 1;
+        /**
+          <p>This symbol is the offset where the {@link com.login.beachstop.android.R.attr#circular_parallax}
+          attribute's value can be found in the {@link #ParallaxScroll} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.login.beachstop.android:circular_parallax
+        */
+        public static final int ParallaxScroll_circular_parallax = 4;
+        /**
+          <p>This symbol is the offset where the {@link com.login.beachstop.android.R.attr#inner_parallax_factor}
+          attribute's value can be found in the {@link #ParallaxScroll} array.
+
+
+          <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.login.beachstop.android:inner_parallax_factor
+        */
+        public static final int ParallaxScroll_inner_parallax_factor = 2;
+        /**
+          <p>This symbol is the offset where the {@link com.login.beachstop.android.R.attr#parallax_factor}
+          attribute's value can be found in the {@link #ParallaxScroll} array.
+
+
+          <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.login.beachstop.android:parallax_factor
+        */
+        public static final int ParallaxScroll_parallax_factor = 0;
+        /**
+          <p>This symbol is the offset where the {@link com.login.beachstop.android.R.attr#parallax_views_num}
+          attribute's value can be found in the {@link #ParallaxScroll} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.login.beachstop.android:parallax_views_num
+        */
+        public static final int ParallaxScroll_parallax_views_num = 3;
         /** Attributes that can be used with a TitlePageIndicator.
            <p>Includes the following attributes:</p>
            <table>

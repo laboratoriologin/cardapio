@@ -88,6 +88,16 @@
     } else {
 
         [self.collectionView reloadData];
+        
+        if ([self.menu.itens count] == 1) {
+            
+            CLItemController *controller = [[CLItemController alloc]initWithNibName:@"CLItemController" bundle:nil];
+            
+            controller.item = [[self.menu itens]objectAtIndex:0];
+            
+            [self.navigationController pushViewController:controller animated:YES];
+            
+        }
     
     }
     
@@ -136,6 +146,16 @@
             _loading = NO;
             
             [self.collectionView reloadData];
+            
+            if ([self.menu.itens count] == 1) {
+                
+                CLItemController *controller = [[CLItemController alloc]initWithNibName:@"CLItemController" bundle:nil];
+
+                controller.item = [[self.menu itens]objectAtIndex:0];
+                
+                [self.navigationController pushViewController:controller animated:YES];
+                
+            }
             
         }];
         
@@ -249,10 +269,16 @@
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+
+    
     if ([self isTodosPratos]) {
+    
         return [_todosItensMenu count];
+    
     }
+    
     return 1;
+    
 }
 
 

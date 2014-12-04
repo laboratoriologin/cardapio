@@ -36,7 +36,7 @@ public final class Constantes {
 
 	public static final String MSG_ERRO_GRAVAR_DADOS = "Ops! Um erro ocorreu ao tentar \n gravar os dados, reinstale o aplicativo!";
 	public static final String MSG_OK = "Operação realizada com sucesso!";
-	public static final String MSG_ERRO_NET = "Ops! Ocorreu uma falha, \n verifique sua conexão e tente novamente!";
+	public static final String MSG_ERRO_NET = "Verifique sua conexão";
 	public static final String MSG_ERRO_GRAVE_SISTEMA = "Ops! Falha grave no sistema!";
 	public static final String MSG_ERRO_VALIDACAO_SISTEMA = "Ops! Ocorreu um erro no sistema, tente novamente!";
 	public static final String MSG_ERRO_READ_QR_CODE = "Erro de leitura, tente novamente!";

@@ -7,7 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.login.beachstop.android.fragment.PublicidadeActivityFragmentAdapter;
+import com.login.beachstop.android.fragment.PublicidadeActivityFragment;
 import com.login.beachstop.android.model.Publicidade;
 
 public class PublicidadeFragmentAdapter extends FragmentPagerAdapter {
@@ -23,7 +23,7 @@ public class PublicidadeFragmentAdapter extends FragmentPagerAdapter {
 
 	@Override
 	public Fragment getItem(int position) {
-		return PublicidadeActivityFragmentAdapter.newInstance(this.activity, String.valueOf(position), listPublicidade.get(position));
+		return PublicidadeActivityFragment.newInstance(this.activity, String.valueOf(position), listPublicidade.get(position));
 	}
 
 	@Override

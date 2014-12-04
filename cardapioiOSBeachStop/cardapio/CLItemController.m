@@ -386,7 +386,7 @@ const NSInteger CLSectionAcompanhamento = 3;
     
     _imageViewReferenceBounce.clipsToBounds = YES;
     
-    _imageViewReferenceBounce.contentMode = UIViewContentModeScaleAspectFill;
+    _imageViewReferenceBounce.contentMode = UIViewContentModeScaleAspectFit;
     
     _imageViewReferenceBounce.backgroundColor = [UIColor whiteColor];
     
@@ -447,13 +447,16 @@ const NSInteger CLSectionAcompanhamento = 3;
         
         [_indicatorImageView stopAnimating];
 
-    } else if (self.item.imagem.length>0) {
+    } else if (self.item.imagem.length > 0) {
         
         _imageViewReferenceBounce.image = [UIImage imageNamed:@"placeholder.png"];
     
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+
         dispatch_async(queue, ^{
+            
             NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:CLUrlImagem, self.item.imagem]];
+          
             UIImage *img = [UIImage imageWithData: [NSData dataWithContentsOfURL:url]];
             
             dispatch_sync(dispatch_get_main_queue(), ^{
@@ -461,9 +464,13 @@ const NSInteger CLSectionAcompanhamento = 3;
                 [_indicatorImageView stopAnimating];
                 
                 if(img) {
+                    
                     self.item.icone = img;
+                    
                     _imageViewReferenceBounce.image = self.item.icone;
+                
                     [_imageViewReferenceBounce setNeedsLayout];
+                
                 }
                 
             });

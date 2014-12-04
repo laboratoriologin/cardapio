@@ -133,7 +133,9 @@ const CGFloat CAlarguraImagemSlide = 320;
     CGFloat yMargem = 73;
     
     if (IS_IPHONE_5) {
+    
         yMargem = 80;
+    
     }
     
     for(CLMenu *menu in objects) {

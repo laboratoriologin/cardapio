@@ -125,7 +125,7 @@
     if(!self)
         return(nil);
 
-    self.backgroundColor = [UIColor blackColor];
+    self.backgroundColor = [UIColor clearColor];
     self.contentMode = UIViewContentModeScaleAspectFill;
     self.clipsToBounds = YES;
     self.autoresizingMask =

@@ -2,6 +2,7 @@ package com.login.beachstop.android;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.Toast;
 
@@ -15,8 +16,7 @@ import com.login.beachstop.android.view.ActionBar;
 public class SobreRestauranteActivity extends DefaultActivity implements BusinessResult {
 
 	private WebView webView = null;
-	private String url = null;
-
+	
 	@SuppressLint("SetJavaScriptEnabled")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,8 @@ public class SobreRestauranteActivity extends DefaultActivity implements Busines
 		this.webView.getSettings().setJavaScriptEnabled(true);
 		this.webView.getSettings().setLoadWithOverviewMode(true);
 		this.webView.getSettings().setUseWideViewPort(true);
-
+		this.webView.setWebChromeClient(new WebChromeClient());
+		this.webView.setInitialScale(1);
 		new EmpresaBS(this).getEmpresa();
 
 	}

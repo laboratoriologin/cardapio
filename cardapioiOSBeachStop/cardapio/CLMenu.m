@@ -146,6 +146,12 @@
             self.imagem    = @"bt_home_sobremesas";
             self.imagemTopo = @"icone_topo_sobremesas";
             break;
+            
+        case CAMPastel:
+            self.descricao  = @"Pastéis";
+            self.imagem     = @"bt_home_pasteis";
+            self.imagemTopo = @"icone_topo_pasteis";
+            break;
        
         case CAMTodosPratos:
             self.descricao  = @"Todos os pratos";

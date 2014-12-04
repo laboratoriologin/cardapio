@@ -16,8 +16,8 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.login.beachstop.android.R;
 import com.login.beachstop.android.PedidoActivity;
+import com.login.beachstop.android.R;
 import com.login.beachstop.android.business.BusinessResult;
 import com.login.beachstop.android.business.ContaBS;
 import com.login.beachstop.android.model.Conta;

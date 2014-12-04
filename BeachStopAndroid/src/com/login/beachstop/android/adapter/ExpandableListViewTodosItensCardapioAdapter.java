@@ -2,22 +2,17 @@ package com.login.beachstop.android.adapter;
 
 import java.util.List;
 
-import android.graphics.Color;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.login.beachstop.android.HomeActivity;
 import com.login.beachstop.android.R;
 import com.login.beachstop.android.model.CategoriaCardapioItemSys;
 import com.login.beachstop.android.model.ItemCardapio;
-import com.login.beachstop.android.model.ItemCardapioSubItem;
 
 public class ExpandableListViewTodosItensCardapioAdapter extends BaseExpandableListAdapter {
 
