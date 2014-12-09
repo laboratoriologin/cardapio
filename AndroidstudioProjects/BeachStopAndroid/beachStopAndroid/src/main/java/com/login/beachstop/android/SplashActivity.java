@@ -129,9 +129,9 @@ public class SplashActivity extends DefaultActivity {
         categoria.setArea(1l);
         categoria.setDescricao("Kit");
         categoria.setFlagAtivo(true);
-        categoria.setOrdem(98l);
+        categoria.setOrdem((long) (categorias.size() + 1));
         categoria.setImagem("");
-        categoria.setResourceImg(R.drawable.bt_home_todos_pratos);
+        categoria.setResourceImg(R.drawable.bt_home_diversos);
 
         categorias.add(categoria);
 
@@ -141,7 +141,7 @@ public class SplashActivity extends DefaultActivity {
         categoria.setArea(1l);
         categoria.setDescricao("Todos");
         categoria.setFlagAtivo(true);
-        categoria.setOrdem(99l);
+        categoria.setOrdem((long) (categorias.size() + 2));
         categoria.setImagem("");
         categoria.setResourceImg(R.drawable.bt_home_todos_pratos);
 

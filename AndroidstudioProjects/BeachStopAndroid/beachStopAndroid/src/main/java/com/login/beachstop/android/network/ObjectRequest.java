@@ -56,13 +56,13 @@ public abstract class ObjectRequest<T extends Base> extends HttpTask {
 
     protected String getUrlPut(T object) {
 
-        return Constantes.URL_WS + "/" + object.getServiceName() + "/" + object.getId();
+        return Constantes.URL_WS + "/" + object.getServiceName() + "/" + (object.getId() == null ? "" : object.getId());
 
     }
 
     protected String getUrlGet(T object) {
 
-        return Constantes.URL_WS + "/" + object.getServiceName() + "/" + object.getId();
+        return Constantes.URL_WS + "/" + object.getServiceName() + "/" + (object.getId() == null ? "" : object.getId());
 
     }
 

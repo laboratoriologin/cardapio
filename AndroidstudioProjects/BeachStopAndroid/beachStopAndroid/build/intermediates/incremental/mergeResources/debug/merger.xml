@@ -177,10 +177,13 @@ true
                     <attr name="android:background" />
                 </declare-styleable>
 
+                <color name="vpi__bright_foreground_holo_light" >@color/vpi__background_holo_dark
+                </color>
+
                 <dimen name="default_title_indicator_footer_indicator_height" >4dp
                 </dimen>
 
-                <color name="vpi__bright_foreground_holo_light" >@color/vpi__background_holo_dark
+                <color name="vpi__background_holo_light" >#fff3f3f3
                 </color>
 
                 <style
@@ -215,15 +218,9 @@ center
                     </item>
                 </style>
 
-                <color name="vpi__background_holo_light" >#fff3f3f3
-                </color>
-
                 <integer name="default_title_indicator_footer_indicator_style" >
 2
                 </integer>
-
-                <dimen name="default_title_indicator_top_padding" >7dp
-                </dimen>
 
                 <declare-styleable name="ViewPagerIndicator" >
 
@@ -252,6 +249,9 @@ center
                         name="vpiUnderlinePageIndicatorStyle"
                         format="reference" />
                 </declare-styleable>
+
+                <dimen name="default_title_indicator_top_padding" >7dp
+                </dimen>
 
                 <color name="default_title_indicator_text_color" >#BBFFFFFF
                 </color>
@@ -430,19 +430,19 @@ false
                 <color name="default_line_indicator_selected_color" >#FF33B5E5
                 </color>
 
-                <integer name="default_underline_indicator_fade_delay" >
-300
-                </integer>
                 <integer name="default_circle_indicator_orientation" >
 0
                 </integer>
-
-                <dimen name="default_title_indicator_footer_padding" >7dp
-                </dimen>
+                <integer name="default_underline_indicator_fade_delay" >
+300
+                </integer>
 
                 <bool name="default_circle_indicator_centered" >
 true
                 </bool>
+
+                <dimen name="default_title_indicator_footer_padding" >7dp
+                </dimen>
 
                 <color name="vpi__bright_foreground_inverse_holo_light" >@color/vpi__bright_foreground_holo_dark
                 </color>
@@ -2206,19 +2206,19 @@ bold
                 </string>
                 <string name="app_name" >BeachStop
                 </string>
-                <string name="escolher" >Incluir
-                </string>
                 <string name="app_id" >600470246741282
+                </string>
+                <string name="escolher" >Incluir
                 </string>
                 <string name="saudacao_cadastro_cliente" >Olá! Bem vindo ao BeachStop Ipitanga, para sua comodida, gostariamos de saber quem é você!
                 </string>
-                <string name="Salvar" >Salvar
-                </string>
                 <string name="finalizar_pedido" >Pedir
                 </string>
-                <string name="nome" >Nome
+                <string name="Salvar" >Salvar
                 </string>
                 <string name="enviar_conta" >Solicitar a conta
+                </string>
+                <string name="nome" >Nome
                 </string>
                 <string name="enviar_pedido" >Enviar o pedido
                 </string>
@@ -2245,6 +2245,17 @@ bold
                 </style>
 
                 <style
+                    name="AppBaseTheme"
+                    parent="android:Theme.NoTitleBar" >
+
+                    <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+                    -->
+                </style>
+
+                <style
                     name="ActionBarHomeItem"
                     parent="ActionBarItem" >
                     <item name="android:layout_width">
@@ -2265,17 +2276,6 @@ center
                     <item name="android:layout_marginLeft">
 1dp
                     </item>
-                </style>
-
-                <style
-                    name="AppBaseTheme"
-                    parent="android:Theme.NoTitleBar" >
-
-                    <!--
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-                    -->
                 </style>
 
                 <style name="ActionBar" >
@@ -2304,6 +2304,13 @@ horizontal
                     </item>
                 </style>
 
+                <style
+                    name="AppTheme"
+                    parent="android:Theme.Light.NoTitleBar" >
+
+                    <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+                </style>
+
                 <style name="ActionBarHomeLogo" >
                     <item name="android:layout_marginRight">
 1dp
@@ -2311,13 +2318,6 @@ horizontal
                     <item name="android:layout_marginLeft">
 0px
                     </item>
-                </style>
-
-                <style
-                    name="AppTheme"
-                    parent="android:Theme.Light.NoTitleBar" >
-
-                    <!-- All customizations that are NOT specific to a particular API-level can go here. -->
                 </style>
             </file>
             <file

@@ -35,7 +35,7 @@ public class PublicidadeRequest extends ObjectRequest<Publicidade> {
 
                 for (int i = 0; i < jsonArray.length(); i++) {
 
-                    json = jsonArray.getJSONObject(i).getJSONObject("categoria");
+                    json = jsonArray.getJSONObject(i).getJSONObject("publicidade");
 
                     publicidade = new Publicidade();
                     publicidade.setId(json.has("id") ? json.getLong("id") : null);
