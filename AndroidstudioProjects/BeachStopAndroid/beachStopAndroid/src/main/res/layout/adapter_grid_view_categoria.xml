@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/adapter_grid_view_categoria_image_view"
         android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_height="68dp"
         android:layout_gravity="center"
         android:gravity="center" />
 

@@ -1,6 +1,7 @@
 package com.login.beachstop.android.managers.sqlite.dao;
 
 import com.login.beachstop.android.managers.sqlite.exception.PersistException;
+import com.login.beachstop.android.models.Categoria;
 import com.login.beachstop.android.models.Item;
 import com.login.beachstop.android.models.SubItem;
 
@@ -35,12 +36,21 @@ public class ItemDAO extends DroidDao<Item, Long> {
         return itens;
     }
 
-    public int getQtdItem() {
+    public int getQtdItem(Categoria categoria) {
 
-        List<Item> item = this.getAll();
+        List<Item> item;
+
+        if (categoria == null) {
+
+            item = this.getAll();
+
+        } else {
+
+            item = this.getAll(categoria.getId());
+
+        }
 
         return item.size();
-
     }
 
     public void save(List<Item> items) throws Exception {

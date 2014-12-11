@@ -138,7 +138,7 @@ public class CardapioFragment extends Fragment {
 
         new PublicidadeRequest(listenerGetPublicidade).get(new Publicidade());
 
-        this.categorias = this.activity.getDataManager().getCategoriaDAO().getAll();
+        this.categorias = this.activity.getDataManager().getCategoriaDAO().getAllOrderByOrdem();
 
         this.categoriaGridAdapter = new CategoriaGridAdapter(this.activity, this.categorias);
         this.gridViewMenu.setAdapter(this.categoriaGridAdapter);

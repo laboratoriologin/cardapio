@@ -37,7 +37,7 @@ public class SubItemDAO implements RestDAO<SubItem> {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("subitemdao.findall", item.getId());
+		broker.setPropertySQL("subitemdao.findallbyitem", item.getId());
 
 		return broker.getCollectionBean(SubItem.class, "codigo", "descricao", "flagAtivo", "id", "item.id", "nome", "ordem", "valor");
 

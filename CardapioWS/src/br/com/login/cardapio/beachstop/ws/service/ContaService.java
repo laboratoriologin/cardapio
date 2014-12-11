@@ -34,11 +34,12 @@ public class ContaService extends RestService<Conta> {
 
 		if (form.getCliente() == null) {
 
-			form.setCliente(new Cliente("1"));
-			form.setDataAbertura(new Date(System.currentTimeMillis()));
+			form.setCliente(new Cliente("1"));			
 			form.setQtdPessoa(1);
 
 		}
+		
+		form.setDataAbertura(new Date(System.currentTimeMillis()));
 
 		return new Conta(super.insert(form).getId().toString());
 

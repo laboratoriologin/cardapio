@@ -49,6 +49,7 @@ public class QrCode extends HttpServlet {
 	}
 
 	private void exec(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String qrtext = request.getParameter("mesa");
 
 		Usuario usuario = (Usuario) request.getSession().getAttribute(Constantes.USUARIO_CONECTADO);
@@ -58,6 +59,7 @@ public class QrCode extends HttpServlet {
 		}
 
 		List<Empresa> listEmpresa = new Empresa().findAll("id");
+		
 		if (listEmpresa.size() != 0) {
 
 			Empresa empresa = listEmpresa.get(0);

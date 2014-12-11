@@ -61,7 +61,7 @@ public class CategoriaFaces extends CrudFaces<Categoria> {
 		nomeArquivo += String.valueOf(now.get(Calendar.MINUTE));
 		nomeArquivo += String.valueOf(now.get(Calendar.SECOND));
 		nomeArquivo += String.valueOf(now.get(Calendar.MILLISECOND));
-		nomeArquivo += ".jpg";
+		nomeArquivo += ".png";
 		return null;
 	}
 
@@ -77,7 +77,25 @@ public class CategoriaFaces extends CrudFaces<Categoria> {
 	@Override
 	protected String detail() {
 		super.detail();
-		this.nomeArquivo = this.getCrudModel().getImagem();
+//		this.nomeArquivo = this.getCrudModel().getImagem();
+		
+		
+		if(this.getCrudModel().getImagem() != null){
+			this.uploadImagemMenu = true;
+			this.uploadImagemTopo = true;
+		}
+		
+		this.nomeArquivo = "";
+		Calendar now = Calendar.getInstance();
+		nomeArquivo += String.valueOf(now.get(Calendar.YEAR));
+		nomeArquivo += String.valueOf(now.get(Calendar.MONTH));
+		nomeArquivo += String.valueOf(now.get(Calendar.DAY_OF_MONTH));
+		nomeArquivo += String.valueOf(now.get(Calendar.HOUR_OF_DAY));
+		nomeArquivo += String.valueOf(now.get(Calendar.MINUTE));
+		nomeArquivo += String.valueOf(now.get(Calendar.SECOND));
+		nomeArquivo += String.valueOf(now.get(Calendar.MILLISECOND));
+		nomeArquivo += ".png";
+		
 		return null;
 	}
 

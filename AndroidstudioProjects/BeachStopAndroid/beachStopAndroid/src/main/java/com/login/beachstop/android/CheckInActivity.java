@@ -92,7 +92,6 @@ public class CheckInActivity extends DefaultActivity {
                 Toast.makeText(CheckInActivity.this, Constantes.MSG_ERRO_NET, Toast.LENGTH_LONG).show();
 
             }
-
         }
     };
     private SocialAuthAdapter socialAuthAdapter;
@@ -190,6 +189,10 @@ public class CheckInActivity extends DefaultActivity {
 
                             Cliente cliente = this.getDataManager().getClienteDAO().get();
                             this.conta.setClienteId(cliente != null ? cliente.getId() : null);
+
+                            this.conta.setDataFechamento("");
+                            this.conta.setValorTotal("");
+                            this.conta.setValorTotalPago("");
 
                             changeStatusView(false, false, false, true);
 
