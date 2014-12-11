@@ -17,8 +17,7 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int centered=0x7f010000;
-        /**  Screen edge padding. 
-         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
 <p>This may also be a reference to a resource (in the form
@@ -28,8 +27,7 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int clipPadding=0x7f01000b;
-        /**  Length of the delay to fade the indicator. 
-         <p>Must be an integer value, such as "<code>100</code>".
+        /** <p>Must be an integer value, such as "<code>100</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
 theme attribute (in the form
@@ -37,8 +35,7 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int fadeDelay=0x7f010017;
-        /**  Length of the indicator fade to transparent. 
-         <p>Must be an integer value, such as "<code>100</code>".
+        /** <p>Must be an integer value, such as "<code>100</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
 theme attribute (in the form
@@ -46,8 +43,7 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int fadeLength=0x7f010018;
-        /**  Whether or not the selected indicator fades. 
-         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
 theme attribute (in the form
@@ -55,8 +51,7 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int fades=0x7f010016;
-        /**  Color of the filled circle that represents the current page. 
-         <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -65,8 +60,7 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int fillColor=0x7f010004;
-        /**  Color of the footer line and indicator. 
-         <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -75,8 +69,7 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int footerColor=0x7f01000c;
-        /**  Height of the indicator above the footer line. 
-         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
 <p>This may also be a reference to a resource (in the form
@@ -86,8 +79,7 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int footerIndicatorHeight=0x7f01000f;
-        /**  Style of the indicator. Default is triangle. 
-         <p>Must be one of the following constant values.</p>
+        /** <p>Must be one of the following constant values.</p>
 <table>
 <colgroup align="left" />
 <colgroup align="left" />
@@ -99,8 +91,7 @@ containing a value of this type.
 </table>
          */
         public static final int footerIndicatorStyle=0x7f01000e;
-        /**  Left and right padding of the underline indicator. 
-         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
 <p>This may also be a reference to a resource (in the form
@@ -110,8 +101,7 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int footerIndicatorUnderlinePadding=0x7f010010;
-        /**  Height of the footer line. 
-         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
 <p>This may also be a reference to a resource (in the form
@@ -121,8 +111,7 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int footerLineHeight=0x7f01000d;
-        /**  Padding between the bottom of the title and the footer. 
-         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
 <p>This may also be a reference to a resource (in the form
@@ -132,8 +121,7 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int footerPadding=0x7f010011;
-        /**  Width of the gap between each indicator line. 
-         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
 <p>This may also be a reference to a resource (in the form
@@ -143,8 +131,7 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int gapWidth=0x7f01000a;
-        /**  Position of the line. 
-         <p>Must be one of the following constant values.</p>
+        /** <p>Must be one of the following constant values.</p>
 <table>
 <colgroup align="left" />
 <colgroup align="left" />
@@ -155,8 +142,7 @@ containing a value of this type.
 </table>
          */
         public static final int linePosition=0x7f010012;
-        /**  Width of each indicator line. 
-         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
 <p>This may also be a reference to a resource (in the form
@@ -166,8 +152,7 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int lineWidth=0x7f010009;
-        /**  Color of the filled circles that represents pages. 
-         <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -176,8 +161,7 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int pageColor=0x7f010005;
-        /**  Radius of the circles. This is also the spacing between circles. 
-         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
 <p>This may also be a reference to a resource (in the form
@@ -187,8 +171,7 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int radius=0x7f010006;
-        /**  Whether or not the selected item is displayed as bold. 
-         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
 theme attribute (in the form
@@ -205,8 +188,7 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int selectedColor=0x7f010001;
-        /**  Whether or not the selected indicator snaps to the circles. 
-         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
 theme attribute (in the form
@@ -214,8 +196,7 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int snap=0x7f010007;
-        /**  Color of the open circles. 
-         <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -234,8 +215,7 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int strokeWidth=0x7f010002;
-        /**  Padding between titles when bumping into each other. 
-         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
 <p>This may also be a reference to a resource (in the form
@@ -245,8 +225,7 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int titlePadding=0x7f010014;
-        /**  Padding between titles and the top of the View. 
-         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
 <p>This may also be a reference to a resource (in the form
@@ -265,33 +244,27 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int unselectedColor=0x7f010003;
-        /**  Style of the circle indicator. 
-         <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
         public static final int vpiCirclePageIndicatorStyle=0x7f010019;
-        /**  Style of the icon indicator's views. 
-         <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
         public static final int vpiIconPageIndicatorStyle=0x7f01001a;
-        /**  Style of the line indicator. 
-         <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
         public static final int vpiLinePageIndicatorStyle=0x7f01001b;
-        /**  Style of the tab indicator's tabs. 
-         <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
         public static final int vpiTabPageIndicatorStyle=0x7f01001d;
-        /**  Style of the title indicator. 
-         <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
         public static final int vpiTitlePageIndicatorStyle=0x7f01001c;
-        /**  Style of the underline indicator. 
-         <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
         public static final int vpiUnderlinePageIndicatorStyle=0x7f01001e;
@@ -667,6 +640,12 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
+
+
+
+
+
+
         
  API 11 theme customizations can go here. 
  API 14 theme customizations can go here. 
@@ -690,15 +669,15 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #CirclePageIndicator_android_background android:background}</code></td><td> View background </td></tr>
-           <tr><td><code>{@link #CirclePageIndicator_android_orientation android:orientation}</code></td><td> Orientation of the indicator.</td></tr>
-           <tr><td><code>{@link #CirclePageIndicator_centered com.login.beachstop.android:centered}</code></td><td> Whether or not the indicators should be centered.</td></tr>
-           <tr><td><code>{@link #CirclePageIndicator_fillColor com.login.beachstop.android:fillColor}</code></td><td> Color of the filled circle that represents the current page.</td></tr>
-           <tr><td><code>{@link #CirclePageIndicator_pageColor com.login.beachstop.android:pageColor}</code></td><td> Color of the filled circles that represents pages.</td></tr>
-           <tr><td><code>{@link #CirclePageIndicator_radius com.login.beachstop.android:radius}</code></td><td> Radius of the circles.</td></tr>
-           <tr><td><code>{@link #CirclePageIndicator_snap com.login.beachstop.android:snap}</code></td><td> Whether or not the selected indicator snaps to the circles.</td></tr>
-           <tr><td><code>{@link #CirclePageIndicator_strokeColor com.login.beachstop.android:strokeColor}</code></td><td> Color of the open circles.</td></tr>
-           <tr><td><code>{@link #CirclePageIndicator_strokeWidth com.login.beachstop.android:strokeWidth}</code></td><td> Width of the stroke used to draw the circles.</td></tr>
+           <tr><td><code>{@link #CirclePageIndicator_android_background android:background}</code></td><td></td></tr>
+           <tr><td><code>{@link #CirclePageIndicator_android_orientation android:orientation}</code></td><td></td></tr>
+           <tr><td><code>{@link #CirclePageIndicator_centered com.login.beachstop.android:centered}</code></td><td></td></tr>
+           <tr><td><code>{@link #CirclePageIndicator_fillColor com.login.beachstop.android:fillColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #CirclePageIndicator_pageColor com.login.beachstop.android:pageColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #CirclePageIndicator_radius com.login.beachstop.android:radius}</code></td><td></td></tr>
+           <tr><td><code>{@link #CirclePageIndicator_snap com.login.beachstop.android:snap}</code></td><td></td></tr>
+           <tr><td><code>{@link #CirclePageIndicator_strokeColor com.login.beachstop.android:strokeColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #CirclePageIndicator_strokeWidth com.login.beachstop.android:strokeWidth}</code></td><td></td></tr>
            </table>
            @see #CirclePageIndicator_android_background
            @see #CirclePageIndicator_android_orientation
@@ -716,27 +695,20 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
             0x7f010008
         };
         /**
-          <p>
-          @attr description
-           View background 
-          <p>This corresponds to the global attribute
-          resource symbol {@link android.R.attr#background}.
+          <p>This symbol is the offset where the {@link android.R.attr#background}
+          attribute's value can be found in the {@link #CirclePageIndicator} array.
           @attr name android:background
         */
         public static final int CirclePageIndicator_android_background = 1;
         /**
-          <p>
-          @attr description
-           Orientation of the indicator. 
-          <p>This corresponds to the global attribute
-          resource symbol {@link android.R.attr#orientation}.
+          <p>This symbol is the offset where the {@link android.R.attr#orientation}
+          attribute's value can be found in the {@link #CirclePageIndicator} array.
           @attr name android:orientation
         */
         public static final int CirclePageIndicator_android_orientation = 0;
         /**
-          <p>
-          @attr description
-           Whether or not the indicators should be centered. 
+          <p>This symbol is the offset where the {@link com.login.beachstop.android.R.attr#centered}
+          attribute's value can be found in the {@link #CirclePageIndicator} array.
 
 
           <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
@@ -745,14 +717,12 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          <p>This is a private symbol.
           @attr name com.login.beachstop.android:centered
         */
         public static final int CirclePageIndicator_centered = 2;
         /**
-          <p>
-          @attr description
-           Color of the filled circle that represents the current page. 
+          <p>This symbol is the offset where the {@link com.login.beachstop.android.R.attr#fillColor}
+          attribute's value can be found in the {@link #CirclePageIndicator} array.
 
 
           <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
@@ -762,14 +732,12 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          <p>This is a private symbol.
           @attr name com.login.beachstop.android:fillColor
         */
         public static final int CirclePageIndicator_fillColor = 4;
         /**
-          <p>
-          @attr description
-           Color of the filled circles that represents pages. 
+          <p>This symbol is the offset where the {@link com.login.beachstop.android.R.attr#pageColor}
+          attribute's value can be found in the {@link #CirclePageIndicator} array.
 
 
           <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
@@ -779,14 +747,12 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          <p>This is a private symbol.
           @attr name com.login.beachstop.android:pageColor
         */
         public static final int CirclePageIndicator_pageColor = 5;
         /**
-          <p>
-          @attr description
-           Radius of the circles. This is also the spacing between circles. 
+          <p>This symbol is the offset where the {@link com.login.beachstop.android.R.attr#radius}
+          attribute's value can be found in the {@link #CirclePageIndicator} array.
 
 
           <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
@@ -797,14 +763,12 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          <p>This is a private symbol.
           @attr name com.login.beachstop.android:radius
         */
         public static final int CirclePageIndicator_radius = 6;
         /**
-          <p>
-          @attr description
-           Whether or not the selected indicator snaps to the circles. 
+          <p>This symbol is the offset where the {@link com.login.beachstop.android.R.attr#snap}
+          attribute's value can be found in the {@link #CirclePageIndicator} array.
 
 
           <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
@@ -813,14 +777,12 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          <p>This is a private symbol.
           @attr name com.login.beachstop.android:snap
         */
         public static final int CirclePageIndicator_snap = 7;
         /**
-          <p>
-          @attr description
-           Color of the open circles. 
+          <p>This symbol is the offset where the {@link com.login.beachstop.android.R.attr#strokeColor}
+          attribute's value can be found in the {@link #CirclePageIndicator} array.
 
 
           <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
@@ -830,14 +792,12 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          <p>This is a private symbol.
           @attr name com.login.beachstop.android:strokeColor
         */
         public static final int CirclePageIndicator_strokeColor = 8;
         /**
-          <p>
-          @attr description
-           Width of the stroke used to draw the circles. 
+          <p>This symbol is the offset where the {@link com.login.beachstop.android.R.attr#strokeWidth}
+          attribute's value can be found in the {@link #CirclePageIndicator} array.
 
 
           <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
@@ -848,7 +808,6 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          <p>This is a private symbol.
           @attr name com.login.beachstop.android:strokeWidth
         */
         public static final int CirclePageIndicator_strokeWidth = 3;
@@ -858,13 +817,13 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #LinePageIndicator_android_background android:background}</code></td><td> View background </td></tr>
-           <tr><td><code>{@link #LinePageIndicator_centered com.login.beachstop.android:centered}</code></td><td> Whether or not the indicators should be centered.</td></tr>
-           <tr><td><code>{@link #LinePageIndicator_gapWidth com.login.beachstop.android:gapWidth}</code></td><td> Width of the gap between each indicator line.</td></tr>
-           <tr><td><code>{@link #LinePageIndicator_lineWidth com.login.beachstop.android:lineWidth}</code></td><td> Width of each indicator line.</td></tr>
-           <tr><td><code>{@link #LinePageIndicator_selectedColor com.login.beachstop.android:selectedColor}</code></td><td> Color of the selected line that represents the current page.</td></tr>
-           <tr><td><code>{@link #LinePageIndicator_strokeWidth com.login.beachstop.android:strokeWidth}</code></td><td> Width of each indicator line's stroke.</td></tr>
-           <tr><td><code>{@link #LinePageIndicator_unselectedColor com.login.beachstop.android:unselectedColor}</code></td><td> Color of the unselected lines that represent the pages.</td></tr>
+           <tr><td><code>{@link #LinePageIndicator_android_background android:background}</code></td><td></td></tr>
+           <tr><td><code>{@link #LinePageIndicator_centered com.login.beachstop.android:centered}</code></td><td></td></tr>
+           <tr><td><code>{@link #LinePageIndicator_gapWidth com.login.beachstop.android:gapWidth}</code></td><td></td></tr>
+           <tr><td><code>{@link #LinePageIndicator_lineWidth com.login.beachstop.android:lineWidth}</code></td><td></td></tr>
+           <tr><td><code>{@link #LinePageIndicator_selectedColor com.login.beachstop.android:selectedColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #LinePageIndicator_strokeWidth com.login.beachstop.android:strokeWidth}</code></td><td></td></tr>
+           <tr><td><code>{@link #LinePageIndicator_unselectedColor com.login.beachstop.android:unselectedColor}</code></td><td></td></tr>
            </table>
            @see #LinePageIndicator_android_background
            @see #LinePageIndicator_centered
@@ -879,18 +838,14 @@ containing a value of this type.
             0x7f010003, 0x7f010009, 0x7f01000a
         };
         /**
-          <p>
-          @attr description
-           View background 
-          <p>This corresponds to the global attribute
-          resource symbol {@link android.R.attr#background}.
+          <p>This symbol is the offset where the {@link android.R.attr#background}
+          attribute's value can be found in the {@link #LinePageIndicator} array.
           @attr name android:background
         */
         public static final int LinePageIndicator_android_background = 0;
         /**
-          <p>
-          @attr description
-           Whether or not the indicators should be centered. 
+          <p>This symbol is the offset where the {@link com.login.beachstop.android.R.attr#centered}
+          attribute's value can be found in the {@link #LinePageIndicator} array.
 
 
           <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
@@ -899,14 +854,12 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          <p>This is a private symbol.
           @attr name com.login.beachstop.android:centered
         */
         public static final int LinePageIndicator_centered = 1;
         /**
-          <p>
-          @attr description
-           Width of the gap between each indicator line. 
+          <p>This symbol is the offset where the {@link com.login.beachstop.android.R.attr#gapWidth}
+          attribute's value can be found in the {@link #LinePageIndicator} array.
 
 
           <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
@@ -917,14 +870,12 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          <p>This is a private symbol.
           @attr name com.login.beachstop.android:gapWidth
         */
         public static final int LinePageIndicator_gapWidth = 6;
         /**
-          <p>
-          @attr description
-           Width of each indicator line. 
+          <p>This symbol is the offset where the {@link com.login.beachstop.android.R.attr#lineWidth}
+          attribute's value can be found in the {@link #LinePageIndicator} array.
 
 
           <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
@@ -935,14 +886,12 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          <p>This is a private symbol.
           @attr name com.login.beachstop.android:lineWidth
         */
         public static final int LinePageIndicator_lineWidth = 5;
         /**
-          <p>
-          @attr description
-           Color of the selected line that represents the current page. 
+          <p>This symbol is the offset where the {@link com.login.beachstop.android.R.attr#selectedColor}
+          attribute's value can be found in the {@link #LinePageIndicator} array.
 
 
           <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
@@ -952,14 +901,12 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          <p>This is a private symbol.
           @attr name com.login.beachstop.android:selectedColor
         */
         public static final int LinePageIndicator_selectedColor = 2;
         /**
-          <p>
-          @attr description
-           Width of each indicator line's stroke. 
+          <p>This symbol is the offset where the {@link com.login.beachstop.android.R.attr#strokeWidth}
+          attribute's value can be found in the {@link #LinePageIndicator} array.
 
 
           <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
@@ -970,14 +917,12 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          <p>This is a private symbol.
           @attr name com.login.beachstop.android:strokeWidth
         */
         public static final int LinePageIndicator_strokeWidth = 3;
         /**
-          <p>
-          @attr description
-           Color of the unselected lines that represent the pages. 
+          <p>This symbol is the offset where the {@link com.login.beachstop.android.R.attr#unselectedColor}
+          attribute's value can be found in the {@link #LinePageIndicator} array.
 
 
           <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
@@ -987,7 +932,6 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          <p>This is a private symbol.
           @attr name com.login.beachstop.android:unselectedColor
         */
         public static final int LinePageIndicator_unselectedColor = 4;
@@ -997,21 +941,21 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #TitlePageIndicator_android_background android:background}</code></td><td> View background </td></tr>
-           <tr><td><code>{@link #TitlePageIndicator_android_textColor android:textColor}</code></td><td> Color of regular titles.</td></tr>
-           <tr><td><code>{@link #TitlePageIndicator_android_textSize android:textSize}</code></td><td> Size of title text.</td></tr>
-           <tr><td><code>{@link #TitlePageIndicator_clipPadding com.login.beachstop.android:clipPadding}</code></td><td> Screen edge padding.</td></tr>
-           <tr><td><code>{@link #TitlePageIndicator_footerColor com.login.beachstop.android:footerColor}</code></td><td> Color of the footer line and indicator.</td></tr>
-           <tr><td><code>{@link #TitlePageIndicator_footerIndicatorHeight com.login.beachstop.android:footerIndicatorHeight}</code></td><td> Height of the indicator above the footer line.</td></tr>
-           <tr><td><code>{@link #TitlePageIndicator_footerIndicatorStyle com.login.beachstop.android:footerIndicatorStyle}</code></td><td> Style of the indicator.</td></tr>
-           <tr><td><code>{@link #TitlePageIndicator_footerIndicatorUnderlinePadding com.login.beachstop.android:footerIndicatorUnderlinePadding}</code></td><td> Left and right padding of the underline indicator.</td></tr>
-           <tr><td><code>{@link #TitlePageIndicator_footerLineHeight com.login.beachstop.android:footerLineHeight}</code></td><td> Height of the footer line.</td></tr>
-           <tr><td><code>{@link #TitlePageIndicator_footerPadding com.login.beachstop.android:footerPadding}</code></td><td> Padding between the bottom of the title and the footer.</td></tr>
-           <tr><td><code>{@link #TitlePageIndicator_linePosition com.login.beachstop.android:linePosition}</code></td><td> Position of the line.</td></tr>
-           <tr><td><code>{@link #TitlePageIndicator_selectedBold com.login.beachstop.android:selectedBold}</code></td><td> Whether or not the selected item is displayed as bold.</td></tr>
-           <tr><td><code>{@link #TitlePageIndicator_selectedColor com.login.beachstop.android:selectedColor}</code></td><td> Color of the selected title.</td></tr>
-           <tr><td><code>{@link #TitlePageIndicator_titlePadding com.login.beachstop.android:titlePadding}</code></td><td> Padding between titles when bumping into each other.</td></tr>
-           <tr><td><code>{@link #TitlePageIndicator_topPadding com.login.beachstop.android:topPadding}</code></td><td> Padding between titles and the top of the View.</td></tr>
+           <tr><td><code>{@link #TitlePageIndicator_android_background android:background}</code></td><td></td></tr>
+           <tr><td><code>{@link #TitlePageIndicator_android_textColor android:textColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #TitlePageIndicator_android_textSize android:textSize}</code></td><td></td></tr>
+           <tr><td><code>{@link #TitlePageIndicator_clipPadding com.login.beachstop.android:clipPadding}</code></td><td></td></tr>
+           <tr><td><code>{@link #TitlePageIndicator_footerColor com.login.beachstop.android:footerColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #TitlePageIndicator_footerIndicatorHeight com.login.beachstop.android:footerIndicatorHeight}</code></td><td></td></tr>
+           <tr><td><code>{@link #TitlePageIndicator_footerIndicatorStyle com.login.beachstop.android:footerIndicatorStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #TitlePageIndicator_footerIndicatorUnderlinePadding com.login.beachstop.android:footerIndicatorUnderlinePadding}</code></td><td></td></tr>
+           <tr><td><code>{@link #TitlePageIndicator_footerLineHeight com.login.beachstop.android:footerLineHeight}</code></td><td></td></tr>
+           <tr><td><code>{@link #TitlePageIndicator_footerPadding com.login.beachstop.android:footerPadding}</code></td><td></td></tr>
+           <tr><td><code>{@link #TitlePageIndicator_linePosition com.login.beachstop.android:linePosition}</code></td><td></td></tr>
+           <tr><td><code>{@link #TitlePageIndicator_selectedBold com.login.beachstop.android:selectedBold}</code></td><td></td></tr>
+           <tr><td><code>{@link #TitlePageIndicator_selectedColor com.login.beachstop.android:selectedColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #TitlePageIndicator_titlePadding com.login.beachstop.android:titlePadding}</code></td><td></td></tr>
+           <tr><td><code>{@link #TitlePageIndicator_topPadding com.login.beachstop.android:topPadding}</code></td><td></td></tr>
            </table>
            @see #TitlePageIndicator_android_background
            @see #TitlePageIndicator_android_textColor
@@ -1036,36 +980,26 @@ containing a value of this type.
             0x7f010013, 0x7f010014, 0x7f010015
         };
         /**
-          <p>
-          @attr description
-           View background 
-          <p>This corresponds to the global attribute
-          resource symbol {@link android.R.attr#background}.
+          <p>This symbol is the offset where the {@link android.R.attr#background}
+          attribute's value can be found in the {@link #TitlePageIndicator} array.
           @attr name android:background
         */
         public static final int TitlePageIndicator_android_background = 2;
         /**
-          <p>
-          @attr description
-           Color of regular titles. 
-          <p>This corresponds to the global attribute
-          resource symbol {@link android.R.attr#textColor}.
+          <p>This symbol is the offset where the {@link android.R.attr#textColor}
+          attribute's value can be found in the {@link #TitlePageIndicator} array.
           @attr name android:textColor
         */
         public static final int TitlePageIndicator_android_textColor = 1;
         /**
-          <p>
-          @attr description
-           Size of title text. 
-          <p>This corresponds to the global attribute
-          resource symbol {@link android.R.attr#textSize}.
+          <p>This symbol is the offset where the {@link android.R.attr#textSize}
+          attribute's value can be found in the {@link #TitlePageIndicator} array.
           @attr name android:textSize
         */
         public static final int TitlePageIndicator_android_textSize = 0;
         /**
-          <p>
-          @attr description
-           Screen edge padding. 
+          <p>This symbol is the offset where the {@link com.login.beachstop.android.R.attr#clipPadding}
+          attribute's value can be found in the {@link #TitlePageIndicator} array.
 
 
           <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
@@ -1076,14 +1010,12 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          <p>This is a private symbol.
           @attr name com.login.beachstop.android:clipPadding
         */
         public static final int TitlePageIndicator_clipPadding = 4;
         /**
-          <p>
-          @attr description
-           Color of the footer line and indicator. 
+          <p>This symbol is the offset where the {@link com.login.beachstop.android.R.attr#footerColor}
+          attribute's value can be found in the {@link #TitlePageIndicator} array.
 
 
           <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
@@ -1093,14 +1025,12 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          <p>This is a private symbol.
           @attr name com.login.beachstop.android:footerColor
         */
         public static final int TitlePageIndicator_footerColor = 5;
         /**
-          <p>
-          @attr description
-           Height of the indicator above the footer line. 
+          <p>This symbol is the offset where the {@link com.login.beachstop.android.R.attr#footerIndicatorHeight}
+          attribute's value can be found in the {@link #TitlePageIndicator} array.
 
 
           <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
@@ -1111,14 +1041,12 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          <p>This is a private symbol.
           @attr name com.login.beachstop.android:footerIndicatorHeight
         */
         public static final int TitlePageIndicator_footerIndicatorHeight = 8;
         /**
-          <p>
-          @attr description
-           Style of the indicator. Default is triangle. 
+          <p>This symbol is the offset where the {@link com.login.beachstop.android.R.attr#footerIndicatorStyle}
+          attribute's value can be found in the {@link #TitlePageIndicator} array.
 
 
           <p>Must be one of the following constant values.</p>
@@ -1131,14 +1059,12 @@ containing a value of this type.
 <tr><td><code>triangle</code></td><td>1</td><td></td></tr>
 <tr><td><code>underline</code></td><td>2</td><td></td></tr>
 </table>
-          <p>This is a private symbol.
           @attr name com.login.beachstop.android:footerIndicatorStyle
         */
         public static final int TitlePageIndicator_footerIndicatorStyle = 7;
         /**
-          <p>
-          @attr description
-           Left and right padding of the underline indicator. 
+          <p>This symbol is the offset where the {@link com.login.beachstop.android.R.attr#footerIndicatorUnderlinePadding}
+          attribute's value can be found in the {@link #TitlePageIndicator} array.
 
 
           <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
@@ -1149,14 +1075,12 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          <p>This is a private symbol.
           @attr name com.login.beachstop.android:footerIndicatorUnderlinePadding
         */
         public static final int TitlePageIndicator_footerIndicatorUnderlinePadding = 9;
         /**
-          <p>
-          @attr description
-           Height of the footer line. 
+          <p>This symbol is the offset where the {@link com.login.beachstop.android.R.attr#footerLineHeight}
+          attribute's value can be found in the {@link #TitlePageIndicator} array.
 
 
           <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
@@ -1167,14 +1091,12 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          <p>This is a private symbol.
           @attr name com.login.beachstop.android:footerLineHeight
         */
         public static final int TitlePageIndicator_footerLineHeight = 6;
         /**
-          <p>
-          @attr description
-           Padding between the bottom of the title and the footer. 
+          <p>This symbol is the offset where the {@link com.login.beachstop.android.R.attr#footerPadding}
+          attribute's value can be found in the {@link #TitlePageIndicator} array.
 
 
           <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
@@ -1185,14 +1107,12 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          <p>This is a private symbol.
           @attr name com.login.beachstop.android:footerPadding
         */
         public static final int TitlePageIndicator_footerPadding = 10;
         /**
-          <p>
-          @attr description
-           Position of the line. 
+          <p>This symbol is the offset where the {@link com.login.beachstop.android.R.attr#linePosition}
+          attribute's value can be found in the {@link #TitlePageIndicator} array.
 
 
           <p>Must be one of the following constant values.</p>
@@ -1204,14 +1124,12 @@ containing a value of this type.
 <tr><td><code>bottom</code></td><td>0</td><td></td></tr>
 <tr><td><code>top</code></td><td>1</td><td></td></tr>
 </table>
-          <p>This is a private symbol.
           @attr name com.login.beachstop.android:linePosition
         */
         public static final int TitlePageIndicator_linePosition = 11;
         /**
-          <p>
-          @attr description
-           Whether or not the selected item is displayed as bold. 
+          <p>This symbol is the offset where the {@link com.login.beachstop.android.R.attr#selectedBold}
+          attribute's value can be found in the {@link #TitlePageIndicator} array.
 
 
           <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
@@ -1220,14 +1138,12 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          <p>This is a private symbol.
           @attr name com.login.beachstop.android:selectedBold
         */
         public static final int TitlePageIndicator_selectedBold = 12;
         /**
-          <p>
-          @attr description
-           Color of the selected title. 
+          <p>This symbol is the offset where the {@link com.login.beachstop.android.R.attr#selectedColor}
+          attribute's value can be found in the {@link #TitlePageIndicator} array.
 
 
           <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
@@ -1237,14 +1153,12 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          <p>This is a private symbol.
           @attr name com.login.beachstop.android:selectedColor
         */
         public static final int TitlePageIndicator_selectedColor = 3;
         /**
-          <p>
-          @attr description
-           Padding between titles when bumping into each other. 
+          <p>This symbol is the offset where the {@link com.login.beachstop.android.R.attr#titlePadding}
+          attribute's value can be found in the {@link #TitlePageIndicator} array.
 
 
           <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
@@ -1255,14 +1169,12 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          <p>This is a private symbol.
           @attr name com.login.beachstop.android:titlePadding
         */
         public static final int TitlePageIndicator_titlePadding = 13;
         /**
-          <p>
-          @attr description
-           Padding between titles and the top of the View. 
+          <p>This symbol is the offset where the {@link com.login.beachstop.android.R.attr#topPadding}
+          attribute's value can be found in the {@link #TitlePageIndicator} array.
 
 
           <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
@@ -1273,7 +1185,6 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          <p>This is a private symbol.
           @attr name com.login.beachstop.android:topPadding
         */
         public static final int TitlePageIndicator_topPadding = 14;
@@ -1283,11 +1194,11 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #UnderlinePageIndicator_android_background android:background}</code></td><td> View background </td></tr>
-           <tr><td><code>{@link #UnderlinePageIndicator_fadeDelay com.login.beachstop.android:fadeDelay}</code></td><td> Length of the delay to fade the indicator.</td></tr>
-           <tr><td><code>{@link #UnderlinePageIndicator_fadeLength com.login.beachstop.android:fadeLength}</code></td><td> Length of the indicator fade to transparent.</td></tr>
-           <tr><td><code>{@link #UnderlinePageIndicator_fades com.login.beachstop.android:fades}</code></td><td> Whether or not the selected indicator fades.</td></tr>
-           <tr><td><code>{@link #UnderlinePageIndicator_selectedColor com.login.beachstop.android:selectedColor}</code></td><td> Color of the selected line that represents the current page.</td></tr>
+           <tr><td><code>{@link #UnderlinePageIndicator_android_background android:background}</code></td><td></td></tr>
+           <tr><td><code>{@link #UnderlinePageIndicator_fadeDelay com.login.beachstop.android:fadeDelay}</code></td><td></td></tr>
+           <tr><td><code>{@link #UnderlinePageIndicator_fadeLength com.login.beachstop.android:fadeLength}</code></td><td></td></tr>
+           <tr><td><code>{@link #UnderlinePageIndicator_fades com.login.beachstop.android:fades}</code></td><td></td></tr>
+           <tr><td><code>{@link #UnderlinePageIndicator_selectedColor com.login.beachstop.android:selectedColor}</code></td><td></td></tr>
            </table>
            @see #UnderlinePageIndicator_android_background
            @see #UnderlinePageIndicator_fadeDelay
@@ -1300,18 +1211,14 @@ containing a value of this type.
             0x7f010018
         };
         /**
-          <p>
-          @attr description
-           View background 
-          <p>This corresponds to the global attribute
-          resource symbol {@link android.R.attr#background}.
+          <p>This symbol is the offset where the {@link android.R.attr#background}
+          attribute's value can be found in the {@link #UnderlinePageIndicator} array.
           @attr name android:background
         */
         public static final int UnderlinePageIndicator_android_background = 0;
         /**
-          <p>
-          @attr description
-           Length of the delay to fade the indicator. 
+          <p>This symbol is the offset where the {@link com.login.beachstop.android.R.attr#fadeDelay}
+          attribute's value can be found in the {@link #UnderlinePageIndicator} array.
 
 
           <p>Must be an integer value, such as "<code>100</code>".
@@ -1320,14 +1227,12 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          <p>This is a private symbol.
           @attr name com.login.beachstop.android:fadeDelay
         */
         public static final int UnderlinePageIndicator_fadeDelay = 3;
         /**
-          <p>
-          @attr description
-           Length of the indicator fade to transparent. 
+          <p>This symbol is the offset where the {@link com.login.beachstop.android.R.attr#fadeLength}
+          attribute's value can be found in the {@link #UnderlinePageIndicator} array.
 
 
           <p>Must be an integer value, such as "<code>100</code>".
@@ -1336,14 +1241,12 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          <p>This is a private symbol.
           @attr name com.login.beachstop.android:fadeLength
         */
         public static final int UnderlinePageIndicator_fadeLength = 4;
         /**
-          <p>
-          @attr description
-           Whether or not the selected indicator fades. 
+          <p>This symbol is the offset where the {@link com.login.beachstop.android.R.attr#fades}
+          attribute's value can be found in the {@link #UnderlinePageIndicator} array.
 
 
           <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
@@ -1352,14 +1255,12 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          <p>This is a private symbol.
           @attr name com.login.beachstop.android:fades
         */
         public static final int UnderlinePageIndicator_fades = 2;
         /**
-          <p>
-          @attr description
-           Color of the selected line that represents the current page. 
+          <p>This symbol is the offset where the {@link com.login.beachstop.android.R.attr#selectedColor}
+          attribute's value can be found in the {@link #UnderlinePageIndicator} array.
 
 
           <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
@@ -1369,7 +1270,6 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          <p>This is a private symbol.
           @attr name com.login.beachstop.android:selectedColor
         */
         public static final int UnderlinePageIndicator_selectedColor = 1;
@@ -1379,12 +1279,12 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #ViewPagerIndicator_vpiCirclePageIndicatorStyle com.login.beachstop.android:vpiCirclePageIndicatorStyle}</code></td><td> Style of the circle indicator.</td></tr>
-           <tr><td><code>{@link #ViewPagerIndicator_vpiIconPageIndicatorStyle com.login.beachstop.android:vpiIconPageIndicatorStyle}</code></td><td> Style of the icon indicator's views.</td></tr>
-           <tr><td><code>{@link #ViewPagerIndicator_vpiLinePageIndicatorStyle com.login.beachstop.android:vpiLinePageIndicatorStyle}</code></td><td> Style of the line indicator.</td></tr>
-           <tr><td><code>{@link #ViewPagerIndicator_vpiTabPageIndicatorStyle com.login.beachstop.android:vpiTabPageIndicatorStyle}</code></td><td> Style of the tab indicator's tabs.</td></tr>
-           <tr><td><code>{@link #ViewPagerIndicator_vpiTitlePageIndicatorStyle com.login.beachstop.android:vpiTitlePageIndicatorStyle}</code></td><td> Style of the title indicator.</td></tr>
-           <tr><td><code>{@link #ViewPagerIndicator_vpiUnderlinePageIndicatorStyle com.login.beachstop.android:vpiUnderlinePageIndicatorStyle}</code></td><td> Style of the underline indicator.</td></tr>
+           <tr><td><code>{@link #ViewPagerIndicator_vpiCirclePageIndicatorStyle com.login.beachstop.android:vpiCirclePageIndicatorStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #ViewPagerIndicator_vpiIconPageIndicatorStyle com.login.beachstop.android:vpiIconPageIndicatorStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #ViewPagerIndicator_vpiLinePageIndicatorStyle com.login.beachstop.android:vpiLinePageIndicatorStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #ViewPagerIndicator_vpiTabPageIndicatorStyle com.login.beachstop.android:vpiTabPageIndicatorStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #ViewPagerIndicator_vpiTitlePageIndicatorStyle com.login.beachstop.android:vpiTitlePageIndicatorStyle}</code></td><td></td></tr>
+           <tr><td><code>{@link #ViewPagerIndicator_vpiUnderlinePageIndicatorStyle com.login.beachstop.android:vpiUnderlinePageIndicatorStyle}</code></td><td></td></tr>
            </table>
            @see #ViewPagerIndicator_vpiCirclePageIndicatorStyle
            @see #ViewPagerIndicator_vpiIconPageIndicatorStyle
@@ -1398,74 +1298,62 @@ containing a value of this type.
             0x7f01001d, 0x7f01001e
         };
         /**
-          <p>
-          @attr description
-           Style of the circle indicator. 
+          <p>This symbol is the offset where the {@link com.login.beachstop.android.R.attr#vpiCirclePageIndicatorStyle}
+          attribute's value can be found in the {@link #ViewPagerIndicator} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          <p>This is a private symbol.
           @attr name com.login.beachstop.android:vpiCirclePageIndicatorStyle
         */
         public static final int ViewPagerIndicator_vpiCirclePageIndicatorStyle = 0;
         /**
-          <p>
-          @attr description
-           Style of the icon indicator's views. 
+          <p>This symbol is the offset where the {@link com.login.beachstop.android.R.attr#vpiIconPageIndicatorStyle}
+          attribute's value can be found in the {@link #ViewPagerIndicator} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          <p>This is a private symbol.
           @attr name com.login.beachstop.android:vpiIconPageIndicatorStyle
         */
         public static final int ViewPagerIndicator_vpiIconPageIndicatorStyle = 1;
         /**
-          <p>
-          @attr description
-           Style of the line indicator. 
+          <p>This symbol is the offset where the {@link com.login.beachstop.android.R.attr#vpiLinePageIndicatorStyle}
+          attribute's value can be found in the {@link #ViewPagerIndicator} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          <p>This is a private symbol.
           @attr name com.login.beachstop.android:vpiLinePageIndicatorStyle
         */
         public static final int ViewPagerIndicator_vpiLinePageIndicatorStyle = 2;
         /**
-          <p>
-          @attr description
-           Style of the tab indicator's tabs. 
+          <p>This symbol is the offset where the {@link com.login.beachstop.android.R.attr#vpiTabPageIndicatorStyle}
+          attribute's value can be found in the {@link #ViewPagerIndicator} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          <p>This is a private symbol.
           @attr name com.login.beachstop.android:vpiTabPageIndicatorStyle
         */
         public static final int ViewPagerIndicator_vpiTabPageIndicatorStyle = 4;
         /**
-          <p>
-          @attr description
-           Style of the title indicator. 
+          <p>This symbol is the offset where the {@link com.login.beachstop.android.R.attr#vpiTitlePageIndicatorStyle}
+          attribute's value can be found in the {@link #ViewPagerIndicator} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          <p>This is a private symbol.
           @attr name com.login.beachstop.android:vpiTitlePageIndicatorStyle
         */
         public static final int ViewPagerIndicator_vpiTitlePageIndicatorStyle = 3;
         /**
-          <p>
-          @attr description
-           Style of the underline indicator. 
+          <p>This symbol is the offset where the {@link com.login.beachstop.android.R.attr#vpiUnderlinePageIndicatorStyle}
+          attribute's value can be found in the {@link #ViewPagerIndicator} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          <p>This is a private symbol.
           @attr name com.login.beachstop.android:vpiUnderlinePageIndicatorStyle
         */
         public static final int ViewPagerIndicator_vpiUnderlinePageIndicatorStyle = 5;
