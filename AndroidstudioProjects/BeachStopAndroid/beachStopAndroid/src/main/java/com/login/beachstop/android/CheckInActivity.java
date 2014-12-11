@@ -58,6 +58,9 @@ public class CheckInActivity extends DefaultActivity {
 
                     try {
 
+                        Cliente cliente = getDataManager().getClienteDAO().get();
+                        conta.setClienteId(cliente != null ? cliente.getId() : 1);
+
                         conta.setId(contaId);
 
                         if (getDataManager().getContaDAO().get() != null) {
@@ -71,6 +74,7 @@ public class CheckInActivity extends DefaultActivity {
                         }
 
                         textViewNumero.setText(conta.getNumero().toString());
+                        changeStatusView(false, false, false, true);
 
                     } catch (Exception e) {
 
