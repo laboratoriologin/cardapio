@@ -81,7 +81,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/outputs" />
       <excludeFolder url="file://$MODULE_DIR$/build/tmp" />
     </content>
-    <orderEntry type="jdk" jdkName="Android API 20 Platform" jdkType="Android SDK" />
+    <orderEntry type="jdk" jdkName="Android API 19 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="android-integration" level="project" />
     <orderEntry type="library" exported="" name="socialauth-android-3.2" level="project" />
@@ -89,6 +89,7 @@
     <orderEntry type="library" exported="" name="support-v4-20.0.0" level="project" />
     <orderEntry type="library" exported="" name="socialauth-4.4" level="project" />
     <orderEntry type="library" exported="" name="droidpersistence" level="project" />
+    <orderEntry type="module" module-name="ParallaxScroll" exported="" />
     <orderEntry type="module" module-name="galeriaImg" exported="" />
   </component>
 </module>

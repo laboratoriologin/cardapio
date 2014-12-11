@@ -18,7 +18,7 @@ public class ItemDAO implements RestDAO<Item> {
 
 		broker.setPropertySQL("itemdao.get", id);
 
-		return (Item) broker.getObjectBean(Item.class, "categoria.id", "descricao", "flagAtivo", "id", "image", "ingrediente", "nome", "ordem", "tempoPreparo");
+		return (Item) broker.getObjectBean(Item.class, "categoria.id", "descricao", "flagAtivo", "id", "imagem", "ingrediente", "nome", "ordem", "tempoPreparo");
 
 	}
 
@@ -29,7 +29,7 @@ public class ItemDAO implements RestDAO<Item> {
 
 		broker.setPropertySQL("itemdao.findall");
 
-		return broker.getCollectionBean(Item.class, "categoria.id", "descricao", "flagAtivo", "id", "image", "ingrediente", "nome", "ordem", "tempoPreparo");
+		return broker.getCollectionBean(Item.class, "categoria.id", "descricao", "flagAtivo", "id", "imagem", "ingrediente", "nome", "ordem", "tempoPreparo");
 
 	}
 
@@ -40,7 +40,7 @@ public class ItemDAO implements RestDAO<Item> {
 
 		broker.setPropertySQL("itemdao.findallbycategoria", categoria.getId());
 
-		List<Item> listaItem = broker.getCollectionBean(Item.class, "categoria.id", "descricao", "flagAtivo", "id", "image", "ingrediente", "nome", "ordem", "tempoPreparo");
+		List<Item> listaItem = broker.getCollectionBean(Item.class, "categoria.id", "descricao", "flagAtivo", "id", "imagem", "ingrediente", "nome", "ordem", "tempoPreparo");
 		SubItemDAO subItemDAO = new SubItemDAO();
 
 		for (Item item : listaItem) {
@@ -57,7 +57,7 @@ public class ItemDAO implements RestDAO<Item> {
 
 		model.setId(broker.getSequenceNextValue("dbo.itens "));
 
-		broker.setPropertySQL("itemdao.insert", model.getCategoria().getId(), model.getDescricao(), model.getFlagAtivo(), model.getImage(), model.getIngrediente(), model.getNome(), model.getOrdem(), model.getTempoPreparo());
+		broker.setPropertySQL("itemdao.insert", model.getCategoria().getId(), model.getDescricao(), model.getFlagAtivo(), model.getImagem(), model.getIngrediente(), model.getNome(), model.getOrdem(), model.getTempoPreparo());
 
 		broker.execute();
 
@@ -70,7 +70,7 @@ public class ItemDAO implements RestDAO<Item> {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("itemdao.update", model.getCategoria().getId(), model.getDescricao(), model.getFlagAtivo(), model.getImage(), model.getIngrediente(), model.getNome(), model.getOrdem(), model.getTempoPreparo(), model.getId());
+		broker.setPropertySQL("itemdao.update", model.getCategoria().getId(), model.getDescricao(), model.getFlagAtivo(), model.getImagem(), model.getIngrediente(), model.getNome(), model.getOrdem(), model.getTempoPreparo(), model.getId());
 
 		broker.execute();
 

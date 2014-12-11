@@ -72,7 +72,7 @@ public class ContaDAO implements RestDAO<Conta> {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		model.setId(broker.getSequenceNextValue("dbo.contas "));
+		model.setId(broker.getSequenceNextValue("dbo.contas"));
 
 		broker.setPropertySQL("contadao.insert", model.getCliente().getId(), model.getDataAbertura(), model.getDataFechamento(), model.getNumero(), model.getQtdPessoa(), model.getTipoConta());
 

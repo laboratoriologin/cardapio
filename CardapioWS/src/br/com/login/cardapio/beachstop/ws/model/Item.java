@@ -42,15 +42,15 @@ public final class Item extends RestModel {
 		this.flagAtivo = flagAtivo;
 	}
 
-	@FormParam("image")
-	private String image;
+	@FormParam("imagem")
+	private String imagem;
 
-	public String getImage() {
-		return image;
+	public String getImagem() {
+		return imagem;
 	}
 
-	public void setImage(String image) {
-		this.image = image;
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
 	}
 
 	@FormParam("ingrediente")

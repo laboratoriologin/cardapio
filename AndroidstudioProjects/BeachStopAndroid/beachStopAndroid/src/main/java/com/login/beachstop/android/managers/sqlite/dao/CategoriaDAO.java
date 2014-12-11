@@ -17,6 +17,10 @@ public class CategoriaDAO extends DroidDao<Categoria, Long> {
         this.dataManager = dataManager;
     }
 
+    public List<Categoria> getAllOrderByOrdem(){
+        return this.getAllbyClause("", null, "", "", "ORDEM");
+    }
+
     public int getQtdCategoria() {
 
         List<Categoria> categorias = this.getAll();

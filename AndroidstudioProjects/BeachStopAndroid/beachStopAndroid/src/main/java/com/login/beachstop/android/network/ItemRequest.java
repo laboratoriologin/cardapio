@@ -29,7 +29,7 @@ public class ItemRequest extends ObjectRequest<Item> {
         List<Long> categorias = new ArrayList<Long>();
         categorias.add(categoria);
 
-        getItemByCategorias(categoria);
+        getItemByCategorias(categorias);
 
     }
 
@@ -90,8 +90,8 @@ public class ItemRequest extends ObjectRequest<Item> {
                         item.setIngrediente("");
                     }
 
-                    if (jsonObjectItem.has("tempopreparo")) {
-                        Long tempo = jsonObjectItem.getLong("tempopreparo");
+                    if (jsonObjectItem.has("tempoPreparo")) {
+                        Long tempo = jsonObjectItem.getLong("tempoPreparo");
                         item.setTempoPreparo(tempo.toString());
                     } else {
                         item.setTempoPreparo("0");
@@ -120,7 +120,7 @@ public class ItemRequest extends ObjectRequest<Item> {
                         subItem.setItemId(jsonObjectSubItem.has("item") ? jsonObjectSubItem.getJSONObject("item").getLong("id") : null);
                         subItem.setNome(jsonObjectSubItem.has("nome") ? jsonObjectSubItem.getString("nome") : "");
                         subItem.setOrdem(jsonObjectSubItem.has("ordem") ? jsonObjectSubItem.getLong("ordem") : null);
-                        subItem.setValor((jsonObjectSubItem.has("codigo") ? jsonObjectSubItem.getDouble("codigo") : null).toString());
+                        subItem.setValor((jsonObjectSubItem.has("valor") ? jsonObjectSubItem.getDouble("valor") : null).toString());
 
                         item.getSubItens().add(subItem);
                     }
@@ -132,9 +132,8 @@ public class ItemRequest extends ObjectRequest<Item> {
                 e.printStackTrace();
             }
 
+            serverResponse.setReturnObject(itens);
 
         }
-
-
     }
 }

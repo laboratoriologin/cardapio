@@ -1,7 +1,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/branco"
+    android:background="@android:color/white"
     android:orientation="vertical">
 
     <com.login.beachstop.android.views.actionbar.ActionBar
@@ -41,55 +43,66 @@
         </RelativeLayout>
     </com.login.beachstop.android.views.actionbar.ActionBar>
 
-    <ImageView
-        android:id="@+id/fragment_item_detalhe_image_view"
+    <com.nirhart.parallaxscroll.views.ParallaxScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:contentDescription="@string/app_name"
-        android:scaleType="centerCrop"
-        android:src="@drawable/placeholder" />
-
-    <ScrollView
-        android:id="@+id/fragment_item_detalhe_scroll_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        app:parallax_factor="1.9"
+        tools:context=".MainActivity">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:color/white"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/fragment_item_detalhe_text_view_lbl_sobre_prato"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="10dp"
-                android:singleLine="false"
-                android:text="@string/sobre_o_prato"
-                android:textColor="#900B405F"
-                android:textSize="12sp" />
+            <ImageView
+                android:id="@+id/fragment_item_detalhe_image_view"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:adjustViewBounds="true"
+                android:background="@android:color/white"
+                android:contentDescription="@string/app_name" />
 
-            <TextView
-                android:id="@+id/fragment_item_detalhe_text_view_descricao"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="5dp"
-                android:singleLine="false"
-                android:textColor="#75000000"
-                android:textSize="10sp" />
-
-            <TableLayout
-                android:id="@+id/fragment_item_detalhe_table_layout_sub_item"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/bg_fragment_detalhe_item_cardapio_table_layout_sub_item"
-                android:stretchColumns="0,1"></TableLayout>
-            <!--
+                android:background="@android:color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/fragment_item_detalhe_text_view_lbl_sobre_prato"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:singleLine="false"
+                    android:text="@string/sobre_o_prato"
+                    android:textColor="#900B405F"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/fragment_item_detalhe_text_view_descricao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="5dp"
+                    android:singleLine="false"
+                    android:textColor="#75000000"
+                    android:textSize="14sp" />
+
+                <TableLayout
+                    android:id="@+id/fragment_item_detalhe_table_layout_sub_item"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/bg_fragment_detalhe_item_cardapio_table_layout_sub_item"
+                    android:stretchColumns="0,1"></TableLayout>
+                <!--
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"                
@@ -124,50 +137,69 @@
                     android:text="@string/escolher"
                     android:textColor="#0B405F" />
             </LinearLayout>
-            -->
+                -->
 
-            <TextView
-                android:id="@+id/fragment_item_detalhe_text_view_lbl_ingredientes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:singleLine="false"
-                android:text="@string/ingredientes"
-                android:textColor="#900B405F"
-                android:textSize="12sp" />
+                <TextView
+                    android:id="@+id/fragment_item_detalhe_text_view_lbl_ingredientes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:singleLine="false"
+                    android:text="@string/ingredientes"
+                    android:textColor="#900B405F"
+                    android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/fragment_item_detalhe_text_view_ingredientes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:singleLine="false"
-                android:textColor="#75000000"
-                android:textSize="10sp" />
+                <TextView
+                    android:id="@+id/fragment_item_detalhe_text_view_ingredientes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:singleLine="false"
+                    android:textColor="#75000000"
+                    android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/fragment_item_detalhe_text_view_lbl_tempo_preparo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="10dp"
-                android:singleLine="false"
-                android:text="@string/tempo_medio"
-                android:textColor="#900B405F"
-                android:textSize="12sp" />
+                <TextView
+                    android:id="@+id/fragment_item_detalhe_text_view_lbl_acompanhamentos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:singleLine="false"
+                    android:text="@string/acompanhamentos"
+                    android:textColor="#900B405F"
+                    android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/fragment_item_detalhe_text_view_tempo_preparo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:layout_marginLeft="10dp"
-                android:singleLine="false"
-                android:textColor="#75000000"
-                android:textSize="10sp" />
+                <TextView
+                    android:id="@+id/fragment_item_detalhe_text_view_acompanhamentos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:singleLine="false"
+                    android:textColor="#75000000"
+                    android:textSize="14sp" />
 
+                <TextView
+                    android:id="@+id/fragment_item_detalhe_text_view_lbl_tempo_preparo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:singleLine="false"
+                    android:text="@string/tempo_medio"
+                    android:textColor="#900B405F"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/fragment_item_detalhe_text_view_tempo_preparo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:singleLine="false"
+                    android:textColor="#75000000"
+                    android:textSize="14sp" />
+            </LinearLayout>
         </LinearLayout>
-
-    </ScrollView>
+    </com.nirhart.parallaxscroll.views.ParallaxScrollView>
 
 </LinearLayout>

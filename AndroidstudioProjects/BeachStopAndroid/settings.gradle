@@ -1,2 +1,2 @@
-include ':galeriaImg'
+include ':galeriaImg', ':ParallaxScroll'
 include ':beachStopAndroid'

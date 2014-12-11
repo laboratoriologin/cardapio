@@ -134,7 +134,7 @@ public class ItemFragment extends Fragment implements TabHost.OnTabChangeListene
 
         if (img == null) {
 
-            new LoadImage(this.imageViewTopoActionBar, cardapioActivity).execute(Constantes.URL_IMG + categoria.getImagem());
+            new LoadImage(this.imageViewTopoActionBar, cardapioActivity).execute(Constantes.URL_IMG + "topo_" + categoria.getImagem());
 
         } else {
 
@@ -146,7 +146,8 @@ public class ItemFragment extends Fragment implements TabHost.OnTabChangeListene
 
         this.progressbar = (ProgressBar) this.view.findViewById(R.id.progressBar);
 
-        if (this.cardapioActivity.getDataManager().getItemDAO().getQtdItem() == 0) {
+        //se não houver os itens da categoria selecionada gravado no banco de dados do celular deverá busca no servidor
+        if (this.cardapioActivity.getDataManager().getItemDAO().getQtdItem(this.categoria) == 0) {
 
             new ItemRequest(listenerGetItem).getItemByCategorias(this.categoria.getId());
 

@@ -46,11 +46,12 @@ public class Conta extends Base {
     private String valorTotalPago;
 
     public Conta() {
+
         setServiceName("contas");
     }
 
     public Conta(Long id) {
-        super();
+        this();
         this.setId(id);
     }
 

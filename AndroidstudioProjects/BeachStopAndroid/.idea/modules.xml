@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BeachStopAndroid.iml" filepath="$PROJECT_DIR$/BeachStopAndroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ParallaxScroll/ParallaxScroll.iml" filepath="$PROJECT_DIR$/ParallaxScroll/ParallaxScroll.iml" />
       <module fileurl="file://$PROJECT_DIR$/beachStopAndroid/beachStopAndroid.iml" filepath="$PROJECT_DIR$/beachStopAndroid/beachStopAndroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/galeriaImg/galeriaImg.iml" filepath="$PROJECT_DIR$/galeriaImg/galeriaImg.iml" />
     </modules>

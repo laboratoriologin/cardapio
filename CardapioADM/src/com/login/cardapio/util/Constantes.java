@@ -14,8 +14,8 @@ public final class Constantes {
 	public static final Long MENU_USUARIO = 3L;
 	public static final Long TIPO_MIDIA_FOTO = 1L;
 	public static final Long TIPO_MIDIA_VIDEO = 2L;
-	//public static final  String CAMINHO_ARQUIVO = "C:\\imagens_cardapio\\";
-	public static final  String CAMINHO_ARQUIVO = "/Users/login/teste/";
+	public static final  String CAMINHO_ARQUIVO = "C:\\imagens_cardapio\\";
+//	public static final  String CAMINHO_ARQUIVO = "/Users/login/teste/";
 	public static final String URL_YOUTUBE = "http://www.youtube.com/v/";
 	public static final Long TIPO_BANNER_ROTATIVO = 1L;
 	public static final Long TIPO_BANNER_INFERIOR = 2L;

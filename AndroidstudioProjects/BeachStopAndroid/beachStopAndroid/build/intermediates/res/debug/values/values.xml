@@ -55,6 +55,7 @@
     <color name="vpi__bright_foreground_inverse_holo_light">@color/vpi__bright_foreground_holo_dark</color>
     <declare-styleable name="CirclePageIndicator"><attr name="centered"/><attr format="color" name="fillColor"/><attr format="color" name="pageColor"/><attr name="android:orientation"/><attr format="dimension" name="radius"/><attr format="boolean" name="snap"/><attr format="color" name="strokeColor"/><attr name="strokeWidth"/><attr name="android:background"/></declare-styleable>
     <declare-styleable name="LinePageIndicator"><attr name="centered"/><attr name="unselectedColor"/><attr name="selectedColor"/><attr format="dimension" name="lineWidth"/><attr name="strokeWidth"/><attr format="dimension" name="gapWidth"/><attr name="android:background"/></declare-styleable>
+    <declare-styleable name="ParallaxScroll"><attr format="float" name="parallax_factor"/><attr format="float" name="alpha_factor"/><attr format="float" name="inner_parallax_factor"/><attr format="integer" name="parallax_views_num"/><attr format="boolean" name="circular_parallax"/></declare-styleable>
     <declare-styleable name="TitlePageIndicator"><attr format="dimension" name="clipPadding"/><attr format="color" name="footerColor"/><attr format="dimension" name="footerLineHeight"/><attr name="footerIndicatorStyle"><enum name="none" value="0"/><enum name="triangle" value="1"/><enum name="underline" value="2"/></attr><attr format="dimension" name="footerIndicatorHeight"/><attr format="dimension" name="footerIndicatorUnderlinePadding"/><attr format="dimension" name="footerPadding"/><attr name="linePosition"><enum name="bottom" value="0"/><enum name="top" value="1"/></attr><attr name="selectedColor"/><attr format="boolean" name="selectedBold"/><attr name="android:textColor"/><attr name="android:textSize"/><attr format="dimension" name="titlePadding"/><attr format="dimension" name="topPadding"/><attr name="android:background"/></declare-styleable>
     <declare-styleable name="UnderlinePageIndicator"><attr format="boolean" name="fades"/><attr format="integer" name="fadeDelay"/><attr format="integer" name="fadeLength"/><attr name="selectedColor"/><attr name="android:background"/></declare-styleable>
     <declare-styleable name="ViewPagerIndicator"><attr format="reference" name="vpiCirclePageIndicatorStyle"/><attr format="reference" name="vpiIconPageIndicatorStyle"/><attr format="reference" name="vpiLinePageIndicatorStyle"/><attr format="reference" name="vpiTitlePageIndicatorStyle"/><attr format="reference" name="vpiTabPageIndicatorStyle"/><attr format="reference" name="vpiUnderlinePageIndicatorStyle"/></declare-styleable>
@@ -110,12 +111,30 @@
     <string name="call_garcom">Chamar Garçom</string>
     <string name="cancelar">Cancelar</string>
     <string name="celular">Celular</string>
+    <!-- From: file:/Users/login/Dropbox/Projetos%20Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/ParallaxScroll/unspecified/res/values/values.xml -->
+    <eat-comment/>
+    <string name="define_parallaxscroll"/>
+    <!-- From: file:/Users/login/Dropbox/Projetos%20Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/values/strings.xml -->
+    <eat-comment/>
     <string name="email">Email</string>
     <string name="enviar_conta">Solicitar a conta</string>
     <string name="enviar_pedido">Enviar o pedido</string>
     <string name="escolher">Incluir</string>
     <string name="finalizar_pedido">Pedir</string>
     <string name="ingredientes">Ingredientes</string>
+    <!-- From: file:/Users/login/Dropbox/Projetos%20Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/ParallaxScroll/unspecified/res/values/values.xml -->
+    <eat-comment/>
+    <string name="library_parallaxscroll_author">Nir Hartmann</string>
+    <string name="library_parallaxscroll_authorWebsite">https://github.com/nirhart</string>
+    <string name="library_parallaxscroll_isOpenSource">true</string>
+    <string name="library_parallaxscroll_libraryDescription">Parallax ListView and ScrollView for Android.</string>
+    <string name="library_parallaxscroll_libraryName">parallaxscroll</string>
+    <string name="library_parallaxscroll_libraryVersion">1.0</string>
+    <string name="library_parallaxscroll_libraryWebsite">https://github.com/nirhart/ParallaxScroll</string>
+    <string name="library_parallaxscroll_licenseId">mit</string>
+    <string name="library_parallaxscroll_repositoryLink">https://github.com/nirhart/ParallaxScroll.git</string>
+    <!-- From: file:/Users/login/Dropbox/Projetos%20Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/values/strings.xml -->
+    <eat-comment/>
     <string name="no_network_connection_toast">Erro na internet!</string>
     <string name="nome">Nome</string>
     <string name="saudacao_cadastro_cliente">Olá! Bem vindo ao BeachStop Ipitanga, para sua comodida, gostariamos de saber quem é você!</string>
