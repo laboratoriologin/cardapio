@@ -36,6 +36,10 @@ public class PedidoFragment extends Fragment implements IPedidoFragment {
     private ListView listViewPedidoItem;
     private SubItemListAdapter subItemListAdapter;
     private Pedido pedido;
+    private PedidoActivity pedidoActivity;
+    private TextView valorTotal;
+    private Button buttonEnviarPedido;
+    private TextView textViewSemPedido;
     private ResponseListener responseListenerPedido = new ResponseListener() {
         @Override
         public void onResult(ServerResponse serverResponse) {
@@ -46,9 +50,13 @@ public class PedidoFragment extends Fragment implements IPedidoFragment {
                     try {
 
                         pedido.setFinalizadoSys(true);
+
                         pedidoActivity.getDataManager().getPedidoDAO().update(pedido, pedido.getId());
+
                         pedido = null;
+
                         atualizaValorTotalPedido();
+
                         Toast.makeText(pedidoActivity, "Estamos preparando o seu pedido, divirta-se!", Toast.LENGTH_SHORT).show();
 
                     } catch (Exception e) {
@@ -72,10 +80,7 @@ public class PedidoFragment extends Fragment implements IPedidoFragment {
             }
         }
     };
-    private PedidoActivity pedidoActivity;
-    private TextView valorTotal;
-    private Button buttonEnviarPedido;
-    private TextView textViewSemPedido;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -99,6 +104,7 @@ public class PedidoFragment extends Fragment implements IPedidoFragment {
         if (this.pedido != null && this.pedido.getPedidoSubItens().size() != 0) {
 
             this.subItemListAdapter = new SubItemListAdapter(this.view.getContext(), this.pedido, this.pedidoActivity.getDataManager(), this.valorTotal, this);
+
             this.listViewPedidoItem.setAdapter(this.subItemListAdapter);
 
             this.atualizaValorTotalPedido();
@@ -107,6 +113,7 @@ public class PedidoFragment extends Fragment implements IPedidoFragment {
         changeViewPedido();
 
         this.buttonEnviarPedido = ((Button) this.view.findViewById(R.id.fragment_pedido_button_enviar_pedido));
+
         this.buttonEnviarPedido.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -133,8 +140,11 @@ public class PedidoFragment extends Fragment implements IPedidoFragment {
                     openDialog();
 
                 } else {
+
                     Toast.makeText(pedidoActivity, "Hum! Não pediu nada! \n Olhe as promoções!", Toast.LENGTH_SHORT).show();
+
                 }
+
             }
         });
 
@@ -146,14 +156,17 @@ public class PedidoFragment extends Fragment implements IPedidoFragment {
         final Dialog dialog = new Dialog(this.pedidoActivity, R.style.style_bg_dialog_enviar_pedido);
 
         dialog.setContentView(R.layout.fragment_pedido_dialog);
+
         dialog.setTitle("Alguma observação?");
 
         Button dialogButton = (Button) dialog.findViewById(R.id.fragment_pedido_dialog_button_enviar_pedido);
+
         dialogButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 buttonEnviarPedido.setText("Enviando...");
+
                 buttonEnviarPedido.setEnabled(false);
 
                 pedido.setObservacao(((EditText) dialog.findViewById(R.id.fragment_pedido_dialog_text_view_observacao)).getText().toString());
@@ -161,6 +174,7 @@ public class PedidoFragment extends Fragment implements IPedidoFragment {
                 new PedidoRequest(responseListenerPedido).post(pedido);
 
                 dialog.dismiss();
+
             }
         });
 
@@ -173,6 +187,7 @@ public class PedidoFragment extends Fragment implements IPedidoFragment {
         super.onResume();
 
         this.pedido = this.pedidoActivity.getDataManager().getPedidoDAO().get(false);
+
         changeViewPedido();
 
         if (this.pedido != null && this.pedido.getPedidoSubItens().size() != 0) {
@@ -180,12 +195,15 @@ public class PedidoFragment extends Fragment implements IPedidoFragment {
             if (this.subItemListAdapter != null) {
 
                 this.subItemListAdapter.setPedido(this.pedido);
+
                 this.subItemListAdapter.notifyDataSetChanged();
+
                 this.atualizaValorTotalPedido();
 
             } else {
 
                 this.subItemListAdapter = new SubItemListAdapter(this.view.getContext(), this.pedido, this.pedidoActivity.getDataManager(), this.valorTotal, this);
+
                 this.listViewPedidoItem.setAdapter(this.subItemListAdapter);
 
                 this.atualizaValorTotalPedido();
@@ -211,8 +229,11 @@ public class PedidoFragment extends Fragment implements IPedidoFragment {
         }
 
         NumberFormat format = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+
         this.valorTotal.setText(format.format(valorTotalPedido.doubleValue()));
+
         changeViewPedido();
+
     }
 
     public void changeViewPedido() {
@@ -220,11 +241,13 @@ public class PedidoFragment extends Fragment implements IPedidoFragment {
         if (this.pedido != null && this.pedido.getPedidoSubItens().size() != 0) {
 
             this.textViewSemPedido.setVisibility(TextView.GONE);
+
             this.listViewPedidoItem.setVisibility(ListView.VISIBLE);
 
         } else {
 
             this.textViewSemPedido.setVisibility(TextView.VISIBLE);
+
             this.listViewPedidoItem.setVisibility(ListView.GONE);
 
         }

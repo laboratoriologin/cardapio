@@ -40,9 +40,9 @@ public class PedidoDAO  implements RestDAO<Pedido> {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		model.setId(broker.getSequenceNextValue("dbo.pedidos "));
+		model.setId(broker.getSequenceNextValue("dbo.pedidos"));
 
-		broker.setPropertySQL("pedidodao.insert",model.getConta().getId(), model.getObservacao());
+		broker.setPropertySQL("pedidodao.insert", model.getConta().getId(), model.getObservacao());
 
 		broker.execute();
 

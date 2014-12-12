@@ -295,16 +295,17 @@ public class ItemDetalheFragment extends Fragment {
 
             if (hasConta) {
 
-                descricao = subItemCardapio.getDescricao() + " ...........................................................";
-                ((TextView) subItemView.findViewById(R.id.fragment_item_detalhe_table_row_text_view_descricao)).setText(descricao);
+                ((TextView) subItemView.findViewById(R.id.fragment_item_detalhe_table_row_text_view_descricao)).setText(subItemCardapio.getNome());
 
             } else {
 
                 // descricao = subItemCardapio.getDescricao() + " - " +
                 // subItemCardapio.getQuantidade() + " " +
                 // subItemCardapio.getDescricaoTipoQuantidade();
-                descricao = subItemCardapio.getDescricao();
+                descricao = subItemCardapio.getNome();
+
                 ((TextView) subItemView.findViewById(R.id.fragment_item_detalhe_table_row_text_view_descricao)).setText(descricao);
+
             }
 
             if (hasConta) {

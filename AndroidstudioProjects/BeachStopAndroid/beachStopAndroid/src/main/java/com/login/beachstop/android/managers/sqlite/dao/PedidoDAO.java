@@ -1,11 +1,14 @@
 package com.login.beachstop.android.managers.sqlite.dao;
 
+import com.login.beachstop.android.models.Categoria;
 import com.login.beachstop.android.models.Pedido;
 import com.login.beachstop.android.models.PedidoSubItem;
+import com.login.beachstop.android.models.SubItem;
 
 import org.droidpersistence.dao.DroidDao;
 import org.droidpersistence.dao.TableDefinition;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PedidoDAO extends DroidDao<Pedido, Long> {
@@ -34,6 +37,7 @@ public class PedidoDAO extends DroidDao<Pedido, Long> {
         } else {
 
             List<PedidoSubItem> pedidosSubItens = this.dataManager.getPedidoSubItemDAO().getAllbyClause("ID_PEDIDO = ?", new String[]{pedido.getId().toString()}, null, null, null);
+
             pedido.setPedidoSubItens(pedidosSubItens);
 
             for (PedidoSubItem pedidoSubItem : pedido.getPedidoSubItens()) {
@@ -47,5 +51,6 @@ public class PedidoDAO extends DroidDao<Pedido, Long> {
         }
 
     }
+
 
 }

@@ -37,7 +37,7 @@ public class ContaFragment extends Fragment implements IPedidoFragment {
     private PedidoActivity pedidoActivity;
     private TextView textViewValorTotal;
     private CheckBox checkBoxDez;
-    private Double valorTotal;
+    private Double valorTotal = 0D;
     private ResponseListener responseListenerConta = new ResponseListener() {
 
         @Override
@@ -130,6 +130,7 @@ public class ContaFragment extends Fragment implements IPedidoFragment {
             public void onClick(View v) {
 
                 CheckBox checkBox = (CheckBox) v;
+
                 NumberFormat format = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
 
                 if (checkBox.isChecked()) {

@@ -39,7 +39,7 @@ public class Pedido extends Base {
 
     @Override
     public Long getId() {
-        return null;
+        return id;
     }
 
     @Override
@@ -49,12 +49,12 @@ public class Pedido extends Base {
 
     @Override
     public String getServiceName() {
-        return null;
+        return serviceName;
     }
 
     @Override
     public void setServiceName(String serviceName) {
-
+        this.serviceName = serviceName;
     }
 
     public String getObservacao() {
