@@ -137,7 +137,7 @@
     <eat-comment/>
     <string name="no_network_connection_toast">Erro na internet!</string>
     <string name="nome">Nome</string>
-    <string name="saudacao_cadastro_cliente">Olá! Bem vindo ao BeachStop Ipitanga, para sua comodida, gostariamos de saber quem é você!</string>
+    <string name="saudacao_cadastro_cliente">Olá! Bem vindo ao BeachStop Ipitanga, para sua comodidade, gostariamos de saber quem é você!</string>
     <string name="sobre_o_prato">Sobre o prato</string>
     <string name="tempo_medio">Tempo médio \nde preparo</string>
     <!-- From: file:/C:/Login/PROJETO/CardapioGIT/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/values/styles.xml -->

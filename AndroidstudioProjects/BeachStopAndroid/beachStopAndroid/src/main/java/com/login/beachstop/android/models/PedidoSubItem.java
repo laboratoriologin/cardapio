@@ -43,21 +43,27 @@ public class PedidoSubItem extends Base {
 
     @Override
     public Long getId() {
-        return null;
+        return this.id;
     }
 
     @Override
     public void setId(Long id) {
 
+        this.id = id;
+
     }
 
     @Override
     public String getServiceName() {
-        return null;
+
+        return this.serviceName;
+
     }
 
     @Override
     public void setServiceName(String serviceName) {
+
+        this.serviceName = serviceName;
 
     }
 

@@ -141,7 +141,7 @@ public class ItemAllFragment extends Fragment {
 
         //TODO: tem que trazer também todos os kits do restaurante
 
-        List<Categoria> categoriaList = this.cardapioActivity.getDataManager().getCategoriaDAO().getAll().subList(0, (this.cardapioActivity.getDataManager().getCategoriaDAO().getQtdCategoria() - 1));
+        List<Categoria> categoriaList = this.cardapioActivity.getDataManager().getCategoriaDAO().getAllOrderByOrdem().subList(0, (this.cardapioActivity.getDataManager().getCategoriaDAO().getQtdCategoria() - 1));
         this.categorias = new ArrayList<Categoria>();
 
         List<Item> items;

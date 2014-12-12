@@ -22,13 +22,13 @@ public class ItemDAO extends DroidDao<Item, Long> {
 
     public List<Item> getAll(Long categoriaId) {
 
-        List<Item> itens = this.getAllbyClause("CATEGORIA_ID=?", new String[]{categoriaId.toString()}, null, null, null);
+        List<Item> itens = this.getAllbyClause("CATEGORIA_ID=?", new String[]{categoriaId.toString()}, null, null, "ORDEM");
 
         List<SubItem> subItens;
 
         for (Item item : itens) {
 
-            subItens = this.dataManager.getSubItemDAO().getAllbyClause("ITEM_ID=?", new String[]{item.getId().toString()}, null, null, null);
+            subItens = this.dataManager.getSubItemDAO().getAllbyClause("ITEM_ID=?", new String[]{item.getId().toString()}, null, null, "ORDEM");
             item.setSubItens(subItens);
 
         }

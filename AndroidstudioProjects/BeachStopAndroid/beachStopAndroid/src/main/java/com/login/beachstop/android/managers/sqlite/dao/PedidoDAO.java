@@ -27,13 +27,9 @@ public class PedidoDAO extends DroidDao<Pedido, Long> {
 
         Pedido pedido = this.getByClause("FINALIZADO =" + strFinalizado, null);
 
-        if (pedido == null) {
+        if (pedido != null) {
 
-            return null;
-
-        } else {
-
-            List<PedidoSubItem> pedidosSubItens = this.dataManager.getPedidoSubItemDAO().getAllbyClause("ID_PEDIDO = ?", new String[]{pedido.getId().toString()}, null, null, null);
+            List<PedidoSubItem> pedidosSubItens = this.dataManager.getPedidoSubItemDAO().getAllbyClause("PEDIDO_ID = ?", new String[]{pedido.getId().toString()}, null, null, null);
             pedido.setPedidoSubItens(pedidosSubItens);
 
             for (PedidoSubItem pedidoSubItem : pedido.getPedidoSubItens()) {
@@ -41,10 +37,9 @@ public class PedidoDAO extends DroidDao<Pedido, Long> {
                 pedidoSubItem.setSubItem(this.dataManager.getSubItemDAO().get(pedidoSubItem.getSubItemId()));
 
             }
-
-            return pedido;
-
         }
+
+        return pedido;
 
     }
 

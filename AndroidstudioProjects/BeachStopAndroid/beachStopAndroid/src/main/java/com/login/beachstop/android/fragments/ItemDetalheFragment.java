@@ -8,9 +8,11 @@ import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -52,6 +54,7 @@ public class ItemDetalheFragment extends Fragment {
     private List<RowSubItem> listRowSubItem;
     private ImageView imageView;
     private SocialAuthAdapter socialAuthAdapter;
+    private NumberFormat format = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
 
 
     @Override
@@ -90,6 +93,14 @@ public class ItemDetalheFragment extends Fragment {
             }
         }
 
+        Boolean hasConta = this.cardapioActivity.getDataManager().getContaDAO().get() != null;
+
+        if (hasConta) {
+
+            this.view.findViewById(R.id.fragment_item_detalhe_linear_layout_btn).setVisibility(LinearLayout.VISIBLE);
+
+        }
+
         if (item.getTempoPreparo().toString().length() == 0) {
 
             ((TextView) this.view.findViewById(R.id.fragment_item_detalhe_text_view_tempo_preparo)).setVisibility(TextView.GONE);
@@ -110,69 +121,73 @@ public class ItemDetalheFragment extends Fragment {
         TableLayout tableLayout = (TableLayout) this.view.findViewById(R.id.fragment_item_detalhe_table_layout_sub_item);
         startRowSubITem(tableLayout, this.item.getSubItens());
 
-        // this.view.findViewById(R.id.fragment_detalhe_item_cardapio_button_finalizar_pedido).setOnClickListener(new
-        // OnClickListener() {
+        this.view.findViewById(R.id.fragment_item_detalhe_button_finalizar_pedido).setOnClickListener(new OnClickListener() {
 
-        // @Override
-        // public void onClick(View v) {
-        // Boolean enviarPedido = false;
-        //
-        // for (ItemCardapioSubItem item : itemCardapio.getSubItens()) {
-        // if (item.getQtdSelecionado() != 0)
-        // enviarPedido = true;
-        // }
-        //
-        // if (!enviarPedido)
-        // Toast.makeText(homeActivity,
-        // "Selecione algum item para prosseguir com o pedido!",
-        // Toast.LENGTH_SHORT).show();
-        // else {
-        //
-        // Conta contaAberta = homeActivity.getDataManager().getConta();
-        //
-        // if (contaAberta != null) {
-        // addItemPedido(contaAberta);
-        // homeActivity.getTabHost().setCurrentTab(2);
-        // } else {
-        // Toast.makeText(homeActivity,
-        // "Ops! Você aidna não realizaou o seu check-in!",
-        // Toast.LENGTH_SHORT).show();
-        // }
-        // }
-        // }
-        // });
-        //
-        // this.view.findViewById(R.id.fragment_detalhe_item_cardapio_button_add_item).setOnClickListener(new
-        // OnClickListener() {
-        //
-        // @Override
-        // public void onClick(View v) {
-        //
-        // Boolean enviarPedido = false;
-        //
-        // for (ItemCardapioSubItem item : itemCardapio.getSubItens()) {
-        // if (item.getQtdSelecionado() != 0)
-        // enviarPedido = true;
-        // }
-        //
-        // if (!enviarPedido)
-        // Toast.makeText(homeActivity,
-        // "Selecione algum item para prosseguir com o pedido!",
-        // Toast.LENGTH_SHORT).show();
-        // else {
-        //
-        // Conta contaAberta = homeActivity.getDataManager().getConta();
-        //
-        // if (contaAberta != null) {
-        // addItemPedido(contaAberta);
-        // } else {
-        // Toast.makeText(homeActivity,
-        // "Ops! Você aidna não realizaou o seu check-in!",
-        // Toast.LENGTH_SHORT).show();
-        // }
-        // }
-        // }
-        // });
+            @Override
+            public void onClick(View v) {
+                Boolean enviarPedido = false;
+
+                for (SubItem subItem : item.getSubItens()) {
+
+                    if (subItem.getQtdSelecionado() != 0)
+                        enviarPedido = true;
+
+                }
+
+                if (!enviarPedido) {
+
+                    Toast.makeText(cardapioActivity, "Selecione algum item para prosseguir com o pedido!", Toast.LENGTH_SHORT).show();
+
+                } else {
+
+                    Conta contaAberta = cardapioActivity.getDataManager().getContaDAO().get();
+
+                    if (contaAberta != null) {
+
+                        addItemPedido(contaAberta);
+                        cardapioActivity.getTabHost().setCurrentTab(3);
+
+                    } else {
+
+                        Toast.makeText(cardapioActivity, "Ops! Você aidna não realizaou o seu check-in!", Toast.LENGTH_SHORT).show();
+
+                    }
+                }
+            }
+        });
+
+        this.view.findViewById(R.id.fragment_item_detalhe_button_add_item).setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                Boolean enviarPedido = false;
+
+                for (SubItem subItem : item.getSubItens()) {
+
+                    if (subItem.getQtdSelecionado() != 0)
+                        enviarPedido = true;
+
+                }
+
+                if (!enviarPedido)
+                    Toast.makeText(cardapioActivity, "Selecione algum item para prosseguir com o pedido!", Toast.LENGTH_SHORT).show();
+                else {
+
+                    Conta contaAberta = cardapioActivity.getDataManager().getContaDAO().get();
+
+                    if (contaAberta != null) {
+
+                        addItemPedido(contaAberta);
+
+                    } else {
+
+                        Toast.makeText(cardapioActivity, "Ops! Você aidna não realizaou o seu check-in!", Toast.LENGTH_SHORT).show();
+
+                    }
+                }
+            }
+        });
 
         socialAuthAdapter.enable((Button) this.view.findViewById(R.id.fragment_item_detalhe_button_compartilhar));
         return this.view;
@@ -272,94 +287,93 @@ public class ItemDetalheFragment extends Fragment {
 
     public void startRowSubITem(TableLayout tableLayout, List<SubItem> subItens) {
 
+        Boolean hasConta = this.cardapioActivity.getDataManager().getContaDAO().get() != null;
+
+        if (hasConta) {
+
+            loadRow(tableLayout, subItens);
+
+        } else {
+
+            loadRowSemConta(tableLayout, subItens);
+
+        }
+    }
+
+    private void loadRow(TableLayout tableLayout, List<SubItem> subItens) {
+
         View subItemView;
         String descricao;
         RowSubItem rowSubItem;
-
-        Boolean hasConta = this.cardapioActivity.getDataManager().getContaDAO().get() != null;
-        NumberFormat format = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
 
         this.listRowSubItem = new ArrayList<RowSubItem>();
 
         for (SubItem subItemCardapio : subItens) {
 
             subItemView = TableRow.inflate(this.cardapioActivity, R.layout.fragment_item_detalhe_table_row, null);
-            // rowSubItem = new RowSubItem(((ImageView)
-            // subItemView.findViewById(R.id.linha_sub_item_image_view_seta_esquerda)),
-            // ((ImageView)
-            // subItemView.findViewById(R.id.linha_sub_item_image_view_seta_direita)),
-            // ((TextView)
-            // subItemView.findViewById(R.id.linha_sub_item_text_view_qtd)),
-            // subItemCardapio);
-            rowSubItem = new RowSubItem(null, null, null, subItemCardapio);
+            rowSubItem = new RowSubItem(((ImageView) subItemView.findViewById(R.id.fragment_item_detalhe_table_row_image_view_seta_esquerda)), ((ImageView) subItemView.findViewById(R.id.fragment_item_detalhe_table_row_image_view_seta_direita)), ((TextView) subItemView.findViewById(R.id.fragment_item_detalhe_table_row_text_view_qtd)), subItemCardapio);
 
-            if (hasConta) {
+            rowSubItem.getSubItem().setQtdSelecionado(0l);
+            rowSubItem.getTxtQtd().setText(String.format("%02d", rowSubItem.getSubItem().getQtdSelecionado()));
 
-                descricao = subItemCardapio.getDescricao() + " ...........................................................";
-                ((TextView) subItemView.findViewById(R.id.fragment_item_detalhe_table_row_text_view_descricao)).setText(descricao);
+            rowSubItem.getBtnDireita().setTag(rowSubItem);
+            rowSubItem.getBtnEsquerda().setTag(rowSubItem);
 
-            } else {
+            rowSubItem.getBtnDireita().setOnClickListener(new OnClickListener() {
 
-                // descricao = subItemCardapio.getDescricao() + " - " +
-                // subItemCardapio.getQuantidade() + " " +
-                // subItemCardapio.getDescricaoTipoQuantidade();
-                descricao = subItemCardapio.getDescricao();
-                ((TextView) subItemView.findViewById(R.id.fragment_item_detalhe_table_row_text_view_descricao)).setText(descricao);
-            }
+                public void onClick(View v) {
 
-            if (hasConta) {
+                    RowSubItem rowSubItem = (RowSubItem) v.getTag();
 
-                ((TextView) subItemView.findViewById(R.id.fragment_item_detalhe_table_row_text_view_valor)).setText(format.format(new BigDecimal(subItemCardapio.getValor())));
+                    if (rowSubItem.getSubItem().getQtdSelecionado() <= 99) {
 
-            } else {
+                        rowSubItem.getSubItem().setQtdSelecionado((rowSubItem.getSubItem().getQtdSelecionado() + 1));
+                        rowSubItem.getTxtQtd().setText(String.format("%02d", rowSubItem.getSubItem().getQtdSelecionado()));
 
-                // ((TextView)
-                // subItemView.findViewById(R.id.linha_sub_item_text_view_valor)).setText("                      ");
-                ((TextView) subItemView.findViewById(R.id.fragment_item_detalhe_table_row_text_view_valor)).setText("");
+                    }
+                }
+            });
 
-            }
+            rowSubItem.getBtnEsquerda().setOnClickListener(new OnClickListener() {
 
-            // rowSubItem.getSubItemCardapio().setQtdSelecionado(0l);
-            // rowSubItem.getTxtQtd().setText(String.format("%02d",
-            // rowSubItem.getSubItemCardapio().getQtdSelecionado()));
+                public void onClick(View v) {
 
-            // rowSubItem.getBtnDireita().setTag(rowSubItem);
-            // rowSubItem.getBtnEsquerda().setTag(rowSubItem);
+                    RowSubItem rowSubItem = (RowSubItem) v.getTag();
 
-            // rowSubItem.getBtnDireita().setOnClickListener(new
-            // OnClickListener() {
-            //
-            // public void onClick(View v) {
-            // RowSubItem rowSubItem = (RowSubItem) v.getTag();
-            // if (rowSubItem.getSubItemCardapio().getQtdSelecionado() <= 99) {
-            // rowSubItem.getSubItemCardapio().setQtdSelecionado((rowSubItem.getSubItemCardapio().getQtdSelecionado()
-            // + 1));
-            // rowSubItem.getTxtQtd().setText(String.format("%02d",
-            // rowSubItem.getSubItemCardapio().getQtdSelecionado()));
-            // }
-            // }
-            //
-            // });
-            //
-            // rowSubItem.getBtnEsquerda().setOnClickListener(new
-            // OnClickListener() {
-            //
-            // public void onClick(View v) {
-            // RowSubItem rowSubItem = (RowSubItem) v.getTag();
-            // if (rowSubItem.getSubItemCardapio().getQtdSelecionado() >= 1) {
-            // rowSubItem.getSubItemCardapio().setQtdSelecionado((rowSubItem.getSubItemCardapio().getQtdSelecionado()
-            // - 1));
-            // rowSubItem.getTxtQtd().setText(String.format("%02d",
-            // rowSubItem.getSubItemCardapio().getQtdSelecionado()));
-            // }
-            // }
-            //
-            // });
+                    if (rowSubItem.getSubItem().getQtdSelecionado() >= 1) {
+
+                        rowSubItem.getSubItem().setQtdSelecionado((rowSubItem.getSubItem().getQtdSelecionado() - 1));
+                        rowSubItem.getTxtQtd().setText(String.format("%02d", rowSubItem.getSubItem().getQtdSelecionado()));
+
+                    }
+                }
+            });
+
+            descricao = subItemCardapio.getNome();
+            ((TextView) subItemView.findViewById(R.id.fragment_item_detalhe_table_row_text_view_descricao)).setText(descricao);
+            ((TextView) subItemView.findViewById(R.id.fragment_item_detalhe_table_row_text_view_valor)).setText(format.format(new BigDecimal(subItemCardapio.getValor())));
+
 
             this.listRowSubItem.add(rowSubItem);
 
             tableLayout.addView(subItemView);
         }
+    }
+
+    private void loadRowSemConta(TableLayout tableLayout, List<SubItem> subItens) {
+
+        View subItemView;
+        String descricao;
+
+        for (SubItem subItemCardapio : subItens) {
+
+            subItemView = TableRow.inflate(this.cardapioActivity, R.layout.fragment_item_detalhe_table_row_sem_conta, null);
+            descricao = " • " + subItemCardapio.getNome();
+            ((TextView) subItemView.findViewById(R.id.linha_sub_item_sem_conta_text_view_descricao)).setText(descricao);
+
+            tableLayout.addView(subItemView);
+        }
+
     }
 
     public class RowSubItem {
