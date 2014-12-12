@@ -43,6 +43,11 @@ public class PedidoFragment extends Fragment implements IPedidoFragment {
     private ResponseListener responseListenerPedido = new ResponseListener() {
         @Override
         public void onResult(ServerResponse serverResponse) {
+
+            buttonEnviarPedido.setText("Enviar o pedido");
+
+            buttonEnviarPedido.setEnabled(true);
+
             if (serverResponse != null) {
 
                 if (serverResponse.isOK()) {

@@ -11,7 +11,7 @@ import br.com.topsys.database.factory.TSDataBaseBrokerFactory;
 import br.com.topsys.exception.TSApplicationException;
 import br.com.topsys.util.TSUtil;
 
-public class PedidoDAO  implements RestDAO<Pedido> {
+public class PedidoDAO implements RestDAO<Pedido> {
 
 	@Override
 	public Pedido get(Long id) {
@@ -39,12 +39,26 @@ public class PedidoDAO  implements RestDAO<Pedido> {
 	public Pedido insert(Pedido model) throws TSApplicationException {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		
+		broker.beginTransaction();
 
 		model.setId(broker.getSequenceNextValue("dbo.pedidos"));
 
 		broker.setPropertySQL("pedidodao.insert", model.getConta().getId(), model.getObservacao());
 
 		broker.execute();
+		
+		for (PedidoSubItem pedidoSubItem : model.getSubItens()) {
+			
+			pedidoSubItem.setId(broker.getSequenceCurrentValue("dbo.pedidos_sub_itens"));
+			
+			broker.setPropertySQL("pedidosubitemdao.insertbypedido",model.getId(), pedidoSubItem.getQuantidade(), pedidoSubItem.getSubItem().getId(), pedidoSubItem.getSubItem().getId());
+			
+			broker.execute();
+			
+		}
+		
+		broker.endTransaction();
 
 		return model;
 
@@ -90,7 +104,7 @@ public class PedidoDAO  implements RestDAO<Pedido> {
 		return model;
 
 	}
-	
+
 	public void aprovar(final Pedido model) throws TSApplicationException {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
