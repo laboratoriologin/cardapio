@@ -39,22 +39,31 @@ public class Pedido extends Base {
 
     @Override
     public Long getId() {
+
         return id;
+
     }
 
     @Override
     public void setId(Long id) {
 
+        this.id = id;
+
     }
 
     @Override
     public String getServiceName() {
+
         return serviceName;
+
     }
 
     @Override
     public void setServiceName(String serviceName) {
+
         this.serviceName = serviceName;
+
+
     }
 
     public String getObservacao() {

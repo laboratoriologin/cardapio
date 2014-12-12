@@ -92,15 +92,22 @@ public class CategoriaItemExpandableAdapter extends BaseExpandableListAdapter {
             convertView = inflater.inflate(R.layout.adapter_expandable_all_categoria_item_parent, null);
         }
 
-        Drawable img = DrawableManager.getDrawableManager().getDrawable(Constantes.URL_IMG + categoria.getImagem());
+        if (Constantes.TipoCategoriaCardapio.ITEM.equals(categoria.getTipoCategoria())) {
 
-        if (img == null) {
+            Drawable img = DrawableManager.getDrawableManager().getDrawable(Constantes.URL_IMG + "topo_" + categoria.getImagem());
 
-            new LoadImage(((ImageView) (convertView.findViewById(R.id.adapter_expandable_all_categoria_item_parent_image_view))), convertView.getContext()).execute(Constantes.URL_IMG + categoria.getImagem());
+            if (img == null) {
 
-        } else {
+                new LoadImage(((ImageView) (convertView.findViewById(R.id.adapter_expandable_all_categoria_item_parent_image_view))), convertView.getContext()).execute(Constantes.URL_IMG + "topo_" + categoria.getImagem());
 
-            ((ImageView) (convertView.findViewById(R.id.adapter_expandable_all_categoria_item_parent_image_view))).setImageDrawable(img);
+            } else {
+
+                ((ImageView) (convertView.findViewById(R.id.adapter_expandable_all_categoria_item_parent_image_view))).setImageDrawable(img);
+
+            }
+        } else if (Constantes.TipoCategoriaCardapio.KIT.equals(categoria.getTipoCategoria())) {
+
+            ((ImageView) (convertView.findViewById(R.id.adapter_expandable_all_categoria_item_parent_image_view))).setImageResource(R.drawable.icone_topo_kit);
 
         }
 

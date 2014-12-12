@@ -131,7 +131,7 @@ public class SplashActivity extends DefaultActivity {
         categoria.setFlagAtivo(true);
         categoria.setOrdem((long) (categorias.size() + 1));
         categoria.setImagem("");
-        categoria.setResourceImg(R.drawable.bt_home_diversos);
+        categoria.setResourceImg(R.drawable.bt_home_kit);
 
         categorias.add(categoria);
 
