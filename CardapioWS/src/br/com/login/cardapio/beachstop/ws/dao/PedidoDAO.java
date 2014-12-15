@@ -50,7 +50,7 @@ public class PedidoDAO implements RestDAO<Pedido> {
 		
 		for (PedidoSubItem pedidoSubItem : model.getSubItens()) {
 			
-			pedidoSubItem.setId(broker.getSequenceCurrentValue("dbo.pedidos_sub_itens"));
+			pedidoSubItem.setId(broker.getSequenceNextValue("dbo.pedidos_sub_itens"));
 			
 			broker.setPropertySQL("pedidosubitemdao.insertbypedido",model.getId(), pedidoSubItem.getQuantidade(), pedidoSubItem.getSubItem().getId(), pedidoSubItem.getSubItem().getId());
 			
@@ -74,7 +74,7 @@ public class PedidoDAO implements RestDAO<Pedido> {
 		broker.setPropertySQL("pedidodao.updateobs", model.getObservacao(), model.getId());
 
 		broker.execute();
-
+		
 		broker.setPropertySQL("pedidodao.alterarresponsavel", model.getUsuario().getId(), model.getId());
 
 		broker.execute();

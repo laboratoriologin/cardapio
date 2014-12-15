@@ -2,67 +2,67 @@
 <items version="2" >
 
     <item
-        jar="/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/galeriaImg/unspecified/classes.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="13c992b718af02141ea38c3474de8348ed6da989">
-        <dex dex="/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/pre-dexed/debug/classes-3e1dd853eb83351c3eb11a142b78e10860f9f1ca.jar" />
-    </item>
-    <item
-        jar="/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/libs/android-integration.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="02824baabca4e2a00de975c9a95079eb5c67bfa5">
-        <dex dex="/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/pre-dexed/debug/android-integration-253e647cf960331af5d5f7eeff3bf722fae3cbf1.jar" />
-    </item>
-    <item
-        jar="/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/libs/internal_impl-20.0.0.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d">
-        <dex dex="/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/pre-dexed/debug/internal_impl-20.0.0-351c7c1ab0932b4adac7f9cf8f50b62448028aee.jar" />
-    </item>
-    <item
-        jar="/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/libs/droidpersistence.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="c0ee13054d3c9672d4f76a2fc7a9842057bf85c9">
-        <dex dex="/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/pre-dexed/debug/droidpersistence-0a1dfb2ac945fecf43dde1580ecfd7cbae630084.jar" />
-    </item>
-    <item
-        jar="/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/classes.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="8694693636ab36910c8100ce527c258ff3ebece0">
-        <dex dex="/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/pre-dexed/debug/classes-03af25428b2964cd78d367b9025fcdc5a149fc2a.jar" />
-    </item>
-    <item
-        jar="/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/libs/socialauth-android-3.2.jar"
+        jar="/Users/Marcelo/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/libs/socialauth-android-3.2.jar"
         jumboMode="false"
         revision="20.0.0"
         sha1="50cb8f7d8602c2de0b42f01ccba940985192aaa7">
-        <dex dex="/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/pre-dexed/debug/socialauth-android-3.2-17308385402321ea8386ff031521dbd9d057b1b7.jar" />
+        <dex dex="/Users/Marcelo/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/pre-dexed/debug/socialauth-android-3.2-2641f52e521ae2bb5660c38d23c7ac32cc8f09e6.jar" />
     </item>
     <item
-        jar="/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/libs/socialauth-4.4.jar"
+        jar="/Users/Marcelo/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/galeriaImg/unspecified/classes.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="a867292683d6086af72c7cac181892e118058989">
-        <dex dex="/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/pre-dexed/debug/socialauth-4.4-2dfc287a66fbc9acf868fa85af8ce8c630b7bdcb.jar" />
+        sha1="681a2511d6d157aadae8e3c9c9d7b127d71b0983">
+        <dex dex="/Users/Marcelo/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/pre-dexed/debug/classes-bd4bdec1581b5a943367dba83b3d6824b450e4c8.jar" />
     </item>
     <item
-        jar="/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/ParallaxScroll/unspecified/classes.jar"
+        jar="/Users/Marcelo/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/libs/droidpersistence.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="3db8cb49b2451893ff15e58269eec51f31eec405">
-        <dex dex="/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/pre-dexed/debug/classes-2619e58e6d3252bb0acff04535349be6c30a12b5.jar" />
+        sha1="c0ee13054d3c9672d4f76a2fc7a9842057bf85c9">
+        <dex dex="/Users/Marcelo/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/pre-dexed/debug/droidpersistence-48277e3ace2e8f7659e5decb06c446ef485f01ae.jar" />
     </item>
     <item
-        jar="/Users/login/Documents/dev/sdk/extras/android/m2repository/com/android/support/support-annotations/20.0.0/support-annotations-20.0.0.jar"
+        jar="/Users/Marcelo/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="8694693636ab36910c8100ce527c258ff3ebece0">
+        <dex dex="/Users/Marcelo/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/pre-dexed/debug/classes-9953a8a70aba8a9ed57b61c6f50f82d3f963db13.jar" />
+    </item>
+    <item
+        jar="/Users/Marcelo/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/libs/internal_impl-20.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d">
+        <dex dex="/Users/Marcelo/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/pre-dexed/debug/internal_impl-20.0.0-9c018828f66ac606395586a1a09db330c16ac888.jar" />
+    </item>
+    <item
+        jar="/Users/Marcelo/Desktop/dev/ide/adt-bundle-mac-x86_64-20140702/sdk/extras/android/m2repository/com/android/support/support-annotations/20.0.0/support-annotations-20.0.0.jar"
         jumboMode="false"
         revision="20.0.0"
         sha1="9d9013e9ff35fc3756411e62873c363c70c638fa">
-        <dex dex="/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/pre-dexed/debug/support-annotations-20.0.0-1a4f47f30f9f7930ba4203854f49eb33c4a897b9.jar" />
+        <dex dex="/Users/Marcelo/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/pre-dexed/debug/support-annotations-20.0.0-5136bf190eac6345fa4bf854ccab170cb1f37dee.jar" />
+    </item>
+    <item
+        jar="/Users/Marcelo/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/libs/socialauth-4.4.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="a867292683d6086af72c7cac181892e118058989">
+        <dex dex="/Users/Marcelo/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/pre-dexed/debug/socialauth-4.4-37f2d732910b656327710f2fba9bd5cd23800af7.jar" />
+    </item>
+    <item
+        jar="/Users/Marcelo/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/ParallaxScroll/unspecified/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="20d46a6dfd83bfdab1ba3d85baffd7276638e07e">
+        <dex dex="/Users/Marcelo/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/pre-dexed/debug/classes-fceb3c02b14392e9b167de78edfaa152bdfe68c9.jar" />
+    </item>
+    <item
+        jar="/Users/Marcelo/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/libs/android-integration.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="02824baabca4e2a00de975c9a95079eb5c67bfa5">
+        <dex dex="/Users/Marcelo/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/pre-dexed/debug/android-integration-0f70b1d80117abd93c3d1b4431757ee04b354e19.jar" />
     </item>
 
 </items>

@@ -89,13 +89,13 @@ public class PedidoService extends RestService<Pedido> {
 
 		}
 
-		super.insert(form);
-
 		if (form.getUsuario() == null) {
 
 			form.setUsuario(new Usuario());
 
 		}
+		
+		super.insert(form);
 
 		this.gerarLog(form, status);
 

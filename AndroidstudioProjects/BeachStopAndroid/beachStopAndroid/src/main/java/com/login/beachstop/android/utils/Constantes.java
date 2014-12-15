@@ -20,7 +20,7 @@ public final class Constantes {
     public static final String URL_ADD_CONTA = URL + "/conta_app?";
 	public static final String URL_CHK_CONTA_ABERTA = URL + "/check_conta_aberta_app?";
     public static final String URL_IMG = "http://10.0.0.33:8080/arquivos_cardapio/";
-    public static final String URL_WS = "http://10.0.0.104:8080/CardapioWS";
+    public static final String URL_WS = "http://10.0.0.33:8080/CardapioWS";
     public static final String KEYMOBILE = "123";
     public static final String ID_CATEGORIA_CARDAPIO = "id";
 	public static final String KEY_CARDAPIO = "keyCardapio";

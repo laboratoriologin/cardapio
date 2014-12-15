@@ -37,7 +37,7 @@ public class PedidoRequest extends ObjectRequest<Pedido> {
 
             nameValuePairs.add(new BasicNameValuePair("subItens[" + i + "].quantidade", pedidoSubItem.getQuantidade().toString()));
 
-            nameValuePairs.add(new BasicNameValuePair("subItens[" + i + "].subitem-", pedidoSubItem.getSubItemId().toString()));
+            nameValuePairs.add(new BasicNameValuePair("subItens[" + i + "].subitem", pedidoSubItem.getSubItemId().toString()));
 
         }
 
