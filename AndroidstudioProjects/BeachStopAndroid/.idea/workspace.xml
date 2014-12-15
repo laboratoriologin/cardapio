@@ -36,6 +36,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4ef57485-465d-4331-91d4-7302393ad71d" name="Default" comment="">
+<<<<<<< HEAD
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/galeriaImg/unspecified/classes.jar" afterPath="$PROJECT_DIR$/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/galeriaImg/unspecified/classes.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../CardapioWS/.classpath" afterPath="$PROJECT_DIR$/../../CardapioWS/.classpath" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/CheckInActivity.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/CheckInActivity.java" />
@@ -51,6 +52,15 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/galeriaImg/unspecified/res/color/vpi__dark_theme.xml" afterPath="$PROJECT_DIR$/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/galeriaImg/unspecified/res/color/vpi__dark_theme.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/galeriaImg/unspecified/res/color/vpi__light_theme.xml" afterPath="$PROJECT_DIR$/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/galeriaImg/unspecified/res/color/vpi__light_theme.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/galeriaImg/unspecified/res/drawable/vpi__tab_indicator.xml" afterPath="$PROJECT_DIR$/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/galeriaImg/unspecified/res/drawable/vpi__tab_indicator.xml" />
+=======
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../CardapioWS/src/br/com/login/cardapio/beachstop/ws/model/Conta.java" afterPath="$PROJECT_DIR$/../../CardapioWS/src/br/com/login/cardapio/beachstop/ws/model/Conta.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../CardapioWS/src/br/com/login/cardapio/beachstop/ws/dao/ContaDAO.java" afterPath="$PROJECT_DIR$/../../CardapioWS/src/br/com/login/cardapio/beachstop/ws/dao/ContaDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../CardapioWS/src/br/com/login/cardapio/beachstop/ws/dao/PedidoDAO.java" afterPath="$PROJECT_DIR$/../../CardapioWS/src/br/com/login/cardapio/beachstop/ws/dao/PedidoDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/fragments/PedidoFragment.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/fragments/PedidoFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/network/PedidoRequest.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/network/PedidoRequest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/models/ServerResponse.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/models/ServerResponse.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../CardapioWS/src/config/sql.properties" afterPath="$PROJECT_DIR$/../../CardapioWS/src/config/sql.properties" />
+>>>>>>> bbc11dc90a06ef9e26793a0e9d689d6969702655
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="BeachStopAndroid.iws" />
@@ -78,7 +88,102 @@
     <favorites_list name="BeachStopAndroid" />
   </component>
   <component name="FileEditorManager">
+<<<<<<< HEAD
     <leaf />
+=======
+    <leaf>
+      <file leaf-file-name="SubItemListAdapter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/views/adapters/SubItemListAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="3195" max-vertical-offset="3300">
+              <caret line="213" column="0" selection-start-line="213" selection-start-column="0" selection-end-line="213" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PedidoRequest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/network/PedidoRequest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="810">
+              <caret line="39" column="83" selection-start-line="39" selection-start-column="83" selection-end-line="39" selection-end-column="83" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Constantes.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/utils/Constantes.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="1050">
+              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ObjectRequest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/network/ObjectRequest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1110">
+              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PedidoFragment.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/fragments/PedidoFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.742268" vertical-offset="90" max-vertical-offset="3660">
+              <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+              <folding>
+                <element signature="e#1489#2697#0" expanded="true" />
+                <element signature="e#2690#2691#0" expanded="true" />
+                <element signature="e#5416#5895#0" expanded="true" />
+                <element signature="e#5884#5885#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ServerResponse.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/models/ServerResponse.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="582" max-vertical-offset="1080">
+              <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PedidoDAO.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/managers/sqlite/dao/PedidoDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="720">
+              <caret line="43" column="9" selection-start-line="43" selection-start-column="9" selection-end-line="43" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="workspace.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="46605">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1418415333000" expanded="true" signature="187321:187384" placeholder="..." />
+                <marker date="1418415333000" expanded="true" signature="187321:187369" placeholder="..." />
+                <marker date="1418415333000" expanded="true" signature="187321:187356" placeholder="..." />
+                <marker date="1418415333000" expanded="true" signature="187321:187338" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+>>>>>>> bbc11dc90a06ef9e26793a0e9d689d6969702655
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -2002,6 +2107,11 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
+<<<<<<< HEAD
+=======
+        <option value="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/fragments/ItemFragment.java" />
+        <option value="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/network/ItemRequest.java" />
+>>>>>>> bbc11dc90a06ef9e26793a0e9d689d6969702655
         <option value="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/adapter_expandable_all_categoria_item_child.xml" />
         <option value="$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/adapter_expandable_all_categoria_item_parent.xml" />
         <option value="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/views/adapters/ExpandableAllCategoriaItemAdapter.java" />
@@ -2046,6 +2156,7 @@
         <option value="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/views/adapters/SubItemListAdapter.java" />
         <option value="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/network/ObjectRequest.java" />
         <option value="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/models/Pedido.java" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/managers/sqlite/dao/PedidoDAO.java" />
         <option value="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/models/ServerResponse.java" />
         <option value="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/fragments/PedidoFragment.java" />
@@ -2053,6 +2164,13 @@
         <option value="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/network/PedidoRequest.java" />
         <option value="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/CheckInActivity.java" />
         <option value="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/utils/Constantes.java" />
+=======
+        <option value="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/utils/Constantes.java" />
+        <option value="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/managers/sqlite/dao/PedidoDAO.java" />
+        <option value="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/network/PedidoRequest.java" />
+        <option value="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/models/ServerResponse.java" />
+        <option value="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/fragments/PedidoFragment.java" />
+>>>>>>> bbc11dc90a06ef9e26793a0e9d689d6969702655
       </list>
     </option>
   </component>
@@ -2506,7 +2624,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
     <frame x="0" y="23" width="1280" height="773" extended-state="6" />
+=======
+    <frame x="-1440" y="24" width="1439" height="872" extended-state="6" />
+>>>>>>> bbc11dc90a06ef9e26793a0e9d689d6969702655
     <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -2521,8 +2643,13 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32814237" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32858837" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2153518" sideWeight="0.50082916" order="3" side_tool="true" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31506848" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21308981" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+=======
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31613755" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3042328" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+>>>>>>> bbc11dc90a06ef9e26793a0e9d689d6969702655
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928804" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32698414" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -2603,11 +2730,24 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
+<<<<<<< HEAD
       <option name="time" value="76" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/fragment_conta_table_row.xml">
+=======
+      <option name="time" value="74" />
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/fragment_conta.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.0431472" vertical-offset="368" max-vertical-offset="1666">
+          <caret line="70" column="56" selection-start-line="70" selection-start-column="42" selection-end-line="70" selection-end-column="56" />
+        </state>
+      </provider>
+>>>>>>> bbc11dc90a06ef9e26793a0e9d689d6969702655
       <provider editor-type-id="android-designer">
         <state />
       </provider>
@@ -2850,6 +2990,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.12541807" vertical-offset="0" max-vertical-offset="2715">
           <caret line="24" column="20" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2903,6 +3044,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/models/Pedido.java">
+<<<<<<< HEAD
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="1140">
           <caret line="56" column="39" selection-start-line="56" selection-start-column="39" selection-end-line="56" selection-end-column="39" />
@@ -2919,6 +3061,8 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+=======
+>>>>>>> bbc11dc90a06ef9e26793a0e9d689d6969702655
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="45765">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -2934,6 +3078,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/fragments/IPedidoFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.18072289" vertical-offset="0" max-vertical-offset="498">
@@ -2945,10 +3090,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1110">
           <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+=======
+    <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/views/adapters/SubItemListAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2023" max-vertical-offset="2505">
+          <caret line="213" column="0" selection-start-line="213" selection-start-column="0" selection-end-line="213" selection-end-column="0" />
+>>>>>>> bbc11dc90a06ef9e26793a0e9d689d6969702655
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/models/ServerResponse.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.44012442" vertical-offset="677" max-vertical-offset="1320">
@@ -2972,31 +3124,90 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.19430052" vertical-offset="0" max-vertical-offset="2400">
           <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+=======
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="45765">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1418415333000" expanded="true" signature="187321:187384" placeholder="..." />
+            <marker date="1418415333000" expanded="true" signature="187321:187369" placeholder="..." />
+            <marker date="1418415333000" expanded="true" signature="187321:187356" placeholder="..." />
+            <marker date="1418415333000" expanded="true" signature="187321:187338" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/managers/sqlite/dao/PedidoDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="720">
+          <caret line="43" column="9" selection-start-line="43" selection-start-column="9" selection-end-line="43" selection-end-column="9" />
+>>>>>>> bbc11dc90a06ef9e26793a0e9d689d6969702655
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/fragments/IPedidoFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state vertical-scroll-proportion="0.78781515" vertical-offset="45" max-vertical-offset="810">
+          <caret line="39" column="82" selection-start-line="39" selection-start-column="82" selection-end-line="39" selection-end-column="82" />
+=======
+        <state vertical-scroll-proportion="0.18072289" vertical-offset="0" max-vertical-offset="498">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+>>>>>>> bbc11dc90a06ef9e26793a0e9d689d6969702655
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/utils/Constantes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5246423" vertical-offset="0" max-vertical-offset="1050">
+          <caret line="22" column="57" selection-start-line="22" selection-start-column="57" selection-end-line="22" selection-end-column="57" />
+=======
+    <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/network/ObjectRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1110">
+          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+>>>>>>> bbc11dc90a06ef9e26793a0e9d689d6969702655
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/CheckInActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2607313" vertical-offset="1006" max-vertical-offset="4065">
+          <caret line="110" column="0" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
+=======
+    <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/models/ServerResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="582" max-vertical-offset="1080">
+          <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+>>>>>>> bbc11dc90a06ef9e26793a0e9d689d6969702655
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/network/PedidoRequest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.78781515" vertical-offset="45" max-vertical-offset="810">
-          <caret line="39" column="82" selection-start-line="39" selection-start-column="82" selection-end-line="39" selection-end-column="82" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="810">
+          <caret line="39" column="83" selection-start-line="39" selection-start-column="83" selection-end-line="39" selection-end-column="83" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/utils/Constantes.java">
+    <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/fragments/PedidoFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5246423" vertical-offset="0" max-vertical-offset="1050">
-          <caret line="22" column="57" selection-start-line="22" selection-start-column="57" selection-end-line="22" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/CheckInActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2607313" vertical-offset="1006" max-vertical-offset="4065">
-          <caret line="110" column="0" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.742268" vertical-offset="90" max-vertical-offset="3660">
+          <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+          <folding>
+            <element signature="e#1489#2697#0" expanded="true" />
+            <element signature="e#2690#2691#0" expanded="true" />
+            <element signature="e#5416#5895#0" expanded="true" />
+            <element signature="e#5884#5885#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
