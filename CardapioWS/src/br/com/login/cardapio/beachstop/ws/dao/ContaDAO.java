@@ -1,5 +1,6 @@
 package br.com.login.cardapio.beachstop.ws.dao;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import br.com.login.cardapio.beachstop.ws.model.Conta;
@@ -23,6 +24,8 @@ public class ContaDAO implements RestDAO<Conta> {
 		if (conta != null) {
 
 			conta.setPedidoSubItens(new PedidoSubItemDAO().getAll(conta));
+			
+			conta.setValor(BigDecimal.ZERO);
 
 			for (PedidoSubItem pedidoSubItem : conta.getPedidoSubItens()) {
 

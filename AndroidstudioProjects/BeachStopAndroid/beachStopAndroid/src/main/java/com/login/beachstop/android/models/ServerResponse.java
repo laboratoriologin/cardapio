@@ -7,6 +7,7 @@ import com.login.beachstop.android.utils.Constantes;
 public class ServerResponse {
 
     public static final int SC_OK = 200;
+    public static final int SC_CREATED = 201;
     public static final int SC_BAD_REQUEST = 400;
     public static final int SC_PRECONDITION_FAILED = 412;
     public static final int SC_INTERNAL_SERVER_ERROR = 500;
@@ -72,7 +73,7 @@ public class ServerResponse {
 
     @SuppressWarnings("static-access")
     public Boolean isOK() {
-        return this.SC_OK == this.statusCode;
+        return this.SC_OK == this.statusCode || this.SC_CREATED == this.statusCode;
     }
 
     public String getMsgErro() {
