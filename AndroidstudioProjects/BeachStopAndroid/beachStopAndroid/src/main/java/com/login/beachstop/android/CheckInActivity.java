@@ -174,51 +174,12 @@ public class CheckInActivity extends DefaultActivity {
 
             if (contents != null) {
 
-                try {
 
-                    String mesaSelecionada = contents.split("&")[0].split("=")[1];
-                    String keyMobile = contents.split("&")[1].split("=")[1];
+                String mesaSelecionada = contents.split("&")[0].split("=")[1];
 
-                    if (Utilitarios.isDigit(mesaSelecionada) && Constantes.KEYMOBILE.equals(keyMobile)) {
+                String keyMobile = contents.split("&")[1].split("=")[1];
 
-                        this.conta = this.getDataManager().getContaDAO().get();
-
-                        if (this.conta == null) {
-
-                            String horaAtual = Utilitarios.getHourNow();
-                            this.conta = new Conta(Long.valueOf(horaAtual));
-                            this.conta.setDataAbertura(horaAtual);
-                            this.conta.setNumero(Long.parseLong(mesaSelecionada));
-                            this.conta.setTipoConta(Constantes.TipoConta.MESA);
-
-                            Cliente cliente = this.getDataManager().getClienteDAO().get();
-                            this.conta.setClienteId(cliente != null ? cliente.getId() : null);
-
-                            this.conta.setDataFechamento("");
-                            this.conta.setValorTotal("");
-                            this.conta.setValorTotalPago("");
-
-                            changeStatusView(false, false, false, true);
-
-                            this.textViewNumero.setText(this.conta.getNumero().toString());
-
-                        }
-
-                        new ContaRequest(listenerGetConta).post(this.conta);
-                        changeStatusView(true, true, false, false);
-                        ((TextView) findViewById(R.id.activity_checkin_text_view_lbl_msg)).setText("Analisando as condições da mesa!");
-
-                    } else {
-
-                        Toast.makeText(this, "Erro no Qr Code!", Toast.LENGTH_SHORT).show();
-
-                    }
-
-                } catch (Exception e) {
-
-                    Toast.makeText(this, "Erro no Qr Code!", Toast.LENGTH_SHORT).show();
-
-                }
+                this.abrirConta(mesaSelecionada,keyMobile);
 
             } else {
 
@@ -226,6 +187,54 @@ public class CheckInActivity extends DefaultActivity {
 
             }
         }
+    }
+
+    private void abrirConta(String mesaSelecionada, String keyMobile) {
+
+        try {
+
+            if (Utilitarios.isDigit(mesaSelecionada) && Constantes.KEYMOBILE.equals(keyMobile)) {
+
+                this.conta = this.getDataManager().getContaDAO().get();
+
+                if (this.conta == null) {
+
+                    String horaAtual = Utilitarios.getHourNow();
+                    this.conta = new Conta(Long.valueOf(horaAtual));
+                    this.conta.setDataAbertura(horaAtual);
+                    this.conta.setNumero(Long.parseLong(mesaSelecionada));
+                    this.conta.setTipoConta(Constantes.TipoConta.MESA);
+
+                    Cliente cliente = this.getDataManager().getClienteDAO().get();
+                    this.conta.setClienteId(cliente != null ? cliente.getId() : null);
+
+                    this.conta.setDataFechamento("");
+                    this.conta.setValorTotal("");
+                    this.conta.setValorTotalPago("");
+
+                    changeStatusView(false, false, false, true);
+
+                    this.textViewNumero.setText(this.conta.getNumero().toString());
+
+                }
+
+                new ContaRequest(listenerGetConta).post(this.conta);
+                changeStatusView(true, true, false, false);
+                ((TextView) findViewById(R.id.activity_checkin_text_view_lbl_msg)).setText("Analisando as condições da mesa!");
+
+            } else {
+
+                Toast.makeText(this, "Erro no Qr Code!", Toast.LENGTH_SHORT).show();
+
+            }
+
+        } catch (Exception e) {
+
+            Toast.makeText(this, "Erro no Qr Code!", Toast.LENGTH_SHORT).show();
+
+        }
+
+
     }
 
     private void changeStatusView(Boolean isVisibilityProgressBar, Boolean isVisibilityTextView, Boolean isVisibilityButtonQrCode, Boolean isVisibilityButtonShare) {

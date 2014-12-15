@@ -28,7 +28,7 @@ public class ItemDAO extends DroidDao<Item, Long> {
 
         for (Item item : itens) {
 
-            subItens = this.dataManager.getSubItemDAO().getAllbyClause("ITEM_ID=?", new String[]{item.getId().toString()}, null, null, "ORDEM");
+            subItens = this.dataManager.getSubItemDAO().getByItemId(item);
             item.setSubItens(subItens);
 
         }

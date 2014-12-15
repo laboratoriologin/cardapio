@@ -27,15 +27,18 @@ public class PedidoRequest extends ObjectRequest<Pedido> {
 
         nameValuePairs.add(new BasicNameValuePair("observacao", pedido.getObservacao()));
 
-        nameValuePairs.add(new BasicNameValuePair("conta.id", pedido.getContaId().toString()));
+        nameValuePairs.add(new BasicNameValuePair("conta", pedido.getContaId().toString()));
 
         PedidoSubItem pedidoSubItem;
+
         for (int i = 0; i < pedido.getPedidoSubItens().size(); i++) {
 
             pedidoSubItem = pedido.getPedidoSubItens().get(i);
 
             nameValuePairs.add(new BasicNameValuePair("subItens[" + i + "].quantidade", pedidoSubItem.getQuantidade().toString()));
-            nameValuePairs.add(new BasicNameValuePair("subItens[" + i + "].subitem.id", pedidoSubItem.getPedidoId().toString()));
+
+            nameValuePairs.add(new BasicNameValuePair("subItens[" + i + "].subitem", pedidoSubItem.getSubItemId().toString()));
+
 
         }
 

@@ -94,6 +94,10 @@ public final class Conta extends RestModel {
 	public Boolean getTipoConta() {
 		return tipoConta;
 	}
+	
+	public void setTipoConta(Boolean tipoConta) {
+		this.tipoConta = tipoConta;
+	}
 
 	@FormParam("pedidosubitens")
 	private List<PedidoSubItem> pedidoSubItens;

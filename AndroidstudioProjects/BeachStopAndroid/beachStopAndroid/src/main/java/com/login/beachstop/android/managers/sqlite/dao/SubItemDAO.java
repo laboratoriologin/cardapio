@@ -1,5 +1,6 @@
 package com.login.beachstop.android.managers.sqlite.dao;
 
+import com.login.beachstop.android.models.Item;
 import com.login.beachstop.android.models.SubItem;
 
 import org.droidpersistence.dao.DroidDao;
@@ -15,6 +16,12 @@ public class SubItemDAO extends DroidDao<SubItem, Long> {
         super(SubItem.class, tableDefinition, dataManager.getDatabase());
 
         this.dataManager = dataManager;
+    }
+
+    public List<SubItem> getByItemId(Item item){
+
+        return this.getAllbyClause("ITEM_ID=?", new String[]{item.getId().toString()}, null, null, "ORDEM");
+
     }
 
     public int getQtdSubItem() {

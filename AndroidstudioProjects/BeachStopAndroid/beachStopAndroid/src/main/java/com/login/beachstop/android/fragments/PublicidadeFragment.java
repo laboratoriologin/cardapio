@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,17 +64,23 @@ public class PublicidadeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         this.view = inflater.inflate(R.layout.fragment_publicidade, null);
+
         this.imageViewMidia = (ImageView) this.view.findViewById(R.id.fragment_publicidade_image_view);
 
-        if (this.publicidade.getImagem().length() != 0) {
+        if (!TextUtils.isEmpty(this.publicidade.getImagem())) {
 
             Drawable img = DrawableManager.getDrawableManager().getDrawable(Constantes.URL_IMG + this.publicidade.getImagem());
 
             if (img == null) {
+
                 new LoadImage(this.imageViewMidia, this.view.getContext()).execute(Constantes.URL_IMG + this.publicidade.getImagem());
+
             } else {
+
                 this.imageViewMidia.setImageDrawable(img);
+
             }
+
         }
 
         return this.view;

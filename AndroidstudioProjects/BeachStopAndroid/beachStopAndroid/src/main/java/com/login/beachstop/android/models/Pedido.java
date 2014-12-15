@@ -39,7 +39,9 @@ public class Pedido extends Base {
 
     @Override
     public Long getId() {
-        return this.id;
+
+        return id;
+
     }
 
     @Override
@@ -52,7 +54,7 @@ public class Pedido extends Base {
     @Override
     public String getServiceName() {
 
-        return this.serviceName;
+        return serviceName;
 
     }
 
@@ -60,6 +62,7 @@ public class Pedido extends Base {
     public void setServiceName(String serviceName) {
 
         this.serviceName = serviceName;
+
 
     }
 

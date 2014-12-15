@@ -10,12 +10,10 @@ import javax.ws.rs.Produces;
 import org.apache.catalina.connector.Response;
 import org.jboss.resteasy.annotations.Form;
 
-import br.com.login.cardapio.beachstop.ws.dao.ContaDAO;
 import br.com.login.cardapio.beachstop.ws.dao.LogDAO;
 import br.com.login.cardapio.beachstop.ws.dao.PedidoDAO;
 import br.com.login.cardapio.beachstop.ws.dao.PedidoSubItemDAO;
 import br.com.login.cardapio.beachstop.ws.exception.ApplicationException;
-import br.com.login.cardapio.beachstop.ws.model.Conta;
 import br.com.login.cardapio.beachstop.ws.model.Pedido;
 import br.com.login.cardapio.beachstop.ws.model.PedidoSubItem;
 import br.com.login.cardapio.beachstop.ws.model.Status;
@@ -24,6 +22,7 @@ import br.com.login.cardapio.beachstop.ws.util.Constantes;
 import br.com.topsys.exception.TSApplicationException;
 import br.com.topsys.exception.TSSystemException;
 import br.com.topsys.util.TSUtil;
+
 @Path("/pedidos")
 public class PedidoService extends RestService<Pedido> {
 
@@ -31,7 +30,7 @@ public class PedidoService extends RestService<Pedido> {
 	public void initDAO() {
 		this.restDAO = new PedidoDAO();
 	}
-	
+
 	@Override
 	@GET
 	@Path("/{id}{fields : (/.*?)?}")
@@ -39,19 +38,18 @@ public class PedidoService extends RestService<Pedido> {
 	public Pedido get(@PathParam("id") Long id, @PathParam("fields") String fields) {
 
 		Pedido pedido = restDAO.get(id);
-		
+
 		if (pedido != null) {
-			
+
 			LogDAO logDAO = new LogDAO();
 
 			pedido.setSubItens(new PedidoSubItemDAO().getAll(pedido));
 
-			for(PedidoSubItem subItem : pedido.getSubItens()) {
-				
+			for (PedidoSubItem subItem : pedido.getSubItens()) {
+
 				subItem.setLogs(logDAO.getAll(subItem));
-				
+
 			}
-			
 
 			this.configureReturnObject(pedido, fields);
 
@@ -75,13 +73,11 @@ public class PedidoService extends RestService<Pedido> {
 
 			status.setId(Constantes.PEDIDO_PENDENTE_ENTREGA);
 
-			
 		} else {
 
 			status.setId(Constantes.PEDIDO_PENDENTE_APROVACAO);
 
 		}
-
 
 		for (PedidoSubItem item : form.getSubItens()) {
 
@@ -89,13 +85,13 @@ public class PedidoService extends RestService<Pedido> {
 
 		}
 
-		super.insert(form);
-
 		if (form.getUsuario() == null) {
 
 			form.setUsuario(new Usuario());
 
 		}
+
+		super.insert(form);
 
 		this.gerarLog(form, status);
 

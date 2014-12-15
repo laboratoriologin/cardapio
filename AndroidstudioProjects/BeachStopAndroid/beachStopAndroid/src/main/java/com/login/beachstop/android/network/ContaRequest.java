@@ -7,6 +7,7 @@ import com.login.beachstop.android.models.ServerRequest;
 import com.login.beachstop.android.models.ServerResponse;
 import com.login.beachstop.android.network.http.ResponseListener;
 import com.login.beachstop.android.utils.Constantes;
+import com.login.beachstop.android.utils.Utilitarios;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -68,12 +69,12 @@ public class ContaRequest extends ObjectRequest<Conta> {
                     conta.setDataAbertura((jsonObject.has("dataabertura") ? jsonObject.getString("dataabertura") : "").toString());
                     conta.setDataFechamento((jsonObject.has("datafechamento") ? jsonObject.getString("datafechamento") : "").toString());
                     conta.setNumero(jsonObject.has("numero") ? jsonObject.getLong("numero") : null);
-                    conta.setValorTotal((jsonObject.has("valor") ? jsonObject.getBoolean("valor") : "").toString());
-                    conta.setValorTotalPago((jsonObject.has("valorPago") ? jsonObject.getBoolean("valorPago") : "").toString());
+                    conta.setValorTotal((jsonObject.has("valor") ? jsonObject.getLong("valor") : "").toString());
+                    conta.setValorTotalPago((jsonObject.has("valorPago") ? jsonObject.getBoolean("valorPago") : "0.0").toString());
 
-                    if (jsonObject.has("pedidosubitens")) {
+                    if (jsonObject.has("pedidoSubItens")) {
 
-                        JSONArray jsonArrayPedidoSubItem = jsonObject.getJSONArray("pedidosubitens");
+                        JSONArray jsonArrayPedidoSubItem = Utilitarios.getAlwaysJsonArray(jsonObject, "pedidoSubItens");
 
                         Pedido pedido = new Pedido();
                         pedido.setPedidoSubItens(new ArrayList<PedidoSubItem>());
@@ -84,12 +85,16 @@ public class ContaRequest extends ObjectRequest<Conta> {
                             pedidoSubItem = new PedidoSubItem();
                             pedidoSubItem.setQuantidade(jsonArrayPedidoSubItem.getJSONObject(i).getLong("quantidade"));
                             pedidoSubItem.setValorTotal(jsonArrayPedidoSubItem.getJSONObject(i).getString("valorCalculado"));
-                            pedidoSubItem.setValorUnitario(jsonArrayPedidoSubItem.getJSONObject(i).getString("valorunitario"));
+                            pedidoSubItem.setValorUnitario(jsonArrayPedidoSubItem.getJSONObject(i).getString("valorUnitario"));
 
-                            pedidoSubItem.setSubItemId(jsonArrayPedidoSubItem.getJSONObject(i).getJSONObject("subitem").getLong("id"));
+                            pedidoSubItem.setSubItemId(jsonArrayPedidoSubItem.getJSONObject(i).getJSONObject("subItem").getLong("id"));
 
                             pedido.getPedidoSubItens().add(pedidoSubItem);
 
+                        }
+
+                        if (conta.getPedidos() == null) {
+                            conta.setPedidos(new ArrayList<Pedido>());
                         }
 
                         conta.getPedidos().add(pedido);

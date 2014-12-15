@@ -96,17 +96,18 @@ public class SubItemListAdapter extends BaseAdapter {
 
                 }
 
-                atualizaValorTotalPedido();
             }
 
         } else {
 
-            if (pedidoSubItem.getQuantidade() > 0) {
+            if (pedidoSubItem.getQuantidade() > 1) {
 
                 try {
 
                     pedidoSubItem.subQtd(1l);
+
                     this.dataManager.getPedidoSubItemDAO().update(pedidoSubItem, pedidoSubItem.getId());
+
                     campoQtd.setText((String.format("%02d", pedidoSubItem.getQuantidade())));
 
                 } catch (Exception e) {
@@ -115,9 +116,14 @@ public class SubItemListAdapter extends BaseAdapter {
 
                 }
 
-                atualizaValorTotalPedido();
             }
+
         }
+
+        atualizaValorTotalPedido();
+
+        this.notifyDataSetChanged();
+
     }
 
     public void deleteItemPedido(PedidoSubItem pedidoSubItem) {
@@ -129,12 +135,15 @@ public class SubItemListAdapter extends BaseAdapter {
             this.notifyDataSetChanged();
 
             atualizaValorTotalPedido();
+
         }
+
     }
 
     public void atualizaValorTotalPedido() {
 
         BigDecimal valorTotalPedido = new BigDecimal(0);
+
         for (PedidoSubItem pedidoSubItem : this.pedido.getPedidoSubItens()) {
 
             valorTotalPedido = valorTotalPedido.add(new BigDecimal(pedidoSubItem.getQuantidade()).multiply(pedidoSubItem.getSubItem().getValorBigDecimal()));
@@ -146,6 +155,7 @@ public class SubItemListAdapter extends BaseAdapter {
         this.valorTotal.setText(format.format(valorTotalPedido.doubleValue()));
 
         this.pedidoFragment.changeViewPedido();
+
     }
 
     public int getCount() {

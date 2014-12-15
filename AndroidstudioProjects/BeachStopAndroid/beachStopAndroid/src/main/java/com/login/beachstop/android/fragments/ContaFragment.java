@@ -16,8 +16,10 @@ import android.widget.Toast;
 import com.login.beachstop.android.PedidoActivity;
 import com.login.beachstop.android.R;
 import com.login.beachstop.android.models.Conta;
+import com.login.beachstop.android.models.Item;
 import com.login.beachstop.android.models.PedidoSubItem;
 import com.login.beachstop.android.models.ServerResponse;
+import com.login.beachstop.android.models.SubItem;
 import com.login.beachstop.android.network.ContaRequest;
 import com.login.beachstop.android.network.http.ResponseListener;
 import com.login.beachstop.android.utils.Constantes;
@@ -37,7 +39,7 @@ public class ContaFragment extends Fragment implements IPedidoFragment {
     private PedidoActivity pedidoActivity;
     private TextView textViewValorTotal;
     private CheckBox checkBoxDez;
-    private Double valorTotal;
+    private Double valorTotal = 0D;
     private ResponseListener responseListenerConta = new ResponseListener() {
 
         @Override
@@ -130,6 +132,7 @@ public class ContaFragment extends Fragment implements IPedidoFragment {
             public void onClick(View v) {
 
                 CheckBox checkBox = (CheckBox) v;
+
                 NumberFormat format = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
 
                 if (checkBox.isChecked()) {
@@ -174,7 +177,10 @@ public class ContaFragment extends Fragment implements IPedidoFragment {
 
             }
 
-            ((TextView) itemContaView.findViewById(R.id.fragment_conta_table_row_text_view_nome)).setText(pedidoSubItem.getSubItem().getDescricao());
+            SubItem subItem = pedidoSubItem.getSubItem();
+            Item item = this.pedidoActivity.getDataManager().getItemDAO().get(subItem.getItemId());
+
+            ((TextView) itemContaView.findViewById(R.id.fragment_conta_table_row_text_view_nome)).setText(item.getNome() + " - " + subItem.getNome());
             ((TextView) itemContaView.findViewById(R.id.fragment_conta_table_row_text_view_valor_unitario)).setText(format.format(new Double(pedidoSubItem.getSubItem().getValor())));
             ((TextView) itemContaView.findViewById(R.id.fragment_conta_table_row_text_view_qtd)).setText(pedidoSubItem.getQuantidade().toString());
             ((TextView) itemContaView.findViewById(R.id.fragment_conta_table_row_text_view_valor_total)).setText(format.format((new Double(pedidoSubItem.getValorTotal()))));
