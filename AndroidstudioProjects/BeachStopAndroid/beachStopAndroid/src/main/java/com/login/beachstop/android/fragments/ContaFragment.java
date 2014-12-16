@@ -135,15 +135,7 @@ public class ContaFragment extends Fragment implements IPedidoFragment {
 
                 NumberFormat format = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
 
-                if (checkBox.isChecked()) {
-
-                    textViewValorTotal.setText(format.format(valorTotal + (valorTotal * 0.1)));
-
-                } else {
-
-                    textViewValorTotal.setText(format.format(valorTotal));
-
-                }
+                textViewValorTotal.setText(checkBox.isChecked() ? format.format(valorTotal + (valorTotal * 0.1)) : format.format(valorTotal));
 
             }
 
@@ -167,15 +159,7 @@ public class ContaFragment extends Fragment implements IPedidoFragment {
 
             itemContaView = TableRow.inflate(this.getView().getContext(), R.layout.fragment_conta_table_row, null);
 
-            if ((position % 2) == 0) {
-
-                ((TableRow) itemContaView.findViewById(R.id.fragment_conta_table_row_linear_layout)).setBackgroundResource(R.color.branco);
-
-            } else {
-
-                ((TableRow) itemContaView.findViewById(R.id.fragment_conta_table_row_linear_layout)).setBackgroundResource(R.color.bg_system);
-
-            }
+            ((TableRow) itemContaView.findViewById(R.id.fragment_conta_table_row_linear_layout)).setBackgroundResource((position % 2) == 0 ? R.color.branco : R.color.bg_system);
 
             SubItem subItem = pedidoSubItem.getSubItem();
             Item item = this.pedidoActivity.getDataManager().getItemDAO().get(subItem.getItemId());
@@ -192,13 +176,7 @@ public class ContaFragment extends Fragment implements IPedidoFragment {
 
     @Override
     public void onRefresh() {
-
-        if (this.pedidoActivity.getDataManager().getContaDAO().get() != null) {
-
+        if (this.pedidoActivity.getDataManager().getContaDAO().get() != null)
             new ContaRequest(responseListenerConta).get(this.pedidoActivity.getDataManager().getContaDAO().get());
-
-        }
-
     }
-
 }

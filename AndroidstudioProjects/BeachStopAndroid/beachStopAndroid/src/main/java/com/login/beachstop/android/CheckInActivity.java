@@ -179,7 +179,7 @@ public class CheckInActivity extends DefaultActivity {
 
                 String keyMobile = contents.split("&")[1].split("=")[1];
 
-                this.abrirConta(mesaSelecionada,keyMobile);
+                this.abrirConta(mesaSelecionada, keyMobile);
 
             } else {
 

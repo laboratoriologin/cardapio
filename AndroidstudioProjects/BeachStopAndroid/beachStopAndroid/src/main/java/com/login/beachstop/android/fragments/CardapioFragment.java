@@ -83,7 +83,7 @@ public class CardapioFragment extends Fragment {
 
                                     } else {
 
-                                        position = position + 1;
+                                        position += 1;
 
                                     }
 
