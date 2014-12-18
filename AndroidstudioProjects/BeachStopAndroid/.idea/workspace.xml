@@ -35,8 +35,115 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: com.login.beachstop.android" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="4ef57485-465d-4331-91d4-7302393ad71d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/views/adapters/CategoriaGridAdapter.java" afterPath="$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/views/adapters/CategoriaGridAdapter.java" />
+    <list default="true" id="4ef57485-465d-4331-91d4-7302393ad71d" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/beachStopAndroid/src/main/res/drawable/Thumbs.db" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/intermediates/model_data.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../CardapioADM/WebContent/dashboard/IMG/Thumbs.db" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../CardapioADM/WebContent/resources/images/Thumbs.db" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/ZBarCameraSimulator.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/zbarcamerasimulator.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/ZBarHelpController.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/zbarhelpcontroller.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/ZBarReaderController.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/zbarreadercontroller.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/ZBarReaderView.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/zbarreaderview.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/ZBarReaderViewController.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/zbarreaderviewcontroller.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/ZBarSymbol.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/zbarsymbol.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/ZBarSDK/ZBarSDK.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/ZBarSDK/zbarsdk.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/ZBarSDK/ZBarSymbol.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/ZBarSDK/zbarsymbol.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/AFNetworking/AFHTTPRequestOperation.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/AFNetworking/AFHTTPRequestOperation.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/AFNetworking/AFHTTPRequestOperation.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/AFNetworking/AFHTTPRequestOperation.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/AFNetworking/AFHTTPRequestOperationManager.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/AFNetworking/AFHTTPRequestOperationManager.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/AFNetworking/AFHTTPRequestOperationManager.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/AFNetworking/AFHTTPRequestOperationManager.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/AFNetworking/AFHTTPSessionManager.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/AFNetworking/AFHTTPSessionManager.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/AFNetworking/AFHTTPSessionManager.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/AFNetworking/AFHTTPSessionManager.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/AFNetworking/AFNetworkActivityIndicatorManager.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/AFNetworking/AFNetworkActivityIndicatorManager.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/AFNetworking/AFNetworkActivityIndicatorManager.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/AFNetworking/AFNetworkActivityIndicatorManager.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/AFNetworking/AFNetworkReachabilityManager.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/AFNetworking/AFNetworkReachabilityManager.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/AFNetworking/AFNetworkReachabilityManager.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/AFNetworking/AFNetworkReachabilityManager.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/AFNetworking/AFNetworking.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/AFNetworking/AFNetworking.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/AFNetworking/AFNetworking.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/AFNetworking/AFNetworking.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/AFNetworking/AFSecurityPolicy.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/AFNetworking/AFSecurityPolicy.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/AFNetworking/AFSecurityPolicy.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/AFNetworking/AFSecurityPolicy.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/AFNetworking/AFURLConnectionOperation.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/AFNetworking/AFURLConnectionOperation.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/AFNetworking/AFURLConnectionOperation.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/AFNetworking/AFURLConnectionOperation.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/AFNetworking/AFURLRequestSerialization.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/AFNetworking/AFURLRequestSerialization.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/AFNetworking/AFURLRequestSerialization.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/AFNetworking/AFURLRequestSerialization.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/AFNetworking/AFURLResponseSerialization.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/AFNetworking/AFURLResponseSerialization.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/AFNetworking/AFURLResponseSerialization.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/AFNetworking/AFURLResponseSerialization.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/AFNetworking/AFURLSessionManager.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/AFNetworking/AFURLSessionManager.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/AFNetworking/AFURLSessionManager.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/AFNetworking/AFURLSessionManager.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/MBProgressHUD/MBProgressHUD.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/MBProgressHUD/MBProgressHUD.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/MBProgressHUD/MBProgressHUD.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/MBProgressHUD/MBProgressHUD.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/AFNetworking/UIActivityIndicatorView+AFNetworking.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/AFNetworking/UIActivityIndicatorView+AFNetworking.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/AFNetworking/UIActivityIndicatorView+AFNetworking.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/AFNetworking/UIActivityIndicatorView+AFNetworking.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/AFNetworking/UIAlertView+AFNetworking.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/AFNetworking/UIAlertView+AFNetworking.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/AFNetworking/UIAlertView+AFNetworking.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/AFNetworking/UIAlertView+AFNetworking.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/AFNetworking/UIButton+AFNetworking.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/AFNetworking/UIButton+AFNetworking.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/AFNetworking/UIButton+AFNetworking.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/AFNetworking/UIButton+AFNetworking.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/AFNetworking/UIImageView+AFNetworking.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/AFNetworking/UIImageView+AFNetworking.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/AFNetworking/UIImageView+AFNetworking.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/AFNetworking/UIImageView+AFNetworking.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/AFNetworking/UIKit+AFNetworking.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/AFNetworking/UIKit+AFNetworking.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/AFNetworking/UIKit+AFNetworking.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/AFNetworking/UIKit+AFNetworking.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/AFNetworking/UIProgressView+AFNetworking.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/AFNetworking/UIProgressView+AFNetworking.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/AFNetworking/UIProgressView+AFNetworking.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/AFNetworking/UIProgressView+AFNetworking.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/AFNetworking/UIRefreshControl+AFNetworking.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/AFNetworking/UIRefreshControl+AFNetworking.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/AFNetworking/UIRefreshControl+AFNetworking.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/AFNetworking/UIRefreshControl+AFNetworking.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/AFNetworking/UIWebView+AFNetworking.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/AFNetworking/UIWebView+AFNetworking.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/AFNetworking/UIWebView+AFNetworking.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/AFNetworking/UIWebView+AFNetworking.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/ZBarCVImage.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/ZBarCVImage.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/ZBarSDK/ZBarCVImage.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/ZBarSDK/ZBarCVImage.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/ZBarSDK/ZBarCameraSimulator.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/ZBarSDK/ZBarCameraSimulator.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/ZBarCaptureReader.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/ZBarCaptureReader.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/ZBarSDK/ZBarCaptureReader.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/ZBarSDK/ZBarCaptureReader.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/ZBarSDK/ZBarHelpController.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/ZBarSDK/ZBarHelpController.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/ZBarImage.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/ZBarImage.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/ZBarSDK/ZBarImage.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/ZBarSDK/ZBarImage.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/ZBarImageScanner.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/ZBarImageScanner.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/ZBarSDK/ZBarImageScanner.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/ZBarSDK/ZBarImageScanner.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/ZBarSDK/ZBarReaderController.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/ZBarSDK/ZBarReaderController.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/ZBarSDK/ZBarReaderView.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/ZBarSDK/ZBarReaderView.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/ZBarSDK/ZBarReaderViewController.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/ZBarSDK/ZBarReaderViewController.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/ZBarSDK.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/ZBarSDK.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/bch15_5.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/bch15_5.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/binarize.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/binarize.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/codabar.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/codabar.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/code128.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/code128.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/code39.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/code39.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/code93.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/code93.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/config.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/config.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/ZBarSDK/config.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/ZBarSDK/config.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/databar.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/databar.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/debug.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/debug.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/ZBarSDK/debug.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/ZBarSDK/debug.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/decoder.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/decoder.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/ean.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/ean.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/error.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/error.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/event.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/event.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/i25.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/i25.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/image.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/image.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/img_scanner.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/img_scanner.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/isaac.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/isaac.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/mutex.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/mutex.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/pdf417.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/pdf417.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/pdf417_hash.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/pdf417_hash.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/posix.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/posix.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/processor.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/processor.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/qr_finder.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/qr_finder.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/qrcode.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/qrcode.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/qrdec.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/qrdec.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/refcnt.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/refcnt.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/rs.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/rs.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/svg.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/svg.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/symbol.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/symbol.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/thread.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/thread.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/timer.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/timer.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/util.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/util.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/video.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/video.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/win.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/win.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/window.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/window.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/x.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/x.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/zbar.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/BuildHeaders/ZBarSDK/zbar.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/ZBarSDK/zbar.h" afterPath="$PROJECT_DIR$/../../cardapioiOSBeachStop/Pods/Headers/ZBarSDK/zbar.h" />
     </list>
     <ignored path="BeachStopAndroid.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -67,8 +174,8 @@
       <file leaf-file-name="CategoriaGridAdapter.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/views/adapters/CategoriaGridAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="705" max-vertical-offset="1245">
-              <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.6374172" vertical-offset="620" max-vertical-offset="1245">
+              <caret line="81" column="5" selection-start-line="81" selection-start-column="5" selection-end-line="81" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -1330,10 +1437,9 @@
     <treeState />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="30" />
-    <option name="y" value="22" />
-    <option name="width" value="1440" />
-    <option name="height" value="746" />
+    <option name="y" value="23" />
+    <option name="width" value="1280" />
+    <option name="height" value="773" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -1689,19 +1795,6 @@
       <listeners />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" />
       <option name="VM_PARAMETERS" />
@@ -1853,8 +1946,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="30" y="22" width="1440" height="746" extended-state="6" />
-    <editor active="false" />
+    <frame x="0" y="23" width="1280" height="773" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32858837" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1867,22 +1960,23 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32858837" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32858837" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2153518" sideWeight="0.50082916" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31659058" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42586002" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928804" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32858837" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928804" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30582523" sideWeight="0.4991708" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32740214" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Memory Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="15" side_tool="true" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928804" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32858837" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31791222" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3985765" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -1955,6 +2049,22 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/views/adapters/CategoriaGridAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="647" max-vertical-offset="1245">
+          <caret line="81" column="5" selection-start-line="81" selection-start-column="5" selection-end-line="81" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/views/adapters/CategoriaGridAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1245">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/CardapioApp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.08478803" vertical-offset="0" max-vertical-offset="1598">
@@ -1975,13 +2085,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/res/layout/activity_cadastro_cliente.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.043147206" vertical-offset="136" max-vertical-offset="2618">
           <caret line="10" column="58" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="58" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/network/http/ResponseListener.java">
@@ -2106,8 +2216,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/beachStopAndroid/src/main/java/com/login/beachstop/android/views/adapters/CategoriaGridAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="705" max-vertical-offset="1245">
-          <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.6374172" vertical-offset="620" max-vertical-offset="1245">
+          <caret line="81" column="5" selection-start-line="81" selection-start-column="5" selection-end-line="81" selection-end-column="5" />
           <folding />
         </state>
       </provider>
