@@ -1,6 +1,7 @@
 package com.login.beachstop.garcom.android;
 
 
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 
 import com.login.beachstop.garcom.android.managers.sqlite.dao.DataManager;

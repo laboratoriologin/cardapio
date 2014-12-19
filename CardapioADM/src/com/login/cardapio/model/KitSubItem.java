@@ -30,6 +30,8 @@ public class KitSubItem extends TSActiveRecordAb<KitSubItem> {
 	@ManyToOne
 	@JoinColumn(name = "kit_id")
 	private Kit kit;
+	
+	private int quantidade;
 
 	public Long getId() {
 		return id;
@@ -78,6 +80,14 @@ public class KitSubItem extends TSActiveRecordAb<KitSubItem> {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	public int getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
 	}
 
 }

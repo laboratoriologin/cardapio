@@ -46,10 +46,14 @@
 
 					<p:outputLabel for="nomeSubItem" value="Subitem" />
 					<p:autoComplete id="nomeSubItem" minQueryLength="3" size="80" value="#{mbean.subItemSelecionado}" forceSelection="true" completeMethod="#{mbean.completeText}">
-						<p:ajax event="query" global="false"/>
-						<p:ajax event="itemSelect" global="false"  process="@this addSubItemPanel" listener="#{mbean.addSubItem}" update="nomeSubItem" />
 						<f:converter converterId="subItemConverter" />
 					</p:autoComplete>
+					
+					<p:outputLabel for="quantidade" value="Quantidade" />
+					<p:inputText id="quantidade" maxlength="2" value="#{mbean.quantidadeSelecionada}" style="width:40%" />
+					
+					<p:ajax event="query" global="false"/>
+					<p:ajax event="itemSelect" global="false"  process="@this addSubItemPanel" listener="#{mbean.addSubItem}" update="nomeSubItem" />
 
 				</h:panelGrid>
 
@@ -68,10 +72,13 @@
 								<h:outputLabel value="#{listKitSubItem.subItem.item.nome} - #{listKitSubItem.subItem.nome}" />
 							</p:column>
 
+							<p:column headerText="Quantidade" styleClass="coluna45">
+								<h:outputLabel value="#{listKitSubItem.subItem.quantidade}" />
+							</p:column>
+
 							<p:column headerText="Valor" styleClass="coluna45">
 								<h:outputLabel value="#{listKitSubItem.subItem.valor}" />
 							</p:column>
-
 
 							<p:column headerText="Remover" style="text-align: center" styleClass="coluna10">
 								<p:commandLink action="#{mbean.delSubItem}" process="@this">

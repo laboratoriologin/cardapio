@@ -29,40 +29,24 @@ public class SplashActivity extends DefaultActivity {
 
         @Override
         public void onResult(ServerResponse serverResponse) {
-
             if (serverResponse != null) {
-
                 if (serverResponse.isOK()) {
-
                     try {
-
                         textView.setText(Constantes.MSG_SAUDACAO_UM);
-
                         List<Categoria> categorias = (List<Categoria>) serverResponse.getReturnObject();
-
                         configCategoria(categorias);
-
                         getDataManager().getCategoriaDAO().save(categorias);
-
                         verificarClienteCadastrado();
-
                     } catch (Exception e) {
                         e.printStackTrace();
                         setStatusApresentacao(false, true, Constantes.MSG_ERRO_GRAVAR_DADOS, true);
                     }
-
-
                 } else {
                     setStatusApresentacao(false, true, serverResponse.getMsgErro(), true);
                 }
-
-
             } else {
-
                 setStatusApresentacao(false, true, Constantes.MSG_ERRO_NET, true);
-
             }
-
         }
     };
 
@@ -70,47 +54,28 @@ public class SplashActivity extends DefaultActivity {
 
         @Override
         public void onResult(ServerResponse serverResponse) {
-
             if (serverResponse != null) {
-
                 if (serverResponse.isOK()) {
-
                     try {
-
                         Empresa empresa = (Empresa) serverResponse.getReturnObject();
-
                         if (getKeyCardapio() == null || !getKeyCardapio().equals(empresa.getKeyCardapio())) {
-
                             setKeyCardapio(empresa.getKeyCardapio());
-
-
                             if (getDataManager().getCategoriaDAO().deleteAll() && getDataManager().getKitDAO().deleteAll()) {
-
                                 textView.setText(Constantes.MSG_SAUDACAO_UM);
                                 new CategoriaRequest(responseCategorias).getAtivo();
-
                             } else {
-
                                 setStatusApresentacao(false, true, Constantes.MSG_ERRO_GRAVAR_DADOS, true);
-
                             }
                         }
-
                     } catch (Exception e) {
                         e.printStackTrace();
                         setStatusApresentacao(false, true, Constantes.MSG_ERRO_GRAVAR_DADOS, true);
                     }
-
-
                 } else {
                     setStatusApresentacao(false, true, serverResponse.getMsgErro(), true);
                 }
-
-
             } else {
-
                 setStatusApresentacao(false, true, Constantes.MSG_ERRO_NET, true);
-
             }
         }
     };
@@ -150,17 +115,11 @@ public class SplashActivity extends DefaultActivity {
     }
 
     private void verificarClienteCadastrado() {
-
         if (!getDataManager().getClienteDAO().hasCliente()) {
-
             goToCadastroCliente();
-
         } else {
-
             goCardapio();
-
         }
-
     }
 
     @Override
@@ -209,35 +168,23 @@ public class SplashActivity extends DefaultActivity {
 
         setStatusApresentacao(true, true, Constantes.MSG_SAUDACAO_DOIS, false);
 
-
         if (getDataManager().getCategoriaDAO().getQtdCategoria() == 0) {
-
             new CategoriaRequest(responseCategorias).getAtivo();
-
         } else {
-
             new EmpresaRequest(responseKeyCardapio).getKeyCardapio();
-
         }
-
     }
 
     private void goCardapio() {
-
         Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
         SplashActivity.this.startActivity(mainIntent);
         SplashActivity.this.finish();
-
     }
 
     private void goToCadastroCliente() {
-
         Intent mainIntent = new Intent(SplashActivity.this, CadastroClienteActivity.class);
         mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         this.startActivity(mainIntent);
         this.finish();
-
     }
-
-
 }

@@ -103,11 +103,8 @@ public class CardapioGarcomApp extends Application {
     public void setQtdMesa(Long qtdMesa) {
 
         Editor editor = settings.edit();
-
         editor.putLong(QTD_MESA, qtdMesa);
-
         editor.commit();
-
     }
 
     /**
@@ -116,17 +113,12 @@ public class CardapioGarcomApp extends Application {
     public Usuario getUsuarioLogado() {
 
         Usuario usuario = new Usuario();
-
         usuario.setId(settings.getLong(USUARIO_ID, 0L));
-
         usuario.setNome(settings.getString(USUARIO_NOME, ""));
-
-        usuario.setMesas(this.getFiltroMesa());
 
         if (usuario.getId().intValue() == 0) {
             return null;
         }
-
         return usuario;
     }
 
@@ -135,27 +127,15 @@ public class CardapioGarcomApp extends Application {
         Editor editor = settings.edit();
 
         if (usuarioLogado == null) {
-
             editor.remove(USUARIO_ID);
-
             editor.remove(USUARIO_NOME);
-
             setFiltroMesa(null);
-
             editor.commit();
-
         } else {
-
             editor.putLong(USUARIO_ID, usuarioLogado.getId());
-
             editor.putString(USUARIO_NOME, usuarioLogado.getNome());
-
             editor.commit();
-
-            this.setFiltroMesa(usuarioLogado.getMesas());
-
         }
-
     }
 
     public List<Categoria> getCategorias() {

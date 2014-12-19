@@ -9,6 +9,7 @@ import com.login.beachstop.android.managers.sqlite.CategoriaTableDefinition;
 import com.login.beachstop.android.managers.sqlite.ClienteTableDefinition;
 import com.login.beachstop.android.managers.sqlite.ContaTableDefinition;
 import com.login.beachstop.android.managers.sqlite.ItemTableDefinition;
+import com.login.beachstop.android.managers.sqlite.KitSubItemTableDefinition;
 import com.login.beachstop.android.managers.sqlite.KitTableDefinition;
 import com.login.beachstop.android.managers.sqlite.OpenHelper;
 import com.login.beachstop.android.managers.sqlite.PedidoSubItemTableDefinition;
@@ -23,6 +24,7 @@ public class DataManager {
     private ClienteDAO clienteDAO;
     private CategoriaDAO categoriaDAO;
     private KitDAO kitDAO;
+    private KitSubItemDAO kitSubItemDAO;
     private ContaDAO contaDAO;
     private ItemDAO itemDAO;
     private SubItemDAO subItemDAO;
@@ -37,6 +39,7 @@ public class DataManager {
         this.setClienteDAO(new ClienteDAO(new ClienteTableDefinition(), this));
         this.setCategoriaDAO(new CategoriaDAO(new CategoriaTableDefinition(), this));
         this.setKitDAO(new KitDAO(new KitTableDefinition(), this));
+        this.setKitSubItemDAO(new KitSubItemDAO(new KitSubItemTableDefinition(), this));
         this.setContaDAO(new ContaDAO(new ContaTableDefinition(), this));
         this.setItemDAO(new ItemDAO(new ItemTableDefinition(), this));
         this.setSubItemDAO(new SubItemDAO(new SubItemTableDefinition(), this));
@@ -141,5 +144,13 @@ public class DataManager {
 
     public void setPedidoSubItemDAO(PedidoSubItemDAO pedidoSubItemDAO) {
         this.pedidoSubItemDAO = pedidoSubItemDAO;
+    }
+
+    public KitSubItemDAO getKitSubItemDAO() {
+        return kitSubItemDAO;
+    }
+
+    public void setKitSubItemDAO(KitSubItemDAO kitSubItemDAO) {
+        this.kitSubItemDAO = kitSubItemDAO;
     }
 }

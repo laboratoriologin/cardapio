@@ -2,6 +2,7 @@ package br.com.login.cardapio.beachstop.ws.dao;
 
 import java.util.List;
 
+import br.com.login.cardapio.beachstop.ws.model.Kit;
 import br.com.login.cardapio.beachstop.ws.model.KitSubItem;
 import br.com.topsys.database.TSDataBaseBrokerIf;
 import br.com.topsys.database.factory.TSDataBaseBrokerFactory;
@@ -17,7 +18,7 @@ public class KitSubItemDAO  implements RestDAO<KitSubItem> {
 
 		broker.setPropertySQL("kitsubitemdao.get", id);
 
-		return (KitSubItem) broker.getObjectBean(KitSubItem.class, "id", "kit.id", "subItem.id");
+		return (KitSubItem) broker.getObjectBean(KitSubItem.class, "id", "kit.id", "subItem.id", "quantidade");
 
 	}
 
@@ -28,7 +29,17 @@ public class KitSubItemDAO  implements RestDAO<KitSubItem> {
 
 		broker.setPropertySQL("kitsubitemdao.findall");
 
-		return broker.getCollectionBean(KitSubItem.class, "id", "kit.id", "subItem.id");
+		return broker.getCollectionBean(KitSubItem.class, "id", "kit.id", "subItem.id", "quantidade");
+
+	}
+	
+	public List<KitSubItem> getAll(Kit kit) {
+
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+
+		broker.setPropertySQL("kitsubitemdao.findallbykit", kit.getId());
+
+		return broker.getCollectionBean(KitSubItem.class, "id", "kit.id", "subItem.id", "quantidade");
 
 	}
 
@@ -39,7 +50,7 @@ public class KitSubItemDAO  implements RestDAO<KitSubItem> {
 
 		model.setId(broker.getSequenceNextValue("dbo.kits_sub_itens "));
 
-		broker.setPropertySQL("kitsubitemdao.insert",model.getKit().getId(), model.getSubItem().getId());
+		broker.setPropertySQL("kitsubitemdao.insert",model.getKit().getId(), model.getSubItem().getId(),model.getQuantidade());
 
 		broker.execute();
 
@@ -52,7 +63,7 @@ public class KitSubItemDAO  implements RestDAO<KitSubItem> {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("kitsubitemdao.update", model.getKit().getId(), model.getSubItem().getId(), model.getId());
+		broker.setPropertySQL("kitsubitemdao.update", model.getKit().getId(), model.getSubItem().getId(), model.getId(), model.getQuantidade());
 
 		broker.execute();
 

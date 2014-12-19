@@ -28,6 +28,7 @@ public class OpenHelper extends SQLiteOpenHelper {
             new ClienteTableDefinition().onCreate(db);
             new CategoriaTableDefinition().onCreate(db);
             new KitTableDefinition().onCreate(db);
+            new KitSubItemTableDefinition().onCreate(db);
             new ContaTableDefinition().onCreate(db);
             new ItemTableDefinition().onCreate(db);
             new SubItemTableDefinition().onCreate(db);
@@ -50,6 +51,7 @@ public class OpenHelper extends SQLiteOpenHelper {
             new ClienteTableDefinition().onUpgrade(db, oldVersion, newVersion);
             new CategoriaTableDefinition().onUpgrade(db, oldVersion, newVersion);
             new KitTableDefinition().onUpgrade(db, oldVersion, newVersion);
+            new KitSubItemTableDefinition().onUpgrade(db, oldVersion, newVersion);
             new ContaTableDefinition().onUpgrade(db, oldVersion, newVersion);
             new ItemTableDefinition().onUpgrade(db, oldVersion, newVersion);
             new SubItemTableDefinition().onUpgrade(db, oldVersion, newVersion);

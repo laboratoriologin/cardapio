@@ -45,6 +45,7 @@ public class SplashActivity extends DefaultActivity {
                                 SplashActivity.this.getDataManager().getCategoriaDAO().deleteAll();
                                 SplashActivity.this.getDataManager().getItemDAO().deleteAll();
                                 SplashActivity.this.getDataManager().getSubItemDAO().deleteAll();
+                                SplashActivity.this.getDataManager().getKitDAO().deleteAll();
 
                                 new CategoriaRequest(reponseGetCategoria).getAtivo();
                             }

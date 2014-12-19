@@ -37,6 +37,7 @@ public class KitFaces extends CrudFaces<Kit> {
 
 	private static final long serialVersionUID = 1L;
 	private SubItem subItemSelecionado;
+	private int quantidadeSelecionada;
 	private KitSubItem kitSubItemSelecionado;
 
 	@PostConstruct
@@ -74,12 +75,13 @@ public class KitFaces extends CrudFaces<Kit> {
 
 	}
 
-	public void addSubItem(SelectEvent event) {
+	public void addSubItem() {
 
 		KitSubItem kitSubItem = new KitSubItem();
 
 		kitSubItem.setSubItem(this.getSubItemSelecionado());
 		kitSubItem.setKit(getCrudModel());
+		kitSubItem.setQuantidade(quantidadeSelecionada);
 
 		if (TSUtil.isEmpty(getCrudModel().getListKitSubItem())) {
 			getCrudModel().setListKitSubItem(new ArrayList<KitSubItem>());
@@ -176,6 +178,14 @@ public class KitFaces extends CrudFaces<Kit> {
 
 	public void setKitSubItemSelecionado(KitSubItem kitSubItemSelecionado) {
 		this.kitSubItemSelecionado = kitSubItemSelecionado;
+	}
+
+	public int getQuantidadeSelecionada() {
+		return quantidadeSelecionada;
+	}
+
+	public void setQuantidadeSelecionada(int quantidadeSelecionada) {
+		this.quantidadeSelecionada = quantidadeSelecionada;
 	}
 
 }

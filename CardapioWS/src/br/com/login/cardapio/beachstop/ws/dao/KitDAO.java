@@ -27,8 +27,16 @@ public class KitDAO  implements RestDAO<Kit> {
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
 		broker.setPropertySQL("kitdao.findall");
+		
+		KitSubItemDAO kitSubItemDAO = new KitSubItemDAO();
 
-		return broker.getCollectionBean(Kit.class, "desconto", "descricao", "flagAtivo", "id", "nome", "ordem");
+		List<Kit> kits = broker.getCollectionBean(Kit.class, "desconto", "descricao", "flagAtivo", "id", "nome", "ordem");
+		
+		for (Kit kit : kits) {
+			kit.setKitSubItens(kitSubItemDAO.getAll(kit));
+		}
+		
+		return kits;
 
 	}
 
