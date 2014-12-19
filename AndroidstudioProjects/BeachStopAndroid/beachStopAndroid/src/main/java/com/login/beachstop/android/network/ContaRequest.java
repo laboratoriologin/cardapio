@@ -115,9 +115,6 @@ public class ContaRequest extends ObjectRequest<Conta> {
                 e.printStackTrace();
                 serverResponse.setStatusCode(-1);
             }
-
         }
     }
-
-
 }
