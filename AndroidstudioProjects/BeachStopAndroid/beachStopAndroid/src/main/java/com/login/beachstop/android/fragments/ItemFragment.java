@@ -89,11 +89,10 @@ public class ItemFragment extends Fragment implements TabHost.OnTabChangeListene
     /**
      * Add Tab content to the Tabhost
      *
-     * @param activity
+     * @param itemFragment
      * @param tabHost
      * @param tabSpec
-     * @param clss
-     * @param args
+     * @param tabInfo
      */
     private static void AddTab(ItemFragment itemFragment, TabHost tabHost, TabHost.TabSpec tabSpec, TabInfo tabInfo) {
         // Attach a Tab view factory to the spec

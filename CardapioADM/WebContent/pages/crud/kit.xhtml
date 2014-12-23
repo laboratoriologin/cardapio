@@ -11,10 +11,10 @@
 		<h:panelGrid columns="1" style="width:50%">
 
 			<p:outputLabel for="nome" value="Nome" />
-			<p:inputText id="nome" required="true" requiredMessage="Nome: Campo obrigatório" maxlength="50" value="#{mbeanModel.nome}" styleClass="coluna50" />
+			<p:inputText id="nome" required="true" requiredMessage="Nome: Campo obrigatório" maxlength="100" value="#{mbeanModel.nome}" styleClass="coluna50" />
 
 			<p:outputLabel for="descricao" value="Descrição" />
-			<p:inputTextarea rows="5" maxlength="50" requiredMessage="Descrição: Campo obrigatório" required="true" id="descricao" value="#{mbeanModel.descricao}" styleClass="coluna50" />
+			<p:inputTextarea rows="5" maxlength="255" requiredMessage="Descrição: Campo obrigatório" required="true" id="descricao" value="#{mbeanModel.descricao}" styleClass="coluna50" />
 
 			<p:outputLabel for="ordem" value="Ordem de Exibição" />
 			<p:inputText id="ordem" required="true" onkeyup="return Mascara(this,Integer)" requiredMessage="Ordem: Campo obrigatório" maxlength="50" value="#{mbeanModel.ordem}" styleClass="coluna20" />
@@ -39,62 +39,61 @@
 			</p:fieldset>
 
 			<p:separator style="margin-top: 15px; margin-bottom: 15px" />
-
+			
 			<p:fieldset legend="Sub-Itens" id="addSubItemPanel">
 
 				<h:panelGrid columns="2" styleClass="coluna50">
 
 					<p:outputLabel for="nomeSubItem" value="Subitem" />
+					<p:outputLabel for="quantidade" value="Quantidade" />
+					
 					<p:autoComplete id="nomeSubItem" minQueryLength="3" size="80" value="#{mbean.subItemSelecionado}" forceSelection="true" completeMethod="#{mbean.completeText}">
 						<f:converter converterId="subItemConverter" />
 					</p:autoComplete>
-					
-					<p:outputLabel for="quantidade" value="Quantidade" />
 					<p:inputText id="quantidade" maxlength="2" value="#{mbean.quantidadeSelecionada}" style="width:40%" />
-					
-					<p:ajax event="query" global="false"/>
-					<p:ajax event="itemSelect" global="false"  process="@this addSubItemPanel" listener="#{mbean.addSubItem}" update="nomeSubItem" />
 
 				</h:panelGrid>
 
 
 				<h:panelGrid columns="1" styleClass="coluna100">
+				
+					<p:commandButton value="Adicionar item" icon="ui-icon-plus" process="@this addSubItemPanel" action="#{mbean.addSubItem}" style="margin-top: 15px; margin-bottom: 15px" update="quantidade nomeSubItem" />
 
-					<p:outputPanel id="panelItemUpdate" autoUpdate="true">
-
-						<p:dataTable id="gridItem" emptyMessage="Nenhum subitem adicionado" value="${mbean.crudModel.listKitSubItem}" var="listKitSubItem" style="margin-top: 15px; margin-bottom: 15px">
-
-							<p:column headerText="Código" styleClass="coluna35">
-								<h:outputLabel value="#{listKitSubItem.subItem.codigo}" />
-							</p:column>
-
-							<p:column headerText="Nome" styleClass="coluna45">
-								<h:outputLabel value="#{listKitSubItem.subItem.item.nome} - #{listKitSubItem.subItem.nome}" />
-							</p:column>
-
-							<p:column headerText="Quantidade" styleClass="coluna45">
-								<h:outputLabel value="#{listKitSubItem.subItem.quantidade}" />
-							</p:column>
-
-							<p:column headerText="Valor" styleClass="coluna45">
-								<h:outputLabel value="#{listKitSubItem.subItem.valor}" />
-							</p:column>
-
-							<p:column headerText="Remover" style="text-align: center" styleClass="coluna10">
-								<p:commandLink action="#{mbean.delSubItem}" process="@this">
-									<h:graphicImage value="../resources/images/delete16.png" style="border: 0px" />
-									<f:setPropertyActionListener target="#{mbean.kitSubItemSelecionado}" value="#{listKitSubItem}" />
-								</p:commandLink>
-							</p:column>
-
-						</p:dataTable>
-
-					</p:outputPanel>
+						<p:outputPanel id="panelItemUpdate" autoUpdate="true">
+	
+							<p:dataTable id="gridItem" emptyMessage="Nenhum subitem adicionado" value="${mbean.crudModel.listKitSubItem}" var="listKitSubItem" style="margin-top: 15px; margin-bottom: 15px">
+	
+								<p:column headerText="Código" styleClass="coluna35">
+									<h:outputLabel value="#{listKitSubItem.subItem.codigo}" />
+								</p:column>
+	
+								<p:column headerText="Nome" styleClass="coluna45">
+									<h:outputLabel value="#{listKitSubItem.subItem.item.nome} - #{listKitSubItem.subItem.nome}" />
+								</p:column>
+	
+								<p:column headerText="Quantidade" styleClass="coluna45">
+									<h:outputLabel value="#{listKitSubItem.quantidade}" />
+								</p:column>
+	
+								<p:column headerText="Valor" styleClass="coluna45">
+									<h:outputLabel value="#{listKitSubItem.subItem.valor}" />
+								</p:column>
+	
+								<p:column headerText="Remover" style="text-align: center" styleClass="coluna10">
+									<p:commandLink action="#{mbean.delSubItem}" process="@this">
+										<h:graphicImage value="../resources/images/delete16.png" style="border: 0px" />
+										<f:setPropertyActionListener target="#{mbean.kitSubItemSelecionado}" value="#{listKitSubItem}" />
+									</p:commandLink>
+								</p:column>
+	
+							</p:dataTable>
+	
+						</p:outputPanel>
 
 				</h:panelGrid>
 
 			</p:fieldset>
-
+			
 		</h:panelGrid>
 
 	</ui:define>

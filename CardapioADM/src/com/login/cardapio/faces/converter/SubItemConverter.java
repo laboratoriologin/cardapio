@@ -21,13 +21,14 @@ public class SubItemConverter implements Converter {
 		}
 
 		Item item = new Item();
-		item.setNome(arg2.split(" - ")[0]);
+		item.setNome(arg2.split(" - ")[1]);
 
 		SubItem subItem = new SubItem();
-		subItem.setNome(arg2.split(" - ")[1]);
+		subItem.setId(new Long(arg2.split(" - ")[0]));
+		subItem.setNome(arg2.split(" - ")[2]);
 		subItem.setItem(item);
 
-		return subItem.getByModel("nome");
+		return subItem.getById();
 	}
 
 	@Override
@@ -39,7 +40,7 @@ public class SubItemConverter implements Converter {
 
 		SubItem subItem = (SubItem) arg2;
 
-		String nome = subItem.getItem().getNome() + " - " + subItem.getNome();
+		String nome = subItem.getId() + " - " + subItem.getItem().getNome() + " - " + subItem.getNome();
 
 		return nome;
 

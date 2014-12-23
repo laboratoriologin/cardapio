@@ -145,7 +145,7 @@ public class SubItem extends TSActiveRecordAb<SubItem> {
 		List<SubItem> listSubItem = this.find("SELECT s FROM SubItem s, Item i where s.item.id = i.id and (i.nome + ' - ' + s.nome) like coalesce(?,(i.nome + ' - ' + s.nome)) ", "i.nome", nome);
 
 		for (SubItem subItem : listSubItem) {
-			listNomeItem.add(subItem.getItem().getNome() + " - " + subItem.getNome());
+			listNomeItem.add(subItem.getId() + " - " + subItem.getItem().getNome() + " - " + subItem.getNome());
 		}
 
 		return listNomeItem;
@@ -155,15 +155,7 @@ public class SubItem extends TSActiveRecordAb<SubItem> {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
-		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
-		result = prime * result + ((flagAtivo == null) ? 0 : flagAtivo.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((item == null) ? 0 : item.hashCode());
-		result = prime * result + ((listKitSubItem == null) ? 0 : listKitSubItem.hashCode());
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result + ((ordem == null) ? 0 : ordem.hashCode());
-		result = prime * result + ((valor == null) ? 0 : valor.hashCode());
 		return result;
 	}
 
@@ -176,52 +168,11 @@ public class SubItem extends TSActiveRecordAb<SubItem> {
 		if (getClass() != obj.getClass())
 			return false;
 		SubItem other = (SubItem) obj;
-		if (codigo == null) {
-			if (other.codigo != null)
-				return false;
-		} else if (!codigo.equals(other.codigo))
-			return false;
-		if (descricao == null) {
-			if (other.descricao != null)
-				return false;
-		} else if (!descricao.equals(other.descricao))
-			return false;
-		if (flagAtivo == null) {
-			if (other.flagAtivo != null)
-				return false;
-		} else if (!flagAtivo.equals(other.flagAtivo))
-			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (item == null) {
-			if (other.item != null)
-				return false;
-		} else if (!item.equals(other.item))
-			return false;
-		if (listKitSubItem == null) {
-			if (other.listKitSubItem != null)
-				return false;
-		} else if (!listKitSubItem.equals(other.listKitSubItem))
-			return false;
-		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
-			return false;
-		if (ordem == null) {
-			if (other.ordem != null)
-				return false;
-		} else if (!ordem.equals(other.ordem))
-			return false;
-		if (valor == null) {
-			if (other.valor != null)
-				return false;
-		} else if (!valor.equals(other.valor))
-			return false;
 		return true;
 	}
-
 }

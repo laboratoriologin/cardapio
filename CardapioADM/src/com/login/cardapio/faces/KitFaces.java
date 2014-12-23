@@ -74,7 +74,7 @@ public class KitFaces extends CrudFaces<Kit> {
 		return new SubItem().findByNomeItemSubItem(query);
 
 	}
-
+	
 	public void addSubItem() {
 
 		KitSubItem kitSubItem = new KitSubItem();
@@ -95,7 +95,6 @@ public class KitFaces extends CrudFaces<Kit> {
 
 			CardapioUtil.addErrorMessage("Esse subitem já foi adicionado");
 		}
-
 	}
 
 	public void delSubItem() {
