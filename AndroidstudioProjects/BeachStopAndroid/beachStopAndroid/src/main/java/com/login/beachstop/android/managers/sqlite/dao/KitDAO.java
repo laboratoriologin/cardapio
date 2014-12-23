@@ -1,6 +1,8 @@
 package com.login.beachstop.android.managers.sqlite.dao;
 
+import com.login.beachstop.android.managers.sqlite.exception.PersistException;
 import com.login.beachstop.android.models.Kit;
+import com.login.beachstop.android.models.KitSubItem;
 
 import org.droidpersistence.dao.DroidDao;
 import org.droidpersistence.dao.TableDefinition;
@@ -27,9 +29,23 @@ public class KitDAO extends DroidDao<Kit, Long> {
 
     public void save(List<Kit> kits) throws Exception {
 
-        for (Kit kit : kits) {
-            this.save(kit);
-        }
+        try {
+            this.dataManager.getDatabase().beginTransaction();
 
+            for (Kit kit : kits) {
+                this.save(kit);
+
+                for (KitSubItem kitSubItem : kit.getKitSubItens()) {
+                    this.dataManager.getKitSubItemDAO().save(kitSubItem);
+                }
+
+            }
+            this.dataManager.getDatabase().setTransactionSuccessful();
+
+        } catch (Exception ex) {
+            throw new PersistException(ex);
+        } finally {
+            this.dataManager.getDatabase().endTransaction();
+        }
     }
 }

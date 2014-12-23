@@ -56,7 +56,6 @@ public class ItemDAO extends DroidDao<Item, Long> {
     public void save(List<Item> items) throws Exception {
 
         try {
-
             this.dataManager.getDatabase().beginTransaction();
 
             for (Item item : items) {
@@ -67,16 +66,12 @@ public class ItemDAO extends DroidDao<Item, Long> {
                 }
 
             }
-
             this.dataManager.getDatabase().setTransactionSuccessful();
+
         } catch (Exception ex) {
-
             throw new PersistException(ex);
-
         } finally {
-
             this.dataManager.getDatabase().endTransaction();
         }
-
     }
 }

@@ -88,7 +88,18 @@ public final class PedidoSubItem extends RestModel {
 	public void setStatus(Status status) {
 		this.status = status;
 	}
+	
+	@FormParam("kit")
+	private Kit kit;
+	
+	public Kit getKit(){
+		return this.kit;
+	}
 
+	public void setKit(Kit kit){
+		this.kit=kit;
+	}
+	
 	public PedidoSubItem() {
 	}
 

@@ -33,7 +33,7 @@ public class PedidoSubItemDAO implements RestDAO<PedidoSubItem> {
 		return broker.getCollectionBean(PedidoSubItem.class, "id", "pedido.id", "quantidade", "subItem.id", "valorUnitario");
 
 	}
-	
+
 	public List<PedidoSubItem> getAll(Conta conta) {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
@@ -61,7 +61,7 @@ public class PedidoSubItemDAO implements RestDAO<PedidoSubItem> {
 
 		model.setId(broker.getSequenceNextValue("dbo.pedidos_sub_itens "));
 
-		broker.setPropertySQL("pedidosubitemdao.insert", model.getPedido().getId(), model.getQuantidade(), model.getSubItem().getId(), model.getValorUnitario());
+		broker.setPropertySQL("pedidosubitemdao.insert", model.getPedido().getId(), model.getQuantidade(), model.getSubItem().getId(), model.getValorUnitario(), model.getKit().getId());
 
 		broker.execute();
 
