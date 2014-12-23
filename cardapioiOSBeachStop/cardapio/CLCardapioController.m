@@ -99,7 +99,7 @@ const CGFloat CAlarguraImagemSlide = 320;
                 if(img) {
                     _pageControl.alpha = 1;
                     imageView.image = img;
-                    imageView.contentMode = UIViewContentModeScaleAspectFit;
+                    imageView.contentMode = UIViewContentModeScaleAspectFill;
                     [imageView setNeedsLayout];
                 }
                 

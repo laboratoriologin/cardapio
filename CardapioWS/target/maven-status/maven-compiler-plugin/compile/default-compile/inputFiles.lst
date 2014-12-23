@@ -1,66 +1,141 @@
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\service\TipoPublicidadeService.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\service\StatusService.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\exception\ApplicationExceptionHandler.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\dao\ItemDAO.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\service\FuncionarioService.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\model\TipoPublicidade.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\dao\MenuDAO.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\service\LogService.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\model\Conta.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\model\PedidoSubItem.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\dao\TipoQuantidadeDAO.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\service\SubItemService.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\dao\UsuarioDAO.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\service\ServiceApplication.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\model\CategoriaCardapio.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\service\ContaService.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\model\EmpresaCategoriaCardapio.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\model\TipoFuncionario.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\dao\FuncionarioDAO.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\service\ItemPedidoService.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\model\Empresa.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\service\MenuService.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\exception\ApplicationException.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\model\RestModel.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\dao\EmpresaDAO.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\dao\TipoFuncionarioDAO.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\service\UsuarioService.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\model\Log.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\dao\PublicidadeDAO.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\dao\CategoriaCardapioDAO.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\service\EmpresaCategoriaCardapioService.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\model\TipoAgenda.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\dao\TipoAgendaDAO.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\service\TipoFuncionarioService.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\dao\SubItemDAO.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\model\Status.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\dao\ContaDAO.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\model\AgendaPublicidade.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\dao\PedidoDAO.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\model\Menu.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\model\Permissao.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\model\Item.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\service\PedidoService.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\dao\PedidoSubItemDAO.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\service\TipoQuantidadeService.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\model\Funcionario.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\dao\EmpresaCategoriaCardapioDAO.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\dao\RestDAO.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\service\PermissaoService.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\model\Publicidade.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\service\PublicidadeService.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\model\SubItem.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\dao\LogDAO.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\dao\AgendaPublicidadeDAO.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\service\RestService.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\dao\PermissaoDAO.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\service\CategoriaCardapioService.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\service\EmpresaService.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\dao\TipoPublicidadeDAO.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\service\AgendaPublicidadeService.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\service\TipoAgendaService.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\model\Usuario.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\model\Pedido.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\dao\StatusDAO.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\model\TipoQuantidade.java
-C:\Login\PROJETO\cardapio\CardapioWS\src\br\com\login\cardapio\ws\service\ItemService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/dao/PublicidadeDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/model/AgendaPublicidade.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/dao/PedidoSubItemDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/dao/SubItemDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/model/Metrica.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/dao/MesaDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/service/LogService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/model/Usuario.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/model/GrupoUsuario.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/service/TipoPublicidadeService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/model/Acao.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/dao/AreasDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/dao/EmpresaDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/model/PedidosAlertas.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/dao/UsuariosMesasDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/model/Item.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/dao/UsuarioSetorDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/dao/KitSubItemDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/service/ItemPedidoService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/model/Categoria.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/dao/PausaDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/service/ServiceApplication.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/model/Pagamento.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/model/PedidoSubItem.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/service/ServiceApplication.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/dao/SubItemDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/service/EmpresaService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/service/PedidoService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/service/PublicidadeService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/util/CryptoUtil.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/model/Publicidade.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/dao/PedidoDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/service/UsuarioSetorService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/service/TipoAgendaService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/util/EmailUtil.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/model/Pedido.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/service/KitService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/model/Pausa.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/dao/MetricaDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/model/TipoUsuario.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/service/PedidoSubItemService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/dao/EmpresaDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/model/CategoriaCardapio.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/service/ContaService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/model/Pedido.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/model/TipoPagamento.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/service/UsuarioService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/service/MenuService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/dao/ItemDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/model/Alerta.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/dao/TipoPublicidadeDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/dao/PagamentoDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/model/Kit.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/model/Permissao.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/model/UsuariosMesas.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/model/TipoQuantidade.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/model/TipoAlerta.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/service/AgendaPublicidadeService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/dao/ItemDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/dao/StatusDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/service/AcaoService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/dao/RestDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/dao/UsuarioDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/service/SubItemService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/service/PublicidadeService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/model/Log.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/dao/AcaoDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/service/UsuarioService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/model/Cliente.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/exception/ApplicationException.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/dao/TipoAgendaDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/model/TipoPublicidade.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/dao/TipoPagamentoDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/model/Menu.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/dao/AcaoContaDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/model/SubItem.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/dao/TipoQuantidadeDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/service/GrupoUsuarioService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/service/KitSubItemService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/service/AgendaPublicidadeService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/service/RestService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/dao/ContaDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/model/Status.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/service/CategoriaService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/service/CategoriaCardapioService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/service/TipoAgendaService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/dao/AgendaPublicidadeDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/dao/KitDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/service/ClienteService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/model/PedidoSubItem.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/service/PermissaoService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/model/KitSubItem.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/dao/UsuarioDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/service/AreasService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/exception/ApplicationExceptionHandler.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/service/TipoQuantidadeService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/model/Item.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/model/Mesa.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/service/MesaService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/dao/LogDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/service/StatusService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/model/AcaoConta.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/dao/MenuDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/service/ContaService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/dao/ClienteDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/dao/LogDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/dao/PedidoDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/dao/EmpresaCategoriaCardapioDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/service/PagamentoService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/service/PedidoService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/model/Empresa.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/model/Setor.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/service/EmpresaCategoriaCardapioService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/service/TipoPagamentoService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/dao/ContaDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/dao/PermissaoDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/model/Conta.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/model/TipoAgenda.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/model/SubItem.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/dao/GrupoUsuarioDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/dao/TipoFuncionarioDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/dao/PedidoSubItemDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/service/TipoUsuarioService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/dao/AlertaDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/service/EmpresaService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/service/AlertaService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/service/ItemService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/model/Usuario.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/dao/CategoriaCardapioDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/model/RestModel.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/dao/SetorDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/dao/CategoriaDAO.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/model/UsuarioSetor.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/service/AcaoContaService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/service/ItemService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/service/PausaService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/model/EmpresaCategoriaCardapio.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/service/SetorService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/util/Constantes.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/ws/service/UsuariosMesasService.java
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/CardapioWS/src/br/com/login/cardapio/beachstop/ws/model/Conta.java

@@ -103,8 +103,8 @@ public class ContaService extends RestService<Conta> {
 	@Override
 	protected void validate(Conta object) throws ApplicationException {
 
-		if (new ContaDAO().isBusyByTable(object)) {
-			throw new ApplicationException(MESA_OCUPADA, Response.SC_PRECONDITION_FAILED);
-		}
+//		if (new ContaDAO().isBusyByTable(object)) {
+//			throw new ApplicationException(MESA_OCUPADA, Response.SC_PRECONDITION_FAILED);
+//		}
 	}
 }

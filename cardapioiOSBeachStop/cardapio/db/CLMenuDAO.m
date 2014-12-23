@@ -78,7 +78,7 @@
     
     @try {
         
-        FMResultSet *results = [conexao executeQuery:@"SELECT * FROM MENU ORDER BY CODIGO" withArgumentsInArray:nil];
+        FMResultSet *results = [conexao executeQuery:@"SELECT * FROM MENU ORDER BY CODIGO DESC" withArgumentsInArray:nil];
         
         NSMutableArray *menus = [[NSMutableArray alloc]init];
         

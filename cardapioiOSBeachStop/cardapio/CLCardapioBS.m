@@ -65,7 +65,7 @@
     
     for(CLMenu *menu in resultado) {
         
-        if(menu.codigo.intValue!=CAMTodosPratos) {
+        if(menu.codigo.intValue != CAMTodosPratos) {
     
             [menuDAO inserir:menu];
             

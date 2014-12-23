@@ -13,4 +13,5 @@
 @property(nonatomic,strong) CLMenu *menu;
 @property(weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property(nonatomic) NSMutableDictionary *imageDownloadsInProgress;
+
 @end
