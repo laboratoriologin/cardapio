@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><!--
+<?xml version="1.0" encoding="utf-8"?>
+<!--
      Copyright (C) 2010 Johan Nilsson <http://markupartist.com>
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +21,7 @@
     android:background="@drawable/barra_topo"
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true"
-    android:orientation="horizontal">
+    android:orientation="horizontal" >
 
     <RelativeLayout
         android:id="@+id/actionbar_home"
@@ -29,7 +30,7 @@
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:orientation="horizontal"
-        android:visibility="visible">
+        android:visibility="visible" >
 
         <ImageView
             android:id="@+id/actionbar_home_logo"
@@ -47,7 +48,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:orientation="horizontal"
-            android:visibility="gone">
+            android:visibility="gone" >
 
             <!-- TODO: Make configurable. -->
 
@@ -76,7 +77,8 @@
             android:layout_centerVertical="true"
             android:layout_margin="0dp"
             android:orientation="horizontal"
-            android:padding="0dp"></LinearLayout>
+            android:padding="0dp" >
+        </LinearLayout>
 
         <RelativeLayout
             android:layout_width="fill_parent"
@@ -84,7 +86,8 @@
             android:layout_alignWithParentIfMissing="true"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@id/actionbar_actions"
-            android:layout_toRightOf="@id/actionbar_home_bg"></RelativeLayout>
+            android:layout_toRightOf="@id/actionbar_home_bg" >
+        </RelativeLayout>
     </RelativeLayout>
 
 </RelativeLayout>

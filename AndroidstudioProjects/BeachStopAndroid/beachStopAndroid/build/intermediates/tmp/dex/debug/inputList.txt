@@ -1,0 +1,14 @@
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/classes/debug
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/pre-dexed/debug/support-annotations-20.0.0-1a4f47f30f9f7930ba4203854f49eb33c4a897b9.jar
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/pre-dexed/debug/classes-7fb2d96037faffcc74ba436c4f16ef2e0c1d69af.jar
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/pre-dexed/debug/android-integration-253e647cf960331af5d5f7eeff3bf722fae3cbf1.jar
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/pre-dexed/debug/httpmime-4.0-74f1105a919684eba715cc8f673271ea56a141c9.jar
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/pre-dexed/debug/droidpersistence-0a1dfb2ac945fecf43dde1580ecfd7cbae630084.jar
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/pre-dexed/debug/classes-3e1dd853eb83351c3eb11a142b78e10860f9f1ca.jar
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/pre-dexed/debug/socialauth-android-3.2-17308385402321ea8386ff031521dbd9d057b1b7.jar
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/pre-dexed/debug/internal_impl-20.0.0-351c7c1ab0932b4adac7f9cf8f50b62448028aee.jar
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/pre-dexed/debug/httpcore-4.0.1-0c6e08c4e0ca2f5be290219c923acca8f4246fed.jar
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/pre-dexed/debug/socialauth-4.4-2dfc287a66fbc9acf868fa85af8ce8c630b7bdcb.jar
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/pre-dexed/debug/httpclient-4.0-afdcc1affe955be4d3a76d3c214f2b3e05430a78.jar
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/pre-dexed/debug/apache-mime4j-0.6-25929278d0024f7f70039f76d2dc298acc35de59.jar
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/pre-dexed/debug/classes-03af25428b2964cd78d367b9025fcdc5a149fc2a.jar

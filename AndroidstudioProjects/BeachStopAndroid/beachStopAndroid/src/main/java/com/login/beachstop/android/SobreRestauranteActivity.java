@@ -1,77 +1,59 @@
 package com.login.beachstop.android;
 
 import android.annotation.SuppressLint;
-import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.view.WindowManager;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.Toast;
 
-import com.login.beachstop.android.models.Empresa;
-import com.login.beachstop.android.models.ServerResponse;
-import com.login.beachstop.android.network.EmpresaRequest;
-import com.login.beachstop.android.network.http.ResponseListener;
-import com.login.beachstop.android.utils.Constantes;
-import com.login.beachstop.android.views.actionbar.ActionBar;
+import com.login.beachstop.android.business.BusinessResult;
+import com.login.beachstop.android.business.EmpresaBS;
+import com.login.beachstop.android.model.Empresa;
+import com.login.beachstop.android.model.ServerResponse;
+import com.login.beachstop.android.util.Constantes;
+import com.login.beachstop.android.view.ActionBar;
 
-import static com.login.beachstop.android.R.layout.activity_sobre_restaurante;
+public class SobreRestauranteActivity extends DefaultActivity implements BusinessResult {
 
-public class SobreRestauranteActivity extends DefaultActivity {
+	private WebView webView = null;
+	
+	@SuppressLint("SetJavaScriptEnabled")
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_sobre_restaurante);
 
-    protected WebView webView = null;
-    protected ProgressDialog progressDialog;
+		((ActionBar) findViewById(R.id.actionbar)).setDisplayHomeAsUpEnabled(Boolean.FALSE);
 
-    private ResponseListener listenerGetEmpresa = new ResponseListener() {
-        @Override
-        public void onResult(ServerResponse serverResponse) {
+		this.webView = (WebView) findViewById(R.id.activity_sobre_restaurante_web_view);
+		this.webView.getSettings().setJavaScriptEnabled(true);
+		this.webView.getSettings().setLoadWithOverviewMode(true);
+		this.webView.getSettings().setUseWideViewPort(true);
+		this.webView.setWebChromeClient(new WebChromeClient());
+		this.webView.setInitialScale(1);
+		new EmpresaBS(this).getEmpresa();
 
-            if (serverResponse != null) {
+	}
 
-                if (serverResponse.isOK()) {
+	@Override
+	public void getBusinessResult(Object result) {
 
-                    String data = ((Empresa) serverResponse.getReturnObject()).getHtml();
-                    String html = "<html><body>";
-                    String htmlFim = "</body></html>";
+		if (result != null) {
+			ServerResponse serverResponse = (ServerResponse) result;
 
-                    webView.loadDataWithBaseURL("", html + data + htmlFim, "text/html", "UTF-8", "");
+			if (serverResponse.isOK()) {
 
-                    progressDialog.dismiss();
+				String data = ((Empresa) serverResponse.getReturnObject()).getDadosEmpresa();
+				String html = "<html><body>";
+				String htmlFim = "</body></html>";
 
-                } else {
+				this.webView.loadDataWithBaseURL("", html + data + htmlFim, "text/html", "UTF-8", "");
+			} else {
+				Toast.makeText(this, serverResponse.getMsgErro(), Toast.LENGTH_SHORT).show();
+			}
+		} else {
+			Toast.makeText(this, Constantes.MSG_ERRO_NET, Toast.LENGTH_SHORT).show();
+		}
 
-                    Toast.makeText(SobreRestauranteActivity.this, serverResponse.getMsgErro(), Toast.LENGTH_SHORT).show();
-
-                }
-            } else {
-
-                Toast.makeText(SobreRestauranteActivity.this, Constantes.MSG_ERRO_NET, Toast.LENGTH_SHORT).show();
-
-            }
-
-        }
-
-    };
-
-    @SuppressLint("SetJavaScriptEnabled")
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(activity_sobre_restaurante);
-
-        ((ActionBar) findViewById(R.id.actionbar)).setDisplayHomeAsUpEnabled(Boolean.FALSE);
-
-        this.webView = (WebView) findViewById(R.id.activity_sobre_restaurante_web_view);
-        this.webView.getSettings().setJavaScriptEnabled(true);
-        this.webView.getSettings().setLoadWithOverviewMode(true);
-        this.webView.getSettings().setUseWideViewPort(true);
-
-        new EmpresaRequest(listenerGetEmpresa).getHtml();
-
-        this.progressDialog = new ProgressDialog(this);
-        this.progressDialog.setMessage("Buscando as informações do restaurante...");
-        this.progressDialog.show();
-        this.progressDialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-
-    }
-
+	}
 }

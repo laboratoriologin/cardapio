@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <GridView
+        android:id="@+id/tab_fragment_grid_view_item_cardapio"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"        
+        android:listSelector="#00000000"
+        android:horizontalSpacing="0dp"
+        android:verticalSpacing="1dp"
+        android:numColumns="2" >
+    </GridView>
+
+</RelativeLayout><!-- From: file:/Users/login/Dropbox/Projetos%20Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/layout/tab_fragment_grid_item_cardapio.xml -->

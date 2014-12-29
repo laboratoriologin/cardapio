@@ -1,2 +1,3 @@
 include ':galeriaImg'
+include ':parallaxScroll'
 include ':beachStopAndroid'

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_expandable_list_view_todos_item_cardapio_child_relative_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F2DBB3"
+    android:paddingBottom="2dp"
+    android:paddingLeft="3dp"
+    android:paddingRight="3dp"
+    android:paddingTop="2dp" >
+
+    <RelativeLayout
+        android:id="@+id/fragment_expandable_list_view_todos_item_cardapio_child_relative_layout_branco"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        android:padding="5dp" >
+
+        <TextView
+            android:id="@+id/fragment_expandable_list_view_todos_item_cardapio_child_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:singleLine="false"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:padding="20dp"
+            android:textColor="#4F3832" />
+
+<!--         <TableLayout
+            android:id="@+id/fragment_expandable_list_view_todos_item_cardapio_child_table_layout_sub_item"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"            
+            android:background="@drawable/bg_fragment_list_view_item_categoria_cardapio"
+            android:scrollbars="none"
+            android:shrinkColumns="*"
+            android:stretchColumns="*" >
+
+        </TableLayout> -->
+    </RelativeLayout>
+
+</RelativeLayout><!-- From: file:/Users/login/Dropbox/Projetos%20Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/layout/fragment_expandable_list_view_todos_item_cardapio_child.xml -->

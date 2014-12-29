@@ -1,6 +1,16 @@
 ECLIPSE ANDROID PROJECT IMPORT SUMMARY
 ======================================
 
+Risky Project Location:
+-----------------------
+The tools *should* handle project locations in any directory. However,
+due to bugs, placing projects in directories containing spaces in the
+path, or characters like ", ' and &, have had issues. We're working to
+eliminate these bugs, but to save yourself headaches you may want to
+move your project to a location where this is not a problem.
+/Users/login/Dropbox/Projetos Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid
+                             -                                                                     
+
 Manifest Merging:
 -----------------
 Your project uses libraries that provide manifests, and your Eclipse
@@ -17,10 +27,15 @@ should evaluate whether these are still needed in your project and if
 so manually move them:
 
 From BeachStopAndroid:
+* .DS_Store
+* .gitignore
 * ic_launcher-web.png
 * proguard-project.txt
 From GaleriaImg:
 * pom.xml
+From ParallaxScroll:
+* build.gradle
+* proguard-project.txt
 
 Replaced Jars with Dependencies:
 --------------------------------
@@ -32,7 +47,7 @@ the .jar file in your project was of an older version than the
 dependency we picked, which could render the project not compileable.
 You can disable the jar replacement in the import wizard and try again:
 
-android-support-v4.jar => com.android.support:support-v4:+
+android-support-v4.jar => com.android.support:support-v4:20.0.0
 
 Moved Files:
 ------------
@@ -45,6 +60,11 @@ In GaleriaImg:
 * lint.xml => galeriaImg/lint.xml
 * res/ => galeriaImg/src/main/res/
 * src/ => galeriaImg/src/main/java/
+In ParallaxScroll:
+* AndroidManifest.xml => parallaxScroll/src/main/AndroidManifest.xml
+* assets/ => parallaxScroll/src/main/assets/
+* res/ => parallaxScroll/src/main/res/
+* src/ => parallaxScroll/src/main/java/
 In BeachStopAndroid:
 * AndroidManifest.xml => beachStopAndroid/src/main/AndroidManifest.xml
 * assets/ => beachStopAndroid/src/main/assets/

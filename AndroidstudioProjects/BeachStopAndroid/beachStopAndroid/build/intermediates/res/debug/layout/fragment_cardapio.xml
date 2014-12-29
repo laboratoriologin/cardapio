@@ -1,0 +1,82 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <com.login.beachstop.android.view.ActionBar
+        android:id="@+id/actionbar"
+        style="@style/ActionBar"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <ImageView
+                android:id="@+id/imagem_action_bar"
+                android:layout_width="@dimen/actionbar_item_width"
+                android:layout_height="@dimen/actionbar_item_height"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/logo_topo" />
+            
+            
+            <!--
+            <Button
+                android:id="@+id/fragment_cardapio_btn_compartilhar_checkin"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/icone_check_in"
+                android:scaleType="centerCrop" />
+
+            -->
+
+        </RelativeLayout>
+    </com.login.beachstop.android.view.ActionBar>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.2" >
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/fragment_cardapio_view_pager_midia"
+            android:layout_width="fill_parent"
+            android:layout_height="0dip"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true" />
+
+        <com.viewpagerindicator.CirclePageIndicator
+            android:id="@+id/fragment_cardapio_view_pager_midia_indicator"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="#00000000"
+            android:padding="4dip"
+            app:fillColor="@color/branco"
+            app:pageColor="#00000000"
+            app:radius="4dp"
+            app:strokeColor="@color/branco"
+            app:strokeWidth="2dp" />
+    </RelativeLayout>
+
+    <GridView
+        android:id="@+id/fragment_cardapio_grid_view_menu"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="0.9"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:horizontalSpacing="10dp"
+        android:numColumns="3"
+        android:verticalSpacing="10dp" >
+    </GridView>
+
+</LinearLayout><!-- From: file:/Users/login/Dropbox/Projetos%20Login/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/layout/fragment_cardapio.xml -->

@@ -1,5 +1,9 @@
 package com.login.beachstop.android;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Vector;
+
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,199 +15,230 @@ import android.widget.TabHost;
 import android.widget.TabHost.TabContentFactory;
 import android.widget.TextView;
 
-import com.login.beachstop.android.fragments.ContaFragment;
-import com.login.beachstop.android.fragments.IPedidoFragment;
-import com.login.beachstop.android.fragments.PedidoFragment;
-import com.login.beachstop.android.views.actionbar.ActionBar;
-import com.login.beachstop.android.views.adapters.ViewPagerFragmentAdapter;
+import com.login.beachstop.android.adapter.ViewPagerAdapter;
+import com.login.beachstop.android.fragment.ITabFragmentPedido;
+import com.login.beachstop.android.fragment.TabFragmentConta;
+import com.login.beachstop.android.fragment.TabFragmentPedido;
+import com.login.beachstop.android.view.ActionBar;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Vector;
-
-/**
- * Created by Argus on 30/10/2014.
- */
 public class PedidoActivity extends DefaultActivity implements TabHost.OnTabChangeListener, ViewPager.OnPageChangeListener {
 
-    private TabHost mTabHost;
-    private ViewPager mViewPager;
-    private HashMap<String, TabInfo> mapTabInfo = new HashMap<String, PedidoActivity.TabInfo>();
-    private ViewPagerFragmentAdapter mPagerAdapter;
+	private TabHost mTabHost;
+	private ViewPager mViewPager;
+	private HashMap<String, TabInfo> mapTabInfo = new HashMap<String, PedidoActivity.TabInfo>();
+	private ViewPagerAdapter mPagerAdapter;
 
-    private static void AddTab(PedidoActivity pedidoActivity, TabHost tabHost, TabHost.TabSpec tabSpec, TabInfo tabInfo) {
-        // Attach a Tab view factory to the spec
-        tabSpec.setContent(pedidoActivity.new TabFactory(pedidoActivity));
-        tabHost.addTab(tabSpec);
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_pedido);
 
-    }
+		((ActionBar) findViewById(R.id.actionbar)).setDisplayHomeAsUpEnabled(Boolean.FALSE);
+		((ImageView) (findViewById(R.id.actionbar)).findViewById(R.id.imagem_action_bar)).setBackgroundResource(R.drawable.tab_pedido);
+		((TextView) (findViewById(R.id.actionbar)).findViewById(R.id.text_view_action_bar)).setText("Meus pedidos");
 
-    private static View createTabView(final Context context, final String text) {
-        View view = LayoutInflater.from(context).inflate(R.layout.tabs_bg_pedido, null);
-        TextView tv = (TextView) view.findViewById(R.id.tabsText);
-        tv.setText(text);
+		startTab(null);
+	}
 
-        return view;
-    }
+	public void startTab(Bundle savedInstanceState) {
+		this.initialiseTabHost(savedInstanceState);
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pedido);
+		if (savedInstanceState != null) {
+			mTabHost.setCurrentTabByTag(savedInstanceState.getString("tab"));
+		}
 
-        ((ActionBar) findViewById(R.id.actionbar)).setDisplayHomeAsUpEnabled(Boolean.FALSE);
-        ((ImageView) (findViewById(R.id.actionbar)).findViewById(R.id.imagem_action_bar)).setBackgroundResource(R.drawable.tab_pedido);
-        ((TextView) (findViewById(R.id.actionbar)).findViewById(R.id.text_view_action_bar)).setText("Meus pedidos");
+		// Intialise ViewPager
+		this.intialiseViewPager();
+	}
 
-        startTab(null);
-    }
+	@Override
+	public void onSaveInstanceState(Bundle outState) {
+		outState.putString("tab", mTabHost.getCurrentTabTag());
+		super.onSaveInstanceState(outState);
+	}
 
-    public void startTab(Bundle savedInstanceState) {
-        this.initialiseTabHost(savedInstanceState);
+	/**
+	 * Initialise ViewPager
+	 */
+	private void intialiseViewPager() {
 
-        if (savedInstanceState != null) {
-            mTabHost.setCurrentTabByTag(savedInstanceState.getString("tab"));
-        }
+		List<Fragment> fragments = new Vector<Fragment>();
+		fragments.add(Fragment.instantiate(this, TabFragmentPedido.class.getName()));
+		fragments.add(Fragment.instantiate(this, TabFragmentConta.class.getName()));
 
-        // Intialise ViewPager
-        this.intialiseViewPager();
-    }
+		this.mPagerAdapter = new ViewPagerAdapter(this.getSupportFragmentManager(), fragments);
+		//
+		this.mViewPager = (ViewPager) findViewById(R.id.viewpager);
+		this.mViewPager.setAdapter(this.mPagerAdapter);
+		this.mViewPager.setOnPageChangeListener(this);
+	}
 
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        outState.putString("tab", mTabHost.getCurrentTabTag());
-        super.onSaveInstanceState(outState);
-    }
+	/**
+	 * Initialise the Tab Host
+	 */
+	private void initialiseTabHost(Bundle args) {
+		mTabHost = (TabHost) findViewById(android.R.id.tabhost);
+		mTabHost.setup();
+		TabInfo tabInfo = null;
 
-    /**
-     * Initialise ViewPager
-     */
-    private void intialiseViewPager() {
+		View tabviewGrid = createTabView(mTabHost.getContext(), "Pedido");
+		View tabviewList = createTabView(mTabHost.getContext(), "Conta");
 
-        List<Fragment> fragments = new Vector<Fragment>();
-        fragments.add(Fragment.instantiate(this, PedidoFragment.class.getName()));
-        fragments.add(Fragment.instantiate(this, ContaFragment.class.getName()));
+		PedidoActivity.AddTab(this, this.mTabHost, this.mTabHost.newTabSpec("Galeria").setIndicator(tabviewGrid), (tabInfo = new TabInfo("Pedido", TabFragmentPedido.class, args)));
+		this.mapTabInfo.put(tabInfo.tag, tabInfo);
+		PedidoActivity.AddTab(this, this.mTabHost, this.mTabHost.newTabSpec("Lista").setIndicator(tabviewList), (tabInfo = new TabInfo("Conta", TabFragmentConta.class, args)));
+		this.mapTabInfo.put(tabInfo.tag, tabInfo);
 
-        this.mPagerAdapter = new ViewPagerFragmentAdapter(this.getSupportFragmentManager(), fragments);
-        //
-        this.mViewPager = (ViewPager) findViewById(R.id.viewpager);
-        this.mViewPager.setAdapter(this.mPagerAdapter);
-        this.mViewPager.setOnPageChangeListener(this);
-    }
+		mTabHost.setOnTabChangedListener(this);
+	}
 
-    /**
-     * Initialise the Tab Host
-     */
-    private void initialiseTabHost(Bundle args) {
-        mTabHost = (TabHost) findViewById(android.R.id.tabhost);
-        mTabHost.setup();
-        TabInfo tabInfo = null;
+	/**
+	 * Add Tab content to the Tabhost
+	 * 
+	 * @param activity
+	 * @param tabHost
+	 * @param tabSpec
+	 * @param clss
+	 * @param args
+	 */
+	private static void AddTab(PedidoActivity pedidoActivity, TabHost tabHost, TabHost.TabSpec tabSpec, TabInfo tabInfo) {
+		// Attach a Tab view factory to the spec
+		tabSpec.setContent(pedidoActivity.new TabFactory(pedidoActivity));
+		tabHost.addTab(tabSpec);
 
-        View tabviewGrid = createTabView(mTabHost.getContext(), "Pedido");
-        View tabviewList = createTabView(mTabHost.getContext(), "Conta");
+	}
 
-        PedidoActivity.AddTab(this, this.mTabHost, this.mTabHost.newTabSpec("Galeria").setIndicator(tabviewGrid), (tabInfo = new TabInfo("Pedido", PedidoFragment.class, args)));
-        this.mapTabInfo.put(tabInfo.tag, tabInfo);
-        PedidoActivity.AddTab(this, this.mTabHost, this.mTabHost.newTabSpec("Lista").setIndicator(tabviewList), (tabInfo = new TabInfo("Conta", ContaFragment.class, args)));
-        this.mapTabInfo.put(tabInfo.tag, tabInfo);
+	private static View createTabView(final Context context, final String text) {
+		View view = LayoutInflater.from(context).inflate(R.layout.tabs_bg_pedido, null);
+		TextView tv = (TextView) view.findViewById(R.id.tabsText);
+		tv.setText(text);
 
-        mTabHost.setOnTabChangedListener(this);
-    }
+		return view;
+	}
 
-    /**
-     * (non-Javadoc)
-     *
-     * @see android.widget.TabHost.OnTabChangeListener#onTabChanged(java.lang.String)
-     */
-    public void onTabChanged(String tag) {
-        // TabInfo newTab = this.mapTabInfo.get(tag);
-        int pos = this.mTabHost.getCurrentTab();
-        this.mViewPager.setCurrentItem(pos);
-    }
+	/**
+	 * (non-Javadoc)
+	 * 
+	 * @see android.widget.TabHost.OnTabChangeListener#onTabChanged(java.lang.String)
+	 */
+	public void onTabChanged(String tag) {
+		// TabInfo newTab = this.mapTabInfo.get(tag);
+		int pos = this.mTabHost.getCurrentTab();
+		this.mViewPager.setCurrentItem(pos);
+	}
 
-    @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-        // TODO Auto-generated method stub
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * android.support.v4.view.ViewPager.OnPageChangeListener#onPageScrolled
+	 * (int, float, int)
+	 */
+	@Override
+	public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+		// TODO Auto-generated method stub
+	}
 
-    @Override
-    public void onPageSelected(int position) {
-        // TODO Auto-generated method stub
-        this.mTabHost.setCurrentTab(position);
-        ((IPedidoFragment) mPagerAdapter.getItem(position)).onRefresh();
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * android.support.v4.view.ViewPager.OnPageChangeListener#onPageSelected
+	 * (int)
+	 */
+	@Override
+	public void onPageSelected(int position) {
+		// TODO Auto-generated method stub
+		this.mTabHost.setCurrentTab(position);
+		((ITabFragmentPedido) mPagerAdapter.getItem(position)).onRefresh();
+	}
 
-    @Override
-    public void onPageScrollStateChanged(int state) {
-        // TODO Auto-generated method stub
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see android.support.v4.view.ViewPager.OnPageChangeListener#
+	 * onPageScrollStateChanged(int)
+	 */
+	@Override
+	public void onPageScrollStateChanged(int state) {
+		// TODO Auto-generated method stub
+	}
 
-    private class TabInfo {
-        private String tag;
-        private Class<?> clss;
-        private Bundle args;
-        private Fragment fragment;
+	/**
+	 * 
+	 * @author mwho Maintains extrinsic info of a tab's construct
+	 */
+	private class TabInfo {
+		private String tag;
+		private Class<?> clss;
+		private Bundle args;
+		private Fragment fragment;
 
-        TabInfo(String tag, Class<?> clazz, Bundle args) {
-            this.tag = tag;
-            this.setClss(clazz);
-            this.setArgs(args);
-        }
+		TabInfo(String tag, Class<?> clazz, Bundle args) {
+			this.tag = tag;
+			this.setClss(clazz);
+			this.setArgs(args);
+		}
 
-        @SuppressWarnings("unused")
-        public Class<?> getClss() {
-            return clss;
-        }
+		@SuppressWarnings("unused")
+		public Class<?> getClss() {
+			return clss;
+		}
 
-        public void setClss(Class<?> clss) {
-            this.clss = clss;
-        }
+		public void setClss(Class<?> clss) {
+			this.clss = clss;
+		}
 
-        @SuppressWarnings("unused")
-        public Bundle getArgs() {
-            return args;
-        }
+		@SuppressWarnings("unused")
+		public Bundle getArgs() {
+			return args;
+		}
 
-        public void setArgs(Bundle args) {
-            this.args = args;
-        }
+		public void setArgs(Bundle args) {
+			this.args = args;
+		}
 
-        @SuppressWarnings("unused")
-        public Fragment getFragment() {
-            return fragment;
-        }
+		@SuppressWarnings("unused")
+		public Fragment getFragment() {
+			return fragment;
+		}
 
-        @SuppressWarnings("unused")
-        public void setFragment(Fragment fragment) {
-            this.fragment = fragment;
-        }
+		@SuppressWarnings("unused")
+		public void setFragment(Fragment fragment) {
+			this.fragment = fragment;
+		}
 
-    }
+	}
 
-    class TabFactory implements TabContentFactory {
+	/**
+	 * A simple factory that returns dummy views to the Tabhost
+	 * 
+	 * @author mwho
+	 */
+	class TabFactory implements TabContentFactory {
 
-        private final Context mContext;
+		private final Context mContext;
 
-        /**
-         * @param context
-         */
-        public TabFactory(Context context) {
-            mContext = context;
-        }
+		/**
+		 * @param context
+		 */
+		public TabFactory(Context context) {
+			mContext = context;
+		}
 
-        /**
-         * (non-Javadoc)
-         *
-         * @see android.widget.TabHost.TabContentFactory#createTabContent(java.lang.String)
-         */
-        public View createTabContent(String tag) {
-            View v = new View(mContext);
+		/**
+		 * (non-Javadoc)
+		 * 
+		 * @see android.widget.TabHost.TabContentFactory#createTabContent(java.lang.String)
+		 */
+		public View createTabContent(String tag) {
+			View v = new View(mContext);
 
-            v.setMinimumWidth(0);
-            v.setMinimumHeight(0);
-            return v;
-        }
+			v.setMinimumWidth(0);
+			v.setMinimumHeight(0);
+			return v;
+		}
 
-    }
+	}
 
 }
