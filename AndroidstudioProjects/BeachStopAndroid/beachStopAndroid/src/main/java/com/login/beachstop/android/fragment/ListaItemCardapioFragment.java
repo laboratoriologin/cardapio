@@ -142,15 +142,7 @@ public class ListaItemCardapioFragment extends Fragment implements TabHost.OnTab
 		mTabHost.setOnTabChangedListener(this);
 	}
 
-	/**
-	 * Add Tab content to the Tabhost
-	 * 
-	 * @param activity
-	 * @param tabHost
-	 * @param tabSpec
-	 * @param clss
-	 * @param args
-	 */
+
 	private static void AddTab(ListaItemCardapioFragment listaItemCardapioFragment, TabHost tabHost, TabHost.TabSpec tabSpec, TabInfo tabInfo) {
 		// Attach a Tab view factory to the spec
 		tabSpec.setContent(listaItemCardapioFragment.new TabFactory(listaItemCardapioFragment.view.getContext()));

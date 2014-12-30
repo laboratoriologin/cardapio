@@ -36,8 +36,9 @@ import com.login.beachstop.android.model.Pedido;
 import com.login.beachstop.android.model.PedidoItem;
 import com.login.beachstop.android.util.Constantes;
 import com.login.beachstop.android.util.Utilitarios;
-import com.login.beachstop.android.util.image.ImageFetcher;
 import com.login.beachstop.android.view.ActionBar;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class DetalheItemCardapioFragment extends Fragment {
 
@@ -47,9 +48,24 @@ public class DetalheItemCardapioFragment extends Fragment {
 	private List<RowSubItem> listRowSubItem;
 	private ImageView imageView;
 	private SocialAuthAdapter socialAuthAdapter;
-	private ImageFetcher mImageFetcher;
+    private DisplayImageOptions options;
 
-	@Override
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        options = new DisplayImageOptions.Builder()
+                .showImageOnLoading(R.drawable.placeholder)
+                .showImageForEmptyUri(R.drawable.placeholder)
+                .showImageOnFail(R.drawable.placeholder)
+                .delayBeforeLoading(1)
+                .cacheInMemory(true)
+                .cacheOnDisk(false)
+                .considerExifParams(true)
+                .build();
+    }
+
+    @Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
 		this.homeActivity = (HomeActivity) activity;
@@ -61,10 +77,6 @@ public class DetalheItemCardapioFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.view = inflater.inflate(R.layout.fragment_detalhe_item_cardapio, container, false);
-
-		this.mImageFetcher = new ImageFetcher(this.getActivity().getBaseContext(), 500);
-		this.mImageFetcher.setLoadingImage(R.drawable.placeholder);
-		this.mImageFetcher.addImageCache(this.getActivity(), Constantes.IMAGE_CACHE);
 
 		((ActionBar) this.view.findViewById(R.id.actionbar)).setDisplayHomeAsUpEnabled(Boolean.TRUE);
 		((TextView) (this.view.findViewById(R.id.actionbar)).findViewById(R.id.text_view_action_bar)).setText(this.itemCardapio.getNome());
@@ -86,9 +98,12 @@ public class DetalheItemCardapioFragment extends Fragment {
 
 		if (itemCardapio.getImagem().length() != 0) {
 
-			this.mImageFetcher.loadImage(Constantes.URL_IMG + itemCardapio.getImagem(), imageView);
+            ImageLoader.getInstance().displayImage(Constantes.URL_IMG + itemCardapio.getImagem(), imageView, options);
 
-		}
+		}else{
+
+            ImageLoader.getInstance().displayImage("", imageView, options);
+        }
 
 		if (itemCardapio.getTempoMedioPreparo().toString().length() == 0) {
 

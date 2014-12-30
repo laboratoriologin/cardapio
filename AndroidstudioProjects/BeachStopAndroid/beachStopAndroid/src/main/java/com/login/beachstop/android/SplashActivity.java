@@ -1,7 +1,5 @@
 package com.login.beachstop.android;
 
-import java.util.List;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -20,146 +18,149 @@ import com.login.beachstop.android.model.Empresa;
 import com.login.beachstop.android.model.ServerResponse;
 import com.login.beachstop.android.util.Constantes;
 import com.login.beachstop.android.util.Utilitarios;
+import com.nostra13.universalimageloader.core.ImageLoader;
+
+import java.util.List;
 
 public class SplashActivity extends DefaultActivity implements BusinessResult {
 
-	private final int SPLASH_MILIS = 1000;
-	private ProgressBar progressBar;
-	private TextView textView;
-	private ImageButton imageButton;
+    private final int SPLASH_MILIS = 1000;
+    private ProgressBar progressBar;
+    private TextView textView;
+    private ImageButton imageButton;
 
-	@Override
-	public void onCreate(Bundle icicle) {
-		super.onCreate(icicle);
-		setContentView(R.layout.activity_splash);
+    @Override
+    public void onCreate(Bundle icicle) {
+        super.onCreate(icicle);
+        setContentView(R.layout.activity_splash);
 
-		this.progressBar = (ProgressBar) this.findViewById(R.id.activity_splash_progressBar);
-		this.textView = (TextView) this.findViewById(R.id.activity_splash_textView);
-		this.imageButton = (ImageButton) this.findViewById(R.id.activity_splash_image_button);
+        this.progressBar = (ProgressBar) this.findViewById(R.id.activity_splash_progressBar);
+        this.textView = (TextView) this.findViewById(R.id.activity_splash_textView);
+        this.imageButton = (ImageButton) this.findViewById(R.id.activity_splash_image_button);
 
-		this.imageButton.setOnClickListener(new OnClickListener() {
+        this.imageButton.setOnClickListener(new OnClickListener() {
 
-			@Override
-			public void onClick(View v) {
-				startDados();
-			}
-		});
+            @Override
+            public void onClick(View v) {
+                startDados();
+            }
+        });
 
-		new Handler().postDelayed(new Runnable() {
-			@Override
-			public void run() {
-				startDados();
-			}
-		}, SPLASH_MILIS);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                startDados();
+            }
+        }, SPLASH_MILIS);
 
-	}
+    }
 
-	public void startDados() {
-		progressBar.setVisibility(ProgressBar.VISIBLE);
-		textView.setVisibility(TextView.VISIBLE);
-		textView.setText(Constantes.MSG_SAUDACAO_DOIS);
-		imageButton.setVisibility(ImageButton.GONE);
-		new EmpresaBS(SplashActivity.this).getEmpresa();
+    public void startDados() {
+        progressBar.setVisibility(ProgressBar.VISIBLE);
+        textView.setVisibility(TextView.VISIBLE);
+        textView.setText(Constantes.MSG_SAUDACAO_DOIS);
+        imageButton.setVisibility(ImageButton.GONE);
+        new EmpresaBS(SplashActivity.this).getEmpresa();
 
-		Conta conta = getDataManager().getConta();
+        Conta conta = getDataManager().getConta();
 
-		if (conta != null) {
-			// new ContaBS(SplashActivity.this).chkContaAberta(conta);
-			String horaAtual = Utilitarios.getHourNow();
+        if (conta != null) {
+            // new ContaBS(SplashActivity.this).chkContaAberta(conta);
+            String horaAtual = Utilitarios.getHourNow();
 
-			if ((Long.valueOf(horaAtual) - Long.valueOf(conta.getHorarioChegada())) >= (24 * 60 * 60)) {
-				getDataManager().getContaDAO().deleteAll();
-			}
-		}
-	}
+            if ((Long.valueOf(horaAtual) - Long.valueOf(conta.getHorarioChegada())) >= (24 * 60 * 60)) {
+                getDataManager().getContaDAO().deleteAll();
+            }
+        }
+    }
 
-	public void goCardapio() {
-		Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
-		SplashActivity.this.startActivity(mainIntent);
-		SplashActivity.this.finish();
-	}
+    public void goCardapio() {
+        Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
+        SplashActivity.this.startActivity(mainIntent);
+        SplashActivity.this.finish();
+    }
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public void getBusinessResult(Object result) {
+    @SuppressWarnings("unchecked")
+    @Override
+    public void getBusinessResult(Object result) {
 
-		if (result != null) {
+        if (result != null) {
 
-			ServerResponse serverResponse = (ServerResponse) result;
+            ServerResponse serverResponse = (ServerResponse) result;
 
-			if (serverResponse.isOK()) {
-				if (serverResponse.getReturnObject() instanceof Boolean) {
-					if (!((Boolean) serverResponse.getReturnObject())) {
-						this.getDataManager().getContaDAO().deleteAll();
-					}
-				} else if (serverResponse.getReturnObject() instanceof Empresa) {
+            if (serverResponse.isOK()) {
+                if (serverResponse.getReturnObject() instanceof Boolean) {
+                    if (!((Boolean) serverResponse.getReturnObject())) {
+                        this.getDataManager().getContaDAO().deleteAll();
+                    }
+                } else if (serverResponse.getReturnObject() instanceof Empresa) {
 
-					List<Empresa> listChaves = this.getDataManager().getChaveCardapioEmpresaDAO().getAll();
+                    List<Empresa> listChaves = this.getDataManager().getChaveCardapioEmpresaDAO().getAll();
 
-					setQtdMesa(((Empresa) serverResponse.getReturnObject()).getQtdMesa());
+                    setQtdMesa(((Empresa) serverResponse.getReturnObject()).getQtdMesa());
 
-					if (listChaves.size() == 0) {
-						getCategoriaCardapioEmpresaNET();
-					} else {
-						Empresa chaveAtual = listChaves.get(0);
+                    if (listChaves.size() == 0) {
+                        getCategoriaCardapioEmpresaNET();
+                    } else {
+                        Empresa chaveAtual = listChaves.get(0);
 
-						if (chaveAtual.getChave().equals(((Empresa) serverResponse.getReturnObject()).getChave())) {
-							getCategoriaCardapioEmpresaLOCAL();
-							goCardapio();
-						} else {
-							this.getDataManager().getItemCardapioDAO().deleteAll();
-							this.getDataManager().getCategoriaCardapioItemDAO().deleteAll();
-							this.getDataManager().getItemCardapioSubItemDAO().deleteAll();
-							getCategoriaCardapioEmpresaNET();
-						}
-					}
+                        if (chaveAtual.getChave().equals(((Empresa) serverResponse.getReturnObject()).getChave())) {
+                            getCategoriaCardapioEmpresaLOCAL();
+                            goCardapio();
+                        } else {
+                            this.getDataManager().getItemCardapioDAO().deleteAll();
+                            this.getDataManager().getCategoriaCardapioItemDAO().deleteAll();
+                            this.getDataManager().getItemCardapioSubItemDAO().deleteAll();
+                            getCategoriaCardapioEmpresaNET();
+                        }
+                    }
 
-					try {
-						if (this.getDataManager().getChaveCardapioEmpresaDAO().deleteAll())
-							this.getDataManager().getChaveCardapioEmpresaDAO().save((Empresa) serverResponse.getReturnObject());
-					} catch (Exception e) {
-						progressBar.setVisibility(ProgressBar.GONE);
-						imageButton.setVisibility(ImageButton.VISIBLE);
-						textView.setText(Constantes.MSG_ERRO_GRAVAR_DADOS);
-					}
-				} else {
+                    try {
+                        if (this.getDataManager().getChaveCardapioEmpresaDAO().deleteAll())
+                            this.getDataManager().getChaveCardapioEmpresaDAO().save((Empresa) serverResponse.getReturnObject());
+                    } catch (Exception e) {
+                        progressBar.setVisibility(ProgressBar.GONE);
+                        imageButton.setVisibility(ImageButton.VISIBLE);
+                        textView.setText(Constantes.MSG_ERRO_GRAVAR_DADOS);
+                    }
+                } else {
 
-					super.setListaItemCardapio((List<CategoriaCardapioItem>) serverResponse.getReturnObject());
+                    super.setListaItemCardapio((List<CategoriaCardapioItem>) serverResponse.getReturnObject());
 //					CategoriaCardapioItem itemCategoriaCardapio = new CategoriaCardapioItem();
 //					itemCategoriaCardapio.setId(0l);
 //					super.getListaItemCardapio().add(itemCategoriaCardapio);
 
-					try {
-						for (CategoriaCardapioItem item : super.getListaItemCardapio()) {
-							this.getDataManager().getCategoriaCardapioItemDAO().save(item);
-						}
-					} catch (Exception e) {
-						progressBar.setVisibility(ProgressBar.GONE);
-						imageButton.setVisibility(ImageButton.VISIBLE);
-						textView.setText(Constantes.MSG_ERRO_GRAVAR_DADOS);
-					}
+                    try {
+                        for (CategoriaCardapioItem item : super.getListaItemCardapio()) {
+                            this.getDataManager().getCategoriaCardapioItemDAO().save(item);
+                        }
+                    } catch (Exception e) {
+                        progressBar.setVisibility(ProgressBar.GONE);
+                        imageButton.setVisibility(ImageButton.VISIBLE);
+                        textView.setText(Constantes.MSG_ERRO_GRAVAR_DADOS);
+                    }
 
-					goCardapio();
-				}
-			} else {
-				progressBar.setVisibility(ProgressBar.GONE);
-				imageButton.setVisibility(ImageButton.VISIBLE);
-				textView.setText(serverResponse.getMsgErro());
-			}
-		} else {
-			progressBar.setVisibility(ProgressBar.GONE);
-			imageButton.setVisibility(ImageButton.VISIBLE);
-			textView.setText(Constantes.MSG_ERRO_NET);
-		}
-	}
+                    goCardapio();
+                }
+            } else {
+                progressBar.setVisibility(ProgressBar.GONE);
+                imageButton.setVisibility(ImageButton.VISIBLE);
+                textView.setText(serverResponse.getMsgErro());
+            }
+        } else {
+            progressBar.setVisibility(ProgressBar.GONE);
+            imageButton.setVisibility(ImageButton.VISIBLE);
+            textView.setText(Constantes.MSG_ERRO_NET);
+        }
+    }
 
-	private void getCategoriaCardapioEmpresaNET() {
-		textView.setText(Constantes.MSG_SAUDACAO_UM);
-		new CardapioBS(SplashActivity.this).getCardapioEmpresa();
-	}
+    private void getCategoriaCardapioEmpresaNET() {
+        textView.setText(Constantes.MSG_SAUDACAO_UM);
+        new CardapioBS(SplashActivity.this).getCardapioEmpresa();
+    }
 
-	private void getCategoriaCardapioEmpresaLOCAL() {
-		textView.setText(Constantes.MSG_SAUDACAO_UM);
-		super.setListaItemCardapio(this.getDataManager().getCategoriaCardapioItemDAO().getAllbyClause(null, null, null, null, null));
-	}
+    private void getCategoriaCardapioEmpresaLOCAL() {
+        textView.setText(Constantes.MSG_SAUDACAO_UM);
+        super.setListaItemCardapio(this.getDataManager().getCategoriaCardapioItemDAO().getAllbyClause(null, null, null, null, null));
+    }
 }

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Non focused states -->
+    <item android:drawable="@drawable/ic_remover_normal" android:state_focused="false" android:state_pressed="false" android:state_selected="false"/>
+    <item android:drawable="@drawable/ic_remover_pressed" android:state_focused="false" android:state_pressed="true" android:state_selected="false"/>
+
+</selector><!-- From: file:/C:/Login/PROJETO/CardapioGIT/AndroidstudioProjects/BeachStopGarcomAndroid/app/src/main/res/drawable/ic_remover.xml -->

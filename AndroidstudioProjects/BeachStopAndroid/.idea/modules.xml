@@ -5,7 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/BeachStopAndroid.iml" filepath="$PROJECT_DIR$/BeachStopAndroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/beachStopAndroid/beachStopAndroid.iml" filepath="$PROJECT_DIR$/beachStopAndroid/beachStopAndroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/galeriaImg/galeriaImg.iml" filepath="$PROJECT_DIR$/galeriaImg/galeriaImg.iml" />
-      <module fileurl="file://$PROJECT_DIR$/parallaxScroll/parallaxScroll.iml" filepath="$PROJECT_DIR$/parallaxScroll/parallaxScroll.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ParallaxScroll/parallaxScroll.iml" filepath="$PROJECT_DIR$/ParallaxScroll/parallaxScroll.iml" />
     </modules>
   </component>
 </project>

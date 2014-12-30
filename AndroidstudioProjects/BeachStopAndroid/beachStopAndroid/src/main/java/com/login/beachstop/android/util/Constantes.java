@@ -4,6 +4,7 @@ public final class Constantes {
 
 	private Constantes() {
 	}
+    public static final String TAG = "ImageGridFragment";
 	public static final String IMAGE_CACHE = "thumbs";
 	public static final String KEY_SERVLET = "5Mu1tL0g1N";
 	

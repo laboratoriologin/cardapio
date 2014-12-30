@@ -375,15 +375,17 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int default_title_indicator_text_size=0x7f060011;
         public static final int default_title_indicator_title_padding=0x7f060012;
         public static final int default_title_indicator_top_padding=0x7f060013;
-        public static final int padding_large=0x7f060014;
-        public static final int padding_medium=0x7f060015;
-        public static final int padding_small=0x7f060016;
-        public static final int padding_xlarge=0x7f060017;
-        public static final int tab_space=0x7f060018;
-        public static final int tab_space_bottom_line=0x7f060019;
-        public static final int tab_space_plus1=0x7f06001a;
-        public static final int tab_space_top=0x7f06001b;
-        public static final int tab_space_unselected_top=0x7f06001c;
+        public static final int image_thumbnail_size=0x7f060014;
+        public static final int image_thumbnail_spacing=0x7f060015;
+        public static final int padding_large=0x7f060016;
+        public static final int padding_medium=0x7f060017;
+        public static final int padding_small=0x7f060018;
+        public static final int padding_xlarge=0x7f060019;
+        public static final int tab_space=0x7f06001a;
+        public static final int tab_space_bottom_line=0x7f06001b;
+        public static final int tab_space_plus1=0x7f06001c;
+        public static final int tab_space_top=0x7f06001d;
+        public static final int tab_space_unselected_top=0x7f06001e;
     }
     public static final class drawable {
         public static final int actionbar_background=0x7f020000;

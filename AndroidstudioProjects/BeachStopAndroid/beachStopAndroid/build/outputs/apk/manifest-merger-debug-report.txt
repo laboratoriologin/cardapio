@@ -1,6 +1,8 @@
 -- Merging decision tree log ---
 manifest
 ADDED from AndroidManifest.xml:1:1
+	xmlns:android
+		ADDED from AndroidManifest.xml:1:11
 	package
 		ADDED from AndroidManifest.xml:2:5
 		INJECTED from AndroidManifest.xml:0:0
@@ -11,8 +13,6 @@ ADDED from AndroidManifest.xml:1:1
 		ADDED from AndroidManifest.xml:3:5
 		INJECTED from AndroidManifest.xml:0:0
 		INJECTED from AndroidManifest.xml:0:0
-	xmlns:android
-		ADDED from AndroidManifest.xml:1:11
 uses-sdk
 ADDED from AndroidManifest.xml:6:5
 MERGED from BeachStopAndroid:galeriaImg:unspecified:7:5
@@ -66,8 +66,6 @@ MERGED from BeachStopAndroid:parallaxScroll:unspecified:12:5
 MERGED from com.android.support:support-v4:20.0.0:17:5
 	android:label
 		ADDED from AndroidManifest.xml:25:9
-	tools:ignore
-		ADDED from BeachStopAndroid:parallaxScroll:unspecified:12:18
 	android:allowBackup
 		ADDED from AndroidManifest.xml:23:9
 	android:icon
@@ -76,6 +74,8 @@ MERGED from com.android.support:support-v4:20.0.0:17:5
 		ADDED from AndroidManifest.xml:26:9
 	android:name
 		ADDED from AndroidManifest.xml:22:9
+	tools:ignore
+		ADDED from BeachStopAndroid:parallaxScroll:unspecified:12:18
 activity#com.login.beachstop.android.SplashActivity
 ADDED from AndroidManifest.xml:27:9
 	android:screenOrientation
@@ -144,7 +144,7 @@ ADDED from AndroidManifest.xml:62:9
 		ADDED from AndroidManifest.xml:63:13
 meta-data#com.facebook.sdk.ApplicationId
 ADDED from AndroidManifest.xml:67:9
-	android:value
-		ADDED from AndroidManifest.xml:69:13
 	android:name
 		ADDED from AndroidManifest.xml:68:13
+	android:value
+		ADDED from AndroidManifest.xml:69:13
