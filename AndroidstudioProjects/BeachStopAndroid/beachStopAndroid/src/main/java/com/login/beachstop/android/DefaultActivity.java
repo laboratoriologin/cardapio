@@ -12,16 +12,6 @@ public class DefaultActivity extends FragmentActivity {
         super.onBackPressed();
     }
 
-    public Double getLatitudeAtual() {
-        CardapioApp app = (CardapioApp) getApplication();
-        return app.getLatitude();
-    }
-
-    public Double getLongitudeAtual() {
-        CardapioApp app = (CardapioApp) getApplication();
-        return app.getLongitude();
-    }
-
     public TabHost getTabHost() {
         return ((CardapioApp) getApplication()).getTabHost();
     }
