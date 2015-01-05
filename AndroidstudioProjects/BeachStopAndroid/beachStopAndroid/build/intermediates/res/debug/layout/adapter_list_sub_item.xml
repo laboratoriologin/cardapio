@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/adapter_list_sub_item_relative_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/adapter_list_sub_item_linear_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/bg_fragment_detalhe_item_cardapio_table_layout_sub_item_cell"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/adapter_list_sub_item_image_view_seta_esquerda"
+            android:layout_width="30dp"
+            android:layout_height="60dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/seta_para_esquerda" />
+
+        <TextView
+            android:id="@+id/adapter_list_sub_item_text_view_qtd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="10" />
+
+        <ImageView
+            android:id="@+id/adapter_list_sub_item_seta_direita"
+            android:layout_width="30dp"
+            android:layout_height="60dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/seta_para_direita" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/adapter_list_sub_item_text_view_descricao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/adapter_list_sub_item_linear_layout"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/adapter_list_sub_item_text_view_menos"
+        android:layout_toRightOf="@+id/adapter_list_sub_item_linear_layout"
+        android:background="@drawable/bg_fragment_detalhe_item_cardapio_table_layout_sub_item_cell"
+        android:gravity="center"
+        android:text="Frango Especial - 2 pessoas" />
+
+    <ImageView
+        android:id="@+id/adapter_list_sub_item_text_view_menos"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@android:drawable/ic_menu_delete"
+        android:layout_alignBottom="@+id/adapter_list_sub_item_linear_layout"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/bg_fragment_detalhe_item_cardapio_table_layout_sub_item_cell"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:textStyle="bold" />
+
+</RelativeLayout><!-- From: file:/C:/Login/PROJETO/CardapioGIT/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/layout/adapter_list_sub_item.xml -->
