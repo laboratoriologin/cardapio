@@ -29,11 +29,10 @@ public class ItemGridFragment extends Fragment {
 
     private List<Item> itens;
     private View view;
-    private CardapioActivity cardapioActivity;
     private Categoria categoria;
     private ItemGridAdapter itemGridAdapter;
     private GridView gridView;
-    private ImageFetcher mImageFetcher;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -41,13 +40,6 @@ public class ItemGridFragment extends Fragment {
         if (container == null) {
             return null;
         }
-
-        ImageCacheParams mImageCacheParams = new ImageCacheParams(this.getActivity().getBaseContext(), Constantes.IMAGE_CACHE);
-        mImageCacheParams.setMemCacheSizePercent(0.50f);
-
-        this.mImageFetcher = new ImageFetcher(this.getActivity().getBaseContext(), 500);
-        this.mImageFetcher.setLoadingImage(R.drawable.placeholder);
-        this.mImageFetcher.addImageCache(this.getActivity(), Constantes.IMAGE_CACHE);
 
         this.categoria = (Categoria) getArguments().getSerializable(Constantes.ARG_CATEGORIA_CARDAPIO);
         this.cardapioActivity = (CardapioActivity) inflater.getContext();
