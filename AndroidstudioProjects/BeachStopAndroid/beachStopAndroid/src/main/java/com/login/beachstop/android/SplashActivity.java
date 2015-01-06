@@ -16,6 +16,7 @@ import com.login.beachstop.android.network.CategoriaRequest;
 import com.login.beachstop.android.network.EmpresaRequest;
 import com.login.beachstop.android.network.http.ResponseListener;
 import com.login.beachstop.android.utils.Constantes;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.List;
 
@@ -60,13 +61,14 @@ public class SplashActivity extends DefaultActivity {
                         Empresa empresa = (Empresa) serverResponse.getReturnObject();
                         if (getKeyCardapio() == null || !getKeyCardapio().equals(empresa.getKeyCardapio())) {
                             setKeyCardapio(empresa.getKeyCardapio());
-                            if (getDataManager().getCategoriaDAO().deleteAll() && getDataManager().getKitDAO().deleteAll()) {
+                            if (deleteDataSystem()) {
                                 textView.setText(Constantes.MSG_SAUDACAO_UM);
                                 new CategoriaRequest(responseCategorias).getAtivo();
                             } else {
                                 setStatusApresentacao(false, true, Constantes.MSG_ERRO_GRAVAR_DADOS, true);
                             }
-                        }
+                        } else
+                            verificarClienteCadastrado();
                     } catch (Exception e) {
                         e.printStackTrace();
                         setStatusApresentacao(false, true, Constantes.MSG_ERRO_GRAVAR_DADOS, true);
@@ -83,9 +85,7 @@ public class SplashActivity extends DefaultActivity {
     private void configCategoria(List<Categoria> categorias) {
 
         for (Categoria categoria : categorias) {
-
             categoria.setTipoCategoria(Constantes.TipoCategoriaCardapio.ITEM);
-
         }
 
         Categoria categoria = new Categoria();
@@ -164,14 +164,40 @@ public class SplashActivity extends DefaultActivity {
 
     }
 
+    private boolean deleteDataSystem() {
+
+        ///TODO: REVISAR essa função
+        if (getDataManager().getCategoriaDAO().deleteAll()
+                && getDataManager().getKitDAO().deleteAll()
+                && getDataManager().getItemDAO().deleteAll()
+                && getDataManager().getKitSubItemDAO().deleteAll()
+                && getDataManager().getSubItemDAO().deleteAll()
+                && getDataManager().getContaDAO().deleteAll()
+                && getDataManager().getPedidoDAO().deleteAll()
+                && getDataManager().getPedidoSubItemDAO().deleteAll()) {
+
+            ImageLoader.getInstance().clearDiskCache();
+            ImageLoader.getInstance().clearMemoryCache();
+
+            return true;
+        } else
+            return false;
+
+    }
+
     private void startDados() {
 
-        setStatusApresentacao(true, true, Constantes.MSG_SAUDACAO_DOIS, false);
+        ///TODO: revisar logica de inicialização do sistema!
+        if (getDataManager().getContaDAO() != null) {
+            setStatusApresentacao(true, true, Constantes.MSG_SAUDACAO_DOIS, false);
 
-        if (getDataManager().getCategoriaDAO().getQtdCategoria() == 0) {
-            new CategoriaRequest(responseCategorias).getAtivo();
+            if (getDataManager().getCategoriaDAO().getQtdCategoria() == 0) {
+                new CategoriaRequest(responseCategorias).getAtivo();
+            } else {
+                new EmpresaRequest(responseKeyCardapio).getKeyCardapio();
+            }
         } else {
-            new EmpresaRequest(responseKeyCardapio).getKeyCardapio();
+            goCardapio();
         }
     }
 

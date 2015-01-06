@@ -40,16 +40,14 @@ import java.util.Vector;
 /**
  * Created by Argus on 29/10/2014.
  */
-public class ItemKitFragment extends Fragment implements TabHost.OnTabChangeListener, ViewPager.OnPageChangeListener {
+public class KitFragment extends Fragment implements TabHost.OnTabChangeListener, ViewPager.OnPageChangeListener {
 
     private View view;
-    private CardapioActivity cardapioActivity;
     private Categoria categoria;
-    private List<Categoria> categorias;
     private ImageView imageViewTopoActionBar;
     private TabHost mTabHost;
     private ViewPager mViewPager;
-    private HashMap<String, TabInfo> mapTabInfo = new HashMap<String, ItemKitFragment.TabInfo>();
+    private HashMap<String, TabInfo> mapTabInfo = new HashMap<String, KitFragment.TabInfo>();
     private ViewPagerFragmentAdapter mPagerAdapter;
     private ProgressBar progressbar;
     private ResponseListener responseListenerGetKit = new ResponseListener() {
@@ -58,19 +56,19 @@ public class ItemKitFragment extends Fragment implements TabHost.OnTabChangeList
             if (serverResponse != null) {
                 if (serverResponse.isOK()) {
                     try {
-                        cardapioActivity.getDataManager().getKitDAO().save((List<Kit>) serverResponse.getReturnObject());
+                        ((CardapioActivity) getActivity()).getDataManager().getKitDAO().save((List<Kit>) serverResponse.getReturnObject());
 
                         startTab(null);
                         setVisibility(true);
                     } catch (Exception e) {
                         e.printStackTrace();
-                        Toast.makeText(cardapioActivity, Constantes.MSG_ERRO_GRAVAR_DADOS, Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), Constantes.MSG_ERRO_GRAVAR_DADOS, Toast.LENGTH_LONG).show();
                     }
                 } else {
-                    Toast.makeText(cardapioActivity, serverResponse.getMsgErro(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), serverResponse.getMsgErro(), Toast.LENGTH_LONG).show();
                 }
             } else {
-                Toast.makeText(cardapioActivity, Constantes.MSG_ERRO_NET, Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), Constantes.MSG_ERRO_NET, Toast.LENGTH_LONG).show();
             }
         }
     };
@@ -81,51 +79,26 @@ public class ItemKitFragment extends Fragment implements TabHost.OnTabChangeList
                 if (serverResponse.isOK()) {
                     try {
                         for (Item item : (List<Item>) serverResponse.getReturnObject()) {
-                            cardapioActivity.getDataManager().getItemDAO().save(item);
+                            ((CardapioActivity) getActivity()).getDataManager().getItemDAO().save(item);
                         }
                         new KitRequest(responseListenerGetKit).get(null);
                     } catch (Exception e) {
                         e.printStackTrace();
-                        Toast.makeText(cardapioActivity, Constantes.MSG_ERRO_GRAVAR_DADOS, Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), Constantes.MSG_ERRO_GRAVAR_DADOS, Toast.LENGTH_LONG).show();
                     }
                 } else {
-                    Toast.makeText(cardapioActivity, serverResponse.getMsgErro(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), serverResponse.getMsgErro(), Toast.LENGTH_LONG).show();
                 }
             } else {
-                Toast.makeText(cardapioActivity, Constantes.MSG_ERRO_NET, Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), Constantes.MSG_ERRO_NET, Toast.LENGTH_LONG).show();
             }
         }
     };
 
-    /**
-     * Add Tab content to the Tabhost
-     *
-     * @param itemFragment
-     * @param tabHost
-     * @param tabSpec
-     * @param tabInfo
-     */
-    private static void AddTab(ItemKitFragment itemFragment, TabHost tabHost, TabHost.TabSpec tabSpec, TabInfo tabInfo) {
-        // Attach a Tab view factory to the spec
-        tabSpec.setContent(itemFragment.new TabFactory(itemFragment.view.getContext()));
-        tabHost.addTab(tabSpec);
-    }
-
-    private static View createTabView(final Context context, final String text, final int idImg) {
-        View view = LayoutInflater.from(context).inflate(R.layout.tabs_bg, null);
-        TextView tv = (TextView) view.findViewById(R.id.tabsText);
-        tv.setText(text);
-
-        ImageView iv = (ImageView) view.findViewById(R.id.tabsImagemView);
-        iv.setBackgroundResource(idImg);
-
-        return view;
-    }
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        this.cardapioActivity = (CardapioActivity) activity;
         Bundle args = getArguments();
         this.categoria = (Categoria) args.getSerializable(Constantes.ARG_CATEGORIA_CARDAPIO);
     }
@@ -134,17 +107,16 @@ public class ItemKitFragment extends Fragment implements TabHost.OnTabChangeList
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.view = inflater.inflate(R.layout.fragment_item, container, false);
+        this.view = inflater.inflate(R.layout.fragment_kit, container, false);
 
         ((ActionBar) this.view.findViewById(R.id.actionbar)).setDisplayHomeAsUpEnabled(Boolean.TRUE);
         this.imageViewTopoActionBar = (ImageView) (this.view.findViewById(R.id.actionbar)).findViewById(R.id.imagem_action_bar);
-
 
         Drawable img = DrawableManager.getDrawableManager().getDrawable(Constantes.URL_IMG + "topo_" + categoria.getImagem());
 
         if (img == null) {
 
-            new LoadImage(this.imageViewTopoActionBar, cardapioActivity).execute(Constantes.URL_IMG + "topo_" + categoria.getImagem());
+            new LoadImage(this.imageViewTopoActionBar, getActivity()).execute(Constantes.URL_IMG + "topo_" + categoria.getImagem());
 
         } else {
 
@@ -156,20 +128,18 @@ public class ItemKitFragment extends Fragment implements TabHost.OnTabChangeList
 
         this.progressbar = (ProgressBar) this.view.findViewById(R.id.progressBar);
 
-        //se não houver os itens da categoria selecionada gravado no banco de dados do celular deverá busca no servidor
-        if (this.cardapioActivity.getDataManager().getKitDAO().getQtdKit() == 0) {
+        //se não houver kit gravado no banco de dados, o sistema irá buscar todos os itens e depois irá buscar os kit's do restaurante
+        if (((CardapioActivity) getActivity()).getDataManager().getKitDAO().getQtdKit() == 0) {
 
-            List<Categoria> categoriaList = this.cardapioActivity.getDataManager().getCategoriaDAO().getAllOrderByOrdem().subList(0, (this.cardapioActivity.getDataManager().getCategoriaDAO().getQtdCategoria() - 1));
-            this.categorias = new ArrayList<Categoria>();
+            List<Categoria> categorias = ((CardapioActivity) getActivity()).getDataManager().getCategoriaDAO().getAllOrderByOrdem().subList(0, (((CardapioActivity) getActivity()).getDataManager().getCategoriaDAO().getQtdCategoria() - 2));
 
             List<Item> items;
             List<Long> itensIdBusca = new ArrayList<Long>();
 
-            for (Categoria item : categoriaList) {
-                this.categorias.add(item);
-                items = this.cardapioActivity.getDataManager().getItemDAO().getAll(item.getId());
+            for (Categoria categoria1 : categorias) {
+                items = ((CardapioActivity) getActivity()).getDataManager().getItemDAO().getAll(categoria1.getId());
                 if (items.size() == 0)
-                    itensIdBusca.add(item.getId());
+                    itensIdBusca.add(categoria1.getId());
             }
 
             if (itensIdBusca.size() != 0)
@@ -185,6 +155,37 @@ public class ItemKitFragment extends Fragment implements TabHost.OnTabChangeList
         }
 
         return this.view;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putString("tab", mTabHost.getCurrentTabTag());
+        super.onSaveInstanceState(outState);
+    }
+
+    /**
+     * Add Tab content to the Tabhost
+     *
+     * @param itemFragment
+     * @param tabHost
+     * @param tabSpec
+     * @param tabInfo
+     */
+    private static void AddTab(KitFragment itemFragment, TabHost tabHost, TabHost.TabSpec tabSpec, TabInfo tabInfo) {
+        // Attach a Tab view factory to the spec
+        tabSpec.setContent(itemFragment.new TabFactory(itemFragment.view.getContext()));
+        tabHost.addTab(tabSpec);
+    }
+
+    private static View createTabView(final Context context, final String text, final int idImg) {
+        View view = LayoutInflater.from(context).inflate(R.layout.tabs_bg, null);
+        TextView tv = (TextView) view.findViewById(R.id.tabsText);
+        tv.setText(text);
+
+        ImageView iv = (ImageView) view.findViewById(R.id.tabsImagemView);
+        iv.setBackgroundResource(idImg);
+
+        return view;
     }
 
     private void setVisibility(Boolean a) {
@@ -204,14 +205,7 @@ public class ItemKitFragment extends Fragment implements TabHost.OnTabChangeList
             mTabHost.setCurrentTabByTag(savedInstanceState.getString("tab"));
         }
 
-        // Intialise ViewPager
         this.intialiseViewPager();
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        outState.putString("tab", mTabHost.getCurrentTabTag());
-        super.onSaveInstanceState(outState);
     }
 
     /**
@@ -223,8 +217,8 @@ public class ItemKitFragment extends Fragment implements TabHost.OnTabChangeList
         argLista.putSerializable(Constantes.ARG_CATEGORIA_CARDAPIO, this.categoria);
 
         List<Fragment> fragments = new Vector<Fragment>();
-        fragments.add(Fragment.instantiate(view.getContext(), ItemGridFragment.class.getName(), argLista));
-        fragments.add(Fragment.instantiate(view.getContext(), ItemListFragment.class.getName(), argLista));
+        fragments.add(Fragment.instantiate(view.getContext(), KitGridFragment.class.getName(), argLista));
+        fragments.add(Fragment.instantiate(view.getContext(), KitListFragment.class.getName(), argLista));
 
         this.mPagerAdapter = new ViewPagerFragmentAdapter(this.getChildFragmentManager(), fragments);
         //
@@ -244,9 +238,9 @@ public class ItemKitFragment extends Fragment implements TabHost.OnTabChangeList
         View tabviewGrid = createTabView(mTabHost.getContext(), "Galeria", R.drawable.icone_galeria);
         View tabviewList = createTabView(mTabHost.getContext(), "Lista", R.drawable.icone_lista);
 
-        ItemKitFragment.AddTab(this, this.mTabHost, this.mTabHost.newTabSpec("Galeria").setIndicator(tabviewGrid), (tabInfo = new TabInfo("Galeria", ItemGridFragment.class, args)));
+        KitFragment.AddTab(this, this.mTabHost, this.mTabHost.newTabSpec("Galeria").setIndicator(tabviewGrid), (tabInfo = new TabInfo("Galeria", KitGridFragment.class, args)));
         this.mapTabInfo.put(tabInfo.tag, tabInfo);
-        ItemKitFragment.AddTab(this, this.mTabHost, this.mTabHost.newTabSpec("Lista").setIndicator(tabviewList), (tabInfo = new TabInfo("Lista", ItemListFragment.class, args)));
+        KitFragment.AddTab(this, this.mTabHost, this.mTabHost.newTabSpec("Lista").setIndicator(tabviewList), (tabInfo = new TabInfo("Lista", KitListFragment.class, args)));
         this.mapTabInfo.put(tabInfo.tag, tabInfo);
 
         mTabHost.setOnTabChangedListener(this);

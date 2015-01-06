@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.login.beachstop.android.CardapioActivity;
+import com.login.beachstop.android.DefaultActivity;
 import com.login.beachstop.android.R;
 import com.login.beachstop.android.models.Categoria;
 import com.login.beachstop.android.models.Publicidade;
@@ -40,7 +41,6 @@ public class CardapioFragment extends Fragment {
 
     private static final int TIME_SLIDE = 10000;
     private View view;
-    private CardapioActivity activity;
     private List<Publicidade> publicidades = null;
     private List<Categoria> categorias;
     private ViewPager viewPagerMidia = null;
@@ -66,7 +66,7 @@ public class CardapioFragment extends Fragment {
 
                         if (publicidades.size() != 0) {
 
-                            publicidadeFragmentAdapter = new PublicidadeFragmentAdapter(activity, CardapioFragment.this.getChildFragmentManager(), publicidades);
+                            publicidadeFragmentAdapter = new PublicidadeFragmentAdapter(getActivity(), CardapioFragment.this.getChildFragmentManager(), publicidades);
                             viewPagerMidia.setAdapter(publicidadeFragmentAdapter);
                             mIndicator.setViewPager(viewPagerMidia);
 
@@ -102,21 +102,21 @@ public class CardapioFragment extends Fragment {
                     } catch (Exception e) {
 
                         e.printStackTrace();
-                        Toast.makeText(activity, Constantes.MSG_ERRO_GRAVAR_DADOS, Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), Constantes.MSG_ERRO_GRAVAR_DADOS, Toast.LENGTH_LONG).show();
 
                     }
 
 
                 } else {
 
-                    Toast.makeText(activity, serverResponse.getMsgErro(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), serverResponse.getMsgErro(), Toast.LENGTH_LONG).show();
 
                 }
 
 
             } else {
 
-                Toast.makeText(activity, Constantes.MSG_ERRO_NET, Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), Constantes.MSG_ERRO_NET, Toast.LENGTH_LONG).show();
 
             }
 
@@ -138,9 +138,9 @@ public class CardapioFragment extends Fragment {
 
         new PublicidadeRequest(listenerGetPublicidade).get(new Publicidade());
 
-        this.categorias = this.activity.getDataManager().getCategoriaDAO().getAllOrderByOrdem();
+        this.categorias = ((CardapioActivity) getActivity()).getDataManager().getCategoriaDAO().getAllOrderByOrdem();
 
-        this.categoriaGridAdapter = new CategoriaGridAdapter(this.activity, this.categorias);
+        this.categoriaGridAdapter = new CategoriaGridAdapter((DefaultActivity) getActivity(), this.categorias);
         this.gridViewMenu.setAdapter(this.categoriaGridAdapter);
 
         this.gridViewMenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -188,7 +188,7 @@ public class CardapioFragment extends Fragment {
         Bundle args = new Bundle();
         args.putSerializable(Constantes.ARG_CATEGORIA_CARDAPIO, categoria);
         newFragment.setArguments(args);
-        FragmentTransaction transaction = this.activity.getSupportFragmentManager().beginTransaction();
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
 
         transaction.replace(R.id.activity_cardapio_fragment_layout, newFragment);
         transaction.addToBackStack(null);
@@ -198,11 +198,11 @@ public class CardapioFragment extends Fragment {
 
     public void goToItemKitFragment(Categoria categoria) {
 
-        ItemKitFragment newFragment = new ItemKitFragment();
+        KitFragment newFragment = new KitFragment();
         Bundle args = new Bundle();
         args.putSerializable(Constantes.ARG_CATEGORIA_CARDAPIO, categoria);
         newFragment.setArguments(args);
-        FragmentTransaction transaction = this.activity.getSupportFragmentManager().beginTransaction();
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
 
         transaction.replace(R.id.activity_cardapio_fragment_layout, newFragment);
         transaction.addToBackStack(null);
@@ -216,7 +216,7 @@ public class CardapioFragment extends Fragment {
         Bundle args = new Bundle();
         args.putSerializable(Constantes.ARG_CATEGORIA_CARDAPIO, categoria);
         newFragment.setArguments(args);
-        FragmentTransaction transaction = this.activity.getSupportFragmentManager().beginTransaction();
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
 
         transaction.replace(R.id.activity_cardapio_fragment_layout, newFragment);
         transaction.addToBackStack(null);
@@ -227,7 +227,6 @@ public class CardapioFragment extends Fragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        this.activity = (CardapioActivity) activity;
     }
 
     @Override
@@ -257,9 +256,9 @@ public class CardapioFragment extends Fragment {
         public void onExecute(String arg0, Integer status) {
             // TODO Auto-generated method stubInteger status = t;
             if (status.intValue() == 200 || status.intValue() == 201 || status.intValue() == 204)
-                Toast.makeText(activity, "Compartilhado!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), "Compartilhado!", Toast.LENGTH_LONG).show();
             else
-                Toast.makeText(activity, "Erro ao compartilhar! Tente novamente mais tarde!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), "Erro ao compartilhar! Tente novamente mais tarde!", Toast.LENGTH_LONG).show();
 
         }
     }
