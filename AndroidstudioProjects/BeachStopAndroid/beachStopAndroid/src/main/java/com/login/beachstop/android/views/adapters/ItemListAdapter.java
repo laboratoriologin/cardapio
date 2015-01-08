@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.login.beachstop.android.R;
 import com.login.beachstop.android.models.Item;
+import com.login.beachstop.android.models.Kit;
 import com.login.beachstop.android.utils.Constantes;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -23,12 +24,12 @@ import java.util.List;
 public class ItemListAdapter extends BaseAdapter {
 
     private LayoutInflater mInflater;
-    private List<Item> itens;
+    private List<?> objects;
     private DisplayImageOptions options;
 
-    public ItemListAdapter(Context context, List<Item> itens) {
+    public ItemListAdapter(Context context, List<?> objects) {
 
-        this.itens = itens;
+        this.objects = objects;
         this.mInflater = LayoutInflater.from(context);
 
         options = new DisplayImageOptions.Builder()
@@ -49,7 +50,13 @@ public class ItemListAdapter extends BaseAdapter {
         View view = convertView;
         final ViewHolder viewHolder;
 
-        Item item = itens.get(position);
+        Object obj = objects.get(position);
+        Item item = null;
+        Kit kit = null;
+        boolean isItem = obj instanceof Item;
+
+        if (isItem) item = (Item) obj;
+        else kit = (Kit) obj;
 
         if (convertView == null) {
 
@@ -57,7 +64,7 @@ public class ItemListAdapter extends BaseAdapter {
 
             ImageView imageView = (ImageView) view.findViewById(R.id.adapter_list_view_item_image_view);
             imageView.setImageResource(R.drawable.placeholder);
-            imageView.setTag(Constantes.URL_IMG + item.getImagem());
+            imageView.setTag(Constantes.URL_IMG + (isItem ? item.getImagem() : kit.getImagem()));
 
             viewHolder = new ViewHolder();
             viewHolder.imageView = imageView;
@@ -69,9 +76,9 @@ public class ItemListAdapter extends BaseAdapter {
         }
 
 
-        if (!TextUtils.isEmpty(item.getImagem())) {
+        if (!TextUtils.isEmpty((isItem ? item.getImagem() : kit.getImagem()))) {
 
-            ImageLoader.getInstance().displayImage(Constantes.URL_IMG + item.getImagem(), viewHolder.imageView, options);
+            ImageLoader.getInstance().displayImage(Constantes.URL_IMG + (isItem ? item.getImagem() : kit.getImagem()), viewHolder.imageView, options);
 
         } else {
 
@@ -80,20 +87,20 @@ public class ItemListAdapter extends BaseAdapter {
         }
 
 
-        ((TextView) convertView.findViewById(R.id.adapter_list_view_item_text_view_nome)).setText(item.getNome());
-        ((TextView) convertView.findViewById(R.id.adapter_list_view_item_text_view_ingrediente)).setText(item.getDescricao());
+        ((TextView) view.findViewById(R.id.adapter_list_view_item_text_view_nome)).setText(isItem ? item.getNome() : kit.getNome());
+        ((TextView) view.findViewById(R.id.adapter_list_view_item_text_view_ingrediente)).setText(isItem ? item.getDescricao() : kit.getDescricao());
 
         return view;
     }
 
     @Override
     public int getCount() {
-        return this.itens.size();
+        return this.objects.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return this.itens.get(position);
+        return this.objects.get(position);
     }
 
     @Override

@@ -12,6 +12,7 @@ import com.login.beachstop.android.R;
 import com.login.beachstop.android.fragments.PedidoFragment;
 import com.login.beachstop.android.managers.sqlite.dao.DataManager;
 import com.login.beachstop.android.models.Item;
+import com.login.beachstop.android.models.KitSubItem;
 import com.login.beachstop.android.models.Pedido;
 import com.login.beachstop.android.models.PedidoSubItem;
 
@@ -45,11 +46,17 @@ public class SubItemListAdapter extends BaseAdapter {
         convertView = mInflater.inflate(R.layout.adapter_list_sub_item, null);
 
         final PedidoSubItem pedidoSubItem = this.getPedido().getPedidoSubItens().get(position);
-        Item item = this.dataManager.getItemDAO().get(pedidoSubItem.getSubItem().getItemId());
+        final TextView tv;
 
-        final TextView tv = (TextView) convertView.findViewById(R.id.adapter_list_sub_item_text_view_qtd);
+        if (pedidoSubItem.getKitId() == 0) {
+            Item item = this.dataManager.getItemDAO().getBySubItem(pedidoSubItem.getSubItem());
+            ((TextView) convertView.findViewById(R.id.adapter_list_sub_item_text_view_descricao)).setText(item.getNome() + " - " + pedidoSubItem.getSubItem().getNome());
+        } else {
+            ((TextView) convertView.findViewById(R.id.adapter_list_sub_item_text_view_descricao)).setText(pedidoSubItem.getKit().getNome());
+        }
+
+        tv = (TextView) convertView.findViewById(R.id.adapter_list_sub_item_text_view_qtd);
         tv.setText((String.format("%02d", pedidoSubItem.getQuantidade())));
-        ((TextView) convertView.findViewById(R.id.adapter_list_sub_item_text_view_descricao)).setText(item.getNome() + " - " + pedidoSubItem.getSubItem().getDescricao());
 
         convertView.findViewById(R.id.adapter_list_sub_item_image_view_seta_esquerda).setOnClickListener(new OnClickListener() {
 
@@ -81,63 +88,36 @@ public class SubItemListAdapter extends BaseAdapter {
     public void atualizaQtdPedido(Boolean isSoma, TextView campoQtd, PedidoSubItem pedidoSubItem) {
 
         if (isSoma) {
-
             if (pedidoSubItem.getQuantidade() < 99) {
-
                 try {
-
                     pedidoSubItem.addQtd(1l);
                     this.dataManager.getPedidoSubItemDAO().update(pedidoSubItem, pedidoSubItem.getId());
                     campoQtd.setText((String.format("%02d", pedidoSubItem.getQuantidade())));
-
                 } catch (Exception e) {
-
                     // TODO: EXIBIR MSG DE ERRO
-
                 }
-
             }
-
         } else {
-
             if (pedidoSubItem.getQuantidade() > 1) {
-
                 try {
-
                     pedidoSubItem.subQtd(1l);
-
                     this.dataManager.getPedidoSubItemDAO().update(pedidoSubItem, pedidoSubItem.getId());
-
                     campoQtd.setText((String.format("%02d", pedidoSubItem.getQuantidade())));
-
                 } catch (Exception e) {
-
                     // TODO: EXIBIR MSG DE ERRO
-
                 }
-
             }
-
         }
-
         atualizaValorTotalPedido();
-
         this.notifyDataSetChanged();
-
     }
 
     public void deleteItemPedido(PedidoSubItem pedidoSubItem) {
-
         if (this.dataManager.getPedidoSubItemDAO().delete(pedidoSubItem.getId())) {
-
             this.pedido.getPedidoSubItens().remove(this.pedido.getPedidoSubItens().indexOf(pedidoSubItem));
-
             this.notifyDataSetChanged();
-
             atualizaValorTotalPedido();
-
         }
-
     }
 
     public void atualizaValorTotalPedido() {
@@ -145,17 +125,22 @@ public class SubItemListAdapter extends BaseAdapter {
         BigDecimal valorTotalPedido = new BigDecimal(0);
 
         for (PedidoSubItem pedidoSubItem : this.pedido.getPedidoSubItens()) {
-
-            valorTotalPedido = valorTotalPedido.add(new BigDecimal(pedidoSubItem.getQuantidade()).multiply(pedidoSubItem.getSubItem().getValorBigDecimal()));
-
+            //Se o id do kit estiver zero é por que é um item
+            if (pedidoSubItem.getKitId() == 0) {
+                valorTotalPedido = valorTotalPedido.add(new BigDecimal(pedidoSubItem.getQuantidade()).multiply(pedidoSubItem.getSubItem().getValorBigDecimal()));
+            } else {
+                BigDecimal valorTotalKit = new BigDecimal(0);
+                for (KitSubItem kitSubItem : pedidoSubItem.getKit().getKitSubItens()) {
+                    valorTotalKit = valorTotalKit.add(kitSubItem.getItem().getSubItens().get(0).getValorBigDecimal().multiply(new BigDecimal(kitSubItem.getQuantidade())));
+                }
+                valorTotalKit = valorTotalKit.subtract(new BigDecimal(pedidoSubItem.getKit().getDesconto()));
+                valorTotalPedido = valorTotalPedido.add(valorTotalKit);
+            }
         }
 
         NumberFormat format = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
-
         this.valorTotal.setText(format.format(valorTotalPedido.doubleValue()));
-
         this.pedidoFragment.changeViewPedido();
-
     }
 
     public int getCount() {

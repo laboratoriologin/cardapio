@@ -60,19 +60,11 @@ public class CategoriaRequest extends ObjectRequest<Cliente> {
                     categorias.add(categoria);
                 }
 
-
                 serverResponse.setReturnObject(categorias);
-
-
             } catch (JSONException e) {
                 e.printStackTrace();
-
                 serverResponse.setStatusCode(-1);
             }
-
         }
-
     }
-
-
 }

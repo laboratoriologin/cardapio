@@ -21,8 +21,10 @@ import com.login.beachstop.android.CardapioActivity;
 import com.login.beachstop.android.R;
 import com.login.beachstop.android.models.Categoria;
 import com.login.beachstop.android.models.Item;
+import com.login.beachstop.android.models.Kit;
 import com.login.beachstop.android.models.ServerResponse;
 import com.login.beachstop.android.network.ItemRequest;
+import com.login.beachstop.android.network.KitRequest;
 import com.login.beachstop.android.network.http.ResponseListener;
 import com.login.beachstop.android.utils.Constantes;
 import com.login.beachstop.android.utils.DrawableManager;
@@ -30,6 +32,7 @@ import com.login.beachstop.android.utils.LoadImage;
 import com.login.beachstop.android.views.actionbar.ActionBar;
 import com.login.beachstop.android.views.adapters.ViewPagerFragmentAdapter;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
@@ -83,6 +86,49 @@ public class ItemFragment extends Fragment implements TabHost.OnTabChangeListene
 
             }
 
+        }
+    };
+
+    private ResponseListener responseListenerGetItens = new ResponseListener() {
+        @Override
+        public void onResult(ServerResponse serverResponse) {
+            if (serverResponse != null) {
+                if (serverResponse.isOK()) {
+                    try {
+                        ((CardapioActivity) getActivity()).getDataManager().getItemDAO().save((List<Item>) serverResponse.getReturnObject());
+                        new KitRequest(responseListenerGetKit).get(new Kit());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        Toast.makeText(getActivity(), Constantes.MSG_ERRO_GRAVAR_DADOS, Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    Toast.makeText(getActivity(), serverResponse.getMsgErro(), Toast.LENGTH_LONG).show();
+                }
+            } else {
+                Toast.makeText(getActivity(), Constantes.MSG_ERRO_NET, Toast.LENGTH_LONG).show();
+            }
+        }
+    };
+
+    private ResponseListener responseListenerGetKit = new ResponseListener() {
+        @Override
+        public void onResult(ServerResponse serverResponse) {
+            if (serverResponse != null) {
+                if (serverResponse.isOK()) {
+                    try {
+                        ((CardapioActivity) getActivity()).getDataManager().getKitDAO().save((List<Kit>) serverResponse.getReturnObject());
+                        startTab(null);
+                        setVisibility(true);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        Toast.makeText(getActivity(), Constantes.MSG_ERRO_GRAVAR_DADOS, Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    Toast.makeText(getActivity(), serverResponse.getMsgErro(), Toast.LENGTH_LONG).show();
+                }
+            } else {
+                Toast.makeText(getActivity(), Constantes.MSG_ERRO_NET, Toast.LENGTH_LONG).show();
+            }
         }
     };
 
@@ -145,10 +191,41 @@ public class ItemFragment extends Fragment implements TabHost.OnTabChangeListene
 
         this.progressbar = (ProgressBar) this.view.findViewById(R.id.progressBar);
 
-        //se não houver os itens da categoria selecionada gravado no banco de dados do celular deverá busca no servidor
-        if (this.cardapioActivity.getDataManager().getItemDAO().getQtdItem(this.categoria) == 0) {
+        //Ferifica se é um Item ou um Kit
+        if (Constantes.TipoCategoriaCardapio.ITEM.equals(this.categoria.getTipoCategoria())) {
+            //se não houver os itens da categoria selecionada gravado no banco de dados do celular deverá busca no servidor
+            if (this.cardapioActivity.getDataManager().getItemDAO().getQtdItem(this.categoria) == 0) {
+                new ItemRequest(listenerGetItem).getItemByCategorias(this.categoria.getId());
+            } else {
+                startTab(savedInstanceState);
+                setVisibility(true);
+            }
+        } else {
+            loadKit(savedInstanceState);
+        }
 
-            new ItemRequest(listenerGetItem).getItemByCategorias(this.categoria.getId());
+        return this.view;
+    }
+
+    private void loadKit(Bundle savedInstanceState) {
+        //se não houver kit gravado no banco de dados, o sistema irá buscar todos os itens e depois irá buscar os kit's do restaurante
+        if (((CardapioActivity) getActivity()).getDataManager().getKitDAO().getQtdKit() == 0) {
+
+            List<Categoria> categorias = ((CardapioActivity) getActivity()).getDataManager().getCategoriaDAO().getAllOrderByOrdem().subList(0, (((CardapioActivity) getActivity()).getDataManager().getCategoriaDAO().getQtdCategoria() - 2));
+
+            List<Item> items;
+            List<Long> itensIdBusca = new ArrayList<Long>();
+
+            for (Categoria categoria1 : categorias) {
+                items = ((CardapioActivity) getActivity()).getDataManager().getItemDAO().getAll(categoria1.getId());
+                if (items.size() == 0)
+                    itensIdBusca.add(categoria1.getId());
+            }
+
+            if (itensIdBusca.size() != 0)
+                new ItemRequest(responseListenerGetItens).getItemByCategorias(itensIdBusca);
+            else
+                new KitRequest(responseListenerGetKit).get(new Kit());
 
         } else {
 
@@ -156,8 +233,6 @@ public class ItemFragment extends Fragment implements TabHost.OnTabChangeListene
             setVisibility(true);
 
         }
-
-        return this.view;
     }
 
     private void setVisibility(Boolean a) {

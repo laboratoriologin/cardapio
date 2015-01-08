@@ -31,7 +31,7 @@ public class KitSubItem extends TSActiveRecordAb<KitSubItem> {
 	@JoinColumn(name = "kit_id")
 	private Kit kit;
 	
-	private int quantidade;
+	private int qtd;
 
 	public Long getId() {
 		return id;
@@ -57,12 +57,12 @@ public class KitSubItem extends TSActiveRecordAb<KitSubItem> {
 		this.kit = kit;
 	}	
 	
-	public int getQuantidade() {
-		return quantidade;
+	public int getQtd() {
+		return qtd;
 	}
 
-	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
+	public void setqtd(int qtd) {
+		this.qtd = qtd;
 	}
 
 	@Override

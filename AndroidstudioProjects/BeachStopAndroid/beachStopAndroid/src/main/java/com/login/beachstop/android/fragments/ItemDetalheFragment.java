@@ -214,6 +214,7 @@ public class ItemDetalheFragment extends Fragment {
                 pedidoSubItem.setSubItemId(subItem.getId());
                 pedidoSubItem.setQuantidade(subItem.getQtdSelecionado());
                 pedidoSubItem.setSubItem(subItem);
+                pedidoSubItem.setKitId(0l);
 
                 if (pedidoAtual.getPedidoSubItens().contains(pedidoSubItem)) {
                     pedidoSubItemContains = pedidoAtual.getPedidoSubItens().get(pedidoAtual.getPedidoSubItens().indexOf(pedidoSubItem));

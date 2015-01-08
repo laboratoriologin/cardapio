@@ -4,7 +4,9 @@
     <string name="escolher">Incluir</string>
     <string name="finalizar_pedido">Pedir</string>
     <string name="ingredientes">Ingredientes</string>
+    <string name="itens_kit">Itens do kit</string>
     <string name="sobre_o_prato">Sobre o prato</string>
+    <string name="sobre_o_kit">Sobre o Kit</string>
     <string name="acompanhamentos">Acompanhamentos</string>
     <string name="tempo_medio">Tempo médio \nde preparo</string>
     <string name="enviar_pedido">Enviar o pedido</string>

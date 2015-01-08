@@ -81,7 +81,7 @@ public class KitFaces extends CrudFaces<Kit> {
 
 		kitSubItem.setSubItem(this.getSubItemSelecionado());
 		kitSubItem.setKit(getCrudModel());
-		kitSubItem.setQuantidade(quantidadeSelecionada);
+		kitSubItem.setqtd(quantidadeSelecionada);
 
 		if (TSUtil.isEmpty(getCrudModel().getListKitSubItem())) {
 			getCrudModel().setListKitSubItem(new ArrayList<KitSubItem>());

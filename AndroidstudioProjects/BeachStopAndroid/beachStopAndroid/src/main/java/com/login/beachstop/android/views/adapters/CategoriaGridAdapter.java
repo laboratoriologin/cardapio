@@ -1,6 +1,5 @@
 package com.login.beachstop.android.views.adapters;
 
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +10,8 @@ import com.login.beachstop.android.DefaultActivity;
 import com.login.beachstop.android.R;
 import com.login.beachstop.android.models.Categoria;
 import com.login.beachstop.android.utils.Constantes;
-import com.login.beachstop.android.utils.DrawableManager;
-import com.login.beachstop.android.utils.LoadImage;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.List;
 
@@ -23,11 +22,22 @@ public class CategoriaGridAdapter extends BaseAdapter {
 
     private LayoutInflater mInflater;
     private List<Categoria> categorias;
+    private DisplayImageOptions options;
 
     public CategoriaGridAdapter(DefaultActivity context, List<Categoria> categorias) {
 
         this.mInflater = LayoutInflater.from(context);
         this.categorias = categorias;
+
+        options = new DisplayImageOptions.Builder()
+                .showImageOnLoading(R.drawable.placeholder)
+                .showImageForEmptyUri(R.drawable.placeholder)
+                .showImageOnFail(R.drawable.placeholder)
+                .delayBeforeLoading(100)
+                .cacheInMemory(true)
+                .cacheOnDisk(true)
+                .considerExifParams(true)
+                .build();
 
     }
 
@@ -41,17 +51,19 @@ public class CategoriaGridAdapter extends BaseAdapter {
 
         if (Constantes.TipoCategoriaCardapio.ITEM == categoria.getTipoCategoria()) {
 
-            Drawable img = DrawableManager.getDrawableManager().getDrawable(Constantes.URL_IMG + categoria.getImagem());
+            ImageLoader.getInstance().displayImage(Constantes.URL_IMG + categoria.getImagem(), imgViewItem, options);
 
-            if (img == null) {
-
-                new LoadImage(imgViewItem, convertView.getContext()).execute(Constantes.URL_IMG + categoria.getImagem());
-
-            } else {
-
-                imgViewItem.setImageDrawable(img);
-
-            }
+//            Drawable img = DrawableManager.getDrawableManager().getDrawable(Constantes.URL_IMG + categoria.getImagem());
+//
+//            if (img == null) {
+//
+//                new LoadImage(imgViewItem, convertView.getContext()).execute(Constantes.URL_IMG + categoria.getImagem());
+//
+//            } else {
+//
+//                imgViewItem.setImageDrawable(img);
+//
+//            }
         } else if (Constantes.TipoCategoriaCardapio.KIT == categoria.getTipoCategoria()) {
 
             imgViewItem.setImageResource(categoria.getResourceImg());

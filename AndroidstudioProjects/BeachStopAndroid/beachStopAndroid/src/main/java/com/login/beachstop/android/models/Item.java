@@ -134,4 +134,21 @@ public class Item extends Base {
     public void setSubItens(List<SubItem> subItens) {
         this.subItens = subItens;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Item item = (Item) o;
+
+        if (id != null ? !id.equals(item.id) : item.id != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }
 }

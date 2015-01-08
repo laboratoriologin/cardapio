@@ -146,27 +146,20 @@ public class PedidoSubItem extends Base {
     }
 
     @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((subItem == null) ? 0 : subItem.hashCode());
-        return result;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        PedidoSubItem that = (PedidoSubItem) o;
+
+        if (subItemId != null ? !subItemId.equals(that.subItemId) : that.subItemId != null)
+            return false;
+
+        return true;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        PedidoSubItem other = (PedidoSubItem) obj;
-        if (subItem == null) {
-            if (other.subItem != null)
-                return false;
-        } else if (!subItem.equals(other.subItem))
-            return false;
-        return true;
+    public int hashCode() {
+        return subItemId != null ? subItemId.hashCode() : 0;
     }
 }

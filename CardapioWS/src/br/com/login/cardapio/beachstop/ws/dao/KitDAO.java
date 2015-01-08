@@ -17,7 +17,7 @@ public class KitDAO  implements RestDAO<Kit> {
 
 		broker.setPropertySQL("kitdao.get", id);
 
-		return (Kit) broker.getObjectBean(Kit.class, "desconto", "descricao", "flagAtivo", "id", "nome", "ordem");
+		return (Kit) broker.getObjectBean(Kit.class, "desconto", "descricao", "flagAtivo", "id", "nome", "ordem", "imagem");
 
 	}
 
@@ -30,7 +30,7 @@ public class KitDAO  implements RestDAO<Kit> {
 		
 		KitSubItemDAO kitSubItemDAO = new KitSubItemDAO();
 
-		List<Kit> kits = broker.getCollectionBean(Kit.class, "desconto", "descricao", "flagAtivo", "id", "nome", "ordem");
+		List<Kit> kits = broker.getCollectionBean(Kit.class, "desconto", "descricao", "flagAtivo", "id", "nome", "ordem", "imagem");
 		
 		for (Kit kit : kits) {
 			kit.setKitSubItens(kitSubItemDAO.getAll(kit));
@@ -47,7 +47,7 @@ public class KitDAO  implements RestDAO<Kit> {
 
 		model.setId(broker.getSequenceNextValue("dbo.kits "));
 
-		broker.setPropertySQL("kitdao.insert",model.getDesconto(), model.getDescricao(), model.getFlagAtivo(), model.getNome(), model.getOrdem());
+		broker.setPropertySQL("kitdao.insert",model.getDesconto(), model.getDescricao(), model.getFlagAtivo(), model.getNome(), model.getOrdem(), model.getImagem());
 
 		broker.execute();
 
@@ -60,7 +60,7 @@ public class KitDAO  implements RestDAO<Kit> {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("kitdao.update", model.getDesconto(), model.getDescricao(), model.getFlagAtivo(), model.getNome(), model.getOrdem(), model.getId());
+		broker.setPropertySQL("kitdao.update", model.getDesconto(), model.getDescricao(), model.getFlagAtivo(), model.getNome(), model.getOrdem(), model.getId(), model.getImagem());
 
 		broker.execute();
 

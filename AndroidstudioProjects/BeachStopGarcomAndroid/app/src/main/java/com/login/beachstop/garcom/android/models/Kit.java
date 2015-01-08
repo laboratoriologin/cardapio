@@ -6,6 +6,7 @@ import org.droidpersistence.annotation.Table;
 import org.droidpersistence.annotation.Transient;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * Created by Argus on 22/10/2014.
@@ -38,6 +39,10 @@ public class Kit extends Base {
 
     @Column(name = "IMAGEM")
     private String imagem;
+
+    @Transient
+    private List<KitSubItem> kitSubItens;
+
 
     public Kit() {
         setServiceName("kits");
@@ -117,5 +122,13 @@ public class Kit extends Base {
     @Override
     public void setServiceName(String serviceName) {
         this.serviceName = serviceName;
+    }
+
+    public List<KitSubItem> getKitSubItens() {
+        return kitSubItens;
+    }
+
+    public void setKitSubItens(List<KitSubItem> kitSubItens) {
+        this.kitSubItens = kitSubItens;
     }
 }

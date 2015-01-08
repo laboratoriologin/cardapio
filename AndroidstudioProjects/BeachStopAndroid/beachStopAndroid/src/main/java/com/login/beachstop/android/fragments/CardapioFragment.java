@@ -160,7 +160,7 @@ public class CardapioFragment extends Fragment {
 
                 } else if (Constantes.TipoCategoriaCardapio.KIT == categoria.getTipoCategoria()) {
 
-                    goToItemKitFragment(categoria);
+                    goToItemFragment(categoria);
 
                 }
             }
@@ -196,21 +196,7 @@ public class CardapioFragment extends Fragment {
         transaction.commit();
     }
 
-    public void goToItemKitFragment(Categoria categoria) {
-
-        KitFragment newFragment = new KitFragment();
-        Bundle args = new Bundle();
-        args.putSerializable(Constantes.ARG_CATEGORIA_CARDAPIO, categoria);
-        newFragment.setArguments(args);
-        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-
-        transaction.replace(R.id.activity_cardapio_fragment_layout, newFragment);
-        transaction.addToBackStack(null);
-
-        transaction.commit();
-    }
-
-    public void goToItemFragment(Categoria categoria) {
+     public void goToItemFragment(Categoria categoria) {
 
         ItemFragment newFragment = new ItemFragment();
         Bundle args = new Bundle();

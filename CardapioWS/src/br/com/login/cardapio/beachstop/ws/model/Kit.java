@@ -74,6 +74,17 @@ public final class Kit extends RestModel {
 	public void setKitSubItens(List<KitSubItem> kitSubItens){
 		this.kitSubItens = kitSubItens;
 	}
+	
+	@FormParam("imagem")
+	private String imagem;
+
+	public String getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
+	}
 
 	public Kit(){}
 

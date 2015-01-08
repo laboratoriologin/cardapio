@@ -17,7 +17,7 @@ import org.hibernate.annotations.Cascade;
 import br.com.topsys.database.hibernate.TSActiveRecordAb;
 
 @Entity
-@Table(name = "acoes")
+@Table(name = "pedidos")
 public class Pedido extends TSActiveRecordAb<Pedido> {
 
 	/**

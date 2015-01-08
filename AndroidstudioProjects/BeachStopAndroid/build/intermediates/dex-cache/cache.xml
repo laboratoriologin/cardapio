@@ -2,11 +2,74 @@
 <items version="2" >
 
     <item
+        jar="C:\Users\Argus\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\20.0.0\support-annotations-20.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa">
+        <dex dex="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\build\intermediates\pre-dexed\debug\support-annotations-20.0.0-2f1096a34ff2e768b0f5aaf363c7026f1395a991.jar" />
+    </item>
+    <item
+        jar="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\build\intermediates\exploded-aar\BeachStopAndroid\ParallaxScroll\unspecified\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="fe5d77bb9be5ef96444e093fdefbb4f64588ff8d">
+        <dex dex="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\build\intermediates\pre-dexed\debug\classes-229e00f309a9b77de3add90a79419ba5acc2b9d9.jar" />
+    </item>
+    <item
+        jar="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\libs\droidpersistence.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="c0ee13054d3c9672d4f76a2fc7a9842057bf85c9">
+        <dex dex="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\build\intermediates\pre-dexed\debug\droidpersistence-6e4892aad72f30af33f26214ed7fa07f87be4dc5.jar" />
+    </item>
+    <item
         jar="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\build\intermediates\exploded-aar\BeachStopAndroid\galeriaImg\unspecified\classes.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="afeb54156883715cd4815b1cc98e881d26282d6c">
+        sha1="57987c7ee847dd0e33694a6e791a839cc1bf09d1">
         <dex dex="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\build\intermediates\pre-dexed\debug\classes-2e27f740ad39b48904f9e42067aa83eca7b9b60a.jar" />
+    </item>
+    <item
+        jar="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\libs\universal-image-loader-1.9.3.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="a85588bec3e2c4584d593d3f15df1677321bca72">
+        <dex dex="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\build\intermediates\pre-dexed\debug\universal-image-loader-1.9.3-a5fb8f08d103874aa9af810d4c09258d924a8a93.jar" />
+    </item>
+    <item
+        jar="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\libs\socialauth-4.4.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="a867292683d6086af72c7cac181892e118058989">
+        <dex dex="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\build\intermediates\pre-dexed\debug\socialauth-4.4-9bcd789ed94eff677446d95f127ea89c497959ad.jar" />
+    </item>
+    <item
+        jar="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="8694693636ab36910c8100ce527c258ff3ebece0">
+        <dex dex="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\build\intermediates\pre-dexed\debug\classes-4318e052c605f2cb913fdc98c2ddb73bbd8a8711.jar" />
+    </item>
+    <item
+        jar="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\libs\android-integration.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="02824baabca4e2a00de975c9a95079eb5c67bfa5">
+        <dex dex="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\build\intermediates\pre-dexed\debug\android-integration-f5c43175df62b9c2e10e47c6fe4359b10b275f61.jar" />
+    </item>
+    <item
+        jar="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\libs\socialauth-android-3.2.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="50cb8f7d8602c2de0b42f01ccba940985192aaa7">
+        <dex dex="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\build\intermediates\pre-dexed\debug\socialauth-android-3.2-80d885254d289fd8350f4c02fbabad093d3db32d.jar" />
+    </item>
+    <item
+        jar="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\libs\internal_impl-20.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d">
+        <dex dex="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\beachStopAndroid\build\intermediates\pre-dexed\debug\internal_impl-20.0.0-96615cb0753f63aba3af573f6d9e21124c8b0254.jar" />
     </item>
 
 </items>

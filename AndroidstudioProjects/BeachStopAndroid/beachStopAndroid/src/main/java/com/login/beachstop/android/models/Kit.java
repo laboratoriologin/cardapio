@@ -40,6 +40,10 @@ public class Kit extends Base {
     @Column(name = "IMAGEM")
     private String imagem;
 
+    @Transient
+    private long quantidade;
+
+    @Transient
     private List<KitSubItem> kitSubItens;
 
     public Kit() {
@@ -128,5 +132,13 @@ public class Kit extends Base {
     @Override
     public void setServiceName(String serviceName) {
         this.serviceName = serviceName;
+    }
+
+    public long getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(long quantidade) {
+        this.quantidade = quantidade;
     }
 }

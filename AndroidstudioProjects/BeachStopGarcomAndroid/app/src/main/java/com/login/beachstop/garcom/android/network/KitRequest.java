@@ -1,10 +1,10 @@
-package com.login.beachstop.android.network;
+package com.login.beachstop.garcom.android.network;
 
-import com.login.beachstop.android.models.Kit;
-import com.login.beachstop.android.models.KitSubItem;
-import com.login.beachstop.android.models.ServerResponse;
-import com.login.beachstop.android.network.http.ResponseListener;
-import com.login.beachstop.android.utils.Utilitarios;
+import com.login.beachstop.garcom.android.models.Kit;
+import com.login.beachstop.garcom.android.models.KitSubItem;
+import com.login.beachstop.garcom.android.models.ServerResponse;
+import com.login.beachstop.garcom.android.network.http.ResponseListener;
+import com.login.beachstop.garcom.android.utils.Utilitarios;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Argus on 29/10/2014.
+ * Created by Argus on 06/01/2015.
  */
 public class KitRequest extends ObjectRequest<Kit> {
 
@@ -42,7 +42,7 @@ public class KitRequest extends ObjectRequest<Kit> {
                 for (int i = 0; i < jsonArray.length(); i++) {
 
                     kit = new Kit();
-                    jsonObjectKit = jsonArray.getJSONObject(i).getJSONObject("kit");
+                    jsonObjectKit = jsonArray.getJSONObject(i).getJSONObject("Kit");
 
                     kit.setId(jsonObjectKit.getLong("id"));
                     kit.setImagem(jsonObjectKit.has("imagem") ? jsonObjectKit.getString("imagem") : "");
@@ -52,7 +52,7 @@ public class KitRequest extends ObjectRequest<Kit> {
                     kit.setOrdem(jsonObjectKit.has("ordem") ? Long.valueOf(jsonObjectKit.getLong("ordem")) : 0l);
 
                     kit.setKitSubItens(new ArrayList<KitSubItem>());
-                    jsonArrayKitSubItem = Utilitarios.getAlwaysJsonArray(jsonObjectKit, "kitSubItens");
+                    jsonArrayKitSubItem = Utilitarios.getAlwaysJsonArray(jsonObjectKit, "subItens");
 
                     for (int j = 0; j < jsonArrayKitSubItem.length(); j++) {
 
@@ -61,8 +61,7 @@ public class KitRequest extends ObjectRequest<Kit> {
 
                         kitSubItem.setId(jsonObjectSubKit.has("id") ? jsonObjectSubKit.getLong("id") : null);
                         kitSubItem.setKitId(jsonObjectSubKit.has("kit") ? jsonObjectSubKit.getJSONObject("kit").getLong("id") : null);
-                        kitSubItem.setSubItemId(jsonObjectSubKit.has("subItem") ? jsonObjectSubKit.getJSONObject("subItem").getLong("id") : null);
-                        kitSubItem.setQuantidade(jsonObjectSubKit.has("qtd") ? jsonObjectSubKit.getLong("qtd") : 0l);
+                        kitSubItem.setSubItemId(jsonObjectSubKit.has("subitem") ? jsonObjectSubKit.getJSONObject("subitem").getLong("id") : null);
 
                         kit.getKitSubItens().add(kitSubItem);
                     }

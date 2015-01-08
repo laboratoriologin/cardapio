@@ -14,6 +14,7 @@ import com.login.beachstop.android.CardapioActivity;
 import com.login.beachstop.android.R;
 import com.login.beachstop.android.models.Categoria;
 import com.login.beachstop.android.models.Item;
+import com.login.beachstop.android.models.Kit;
 import com.login.beachstop.android.utils.Constantes;
 import com.login.beachstop.android.views.adapters.ItemListAdapter;
 
@@ -24,7 +25,7 @@ import java.util.List;
  */
 public class ItemListFragment extends Fragment {
 
-    private List<Item> itens;
+    private List<?> objects;
     private View view;
     private Categoria categoria;
     private ItemListAdapter itemListAdapter;
@@ -34,8 +35,13 @@ public class ItemListFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.categoria = (Categoria) getArguments().getSerializable(Constantes.ARG_CATEGORIA_CARDAPIO);
-        this.itens = ((CardapioActivity) getActivity()).getDataManager().getItemDAO().getAll(this.categoria.getId());
-        this.itemListAdapter = new ItemListAdapter(this.view.getContext(), itens);
+
+        if(Constantes.TipoCategoriaCardapio.ITEM.equals(this.categoria.getTipoCategoria()))
+            this.objects = ((CardapioActivity) getActivity()).getDataManager().getItemDAO().getAll(this.categoria.getId());
+        else
+            this.objects = ((CardapioActivity) getActivity()).getDataManager().getKitDAO().getAll();
+
+        this.itemListAdapter = new ItemListAdapter(getActivity(), this.objects);
     }
 
 
@@ -54,11 +60,18 @@ public class ItemListFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int posicaoClicada, long arg3) {
 
-                Item item = itens.get(posicaoClicada);
-                ItemDetalheFragment newFragment = new ItemDetalheFragment();
+                Object obj = objects.get(posicaoClicada);
+                Fragment newFragment;
                 Bundle args = new Bundle();
 
-                args.putSerializable(Constantes.ARG_ITEM_CARDAPIO, item);
+                if (obj instanceof Item) {
+                    newFragment = new ItemDetalheFragment();
+                    args.putSerializable(Constantes.ARG_ITEM_CARDAPIO, (Item) obj);
+                } else {
+                    newFragment = new KitDetalheFragment();
+                    args.putSerializable(Constantes.ARG_ITEM_CARDAPIO, (Kit) obj);
+                }
+
                 newFragment.setArguments(args);
 
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();

@@ -18,7 +18,7 @@ public class KitSubItemDAO  implements RestDAO<KitSubItem> {
 
 		broker.setPropertySQL("kitsubitemdao.get", id);
 
-		return (KitSubItem) broker.getObjectBean(KitSubItem.class, "id", "kit.id", "subItem.id", "quantidade");
+		return (KitSubItem) broker.getObjectBean(KitSubItem.class, "id", "kit.id", "subItem.id", "qtd");
 
 	}
 
@@ -29,7 +29,7 @@ public class KitSubItemDAO  implements RestDAO<KitSubItem> {
 
 		broker.setPropertySQL("kitsubitemdao.findall");
 
-		return broker.getCollectionBean(KitSubItem.class, "id", "kit.id", "subItem.id", "quantidade");
+		return broker.getCollectionBean(KitSubItem.class, "id", "kit.id", "subItem.id", "qtd");
 
 	}
 	
@@ -39,7 +39,7 @@ public class KitSubItemDAO  implements RestDAO<KitSubItem> {
 
 		broker.setPropertySQL("kitsubitemdao.findallbykit", kit.getId());
 
-		return broker.getCollectionBean(KitSubItem.class, "id", "kit.id", "subItem.id", "quantidade");
+		return broker.getCollectionBean(KitSubItem.class, "id", "kit.id", "subItem.id", "qtd");
 
 	}
 
@@ -50,7 +50,7 @@ public class KitSubItemDAO  implements RestDAO<KitSubItem> {
 
 		model.setId(broker.getSequenceNextValue("dbo.kits_sub_itens "));
 
-		broker.setPropertySQL("kitsubitemdao.insert",model.getKit().getId(), model.getSubItem().getId(),model.getQuantidade());
+		broker.setPropertySQL("kitsubitemdao.insert",model.getKit().getId(), model.getSubItem().getId(),model.getQtd());
 
 		broker.execute();
 
@@ -63,7 +63,7 @@ public class KitSubItemDAO  implements RestDAO<KitSubItem> {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("kitsubitemdao.update", model.getKit().getId(), model.getSubItem().getId(), model.getId(), model.getQuantidade());
+		broker.setPropertySQL("kitsubitemdao.update", model.getKit().getId(), model.getSubItem().getId(), model.getId(), model.getQtd());
 
 		broker.execute();
 

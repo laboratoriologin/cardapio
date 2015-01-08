@@ -131,4 +131,21 @@ public class SubItem extends Base {
     public BigDecimal getValorBigDecimal() {
         return new BigDecimal(valor);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        SubItem subItem = (SubItem) o;
+
+        if (id != null ? !id.equals(subItem.id) : subItem.id != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }
 }
