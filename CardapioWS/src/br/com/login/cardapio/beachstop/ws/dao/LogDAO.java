@@ -90,7 +90,7 @@ public class LogDAO  implements RestDAO<Log> {
 
 		for (PedidoSubItem item : pedido.getSubItens()) {
 
-			broker.setPropertySQL("logdao.insert", pedido.getUsuario().getId(), item.getId(), item.getStatus().getId());
+			broker.setPropertySQL("logdao.insert", item.getId(), item.getStatus().getId(), pedido.getUsuario().getId());
 
 			broker.execute();
 

@@ -6,7 +6,6 @@ import br.com.login.cardapio.beachstop.ws.model.Kit;
 import br.com.topsys.database.TSDataBaseBrokerIf;
 import br.com.topsys.database.factory.TSDataBaseBrokerFactory;
 import br.com.topsys.exception.TSApplicationException;
-import br.com.topsys.util.TSUtil;
 
 public class KitDAO  implements RestDAO<Kit> {
 
@@ -14,10 +13,14 @@ public class KitDAO  implements RestDAO<Kit> {
 	public Kit get(Long id) {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
-
 		broker.setPropertySQL("kitdao.get", id);
+		
+		KitSubItemDAO kitSubItemDAO = new KitSubItemDAO();
+		
+		Kit kit = (Kit) broker.getObjectBean(Kit.class, "desconto", "descricao", "flagAtivo", "id", "nome", "ordem", "imagem");
+		kit.setKitSubItens(kitSubItemDAO.getAll(kit));
 
-		return (Kit) broker.getObjectBean(Kit.class, "desconto", "descricao", "flagAtivo", "id", "nome", "ordem", "imagem");
+		return kit;
 
 	}
 

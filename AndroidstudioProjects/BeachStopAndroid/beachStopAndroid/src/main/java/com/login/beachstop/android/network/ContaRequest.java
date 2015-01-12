@@ -30,9 +30,7 @@ public class ContaRequest extends ObjectRequest<Conta> {
     public void get(Long contaId) {
 
         String urlgetAtivo = Constantes.URL_WS + "/" + new Conta().getServiceName() + "/" + contaId.toString();
-
         ServerRequest serverRequest = new ServerRequest(ServerRequest.GET, urlgetAtivo, null);
-
         this.execute(serverRequest);
     }
 

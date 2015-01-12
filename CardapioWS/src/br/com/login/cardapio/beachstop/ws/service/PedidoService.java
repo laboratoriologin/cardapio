@@ -1,5 +1,8 @@
 package br.com.login.cardapio.beachstop.ws.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -10,13 +13,19 @@ import javax.ws.rs.Produces;
 import org.apache.catalina.connector.Response;
 import org.jboss.resteasy.annotations.Form;
 
+import br.com.login.cardapio.beachstop.ws.dao.KitDAO;
 import br.com.login.cardapio.beachstop.ws.dao.LogDAO;
 import br.com.login.cardapio.beachstop.ws.dao.PedidoDAO;
 import br.com.login.cardapio.beachstop.ws.dao.PedidoSubItemDAO;
+import br.com.login.cardapio.beachstop.ws.dao.SubItemDAO;
 import br.com.login.cardapio.beachstop.ws.exception.ApplicationException;
+import br.com.login.cardapio.beachstop.ws.model.Item;
+import br.com.login.cardapio.beachstop.ws.model.Kit;
+import br.com.login.cardapio.beachstop.ws.model.KitSubItem;
 import br.com.login.cardapio.beachstop.ws.model.Pedido;
 import br.com.login.cardapio.beachstop.ws.model.PedidoSubItem;
 import br.com.login.cardapio.beachstop.ws.model.Status;
+import br.com.login.cardapio.beachstop.ws.model.SubItem;
 import br.com.login.cardapio.beachstop.ws.model.Usuario;
 import br.com.login.cardapio.beachstop.ws.util.Constantes;
 import br.com.topsys.exception.TSApplicationException;
@@ -65,38 +74,53 @@ public class PedidoService extends RestService<Pedido> {
 	@Produces("application/json; charset=UTF-8")
 	public Pedido insert(@Form Pedido form) throws ApplicationException {
 
+		PedidoSubItem pedidoSubItemKit;
+		List<PedidoSubItem> pedidoSubItemFinal = new ArrayList<PedidoSubItem>();
+		SubItem subItem;
+		Kit kit;
+		KitDAO kitDAO = new KitDAO();
+		SubItemDAO subItemDAO = new SubItemDAO();
+		
+		for(PedidoSubItem pedidoSubItem : form.getSubItens()){
+			if(pedidoSubItem.getKit() != null){
+				kit = kitDAO.get(pedidoSubItem.getKit().getId());
+				
+				for(KitSubItem kitSubItem : kit.getKitSubItens()){
+					subItem = subItemDAO.get(kitSubItem.getSubItem().getId());
+					
+					pedidoSubItemKit = new PedidoSubItem();
+					pedidoSubItemKit.setKit(kit);
+					pedidoSubItemKit.setPedido(form);
+					pedidoSubItemKit.setQuantidade(Integer.valueOf(kitSubItem.getQtd().toString()));
+					pedidoSubItemKit.setSubItem(subItem);
+					
+					pedidoSubItemFinal.add(pedidoSubItemKit);
+				}
+			}else{
+				pedidoSubItemFinal.add(pedidoSubItem);
+			}
+		}
+		
+		form.setSubItens(pedidoSubItemFinal);
 		final boolean pedidoPeloGarcom = form.getUsuario() != null;
-
 		Status status = new Status();
 
-		if (pedidoPeloGarcom) {
-
+		if (pedidoPeloGarcom)
 			status.setId(Constantes.PEDIDO_PENDENTE_ENTREGA);
-
-		} else {
-
+		else
 			status.setId(Constantes.PEDIDO_PENDENTE_APROVACAO);
 
-		}
-
 		for (PedidoSubItem item : form.getSubItens()) {
-
 			item.setStatus(status);
-
 		}
 
 		if (form.getUsuario() == null) {
-
 			form.setUsuario(new Usuario());
-
 		}
-
-		super.insert(form);
-
-		this.gerarLog(form, status);
-
+		
+		super.insert(form);		
+		this.gerarLog(form, status);		
 		return new Pedido();
-
 	}
 
 	@PUT
@@ -205,37 +229,21 @@ public class PedidoService extends RestService<Pedido> {
 	}
 
 	private void gerarLog(Pedido pedido, Status status) {
-
 		try {
-
 			for (PedidoSubItem subItem : pedido.getSubItens()) {
-
 				subItem.setStatus(status);
-
 			}
-
 			new LogDAO().insert(pedido);
-
 		} catch (Exception ex) {
-
 			ex.printStackTrace();
-
 		}
-
 	}
 
 	private void gerarLog(Pedido pedido) {
-
 		try {
-
 			new LogDAO().insert(pedido);
-
 		} catch (Exception ex) {
-
 			ex.printStackTrace();
-
 		}
-
 	}
-
 }

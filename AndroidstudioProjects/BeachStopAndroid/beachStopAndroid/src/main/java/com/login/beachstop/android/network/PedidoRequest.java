@@ -24,36 +24,25 @@ public class PedidoRequest extends ObjectRequest<Pedido> {
     protected List<NameValuePair> createParameters(Pedido pedido) {
 
         List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-
         nameValuePairs.add(new BasicNameValuePair("observacao", pedido.getObservacao()));
-
         nameValuePairs.add(new BasicNameValuePair("conta", pedido.getContaId().toString()));
-
         PedidoSubItem pedidoSubItem;
 
         for (int i = 0; i < pedido.getPedidoSubItens().size(); i++) {
-
             pedidoSubItem = pedido.getPedidoSubItens().get(i);
-
             nameValuePairs.add(new BasicNameValuePair("subItens[" + i + "].quantidade", pedidoSubItem.getQuantidade().toString()));
 
-            nameValuePairs.add(new BasicNameValuePair("subItens[" + i + "].subitem", pedidoSubItem.getSubItemId().toString()));
-
-
+            if(pedidoSubItem.getKit() == null)
+                nameValuePairs.add(new BasicNameValuePair("subItens[" + i + "].subitem", pedidoSubItem.getSubItemId().toString()));
+            else
+                nameValuePairs.add(new BasicNameValuePair("subItens[" + i + "].kit", pedidoSubItem.getKit().getId().toString()));
         }
-
         return nameValuePairs;
-
     }
 
     @Override
     protected void handleResponse(ServerResponse serverResponse) {
-
         if (serverResponse.isOK()) {
-
-
         }
     }
-
-
 }
