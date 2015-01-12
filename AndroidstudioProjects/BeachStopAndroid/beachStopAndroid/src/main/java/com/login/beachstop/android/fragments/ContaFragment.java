@@ -13,7 +13,6 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.login.beachstop.android.DefaultActivity;
 import com.login.beachstop.android.PedidoActivity;
 import com.login.beachstop.android.R;
 import com.login.beachstop.android.models.Conta;
@@ -25,6 +24,7 @@ import com.login.beachstop.android.network.ContaRequest;
 import com.login.beachstop.android.network.http.ResponseListener;
 import com.login.beachstop.android.utils.Constantes;
 
+import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.Locale;
 
@@ -49,8 +49,11 @@ public class ContaFragment extends Fragment implements IPedidoFragment {
                 if (serverResponse.isOK()) {
                     try {
                         conta = (Conta) serverResponse.getReturnObject();
-                        for (PedidoSubItem pedidoSubItem : conta.getPedidos().get(0).getPedidoSubItens()) {
-                            pedidoSubItem.setSubItem(((PedidoActivity) getActivity()).getDataManager().getSubItemDAO().get(pedidoSubItem.getSubItemId()));
+
+                        if (conta.getPedidos().size() != 0) {
+                            for (PedidoSubItem pedidoSubItem : conta.getPedidos().get(0).getPedidoSubItens()) {
+                                pedidoSubItem.setSubItem(((PedidoActivity) getActivity()).getDataManager().getSubItemDAO().get(pedidoSubItem.getSubItemId()));
+                            }
                         }
 
                         if (conta != null && conta.getPedidos().size() != 0 && conta.getPedidos().get(0).getPedidoSubItens().size() != 0) {
@@ -63,7 +66,7 @@ public class ContaFragment extends Fragment implements IPedidoFragment {
                         }
 
                         NumberFormat format = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
-                        valorTotal = new Double(conta.getValorTotal()) + new Double(conta.getValorTotalPago());
+                        valorTotal = new Double(conta.getValorTotal()) - new Double(conta.getValorTotalPago());
                         textViewValorTotal.setText(format.format(valorTotal));
                         checkBoxDez.setText(" + 10% (" + format.format(valorTotal * 0.1) + ")");
 
@@ -116,23 +119,39 @@ public class ContaFragment extends Fragment implements IPedidoFragment {
 
         PedidoSubItem pedidoSubItem;
         View itemContaView;
+        SubItem subItem;
+        Item item;
         NumberFormat format = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+        int position = 0;
 
         this.tableLayoutItemConta.removeAllViews();
-        for (int position = 0; position < this.conta.getPedidos().get(0).getPedidoSubItens().size(); position++) {
+        for (; position < this.conta.getPedidos().get(0).getPedidoSubItens().size(); position++) {
             pedidoSubItem = this.conta.getPedidos().get(0).getPedidoSubItens().get(position);
             itemContaView = TableRow.inflate(this.getView().getContext(), R.layout.fragment_conta_table_row, null);
             ((TableRow) itemContaView.findViewById(R.id.fragment_conta_table_row_linear_layout)).setBackgroundResource((position % 2) == 0 ? R.color.branco : R.color.bg_system);
-            SubItem subItem = pedidoSubItem.getSubItem();
-            Item item = ((PedidoActivity) getActivity()).getDataManager().getItemDAO().get(subItem.getItemId());
+            subItem = pedidoSubItem.getSubItem();
+            item = ((PedidoActivity) getActivity()).getDataManager().getItemDAO().get(subItem.getItemId());
 
-            ((TextView) itemContaView.findViewById(R.id.fragment_conta_table_row_text_view_nome)).setText(item.getNome() + " - " + subItem.getNome());
+            ((TextView) itemContaView.findViewById(R.id.fragment_conta_table_row_text_view_nome)).setText(String.format(" • %s - %s", item.getNome(), subItem.getNome()));
             ((TextView) itemContaView.findViewById(R.id.fragment_conta_table_row_text_view_valor_unitario)).setText(format.format(new Double(pedidoSubItem.getSubItem().getValor())));
             ((TextView) itemContaView.findViewById(R.id.fragment_conta_table_row_text_view_qtd)).setText(pedidoSubItem.getQuantidade().toString());
-            ((TextView) itemContaView.findViewById(R.id.fragment_conta_table_row_text_view_valor_total)).setText(format.format((new Double(pedidoSubItem.getValorTotal()))));
+            ((TextView) itemContaView.findViewById(R.id.fragment_conta_table_row_text_view_valor_total)).setText(format.format(new Double(pedidoSubItem.getValorTotal())));
 
             this.tableLayoutItemConta.addView(itemContaView);
         }
+
+        if (!"0.0".equals(conta.getValorTotalPago())) {
+            itemContaView = TableRow.inflate(this.getView().getContext(), R.layout.fragment_conta_table_row, null);
+            ((TableRow) itemContaView.findViewById(R.id.fragment_conta_table_row_linear_layout)).setBackgroundResource((position % 2) == 0 ? R.color.branco : R.color.bg_system);
+
+            ((TextView) itemContaView.findViewById(R.id.fragment_conta_table_row_text_view_nome)).setText(" • Valor pago");
+            ((TextView) itemContaView.findViewById(R.id.fragment_conta_table_row_text_view_valor_unitario)).setText("  ");
+            ((TextView) itemContaView.findViewById(R.id.fragment_conta_table_row_text_view_qtd)).setText("  ");
+            ((TextView) itemContaView.findViewById(R.id.fragment_conta_table_row_text_view_valor_total)).setText(format.format(new BigDecimal(conta.getValorTotalPago()).negate()));
+
+            this.tableLayoutItemConta.addView(itemContaView);
+        }
+
     }
 
     @Override

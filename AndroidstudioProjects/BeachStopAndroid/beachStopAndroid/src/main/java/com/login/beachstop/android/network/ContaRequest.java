@@ -68,7 +68,7 @@ public class ContaRequest extends ObjectRequest<Conta> {
                     conta.setDataFechamento((jsonObject.has("datafechamento") ? jsonObject.getString("datafechamento") : "").toString());
                     conta.setNumero(jsonObject.has("numero") ? jsonObject.getLong("numero") : null);
                     conta.setValorTotal((jsonObject.has("valor") ? jsonObject.getLong("valor") : "").toString());
-                    conta.setValorTotalPago((jsonObject.has("valorPago") ? jsonObject.getBoolean("valorPago") : "0.0").toString());
+                    conta.setValorTotalPago((jsonObject.has("valorPago") ? jsonObject.getString("valorPago") : "0.0"));
 
                     if (jsonObject.has("pedidoSubItens")) {
 
@@ -97,6 +97,8 @@ public class ContaRequest extends ObjectRequest<Conta> {
 
                         conta.getPedidos().add(pedido);
 
+                    }else{
+                        conta.setPedidos(new ArrayList<Pedido>());
                     }
 
                     serverResponse.setReturnObject(conta);
