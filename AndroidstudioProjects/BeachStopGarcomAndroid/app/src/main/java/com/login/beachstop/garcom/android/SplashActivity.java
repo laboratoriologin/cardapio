@@ -6,10 +6,12 @@ import android.os.Handler;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.login.beachstop.garcom.android.models.Acao;
 import com.login.beachstop.garcom.android.models.Categoria;
 import com.login.beachstop.garcom.android.models.Empresa;
 import com.login.beachstop.garcom.android.models.Item;
 import com.login.beachstop.garcom.android.models.ServerResponse;
+import com.login.beachstop.garcom.android.network.AcaoRequest;
 import com.login.beachstop.garcom.android.network.CategoriaRequest;
 import com.login.beachstop.garcom.android.network.EmpresaRequest;
 import com.login.beachstop.garcom.android.network.ItemRequest;
@@ -24,7 +26,6 @@ import java.util.List;
  */
 public class SplashActivity extends DefaultActivity {
 
-    private final int SPLASH_MILIS = 1000;
     private ProgressBar progressBar;
     private TextView textView;
     private ResponseListener responseGetEmpresa = new ResponseListener() {
@@ -46,13 +47,17 @@ public class SplashActivity extends DefaultActivity {
                                 SplashActivity.this.getDataManager().getItemDAO().deleteAll();
                                 SplashActivity.this.getDataManager().getSubItemDAO().deleteAll();
                                 SplashActivity.this.getDataManager().getKitDAO().deleteAll();
+                                SplashActivity.this.getDataManager().getKitSubItemDAO().deleteAll();
+                                SplashActivity.this.getDataManager().getEmpresaDAO().deleteAll();
+
+                                getDataManager().getEmpresaDAO().save((Empresa) serverResponse.getReturnObject());
 
                                 new CategoriaRequest(reponseGetCategoria).getAtivo();
                             }
                         } else {
+                            getDataManager().getEmpresaDAO().save((Empresa) serverResponse.getReturnObject());
                             new CategoriaRequest(reponseGetCategoria).getAtivo();
                         }
-
                     } catch (Exception e) {
                         e.printStackTrace();
                         textView.setText(Constantes.MSG_ERRO_GRAVAR_DADOS);
@@ -66,12 +71,14 @@ public class SplashActivity extends DefaultActivity {
         }
     };
 
+    @SuppressWarnings("unchecked")
     private ResponseListener reponseGetCategoria = new ResponseListener() {
         @Override
         public void onResult(ServerResponse serverResponse) {
             if (serverResponse != null) {
                 if (serverResponse.isOK()) {
                     try {
+                        configCategoria((List<Categoria>) serverResponse.getReturnObject());
                         SplashActivity.this.setCategorias((List<Categoria>) serverResponse.getReturnObject());
                         SplashActivity.this.getDataManager().getCategoriaDAO().save(SplashActivity.this.getCategorias());
                         getItemByCardapio();
@@ -88,6 +95,27 @@ public class SplashActivity extends DefaultActivity {
         }
     };
 
+    private ResponseListener responseListenerGetAcao = new ResponseListener() {
+        @Override
+        public void onResult(ServerResponse serverResponse) {
+            if (serverResponse != null) {
+                if (serverResponse.isOK()) {
+                    try {
+                        getDataManager().getAcaoDAO().save((List<Acao>) serverResponse.getReturnObject());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        textView.setText(Constantes.MSG_ERRO_GRAVAR_DADOS);
+                    }
+                } else {
+                    textView.setText(serverResponse.getMsgErro());
+                }
+            } else {
+                textView.setText(Constantes.MSG_ERRO_NET);
+            }
+        }
+    };
+
+    @SuppressWarnings("unchecked")
     private ResponseListener reponseGetItem = new ResponseListener() {
         @Override
         public void onResult(ServerResponse serverResponse) {
@@ -117,6 +145,7 @@ public class SplashActivity extends DefaultActivity {
         this.progressBar = (ProgressBar) this.findViewById(R.id.activity_splash_progressBar);
         this.textView = (TextView) this.findViewById(R.id.activity_splash_textView);
 
+        int SPLASH_MILIS = 1000;
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -124,6 +153,7 @@ public class SplashActivity extends DefaultActivity {
                 textView.setVisibility(TextView.VISIBLE);
                 textView.setText("Atualizando informações do sistema");
                 new EmpresaRequest(responseGetEmpresa).getKeyCardapio();
+                new AcaoRequest(responseListenerGetAcao).get(new Acao());
             }
         }, SPLASH_MILIS);
 
@@ -156,5 +186,24 @@ public class SplashActivity extends DefaultActivity {
             this.startActivity(mainIntent);
             this.finish();
         }
+    }
+
+    private void configCategoria(List<Categoria> categorias) {
+
+        for (Categoria categoria : categorias) {
+            categoria.setTipoCategoria(Constantes.TipoCategoriaCardapio.ITEM);
+        }
+
+        Categoria categoria = new Categoria();
+        categoria.setId(98l);
+        categoria.setTipoCategoria(Constantes.TipoCategoriaCardapio.KIT);
+        categoria.setArea(1l);
+        categoria.setDescricao("Kit");
+        categoria.setFlagAtivo(true);
+        categoria.setOrdem((long) (categorias.size() + 1));
+        categoria.setImagem("");
+        categoria.setResourceImg(R.drawable.bt_home_kit);
+
+        categorias.add(categoria);
     }
 }

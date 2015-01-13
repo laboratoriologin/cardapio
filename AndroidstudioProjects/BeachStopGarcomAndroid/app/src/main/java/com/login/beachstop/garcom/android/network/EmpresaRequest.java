@@ -20,7 +20,7 @@ public class EmpresaRequest extends ObjectRequest<Empresa> {
 
     public void getKeyCardapio() {
 
-        String urlgetAtivo = Constantes.URL_WS + "/" + new Empresa().getServiceName() + "/1/keyCardapio";
+        String urlgetAtivo = Constantes.URL_WS + "/" + new Empresa().getServiceName() + "/1";
 
         ServerRequest serverRequest = new ServerRequest(ServerRequest.GET, urlgetAtivo, null);
 

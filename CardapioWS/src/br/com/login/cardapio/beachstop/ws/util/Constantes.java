@@ -13,11 +13,17 @@ public final class Constantes {
 	public static final String ASSUNTO_EMAIL = "E-mail enviado pelo Cardappio";
 	public static final String MENSAGEM_SENHA = "Sua senha atual do app cardápio  é :";
 	public static final String CRIPTOGRAFIA_MD5 = "md5";
-	public static final Long TIPO_ALERTA_GARCOM = 1L;
-	public static final Long TIPO_ALERTA_CONTA = 2L;
-	public static final Long TIPO_ALERTA_PEDIDOS = 3L;
+	
 	public static final Long PEDIDO_PENDENTE_APROVACAO = 1L;
 	public static final Long PEDIDO_PENDENTE_ENTREGA = 2L;
 	public static final Long PEDIDO_ENTREGUE = 3L;
 	public static final Long PEDIDO_CANCELADO = 4L;
+	
+    public interface Acoes {
+
+    	Long ChamarGarcom = 3l;
+    	Long PedirConta = 4l;
+    	Long NovoPedido = 5l;
+    }
+
 }

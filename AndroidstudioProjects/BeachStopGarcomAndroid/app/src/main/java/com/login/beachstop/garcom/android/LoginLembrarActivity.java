@@ -43,6 +43,8 @@ public class LoginLembrarActivity extends DefaultActivity {
                 @Override
                 public void run() {
                     progressDialog.dismiss();
+                    finish();
+
                 }
             }, SPLASH_MILIS);
 
@@ -70,7 +72,7 @@ public class LoginLembrarActivity extends DefaultActivity {
 
             if (Utilitarios.hasConnection(this)) {
 
-                new UsuarioRequest(responseListenerEnviarEmail).LembrarSenha(usuarioPesquisado);
+                new UsuarioRequest(responseListenerEnviarEmail).lembrarSenha(usuarioPesquisado);
 
                 progressDialog = new ProgressDialog(this);
                 progressDialog.setMessage("Enviando nova senha para o seu e-mail...");

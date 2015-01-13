@@ -58,6 +58,7 @@
             android:layout_marginRight="20dp"
             android:layout_weight="0.01"
             android:background="@color/textview_marrom"
+            android:text="argus.guedes@yahoo.com.br"
             android:ems="10"
             android:paddingLeft="10dp"
             android:textSize="18sp">

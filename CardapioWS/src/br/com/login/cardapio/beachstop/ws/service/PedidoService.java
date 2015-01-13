@@ -1,6 +1,10 @@
 package br.com.login.cardapio.beachstop.ws.service;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.ws.rs.GET;
@@ -13,12 +17,16 @@ import javax.ws.rs.Produces;
 import org.apache.catalina.connector.Response;
 import org.jboss.resteasy.annotations.Form;
 
+import br.com.login.cardapio.beachstop.ws.dao.AcaoContaDAO;
 import br.com.login.cardapio.beachstop.ws.dao.KitDAO;
 import br.com.login.cardapio.beachstop.ws.dao.LogDAO;
 import br.com.login.cardapio.beachstop.ws.dao.PedidoDAO;
 import br.com.login.cardapio.beachstop.ws.dao.PedidoSubItemDAO;
 import br.com.login.cardapio.beachstop.ws.dao.SubItemDAO;
 import br.com.login.cardapio.beachstop.ws.exception.ApplicationException;
+import br.com.login.cardapio.beachstop.ws.model.Acao;
+import br.com.login.cardapio.beachstop.ws.model.AcaoConta;
+import br.com.login.cardapio.beachstop.ws.model.Conta;
 import br.com.login.cardapio.beachstop.ws.model.Item;
 import br.com.login.cardapio.beachstop.ws.model.Kit;
 import br.com.login.cardapio.beachstop.ws.model.KitSubItem;
@@ -119,7 +127,8 @@ public class PedidoService extends RestService<Pedido> {
 		}
 		
 		super.insert(form);		
-		this.gerarLog(form, status);		
+		this.gerarLog(form, status);
+		this.gerarAcaoConta(form.getConta());
 		return new Pedido();
 	}
 
@@ -226,6 +235,20 @@ public class PedidoService extends RestService<Pedido> {
 
 		return pedido;
 
+	}
+	
+	private void gerarAcaoConta(Conta conta){
+		
+		AcaoConta acaoConta = new AcaoConta();
+		acaoConta.setConta(conta);
+		acaoConta.setAcao(new Acao(Constantes.Acoes.NovoPedido.toString()));
+		acaoConta.setUsuario(new Usuario());
+		
+		try {
+			new AcaoContaDAO().insert(acaoConta);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
 	}
 
 	private void gerarLog(Pedido pedido, Status status) {

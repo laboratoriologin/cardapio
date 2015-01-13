@@ -237,6 +237,7 @@ int id activity_cadastro_cliente_text_view_email 0x7f060012
 int id activity_cadastro_cliente_text_view_nome 0x7f060010
 int id activity_cadastro_cliente_text_view_saudacao 0x7f06000f
 int id activity_call_garcom_button_call_garcom 0x7f06001b
+int id activity_call_garcom_button_fechar_conta 0x7f06001c
 int id activity_cardapio_fragment_layout 0x7f06001d
 int id activity_checkin_progres_bar 0x7f060021
 int id activity_checkin_share 0x7f060024
@@ -350,7 +351,6 @@ int id linha_sub_kit_table_row_sem_conta 0x7f06007e
 int id none 0x7f060000
 int id progressBar 0x7f060052
 int id screen 0x7f060005
-int id tab_fragment_conta_button_enviar_conta 0x7f06001c
 int id tabsImagemView 0x7f06008e
 int id tabsLayout 0x7f06008d
 int id tabsText 0x7f06008f

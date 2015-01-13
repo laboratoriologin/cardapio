@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.login.beachstop.garcom.android.managers.sqlite.AcaoTableDefinition;
 import com.login.beachstop.garcom.android.managers.sqlite.CategoriaTableDefinition;
 import com.login.beachstop.garcom.android.managers.sqlite.EmpresaTableDefinition;
 import com.login.beachstop.garcom.android.managers.sqlite.ItemTableDefinition;
@@ -24,6 +25,7 @@ public class DataManager {
     private SubItemDAO subItemDAO;
     private KitDAO kitDAO;
     private KitSubItemDAO kitSubItemDAO;
+    private AcaoDAO acaoDAO;
 
 
     public DataManager(Context context) {
@@ -35,7 +37,7 @@ public class DataManager {
         this.setSubItemDAO(new SubItemDAO(new SubItemTableDefinition(), this));
         this.setKitDAO(new KitDAO(new KitTableDefinition(), this));
         this.setKitSubItemDAO(new KitSubItemDAO(new KitSubItemTableDefinition(), this));
-
+        this.setAcaoDAO(new AcaoDAO(new AcaoTableDefinition(), this));
     }
 
     public SQLiteDatabase getDatabase() {
@@ -93,5 +95,13 @@ public class DataManager {
 
     public void setKitSubItemDAO(KitSubItemDAO kitSubItemDAO) {
         this.kitSubItemDAO = kitSubItemDAO;
+    }
+
+    public AcaoDAO getAcaoDAO() {
+        return acaoDAO;
+    }
+
+    public void setAcaoDAO(AcaoDAO acaoDAO) {
+        this.acaoDAO = acaoDAO;
     }
 }

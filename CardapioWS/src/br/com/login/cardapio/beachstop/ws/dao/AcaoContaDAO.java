@@ -16,8 +16,8 @@ public class AcaoContaDAO  implements RestDAO<AcaoConta> {
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
 		broker.setPropertySQL("acaocontadao.get", id);
-
-		return (AcaoConta) broker.getObjectBean(AcaoConta.class, "acao.id", "conta.id", "hararioAtendimento", "horarioSolocitacao", "id", "usuario.id");
+		
+		return (AcaoConta) broker.getObjectBean(AcaoConta.class, "acao.id", "conta.id", "horarioAtendimento", "horarioSolicitacao", "id", "usuario.id");
 
 	}
 
@@ -28,7 +28,7 @@ public class AcaoContaDAO  implements RestDAO<AcaoConta> {
 
 		broker.setPropertySQL("acaocontadao.findall");
 
-		return broker.getCollectionBean(AcaoConta.class, "acao.id", "conta.id", "hararioAtendimento", "horarioSolocitacao", "id", "usuario.id");
+		return broker.getCollectionBean(AcaoConta.class, "acao.id", "conta.id", "horarioAtendimento", "horarioSolicitacao", "id", "usuario.id");
 
 	}
 
@@ -37,9 +37,9 @@ public class AcaoContaDAO  implements RestDAO<AcaoConta> {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		model.setId(broker.getSequenceNextValue("dbo.acoes_contas "));
+		model.setId(broker.getSequenceNextValue("dbo.acoes_contas"));
 
-		broker.setPropertySQL("acaocontadao.insert",model.getAcao().getId(), model.getConta().getId(), model.getHararioAtendimento(), model.getHorarioSolocitacao(), model.getUsuario().getId());
+		broker.setPropertySQL("acaocontadao.insert",model.getAcao().getId(), model.getConta().getId(), model.getHorarioAtendimento(), model.getUsuario().getId());
 
 		broker.execute();
 
@@ -52,7 +52,7 @@ public class AcaoContaDAO  implements RestDAO<AcaoConta> {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("acaocontadao.update", model.getAcao().getId(), model.getConta().getId(), model.getHararioAtendimento(), model.getHorarioSolocitacao(), model.getUsuario().getId(), model.getId());
+		broker.setPropertySQL("acaocontadao.update", model.getAcao().getId(), model.getConta().getId(), model.getHorarioAtendimento(), model.getHorarioSolicitacao(), model.getUsuario().getId(), model.getId());
 
 		broker.execute();
 

@@ -65,9 +65,8 @@ public class UsuarioService extends RestService<Usuario> {
 	public Usuario enviarEmail(@Form Usuario form) throws ApplicationException {
 
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
-
 		form = usuarioDAO.getByEmail(form);
-
+		
 		if (form == null) {
 			throw new ApplicationException("Usuário não existe", Response.SC_BAD_REQUEST);
 		}
@@ -80,26 +79,16 @@ public class UsuarioService extends RestService<Usuario> {
 		}
 
 		try {
-
 			form.setSenha(TSCryptoUtil.gerarHash(novaSenha, Constantes.CRIPTOGRAFIA_MD5));
-
 			new UsuarioDAO().alterarSenha(form);
-
 			EmailUtil.enviar(form.getEmail(), "Sua nova senha é: " + novaSenha);
-
 		} catch (TSApplicationException ex) {
-
 			throw new ApplicationException(ex.getMessage(), Response.SC_BAD_REQUEST);
-
 		} catch (TSSystemException ex) {
-
 			ex.printStackTrace();
 			throw new ApplicationException(ex.getMessage(), Response.SC_INTERNAL_SERVER_ERROR);
-
 		}
-
 		return form;
-
 	}
 
 //	@GET

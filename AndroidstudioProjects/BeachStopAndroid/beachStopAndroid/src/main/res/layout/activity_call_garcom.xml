@@ -60,7 +60,7 @@
             android:textSize="20sp" />
 
         <Button
-            android:id="@+id/tab_fragment_conta_button_enviar_conta"
+            android:id="@+id/activity_call_garcom_button_fechar_conta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"

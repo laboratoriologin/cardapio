@@ -31,6 +31,8 @@ public class OpenHelper extends SQLiteOpenHelper {
             new KitTableDefinition().onCreate(db);
             new SubItemTableDefinition().onCreate(db);
             new KitSubItemTableDefinition().onCreate(db);
+            new AcaoTableDefinition().onCreate(db);
+            ;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -45,6 +47,7 @@ public class OpenHelper extends SQLiteOpenHelper {
             new KitTableDefinition().onUpgrade(db, oldVersion, newVersion);
             new SubItemTableDefinition().onUpgrade(db, oldVersion, newVersion);
             new KitSubItemTableDefinition().onUpgrade(db, oldVersion, newVersion);
+            new AcaoTableDefinition().onUpgrade(db, oldVersion, newVersion);
         } catch (Exception e) {
             e.printStackTrace();
         }

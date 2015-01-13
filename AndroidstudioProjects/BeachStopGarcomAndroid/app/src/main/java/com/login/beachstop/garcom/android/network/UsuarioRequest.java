@@ -41,7 +41,7 @@ public class UsuarioRequest extends ObjectRequest<Usuario> {
         }
     }
 
-    public void LembrarSenha(Usuario usuario) {
+    public void lembrarSenha(Usuario usuario) {
         String url = Constantes.URL_WS + "/" + usuario.getServiceName() + "/enviarEmail";
         ServerRequest serverRequest = new ServerRequest(ServerRequest.POST, url, createParameters(usuario));
         this.execute(serverRequest);
@@ -51,13 +51,13 @@ public class UsuarioRequest extends ObjectRequest<Usuario> {
     protected List<NameValuePair> createParameters(Usuario usuario) {
         List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 
-        if (TextUtils.isEmpty(usuario.getLogin())) {
+        if (!TextUtils.isEmpty(usuario.getLogin())) {
             nameValuePairs.add(new BasicNameValuePair("login", usuario.getLogin()));
         }
-        if (TextUtils.isEmpty(usuario.getSenha())) {
+        if (!TextUtils.isEmpty(usuario.getSenha())) {
             nameValuePairs.add(new BasicNameValuePair("senha", usuario.getSenha().toString()));
         }
-        if (TextUtils.isEmpty(usuario.getEmail())) {
+        if (!TextUtils.isEmpty(usuario.getEmail())) {
             nameValuePairs.add(new BasicNameValuePair("email", usuario.getEmail().toString()));
         }
 
@@ -70,18 +70,16 @@ public class UsuarioRequest extends ObjectRequest<Usuario> {
     protected void handleResponse(ServerResponse serverResponse) {
 
         if (serverResponse.isOK()) {
-
             Usuario usuario = new Usuario();
 
             try {
-
                 JSONObject jsonUsuario = ((JSONObject) serverResponse.getReturnObject()).getJSONObject("usuario");
 
                 usuario.setId(jsonUsuario.has("id") ? jsonUsuario.getLong("id") : null);
                 usuario.setNome(jsonUsuario.has("nome") ? jsonUsuario.getString("nome") : "");
                 usuario.setLogin(jsonUsuario.has("login") ? jsonUsuario.getString("login") : "");
                 usuario.setEmail(jsonUsuario.has("email") ? jsonUsuario.getString("email") : "");
-
+                serverResponse.setReturnObject(usuario);
             } catch (JSONException e) {
                 e.printStackTrace();
                 serverResponse.setStatusCode(-1);

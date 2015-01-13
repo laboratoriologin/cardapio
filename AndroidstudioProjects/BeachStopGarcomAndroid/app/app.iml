@@ -84,12 +84,11 @@
     <orderEntry type="jdk" jdkName="Android API 19 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="android-integration" level="project" />
-    <orderEntry type="library" exported="" name="support-annotations-21.0.2" level="project" />
-    <orderEntry type="library" exported="" name="httpcore-4.0.1" level="project" />
-    <orderEntry type="library" exported="" name="support-v4-21.0.2" level="project" />
-    <orderEntry type="library" exported="" name="apache-mime4j-0.6" level="project" />
-    <orderEntry type="library" exported="" name="httpclient-4.0" level="project" />
-    <orderEntry type="library" exported="" name="httpmime-4.0" level="project" />
+    <orderEntry type="library" exported="" name="socialauth-android-3.2" level="project" />
+    <orderEntry type="library" exported="" name="support-annotations-20.0.0" level="project" />
+    <orderEntry type="library" exported="" name="support-v4-20.0.0" level="project" />
+    <orderEntry type="library" exported="" name="universal-image-loader-1.9.3" level="project" />
+    <orderEntry type="library" exported="" name="socialauth-4.4" level="project" />
     <orderEntry type="library" exported="" name="droidpersistence" level="project" />
   </component>
 </module>

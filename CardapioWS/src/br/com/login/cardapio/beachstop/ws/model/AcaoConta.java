@@ -1,9 +1,10 @@
 package br.com.login.cardapio.beachstop.ws.model;
 
+import java.util.Date;
+
 import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import java.util.Date;
 
 @SuppressWarnings("serial")
 @XmlRootElement(name ="acaoconta")
@@ -31,26 +32,26 @@ public final class AcaoConta extends RestModel {
 		this.conta=conta;
 	}
 
-	@FormParam("hararioatendimento")
-	private Date hararioAtendimento;
+	@FormParam("horarioAtendimento")
+	private Date horarioAtendimento;
 
-	public Date getHararioAtendimento() {
-		return hararioAtendimento;
+	public Date getHorarioAtendimento() {
+		return horarioAtendimento;
 	}
 
-	public void setHararioAtendimento(Date hararioAtendimento) {
-		this.hararioAtendimento=hararioAtendimento;
+	public void setHorarioAtendimento(Date horarioAtendimento) {
+		this.horarioAtendimento=horarioAtendimento;
 	}
 
-	@FormParam("horariosolocitacao")
-	private Date horarioSolocitacao;
+	@FormParam("horarioSolicitacao")
+	private Date horarioSolicitacao;
 
-	public Date getHorarioSolocitacao() {
-		return horarioSolocitacao;
+	public Date getHorarioSolicitacao() {
+		return horarioSolicitacao;
 	}
 
-	public void setHorarioSolocitacao(Date horarioSolocitacao) {
-		this.horarioSolocitacao=horarioSolocitacao;
+	public void setHorarioSolicitacao(Date horarioSolicitacao) {
+		this.horarioSolicitacao=horarioSolicitacao;
 	}
 
 	@FormParam("usuario")

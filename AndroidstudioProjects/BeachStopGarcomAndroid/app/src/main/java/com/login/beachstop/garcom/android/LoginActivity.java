@@ -39,6 +39,7 @@ public class LoginActivity extends DefaultActivity {
             } else {
                 progressDialog.setMessage(Constantes.MSG_ERRO_NET);
             }
+            progressDialog.dismiss();
         }
     };
 
@@ -76,7 +77,6 @@ public class LoginActivity extends DefaultActivity {
     public void lembrarSenha(View view) {
         Intent mainIntent = new Intent(LoginActivity.this, LoginLembrarActivity.class);
         LoginActivity.this.startActivity(mainIntent);
-        LoginActivity.this.finish();
     }
 
     public void goCardapio() {

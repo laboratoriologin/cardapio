@@ -521,6 +521,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int activity_cadastro_cliente_text_view_nome=0x7f060010;
         public static final int activity_cadastro_cliente_text_view_saudacao=0x7f06000f;
         public static final int activity_call_garcom_button_call_garcom=0x7f06001b;
+        public static final int activity_call_garcom_button_fechar_conta=0x7f06001c;
         public static final int activity_cardapio_fragment_layout=0x7f06001d;
         public static final int activity_checkin_progres_bar=0x7f060021;
         public static final int activity_checkin_share=0x7f060024;
@@ -634,7 +635,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int none=0x7f060000;
         public static final int progressBar=0x7f060052;
         public static final int screen=0x7f060005;
-        public static final int tab_fragment_conta_button_enviar_conta=0x7f06001c;
         public static final int tabsImagemView=0x7f06008e;
         public static final int tabsLayout=0x7f06008d;
         public static final int tabsText=0x7f06008f;
