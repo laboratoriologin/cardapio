@@ -9,8 +9,8 @@ import org.droidpersistence.annotation.Transient;
  * Created by Argus on 29/10/2014.
  */
 @SuppressWarnings("serial")
-@Table(name = "ACAO")
-public class Acao extends Base {
+@Table(name = "MESA")
+public class Mesa extends Base {
 
     @PrimaryKey
     @Column(name = "ID")
@@ -19,16 +19,16 @@ public class Acao extends Base {
     @Transient
     private String serviceName;
 
-    @Column(name = "DESCRICAO")
-    private String descricao;
+    @Column(name = "NUMERO")
+    private Long numero;
 
-    public Acao() {
-        setServiceName("acoes");
-    }
+    @Column(name = "SETOR_ID")
+    private Long setorId;
 
-    public Acao(Long id) {
-        this();
-        this.setId(id);
+    private Setor setor;
+
+    public Mesa() {
+        setServiceName("mesas");
     }
 
     @Override
@@ -51,11 +51,27 @@ public class Acao extends Base {
         this.serviceName = serviceName;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public Long getNumero() {
+        return numero;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setNumero(Long numero) {
+        this.numero = numero;
+    }
+
+    public Long getSetorId() {
+        return setorId;
+    }
+
+    public void setSetorId(Long setorId) {
+        this.setorId = setorId;
+    }
+
+    public Setor getSetor() {
+        return setor;
+    }
+
+    public void setSetor(Setor setor) {
+        this.setor = setor;
     }
 }

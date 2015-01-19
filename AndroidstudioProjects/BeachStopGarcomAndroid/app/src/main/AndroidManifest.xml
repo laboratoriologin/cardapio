@@ -44,6 +44,10 @@
             android:name="com.login.beachstop.garcom.android.LoginLembrarActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.login.beachstop.garcom.android.SetorActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

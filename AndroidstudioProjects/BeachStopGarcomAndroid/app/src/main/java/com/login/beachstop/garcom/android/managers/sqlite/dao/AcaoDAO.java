@@ -16,6 +16,10 @@ public class AcaoDAO extends DroidDao<Acao, Long> {
         this.dataManager = dataManager;
     }
 
+    public int qtdAll(){
+        return getAll().size();
+    }
+
     public void save(List<Acao> acoes) throws Exception {
         for (Acao acao : acoes) {
             this.save(acao);

@@ -1,13 +1,19 @@
 package com.login.beachstop.garcom.android.views.adapters;
 
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+
+import java.util.List;
 
 /**
  * Created by Argus on 13/01/2015.
  */
 public class AcaoContaListViewAdapter extends BaseAdapter {
+
+    private LayoutInflater layoutInflater;
+
 
     @Override
     public int getCount() {

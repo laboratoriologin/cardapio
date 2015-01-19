@@ -1,7 +1,11 @@
 package br.com.login.cardapio.beachstop.ws.model;
 
+import java.util.List;
+
 import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import org.jboss.resteasy.annotations.Form;
 
 @SuppressWarnings("serial")
 @XmlRootElement(name ="usuariosetor")
@@ -27,6 +31,17 @@ public final class UsuarioSetor extends RestModel {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario=usuario;
+	}
+	
+	@Form(prefix = "setores")
+	private List<Setor> setores;
+
+	public List<Setor> getSetores() {
+		return setores;
+	}
+
+	public void setSetores(List<Setor> setores) {
+		this.setores = setores;
 	}
 
 	public UsuarioSetor(){}

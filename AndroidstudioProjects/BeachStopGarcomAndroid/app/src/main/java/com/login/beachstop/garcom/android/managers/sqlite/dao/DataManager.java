@@ -11,6 +11,7 @@ import com.login.beachstop.garcom.android.managers.sqlite.ItemTableDefinition;
 import com.login.beachstop.garcom.android.managers.sqlite.KitSubItemTableDefinition;
 import com.login.beachstop.garcom.android.managers.sqlite.KitTableDefinition;
 import com.login.beachstop.garcom.android.managers.sqlite.OpenHelper;
+import com.login.beachstop.garcom.android.managers.sqlite.SetorTableDefinition;
 import com.login.beachstop.garcom.android.managers.sqlite.SubItemTableDefinition;
 
 /**
@@ -26,7 +27,7 @@ public class DataManager {
     private KitDAO kitDAO;
     private KitSubItemDAO kitSubItemDAO;
     private AcaoDAO acaoDAO;
-
+    private SetorDAO setorDAO;
 
     public DataManager(Context context) {
         SQLiteOpenHelper openHelper = new OpenHelper(context, "garcom", null, 1);
@@ -38,6 +39,7 @@ public class DataManager {
         this.setKitDAO(new KitDAO(new KitTableDefinition(), this));
         this.setKitSubItemDAO(new KitSubItemDAO(new KitSubItemTableDefinition(), this));
         this.setAcaoDAO(new AcaoDAO(new AcaoTableDefinition(), this));
+        this.setSetorDAO(new SetorDAO(new SetorTableDefinition(), this));
     }
 
     public SQLiteDatabase getDatabase() {
@@ -103,5 +105,13 @@ public class DataManager {
 
     public void setAcaoDAO(AcaoDAO acaoDAO) {
         this.acaoDAO = acaoDAO;
+    }
+
+    public SetorDAO getSetorDAO() {
+        return setorDAO;
+    }
+
+    public void setSetorDAO(SetorDAO setorDAO) {
+        this.setorDAO = setorDAO;
     }
 }

@@ -49,6 +49,7 @@ public class SplashActivity extends DefaultActivity {
                                 SplashActivity.this.getDataManager().getKitDAO().deleteAll();
                                 SplashActivity.this.getDataManager().getKitSubItemDAO().deleteAll();
                                 SplashActivity.this.getDataManager().getEmpresaDAO().deleteAll();
+                                SplashActivity.this.getDataManager().getSetorDAO().deleteAll();
 
                                 getDataManager().getEmpresaDAO().save((Empresa) serverResponse.getReturnObject());
 
@@ -153,7 +154,9 @@ public class SplashActivity extends DefaultActivity {
                 textView.setVisibility(TextView.VISIBLE);
                 textView.setText("Atualizando informações do sistema");
                 new EmpresaRequest(responseGetEmpresa).getKeyCardapio();
-                new AcaoRequest(responseListenerGetAcao).get(new Acao());
+                if(getDataManager().getAcaoDAO().qtdAll() == 0) {
+                    new AcaoRequest(responseListenerGetAcao).get(new Acao());
+                }
             }
         }, SPLASH_MILIS);
 

@@ -42,71 +42,52 @@ public class ContaDAO implements RestDAO<Conta> {
 	}
 
 	public Conta getByNumeroTipoConta(Integer numero, Boolean tipoMesa, Boolean isAnalitico) {
-
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
-
 		broker.setPropertySQL("contadao.getbynumerotipoconta", numero, tipoMesa);
-
 		Conta conta = (Conta) broker.getObjectBean(Conta.class, "cliente.id", "dataAbertura", "dataFechamento", "id", "numero", "qtdPessoa", "tipoConta");
-
 		if (conta != null && isAnalitico) {
-
 			// TODO: Incluir os pedidos e os subitens do pedido para a conta ser
 			// carregada de forma analítica
 
 		}
-
 		return conta;
 	}
 
 	@Override
 	public List<Conta> getAll() {
-
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
-
 		broker.setPropertySQL("contadao.findall");
-
 		return broker.getCollectionBean(Conta.class, "cliente.id", "dataAbertura", "dataFechamento", "id", "numero", "qtdPessoa", "tipoConta");
-
 	}
 
 	@Override
 	public Conta insert(Conta model) throws TSApplicationException {
-
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
-
 		model.setId(broker.getSequenceNextValue("dbo.contas"));
-
 		broker.setPropertySQL("contadao.insert", model.getCliente().getId(), model.getDataAbertura(), model.getDataFechamento(), model.getNumero(), model.getQtdPessoa(), model.getTipoConta());
-
 		broker.execute();
-
 		return model;
-
 	}
 
 	@Override
 	public Conta update(final Conta model) throws TSApplicationException {
-
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
-
 		broker.setPropertySQL("contadao.update", model.getCliente().getId(), model.getDataAbertura(), model.getDataFechamento(), model.getNumero(), model.getQtdPessoa(), model.getTipoConta(), model.getId());
-
 		broker.execute();
-
 		return model;
-
 	}
 
 	@Override
 	public void delete(Long id) throws TSApplicationException {
-
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
-
 		broker.setPropertySQL("contadao.delete", id);
-
 		broker.execute();
-
 	}
 
+	public Conta fecharConta(Conta model)throws TSApplicationException {
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		broker.setPropertySQL("contadao.updatefecharconta", model.getId());
+		broker.execute();
+		return model;
+	}
 }
