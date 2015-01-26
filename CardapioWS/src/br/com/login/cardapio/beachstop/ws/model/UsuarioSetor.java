@@ -49,4 +49,9 @@ public final class UsuarioSetor extends RestModel {
 	public UsuarioSetor(String id){
 		this.id = Long.valueOf(id);
 	}
+	
+	@Override
+	public String toString() {
+		return this.setor.getId().toString();
+	}
 }

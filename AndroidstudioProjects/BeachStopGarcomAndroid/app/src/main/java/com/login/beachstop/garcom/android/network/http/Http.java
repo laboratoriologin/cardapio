@@ -39,9 +39,9 @@ public class Http {
 
     public static Http getInstance() {
 
-        if (http == null) {
+        //if (http == null) {
             http = new Http();
-        }
+        //}
 
         return http;
     }
@@ -76,9 +76,9 @@ public class Http {
             }
 
         } catch (ClientProtocolException e) {
-            return new ServerResponse(0, null);
+            return new ServerResponse(0, e.getCause().getMessage());
         } catch (IOException e) {
-            return new ServerResponse(0, null);
+            return new ServerResponse(0, e.getCause().getMessage());
         }
     }
 
@@ -159,7 +159,7 @@ public class Http {
                 httpput.setEntity(new UrlEncodedFormEntity(nameValuePairs, HTTP.ISO_8859_1));
             }
         } catch (UnsupportedEncodingException e) {
-            return new ServerResponse(0, null);
+            return new ServerResponse(0, e.getMessage());
         }
 
         return execute(httpput);

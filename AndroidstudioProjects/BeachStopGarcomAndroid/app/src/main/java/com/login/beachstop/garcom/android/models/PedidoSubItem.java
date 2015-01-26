@@ -37,6 +37,9 @@ public class PedidoSubItem extends Base {
     @Transient
     private SubItem subItem;
 
+    @Transient
+    private Kit kit;
+
     public PedidoSubItem() {
         this.setServiceName("pedidosubitens");
     }
@@ -107,6 +110,30 @@ public class PedidoSubItem extends Base {
         this.quantidade -= qtd;
     }
 
+    public Long getPedidoId() {
+        return pedidoId;
+    }
+
+    public void setPedidoId(Long pedidoId) {
+        this.pedidoId = pedidoId;
+    }
+
+    public String getValorUnitario() {
+        return valorUnitario;
+    }
+
+    public void setValorUnitario(String valorUnitario) {
+        this.valorUnitario = valorUnitario;
+    }
+
+    public Kit getKit() {
+        return kit;
+    }
+
+    public void setKit(Kit kit) {
+        this.kit = kit;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -130,21 +157,5 @@ public class PedidoSubItem extends Base {
         } else if (!subItem.equals(other.subItem))
             return false;
         return true;
-    }
-
-    public Long getPedidoId() {
-        return pedidoId;
-    }
-
-    public void setPedidoId(Long pedidoId) {
-        this.pedidoId = pedidoId;
-    }
-
-    public String getValorUnitario() {
-        return valorUnitario;
-    }
-
-    public void setValorUnitario(String valorUnitario) {
-        this.valorUnitario = valorUnitario;
     }
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import br.com.login.cardapio.beachstop.ws.model.Conta;
 import br.com.login.cardapio.beachstop.ws.model.Pedido;
 import br.com.login.cardapio.beachstop.ws.model.PedidoSubItem;
+import br.com.login.cardapio.beachstop.ws.model.Status;
 import br.com.login.cardapio.beachstop.ws.util.Constantes;
 import br.com.topsys.database.TSDataBaseBrokerIf;
 import br.com.topsys.database.factory.TSDataBaseBrokerFactory;
@@ -51,6 +52,16 @@ public class PedidoSubItemDAO implements RestDAO<PedidoSubItem> {
 		broker.setPropertySQL("pedidosubitemdao.findallbypedido", pedido.getId());
 
 		return broker.getCollectionBean(PedidoSubItem.class, "id", "pedido.id", "quantidade", "subItem.id", "valorUnitario");
+
+	}
+	
+	public List<PedidoSubItem> getAll(Pedido pedido, Status status) {
+
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+
+		broker.setPropertySQL("pedidosubitemdao.findallbypedidostatus", pedido.getId(), pedido.getId(), status.getId());
+
+		return broker.getCollectionBean(PedidoSubItem.class, "id", "pedido.id", "quantidade", "subItem.id", "valorUnitario", "kit.id", "kit.descricao");
 
 	}
 

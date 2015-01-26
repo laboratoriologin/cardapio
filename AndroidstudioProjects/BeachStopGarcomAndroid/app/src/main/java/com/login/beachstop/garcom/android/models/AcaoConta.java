@@ -1,9 +1,11 @@
 package com.login.beachstop.garcom.android.models;
 
+import java.io.Serializable;
+
 /**
  * Created by Argus on 14/01/2015.
  */
-public class AcaoConta extends Base {
+public class AcaoConta extends Base implements Serializable, Comparable<AcaoConta> {
 
     private Long id;
     private String serviceName;
@@ -12,6 +14,8 @@ public class AcaoConta extends Base {
     private String horarioAtendimento;
     private String horarioSolicitacao;
     private Usuario usuario;
+    private String diffHorarioSolicitacao;
+    private Pedido pedido;
 
     public AcaoConta() {
         setServiceName("acoes_contas");
@@ -69,12 +73,37 @@ public class AcaoConta extends Base {
         this.horarioSolicitacao = horarioSolicitacao;
     }
 
+    public String getHorario() {
+        return getHorarioSolicitacao().replace("T", " ");
+    }
+
     public Usuario getUsuario() {
         return usuario;
     }
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public String getDiffHorarioSolicitacao() {
+        return diffHorarioSolicitacao;
+    }
+
+    public void setDiffHorarioSolicitacao(String diffHorarioSolicitacao) {
+        this.diffHorarioSolicitacao = diffHorarioSolicitacao;
+    }
+
+    public Pedido getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
+    }
+
+    @Override
+    public int compareTo(AcaoConta another) {
+        return another.getHorario().compareTo(this.getHorario());
     }
 
     @Override

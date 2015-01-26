@@ -14,16 +14,16 @@ public final class Constantes {
 	public static final String MENSAGEM_SENHA = "Sua senha atual do app cardápio  é :";
 	public static final String CRIPTOGRAFIA_MD5 = "md5";
 	
-	public static final Long PEDIDO_PENDENTE_APROVACAO = 1L;
-	public static final Long PEDIDO_PENDENTE_ENTREGA = 2L;
-	public static final Long PEDIDO_ENTREGUE = 3L;
-	public static final Long PEDIDO_CANCELADO = 4L;
+	public interface StatusPedido{
+		public static final Long PENDENTE_APROVACAO = 1L;
+		public static final Long PENDENTE_ENTREGA = 2L;
+		public static final Long ENTREGUE = 3L;
+		public static final Long CANCELADO = 4L;	
+	}
 	
     public interface Acoes {
-
     	Long ChamarGarcom = 3l;
     	Long PedirConta = 4l;
     	Long NovoPedido = 5l;
     }
-
 }

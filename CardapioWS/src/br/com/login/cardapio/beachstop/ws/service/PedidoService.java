@@ -114,9 +114,9 @@ public class PedidoService extends RestService<Pedido> {
 		Status status = new Status();
 
 		if (pedidoPeloGarcom)
-			status.setId(Constantes.PEDIDO_PENDENTE_ENTREGA);
+			status.setId(Constantes.StatusPedido.PENDENTE_ENTREGA);
 		else
-			status.setId(Constantes.PEDIDO_PENDENTE_APROVACAO);
+			status.setId(Constantes.StatusPedido.PENDENTE_APROVACAO);
 
 		for (PedidoSubItem item : form.getSubItens()) {
 			item.setStatus(status);
@@ -128,7 +128,7 @@ public class PedidoService extends RestService<Pedido> {
 		
 		super.insert(form);		
 		this.gerarLog(form, status);
-		this.gerarAcaoConta(form.getConta());
+		this.gerarAcaoConta(form);
 		return new Pedido();
 	}
 
@@ -177,7 +177,7 @@ public class PedidoService extends RestService<Pedido> {
 
 				form.setSubItens(new PedidoSubItemDAO().getAll(form));
 
-				this.gerarLog(form, new Status(Constantes.PEDIDO_PENDENTE_ENTREGA));
+				this.gerarLog(form, new Status(Constantes.StatusPedido.PENDENTE_ENTREGA));
 
 			}
 
@@ -217,7 +217,7 @@ public class PedidoService extends RestService<Pedido> {
 
 				new PedidoDAO().cancelar(pedido);
 
-				this.gerarLog(pedido, new Status(Constantes.PEDIDO_CANCELADO));
+				this.gerarLog(pedido, new Status(Constantes.StatusPedido.CANCELADO));
 
 			}
 
@@ -237,12 +237,13 @@ public class PedidoService extends RestService<Pedido> {
 
 	}
 	
-	private void gerarAcaoConta(Conta conta){
+	private void gerarAcaoConta(Pedido pedido){
 		
 		AcaoConta acaoConta = new AcaoConta();
-		acaoConta.setConta(conta);
+		acaoConta.setConta(pedido.getConta());
 		acaoConta.setAcao(new Acao(Constantes.Acoes.NovoPedido.toString()));
 		acaoConta.setUsuario(new Usuario());
+		acaoConta.setPedido(pedido);
 		
 		try {
 			new AcaoContaDAO().insert(acaoConta);

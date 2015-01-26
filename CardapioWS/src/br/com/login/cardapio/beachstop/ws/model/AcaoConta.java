@@ -1,5 +1,7 @@
 package br.com.login.cardapio.beachstop.ws.model;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.ws.rs.FormParam;
@@ -53,6 +55,23 @@ public final class AcaoConta extends RestModel {
 	public void setHorarioSolicitacao(Date horarioSolicitacao) {
 		this.horarioSolicitacao=horarioSolicitacao;
 	}
+	
+	@FormParam("diffhorarioSolicitacao")
+	private String diffHorarioSolitacao;
+
+	public String getDiffHorarioSolitacao() {
+		if(horarioSolicitacao != null){
+	        Calendar cal = Calendar.getInstance();            
+	        cal.setTime(horarioSolicitacao);        
+	        return String.valueOf((int) (((System.currentTimeMillis() - cal.getTimeInMillis())/ (1000*60)) ));
+		}else{
+			return "";
+		}
+	}
+
+	public void setDiffHorarioSolitacao(String diffHorarioSolitacao) {
+		this.diffHorarioSolitacao=diffHorarioSolitacao;
+	}
 
 	@FormParam("usuario")
 	private Usuario usuario;
@@ -63,6 +82,17 @@ public final class AcaoConta extends RestModel {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario=usuario;
+	}
+	
+	@FormParam("pedido")
+	private Pedido pedido;
+
+	public Pedido getPedido() {
+		return pedido;
+	}
+
+	public void setPedido(Pedido pedido) {
+		this.pedido=pedido;
 	}
 
 	public AcaoConta(){}

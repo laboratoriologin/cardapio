@@ -21,7 +21,6 @@ public class PedidoDAO implements RestDAO<Pedido> {
 		broker.setPropertySQL("pedidodao.get", id);
 
 		return (Pedido) broker.getObjectBean(Pedido.class, "conta.id", "id", "observacao");
-
 	}
 
 	@Override
@@ -83,7 +82,7 @@ public class PedidoDAO implements RestDAO<Pedido> {
 
 		for (PedidoSubItem item : model.getSubItens()) {
 
-			item.setStatus(new Status(Constantes.PEDIDO_PENDENTE_ENTREGA));
+			item.setStatus(new Status(Constantes.StatusPedido.PENDENTE_ENTREGA));
 
 			if (TSUtil.isEmpty(item.getId())) {
 

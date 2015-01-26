@@ -129,8 +129,8 @@ public class SetorActivity extends DefaultActivity {
                 usuarioSetor.setUsuarioId(getUsuario().getId());
                 usuarioSetor.setSetores(new ArrayList<Setor>());
 
-                for (Setor setor : setores){
-                    if(setor.isAtivo())
+                for (Setor setor : setores) {
+                    if (setor.isAtivo())
                         usuarioSetor.getSetores().add(setor);
                 }
 

@@ -56,6 +56,14 @@ public final class Constantes {
 
     }
 
+    public interface Acao {
+
+        Long CHAMARGARCOM = 3l;
+        Long PEDIRCONTA = 4l;
+        Long PEDIDOS = 5l;
+
+    }
+
     public interface TipoCategoriaCardapio {
 
         Long ITEM = 1l;
