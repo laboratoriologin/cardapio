@@ -54,10 +54,32 @@ public final class Pedido extends RestModel {
 	public void setSubItens(List<PedidoSubItem> subItens) {
 		this.subItens = subItens;
 	}
-
-	public Pedido() {
+	
+	@FormParam("numero")
+	private Long numero;
+	
+	public Long getNumero() {
+		return numero;
 	}
 
+	public void setNumero(Long numero) {
+		this.numero = numero;
+	}
+	
+	@FormParam("acaoContaId")
+	private Long acaoContaId;
+	
+	public Long getAcaoContaId() {
+		return acaoContaId;
+	}
+
+	public void setAcaoContaId(Long acaoContaId) {
+		this.acaoContaId = acaoContaId;
+	}
+	
+	public Pedido() {
+	}
+	
 	public Pedido(String id) {
 		this.id = Long.valueOf(id);
 	}

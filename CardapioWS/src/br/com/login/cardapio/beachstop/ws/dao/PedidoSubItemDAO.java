@@ -72,7 +72,7 @@ public class PedidoSubItemDAO implements RestDAO<PedidoSubItem> {
 
 		model.setId(broker.getSequenceNextValue("dbo.pedidos_sub_itens "));
 
-		broker.setPropertySQL("pedidosubitemdao.insert", model.getPedido().getId(), model.getQuantidade(), model.getSubItem().getId(), model.getValorUnitario(), model.getKit().getId());
+		broker.setPropertySQL("pedidosubitemdao.insert", model.getPedido().getId(), model.getQuantidade(), model.getSubItem().getId(), model.getValorUnitario(), model.getKit() != null ? model.getKit().getId() : null);
 
 		broker.execute();
 
@@ -97,7 +97,7 @@ public class PedidoSubItemDAO implements RestDAO<PedidoSubItem> {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("pedidosubitemdao.update", model.getQuantidade(), model.getId());
+		broker.setPropertySQL("pedidosubitemdao.updatequantidade", model.getQuantidade(), model.getId());
 
 		broker.execute();
 
@@ -107,7 +107,7 @@ public class PedidoSubItemDAO implements RestDAO<PedidoSubItem> {
 
 	public PedidoSubItem update(final PedidoSubItem model, TSDataBaseBrokerIf broker) throws TSApplicationException {
 
-		broker.setPropertySQL("pedidosubitemdao.update", model.getQuantidade(), model.getId());
+		broker.setPropertySQL("pedidosubitemdao.updatequantidade", model.getQuantidade(), model.getId());
 
 		broker.execute();
 

@@ -31,30 +31,96 @@ public class HomeActivity  extends DefaultActivity {
     private AcaoContaListViewAdapter acaoContaListViewAdapter;
     private String lastHorario = "";
     private final int REFRESH_MILIS = 10000;
-    public View.OnClickListener resolverAlerta = new View.OnClickListener() {
+    public View.OnClickListener clickListenerAprovarChamado = new View.OnClickListener() {
 
         @Override
         public void onClick(View view) {
             //TODO: Incluir tratamento para concorrência.
             Toast.makeText(getApplicationContext(), "Aprovando chamado...", Toast.LENGTH_SHORT).show();
             ((AcaoConta)view.getTag()).setUsuario(getUsuario());
-            new AcaoContaRequest(responseListenerResolverAlerta).revolverAcaoConta(((AcaoConta)view.getTag()));
+            new AcaoContaRequest(responseListenerResolverAcaoConta).revolverAcaoConta(((AcaoConta) view.getTag()));
             view.setPressed(true);
         }
     };
-    public ResponseListener responseListenerResolverAlerta = new ResponseListener() {
+    public View.OnClickListener clickListenerCancelarPedido = new View.OnClickListener() {
+
+        @Override
+        public void onClick(View view) {
+            //TODO: Incluir tratamento para concorrência.
+            Toast.makeText(getApplicationContext(), "Cancelando o pedido...", Toast.LENGTH_SHORT).show();
+            ((AcaoConta) view.getTag()).setUsuario(getUsuario());
+            new AcaoContaRequest(responseListenerCancelarPedido).cancelarPedido(((AcaoConta) view.getTag()));
+            view.setPressed(true);
+        }
+    };
+    public View.OnClickListener clickListenerAprovarPedido = new View.OnClickListener() {
+
+        @Override
+        public void onClick(View view) {
+            //TODO: Incluir tratamento para concorrência.
+            Toast.makeText(getApplicationContext(), "Aprovando o pedido...", Toast.LENGTH_SHORT).show();
+            ((AcaoConta) view.getTag()).setUsuario(getUsuario());
+            new AcaoContaRequest(responseListenerAprovarPedido).aprovarPedido(((AcaoConta) view.getTag()));
+            view.setPressed(true);
+        }
+    };
+    public OnClickListener clickListenerEditarPedido = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(getApplicationContext(), PedidoActivity.class);
+            intent.putExtra(Constantes.PARAMETRO_PEDIDO_EDITAR, (AcaoConta) v.getTag());
+            HomeActivity.this.startActivity(intent);
+        }
+    };
+    public ResponseListener responseListenerAprovarPedido = new ResponseListener() {
         @Override
         public void onResult(ServerResponse serverResponse) {
             if (serverResponse != null) {
                 if (serverResponse.isOK()) {
-
                     AcaoConta acaoConta = (AcaoConta) serverResponse.getReturnObject();
 
                     if (acaoContas.contains(acaoConta))
                         acaoContas.remove(acaoContas.indexOf(acaoConta));
 
                     acaoContaListViewAdapter.notifyDataSetChanged();
+                } else {
+                    Toast.makeText(getApplicationContext(), serverResponse.getMsgErro(), Toast.LENGTH_LONG).show();
+                }
+            } else {
+                Toast.makeText(getApplicationContext(), Constantes.MSG_ERRO_NET, Toast.LENGTH_LONG).show();
+            }
+        }
+    };
+    public ResponseListener responseListenerCancelarPedido = new ResponseListener() {
+        @Override
+        public void onResult(ServerResponse serverResponse) {
+            if (serverResponse != null) {
+                if (serverResponse.isOK()) {
+                    AcaoConta acaoConta = (AcaoConta) serverResponse.getReturnObject();
 
+                    if (acaoContas.contains(acaoConta))
+                        acaoContas.remove(acaoContas.indexOf(acaoConta));
+
+                    acaoContaListViewAdapter.notifyDataSetChanged();
+                } else {
+                    Toast.makeText(getApplicationContext(), serverResponse.getMsgErro(), Toast.LENGTH_LONG).show();
+                }
+            } else {
+                Toast.makeText(getApplicationContext(), Constantes.MSG_ERRO_NET, Toast.LENGTH_LONG).show();
+            }
+        }
+    };
+    public ResponseListener responseListenerResolverAcaoConta = new ResponseListener() {
+        @Override
+        public void onResult(ServerResponse serverResponse) {
+            if (serverResponse != null) {
+                if (serverResponse.isOK()) {
+                    AcaoConta acaoConta = (AcaoConta) serverResponse.getReturnObject();
+
+                    if (acaoContas.contains(acaoConta))
+                        acaoContas.remove(acaoContas.indexOf(acaoConta));
+
+                    acaoContaListViewAdapter.notifyDataSetChanged();
                 } else {
                     Toast.makeText(getApplicationContext(), serverResponse.getMsgErro(), Toast.LENGTH_LONG).show();
                 }
@@ -107,8 +173,8 @@ public class HomeActivity  extends DefaultActivity {
 
             @Override
             public void onClick(View v) {
-                //Intent intent = new Intent(HomeActivity.this, PedidoActivity.class);
-                //startActivity(intent);
+                Intent intent = new Intent(HomeActivity.this, PedidoActivity.class);
+                startActivity(intent);
             }
         });
 

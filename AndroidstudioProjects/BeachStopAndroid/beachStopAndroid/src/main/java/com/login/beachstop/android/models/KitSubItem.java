@@ -103,5 +103,4 @@ public class KitSubItem extends Base {
     public int hashCode() {
         return (int) (id ^ (id >>> 32));
     }
-
 }

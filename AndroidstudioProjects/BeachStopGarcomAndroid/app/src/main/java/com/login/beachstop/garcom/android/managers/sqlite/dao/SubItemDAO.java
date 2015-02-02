@@ -19,9 +19,22 @@ public class SubItemDAO extends DroidDao<SubItem, Long> {
     }
 
     public List<SubItem> getByItemId(Item item){
-
         return this.getAllbyClause("ITEM_ID=?", new String[]{item.getId().toString()}, null, null, "ORDEM");
+    }
 
+    public List<SubItem> getAllWithItem() {
+        List<SubItem> subItens = getAllbyClause("", null, "", "", "ITEM_ID");
+        for (SubItem subItem : subItens) {
+            subItem.setItem(this.dataManager.getItemDAO().get(subItem.getItemId()));
+        }
+        //Collections.sort(subItens);
+        return subItens;
+    }
+
+    public SubItem getWithItem(Long id) {
+        SubItem subItem = this.get(id);
+        subItem.setItem(this.dataManager.getItemDAO().get(subItem.getItemId()));
+        return subItem;
     }
 
     public int getQtdSubItem() {

@@ -43,12 +43,28 @@ public class AcaoContaRequest extends ObjectRequest<AcaoConta> {
         this.execute(serverRequest);
     }
 
+    public void cancelarPedido(AcaoConta acaoConta) {
+        String url = String.format("%s/%s/cancelarpedido/%s", Constantes.URL_WS, new AcaoConta().getServiceName(), acaoConta.getId().toString());
+        ServerRequest serverRequest = new ServerRequest(ServerRequest.PUT, url, createParameters(acaoConta));
+        this.execute(serverRequest);
+    }
+
+    public void aprovarPedido(AcaoConta acaoConta) {
+        String url = String.format("%s/%s/aprovarpedido/%s", Constantes.URL_WS, new AcaoConta().getServiceName(), acaoConta.getId().toString());
+        ServerRequest serverRequest = new ServerRequest(ServerRequest.PUT, url, createParameters(acaoConta));
+        this.execute(serverRequest);
+    }
+
     @Override
     protected List<NameValuePair> createParameters(AcaoConta obj) {
         List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
         nameValuePairs.add(new BasicNameValuePair("id", obj.getId().toString()));
         nameValuePairs.add(new BasicNameValuePair("usuario", obj.getUsuario().getId().toString()));
         nameValuePairs.add(new BasicNameValuePair("acao", obj.getAcao().getId().toString()));
+
+        if (Constantes.Acao.PEDIDOS.equals(obj.getAcao().getId()))
+            nameValuePairs.add(new BasicNameValuePair("pedido", obj.getPedido().getId().toString()));
+
         return nameValuePairs;
     }
 
@@ -90,7 +106,7 @@ public class AcaoContaRequest extends ObjectRequest<AcaoConta> {
                         if (!(json.get("pedido") instanceof String)) {
                             Pedido pedido = new Pedido();
                             pedido.setId(json.getJSONObject("pedido").getLong("id"));
-                            pedido.setObservacao(json.getJSONObject("pedido").has("descricao") ? json.getJSONObject("pedido").getString("descricao") : "");
+                            pedido.setObservacao(json.getJSONObject("pedido").has("observacao") ? json.getJSONObject("pedido").getString("observacao") : "");
 
                             if (json.getJSONObject("pedido").has("subItens")) {
                                 JSONArray jsonArrayPedidoSubItem = Utilitarios.getAlwaysJsonArray(json.getJSONObject("pedido"), "subItens");
@@ -102,16 +118,20 @@ public class AcaoContaRequest extends ObjectRequest<AcaoConta> {
                                     jsonObjectItem = jsonArrayPedidoSubItem.getJSONObject(j);
                                     pedidoSubItem = new PedidoSubItem();
                                     pedidoSubItem.setId(jsonObjectItem.getLong("id"));
-                                    pedidoSubItem.setQuantidade(jsonObjectItem.getLong("quantidade"));
+                                    pedidoSubItem.setQuantidade(jsonObjectItem.getInt("quantidade"));
                                     pedidoSubItem.setValorUnitario(jsonObjectItem.getString("valorUnitario"));
-                                    pedidoSubItem.setPedidoId(jsonObjectItem.getJSONObject("subItem").getLong("id"));
+                                    pedidoSubItem.setSubItemId(jsonObjectItem.getJSONObject("subItem").getLong("id"));
 
                                     if (jsonObjectItem.has("kit")) {
-                                        Kit kit = new Kit();
-                                        kit.setId(jsonObjectItem.getJSONObject("kit").getLong("id"));
-                                        kit.setDescricao(jsonObjectItem.getJSONObject("kit").getString("descricao"));
+                                        try {
+                                            Kit kit = new Kit();
+                                            kit.setId(jsonObjectItem.getJSONObject("kit").getLong("id"));
+                                            kit.setDescricao(jsonObjectItem.getJSONObject("kit").getString("descricao"));
 
-                                        pedidoSubItem.setKit(kit);
+                                            pedidoSubItem.setKit(kit);
+                                        }catch (Exception e){
+
+                                        }
                                     }
                                     pedido.getPedidoSubItens().add(pedidoSubItem);
                                 }

@@ -8,15 +8,12 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.login.beachstop.garcom.android.DefaultActivity;
 import com.login.beachstop.garcom.android.HomeActivity;
 import com.login.beachstop.garcom.android.R;
 import com.login.beachstop.garcom.android.models.AcaoConta;
-import com.login.beachstop.garcom.android.models.ServerResponse;
-import com.login.beachstop.garcom.android.network.AcaoContaRequest;
-import com.login.beachstop.garcom.android.network.http.ResponseListener;
+import com.login.beachstop.garcom.android.models.Item;
+import com.login.beachstop.garcom.android.models.PedidoSubItem;
 import com.login.beachstop.garcom.android.utils.Constantes;
 
 import java.util.List;
@@ -55,14 +52,14 @@ public class AcaoContaListViewAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         AcaoConta acaoConta = this.acaoContas.get(i);
         if (Constantes.Acao.CHAMARGARCOM.equals(acaoConta.getAcao().getId()) || Constantes.Acao.PEDIRCONTA.equals(acaoConta.getAcao().getId())) {
-            return this.getViewSynthetic(i, acaoConta, viewGroup);
+            return this.getViewSynthetic(acaoConta, viewGroup);
         } else if (Constantes.Acao.PEDIDOS.equals(acaoConta.getAcao().getId())) {
-            return this.getViewAnalytic(i, acaoConta, viewGroup);
+            return this.getViewAnalytic(acaoConta, viewGroup);
         }
         return null;
     }
 
-    private View getViewSynthetic(int i, AcaoConta acaoConta, View viewGroup) {
+    private View getViewSynthetic(AcaoConta acaoConta, View viewGroup) {
         viewGroup = layoutInflater.inflate(R.layout.adapter_list_view_acao_item, null);
 
         TableLayout tableLayout = (TableLayout) viewGroup.findViewById(R.id.adapter_list_view_acao_table_layout);
@@ -77,7 +74,7 @@ public class AcaoContaListViewAdapter extends BaseAdapter {
         ((TextView) viewRowItem.findViewById(R.id.adapter_list_view_acao_item_row_text_view_tempo)).setText(acaoConta.getDiffHorarioSolicitacao() + " Min ");
 
         ((Button) viewRowItem.findViewById(R.id.adapter_list_view_acao_item_row_button_aprovar)).setTag(acaoConta);
-        ((Button) viewRowItem.findViewById(R.id.adapter_list_view_acao_item_row_button_aprovar)).setOnClickListener(homeActivity.resolverAlerta);
+        ((Button) viewRowItem.findViewById(R.id.adapter_list_view_acao_item_row_button_aprovar)).setOnClickListener(homeActivity.clickListenerAprovarChamado);
 
 
         tableLayout.addView(viewRowItem);
@@ -85,7 +82,37 @@ public class AcaoContaListViewAdapter extends BaseAdapter {
         return viewGroup;
     }
 
-    private View getViewAnalytic(int i, AcaoConta acaoConta, View viewGroup) {
-        return null;
+    private View getViewAnalytic(AcaoConta acaoConta, View viewGroup) {
+        viewGroup = layoutInflater.inflate(R.layout.adapter_list_view_pedido_item, null);
+
+        TableLayout table = (TableLayout) viewGroup.findViewById(R.id.adapter_list_view_pedido_item_table_layout);
+        View itemView = null;
+
+        table.removeAllViews();
+
+        Item item;
+        for (PedidoSubItem pedidoSubItem : acaoConta.getPedido().getPedidoSubItens()) {
+            item = homeActivity.getDataManager().getItemDAO().getBySubItem(pedidoSubItem.getSubItemId());
+
+            itemView = layoutInflater.inflate(R.layout.adapter_list_view_pedido_item_row, null);
+            ((TextView) itemView.findViewById(R.id.adapter_list_view_pedido_item_row_text_view_quantidade)).setText(String.valueOf(pedidoSubItem.getQuantidade()));
+            ((TextView) itemView.findViewById(R.id.adapter_list_view_pedido_item_row_text_view_descricao)).setText(item.getNome() + " - " + item.getSubItens().get(0).getNome());
+
+            table.addView(itemView);
+        }
+
+        ((TextView) viewGroup.findViewById(R.id.adapter_list_view_pedido_item_text_view_mesa)).setText("Pedido: Mesa " + acaoConta.getConta().getNumero().toString());
+        ((TextView) viewGroup.findViewById(R.id.adapter_list_view_pedido_item_text_view_observacao)).setText(acaoConta.getPedido().getObservacao());
+
+        viewGroup.findViewById(R.id.adapter_list_view_pedido_item_button_aprovar).setOnClickListener(homeActivity.clickListenerAprovarPedido);
+        viewGroup.findViewById(R.id.adapter_list_view_pedido_item_button_aprovar).setTag(acaoConta);
+
+        viewGroup.findViewById(R.id.adapter_list_view_pedido_item_button_editar).setOnClickListener(homeActivity.clickListenerEditarPedido);
+        viewGroup.findViewById(R.id.adapter_list_view_pedido_item_button_editar).setTag(acaoConta);
+
+        viewGroup.findViewById(R.id.adapter_list_view_pedido_item_button_cancelar).setOnClickListener(homeActivity.clickListenerCancelarPedido);
+        viewGroup.findViewById(R.id.adapter_list_view_pedido_item_button_cancelar).setTag(acaoConta);
+
+        return viewGroup;
     }
 }

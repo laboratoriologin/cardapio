@@ -24,9 +24,7 @@ public class KitRequest extends ObjectRequest<Kit> {
 
     @Override
     protected void handleResponse(ServerResponse serverResponse) {
-
         if (serverResponse.isOK()) {
-
             List<Kit> itens = new ArrayList<Kit>();
             JSONArray jsonArray;
             JSONObject jsonObjectKit;
@@ -36,32 +34,27 @@ public class KitRequest extends ObjectRequest<Kit> {
             KitSubItem kitSubItem;
 
             try {
-
                 jsonArray = ((JSONObject) serverResponse.getReturnObject()).getJSONArray("");
-
                 for (int i = 0; i < jsonArray.length(); i++) {
-
                     kit = new Kit();
-                    jsonObjectKit = jsonArray.getJSONObject(i).getJSONObject("Kit");
-
+                    jsonObjectKit = jsonArray.getJSONObject(i).getJSONObject("kit");
                     kit.setId(jsonObjectKit.getLong("id"));
                     kit.setImagem(jsonObjectKit.has("imagem") ? jsonObjectKit.getString("imagem") : "");
                     kit.setNome(jsonObjectKit.has("nome") ? jsonObjectKit.getString("nome") : "");
                     kit.setDescricao(jsonObjectKit.has("descricao") ? jsonObjectKit.getString("descricao") : "");
                     kit.setDesconto(jsonObjectKit.has("desconto") ? jsonObjectKit.getString("desconto") : "");
                     kit.setOrdem(jsonObjectKit.has("ordem") ? Long.valueOf(jsonObjectKit.getLong("ordem")) : 0l);
-
                     kit.setKitSubItens(new ArrayList<KitSubItem>());
-                    jsonArrayKitSubItem = Utilitarios.getAlwaysJsonArray(jsonObjectKit, "subItens");
 
+                    jsonArrayKitSubItem = Utilitarios.getAlwaysJsonArray(jsonObjectKit, "kitSubItens");
                     for (int j = 0; j < jsonArrayKitSubItem.length(); j++) {
 
                         kitSubItem = new KitSubItem();
                         jsonObjectSubKit = jsonArrayKitSubItem.getJSONObject(j);
-
                         kitSubItem.setId(jsonObjectSubKit.has("id") ? jsonObjectSubKit.getLong("id") : null);
                         kitSubItem.setKitId(jsonObjectSubKit.has("kit") ? jsonObjectSubKit.getJSONObject("kit").getLong("id") : null);
-                        kitSubItem.setSubItemId(jsonObjectSubKit.has("subitem") ? jsonObjectSubKit.getJSONObject("subitem").getLong("id") : null);
+                        kitSubItem.setSubItemId(jsonObjectSubKit.has("subItem") ? jsonObjectSubKit.getJSONObject("subItem").getLong("id") : null);
+                        kitSubItem.setQuantidade(jsonObjectSubKit.has("qtd") ? jsonObjectSubKit.getLong("qtd") : 0l);
 
                         kit.getKitSubItens().add(kitSubItem);
                     }

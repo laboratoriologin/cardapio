@@ -26,7 +26,7 @@ public class PedidoSubItem extends Base {
     private Long subItemId;
 
     @Column(name = "QUANTIDADE")
-    private Long quantidade;
+    private int quantidade;
 
     @Transient
     private String valorUnitario;
@@ -78,11 +78,11 @@ public class PedidoSubItem extends Base {
         this.subItemId = subItemId;
     }
 
-    public Long getQuantidade() {
+    public int getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(Long quantidade) {
+    public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
 

@@ -1,10 +1,6 @@
 package br.com.login.cardapio.beachstop.ws.service;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import javax.ws.rs.GET;
@@ -18,6 +14,7 @@ import org.apache.catalina.connector.Response;
 import org.jboss.resteasy.annotations.Form;
 
 import br.com.login.cardapio.beachstop.ws.dao.AcaoContaDAO;
+import br.com.login.cardapio.beachstop.ws.dao.ContaDAO;
 import br.com.login.cardapio.beachstop.ws.dao.KitDAO;
 import br.com.login.cardapio.beachstop.ws.dao.LogDAO;
 import br.com.login.cardapio.beachstop.ws.dao.PedidoDAO;
@@ -26,8 +23,6 @@ import br.com.login.cardapio.beachstop.ws.dao.SubItemDAO;
 import br.com.login.cardapio.beachstop.ws.exception.ApplicationException;
 import br.com.login.cardapio.beachstop.ws.model.Acao;
 import br.com.login.cardapio.beachstop.ws.model.AcaoConta;
-import br.com.login.cardapio.beachstop.ws.model.Conta;
-import br.com.login.cardapio.beachstop.ws.model.Item;
 import br.com.login.cardapio.beachstop.ws.model.Kit;
 import br.com.login.cardapio.beachstop.ws.model.KitSubItem;
 import br.com.login.cardapio.beachstop.ws.model.Pedido;
@@ -124,6 +119,8 @@ public class PedidoService extends RestService<Pedido> {
 
 		if (form.getUsuario() == null) {
 			form.setUsuario(new Usuario());
+		}else{
+			form.setConta(new ContaDAO().getByMesa(form.getNumero()));
 		}
 		
 		super.insert(form);		
@@ -132,28 +129,46 @@ public class PedidoService extends RestService<Pedido> {
 		return new Pedido();
 	}
 
+	@Override
 	@PUT
 	@Path("/{id}")
 	@Produces("application/json; charset=UTF-8")
 	public Pedido update(@Form Pedido form, @PathParam("id") Long id) throws ApplicationException {
+		
+		form.setId(id);
 
-		PedidoDAO pedidoDAO = new PedidoDAO();
-
-		Pedido order = pedidoDAO.get(id);
-		// se ninguem fez nenhuma operacao antes, pode alterar o registro.
-		// Apenas um controle de transação
-		if (TSUtil.isEmpty(order.getUsuario().getId())) {
-
-			form.setConta(order.getConta());
-
-			super.update(form, id);
-
-			this.gerarLog(form);
-
+		Pedido pedidoAnterior = new PedidoDAO().get(id);
+		Pedido pedidoCancelado = new PedidoDAO().get(id); 
+		PedidoSubItemDAO pedidoSubItemDAO = new PedidoSubItemDAO();
+		SubItem subItem;
+		
+		if(pedidoCancelado.getSubItens().removeAll(form.getSubItens())){
+			pedidoCancelado.setUsuario(form.getUsuario());
+			gerarLog(pedidoCancelado, new Status(Constantes.StatusPedido.CANCELADO));			
 		}
-
+		
+		try {		
+			for (PedidoSubItem pedidoSubItem : form.getSubItens()) {
+				if(pedidoAnterior.getSubItens().contains(pedidoSubItem))
+					pedidoSubItemDAO.update(pedidoSubItem);
+				else{
+					
+					subItem = new SubItemDAO().get(pedidoSubItem.getSubItem().getId());
+					
+					pedidoSubItem.setPedido(form);
+					pedidoSubItem.setSubItem(subItem);
+					pedidoSubItem.setValorUnitario(subItem.getValor());
+					pedidoSubItemDAO.insert(pedidoSubItem);
+				}
+			}
+			gerarLog(form, new Status(Constantes.StatusPedido.PENDENTE_ENTREGA));
+			new AcaoContaDAO().finalizarAcaoConta(form.getUsuario().getId(), form.getAcaoContaId());
+			
+		} catch (TSApplicationException e) {
+			e.printStackTrace();
+		}
+		
 		return new Pedido();
-
 	}
 
 	@PUT
@@ -162,79 +177,45 @@ public class PedidoService extends RestService<Pedido> {
 	public Pedido aprovar(@Form Pedido form, @PathParam("id") Long id) throws ApplicationException {
 
 		try {
-
 			PedidoDAO pedidoDAO = new PedidoDAO();
-
 			Pedido pedido = pedidoDAO.get(id);
-
 			// se ninguem fez nenhuma operacao antes, pode alterar o registro.
 			// Apenas um controle de transação
 			if (TSUtil.isEmpty(pedido.getUsuario().getId())) {
-
 				form.setId(id);
-
 				pedidoDAO.aprovar(form);
-
 				form.setSubItens(new PedidoSubItemDAO().getAll(form));
-
 				this.gerarLog(form, new Status(Constantes.StatusPedido.PENDENTE_ENTREGA));
-
 			}
-
 			return form;
-
 		} catch (TSApplicationException ex) {
-
 			throw new ApplicationException(ex.getMessage(), Response.SC_BAD_REQUEST);
-
 		} catch (TSSystemException ex) {
-
 			ex.printStackTrace();
-
 			throw new ApplicationException(ex.getMessage(), Response.SC_INTERNAL_SERVER_ERROR);
-
 		}
-
 	}
-
+	
 	@PUT
 	@Path("/cancelar/{id}")
 	@Produces("application/json; charset=UTF-8")
 	public Pedido cancelar(@Form Pedido pedido, @PathParam("id") Long id) throws ApplicationException {
 
 		try {
-
 			PedidoDAO pedidoDAO = new PedidoDAO();
-
 			Pedido order = pedidoDAO.get(id);
 			// se ninguem fez nenhuma operacao antes, pode alterar o registro.
 			// Apenas um controle de transação
 			if (TSUtil.isEmpty(order.getUsuario().getId())) {
-
 				pedido.setId(id);
-
 				pedido.setSubItens(new PedidoSubItemDAO().getAll(pedido));
-
-				new PedidoDAO().cancelar(pedido);
-
 				this.gerarLog(pedido, new Status(Constantes.StatusPedido.CANCELADO));
-
 			}
-
-		} catch (TSApplicationException ex) {
-
-			throw new ApplicationException(ex.getMessage(), Response.SC_BAD_REQUEST);
-
 		} catch (TSSystemException ex) {
-
 			ex.printStackTrace();
-
 			throw new ApplicationException(ex.getMessage(), Response.SC_INTERNAL_SERVER_ERROR);
-
 		}
-
 		return pedido;
-
 	}
 	
 	private void gerarAcaoConta(Pedido pedido){
@@ -242,7 +223,12 @@ public class PedidoService extends RestService<Pedido> {
 		AcaoConta acaoConta = new AcaoConta();
 		acaoConta.setConta(pedido.getConta());
 		acaoConta.setAcao(new Acao(Constantes.Acoes.NovoPedido.toString()));
-		acaoConta.setUsuario(new Usuario());
+		
+		if(pedido.getUsuario() == null)
+			acaoConta.setUsuario(new Usuario());
+		else
+			acaoConta.setUsuario(pedido.getUsuario());
+		
 		acaoConta.setPedido(pedido);
 		
 		try {

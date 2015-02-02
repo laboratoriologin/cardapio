@@ -1,10 +1,13 @@
 package com.login.beachstop.garcom.android.models;
 
+import com.login.beachstop.garcom.android.utils.Utilitarios;
+
 import org.droidpersistence.annotation.Column;
 import org.droidpersistence.annotation.PrimaryKey;
 import org.droidpersistence.annotation.Table;
 import org.droidpersistence.annotation.Transient;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
@@ -12,7 +15,7 @@ import java.math.BigDecimal;
  */
 @SuppressWarnings("serial")
 @Table(name = "SUB_ITEM")
-public class SubItem extends Base {
+public class SubItem extends Base implements Serializable, Comparable<SubItem> {
 
     @PrimaryKey
     @Column(name = "ID")
@@ -39,12 +42,21 @@ public class SubItem extends Base {
     private Long ordem;
 
     @Transient
-    private Long qtdSelecionado;
+    private int qtdSelecionado;
+
+    @Transient
+    private Item item;
+
+    @Transient
+    private Long pedidoSubItemId;
 
     public SubItem() {
-
         setServiceName("subitens");
+    }
 
+    public SubItem(Long id) {
+        setServiceName("subitens");
+        this.setId(id);
     }
 
     @Override
@@ -66,7 +78,6 @@ public class SubItem extends Base {
     public void setServiceName(String serviceName) {
         this.serviceName = serviceName;
     }
-
 
     public String getNome() {
         return nome;
@@ -120,15 +131,65 @@ public class SubItem extends Base {
         this.ordem = ordem;
     }
 
-    public Long getQtdSelecionado() {
+    public int getQtdSelecionado() {
         return qtdSelecionado;
     }
 
-    public void setQtdSelecionado(Long qtdSelecionado) {
+    public void setQtdSelecionado(int qtdSelecionado) {
         this.qtdSelecionado = qtdSelecionado;
+    }
+
+    public void addQtd(Long qtd) {
+        this.qtdSelecionado += qtd;
+    }
+
+    public void subQtd(Long qtd) {
+        this.qtdSelecionado -= qtd;
     }
 
     public BigDecimal getValorBigDecimal() {
         return new BigDecimal(valor);
+    }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
+    public Long getPedidoSubItemId() {
+        return pedidoSubItemId;
+    }
+
+    public void setPedidoSubItemId(Long pedidoSubItemId) {
+        this.pedidoSubItemId = pedidoSubItemId;
+    }
+
+    public String getIndicator() {
+        return Character.toString(this.item.getNome().charAt(0));
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        SubItem subItem = (SubItem) o;
+
+        if (id != null ? !id.equals(subItem.id) : subItem.id != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }
+
+    @Override
+    public int compareTo(SubItem subItem) {
+        return Utilitarios.removerAcento(this.getItem().getNome()).compareTo(Utilitarios.removerAcento(subItem.getItem().getNome()));
     }
 }

@@ -85,10 +85,19 @@ public class AcaoContaDAO  implements RestDAO<AcaoConta> {
 	public AcaoConta insert(AcaoConta model) throws TSApplicationException {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
-
+		
 		model.setId(broker.getSequenceNextValue("dbo.acoes_contas"));
+		
+		StringBuilder sql = new StringBuilder("INSERT INTO ACOES_CONTAS (ACAO_ID, CONTA_ID, HORARIO_ATENDIMENTO, HORARIO_SOLICITACAO, USUARIO_ID, PEDIDO_ID) VALUES ( ?, ?,");
+		
+		if(model.getUsuario().getId() != null)
+			sql.append(" GETDATE() ");
+		else
+			sql.append(" NULL ");
+		
+		sql.append(", GETDATE(), ?, ?)");
 
-		broker.setPropertySQL("acaocontadao.insert",model.getAcao().getId(), model.getConta().getId(), model.getHorarioAtendimento(), model.getUsuario().getId(), model.getPedido().getId());
+		broker.setSQL(sql.toString(), model.getAcao().getId(), model.getConta().getId(), model.getUsuario().getId(), model.getPedido().getId());
 
 		broker.execute();
 
@@ -107,6 +116,14 @@ public class AcaoContaDAO  implements RestDAO<AcaoConta> {
 
 		return model;
 
+	}
+	
+	public int finalizarAcaoConta(final Long usuarioId, Long acaoContaId) throws TSApplicationException {
+
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		StringBuilder sql = new StringBuilder("UPDATE ACOES_CONTAS SET HORARIO_ATENDIMENTO = GETDATE(), USUARIO_ID = ? WHERE ID = ?");		
+		broker.setSQL(sql.toString(), usuarioId, acaoContaId);
+		return broker.execute();
 	}
 
 	@Override

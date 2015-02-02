@@ -10,15 +10,19 @@ import com.login.beachstop.garcom.android.models.Acao;
 import com.login.beachstop.garcom.android.models.Categoria;
 import com.login.beachstop.garcom.android.models.Empresa;
 import com.login.beachstop.garcom.android.models.Item;
+import com.login.beachstop.garcom.android.models.Kit;
 import com.login.beachstop.garcom.android.models.ServerResponse;
+import com.login.beachstop.garcom.android.models.SubItem;
 import com.login.beachstop.garcom.android.network.AcaoRequest;
 import com.login.beachstop.garcom.android.network.CategoriaRequest;
 import com.login.beachstop.garcom.android.network.EmpresaRequest;
 import com.login.beachstop.garcom.android.network.ItemRequest;
+import com.login.beachstop.garcom.android.network.KitRequest;
 import com.login.beachstop.garcom.android.network.http.ResponseListener;
 import com.login.beachstop.garcom.android.utils.Constantes;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -53,11 +57,11 @@ public class SplashActivity extends DefaultActivity {
 
                                 getDataManager().getEmpresaDAO().save((Empresa) serverResponse.getReturnObject());
 
-                                new CategoriaRequest(reponseGetCategoria).getAtivo();
+                                new CategoriaRequest(responseGetCategoria).getAtivo();
                             }
                         } else {
                             getDataManager().getEmpresaDAO().save((Empresa) serverResponse.getReturnObject());
-                            new CategoriaRequest(reponseGetCategoria).getAtivo();
+                            new CategoriaRequest(responseGetCategoria).getAtivo();
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -73,7 +77,7 @@ public class SplashActivity extends DefaultActivity {
     };
 
     @SuppressWarnings("unchecked")
-    private ResponseListener reponseGetCategoria = new ResponseListener() {
+    private ResponseListener responseGetCategoria = new ResponseListener() {
         @Override
         public void onResult(ServerResponse serverResponse) {
             if (serverResponse != null) {
@@ -116,14 +120,40 @@ public class SplashActivity extends DefaultActivity {
         }
     };
 
-    @SuppressWarnings("unchecked")
-    private ResponseListener reponseGetItem = new ResponseListener() {
+    private ResponseListener responseGetItem = new ResponseListener() {
         @Override
         public void onResult(ServerResponse serverResponse) {
             if (serverResponse != null) {
                 if (serverResponse.isOK()) {
                     try {
                         SplashActivity.this.getDataManager().getItemDAO().save((List<Item>) serverResponse.getReturnObject());
+                        loadSubItem((List<Item>) serverResponse.getReturnObject());
+
+                        if (getDataManager().getKitDAO().getQtd() == 0)
+                            new KitRequest(responseGetKit).get(new Kit());
+                        else
+                            goCardapio();
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        textView.setText(Constantes.MSG_ERRO_GRAVAR_DADOS);
+                    }
+                } else {
+                    textView.setText(serverResponse.getMsgErro());
+                }
+            } else {
+                textView.setText(Constantes.MSG_ERRO_NET);
+            }
+        }
+    };
+
+    private ResponseListener responseGetKit = new ResponseListener() {
+        @Override
+        public void onResult(ServerResponse serverResponse) {
+            if (serverResponse != null) {
+                if (serverResponse.isOK()) {
+                    try {
+                        SplashActivity.this.getDataManager().getKitDAO().save((List<Kit>) serverResponse.getReturnObject());
                         goCardapio();
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -172,13 +202,37 @@ public class SplashActivity extends DefaultActivity {
         }
 
         if (listItemByCardapio.size() != 0)
-            new ItemRequest(reponseGetItem).getItemByCategorias(listItemByCardapio);
-        else
+            new ItemRequest(responseGetItem).getItemByCategorias(listItemByCardapio);
+        else if (this.getDataManager().getKitDAO().getQtd() == 0)
+            new KitRequest(responseGetKit).get(new Kit());
+        else {
+            loadSubItem(null);
             goCardapio();
+        }
+    }
 
+    //Colocar todos os subItens na memória do celular, pois busca do banco de dados está demorando muito
+    //TODO: Melhorar lógica, retirar os loops
+    public void loadSubItem(List<Item> itens) {
+        if (itens == null)
+            itens = getDataManager().getItemDAO().getAll();
+
+        if (getSubItens() == null) {
+            setSubItens(new ArrayList<SubItem>());
+            for (Item item : itens) {
+                for (SubItem subItem : item.getSubItens()) {
+                    subItem.setItem(item);
+                }
+                getSubItens().addAll(item.getSubItens());
+            }
+        }
+
+        Collections.sort(getSubItens());
     }
 
     public void goCardapio() {
+
+        loadSubItem(null);
 
         if (this.getUsuario() == null) {
             Intent mainIntent = new Intent(SplashActivity.this, LoginActivity.class);

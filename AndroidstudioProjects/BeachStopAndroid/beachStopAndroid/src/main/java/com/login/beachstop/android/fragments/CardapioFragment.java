@@ -119,7 +119,6 @@ public class CardapioFragment extends Fragment {
                 Toast.makeText(getActivity(), Constantes.MSG_ERRO_NET, Toast.LENGTH_LONG).show();
 
             }
-
         }
 
     };

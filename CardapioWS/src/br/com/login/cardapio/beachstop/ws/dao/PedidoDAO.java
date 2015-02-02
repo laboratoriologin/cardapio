@@ -2,9 +2,11 @@ package br.com.login.cardapio.beachstop.ws.dao;
 
 import java.util.List;
 
+import br.com.login.cardapio.beachstop.ws.model.Log;
 import br.com.login.cardapio.beachstop.ws.model.Pedido;
 import br.com.login.cardapio.beachstop.ws.model.PedidoSubItem;
 import br.com.login.cardapio.beachstop.ws.model.Status;
+import br.com.login.cardapio.beachstop.ws.model.Usuario;
 import br.com.login.cardapio.beachstop.ws.util.Constantes;
 import br.com.topsys.database.TSDataBaseBrokerIf;
 import br.com.topsys.database.factory.TSDataBaseBrokerFactory;
@@ -19,8 +21,12 @@ public class PedidoDAO implements RestDAO<Pedido> {
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
 		broker.setPropertySQL("pedidodao.get", id);
-
-		return (Pedido) broker.getObjectBean(Pedido.class, "conta.id", "id", "observacao");
+		
+		Pedido pedido = (Pedido) broker.getObjectBean(Pedido.class, "conta.id", "id", "observacao");
+		
+		pedido.setSubItens(new PedidoSubItemDAO().getAll(pedido));
+		
+		return pedido; 
 	}
 
 	@Override
@@ -114,14 +120,46 @@ public class PedidoDAO implements RestDAO<Pedido> {
 
 	}
 
-	public void cancelar(Pedido model) throws TSApplicationException {
+	public void cancelar(Pedido model, Usuario usuario) throws TSApplicationException {
 
+		if(model.getSubItens() == null || model.getSubItens().size() == 0)
+			model.setSubItens(new PedidoSubItemDAO().getAll(model));
+		
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		broker.beginTransaction();
+		
+		Log log;
+		for (PedidoSubItem pedidoSubItem : model.getSubItens()) {
+			log = new Log();
+			log.setPedidoSubItem(pedidoSubItem);
+			log.setStatus(new Status(Constantes.StatusPedido.CANCELADO));
+			log.setUsuario(usuario);
+			
+			new LogDAO().insert(log, broker);
+		}
+		
+		broker.endTransaction();
+	}
+	
+	public void aprovar(Pedido model, Usuario usuario) throws TSApplicationException {
 
-		broker.setPropertySQL("pedidodao.cancelar", model.getId());
-
-		broker.execute();
-
+		if(model.getSubItens() == null || model.getSubItens().size() == 0)
+			model.setSubItens(new PedidoSubItemDAO().getAll(model));
+		
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		broker.beginTransaction();
+		
+		Log log;
+		for (PedidoSubItem pedidoSubItem : model.getSubItens()) {
+			log = new Log();
+			log.setPedidoSubItem(pedidoSubItem);
+			log.setStatus(new Status(Constantes.StatusPedido.PENDENTE_ENTREGA));
+			log.setUsuario(usuario);
+			
+			new LogDAO().insert(log, broker);
+		}
+		
+		broker.endTransaction();
 	}
 
 	@Override

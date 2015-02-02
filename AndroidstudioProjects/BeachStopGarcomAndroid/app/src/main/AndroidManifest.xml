@@ -48,6 +48,14 @@
             android:name="com.login.beachstop.garcom.android.SetorActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.login.beachstop.garcom.android.PedidoActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.login.beachstop.garcom.android.HistoricoContaActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

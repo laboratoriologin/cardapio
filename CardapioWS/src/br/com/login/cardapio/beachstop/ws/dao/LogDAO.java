@@ -57,6 +57,13 @@ public class LogDAO  implements RestDAO<Log> {
 		return model;
 
 	}
+	
+	public Log insert(Log model, TSDataBaseBrokerIf broker) throws TSApplicationException {		
+		model.setId(broker.getSequenceNextValue("dbo.logs "));
+		broker.setPropertySQL("logdao.insert", model.getPedidoSubItem().getId(), model.getStatus().getId(), model.getUsuario().getId());
+		broker.execute();
+		return model;
+	}
 
 	@Override
 	public Log update(final Log model) throws TSApplicationException {
@@ -89,16 +96,10 @@ public class LogDAO  implements RestDAO<Log> {
 		broker.beginTransaction();
 
 		for (PedidoSubItem item : pedido.getSubItens()) {
-
 			broker.setPropertySQL("logdao.insert", item.getId(), item.getStatus().getId(), pedido.getUsuario().getId());
-
 			broker.execute();
-
 		}
-
+		
 		broker.endTransaction();
-
 	}
-	
-
 }

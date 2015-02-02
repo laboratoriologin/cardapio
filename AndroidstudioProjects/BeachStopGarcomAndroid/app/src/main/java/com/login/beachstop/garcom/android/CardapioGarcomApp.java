@@ -7,6 +7,7 @@ import android.text.TextUtils;
 
 import com.login.beachstop.garcom.android.managers.sqlite.dao.DataManager;
 import com.login.beachstop.garcom.android.models.Categoria;
+import com.login.beachstop.garcom.android.models.SubItem;
 import com.login.beachstop.garcom.android.models.Usuario;
 
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ public class CardapioGarcomApp extends Application {
     private DataManager dataManager;
     private SharedPreferences settings;
     private List<Categoria> categorias;
+    private List<SubItem> subItems;
 
     private String PREFS_NAME = "settings";
     private String QTD_MESA = "qtd_mesa";
@@ -144,5 +146,13 @@ public class CardapioGarcomApp extends Application {
 
     public void setCategorias(List<Categoria> categorias) {
         this.categorias = categorias;
+    }
+
+    public List<SubItem> getSubItems() {
+        return subItems;
+    }
+
+    public void setSubItems(List<SubItem> subItems) {
+        this.subItems = subItems;
     }
 }

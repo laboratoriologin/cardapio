@@ -22,8 +22,14 @@ public class KitSubItem extends Base {
     @Column(name = "SUB_ITEM_ID")
     private long subItemId;
 
+    @Transient
+    private Item item;
+
     @Column(name = "KIT_ID")
     private long kitId;
+
+    @Column(name = "QUANTIDADE")
+    private long quantidade;
 
     public KitSubItem() {
         setServiceName("kits_sub_itens");
@@ -63,6 +69,22 @@ public class KitSubItem extends Base {
 
     public void setKitId(long kitId) {
         this.kitId = kitId;
+    }
+
+    public long getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(long quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
     }
 
     @Override

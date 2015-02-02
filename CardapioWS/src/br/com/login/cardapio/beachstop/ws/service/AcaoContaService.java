@@ -13,16 +13,17 @@ import javax.ws.rs.Produces;
 import org.apache.catalina.connector.Response;
 import org.jboss.resteasy.annotations.Form;
 
+import br.com.login.cardapio.beachstop.ws.dao.AcaoContaDAO;
+import br.com.login.cardapio.beachstop.ws.dao.ContaDAO;
+import br.com.login.cardapio.beachstop.ws.dao.PedidoDAO;
+import br.com.login.cardapio.beachstop.ws.dao.UsuarioSetorDAO;
+import br.com.login.cardapio.beachstop.ws.exception.ApplicationException;
 import br.com.login.cardapio.beachstop.ws.model.Acao;
 import br.com.login.cardapio.beachstop.ws.model.AcaoConta;
 import br.com.login.cardapio.beachstop.ws.model.Pedido;
 import br.com.login.cardapio.beachstop.ws.model.Usuario;
 import br.com.login.cardapio.beachstop.ws.model.UsuarioSetor;
 import br.com.login.cardapio.beachstop.ws.util.Constantes;
-import br.com.login.cardapio.beachstop.ws.dao.AcaoContaDAO;
-import br.com.login.cardapio.beachstop.ws.dao.ContaDAO;
-import br.com.login.cardapio.beachstop.ws.dao.UsuarioSetorDAO;
-import br.com.login.cardapio.beachstop.ws.exception.ApplicationException;
 import br.com.topsys.exception.TSApplicationException;
 import br.com.topsys.exception.TSSystemException;
 
@@ -96,6 +97,38 @@ public class AcaoContaService extends RestService<AcaoConta> {
 			
 			return form;
 			
+		} catch (TSApplicationException ex) {
+			throw new ApplicationException(ex.getMessage(), Response.SC_BAD_REQUEST);
+		} catch (TSSystemException ex) {
+			throw new ApplicationException(ex.getMessage(), Response.SC_INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@PUT
+	@Path("/cancelarpedido/{id}")
+	@Produces("application/json; charset=UTF-8")
+	public AcaoConta cancelarPedido(@Form AcaoConta form, @PathParam("id") Long id) throws ApplicationException {
+
+		try {
+			new AcaoContaDAO().updateResolverAcao(form);			
+			new PedidoDAO().cancelar(form.getPedido(), form.getUsuario());
+			return form;			
+		} catch (TSApplicationException ex) {
+			throw new ApplicationException(ex.getMessage(), Response.SC_BAD_REQUEST);
+		} catch (TSSystemException ex) {
+			throw new ApplicationException(ex.getMessage(), Response.SC_INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@PUT
+	@Path("/aprovarpedido/{id}")
+	@Produces("application/json; charset=UTF-8")
+	public AcaoConta aprovarPedido(@Form AcaoConta form, @PathParam("id") Long id) throws ApplicationException {
+
+		try {
+			new AcaoContaDAO().updateResolverAcao(form);			
+			new PedidoDAO().aprovar(form.getPedido(), form.getUsuario());
+			return form;			
 		} catch (TSApplicationException ex) {
 			throw new ApplicationException(ex.getMessage(), Response.SC_BAD_REQUEST);
 		} catch (TSSystemException ex) {

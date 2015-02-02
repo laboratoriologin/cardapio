@@ -41,8 +41,10 @@ public class Kit extends Base {
     private String imagem;
 
     @Transient
-    private List<KitSubItem> kitSubItens;
+    private long quantidade;
 
+    @Transient
+    private List<KitSubItem> kitSubItens;
 
     public Kit() {
         setServiceName("kits");
@@ -104,6 +106,14 @@ public class Kit extends Base {
         this.setDescricao(descricao.toString());
     }
 
+    public List<KitSubItem> getKitSubItens() {
+        return kitSubItens;
+    }
+
+    public void setKitSubItens(List<KitSubItem> kitSubItens) {
+        this.kitSubItens = kitSubItens;
+    }
+
     @Override
     public Long getId() {
         return this.id;
@@ -124,11 +134,11 @@ public class Kit extends Base {
         this.serviceName = serviceName;
     }
 
-    public List<KitSubItem> getKitSubItens() {
-        return kitSubItens;
+    public long getQuantidade() {
+        return quantidade;
     }
 
-    public void setKitSubItens(List<KitSubItem> kitSubItens) {
-        this.kitSubItens = kitSubItens;
+    public void setQuantidade(long quantidade) {
+        this.quantidade = quantidade;
     }
 }

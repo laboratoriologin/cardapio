@@ -1,5 +1,6 @@
 package com.login.beachstop.garcom.android.managers.sqlite.dao;
 
+import com.login.beachstop.garcom.android.models.Kit;
 import com.login.beachstop.garcom.android.models.KitSubItem;
 
 import org.droidpersistence.dao.DroidDao;
@@ -17,19 +18,17 @@ public class KitSubItemDAO extends DroidDao<KitSubItem, Long> {
         this.dataManager = dataManager;
     }
 
-    public int getQtdKitSubItem() {
+    public List<KitSubItem> getAll(Kit kit){
+        return this.dataManager.getKitSubItemDAO().getAllbyClause("KIT_ID=?", new String[]{kit.getId().toString()}, null, null, "");
+    }
 
-        List<KitSubItem> kitSubItens = this.getAll();
-
-        return kitSubItens.size();
-
+    public int getQtd() {
+        return this.getAll().size();
     }
 
     public void save(List<KitSubItem> kitSubItens) throws Exception {
-
-        for (KitSubItem kitSubItem : kitSubItens) {
-            this.save(kitSubItem);
+        for (KitSubItem item : kitSubItens) {
+            this.save(item);
         }
-
     }
 }

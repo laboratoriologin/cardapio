@@ -28,14 +28,16 @@ public class ContaRequest extends ObjectRequest<Conta> {
     }
 
     public void get(Long contaId) {
-
-        String urlgetAtivo = Constantes.URL_WS + "/" + new Conta().getServiceName() + "/" + contaId.toString();
-
+        String urlgetAtivo = String.format("%s/%s/%s", Constantes.URL_WS, new Conta().getServiceName(), contaId.toString());
         ServerRequest serverRequest = new ServerRequest(ServerRequest.GET, urlgetAtivo, null);
-
         this.execute(serverRequest);
     }
 
+    public void getByNumero(Long numero) {
+        String url = String.format("%s/%s/numero/%s", Constantes.URL_WS, new Conta().getServiceName(), numero.toString());
+        ServerRequest serverRequest = new ServerRequest(ServerRequest.GET, url, null);
+        this.execute(serverRequest);
+    }
 
     @Override
     protected List<NameValuePair> createParameters(Conta conta) {
@@ -83,7 +85,7 @@ public class ContaRequest extends ObjectRequest<Conta> {
                         for (int i = 0; i < jsonArrayPedidoSubItem.length(); i++) {
 
                             pedidoSubItem = new PedidoSubItem();
-                            pedidoSubItem.setQuantidade(jsonArrayPedidoSubItem.getJSONObject(i).getLong("quantidade"));
+                            pedidoSubItem.setQuantidade(jsonArrayPedidoSubItem.getJSONObject(i).getInt("quantidade"));
                             pedidoSubItem.setValorTotal(jsonArrayPedidoSubItem.getJSONObject(i).getString("valorCalculado"));
                             pedidoSubItem.setValorUnitario(jsonArrayPedidoSubItem.getJSONObject(i).getString("valorUnitario"));
 

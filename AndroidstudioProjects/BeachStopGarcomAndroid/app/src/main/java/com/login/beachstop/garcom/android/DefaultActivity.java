@@ -1,11 +1,16 @@
 package com.login.beachstop.garcom.android;
 
 
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.login.beachstop.garcom.android.managers.sqlite.dao.DataManager;
 import com.login.beachstop.garcom.android.models.Categoria;
+import com.login.beachstop.garcom.android.models.SubItem;
 import com.login.beachstop.garcom.android.models.Usuario;
 
 import java.util.List;
@@ -22,6 +27,36 @@ public class DefaultActivity extends FragmentActivity {
 
     public void backPressed(View view) {
         super.onBackPressed();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        if (!(this instanceof LoginActivity) && !(this instanceof SplashActivity)) {
+            MenuInflater inflater = getMenuInflater();
+            inflater.inflate(R.menu.menu, menu);
+            return true;
+        } else
+            return false;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.menu_sair:
+                setUsuario(null);
+                Intent intent = new Intent(this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+                return true;
+            case R.id.menu_historico:
+                Intent i = new Intent(this, HistoricoContaActivity.class);
+                startActivity(i);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     public Long getQtdMesa() {
@@ -54,5 +89,13 @@ public class DefaultActivity extends FragmentActivity {
 
     public void setCategorias(List<Categoria> categorias) {
         ((CardapioGarcomApp) getApplication()).setCategorias(categorias);
+    }
+
+    public List<SubItem> getSubItens() {
+        return ((CardapioGarcomApp) getApplication()).getSubItems();
+    }
+
+    public void setSubItens(List<SubItem> subItens) {
+        ((CardapioGarcomApp) getApplication()).setSubItems(subItens);
     }
 }

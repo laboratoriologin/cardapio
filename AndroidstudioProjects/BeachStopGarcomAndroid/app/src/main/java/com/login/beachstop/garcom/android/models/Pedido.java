@@ -33,6 +33,9 @@ public class Pedido extends Base {
     @Transient
     private List<PedidoSubItem> pedidoSubItens;
 
+    @Transient
+    private Integer numero;
+
     public Pedido() {
         this.setServiceName("pedidos");
     }
@@ -104,5 +107,13 @@ public class Pedido extends Base {
 
     public void setFinalizadoSys(Boolean finalizado) {
         this.finalizado = finalizado ? 1 : 0;
+    }
+
+    public Integer getNumero() {
+        return numero;
+    }
+
+    public void setNumero(Integer numero) {
+        this.numero = numero;
     }
 }
