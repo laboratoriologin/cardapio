@@ -10,34 +10,27 @@
 	<string>cardapio</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>247E4745-827F-441F-B696-2DAE4D44B88E</key>
+		<key>7DE43908943893F434195FCFF252C6BCA9CEF4F9</key>
 		<string>http://10.0.0.16:8080/cardapio</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>cardapioiOSBeachStop/cardapio.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>247E4745-827F-441F-B696-2DAE4D44B88E</key>
+		<key>7DE43908943893F434195FCFF252C6BCA9CEF4F9</key>
 		<string>../..</string>
 	</dict>
-	<key>IDESourceControlProjectRepositoryRootDictionary</key>
-	<dict>
-		<key>247E4745-827F-441F-B696-2DAE4D44B88E</key>
-		<string>http://10.0.0.16:8080/cardapio</string>
-	</dict>
-	<key>IDESourceControlProjectURL</key>
-	<string>http://10.0.0.16:8080/cardapio/cardapioiOS/cardapio.xcworkspace</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>247E4745-827F-441F-B696-2DAE4D44B88E</string>
+	<string>7DE43908943893F434195FCFF252C6BCA9CEF4F9</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.subversion</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>247E4745-827F-441F-B696-2DAE4D44B88E</string>
+			<string>7DE43908943893F434195FCFF252C6BCA9CEF4F9</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Cardapio</string>
 		</dict>
