@@ -457,7 +457,7 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	
 	detailsLabel = [[UILabel alloc] initWithFrame:self.bounds];
 	detailsLabel.font = self.detailsLabelFont;
-	detailsLabel.adjustsFontSizeToFitWidth = YES;
+	detailsLabel.adjustsFontSizeToFitWidth = NO;
 	detailsLabel.textAlignment = MBLabelAlignmentCenter;
 	detailsLabel.opaque = NO;
 	detailsLabel.backgroundColor = [UIColor clearColor];
