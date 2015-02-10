@@ -11,12 +11,10 @@ import javax.ws.rs.Produces;
 import org.apache.catalina.connector.Response;
 import org.jboss.resteasy.annotations.Form;
 
-import com.sun.jmx.snmp.Timestamp;
-
-import br.com.login.cardapio.beachstop.ws.model.Cliente;
-import br.com.login.cardapio.beachstop.ws.model.Conta;
 import br.com.login.cardapio.beachstop.ws.dao.ContaDAO;
 import br.com.login.cardapio.beachstop.ws.exception.ApplicationException;
+import br.com.login.cardapio.beachstop.ws.model.Cliente;
+import br.com.login.cardapio.beachstop.ws.model.Conta;
 
 @Path("/contas")
 public class ContaService extends RestService<Conta> {
