@@ -254,6 +254,7 @@ public class ItemDetalheFragment extends Fragment {
 
         View subItemView;
         String descricao;
+        String[] strDescricao;
         RowSubItem rowSubItem;
 
         this.listRowSubItem = new ArrayList<RowSubItem>();
@@ -290,7 +291,18 @@ public class ItemDetalheFragment extends Fragment {
                 }
             });
 
-            descricao = subItemCardapio.getNome();
+
+
+            strDescricao = subItemCardapio.getNome().split(" ");
+            descricao = "";
+            for (int i = 0; i < strDescricao.length; i++) {
+                if( i == 1)
+                    descricao = descricao + strDescricao[i] + "\n";
+                else
+                    descricao = descricao +  strDescricao[i] + " ";
+            }
+
+
             ((TextView) subItemView.findViewById(R.id.fragment_item_detalhe_table_row_text_view_descricao)).setText(descricao);
             ((TextView) subItemView.findViewById(R.id.fragment_item_detalhe_table_row_text_view_valor)).setText(format.format(new BigDecimal(subItemCardapio.getValor())));
 

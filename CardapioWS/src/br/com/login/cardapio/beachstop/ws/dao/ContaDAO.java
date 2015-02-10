@@ -14,31 +14,18 @@ public class ContaDAO implements RestDAO<Conta> {
 
 	@Override
 	public Conta get(Long id) {
-
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
-
 		broker.setPropertySQL("contadao.get", id);
-
 		Conta conta = (Conta) broker.getObjectBean(Conta.class, "cliente.id", "dataAbertura", "dataFechamento", "id", "numero", "qtdPessoa", "tipoConta");
-
 		if (conta != null) {
-
-			conta.setPedidoSubItens(new PedidoSubItemDAO().getAll(conta));
-			
+			conta.setPedidoSubItens(new PedidoSubItemDAO().getAll(conta));			
 			conta.setValor(BigDecimal.ZERO);
-
 			for (PedidoSubItem pedidoSubItem : conta.getPedidoSubItens()) {
-
 				conta.setValor(conta.getValor().add(pedidoSubItem.getValorCalculado()));
-
 			}
-
 			conta.setValorPago(new PagamentoDAO().getValorTotalPagoByConta(conta).getValor());
-
 		}
-
 		return conta;
-
 	}
 	
 	public Conta getByNumeroAnalitico(Long numero){

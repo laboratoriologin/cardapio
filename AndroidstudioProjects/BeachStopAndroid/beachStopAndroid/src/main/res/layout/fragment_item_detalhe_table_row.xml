@@ -37,6 +37,7 @@
         android:id="@+id/fragment_item_detalhe_table_row_text_view_descricao"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:singleLine="false"
         android:background="@drawable/bg_fragment_detalhe_item_cardapio_table_layout_sub_item_cell"
         android:gravity="center" />
 

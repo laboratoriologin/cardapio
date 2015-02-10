@@ -29,6 +29,17 @@ public class ContaService extends RestService<Conta> {
 	}
 	
 	@GET
+	@Path("/aberto/{id}")
+	@Produces("application/json; charset=UTF-8")
+	public Conta isAberta(@PathParam("id") Long id) {
+		Conta conta = new ContaDAO().get(id);
+		if(conta.getDataFechamento() == null)
+			return new Conta("1");
+		else
+			return new Conta("0");
+	}
+	
+	@GET
 	@Path("/numero/{numero}{fields : (/.*?)?}")
 	@Produces("application/json; charset=UTF-8")
 	public Conta getByMesa(@PathParam("numero") Long numero, @PathParam("fields") String fields) {
@@ -44,31 +55,19 @@ public class ContaService extends RestService<Conta> {
 	@Path("")
 	@Produces("application/json; charset=UTF-8")
 	public Conta insert(@Form Conta form) throws ApplicationException {
-
 		if (form.getCliente() == null) {
-
 			form.setCliente(new Cliente("1"));			
 			form.setQtdPessoa(1);
-
-		}
-		
+		}		
 		form.setDataAbertura(new Date(System.currentTimeMillis()));
-
 		return new Conta(super.insert(form).getId().toString());
-
 	}
 
 	@Override
 	protected void validate(Conta object) throws ApplicationException {
-
 		Conta conta = new ContaDAO().getByNumeroTipoConta(object.getNumero(), object.getTipoConta(), false);
-
 		if (conta != null && conta.getDataFechamento() == null) {
-
 			throw new ApplicationException(MESA_OCUPADA, Response.SC_PRECONDITION_FAILED);
-
 		}
-
 	}
-
 }

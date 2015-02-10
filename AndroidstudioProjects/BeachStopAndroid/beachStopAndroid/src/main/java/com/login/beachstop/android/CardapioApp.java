@@ -76,6 +76,6 @@ public class CardapioApp extends Application {
     public void setKeyCardapio(String keyCardapio) {
         this.keyCardapio = keyCardapio;
         SharedPreferences.Editor editor = getSharedPreferences(Constantes.SHARED_PREFS, 0).edit();
-        editor.putString(Constantes.KEY_CARDAPIO, this.keyCardapio);
+        editor.putString(Constantes.KEY_CARDAPIO, this.keyCardapio).commit();
     }
 }

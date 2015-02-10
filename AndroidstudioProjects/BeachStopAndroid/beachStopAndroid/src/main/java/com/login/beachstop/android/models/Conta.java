@@ -18,6 +18,9 @@ public class Conta extends Base {
     @Column(name = "ID")
     protected Long id;
 
+    @Column(name = "SISTEMA_ID")
+    protected Long sistemaId;
+
     @Transient
     protected String serviceName;
 
@@ -137,5 +140,13 @@ public class Conta extends Base {
 
     public void setValorTotalPago(String valorTotalPago) {
         this.valorTotalPago = valorTotalPago;
+    }
+
+    public Long getSistemaId() {
+        return sistemaId;
+    }
+
+    public void setSistemaId(Long sistemaId) {
+        this.sistemaId = sistemaId;
     }
 }

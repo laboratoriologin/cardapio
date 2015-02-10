@@ -1,0 +1,40 @@
+﻿<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" >
+<head>
+<link href="resources/css/reset.css" rel="stylesheet" type="text/css" />
+<link href="resources/css/template.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="resources/js/jquery/jquery-ui-1.11.2.custom/jquery-ui.min.css" />
+
+<script type="text/javascript" src="resources/js/jquery/jquery-2.1.3.min.js"></script>
+<script src="resources/js/jquery/jquery-ui-1.11.2.custom/jquery-ui.min.js"></script>
+<script src="resources/js/jquery/jquery-validation-1.13.1/jquery.validate.min.js"></script>
+
+<script src="resources/js/template.js"></script>
+
+<title>Beach stop - Ipitanga</title>
+</head>
+<body>
+	<div class="head">
+		<div class="headesquerda">
+			<img alt="Beach Stop" src="resources/img/logo_meu_cardapio.png" />
+		</div>
+		<div class="headdireita">
+			<div id="Date"></div>
+			<ul>
+				<li id="hours"></li>
+				<li id="point">:</li>
+				<li id="min"></li>
+				<li id="point">:</li>
+				<li id="sec"></li>
+			</ul>
+		</div>
+	</div>
+	<div class="body">
+		<ui:insert name="body"></ui:insert>
+	</div>
+	<div class="footer">
+		<p>&#169; Login Informática</p>
+	</div>
+</body>
+</html>

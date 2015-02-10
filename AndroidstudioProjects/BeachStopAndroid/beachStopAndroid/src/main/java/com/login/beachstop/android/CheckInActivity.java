@@ -49,52 +49,31 @@ public class CheckInActivity extends DefaultActivity {
         public void onResult(ServerResponse serverResponse) {
 
             if (serverResponse != null) {
-
                 if (serverResponse.isOK()) {
-
                     Long contaId = ((Conta) serverResponse.getReturnObject()).getId();
-
                     changeStatusView(false, false, false, false);
-
                     try {
-
                         Cliente cliente = getDataManager().getClienteDAO().get();
                         conta.setClienteId(cliente != null ? cliente.getId() : 1);
-
-                        conta.setId(contaId);
+                        conta.setSistemaId(contaId);
 
                         if (getDataManager().getContaDAO().get() != null) {
-
                             getDataManager().getContaDAO().update(conta, conta.getId());
-
                         } else {
-
                             getDataManager().getContaDAO().save(conta);
-
                         }
 
                         textViewNumero.setText(conta.getNumero().toString());
                         changeStatusView(false, false, false, true);
-
                     } catch (Exception e) {
-
                         Toast.makeText(CheckInActivity.this, Constantes.MSG_ERRO_GRAVAR_DADOS, Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
-
                     }
-
-
                 } else {
-
                     Toast.makeText(CheckInActivity.this, serverResponse.getMsgErro(), Toast.LENGTH_LONG).show();
-
                 }
-
-
             } else {
-
                 Toast.makeText(CheckInActivity.this, Constantes.MSG_ERRO_NET, Toast.LENGTH_LONG).show();
-
             }
         }
     };
@@ -102,17 +81,12 @@ public class CheckInActivity extends DefaultActivity {
 
     @Override
     protected void onResume() {
-
         super.onResume();
-
         if (this.conta == null) {
-
             IntentIntegrator integrator = new IntentIntegrator(this);
             integrator.addExtra("SAVE_HISTORY", false);
             integrator.initiateScan();
-
         }
-
     }
 
     @Override
@@ -126,7 +100,6 @@ public class CheckInActivity extends DefaultActivity {
         this.conta = this.getDataManager().getContaDAO().get();
 
         if (this.conta != null) {
-
             this.textViewNumero.setText(this.conta.getNumero().toString());
             this.changeStatusView(false, false, false, true);
         }
@@ -167,36 +140,22 @@ public class CheckInActivity extends DefaultActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
 
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
-
         if (result != null) {
-
             String contents = result.getContents();
-
             if (contents != null) {
-
-
                 String mesaSelecionada = contents.split("&")[0].split("=")[1];
-
                 String keyMobile = contents.split("&")[1].split("=")[1];
-
                 this.abrirConta(mesaSelecionada, keyMobile);
-
             } else {
-
                 this.conta = new Conta(-1l);
-
             }
         }
     }
 
     private void abrirConta(String mesaSelecionada, String keyMobile) {
-
         try {
-
             if (Utilitarios.isDigit(mesaSelecionada) && Constantes.KEYMOBILE.equals(keyMobile)) {
-
                 this.conta = this.getDataManager().getContaDAO().get();
-
                 if (this.conta == null) {
 
                     String horaAtual = Utilitarios.getHourNow();
@@ -204,54 +163,41 @@ public class CheckInActivity extends DefaultActivity {
                     this.conta.setDataAbertura(horaAtual);
                     this.conta.setNumero(Long.parseLong(mesaSelecionada));
                     this.conta.setTipoConta(Constantes.TipoConta.MESA);
-
-                    Cliente cliente = this.getDataManager().getClienteDAO().get();
-                    this.conta.setClienteId(cliente != null ? cliente.getId() : null);
-
+                    this.conta.setSistemaId(0l);
                     this.conta.setDataFechamento("");
                     this.conta.setValorTotal("");
                     this.conta.setValorTotalPago("");
 
+                    Cliente cliente = this.getDataManager().getClienteDAO().get();
+                    this.conta.setClienteId(cliente != null ? cliente.getId() : null);
+
                     changeStatusView(false, false, false, true);
 
                     this.textViewNumero.setText(this.conta.getNumero().toString());
-
                 }
 
                 new ContaRequest(listenerGetConta).post(this.conta);
                 changeStatusView(true, true, false, false);
                 ((TextView) findViewById(R.id.activity_checkin_text_view_lbl_msg)).setText("Analisando as condições da mesa!");
-
             } else {
-
                 Toast.makeText(this, "Erro no Qr Code!", Toast.LENGTH_SHORT).show();
-
             }
-
         } catch (Exception e) {
-
             Toast.makeText(this, "Erro no Qr Code!", Toast.LENGTH_SHORT).show();
-
         }
 
 
     }
 
     private void changeStatusView(Boolean isVisibilityProgressBar, Boolean isVisibilityTextView, Boolean isVisibilityButtonQrCode, Boolean isVisibilityButtonShare) {
-
         this.progressBar.setVisibility(isVisibilityProgressBar ? ProgressBar.VISIBLE : ProgressBar.GONE);
-
         this.textViewMsg.setVisibility(isVisibilityTextView ? TextView.VISIBLE : TextView.GONE);
-
         this.buttonQrCode.setVisibility(isVisibilityButtonQrCode ? Button.VISIBLE : Button.GONE);
-
         this.buttonShared.setVisibility(isVisibilityButtonShare ? Button.VISIBLE : Button.GONE);
-
     }
 
     private final class ResponseListenerSocialAuth implements DialogListener {
         public void onComplete(Bundle values) {
-
             try {
                 socialAuthAdapter.updateStatus("No Beach Stop Ipitanga!", new MessageListener(), true);
             } catch (Exception e) {
@@ -265,40 +211,28 @@ public class CheckInActivity extends DefaultActivity {
         }
 
         @Override
-        public void onBack() {
-            // TODO Auto-generated method stub
-
-        }
+        public void onBack() {}
 
         @Override
         public void onError(SocialAuthError arg0) {
             Log.d("ShareButton", "Cancelado");
-
         }
     }
 
     // To get status of message after authentication
     private final class MessageListener implements SocialAuthListener<Integer> {
-
         public void onError(SocialAuthError e) {
-
             System.out.println(e.getMessage());
-
         }
 
         @Override
         public void onExecute(String arg0, Integer status) {
-
             // TODO Auto-generated method stubInteger status = t;
             if (status.intValue() == 200 || status.intValue() == 201 || status.intValue() == 204) {
-
                 Toast.makeText(CheckInActivity.this, "Compartilhado!", Toast.LENGTH_LONG).show();
-
             } else {
-
                 Toast.makeText(CheckInActivity.this, "Erro ao compartilhar! Tente novamente mais tarde!", Toast.LENGTH_LONG).show();
             }
-
         }
     }
 }
