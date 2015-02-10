@@ -22,7 +22,7 @@
     
     @try {
         
-        retorno =  [conexao executeUpdate:@"INSERT INTO MENU(CODIGO,DESCRICAO,IMAGEM,IMAGEM_TOPO) values(?, ?, ?, ?)",menu.codigo,menu.descricao,menu.imagem,menu.imagemTopo, nil];
+        retorno =  [conexao executeUpdate:@"INSERT INTO MENU(CODIGO,DESCRICAO,IMAGEM,IMAGEM_TOPO,ORDEM) values(?, ?, ?, ?, ?)",menu.codigo,menu.descricao,menu.imagem,menu.imagemTopo,menu.ordem, nil];
     
     } @catch (NSException *exception) {
         
@@ -55,6 +55,7 @@
             menu.descricao   = [results stringForColumn:@"DESCRICAO"];
             menu.imagem      = [results stringForColumn:@"IMAGEM"];
             menu.imagemTopo  = [results stringForColumn:@"IMAGEM_TOPO"];
+            menu.ordem       = [NSNumber numberWithInt:[results intForColumn:@"ORDEM"]];
             menu.itens       = [[[CLItemDAO alloc]init]getAllFromMenu:menu];
             
         }
@@ -78,7 +79,7 @@
     
     @try {
         
-        FMResultSet *results = [conexao executeQuery:@"SELECT * FROM MENU ORDER BY CODIGO" withArgumentsInArray:nil];
+        FMResultSet *results = [conexao executeQuery:@"SELECT * FROM MENU ORDER BY ORDEM" withArgumentsInArray:nil];
         
         NSMutableArray *menus = [[NSMutableArray alloc]init];
         
@@ -90,6 +91,7 @@
             menu.descricao   = [results stringForColumn:@"DESCRICAO"];
             menu.imagem      = [results stringForColumn:@"IMAGEM"];
             menu.imagemTopo  = [results stringForColumn:@"IMAGEM_TOPO"];
+            menu.ordem       = [NSNumber numberWithInt:[results intForColumn:@"ORDEM"]];
             menu.itens       = [[[CLItemDAO alloc]init]getAllFromMenu:menu];
             [menus addObject:menu];
         }

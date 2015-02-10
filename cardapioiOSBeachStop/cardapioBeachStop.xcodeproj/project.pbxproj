@@ -7,20 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		062C3B2A1A815CB70033935E /* bt_home_pasteis@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 062C3B271A815CB70033935E /* bt_home_pasteis@2x.png */; };
+		062C3B2B1A815CB70033935E /* icone_topo_pasteis.png in Resources */ = {isa = PBXBuildFile; fileRef = 062C3B281A815CB70033935E /* icone_topo_pasteis.png */; };
+		062C3B2C1A815CB70033935E /* icone_topo_pasteis@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 062C3B291A815CB70033935E /* icone_topo_pasteis@2x.png */; };
 		062E4BD419ABA48B006370C2 /* icone_check_in@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 062E4BD219ABA48B006370C2 /* icone_check_in@2x.png */; };
 		062E4BD519ABA48B006370C2 /* icone_check_in.png in Resources */ = {isa = PBXBuildFile; fileRef = 062E4BD319ABA48B006370C2 /* icone_check_in.png */; };
 		064A9BC219BE26D100D0AC98 /* bt_home_acompanhamento@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 064A9BB519BE26D100D0AC98 /* bt_home_acompanhamento@2x.png */; };
-		064A9BC319BE26D100D0AC98 /* bt_home_bebidas@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 064A9BB619BE26D100D0AC98 /* bt_home_bebidas@2x.png */; };
-		064A9BC419BE26D100D0AC98 /* bt_home_comida_oriental@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 064A9BB719BE26D100D0AC98 /* bt_home_comida_oriental@2x.png */; };
 		064A9BC519BE26D100D0AC98 /* bt_home_diversos@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 064A9BB819BE26D100D0AC98 /* bt_home_diversos@2x.png */; };
-		064A9BC619BE26D100D0AC98 /* bt_home_entradas@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 064A9BB919BE26D100D0AC98 /* bt_home_entradas@2x.png */; };
-		064A9BC719BE26D100D0AC98 /* bt_home_massas@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 064A9BBA19BE26D100D0AC98 /* bt_home_massas@2x.png */; };
-		064A9BC819BE26D100D0AC98 /* bt_home_pizza@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 064A9BBB19BE26D100D0AC98 /* bt_home_pizza@2x.png */; };
 		064A9BC919BE26D100D0AC98 /* bt_home_pratos_terra@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 064A9BBC19BE26D100D0AC98 /* bt_home_pratos_terra@2x.png */; };
-		064A9BCA19BE26D100D0AC98 /* bt_home_saladas@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 064A9BBD19BE26D100D0AC98 /* bt_home_saladas@2x.png */; };
-		064A9BCB19BE26D100D0AC98 /* bt_home_sobremesas@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 064A9BBE19BE26D100D0AC98 /* bt_home_sobremesas@2x.png */; };
-		064A9BCC19BE26D100D0AC98 /* bt_home_sugestao_chef@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 064A9BBF19BE26D100D0AC98 /* bt_home_sugestao_chef@2x.png */; };
-		064A9BCD19BE26D100D0AC98 /* bt_home_todos_pratos@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 064A9BC019BE26D100D0AC98 /* bt_home_todos_pratos@2x.png */; };
 		064A9BCE19BE26D100D0AC98 /* bt_home_pratos_mar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 064A9BC119BE26D100D0AC98 /* bt_home_pratos_mar@2x.png */; };
 		064A9BD219BE382000D0AC98 /* icone_topo_acompanhamentos.png in Resources */ = {isa = PBXBuildFile; fileRef = 064A9BCF19BE382000D0AC98 /* icone_topo_acompanhamentos.png */; };
 		064A9BD319BE382000D0AC98 /* icone_topo_diversos.png in Resources */ = {isa = PBXBuildFile; fileRef = 064A9BD019BE382000D0AC98 /* icone_topo_diversos.png */; };
@@ -186,20 +180,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		062C3B271A815CB70033935E /* bt_home_pasteis@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt_home_pasteis@2x.png"; sourceTree = "<group>"; };
+		062C3B281A815CB70033935E /* icone_topo_pasteis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icone_topo_pasteis.png; path = ../botoes_home/icone_topo_pasteis.png; sourceTree = "<group>"; };
+		062C3B291A815CB70033935E /* icone_topo_pasteis@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icone_topo_pasteis@2x.png"; sourceTree = "<group>"; };
 		062E4BD219ABA48B006370C2 /* icone_check_in@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icone_check_in@2x.png"; path = "../../../../../../../Downloads/IOS_icone_check_in/icone_check_in@2x.png"; sourceTree = "<group>"; };
 		062E4BD319ABA48B006370C2 /* icone_check_in.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icone_check_in.png; path = ../../../../../../../Downloads/IOS_icone_check_in/icone_check_in.png; sourceTree = "<group>"; };
 		064A9BB519BE26D100D0AC98 /* bt_home_acompanhamento@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt_home_acompanhamento@2x.png"; sourceTree = "<group>"; };
-		064A9BB619BE26D100D0AC98 /* bt_home_bebidas@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt_home_bebidas@2x.png"; sourceTree = "<group>"; };
-		064A9BB719BE26D100D0AC98 /* bt_home_comida_oriental@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt_home_comida_oriental@2x.png"; sourceTree = "<group>"; };
 		064A9BB819BE26D100D0AC98 /* bt_home_diversos@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt_home_diversos@2x.png"; sourceTree = "<group>"; };
-		064A9BB919BE26D100D0AC98 /* bt_home_entradas@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt_home_entradas@2x.png"; sourceTree = "<group>"; };
-		064A9BBA19BE26D100D0AC98 /* bt_home_massas@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt_home_massas@2x.png"; sourceTree = "<group>"; };
-		064A9BBB19BE26D100D0AC98 /* bt_home_pizza@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt_home_pizza@2x.png"; sourceTree = "<group>"; };
 		064A9BBC19BE26D100D0AC98 /* bt_home_pratos_terra@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt_home_pratos_terra@2x.png"; sourceTree = "<group>"; };
-		064A9BBD19BE26D100D0AC98 /* bt_home_saladas@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt_home_saladas@2x.png"; sourceTree = "<group>"; };
-		064A9BBE19BE26D100D0AC98 /* bt_home_sobremesas@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt_home_sobremesas@2x.png"; sourceTree = "<group>"; };
-		064A9BBF19BE26D100D0AC98 /* bt_home_sugestao_chef@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt_home_sugestao_chef@2x.png"; sourceTree = "<group>"; };
-		064A9BC019BE26D100D0AC98 /* bt_home_todos_pratos@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt_home_todos_pratos@2x.png"; sourceTree = "<group>"; };
 		064A9BC119BE26D100D0AC98 /* bt_home_pratos_mar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt_home_pratos_mar@2x.png"; sourceTree = "<group>"; };
 		064A9BCF19BE382000D0AC98 /* icone_topo_acompanhamentos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icone_topo_acompanhamentos.png; sourceTree = "<group>"; };
 		064A9BD019BE382000D0AC98 /* icone_topo_diversos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icone_topo_diversos.png; sourceTree = "<group>"; };
@@ -817,18 +805,11 @@
 		6297567818FC608600DC8D61 /* botoes_home */ = {
 			isa = PBXGroup;
 			children = (
+				062C3B271A815CB70033935E /* bt_home_pasteis@2x.png */,
+				062C3B291A815CB70033935E /* icone_topo_pasteis@2x.png */,
 				064A9BB519BE26D100D0AC98 /* bt_home_acompanhamento@2x.png */,
-				064A9BB619BE26D100D0AC98 /* bt_home_bebidas@2x.png */,
-				064A9BB719BE26D100D0AC98 /* bt_home_comida_oriental@2x.png */,
 				064A9BB819BE26D100D0AC98 /* bt_home_diversos@2x.png */,
-				064A9BB919BE26D100D0AC98 /* bt_home_entradas@2x.png */,
-				064A9BBA19BE26D100D0AC98 /* bt_home_massas@2x.png */,
-				064A9BBB19BE26D100D0AC98 /* bt_home_pizza@2x.png */,
 				064A9BBC19BE26D100D0AC98 /* bt_home_pratos_terra@2x.png */,
-				064A9BBD19BE26D100D0AC98 /* bt_home_saladas@2x.png */,
-				064A9BBE19BE26D100D0AC98 /* bt_home_sobremesas@2x.png */,
-				064A9BBF19BE26D100D0AC98 /* bt_home_sugestao_chef@2x.png */,
-				064A9BC019BE26D100D0AC98 /* bt_home_todos_pratos@2x.png */,
 				064A9BC119BE26D100D0AC98 /* bt_home_pratos_mar@2x.png */,
 			);
 			path = botoes_home;
@@ -857,6 +838,7 @@
 		6297568E18FC608700DC8D61 /* icones_topo_2x */ = {
 			isa = PBXGroup;
 			children = (
+				062C3B281A815CB70033935E /* icone_topo_pasteis.png */,
 				064A9BD519BE382600D0AC98 /* icone_topo_acompanhamentos@2x.png */,
 				064A9BD619BE382600D0AC98 /* icone_topo_diversos@2x.png */,
 				064A9BD719BE382600D0AC98 /* icone_topo_pratos_do_mar@2x.png */,
@@ -1007,7 +989,6 @@
 				064A9BD819BE382600D0AC98 /* icone_topo_acompanhamentos@2x.png in Resources */,
 				062E4BD519ABA48B006370C2 /* icone_check_in.png in Resources */,
 				6297566D18FC22BC00DC8D61 /* GOTHIC.ttf in Resources */,
-				064A9BCB19BE26D100D0AC98 /* bt_home_sobremesas@2x.png in Resources */,
 				626C5232192693BD00E72734 /* zbar-back.png in Resources */,
 				62FBFA3F1994FAD90079107E /* icone_chamados_55x42_verde.png in Resources */,
 				626C5233192693BD00E72734 /* zbar-help.html in Resources */,
@@ -1038,16 +1019,14 @@
 				62187AB71998FD17009BEDCD /* icone_ios_58.png in Resources */,
 				62187AB31998F5CC009BEDCD /* publicidade.png in Resources */,
 				6297565F18FC0EC400DC8D61 /* CLTitleView.xib in Resources */,
-				064A9BCD19BE26D100D0AC98 /* bt_home_todos_pratos@2x.png in Resources */,
 				62E430BF1999336200887C2E /* Default.png in Resources */,
 				06C8A73719B8A26F004702B1 /* placeholder@2x.png in Resources */,
-				064A9BC819BE26D100D0AC98 /* bt_home_pizza@2x.png in Resources */,
 				629756B118FC608700DC8D61 /* icone_topo_massas@2x.png in Resources */,
-				064A9BCC19BE26D100D0AC98 /* bt_home_sugestao_chef@2x.png in Resources */,
 				6297564A18FC052D00DC8D61 /* bt_menu_pedidos@2x.png in Resources */,
 				629F654318FEC185009B1F52 /* bt_refresh@2x.png in Resources */,
 				626C5235192693BD00E72734 /* zbar-samples.png in Resources */,
 				62695A60199B905F002C1799 /* logo_topo@2x.png in Resources */,
+				062C3B2B1A815CB70033935E /* icone_topo_pasteis.png in Resources */,
 				6201AB9718F85627005B5DB9 /* Images.xcassets in Resources */,
 				62738685190FCAD6004D2E46 /* CLCollectionViewCell.xib in Resources */,
 				064A9BC519BE26D100D0AC98 /* bt_home_diversos@2x.png in Resources */,
@@ -1061,16 +1040,14 @@
 				62FBFA581994FDD60079107E /* seta_para_direita@2x.png in Resources */,
 				62FBFA3B1994F9E70079107E /* barra_topo@2x.png in Resources */,
 				064A9BCE19BE26D100D0AC98 /* bt_home_pratos_mar@2x.png in Resources */,
+				062C3B2C1A815CB70033935E /* icone_topo_pasteis@2x.png in Resources */,
 				6273869519100A7A004D2E46 /* CLCollectionViewSingleCell.xib in Resources */,
-				064A9BC419BE26D100D0AC98 /* bt_home_comida_oriental@2x.png in Resources */,
 				06C8E88619A38E9000F21841 /* icone_compartilhar@2x.png in Resources */,
 				629756A618FC608700DC8D61 /* icone_topo_pratos_terra.png in Resources */,
-				064A9BC619BE26D100D0AC98 /* bt_home_entradas@2x.png in Resources */,
 				629756B018FC608700DC8D61 /* icone_topo_pratos_terra@2x.png in Resources */,
 				064A9BD419BE382000D0AC98 /* icone_topo_pratos_do_mar.png in Resources */,
 				62FBFA501994FD680079107E /* icone_checkin_55x42_verde@2x.png in Resources */,
 				629756AD18FC608700DC8D61 /* icone_topo_bebidas@2x.png in Resources */,
-				064A9BCA19BE26D100D0AC98 /* bt_home_saladas@2x.png in Resources */,
 				62187AB81998FD17009BEDCD /* icone_ios_80.png in Resources */,
 				629756A518FC608700DC8D61 /* icone_topo_entradas.png in Resources */,
 				6297566E18FC22BC00DC8D61 /* GOTHICB.ttf in Resources */,
@@ -1080,6 +1057,7 @@
 				629756AC18FC608700DC8D61 /* icone_topo_todos_pratos.png in Resources */,
 				62187AB91998FD17009BEDCD /* icone_ios_120.png in Resources */,
 				629756B318FC608700DC8D61 /* icone_topo_saladas@2x.png in Resources */,
+				062C3B2A1A815CB70033935E /* bt_home_pasteis@2x.png in Resources */,
 				629756B418FC608700DC8D61 /* icone_topo_sobremesas@2x.png in Resources */,
 				06C8E88519A38E9000F21841 /* icone_compartilhar.png in Resources */,
 				629756B618FC608700DC8D61 /* icone_topo_todos_pratos@2x.png in Resources */,
@@ -1088,9 +1066,7 @@
 				064A9BC919BE26D100D0AC98 /* bt_home_pratos_terra@2x.png in Resources */,
 				064A9BD919BE382600D0AC98 /* icone_topo_diversos@2x.png in Resources */,
 				62FBFA4A1994FD240079107E /* seta_para_direita.png in Resources */,
-				064A9BC319BE26D100D0AC98 /* bt_home_bebidas@2x.png in Resources */,
 				629756A918FC608700DC8D61 /* icone_topo_saladas.png in Resources */,
-				064A9BC719BE26D100D0AC98 /* bt_home_massas@2x.png in Resources */,
 				6201AB8918F85627005B5DB9 /* InfoPlist.strings in Resources */,
 				626C5234192693BD00E72734 /* zbar-helpicons.png in Resources */,
 				6201AB9218F85627005B5DB9 /* Main.storyboard in Resources */,

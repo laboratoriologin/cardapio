@@ -169,7 +169,7 @@
     
     if (contaAtual > 0) {
         
-        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[CLAppBaseUrl stringByAppendingFormat:@"contas/%d/flagAberto",contaAtual.intValue]]];
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[CLAppBaseUrl stringByAppendingFormat:@"contas/aberto/%d",contaAtual.intValue]]];
         
         AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
         
@@ -179,7 +179,7 @@
             
             NSDictionary *response = responseObject;
             
-            NSNumber *flagAberto = [[response objectForKey:@"conta"]objectForKey:@"flagAberto"];
+            NSNumber *flagAberto = [[response objectForKey:@"conta"]objectForKey:@"id"];
             
             if(![flagAberto boolValue]) {
                 

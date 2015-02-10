@@ -39,9 +39,9 @@
 
 - (IBAction)chamarGarcom:(id)sender {
     
-    NSString *urlChamarGarcom = [CLAppBaseUrl stringByAppendingString:@"alertas"];
+    NSString *urlChamarGarcom = [CLAppBaseUrl stringByAppendingString:@"acoes_contas/chamargarcom"];
     
-    NSString *parameters = [NSString stringWithFormat:@"flagresolvido=false&tipoalerta=%@&conta=%@",CLTipoAlertaChamarGarcom,[[NSUserDefaults standardUserDefaults]objectForKey:CLParamConta]];
+    NSString *parameters = [NSString stringWithFormat:@"acao=%@&conta=%@",CLTipoAlertaChamarGarcom,[[NSUserDefaults standardUserDefaults]objectForKey:CLParamConta]];
     
     [self enviarChamado:urlChamarGarcom parameters:parameters method:@"POST"];
     
@@ -60,11 +60,11 @@
         
     }
     
-    NSNumber *conta = [[NSUserDefaults standardUserDefaults]objectForKey:CLParamConta];
+    NSString *urlChamarGarcom = [CLAppBaseUrl stringByAppendingString:@"acoes_contas/fecharconta"];
     
-    NSString *urlChamarGarcom = [[CLAppBaseUrl stringByAppendingString:@"contas/fechar/"]stringByAppendingFormat:@"%ld",[conta longValue]];
+    NSString *parameters = [NSString stringWithFormat:@"acao=%@&conta=%@",CLTipoAlertaPedirConta,[[NSUserDefaults standardUserDefaults]objectForKey:CLParamConta]];
     
-    [self enviarChamado:urlChamarGarcom parameters:@"" method:@"PUT"];
+    [self enviarChamado:urlChamarGarcom parameters:parameters method:@"POST"];
     
 }
 

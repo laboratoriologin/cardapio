@@ -194,7 +194,7 @@ NSInteger const CLBadRequest = 412;
 
     [request setHTTPMethod:httpMethod];
     
-    NSString *postString = [NSString stringWithFormat:@"empresa.keymobile=%@&mesa=%d", CLKeyEmpresa, mesa.intValue];
+    NSString *postString = [NSString stringWithFormat:@"numero=%d&tipoconta=1", mesa.intValue];
 
     if(changeMesa) {
     

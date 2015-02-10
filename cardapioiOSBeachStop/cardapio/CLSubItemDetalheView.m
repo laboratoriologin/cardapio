@@ -34,18 +34,31 @@ NSInteger const CLTamanholabel =  230;
     
     _stepLabels = [NSMutableArray array];
     
-    for(int i = 0; i<[self.item.subItens count]; i++) {
-
-//        [self addSubview:[self stepperViewFromPosition:i]];
-        
-        [self addSubview:[self tamanhoViewFromPosition:i]];
-        
-        if (_configureWithPrice) {
-        
-            [self addSubview:[self precoViewFromPosition:i]];
+    if (_configureWithPrice) {
+    
+        for(int i = 0; i<[self.item.subItens count]; i++) {
+            
+            [self addSubview:[self stepperViewFromPosition:i]];
+            
+            [self addSubview:[self tamanhoViewFromPosition:i]];
+            
+            if (_configureWithPrice) {
+                
+                [self addSubview:[self precoViewFromPosition:i]];
+                
+            }
             
         }
-
+        
+    } else {
+        
+        for(int i = 0; i<[self.item.subItens count]; i++) {
+            
+            [self addSubview:[self labelViewFromPosition:i]];
+            
+        }
+        
+        
     }
     
 }
@@ -61,7 +74,7 @@ NSInteger const CLTamanholabel =  230;
     UIImageView *stepRightButton;
     UILabel  *stepLabel;
     
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(15, position * verticalStep, 90, verticalStep)];
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(10, position * verticalStep, 90, verticalStep)];
     
     stepLeftButton = [[UIImageView alloc]initWithFrame:CGRectMake(marginX, marginY, stepButtonSize, stepButtonSize)];
     
@@ -79,7 +92,7 @@ NSInteger const CLTamanholabel =  230;
     
     stepLabel = [[UILabel alloc]initWithFrame:CGRectMake(stepLeftButton.frame.origin.x + stepButtonSize + marginX, stepLeftButton.frame.origin.y, stepButtonSize, stepButtonSize)];
     
-    stepLabel.font = [UIFont appFontWithSize:16];
+    stepLabel.font = [UIFont appFontWithSize:14];
     
     stepLabel.text = @"0";
     
@@ -119,15 +132,35 @@ NSInteger const CLTamanholabel =  230;
 
     UILabel  *tamanhoLabel;
     
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(15, position * verticalStep, 235, verticalStep)];
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(100, position * verticalStep, 150, verticalStep)];
     
     CALayer *layer = view.layer;
     
-    //layer.borderWidth = 1;
+    layer.borderWidth = 1;
     
     layer.borderColor = [[UIColor appButtonColor]CGColor];
     
-    tamanhoLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 0, 235, verticalStep)];
+    tamanhoLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 0, 140, verticalStep)];
+    
+    tamanhoLabel.font = [UIFont appFontWithSize:12];
+    
+    tamanhoLabel.textColor = [UIColor darkGrayColor];
+    
+    CLSubItem *subItem = [self.item.subItens objectAtIndex:position];
+    
+    tamanhoLabel.text = [ NSString stringWithFormat:@"%@ ", subItem.nome];
+    
+    [view addSubview:tamanhoLabel];
+    
+    return view;
+    
+}
+
+- (UIView *) labelViewFromPosition:(int)position {
+    
+    static int verticalStep   = 36;
+    
+    UILabel  *tamanhoLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, position * verticalStep, 300, verticalStep)];
     
     tamanhoLabel.font = [UIFont appFontWithSize:14];
     
@@ -135,22 +168,9 @@ NSInteger const CLTamanholabel =  230;
     
     CLSubItem *subItem = [self.item.subItens objectAtIndex:position];
     
-    tamanhoLabel.text = [ NSString stringWithFormat:@"%@ ", subItem.descricao];
+    tamanhoLabel.text = [ NSString stringWithFormat:@"%@ ", subItem.nome];
     
-    if (_configureWithPrice) {
-        
-        while([tamanhoLabel.text length] < CLTamanholabel) {
-            
-            tamanhoLabel.text = [tamanhoLabel.text stringByAppendingString:@"."];
-            
-        }
-        
-    }
-    
-    [view addSubview:tamanhoLabel];
-    
-    return view;
-    
+    return tamanhoLabel;
 }
 
 - (UIView *)precoViewFromPosition:(int)position {
@@ -159,21 +179,21 @@ NSInteger const CLTamanholabel =  230;
     
     UILabel  *precoLabel;
     
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(250, position * verticalStep, 65, verticalStep)];
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(250, position * verticalStep, 55, verticalStep)];
     
     CALayer *layer = view.layer;
     
-    //layer.borderWidth = 1;
+    layer.borderWidth = 1;
     
     layer.borderColor = [[UIColor appButtonColor]CGColor];
     
-    precoLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 0, 70, verticalStep)];
+    precoLabel = [[UILabel alloc]initWithFrame:CGRectMake(5, 0, 50, verticalStep)];
     
-    precoLabel.font = [UIFont appFontWithSize:14];
+    precoLabel.font = [UIFont appFontWithSize:12];
     
     CLSubItem *subItem = [self.item.subItens objectAtIndex:position];
     
-//    precoLabel.textAlignment = NSTextAlignmentCenter;
+    precoLabel.textAlignment = NSTextAlignmentCenter;
     
     precoLabel.textColor = [UIColor darkGrayColor];
     

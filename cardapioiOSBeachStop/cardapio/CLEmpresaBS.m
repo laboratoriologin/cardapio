@@ -20,7 +20,7 @@
     
     resultAux = resultParam;
     
-    NSString *url = [CLAppBaseUrl stringByAppendingFormat:@"empresas/keymobile/%@/keyCardapio", CLKeyEmpresa];
+    NSString *url = [CLAppBaseUrl stringByAppendingString:@"empresas/1/keyCardapio"];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
     
@@ -31,14 +31,19 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     
-    NSDictionary *resultado = [NSJSONSerialization JSONObjectWithData:self.mutableData
-                                                               options:NSJSONReadingMutableContainers error:nil];
+    if (self.mutableData) {
     
-    if (resultado) {
-    
-        [resultAux addObject:[[[resultado objectForKey:@"empresa"]objectForKey:@"keyCardapio"]stringValue]];
+        NSDictionary *resultado = [NSJSONSerialization JSONObjectWithData:self.mutableData
+                                                                  options:NSJSONReadingMutableContainers error:nil];
+        
+        if (resultado) {
+            
+            [resultAux addObject:[[[resultado objectForKey:@"empresa"]objectForKey:@"keyCardapio"]stringValue]];
+            
+        }
         
     }
+    
     
     if(self.completionHandler) {
         self.completionHandler();

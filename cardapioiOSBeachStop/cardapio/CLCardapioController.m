@@ -15,6 +15,7 @@
 #import "CLConstants.h"
 #import "CLNoTextTitleView.h"
 #import <Social/Social.h>
+#import <SDWebImage/SDWebImageManager.h>
 #define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
 const int CALarguraMenuCardapio  = 70;
 const int CAAlturaMenuCardapio   = 70;
@@ -144,7 +145,26 @@ const CGFloat CAlarguraImagemSlide = 320;
         
         button.tag = [[menu codigo] integerValue];
         
-        [button setBackgroundImage:[UIImage imageNamed:menu.imagem] forState:UIControlStateNormal];
+       [[button imageView] setContentMode: UIViewContentModeScaleAspectFit];
+        
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+        
+        dispatch_async(queue, ^{
+            
+            NSURL *url =[NSURL URLWithString:[NSString stringWithFormat:CLUrlImagem,menu.imagem]];
+            
+            UIImage *img = [UIImage imageWithData: [NSData dataWithContentsOfURL:url]];
+            
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                
+                if(img) {
+                    [button setImage:img forState:UIControlStateNormal];
+                    [button setImage:img forState:UIControlStateHighlighted];
+                }
+                
+            });
+        });
+        
         
         [button addTarget:self action:@selector(goCategoria:) forControlEvents:UIControlEventTouchUpInside];
         
