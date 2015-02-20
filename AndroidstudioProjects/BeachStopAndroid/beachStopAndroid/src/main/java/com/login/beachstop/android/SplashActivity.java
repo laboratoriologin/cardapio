@@ -28,57 +28,79 @@ public class SplashActivity extends DefaultActivity {
     protected ProgressBar progressBar;
     protected TextView textView;
     protected ImageButton imageButton;
+
     private ResponseListener responseListenerVerificarContaAberta = new ResponseListener() {
         @Override
         public void onResult(ServerResponse serverResponse) {
+
             if (serverResponse != null) {
+
                 if (serverResponse.isOK()) {
+
                     try {
                         if ("0".equals(((Conta) serverResponse.getReturnObject()).getId().toString())) {
                             getDataManager().getContaDAO().deleteAll();
                         }
 
                         setStatusApresentacao(true, true, Constantes.MSG_SAUDACAO_DOIS, false);
+
                         if (getDataManager().getCategoriaDAO().getQtdCategoria() == 0) {
+
                             new CategoriaRequest(responseCategorias).getAtivo();
+
                         } else {
+
                             new EmpresaRequest(responseKeyCardapio).getKeyCardapio();
+
                         }
 
                     } catch (Exception e) {
+
                         e.printStackTrace();
+
                         setStatusApresentacao(false, true, Constantes.MSG_ERRO_GRAVAR_DADOS, true);
+
                     }
+
                 } else {
                     setStatusApresentacao(false, true, serverResponse.getMsgErro(), true);
                 }
+
             } else {
                 setStatusApresentacao(false, true, Constantes.MSG_ERRO_NET, true);
             }
         }
     };
+
     private ResponseListener responseCategorias = new ResponseListener() {
 
         @Override
         public void onResult(ServerResponse serverResponse) {
+
             if (serverResponse != null) {
+
                 if (serverResponse.isOK()) {
+
                     try {
                         textView.setText(Constantes.MSG_SAUDACAO_UM);
                         List<Categoria> categorias = (List<Categoria>) serverResponse.getReturnObject();
                         configCategoria(categorias);
                         getDataManager().getCategoriaDAO().save(categorias);
                         verificarClienteCadastrado();
+
                     } catch (Exception e) {
                         e.printStackTrace();
                         setStatusApresentacao(false, true, Constantes.MSG_ERRO_GRAVAR_DADOS, true);
                     }
+
                 } else {
                     setStatusApresentacao(false, true, serverResponse.getMsgErro(), true);
                 }
+
             } else {
                 setStatusApresentacao(false, true, Constantes.MSG_ERRO_NET, true);
             }
+
         }
     };
 

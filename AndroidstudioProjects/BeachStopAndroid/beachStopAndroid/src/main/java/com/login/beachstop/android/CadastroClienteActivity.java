@@ -1,19 +1,33 @@
 package com.login.beachstop.android;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.facebook.FacebookAuthorizationException;
+import com.facebook.FacebookOperationCanceledException;
+import com.facebook.Session;
+import com.facebook.SessionState;
+import com.facebook.UiLifecycleHelper;
+import com.facebook.model.GraphUser;
+import com.facebook.widget.FacebookDialog;
+import com.facebook.widget.LoginButton;
 import com.login.beachstop.android.models.Cliente;
 import com.login.beachstop.android.models.ServerResponse;
 import com.login.beachstop.android.network.ClienteRequest;
 import com.login.beachstop.android.network.http.ResponseListener;
 import com.login.beachstop.android.utils.Constantes;
+
+import org.json.JSONException;
+
+import java.util.Arrays;
 
 import static com.login.beachstop.android.R.layout.activity_cadastro_cliente;
 
@@ -29,6 +43,8 @@ public class CadastroClienteActivity extends DefaultActivity {
     protected EditText editTextAniversario;
     private ProgressDialog progressDialog;
     private Cliente cliente;
+    private LoginButton loginButton;
+    private UiLifecycleHelper uiHelper;
     private ResponseListener listenerCadastroCliente = new ResponseListener() {
         @Override
         public void onResult(ServerResponse serverResponse) {
@@ -46,22 +62,23 @@ public class CadastroClienteActivity extends DefaultActivity {
 
                         getDataManager().getClienteDAO().save(cliente);
 
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+
+                                progressDialog.dismiss();
+                                goToStart();
+
+                            }
+                        }, SPLASH_MILIS);
+
+
                     } catch (Exception e) {
 
                         e.printStackTrace();
                         progressDialog.setMessage("Ops! Ocorreu um erro no sistema ao grava os dados no seu celular.");
 
                     }
-
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-
-                            progressDialog.dismiss();
-                            goToStart();
-
-                        }
-                    }, SPLASH_MILIS);
 
                 } else {
 
@@ -85,14 +102,67 @@ public class CadastroClienteActivity extends DefaultActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        uiHelper = new UiLifecycleHelper(this, callback);
+        uiHelper.onCreate(savedInstanceState);
         setContentView(activity_cadastro_cliente);
 
         this.editTextNome = (EditText) findViewById(R.id.activity_cadastro_cliente_edit_text_nome);
         this.editTextEmail = (EditText) findViewById(R.id.activity_cadastro_cliente_edit_text_email);
         this.editTextCelular = (EditText) findViewById(R.id.activity_cadastro_cliente_edit_text_celular);
         this.editTextAniversario = (EditText) findViewById(R.id.activity_cadastro_cliente_edit_text_data_nascimento);
+        this.loginButton = (LoginButton) findViewById(R.id.fb_login_button);
 
+        loginButton.setReadPermissions(Arrays.asList("public_profile"));
 
+        this.loginButton.setUserInfoChangedCallback(new LoginButton.UserInfoChangedCallback() {
+            @Override
+            public void onUserInfoFetched(GraphUser user) {
+
+                if (user !=null) {
+                    editTextNome.setText((user.getName() + " " + user.getLastName()).trim());
+
+                    try {
+                        editTextEmail.setText(user.getInnerJSONObject().getString("email"));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    editTextAniversario.setText(user.getBirthday());
+                }
+            }
+        });
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        uiHelper.onResume();
+
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        uiHelper.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        uiHelper.onActivityResult(requestCode, resultCode, data, dialogCallback);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        uiHelper.onPause();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        uiHelper.onDestroy();
     }
 
     public void salvar(View view) {
@@ -135,7 +205,7 @@ public class CadastroClienteActivity extends DefaultActivity {
 
     public void cancelar(View view) {
 
-        goToStart();
+        finish();
 
     }
 
@@ -147,5 +217,51 @@ public class CadastroClienteActivity extends DefaultActivity {
         this.finish();
 
     }
+
+    // CallBack Facebook
+
+
+    private Session.StatusCallback callback = new Session.StatusCallback() {
+        @Override
+        public void call(Session session, SessionState state, Exception exception) {
+            onSessionStateChange(session, state, exception);
+        }
+    };
+
+    private void onSessionStateChange(Session session, SessionState state, Exception exception) {
+        if ((exception instanceof FacebookOperationCanceledException ||
+                        exception instanceof FacebookAuthorizationException)) {
+            new AlertDialog.Builder(CadastroClienteActivity.this)
+                    .setTitle("Cancelado")
+                    .setMessage("Permissão não foi concedida")
+                    .setPositiveButton(R.string.ok, null)
+                    .show();
+
+        }
+
+        if (session.isClosed()) {
+
+            editTextNome.setText("");
+
+            editTextEmail.setText("");
+
+            editTextAniversario.setText("");
+
+        }
+
+    }
+
+
+    private FacebookDialog.Callback dialogCallback = new FacebookDialog.Callback() {
+        @Override
+        public void onError(FacebookDialog.PendingCall pendingCall, Exception error, Bundle data) {
+            Log.d("HelloFacebook", String.format("Error: %s", error.toString()));
+        }
+
+        @Override
+        public void onComplete(FacebookDialog.PendingCall pendingCall, Bundle data) {
+            Log.d("HelloFacebook", "Success!");
+        }
+    };
 
 }
