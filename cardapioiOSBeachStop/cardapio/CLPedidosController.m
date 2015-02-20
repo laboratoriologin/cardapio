@@ -158,7 +158,7 @@
         
         self.nenhumPedidoEnviadoLabel.text=@"Buscando pedidos enviados...";
         
-        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[CLAppBaseUrl stringByAppendingFormat:@"contas/%d/horarioChegada/mesa/pedidoSubItem/valor/valorPago",contaAtual.intValue]]];
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[CLAppBaseUrl stringByAppendingFormat:@"contas/%d/horarioChegada/mesa/pedidoSubItens/valor/valorPago",contaAtual.intValue]]];
         
         AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
         
@@ -320,7 +320,7 @@
     
     labelItem.numberOfLines = 2;
     
-    labelItem.text = [NSString stringWithFormat:@"%@-%@",subItem.item.nome,subItem.descricao];
+    labelItem.text = [NSString stringWithFormat:@"%@-%@",subItem.item.nome,subItem.nome];
     
     labelItem.font = [UIFont appFontWithSize:10];
     
@@ -426,7 +426,7 @@
 
         NSString *endereco = [CLAppBaseUrl stringByAppendingString:@"pedidos"];
         
-        NSString *parameters = [NSString stringWithFormat:@"conta.id=%ld&observacao=%@",contaAtual.longValue,_observacao];
+        NSString *parameters = [NSString stringWithFormat:@"conta=%ld&observacao=%@",contaAtual.longValue,_observacao];
         
         CLSubItem *subItem = nil;
         
@@ -434,9 +434,9 @@
             
             subItem = [selecionados objectAtIndex:index];
             
-            parameters = [parameters stringByAppendingFormat:@"&listPedidoSubItem[%d].subitem=%ld", index, [subItem.codigo longValue]];
+            parameters = [parameters stringByAppendingFormat:@"&subItens[%d].subitem=%ld", index, [subItem.codigo longValue]];
             
-            parameters = [parameters stringByAppendingFormat:@"&listPedidoSubItem[%d].quantidade=%d", index, subItem.quantidadeSelecionada];
+            parameters = [parameters stringByAppendingFormat:@"&subItens[%d].quantidade=%d", index, subItem.quantidadeSelecionada];
             
         }
         
@@ -467,9 +467,9 @@
         
         [self.indicatorView stopAnimating];
         
-        [self.view addInfoMessage:NSLocalizedString(@"OBRIGADO",nil) stickTime:2];
-        
         [self.enviarPedidoButton setImage:[UIImage imageNamed:@"icone_chamados_55x42_verde.png"] forState:UIControlStateNormal];
+        
+        [self.view addInfoMessage:NSLocalizedString(@"OBRIGADO",nil) stickTime:2];
         
         CLSubItemDAO *subItemDAO = [[CLSubItemDAO alloc]init];
         
@@ -487,9 +487,9 @@
         
         [self.view addInfoMessage:NSLocalizedString(@"ACONTECEU_ERRO",nil) stickTime:3];
             
-        [self.indicatorView stopAnimating];
-        
         [self.enviarPedidoButton setImage:[UIImage imageNamed:@"icone_chamados_55x42_verde.png"] forState:UIControlStateNormal];
+        
+        [self.indicatorView stopAnimating];
         
         self.enviarPedidoButton.enabled=YES;
         
@@ -506,6 +506,8 @@
     [operation start];
     
 }
+
+#pragma mark - IBActions
 
 - (IBAction)showNaoEnviado:(id)sender {
     
@@ -536,6 +538,77 @@
 - (IBAction)refreshPedidosEnviados:(id)sender {
     
     [self initPedidosConta];
+    
+}
+
+- (IBAction)pedirConta:(id)sender {
+    
+    UIButton *button = (UIButton *)sender;
+    
+    NSNumber *conta = [[NSUserDefaults standardUserDefaults]objectForKey:CLParamConta];
+    
+    [button setImage:[[UIImage alloc]init] forState:UIControlStateNormal];
+    
+    if (!conta) {
+        
+        [self.view addInfoMessage:@"Você ainda não fez check-in" stickTime:2];
+        
+        return;
+        
+    }
+    
+    NSNumber *solicitado = [[NSUserDefaults standardUserDefaults]objectForKey:CLParamContaSolicitada];
+    
+    if (solicitado) {
+        
+        [self.view addInfoMessage:NSLocalizedString(@"CONTA_JA_SOLICITADA", nil) stickTime:2];
+        
+        return;
+        
+        
+    }
+    
+    NSString *url = [CLAppBaseUrl stringByAppendingString:@"acoes_contas/fecharconta"];
+    
+    NSString *parameters = [NSString stringWithFormat:@"acao=%@&conta=%@",CLTipoAlertaPedirConta,conta];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+    
+    [request setHTTPMethod:@"POST"];
+    
+    [request setHTTPBody:[parameters dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [request setValue:CLURLAppEncode forHTTPHeaderField:@"Content-Type"];
+    
+    self.indicatorViewConta.alpha = 1;
+    
+    [self.indicatorViewConta startAnimating];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        self.indicatorViewConta.alpha = 0;
+        
+        [self.view addInfoMessage:NSLocalizedString(@"CHAMADO_ENVIADO", nil) stickTime:2];
+        
+        [button setImage:[UIImage imageNamed:@"icone_conta_55x42_verde"] forState:UIControlStateNormal];
+        
+        [[NSUserDefaults standardUserDefaults]setObject:[NSNumber numberWithBool:YES] forKey:CLParamContaSolicitada];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        self.indicatorViewConta.alpha = 0;
+        
+        [button setImage:[UIImage imageNamed:@"icone_conta_55x42_verde"] forState:UIControlStateNormal];
+        
+        [self.view addInfoMessage:NSLocalizedString(@"ACONTECEU_ERRO", nil) stickTime:3];
+        
+    }];
+    
+    [operation start];
     
 }
 

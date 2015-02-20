@@ -27,9 +27,14 @@ public class ContaRequest extends ObjectRequest<Conta> {
         super(listener);
     }
 
-    public void get(Long contaId) {
+//    public void get(Long contaId) {
+//        String urlgetAtivo = String.format("%s/%s/%s", Constantes.URL_WS, new Conta().getServiceName(), contaId.toString());
+//        ServerRequest serverRequest = new ServerRequest(ServerRequest.GET, urlgetAtivo, null);
+//        this.execute(serverRequest);
+//    }
 
-        String urlgetAtivo = Constantes.URL_WS + "/" + new Conta().getServiceName() + "/" + contaId.toString();
+    public void verificarContaAberta(Conta conta) {
+        String urlgetAtivo = String.format("%s/%s/aberto/%s", Constantes.URL_WS, new Conta().getServiceName(), conta.getSistemaId().toString());
         ServerRequest serverRequest = new ServerRequest(ServerRequest.GET, urlgetAtivo, null);
         this.execute(serverRequest);
     }
@@ -43,7 +48,6 @@ public class ContaRequest extends ObjectRequest<Conta> {
         nameValuePairs.add(new BasicNameValuePair("numero", conta.getNumero().toString()));
         nameValuePairs.add(new BasicNameValuePair("tipoconta", conta.getTipoConta().toString()));
         return nameValuePairs;
-
     }
 
     @Override
@@ -55,9 +59,7 @@ public class ContaRequest extends ObjectRequest<Conta> {
             JSONObject jsonObject;
 
             try {
-
                 if (((JSONObject) serverResponse.getReturnObject()).has("conta")) {
-
                     jsonObject = ((JSONObject) serverResponse.getReturnObject()).getJSONObject("conta");
 
                     conta = new Conta();
@@ -71,7 +73,6 @@ public class ContaRequest extends ObjectRequest<Conta> {
                     conta.setValorTotalPago((jsonObject.has("valorPago") ? jsonObject.getString("valorPago") : "0.0"));
 
                     if (jsonObject.has("pedidoSubItens")) {
-
                         JSONArray jsonArrayPedidoSubItem = Utilitarios.getAlwaysJsonArray(jsonObject, "pedidoSubItens");
 
                         Pedido pedido = new Pedido();
@@ -79,16 +80,12 @@ public class ContaRequest extends ObjectRequest<Conta> {
                         PedidoSubItem pedidoSubItem;
 
                         for (int i = 0; i < jsonArrayPedidoSubItem.length(); i++) {
-
                             pedidoSubItem = new PedidoSubItem();
                             pedidoSubItem.setQuantidade(jsonArrayPedidoSubItem.getJSONObject(i).getLong("quantidade"));
                             pedidoSubItem.setValorTotal(jsonArrayPedidoSubItem.getJSONObject(i).getString("valorCalculado"));
                             pedidoSubItem.setValorUnitario(jsonArrayPedidoSubItem.getJSONObject(i).getString("valorUnitario"));
-
                             pedidoSubItem.setSubItemId(jsonArrayPedidoSubItem.getJSONObject(i).getJSONObject("subItem").getLong("id"));
-
                             pedido.getPedidoSubItens().add(pedidoSubItem);
-
                         }
 
                         if (conta.getPedidos() == null) {
@@ -96,22 +93,14 @@ public class ContaRequest extends ObjectRequest<Conta> {
                         }
 
                         conta.getPedidos().add(pedido);
-
                     }else{
                         conta.setPedidos(new ArrayList<Pedido>());
                     }
-
                     serverResponse.setReturnObject(conta);
-
                 } else {
-
                     serverResponse.setReturnObject(null);
-
                 }
-
-
             } catch (JSONException e) {
-
                 e.printStackTrace();
                 serverResponse.setStatusCode(-1);
             }

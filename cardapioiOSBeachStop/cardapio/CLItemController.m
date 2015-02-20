@@ -501,7 +501,7 @@ const NSInteger CLSectionAcompanhamento = 3;
     
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         
-        self.navigationController.tabBarController.selectedIndex = 2;
+        self.navigationController.tabBarController.selectedIndex = 3;
         
     });
     

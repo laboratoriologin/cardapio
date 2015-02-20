@@ -74,7 +74,7 @@
                     subItem.tipoDescricao = [[dicSubItem objectForKey:@"tipoQuantidade"]objectForKey:@"descricao"];
                     subItem.descricao     = [dicSubItem objectForKey:@"descricao"];
                     subItem.quantidade    = [dicSubItem objectForKey:@"quantidade"];
-                    
+                    subItem.nome          = [dicSubItem objectForKey:@"nome"];                    
                     [item.subItens addObject:subItem];
                     
                 }

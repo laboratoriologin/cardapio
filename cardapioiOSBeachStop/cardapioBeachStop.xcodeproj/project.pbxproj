@@ -12,6 +12,11 @@
 		062C3B2C1A815CB70033935E /* icone_topo_pasteis@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 062C3B291A815CB70033935E /* icone_topo_pasteis@2x.png */; };
 		062E4BD419ABA48B006370C2 /* icone_check_in@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 062E4BD219ABA48B006370C2 /* icone_check_in@2x.png */; };
 		062E4BD519ABA48B006370C2 /* icone_check_in.png in Resources */ = {isa = PBXBuildFile; fileRef = 062E4BD319ABA48B006370C2 /* icone_check_in.png */; };
+		063536721A96212000692017 /* CLCadastroController.m in Sources */ = {isa = PBXBuildFile; fileRef = 063536701A96212000692017 /* CLCadastroController.m */; };
+		063536731A96212000692017 /* CLCadastroController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 063536711A96212000692017 /* CLCadastroController.xib */; };
+		063536751A96606100692017 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 063536741A96606100692017 /* FacebookSDK.framework */; };
+		063B1C561A97536A00939F98 /* CLClienteBS.m in Sources */ = {isa = PBXBuildFile; fileRef = 063B1C551A97536A00939F98 /* CLClienteBS.m */; };
+		063B1C591A97562E00939F98 /* CLCliente.m in Sources */ = {isa = PBXBuildFile; fileRef = 063B1C581A97562E00939F98 /* CLCliente.m */; };
 		064A9BC219BE26D100D0AC98 /* bt_home_acompanhamento@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 064A9BB519BE26D100D0AC98 /* bt_home_acompanhamento@2x.png */; };
 		064A9BC519BE26D100D0AC98 /* bt_home_diversos@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 064A9BB819BE26D100D0AC98 /* bt_home_diversos@2x.png */; };
 		064A9BC919BE26D100D0AC98 /* bt_home_pratos_terra@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 064A9BBC19BE26D100D0AC98 /* bt_home_pratos_terra@2x.png */; };
@@ -185,6 +190,14 @@
 		062C3B291A815CB70033935E /* icone_topo_pasteis@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icone_topo_pasteis@2x.png"; sourceTree = "<group>"; };
 		062E4BD219ABA48B006370C2 /* icone_check_in@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icone_check_in@2x.png"; path = "../../../../../../../Downloads/IOS_icone_check_in/icone_check_in@2x.png"; sourceTree = "<group>"; };
 		062E4BD319ABA48B006370C2 /* icone_check_in.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icone_check_in.png; path = ../../../../../../../Downloads/IOS_icone_check_in/icone_check_in.png; sourceTree = "<group>"; };
+		0635366F1A96212000692017 /* CLCadastroController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLCadastroController.h; sourceTree = "<group>"; };
+		063536701A96212000692017 /* CLCadastroController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLCadastroController.m; sourceTree = "<group>"; };
+		063536711A96212000692017 /* CLCadastroController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CLCadastroController.xib; sourceTree = "<group>"; };
+		063536741A96606100692017 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		063B1C541A97536A00939F98 /* CLClienteBS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLClienteBS.h; sourceTree = "<group>"; };
+		063B1C551A97536A00939F98 /* CLClienteBS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLClienteBS.m; sourceTree = "<group>"; };
+		063B1C571A97562E00939F98 /* CLCliente.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLCliente.h; sourceTree = "<group>"; };
+		063B1C581A97562E00939F98 /* CLCliente.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLCliente.m; sourceTree = "<group>"; };
 		064A9BB519BE26D100D0AC98 /* bt_home_acompanhamento@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt_home_acompanhamento@2x.png"; sourceTree = "<group>"; };
 		064A9BB819BE26D100D0AC98 /* bt_home_diversos@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt_home_diversos@2x.png"; sourceTree = "<group>"; };
 		064A9BBC19BE26D100D0AC98 /* bt_home_pratos_terra@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt_home_pratos_terra@2x.png"; sourceTree = "<group>"; };
@@ -422,6 +435,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				063536751A96606100692017 /* FacebookSDK.framework in Frameworks */,
 				626C523F1926958700E72734 /* QuartzCore.framework in Frameworks */,
 				626C523D1926957800E72734 /* CoreVideo.framework in Frameworks */,
 				626C523B1926957200E72734 /* CoreMedia.framework in Frameworks */,
@@ -471,6 +485,7 @@
 		6201AB7D18F85627005B5DB9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				063536741A96606100692017 /* FacebookSDK.framework */,
 				623244041941063F00CDD0DE /* AudioToolbox.framework */,
 				626C523E1926958700E72734 /* QuartzCore.framework */,
 				626C523C1926957800E72734 /* CoreVideo.framework */,
@@ -561,6 +576,8 @@
 				6223DCBB192D3DBE00401117 /* CLPublicidade.m */,
 				62343824193F878A00FBBB54 /* CLConta.h */,
 				62343825193F878A00FBBB54 /* CLConta.m */,
+				063B1C571A97562E00939F98 /* CLCliente.h */,
+				063B1C581A97562E00939F98 /* CLCliente.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -582,6 +599,8 @@
 				62237070192A89D100A390D2 /* CLHttpRequestBS.m */,
 				6223DCB7192D3C8900401117 /* CLPropagandaBS.h */,
 				6223DCB8192D3C8900401117 /* CLPropagandaBS.m */,
+				063B1C541A97536A00939F98 /* CLClienteBS.h */,
+				063B1C551A97536A00939F98 /* CLClienteBS.m */,
 			);
 			name = business;
 			sourceTree = "<group>";
@@ -758,6 +777,9 @@
 				62526FC61921423700C222EA /* CLItemController.xib */,
 				625779EA195222D000CE36B9 /* CLChamarGarcomController.h */,
 				625779EB195222D000CE36B9 /* CLChamarGarcomController.m */,
+				0635366F1A96212000692017 /* CLCadastroController.h */,
+				063536701A96212000692017 /* CLCadastroController.m */,
+				063536711A96212000692017 /* CLCadastroController.xib */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -997,6 +1019,7 @@
 				62FBFA3A1994F9E70079107E /* barra_topo.png in Resources */,
 				064A9BDA19BE382600D0AC98 /* icone_topo_pratos_do_mar@2x.png in Resources */,
 				62FBFA4B1994FD240079107E /* seta_para_esquerda.png in Resources */,
+				063536731A96212000692017 /* CLCadastroController.xib in Resources */,
 				629F654818FEF959009B1F52 /* CLCategoriaController.xib in Resources */,
 				629756AF18FC608700DC8D61 /* icone_topo_entradas@2x.png in Resources */,
 				62E430C01999336200887C2E /* Default@2x.png in Resources */,
@@ -1159,6 +1182,7 @@
 				629F654718FEF959009B1F52 /* CLCategoriaController.m in Sources */,
 				6223DCB9192D3C8900401117 /* CLPropagandaBS.m in Sources */,
 				62343826193F878A00FBBB54 /* CLConta.m in Sources */,
+				063B1C561A97536A00939F98 /* CLClienteBS.m in Sources */,
 				627181411924EB8E007DCC4A /* CLEmpresaBS.m in Sources */,
 				6261C825191BAE1A00EE6073 /* CLSubItemDetalheView.m in Sources */,
 				62E7F2971913CE9200A93235 /* FMDatabase.m in Sources */,
@@ -1178,6 +1202,7 @@
 				62E7F2981913CE9200A93235 /* FMResultSet.m in Sources */,
 				62E7F2A41913D34300A93235 /* CLSubItemDAO.m in Sources */,
 				62237074192A8FC800A390D2 /* UIView+DAHMessages.m in Sources */,
+				063536721A96212000692017 /* CLCadastroController.m in Sources */,
 				6273869319100A66004D2E46 /* CLCollectionViewSingleCell.m in Sources */,
 				62526FBC1920F78A00C222EA /* NSString+DAHStringUtil.m in Sources */,
 				62E7F29E1913D25400A93235 /* CLMenuDAO.m in Sources */,
@@ -1189,6 +1214,7 @@
 				62560294192B8A2D008FD9F4 /* URLParser.m in Sources */,
 				62695A63199B91A0002C1799 /* CLNoTextTitleView.m in Sources */,
 				6297567718FC4AF800DC8D61 /* CLCheckInController.m in Sources */,
+				063B1C591A97562E00939F98 /* CLCliente.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1327,6 +1353,10 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/login/Documents/FacebookSDK,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "cardapio/cardapioBeachStop-Prefix.pch";
 				INFOPLIST_FILE = "cardapio/cardapioBeachStop-Info.plist";
@@ -1350,6 +1380,10 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/login/Documents/FacebookSDK,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "cardapio/cardapioBeachStop-Prefix.pch";
 				INFOPLIST_FILE = "cardapio/cardapioBeachStop-Info.plist";

@@ -18,15 +18,11 @@ public class ContaDAO extends DroidDao<Conta, Long> {
     }
 
     public Conta get() {
-
         List<Conta> contas = this.getAll();
-
         if (contas.size() == 0) {
             return null;
         } else {
             return contas.get(0);
         }
-
     }
-
 }

@@ -94,7 +94,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="366"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                     </scrollView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="PdM-vj-JQc">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="PdM-vj-JQc">
                                         <rect key="frame" x="20" y="434" width="280" height="43"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <color key="backgroundColor" red="0.1294117719" green="0.45882356169999999" blue="0.69411766529999996" alpha="1" colorSpace="deviceRGB"/>
@@ -205,22 +205,28 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.72941178080000002" green="0.60000002379999995" blue="0.56862747670000002" alpha="1" colorSpace="deviceRGB"/>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gsi-A1-T05">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gsi-A1-T05">
                                         <rect key="frame" x="340" y="434" width="280" height="43"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <color key="backgroundColor" red="0.1294117719" green="0.45882356169999999" blue="0.69411766529999996" alpha="1" colorSpace="deviceRGB"/>
-                                        <inset key="contentEdgeInsets" minX="14" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <inset key="titleEdgeInsets" minX="52" minY="0.0" maxX="21" maxY="0.0"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="21" maxY="0.0"/>
                                         <state key="normal" title="Pedir a conta" image="icone_conta_55x42_verde.png">
                                             <color key="titleColor" red="0.043137256059999997" green="0.25098040700000002" blue="0.37254902719999999" alpha="1" colorSpace="deviceRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="pedirConta:" destination="1QX-lL-tmN" eventType="touchUpInside" id="mXU-H4-j9i"/>
+                                        </connections>
                                     </button>
                                     <activityIndicatorView opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" id="rcN-nz-wav">
                                         <rect key="frame" x="460" y="210" width="37" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <color key="color" red="0.53333336109999996" green="0.84705889229999998" blue="0.050980396570000003" alpha="1" colorSpace="deviceRGB"/>
+                                    </activityIndicatorView>
+                                    <activityIndicatorView hidden="YES" opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" id="xpH-GI-piP">
+                                        <rect key="frame" x="405" y="446" width="20" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     </activityIndicatorView>
                                 </subviews>
                             </scrollView>
@@ -264,6 +270,7 @@
                         <outlet property="enviarPedidoButton" destination="PdM-vj-JQc" id="2ax-K4-H1T"/>
                         <outlet property="groupScrollView" destination="FaC-o2-iso" id="DUG-J8-bvj"/>
                         <outlet property="indicatorView" destination="5uT-8f-ngB" id="0vK-Vr-BJw"/>
+                        <outlet property="indicatorViewConta" destination="xpH-GI-piP" id="Z7r-GF-BMw"/>
                         <outlet property="naoEnviadoButton" destination="I6C-9n-7rb" id="UhI-PJ-aUI"/>
                         <outlet property="nenhumPedidoEnviadoLabel" destination="pey-ov-MNc" id="5IG-Rx-SN2"/>
                         <outlet property="parcialLabel" destination="Krj-fo-i14" id="V1M-gL-ek8"/>
@@ -472,10 +479,17 @@
                                     <action selector="pedirConta:" destination="J2H-hN-LHw" eventType="touchUpInside" id="7aP-T2-8Ts"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" id="ixf-xt-XZL">
+                                <rect key="frame" x="150" y="250" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.95294123888015747" green="0.95294123888015747" blue="0.67843139171600342" alpha="1" colorSpace="deviceRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="vIH-aX-KdA"/>
+                    <connections>
+                        <outlet property="indicatorView" destination="ixf-xt-XZL" id="WNJ-Mb-H6d"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rgI-AG-YmL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

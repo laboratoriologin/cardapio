@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *parcialTextField;
 - (IBAction)enviarPedido:(id)sender;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicatorView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicatorViewConta;
 @property (weak, nonatomic) IBOutlet UIButton *enviarPedidoButton;
 @property (weak, nonatomic) IBOutlet UIScrollView *groupScrollView;
 @property (weak, nonatomic) IBOutlet UIButton *naoEnviadoButton;
@@ -32,5 +33,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *refreshPedidosEnviadosButton;
 - (IBAction)refreshPedidosEnviados:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *pedirContaButton;
+- (IBAction)pedirConta:(id)sender;
 
 @end

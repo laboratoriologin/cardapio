@@ -20,6 +20,8 @@
 #import "CLSubItemDAO.h"
 #import "CLConstants.h"
 #import "UIImageEffects.h"
+#import "CLCadastroController.h"
+#import <FacebookSDK/FacebookSDK.h>
 @implementation CLAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -38,6 +40,20 @@
     
     [self initDataBase];
     
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    
+    self.tabBarController =[storyboard instantiateInitialViewController];
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    self.window.rootViewController =  self.tabBarController;
+    
+    [self.window makeKeyAndVisible];
+    
+    [self checkCadastro];
+    
     [self configureSplash];
     
     [self checkLastKey:nil];
@@ -46,18 +62,6 @@
 }
 
 - (void)configureSplash {
-    
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-   
-    self.tabBarController =[storyboard instantiateInitialViewController];
-    
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
-    self.window.rootViewController =  self.tabBarController;
-    
-    [self.window makeKeyAndVisible];
     
     self.splashImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.window.bounds.size.width, self.window.bounds.size.height)];
 
@@ -112,6 +116,20 @@
     [UIView animateWithDuration:0.5 animations:^{
         self.configAppLabel.alpha=1;
     }];
+    
+}
+
+- (void)checkCadastro {
+    
+    NSString *idCliente = [[NSUserDefaults standardUserDefaults]stringForKey:CLParamIDCliente];
+    
+    if (!idCliente) {
+        
+        CLCadastroController *controller = [[CLCadastroController alloc]initWithNibName:@"CLCadastroController" bundle:nil];
+        
+        [self.tabBarController presentViewController:controller animated:YES completion:nil];
+        
+    }
     
 }
 
@@ -356,6 +374,19 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     [self checkContaAtual:NO];
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    
+    // Call FBAppCall's handleOpenURL:sourceApplication to handle Facebook app responses
+    BOOL wasHandled = [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
+    
+    // You can add your app-specific url handling code here if needed
+    
+    return wasHandled;
 }
 
 @end

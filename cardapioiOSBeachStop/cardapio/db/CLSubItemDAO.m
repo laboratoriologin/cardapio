@@ -139,6 +139,52 @@
     
 }
 
+- (CLSubItem *)getByID:(NSNumber *) codigo {
+    
+    FMDatabase *conexao = [CLDBUtil getConnection];
+    
+    @try {
+        
+        FMResultSet *results = [conexao executeQuery:@"SELECT * FROM SUB_ITEM WHERE CODIGO = ?" withArgumentsInArray:@[codigo]];
+        
+        CLSubItem *subItem = nil;
+        
+        if([results next]) {
+            
+            subItem                = [[CLSubItem alloc]init];
+            
+            subItem.codigo         = [NSNumber numberWithInt:[results intForColumn:@"CODIGO"]];
+            
+            subItem.nome           = [results stringForColumn:@"NOME"];
+            
+            subItem.descricao      = [results stringForColumn:@"DESCRICAO"];
+            
+            FMResultSet *resultItem = [conexao executeQuery:@"SELECT * FROM ITEM WHERE CODIGO = ?" withArgumentsInArray:@[[NSNumber numberWithInt:[results intForColumn:@"ITEM_ID"]]]];
+            
+            subItem.item = [CLItem new];
+            
+            if([resultItem next]) {
+            
+                subItem.item.nome = [resultItem stringForColumn:@"NOME"];
+                
+            }
+        
+            [resultItem close];
+
+        }
+        
+        return subItem;
+        
+    }
+    @catch (NSException *exception) {
+        return nil;
+    }
+    @finally {
+        [CLDBUtil closeConnection:conexao];
+    }
+    
+}
+
 
 - (BOOL)alterarPedido:(CLSubItem *)subItem {
     
