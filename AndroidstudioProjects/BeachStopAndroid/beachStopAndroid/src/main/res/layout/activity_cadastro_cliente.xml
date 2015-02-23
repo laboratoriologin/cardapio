@@ -109,7 +109,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="25dp"
             android:ems="10"
-            android:inputType="date" />
+            android:inputType="number" />
 
 
         <RelativeLayout
@@ -143,8 +143,8 @@
                 android:padding="5dp"
                 />
 
-            <Button android:layout_alignTop="@+id/authButton"
-                android:layout_alignBottom="@+id/authButton"
+            <Button android:layout_alignTop="@+id/fb_login_button"
+                android:layout_alignBottom="@+id/fb_login_button"
                 android:id="@+id/activity_cadastro_cliente_button_salvar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
