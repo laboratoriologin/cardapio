@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="mZ4-6k-i6r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="mZ4-6k-i6r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
         <!--Cardapio Controller-->
@@ -35,7 +36,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1009" y="-1145"/>
+            <point key="canvasLocation" x="1009" y="-1189"/>
         </scene>
         <!--Sobre Restaurante Controller-->
         <scene sceneID="Msk-tY-9JQ">
@@ -61,7 +62,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="foS-XJ-F48" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1009" y="-446"/>
+            <point key="canvasLocation" x="1009" y="-490"/>
         </scene>
         <!--Pedidos Controller-->
         <scene sceneID="Yn8-71-Xe1">
@@ -93,7 +94,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="366"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                     </scrollView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="PdM-vj-JQc">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="PdM-vj-JQc">
                                         <rect key="frame" x="20" y="434" width="280" height="43"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <color key="backgroundColor" red="0.1294117719" green="0.45882356169999999" blue="0.69411766529999996" alpha="1" colorSpace="deviceRGB"/>
@@ -204,22 +205,28 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.72941178080000002" green="0.60000002379999995" blue="0.56862747670000002" alpha="1" colorSpace="deviceRGB"/>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gsi-A1-T05">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gsi-A1-T05">
                                         <rect key="frame" x="340" y="434" width="280" height="43"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <color key="backgroundColor" red="0.1294117719" green="0.45882356169999999" blue="0.69411766529999996" alpha="1" colorSpace="deviceRGB"/>
-                                        <inset key="contentEdgeInsets" minX="14" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <inset key="titleEdgeInsets" minX="52" minY="0.0" maxX="21" maxY="0.0"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="21" maxY="0.0"/>
                                         <state key="normal" title="Pedir a conta" image="icone_conta_55x42_verde.png">
                                             <color key="titleColor" red="0.043137256059999997" green="0.25098040700000002" blue="0.37254902719999999" alpha="1" colorSpace="deviceRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="pedirConta:" destination="1QX-lL-tmN" eventType="touchUpInside" id="mXU-H4-j9i"/>
+                                        </connections>
                                     </button>
                                     <activityIndicatorView opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" id="rcN-nz-wav">
                                         <rect key="frame" x="460" y="210" width="37" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <color key="color" red="0.53333336109999996" green="0.84705889229999998" blue="0.050980396570000003" alpha="1" colorSpace="deviceRGB"/>
+                                    </activityIndicatorView>
+                                    <activityIndicatorView hidden="YES" opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" id="xpH-GI-piP">
+                                        <rect key="frame" x="405" y="446" width="20" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     </activityIndicatorView>
                                 </subviews>
                             </scrollView>
@@ -263,6 +270,7 @@
                         <outlet property="enviarPedidoButton" destination="PdM-vj-JQc" id="2ax-K4-H1T"/>
                         <outlet property="groupScrollView" destination="FaC-o2-iso" id="DUG-J8-bvj"/>
                         <outlet property="indicatorView" destination="5uT-8f-ngB" id="0vK-Vr-BJw"/>
+                        <outlet property="indicatorViewConta" destination="xpH-GI-piP" id="Z7r-GF-BMw"/>
                         <outlet property="naoEnviadoButton" destination="I6C-9n-7rb" id="UhI-PJ-aUI"/>
                         <outlet property="nenhumPedidoEnviadoLabel" destination="pey-ov-MNc" id="5IG-Rx-SN2"/>
                         <outlet property="parcialLabel" destination="Krj-fo-i14" id="V1M-gL-ek8"/>
@@ -280,7 +288,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="feW-H8-9xy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="833" y="276"/>
+            <point key="canvasLocation" x="1169" y="262"/>
         </scene>
         <!--Check In Controller-->
         <scene sceneID="QZI-7K-D4X">
@@ -345,7 +353,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OXO-LY-Rk2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="999" y="1079"/>
+            <point key="canvasLocation" x="887" y="1035"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="vpX-SN-Xy9">
@@ -361,13 +369,15 @@
                         <segue destination="d4y-ZC-PQK" kind="relationship" relationship="viewControllers" id="iru-hN-v3v"/>
                         <segue destination="KsX-O4-03i" kind="relationship" relationship="viewControllers" id="zA9-vv-MXm"/>
                         <segue destination="aUD-bv-2qx" kind="relationship" relationship="viewControllers" id="qOj-NE-Y7S"/>
+                        <segue destination="D5u-Oi-zcZ" kind="relationship" relationship="viewControllers" id="hmd-qp-NSg"/>
+                        <segue destination="waI-cO-72P" kind="relationship" relationship="viewControllers" id="WIH-ZO-bRD"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="948-TM-Pt0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-59" y="90"/>
         </scene>
-        <!--Navigation Controller - Cardápio-->
+        <!--Cardápio-->
         <scene sceneID="bbo-J7-6zB">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="d4y-ZC-PQK" sceneMemberID="viewController">
@@ -388,7 +398,7 @@
             </objects>
             <point key="canvasLocation" x="483" y="-1189"/>
         </scene>
-        <!--Navigation Controller - Sobre o restaurante-->
+        <!--Sobre o restaurante-->
         <scene sceneID="NXQ-lw-HdJ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KsX-O4-03i" sceneMemberID="viewController">
@@ -409,7 +419,7 @@
             </objects>
             <point key="canvasLocation" x="483" y="-446"/>
         </scene>
-        <!--Navigation Controller - Pedidos-->
+        <!--Pedidos-->
         <scene sceneID="ml4-lD-Q0a">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="D5u-Oi-zcZ" sceneMemberID="viewController">
@@ -429,14 +439,14 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dod-Zg-beV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="426" y="312"/>
+            <point key="canvasLocation" x="483" y="226"/>
         </scene>
         <!--Chamar Garcom Controller-->
         <scene sceneID="2rK-eR-KxH">
             <objects>
                 <viewController id="J2H-hN-LHw" customClass="CLChamarGarcomController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jye-nV-8CI">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="rC1-aq-eTt">
@@ -469,16 +479,23 @@
                                     <action selector="pedirConta:" destination="J2H-hN-LHw" eventType="touchUpInside" id="7aP-T2-8Ts"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" id="ixf-xt-XZL">
+                                <rect key="frame" x="150" y="250" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.95294123888015747" green="0.95294123888015747" blue="0.67843139171600342" alpha="1" colorSpace="deviceRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="vIH-aX-KdA"/>
+                    <connections>
+                        <outlet property="indicatorView" destination="ixf-xt-XZL" id="WNJ-Mb-H6d"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rgI-AG-YmL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="999" y="1838"/>
+            <point key="canvasLocation" x="107" y="1085"/>
         </scene>
-        <!--Navigation Controller - Check In-->
+        <!--Check In-->
         <scene sceneID="3oC-OA-6T1">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aUD-bv-2qx" sceneMemberID="viewController">
@@ -499,7 +516,7 @@
             </objects>
             <point key="canvasLocation" x="473" y="1079"/>
         </scene>
-        <!--Navigation Controller - Chamar garçom-->
+        <!--Chamar garçom-->
         <scene sceneID="vfB-1T-hfZ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="waI-cO-72P" sceneMemberID="viewController">
@@ -518,7 +535,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="63i-LB-ena" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="473" y="1838"/>
+            <point key="canvasLocation" x="-251" y="1085"/>
         </scene>
     </scenes>
     <resources>

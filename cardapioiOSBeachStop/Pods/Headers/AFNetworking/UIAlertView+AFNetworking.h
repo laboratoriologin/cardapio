@@ -1,1 +1,1 @@
-link ../../AFNetworking/UIKit+AFNetworking/UIAlertView+AFNetworking.h
+../../AFNetworking/UIKit+AFNetworking/UIAlertView+AFNetworking.h

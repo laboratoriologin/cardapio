@@ -1,6 +1,7 @@
 package com.login.beachstop.android.fragments;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -13,11 +14,14 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.login.beachstop.android.CardapioActivity;
 import com.login.beachstop.android.DefaultActivity;
+import com.login.beachstop.android.MainActivity;
 import com.login.beachstop.android.R;
+import com.login.beachstop.android.SplashActivity;
 import com.login.beachstop.android.models.Categoria;
 import com.login.beachstop.android.models.Publicidade;
 import com.login.beachstop.android.models.ServerResponse;
@@ -134,6 +138,26 @@ public class CardapioFragment extends Fragment {
         this.viewPagerMidia = (ViewPager) this.view.findViewById(R.id.fragment_cardapio_view_pager_midia);
         this.mIndicator = (PageIndicator) this.view.findViewById(R.id.fragment_cardapio_view_pager_midia_indicator);
         this.gridViewMenu = (GridView) this.view.findViewById(R.id.fragment_cardapio_grid_view_menu);
+
+        TextView textView = (TextView) this.view.findViewById(R.id.text_view_sair);
+
+        textView.setClickable(true);
+
+        textView.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                ((CardapioActivity) getActivity()).getDataManager().getClienteDAO().deleteAll();
+
+                Intent mainIntent = new Intent(getActivity(), SplashActivity.class);
+                mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                getActivity().startActivity(mainIntent);
+                getActivity().finish();
+
+            }
+
+        });
 
         new PublicidadeRequest(listenerGetPublicidade).get(new Publicidade());
 

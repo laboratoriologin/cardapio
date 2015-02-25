@@ -17,6 +17,7 @@ extern NSString* const CLUrlHtml;
 extern NSString* const CLTipoAlertaChamarGarcom;
 extern NSString* const CLTipoAlertaPedirConta;
 extern NSString* const CLParamConta;
+extern NSString* const CLParamIDCliente;
 extern NSString* const CLParamMesa;
 extern NSString* const CLURLAppEncode;
 extern NSString* const CLParamContaSolicitada;

@@ -8,6 +8,7 @@
 
 #import "CLConta.h"
 #import "CLSubItem.h"
+#import "CLSubItemDAO.h"
 @implementation CLConta
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
@@ -15,6 +16,8 @@
     self = [super init];
     
     if (self) {
+        
+        CLSubItemDAO *subItemDAO = [CLSubItemDAO new];
         
         NSDictionary *conta = [dictionary objectForKey:@"conta"];
         
@@ -26,33 +29,30 @@
         
         CLSubItem *subItem = nil;
         
-        if (![[conta objectForKey:@"pedidoSubItem"] respondsToSelector:@selector(objectAtIndex:)]) {
+        if (![[conta objectForKey:@"pedidoSubItens"] respondsToSelector:@selector(objectAtIndex:)]) {
          
-            NSDictionary *pedido = [conta objectForKey:@"pedidoSubItem"];
+            NSDictionary *pedido = [conta objectForKey:@"pedidoSubItens"];
 
             if (pedido) {
                 subItem                  = [[CLSubItem alloc]init];
                 subItem.quantidade       = [pedido objectForKey:@"quantidade"];
-                subItem.descricao        = [[pedido objectForKey:@"subitem"] objectForKey:@"descricao"];
-                subItem.valor            = [[pedido objectForKey:@"subitem"] objectForKey:@"valor"];
+                subItem.descricao        = [[pedido objectForKey:@"subItem"] objectForKey:@"descricao"];
+                subItem.nome             = [[pedido objectForKey:@"subItem"] objectForKey:@"nome"];
+                subItem.valor            = [[pedido objectForKey:@"subItem"] objectForKey:@"valorUnitario"];
                 subItem.item             = [[CLItem alloc]init];
-                subItem.item.nome        = [[[pedido objectForKey:@"subitem"] objectForKey:@"item"]objectForKey:@"nome"];
-                subItem.valorTotalPedido = [pedido objectForKey:@"valor"];
+                subItem.item.nome        = [[[pedido objectForKey:@"subItem"] objectForKey:@"item"]objectForKey:@"nome"];
+                subItem.valorTotalPedido = [pedido objectForKey:@"valorCalculado"];
                 [self.subItens addObject:subItem];
             }
 
        
         } else {
             
-            for(NSDictionary *pedido in [conta objectForKey:@"pedidoSubItem"]) {
-                
-                subItem                  = [[CLSubItem alloc]init];
+            for(NSDictionary *pedido in [conta objectForKey:@"pedidoSubItens"]) {
+                subItem                  = [subItemDAO getByID:[[pedido objectForKey:@"subItem"] objectForKey:@"id"]];
                 subItem.quantidade       = [pedido objectForKey:@"quantidade"];
-                subItem.descricao        = [[pedido objectForKey:@"subitem"] objectForKey:@"descricao"];
-                subItem.valor            = [[pedido objectForKey:@"subitem"] objectForKey:@"valor"];
-                subItem.item             = [[CLItem alloc]init];
-                subItem.item.nome        = [[[pedido objectForKey:@"subitem"] objectForKey:@"item"]objectForKey:@"nome"];
-                subItem.valorTotalPedido = [pedido objectForKey:@"valor"];
+                subItem.valor            = [pedido objectForKey:@"valorUnitario"];
+                subItem.valorTotalPedido = [pedido objectForKey:@"valorCalculado"];
                 [self.subItens addObject:subItem];
             }
         }

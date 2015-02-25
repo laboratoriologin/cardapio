@@ -36,7 +36,7 @@
         
     } else {
     
-        NSString *url = [CLAppBaseUrl stringByAppendingFormat:@"categorias_cardapio/empresa/%@/id", CLKeyEmpresa];
+        NSString *url = [CLAppBaseUrl stringByAppendingString:@"categorias/ativo"];
         
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
         
@@ -52,10 +52,23 @@
     NSDictionary *resultados = [NSJSONSerialization JSONObjectWithData:self.mutableData
                                                                options:NSJSONReadingMutableContainers error:nil];
     
+    CLMenu *menu = nil;
     
     for(NSDictionary *categoriaCardapio in resultados) {
+
+        menu = [[CLMenu alloc]init];
         
-        [resultado addObject:[[CLMenu alloc]initWithID:[[categoriaCardapio objectForKey:@"categoriacardapio"]objectForKey:@"id"]]];
+        menu.codigo = [[categoriaCardapio objectForKey:@"categoria"] objectForKey:@"id"];
+        
+        menu.descricao = [[categoriaCardapio objectForKey:@"categoria"] objectForKey:@"descricao"];
+        
+        menu.imagem = [[categoriaCardapio objectForKey:@"categoria"] objectForKey:@"imagem"];
+        
+        menu.ordem = [[categoriaCardapio objectForKey:@"categoria"] objectForKey:@"ordem"];
+        
+        menu.imagemTopo = [@"topo_" stringByAppendingString:menu.imagem];
+        
+        [resultado addObject:menu];
         
     }
     

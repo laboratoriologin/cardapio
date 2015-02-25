@@ -53,6 +53,7 @@
                     subItem.valor         = [dicSubItem objectForKey:@"valor"];
                     subItem.codigo        = [dicSubItem objectForKey:@"id"];
                     subItem.tipoDescricao = [[dicSubItem objectForKey:@"tipoQuantidade"]objectForKey:@"descricao"];
+                    subItem.nome          = [dicSubItem objectForKey:@"nome"];
                     subItem.descricao     = [dicSubItem objectForKey:@"descricao"];
                     subItem.quantidade    = [dicSubItem objectForKey:@"quantidade"];
                     
@@ -73,7 +74,7 @@
                     subItem.tipoDescricao = [[dicSubItem objectForKey:@"tipoQuantidade"]objectForKey:@"descricao"];
                     subItem.descricao     = [dicSubItem objectForKey:@"descricao"];
                     subItem.quantidade    = [dicSubItem objectForKey:@"quantidade"];
-                    
+                    subItem.nome          = [dicSubItem objectForKey:@"nome"];                    
                     [item.subItens addObject:subItem];
                     
                 }
@@ -145,6 +146,12 @@
             self.descricao = @"Sobremesas";
             self.imagem    = @"bt_home_sobremesas";
             self.imagemTopo = @"icone_topo_sobremesas";
+            break;
+            
+        case CAMPasteis:
+            self.descricao = @"Pastéis";
+            self.imagem    = @"bt_home_pasteis";
+            self.imagemTopo = @"icone_topo_pasteis";
             break;
        
         case CAMTodosPratos:

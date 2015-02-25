@@ -28,7 +28,7 @@
         
     } else {
         
-        NSString *url = [CLAppBaseUrl stringByAppendingFormat:@"itens/keymobile/%@/categorias/%d", CLKeyEmpresa, [menu.codigo intValue]];
+        NSString *url = [CLAppBaseUrl stringByAppendingFormat:@"itens/categorias/%d", [menu.codigo intValue]];
         
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
         

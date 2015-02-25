@@ -146,7 +146,7 @@
     
     tamanhoLabel.textColor = [UIColor colorFromHexString:@"#634C47"];
     
-    tamanhoLabel.text = [NSString stringWithFormat:@"%@ - %@",subItem.item.nome,subItem.descricao];
+    tamanhoLabel.text = [NSString stringWithFormat:@"%@ - %@",subItem.item.nome, subItem.nome];
     
     tamanhoLabel.numberOfLines=2;
     

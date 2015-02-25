@@ -21,7 +21,7 @@
     
     resultado = reference;
     
-    NSString *url = [CLAppBaseUrl stringByAppendingFormat:@"publicidades/keymobile/%@", CLKeyEmpresa];
+    NSString *url = [CLAppBaseUrl stringByAppendingString:@"publicidades"];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
     

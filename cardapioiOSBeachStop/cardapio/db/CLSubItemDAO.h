@@ -16,6 +16,7 @@
 - (NSMutableArray *)getAllFromItem:(CLItem *) item;
 - (NSMutableArray *)getAllPendente;
 - (CLSubItem *)get:(CLSubItem *) subitem;
+- (CLSubItem *)getByID:(NSNumber *) codigo;
 - (BOOL)alterarPedido:(CLSubItem *)subItem;
 - (BOOL)incrementarQuantidade:(CLSubItem *)subItem;
 - (BOOL)excluirPedido:(CLSubItem *)subItem;

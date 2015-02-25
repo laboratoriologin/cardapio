@@ -1,1 +1,1 @@
-link ../../AFNetworking/AFNetworking/AFHTTPRequestOperationManager.h
+../../AFNetworking/AFNetworking/AFHTTPRequestOperationManager.h

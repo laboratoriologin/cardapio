@@ -95,10 +95,6 @@ const NSInteger CLSectionAcompanhamento = 3;
         return 0;
     }
     
-    if (section == CLSectionIngrediente && [self.item.ingredientes length]==0) {
-        return 0;
-    }
-    
     return 40;
     
 }
@@ -180,7 +176,9 @@ const NSInteger CLSectionAcompanhamento = 3;
     
     texto.backgroundColor = [UIColor whiteColor];
     
-    if (section == CLSectionIngrediente) {
+    NSNumber *conta = [[NSUserDefaults standardUserDefaults]objectForKey:CLParamConta];
+    
+    if (section == CLSectionIngrediente && conta > 0) {
         
         texto.text = @"Ingredientes:";
  
@@ -197,44 +195,44 @@ const NSInteger CLSectionAcompanhamento = 3;
     [texto setFont:[UIFont appFontWithSize:16]];
     
     [headerView addSubview:texto];
-    
-    if (section == CLSectionIngrediente) {
+
+    if (section == CLSectionIngrediente && conta > 0) {
         
-//        UIButton *pedirButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//        
-//        pedirButton.frame = CGRectMake(135, 3, 80, 26);
-//        
-//        [pedirButton setTitle:@" Pedir" forState:UIControlStateNormal];
-//        
-//        pedirButton.titleLabel.font = [UIFont appFontWithSize:12];
-//        
-//        [pedirButton setBackgroundColor:[UIColor appButtonColor]];
-//        
-//        [pedirButton setTitleColor:[UIColor appButtonTextColor] forState:UIControlStateNormal];
-//        
-//        [pedirButton setImage:[UIImage imageNamed:@"icone_mais"] forState:UIControlStateNormal];
-//        
-//        [pedirButton addTarget:self action:@selector(pedir:) forControlEvents:UIControlEventTouchUpInside];
-//        
-//        [headerView addSubview:pedirButton];
-//        
-//        UIButton *incluirButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//        
-//        incluirButton.frame = CGRectMake(225, 3, 80, 25);
-//        
-//        [incluirButton setTitle:@" Incluir" forState:UIControlStateNormal];
-//        
-//        incluirButton.titleLabel.font = [UIFont appFontWithSize:12];
-//        
-//        [incluirButton setBackgroundColor:[UIColor appButtonColor]];
-//        
-//        [incluirButton setTitleColor:[UIColor appButtonTextColor] forState:UIControlStateNormal];
-//        
-//        [incluirButton setImage:[UIImage imageNamed:@"icone_mais"] forState:UIControlStateNormal];
-//        
-//        [incluirButton addTarget:self action:@selector(incluir:) forControlEvents:UIControlEventTouchUpInside];
-//        
-//        [headerView addSubview:incluirButton];
+        UIButton *pedirButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        pedirButton.frame = CGRectMake(135, 3, 80, 26);
+        
+        [pedirButton setTitle:@" Pedir" forState:UIControlStateNormal];
+        
+        pedirButton.titleLabel.font = [UIFont appFontWithSize:12];
+        
+        [pedirButton setBackgroundColor:[UIColor appButtonColor]];
+        
+        [pedirButton setTitleColor:[UIColor appButtonTextColor] forState:UIControlStateNormal];
+        
+        [pedirButton setImage:[UIImage imageNamed:@"icone_mais"] forState:UIControlStateNormal];
+        
+        [pedirButton addTarget:self action:@selector(pedir:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [headerView addSubview:pedirButton];
+        
+        UIButton *incluirButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        incluirButton.frame = CGRectMake(225, 3, 80, 25);
+        
+        [incluirButton setTitle:@" Incluir" forState:UIControlStateNormal];
+        
+        incluirButton.titleLabel.font = [UIFont appFontWithSize:12];
+        
+        [incluirButton setBackgroundColor:[UIColor appButtonColor]];
+        
+        [incluirButton setTitleColor:[UIColor appButtonTextColor] forState:UIControlStateNormal];
+        
+        [incluirButton setImage:[UIImage imageNamed:@"icone_mais"] forState:UIControlStateNormal];
+        
+        [incluirButton addTarget:self action:@selector(incluir:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [headerView addSubview:incluirButton];
         
     }
     
@@ -503,7 +501,7 @@ const NSInteger CLSectionAcompanhamento = 3;
     
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         
-        self.navigationController.tabBarController.selectedIndex = 2;
+        self.navigationController.tabBarController.selectedIndex = 3;
         
     });
     

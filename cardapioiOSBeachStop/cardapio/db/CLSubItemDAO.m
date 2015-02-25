@@ -20,8 +20,8 @@
     
     @try {
         
-        retorno = [conexao executeUpdate:@"INSERT INTO SUB_ITEM(CODIGO,ITEM_ID,QUANTIDADE,DESCRICAO,VALOR,TIPO_DESCRICAO) values(?, ?, ?, ?, ?, ?)",
-                    subItem.codigo,subItem.item.codigo,subItem.quantidade,subItem.descricao,[NSNumber numberWithDouble:[subItem.valor doubleValue]],subItem.tipoDescricao,nil];
+        retorno = [conexao executeUpdate:@"INSERT INTO SUB_ITEM(CODIGO,NOME,ITEM_ID,QUANTIDADE,DESCRICAO,VALOR,TIPO_DESCRICAO) values(?, ?, ?, ?, ?, ?, ?)",
+                    subItem.codigo,subItem.nome,subItem.item.codigo,subItem.quantidade,subItem.descricao,[NSNumber numberWithDouble:[subItem.valor doubleValue]],subItem.tipoDescricao,nil];
         
     } @catch (NSException *exception) {
         
@@ -51,6 +51,7 @@
         
         while([results next]) {
             subItem               = [[CLSubItem alloc]init];
+            subItem.nome          = [results stringForColumn:@"NOME"];
             subItem.codigo        = [NSNumber numberWithInt:[results intForColumn:@"CODIGO"]];
             subItem.descricao     = [results stringForColumn:@"DESCRICAO"];
             subItem.tipoDescricao = [results stringForColumn:@"TIPO_DESCRICAO"];
@@ -79,7 +80,7 @@
     
     @try {
         
-        FMResultSet *results = [conexao executeQuery:@"SELECT I.CODIGO AS CODIGO_ITEM, S.CODIGO, I.NOME AS NOME_ITEM, S.DESCRICAO AS DESCRICAO_SUB_ITEM, PS.QUANTIDADE AS QUANTIDADE, S.VALOR FROM ITEM I, SUB_ITEM S, PEDIDO_SUB_ITEM PS WHERE PS.SUB_ITEM_ID = S.CODIGO AND S.ITEM_ID = I.CODIGO AND PS.FLAG_SOLICITADO = 0" withArgumentsInArray:nil];
+        FMResultSet *results = [conexao executeQuery:@"SELECT I.CODIGO AS CODIGO_ITEM, S.CODIGO, I.NOME AS NOME_ITEM, S.DESCRICAO AS DESCRICAO_SUB_ITEM, PS.QUANTIDADE AS QUANTIDADE, S.VALOR, S.NOME FROM ITEM I, SUB_ITEM S, PEDIDO_SUB_ITEM PS WHERE PS.SUB_ITEM_ID = S.CODIGO AND S.ITEM_ID = I.CODIGO AND PS.FLAG_SOLICITADO = 0" withArgumentsInArray:nil];
         
         NSMutableArray *subitens = [[NSMutableArray alloc]init];
         
@@ -95,6 +96,7 @@
             subItem.quantidade            = [NSNumber numberWithInt:[results intForColumnIndex:4]];
             subItem.quantidadeSelecionada = [subItem.quantidade intValue];
             subItem.valor                 = [NSNumber numberWithDouble:[results doubleForColumnIndex:5]];
+            subItem.nome                  = [results stringForColumnIndex:6];
             [subitens addObject:subItem];
         }
         
@@ -123,6 +125,52 @@
         if([results next]) {
             subItem                = [[CLSubItem alloc]init];
             subItem.codigo         = [NSNumber numberWithInt:[results intForColumn:@"SUB_ITEM_ID"]];
+        }
+        
+        return subItem;
+        
+    }
+    @catch (NSException *exception) {
+        return nil;
+    }
+    @finally {
+        [CLDBUtil closeConnection:conexao];
+    }
+    
+}
+
+- (CLSubItem *)getByID:(NSNumber *) codigo {
+    
+    FMDatabase *conexao = [CLDBUtil getConnection];
+    
+    @try {
+        
+        FMResultSet *results = [conexao executeQuery:@"SELECT * FROM SUB_ITEM WHERE CODIGO = ?" withArgumentsInArray:@[codigo]];
+        
+        CLSubItem *subItem = nil;
+        
+        if([results next]) {
+            
+            subItem                = [[CLSubItem alloc]init];
+            
+            subItem.codigo         = [NSNumber numberWithInt:[results intForColumn:@"CODIGO"]];
+            
+            subItem.nome           = [results stringForColumn:@"NOME"];
+            
+            subItem.descricao      = [results stringForColumn:@"DESCRICAO"];
+            
+            FMResultSet *resultItem = [conexao executeQuery:@"SELECT * FROM ITEM WHERE CODIGO = ?" withArgumentsInArray:@[[NSNumber numberWithInt:[results intForColumn:@"ITEM_ID"]]]];
+            
+            subItem.item = [CLItem new];
+            
+            if([resultItem next]) {
+            
+                subItem.item.nome = [resultItem stringForColumn:@"NOME"];
+                
+            }
+        
+            [resultItem close];
+
         }
         
         return subItem;
