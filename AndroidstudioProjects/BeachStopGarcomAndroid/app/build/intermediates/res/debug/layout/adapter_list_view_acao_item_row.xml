@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/adapter_list_view_acao_item_row_linear_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/white_stroke"
+    android:padding="5dp">
+
+    <TextView
+        android:id="@+id/adapter_list_view_acao_item_row_text_view_mesa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:singleLine="false"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/adapter_list_view_acao_item_row_text_view_tempo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="2dp"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/adapter_list_view_acao_item_row_text_view_tipo_acao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="5dp"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/adapter_list_view_acao_item_row_button_aprovar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/ic_aprovar"
+        android:padding="5dp" />
+
+    <ProgressBar
+        android:id="@+id/adapter_list_view_acao_item_row_progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+</TableRow><!-- From: file:/C:/Login/PROJETO/CardapioGIT/AndroidstudioProjects/BeachStopGarcomAndroid/app/src/main/res/layout/adapter_list_view_acao_item_row.xml -->

@@ -1,0 +1,37 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginBottom="10dp">
+
+    <RelativeLayout
+        android:id="@+id/activity_setor_row_relative_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@+id/activity_setor_row_toggle_button_ativo">
+
+            <TextView
+                android:id="@+id/activity_setor_row_text_view_descricao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Praia" />
+        </LinearLayout>
+
+        <ToggleButton
+            android:id="@+id/activity_setor_row_toggle_button_ativo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="Ativo ?"
+            android:textOff="Off"
+            android:textOn="On" />
+
+    </RelativeLayout>
+</LinearLayout><!-- From: file:/C:/Login/PROJETO/CardapioGIT/AndroidstudioProjects/BeachStopGarcomAndroid/app/src/main/res/layout/activity_setor_row.xml -->

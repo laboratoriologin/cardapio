@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopGarcomAndroid\app\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\classes.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="8694693636ab36910c8100ce527c258ff3ebece0">
+        <dex dex="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopGarcomAndroid\app\build\intermediates\pre-dexed\debug\classes-70e30e5d7c022abcc6813b2aaf532514ea83e4e4.jar" />
+    </item>
+    <item
+        jar="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopGarcomAndroid\app\libs\droidpersistence.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="c0ee13054d3c9672d4f76a2fc7a9842057bf85c9">
+        <dex dex="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopGarcomAndroid\app\build\intermediates\pre-dexed\debug\droidpersistence-d9cb8c0352a84bd1a1cca98f2708e7c3de54cabc.jar" />
+    </item>
+    <item
+        jar="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopGarcomAndroid\app\libs\socialauth-android-3.2.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="50cb8f7d8602c2de0b42f01ccba940985192aaa7">
+        <dex dex="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopGarcomAndroid\app\build\intermediates\pre-dexed\debug\socialauth-android-3.2-f4fe6783727906fbb650859feb8d43cb99707c7c.jar" />
+    </item>
+    <item
+        jar="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopGarcomAndroid\app\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\libs\internal_impl-20.0.0.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d">
+        <dex dex="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopGarcomAndroid\app\build\intermediates\pre-dexed\debug\internal_impl-20.0.0-dd86a8d8d582e34d36e900a5bb2b68dc35019958.jar" />
+    </item>
+    <item
+        jar="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopGarcomAndroid\app\libs\socialauth-4.4.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="a867292683d6086af72c7cac181892e118058989">
+        <dex dex="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopGarcomAndroid\app\build\intermediates\pre-dexed\debug\socialauth-4.4-b70d73f5ca7ba5125f6a6fdc91a6d93da30d7e9d.jar" />
+    </item>
+    <item
+        jar="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopGarcomAndroid\app\libs\lambdaj-2.4.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="278a666518cb0c1ade2934a4a2b06984ae90672a">
+        <dex dex="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopGarcomAndroid\app\build\intermediates\pre-dexed\debug\lambdaj-2.4-0f4df4859d3d2a72ac9e8f4d9ce7313d628ee2d4.jar" />
+    </item>
+    <item
+        jar="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopGarcomAndroid\app\libs\android-integration.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="02824baabca4e2a00de975c9a95079eb5c67bfa5">
+        <dex dex="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopGarcomAndroid\app\build\intermediates\pre-dexed\debug\android-integration-553aa6a24157d646cbeda2540aeb3526beb7825c.jar" />
+    </item>
+    <item
+        jar="C:\Users\Argus\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\20.0.0\support-annotations-20.0.0.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa">
+        <dex dex="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopGarcomAndroid\app\build\intermediates\pre-dexed\debug\support-annotations-20.0.0-2f1096a34ff2e768b0f5aaf363c7026f1395a991.jar" />
+    </item>
+    <item
+        jar="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopGarcomAndroid\app\libs\hamcrest-core-1.3.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="42a25dc3219429f0e5d060061f71acb49bf010a0">
+        <dex dex="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopGarcomAndroid\app\build\intermediates\pre-dexed\debug\hamcrest-core-1.3-67011ac3f12005e1beb7126ac3b098ca817cbba0.jar" />
+    </item>
+    <item
+        jar="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopGarcomAndroid\app\libs\universal-image-loader-1.9.3.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="a85588bec3e2c4584d593d3f15df1677321bca72">
+        <dex dex="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopGarcomAndroid\app\build\intermediates\pre-dexed\debug\universal-image-loader-1.9.3-9a6570fe36301eff5852f426bcbe2d27380ca73a.jar" />
+    </item>
+
+</items>
