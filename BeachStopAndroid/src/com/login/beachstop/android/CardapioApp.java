@@ -12,6 +12,7 @@ import android.widget.TabHost;
 
 import com.login.beachstop.android.model.CategoriaCardapioItem;
 import com.login.beachstop.android.sqlite.dao.DataManager;
+import com.login.beachstop.android.util.GCM;
 
 public class CardapioApp extends Application implements LocationListener {
 
@@ -35,6 +36,8 @@ public class CardapioApp extends Application implements LocationListener {
 			latitude = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER).getLatitude();
 			longitude = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER).getLongitude();
 		}
+		
+		GCM.ativa(getApplicationContext());
 	}
 
 	public DataManager getDataManager() {

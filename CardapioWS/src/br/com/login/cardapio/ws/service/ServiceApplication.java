@@ -56,6 +56,8 @@ public class ServiceApplication extends Application {
 
 		this.singletons.add(new TipoQuantidadeService());
 
+		this.singletons.add(new TokenService());
+		
 		this.singletons.add(new UsuarioService());
 
 		this.singletons.add(new AlertaService());

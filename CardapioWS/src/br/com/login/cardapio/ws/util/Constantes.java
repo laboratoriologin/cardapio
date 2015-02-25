@@ -16,4 +16,5 @@ public final class Constantes {
 	public static final Long TIPO_ALERTA_GARCOM = 1L;
 	public static final Long TIPO_ALERTA_CONTA = 2L;
 	public static final Long TIPO_ALERTA_PEDIDOS = 3L;
+	public static final String GCM_API_KEY = "AIzaSyBBgjfJYaqiTeo4HV9CWPRQNKVDNCrcJLY";
 }

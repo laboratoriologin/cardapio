@@ -93,16 +93,6 @@
                     android:singleLine="false"
                     android:textColor="#75000000"
                     android:textSize="14sp" />
-
-                <TableLayout
-                    android:id="@+id/fragment_detalhe_item_cardapio_table_layout_sub_item"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/bg_fragment_detalhe_item_cardapio_table_layout_sub_item"
-                    android:stretchColumns="0,1" >
-                </TableLayout>
                 <!--
             <LinearLayout
                 android:layout_width="match_parent"
@@ -199,6 +189,18 @@
                     android:singleLine="false"
                     android:textColor="#75000000"
                     android:textSize="14sp" />
+                
+                      <TableLayout
+                    android:id="@+id/fragment_detalhe_item_cardapio_table_layout_sub_item"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/bg_fragment_detalhe_item_cardapio_table_layout_sub_item"
+                    android:stretchColumns="0,1" >
+                </TableLayout>
+                
             </LinearLayout>
         </LinearLayout>
     </com.nirhart.parallaxscroll.views.ParallaxScrollView>

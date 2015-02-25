@@ -10,13 +10,13 @@ public final class Constantes {
 	// public static final String URL = "http://177.1.212.50:9004/CardapioADM/servlet";
 	// public static final String URL_IMG = "http://177.1.212.50:9004/arquivos_cardapio/";
 	
-//	public static final String URL = "http://10.0.0.33:8080/CardapioADM/servlet";
+	public static final String URL = "http://10.0.0.33:8080/CardapioADM/servlet";
 //	public static final String URL_IMG = "http://10.0.0.33:8080/arquivos_cardapio/";
-//	public static final String URL_WS = "http://10.0.0.33:8080/CardapioWS";
+	public static final String URL_WS = "http://10.0.0.33:8080/CardapioWS";
 	
-	public static final String URL = "http://177.1.212.50:9004/CardapioADM/servlet";
+//	public static final String URL = "http://177.1.212.50:9004/CardapioADM/servlet";
 	public static final String URL_IMG = "http://177.1.212.50:9004/arquivos_cardapio/";
-	public static final String URL_WS = "http://177.1.212.50:9004/CardapioWS";
+//	public static final String URL_WS = "http://177.1.212.50:9004/CardapioWS";
 
 	public static final String URL_CARDAPIO = URL + "/cardapio_app?empresa=";
 	public static final String URL_CHAVE_CARDAPIO_EMPRESA = URL + "/key_cardapio_empresa?empresa=";
@@ -47,5 +47,11 @@ public final class Constantes {
 	public static final String INPUTSTREAM = "INPUTSTREAM";
 	public static final String FILETYPE = "FILETYPE";
 	public static final String FILENAME = "FILENAME";
+	
+	public static final String ID_FLAG = "idFlag";
+	public static final String ID = "id";
+	public static final String TAG = "gcm";
+	public static final String SENDER_ID = "551712768207";
+	public static final String SHARED_PREFS = "prefs";
 
 }

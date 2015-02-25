@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="droidpersistence">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/beachStopAndroid/libs/droidpersistence.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

@@ -1,7 +1,5 @@
 package com.login.cardapio.faces;
 
-import java.util.List;
-
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -9,7 +7,8 @@ import javax.faces.bean.ViewScoped;
 import br.com.topsys.exception.TSApplicationException;
 import br.com.topsys.web.faces.TSMainFaces;
 
-import com.login.cardapio.model.Categoria;
+import com.login.cardapio.model.Empresa;
+import com.login.cardapio.util.UsuarioUtil;
 import com.login.cardapio.util.Utilitarios;
 
 @SuppressWarnings("serial")
@@ -17,7 +16,7 @@ import com.login.cardapio.util.Utilitarios;
 @ViewScoped
 public class EscolhaCategoriaFaces extends TSMainFaces {
 
-	private List<Categoria> listCategoria;
+	private Empresa empresa;
 
 	@Override
 	@PostConstruct
@@ -25,24 +24,16 @@ public class EscolhaCategoriaFaces extends TSMainFaces {
 
 		super.clearFields();
 
-		this.setListCategoria(new Categoria().findAll("id"));
+		this.empresa = UsuarioUtil.obterUsuarioConectado().getEmpresa().getById();
 
 	}
-	
+
 	@Override
 	protected String update() throws TSApplicationException {
-		
-		try {
-			Utilitarios.gerarNovoCodigoCardapio();
-		} catch (TSApplicationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			this.addErrorMessage("Erro no sistema, entre em contato com o administrador, Erro: 0101!");
-		}
 
-		for (Categoria categoria : listCategoria) {
-			categoria.update();
-		}
+		empresa.setKeyCardapio(Utilitarios.gerarNomeArquivo());
+
+		empresa.update();
 
 		this.clearFields();
 
@@ -50,11 +41,12 @@ public class EscolhaCategoriaFaces extends TSMainFaces {
 
 	}
 
-	public List<Categoria> getListCategoria() {
-		return listCategoria;
+	public Empresa getEmpresa() {
+		return empresa;
 	}
 
-	public void setListCategoria(List<Categoria> listCategoria) {
-		this.listCategoria = listCategoria;
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
 	}
+
 }

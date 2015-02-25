@@ -165,4 +165,8 @@
         </LinearLayout>
     </com.nirhart.parallaxscroll.views.ParallaxScrollView>
 
+<<<<<<< HEAD
 </LinearLayout><!-- From: file:/C:/Login/PROJETO/CardapioGIT/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/layout/fragment_kit_detalhe.xml -->
+=======
+</LinearLayout><!-- From: file:/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/layout/fragment_kit_detalhe.xml -->
+>>>>>>> ae4e414b8f59ea5463ccb3c05c2306e94d6e5f67
