@@ -1,12 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui:composition template="resources/templates/template.xhtml" xmlns:ui="http://java.sun.com/jsf/facelets">
 	<ui:define name="body">
+		<script type="text/javascript" src="resources/js/painel.js"></script>		
 		<div class="esquerda">
-			<div class="borderright">Argus</div>
+			<div id="pedido">pedidos</div>
+			<div id="pedidopronto">
+				<div id="alinhartexto">
+					<div>
+						<img align="middle" alt="Fechar Conta" src="resources/img/icone_pedidos_icone_pedidos.png" />
+					</div>
+					<div>
+						<span>Pedidos para entregar</span>
+					</div>
+				</div>
+
+				<div id="alertapedidoentregue">
+
+					<div id="maisitens2">
+						<span id="maisitens2span"></span>
+					</div>
+
+				</div>
+			</div>
 		</div>
 		<div class="direita">
-			<div class="divfecharpedido">Fechar Pedido</div>
-			<div class="divsolicitargarcom"><div class="bordertop">Solicitar garçom</div></div>
+			<div class="borderleft">
+				<div id="alertaAcaoFecharPedido" class="divfecharpedido">
+					<div class="diviconetopoalerta">
+						<img align="middle" alt="Fechar Conta" src="resources/img/icone_conta_marrom.png" />
+						<p>Fechar Conta</p>
+					</div>
+
+					<div id="maisitens">
+						<span id="maisitensspan"></span>
+					</div>
+				</div>
+				<div class="bordertop"></div>
+				<div id="alertaSolicitarGarcom" class="divsolicitargarcom">
+					<div class="diviconetopoalerta">
+						<img align="middle" alt="Fechar Conta" src="resources/img/icone_chamar_garcom_marrom.png" />
+						<p>Chamados</p>
+					</div>
+
+					<div id="maisitensfooter">
+						<span id="maisitensfooterspan"></span>
+					</div>
+				</div>
+			</div>
 		</div>
 	</ui:define>
 </ui:composition>

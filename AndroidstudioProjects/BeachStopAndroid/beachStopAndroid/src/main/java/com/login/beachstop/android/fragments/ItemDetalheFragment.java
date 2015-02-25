@@ -187,7 +187,7 @@ public class ItemDetalheFragment extends Fragment {
             pedidoAtual = new Pedido();
             pedidoAtual.setId(((CardapioActivity)getActivity()).getDataManager().getNextId(Pedido.class));
             pedidoAtual.setFinalizadoSys(false);
-            pedidoAtual.setContaId(contaAberta.getId());
+            pedidoAtual.setContaId(contaAberta.getSistemaId());
             pedidoAtual.setObservacao("");
             pedidoAtual.setPedidoSubItens(new ArrayList<PedidoSubItem>());
 

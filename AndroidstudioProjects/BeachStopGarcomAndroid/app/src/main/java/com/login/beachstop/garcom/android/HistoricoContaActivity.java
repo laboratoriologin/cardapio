@@ -43,7 +43,7 @@ public class HistoricoContaActivity extends DefaultActivity {
 
                     try {
                         conta = (Conta) serverResponse.getReturnObject();
-                        if (conta != null && conta.getPedidos().size() != 0 && conta.getPedidos().get(0).getPedidoSubItens().size() != 0) {
+                        if (conta != null && conta.getPedidos() != null && conta.getPedidos().size() != 0 && conta.getPedidos().get(0).getPedidoSubItens().size() != 0) {
                             textViewSemPedido.setVisibility(TextView.GONE);
                             tableLayout.setVisibility(TableLayout.VISIBLE);
                             bindTableItemConta();

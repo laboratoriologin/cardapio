@@ -41,6 +41,41 @@ public class AcaoContaDAO  implements RestDAO<AcaoConta> {
 
 	}
 	
+	public List<AcaoConta> getOpenByTipoConta(String acaoId) {
+
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+
+		StringBuilder sql = new StringBuilder(" SELECT AC.ID, AC.CONTA_ID, AC.HORARIO_SOLICITACAO, AC.ACAO_ID, C.CLIENTE_ID, C.DATA_ABERTURA, C.NUMERO, C.QTD_PESSOA, AC.PEDIDO_ID");
+					                 sql.append(" FROM ACOES_CONTAS AS AC")
+					              .append(" INNER JOIN CONTAS AS C ON C.ID = AC.CONTA_ID")
+					                   .append(" WHERE AC.USUARIO_ID IS NULL ")
+					                     .append(" AND AC.HORARIO_ATENDIMENTO IS NULL ")
+					                     .append(" AND DATA_FECHAMENTO IS NULL");					                    
+					                  sql.append(" AND AC.ACAO_ID = ").append(acaoId);
+				                    	
+
+		broker.setSQL(sql.toString());
+		
+		List<AcaoConta> list = broker.getCollectionBean(AcaoConta.class, "id", "conta.id", "horarioSolicitacao", "acao.id", "conta.cliente.id", "conta.dataAbertura", "conta.numero", "conta.qtdPessoa", "pedido.id");
+//		Pedido pedido;
+//		Status status;
+//		
+//		for (AcaoConta acaoConta : list) {
+//			if(Constantes.Acoes.NovoPedido.equals(acaoConta.getAcao().getId())){
+//				status = new Status(Constantes.StatusPedido.PENDENTE_APROVACAO.toString());
+//				pedido = new PedidoDAO().get(acaoConta.getPedido().getId());
+//				pedido.setSubItens(new PedidoSubItemDAO().getAll(pedido, status));
+//				
+//				if(pedido.getSubItens().size() == 0)
+//					list.remove(acaoConta);
+//				else
+//					acaoConta.setPedido(pedido);
+//			}
+		// }
+		
+		return list;
+	}
+	
 	public List<AcaoConta> getAllOpen(String setorId) {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();

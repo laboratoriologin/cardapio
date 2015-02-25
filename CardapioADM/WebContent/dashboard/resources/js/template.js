@@ -1,15 +1,16 @@
 /**
  * 
  */
+var url = "http://localhost:8080/CardapioWS/";
 $(document).ready(
 		function() {
 			// Create two variable with the names of the months and days in an
 			// array
-			var monthNames = [ "Janeiro", "Fevereiro", "Março", "Abril", "Maio",
-					"Junho", "Julho", "Agosto", "Setembro", "Outubro",
+			var monthNames = [ "Janeiro", "Fevereiro", "Março", "Abril",
+					"Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro",
 					"Novembro", "Dezembro" ];
-			var dayNames = [ "Domingo", "Segunda", "Terça", "Quarta",
-					"Quinta", "Sexta", "Sábado" ]
+			var dayNames = [ "Domingo", "Segunda", "Terça", "Quarta", "Quinta",
+					"Sexta", "Sábado" ]
 
 			// Create a newDate() object
 			var newDate = new Date();
