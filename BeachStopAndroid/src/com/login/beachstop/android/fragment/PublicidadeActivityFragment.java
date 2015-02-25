@@ -4,11 +4,14 @@ import android.app.Activity;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.login.beachstop.android.DefaultActivity;
 import com.login.beachstop.android.R;
 import com.login.beachstop.android.model.Publicidade;
 import com.login.beachstop.android.util.Constantes;
@@ -66,6 +69,24 @@ public final class PublicidadeActivityFragment extends Fragment {
 			} else {
 				this.imageViewMidia.setImageDrawable(img);
 			}
+
+			this.imageViewMidia.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					PublicidadeDetalheFragment newFragment = new PublicidadeDetalheFragment();
+					Bundle args = new Bundle();
+					args.putSerializable(Constantes.ARG_PUBLICIDADE, publicidade);
+					newFragment.setArguments(args);
+					FragmentTransaction transaction = ((DefaultActivity) getmActivity()).getSupportFragmentManager().beginTransaction();
+
+					transaction.replace(R.id.activity_home_fragment_layout, newFragment);
+					transaction.addToBackStack(null);
+
+					// Commit the transaction
+					transaction.commit();
+				}
+			});
 		}
 
 		return this.view;

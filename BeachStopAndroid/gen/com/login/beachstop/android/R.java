@@ -571,7 +571,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int fragment_detalhe_item_cardapio_text_view_lbl_sobre_prato=0x7f050029;
         public static final int fragment_detalhe_item_cardapio_text_view_lbl_tempo_preparo=0x7f05002f;
         public static final int fragment_detalhe_item_cardapio_text_view_tempo_preparo=0x7f050030;
-        public static final int fragment_detalhe_publicidade_text_view=0x7f050035;
+        public static final int fragment_detalhe_publicidade_image_view=0x7f050035;
         public static final int fragment_detalhe_publicidade_text_view_descricao=0x7f050036;
         public static final int fragment_expandable_list_view_todos_item_cardapio_child_relative_layout=0x7f050037;
         public static final int fragment_expandable_list_view_todos_item_cardapio_child_relative_layout_branco=0x7f050038;

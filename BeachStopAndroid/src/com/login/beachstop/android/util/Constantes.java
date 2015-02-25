@@ -53,5 +53,6 @@ public final class Constantes {
 	public static final String TAG = "gcm";
 	public static final String SENDER_ID = "551712768207";
 	public static final String SHARED_PREFS = "prefs";
+	public static final String ARG_PUBLICIDADE = "publicidade";
 
 }
