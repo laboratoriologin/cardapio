@@ -24,8 +24,8 @@ public class Permissao extends TSActiveRecordAb<Permissao> {
 	private Long id;
 
 	@ManyToOne
-	@JoinColumn(name = "grupo_usuario_id")
-	private GrupoUsuario grupoUsuario;
+	@JoinColumn(name = "empresa_id")
+	private Empresa empresa;
 
 	@ManyToOne
 	@JoinColumn(name = "menu_id")
@@ -48,12 +48,12 @@ public class Permissao extends TSActiveRecordAb<Permissao> {
 		this.id = id;
 	}
 
-	public GrupoUsuario getGrupoUsuario() {
-		return grupoUsuario;
+	public Empresa getEmpresa() {
+		return empresa;
 	}
 
-	public void setGrupoUsuario(GrupoUsuario grupoUsuario) {
-		this.grupoUsuario = grupoUsuario;
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
 	}
 
 	public Boolean getFlagInserir() {
@@ -92,11 +92,11 @@ public class Permissao extends TSActiveRecordAb<Permissao> {
 
 		StringBuilder query = new StringBuilder();
 
-		query.append(" from Permissao where grupoUsuario.id = ? ");
+		query.append(" from Permissao where empresa.id = ? ");
 
 		List<Object> params = new ArrayList<Object>();
 
-		params.add(grupoUsuario.getId());
+		params.add(empresa.getId());
 
 		return super.find(query.toString(), "menu.ordem, menu.descricao", params.toArray());
 	}

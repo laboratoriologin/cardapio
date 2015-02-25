@@ -1,20 +1,23 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <ui:composition template="/resources/templates/templateCRUD.xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
 
 	<ui:param name="mbean" value="${usuarioFaces}" />
 	<ui:param name="mbeanModel" value="${usuarioFaces.crudModel}" />
 	<ui:param name="mbeanPesquisaModel" value="${usuarioFaces.crudPesquisaModel}" />
-	<ui:param name="reload" value="true" />
 
 	<ui:define name="cadastro">
 
-		<h:panelGrid columns="1" style="width:50%">
+		<h:panelGrid width="50%" columns="1" columnClasses="coluna50">
 
-			<p:outputLabel for="nome" value="Nome" />
-			<p:inputText id="nome" required="true" requiredMessage="Nome Campo obrigatório" maxlength="50" value="#{mbeanModel.nome}" styleClass="coluna50" />
+			<p:outputLabel for="itNome" value="Nome" />
+			<p:inputText id="itNome" value="#{mbeanModel.nome}" style="width: 95%" required="true" requiredMessage="Nome: Obrigatório" />
 
-			<p:outputLabel for="login" value="Login" />
-			<p:inputText id="login" required="true" requiredMessage="Login Campo obrigatório" maxlength="50" value="#{mbeanModel.login}" styleClass="coluna50" />
+			<p:outputLabel for="itEmail" value="E-mail" />
+			<p:inputText id="itEmail" value="#{mbeanModel.email}" style="width: 95%" validatorMessage="E-mail inválido">
+				<f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+			</p:inputText>
+
+			<p:outputLabel for="itLogin" value="Login" />
+			<p:inputText id="itLogin" value="#{mbeanModel.login}" style="width: 50%" required="true" requiredMessage="Login: Obrigatório" />
 
 			<p:outputLabel for="itSenha" value="Senha" />
 			<p:password id="itSenha" value="#{mbeanModel.senha}" weakLabel="Fraca" goodLabel="Boa" strongLabel="Forte" promptLabel="Digite a senha" match="itConfirmaSenha" minLength="4" style="width: 50%" required="true" requiredMessage="Senha: Obrigatório" feedback="true" />
@@ -22,107 +25,43 @@
 			<p:outputLabel for="itConfirmaSenha" value="Confirmar Senha" />
 			<p:password id="itConfirmaSenha" value="#{mbeanModel.confirmaSenha}" weakLabel="Fraca" goodLabel="Boa" strongLabel="Forte" promptLabel="Digite a senha" minLength="4" style="width: 50%" required="true" requiredMessage="Confirmar Senha: Obrigatório" />
 
-			<p:outputLabel for="flagAtivo" value="Ativo?" />
-			<p:selectBooleanCheckbox id="flagAtivo" value="#{mbeanModel.flagAtivo}" />
-
-			<p:outputLabel for="grupo" value="Grupo de Usuário" />
-			<p:selectOneMenu id="grupo" value="#{mbeanModel.grupoUsuario.id}" required="true" requiredMessage="Grupo de usuário obrigatório" style="width:55%">
+			<p:outputLabel for="grupo" value="Empresa de Acesso" />
+			<p:selectOneMenu id="grupo" value="#{mbeanModel.empresa.id}" required="true" requiredMessage="Empresa de Acesso: Campo obrigatório" style="width:95%">
 				<f:selectItem itemLabel="Não Selecionado" itemValue="" />
-				<f:selectItems value="#{mbean.comboGrupoUsuario}" />
+				<f:selectItems value="#{mbean.grupos}" />
 			</p:selectOneMenu>
 
-			<p:outputLabel for="rg" value="RG" />
-			<p:inputText id="rg" required="true" requiredMessage="RG campo obrigatório" maxlength="50" value="#{mbeanModel.rg}" styleClass="coluna50" />
-
-			<p:outputLabel for="cpf" value="CPF" />
-			<p:inputText id="cpf" required="true" requiredMessage="CPF campo obrigatório" maxlength="50" value="#{mbeanModel.cpf}" styleClass="coluna50" />
-
-			<p:outputLabel for="dataNascimento" value="Data Nascimento" />
-			<p:calendar value="#{mbeanModel.dataNascimento}" pattern="dd/MM/yyyy" rendered="true" requiredMessage="Data nascimento campo obrigatório" navigator="true" id="dataNascimento" />
-
-			<p:outputLabel for="endereco" value="Endereço" />
-			<p:inputText id="endereco" required="true" requiredMessage="Endereco campo obrigatório" maxlength="50" value="#{mbeanModel.endereco}" styleClass="coluna75" />
-
-			<h:panelGrid columns="1" style="width:100%; margin-top: 15px;">
-
-				<p:tabView cache="false" activeIndex="0" id="tvEspec" style="width: 800;">
-
-					<p:tab title="Contatos Pessoais">
-
-						<h:panelGrid columns="1" style="width:100%">
-
-							<p:outputLabel for="telefone" value="Telefone" />
-							<p:inputText id="telefone" required="true" requiredMessage="Telefone Campo obrigatório" maxlength="50" value="#{mbeanModel.telefone}" styleClass="coluna50" />
-
-							<p:outputLabel for="celular" value="Celular" />
-							<p:inputText id="celular" required="true" requiredMessage="Celular Campo obrigatório" maxlength="50" value="#{mbeanModel.celular}" styleClass="coluna50" />
-
-							<p:outputLabel for="email" value="E-mail" />
-							<p:inputText id="email" value="#{mbeanModel.email}" style="width: 95%" validatorMessage="E-mail inválido">
-								<f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
-							</p:inputText>
-
-						</h:panelGrid>
-
-					</p:tab>
-
-					<p:tab title="Outros Contatos">
-
-						<h:panelGrid columns="1" style="width:100%">
-
-							<p:outputLabel for="contato" value="Contatos de urgência" />
-							<p:inputText id="contato" required="true" requiredMessage="Contato Campo obrigatório" maxlength="50" value="#{mbeanModel.contato}" styleClass="coluna50" />
-
-							<p:outputLabel for="telefoneContato" value="Telefone do Contato" />
-							<p:inputText id="telefoneContato" required="true" requiredMessage="Telefone do contato Campo obrigatório" maxlength="50" value="#{mbeanModel.telefoneContato}" styleClass="coluna50" />
-
-						</h:panelGrid>
-
-					</p:tab>
-
-					<p:tab title="Setor">
-
-						<p:dataTable value="#{mbean.listSetor}" var="setor" style="width:90%">
-
-							<p:column style="width:10%">
-
-								<p:selectBooleanCheckbox value="#{setor.selecionado}" />
-
-							</p:column>
-
-							<p:column style="width:60%" headerText="Categoria">
-							
-								#{setor.descricao}
-								
-							</p:column>
-
-						</p:dataTable>
-
-					</p:tab>
-
-				</p:tabView>
-
-			</h:panelGrid>
+			<p:outputLabel for="cbFlagAtivo" value="Ativo?" />
+			<p:selectBooleanCheckbox id="cbFlagAtivo" value="#{mbeanModel.flagAtivo}" />
 
 		</h:panelGrid>
 
 	</ui:define>
 
 	<ui:define name="pesquisaCampos">
+		<h:panelGrid width="70%" columns="3" columnClasses="coluna35, coluna35, coluna30">
 
-		<h:panelGrid columns="1" style="width:50%">
+			<p:outputLabel for="itNomePesquisa" value="Nome" />
+			<p:outputLabel for="itLoginPesquisa" value="Login" />
+			<p:outputLabel for="cbFlagAtivoPesquisa" value="Ativo?" />
 
-			<p:outputLabel for="descricaoPesquisa" value="Nome" />
-			<p:inputText id="descricaoPesquisa" value="#{mbeanPesquisaModel.nome}" styleClass="coluna90" />
+
+			<p:inputText id="itNomePesquisa" value="#{mbeanPesquisaModel.nome}" style="width: 95%" />
+			<p:inputText id="itLoginPesquisa" value="#{mbeanPesquisaModel.login}" style="width: 95%" />
+			<p:selectBooleanCheckbox id="cbFlagAtivoPesquisa" value="#{mbeanPesquisaModel.flagAtivo}" />
 
 		</h:panelGrid>
-
+		<br />
 	</ui:define>
 
 	<ui:define name="colunasTabela">
 
 		<p:column headerText="Nome">
 			<h:outputText value="#{linha.nome}" />
+		</p:column>
+
+		<p:column headerText="Login">
+			<h:outputText value="#{linha.login}" />
 		</p:column>
 
 	</ui:define>

@@ -14,19 +14,22 @@ import org.primefaces.event.FileUploadEvent;
 import br.com.topsys.exception.TSApplicationException;
 import br.com.topsys.util.TSUtil;
 
-import com.login.cardapio.model.Categoria;
+import com.login.cardapio.model.Empresa;
+import com.login.cardapio.model.EmpresaCategoriaCardapio;
 import com.login.cardapio.model.Item;
 import com.login.cardapio.model.SubItem;
+import com.login.cardapio.model.TiposQuantidade;
 import com.login.cardapio.util.CardapioUtil;
 import com.login.cardapio.util.Constantes;
+import com.login.cardapio.util.UsuarioUtil;
 import com.login.cardapio.util.Utilitarios;
 
 @ViewScoped
 @ManagedBean(name = "itemFaces")
 public class ItemFaces extends CrudFaces<Item> {
 
-	private static final long serialVersionUID = 1L;
-	private List<SelectItem> comboCategoria;
+	private List<SelectItem> comboEmpresaCategoriaCardapio;
+	private List<SelectItem> comboQTDS;
 	private SubItem subItemSelecionado;
 
 	@PostConstruct
@@ -35,32 +38,16 @@ public class ItemFaces extends CrudFaces<Item> {
 		setFieldOrdem("id");
 
 		this.subItemSelecionado = new SubItem();
-		this.subItemSelecionado.setFlagAtivo(true);
-		this.comboCategoria = super.initCombo(new Categoria().findAll("descricao"), "id", "descricao");
-		
-		getCrudModel().setFlagAtivo(true);
-
-	}
-	
-	@Override
-	protected void prePersist() {
-		// TODO Auto-generated method stub
-		super.prePersist();
-		
-		try {
-			Utilitarios.gerarNovoCodigoCardapio();
-		} catch (TSApplicationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			this.addErrorMessage("Erro no sistema, entre em contato com o administrador, Erro: 0101!");
-		}
+		this.subItemSelecionado.setTipoQuantidade(new TiposQuantidade());
+		this.comboEmpresaCategoriaCardapio = super.initCombo(new EmpresaCategoriaCardapio().findByEmpresa(UsuarioUtil.obterUsuarioConectado().getEmpresa()), "id", "categoriaCardapio.descricao");
+		this.comboQTDS = super.initCombo(new TiposQuantidade().findAll("id"), "id", "descricao");
 	}
 
-	@Override
-	public String limparPesquisa() {
-		super.limparPesquisa();
-		getCrudPesquisaModel().setCategoria(new Categoria());
-		return null;
+	public void uploadMidias(FileUploadEvent event) {
+
+		this.getCrudModel().setImagem(Utilitarios.gerarNomeArquivo() + "." + FilenameUtils.getExtension(event.getFile().getFileName()));
+
+		CardapioUtil.criaArquivo(event.getFile(), Constantes.CAMINHO_ARQUIVO + this.getCrudModel().getImagem());
 	}
 
 	@Override
@@ -73,52 +60,55 @@ public class ItemFaces extends CrudFaces<Item> {
 
 		super.limpar();
 
-		getCrudModel().setCategoria(new Categoria());
-		getCrudModel().setFlagAtivo(true);
-		
+		getCrudModel().setEmpresaCategoriaCardapio(new EmpresaCategoriaCardapio());
+
 		this.subItemSelecionado = new SubItem();
-		this.subItemSelecionado.setFlagAtivo(true);		
+
+		this.subItemSelecionado.setTipoQuantidade(new TiposQuantidade());
 
 		return null;
 	}
 
-	public void uploadMidias(FileUploadEvent event) {
+	@Override
+	public String limparPesquisa() {
+		super.limparPesquisa();
+		getCrudPesquisaModel().setEmpresaCategoriaCardapio(new EmpresaCategoriaCardapio());
+		return null;
+	}
 
-		this.getCrudModel().setImagem(Utilitarios.gerarNomeArquivo() + "." + FilenameUtils.getExtension(event.getFile().getFileName()));
+	@Override
+	protected void posPersist() throws TSApplicationException {
+		Empresa empresa = UsuarioUtil.obterUsuarioConectado().getEmpresa();
+		empresa = empresa.getById();
+		empresa.setKeyCardapio(Utilitarios.gerarNomeArquivo());
+		empresa.update();
 
-		CardapioUtil.criaArquivo(event.getFile(), Constantes.CAMINHO_ARQUIVO + this.getCrudModel().getImagem());
 	}
 
 	public void addSubItem() {
 		SubItem subitem = new SubItem();
-
-		if (TSUtil.isEmpty(subItemSelecionado.getNome())) {
-			CardapioUtil.addErrorMessage("Nome: Obrigatório");
-			return;
-		}
 
 		if (TSUtil.isEmpty(subItemSelecionado.getDescricao())) {
 			CardapioUtil.addErrorMessage("Descrição: Obrigatório");
 			return;
 		}
 
-		if (TSUtil.isEmpty(subItemSelecionado.getCodigo())) {
+		if (TSUtil.tratarLong(subItemSelecionado.getTipoQuantidade().getId()) == null) {
+			CardapioUtil.addErrorMessage("Tipo de quantidade: Obrigatório");
+			return;
+		}
+
+		if (TSUtil.isEmpty(subItemSelecionado.getCodSubItem())) {
 			CardapioUtil.addErrorMessage("Código do item: Obrigatório");
 			return;
 		}
 
-		if (TSUtil.isEmpty(subItemSelecionado.getOrdem())) {
-			CardapioUtil.addErrorMessage("Ordem: Obrigatório");
-			return;
-		}
-
-		subitem.setNome(subItemSelecionado.getNome());
-		subitem.setValor(subItemSelecionado.getValor());
 		subitem.setDescricao(subItemSelecionado.getDescricao());
+		subitem.setQuantidade(subItemSelecionado.getQuantidade());
+		subitem.setTipoQuantidade(subItemSelecionado.getTipoQuantidade().getById());
+		subitem.setValor(subItemSelecionado.getValor());
+		subitem.setCodSubItem(subItemSelecionado.getCodSubItem());
 		subitem.setItem(this.getCrudModel());
-		subitem.setCodigo(subItemSelecionado.getCodigo());
-		subitem.setOrdem(subItemSelecionado.getOrdem());
-		subitem.setFlagAtivo(subItemSelecionado.getFlagAtivo());
 
 		if (TSUtil.isEmpty(getCrudModel().getSubItens())) {
 			getCrudModel().setSubItens(new ArrayList<SubItem>());
@@ -127,14 +117,14 @@ public class ItemFaces extends CrudFaces<Item> {
 		if (!this.getCrudModel().getSubItens().contains(subitem)) {
 
 			this.getCrudModel().getSubItens().add(subitem);
-
+		
 		} else {
 
 			CardapioUtil.addErrorMessage("Esse subitem já foi adicionado");
 		}
 
 		this.subItemSelecionado = new SubItem();
-		this.subItemSelecionado.setFlagAtivo(true);
+		this.subItemSelecionado.setTipoQuantidade(new TiposQuantidade());
 	}
 
 	public void delSubItem() {
@@ -143,16 +133,24 @@ public class ItemFaces extends CrudFaces<Item> {
 
 	public String limparSubItem() {
 		this.subItemSelecionado = new SubItem();
-		this.subItemSelecionado.setFlagAtivo(true);
+
 		return null;
 	}
 
-	public List<SelectItem> getComboCategoria() {
-		return comboCategoria;
+	public List<SelectItem> getComboEmpresaCategoriaCardapio() {
+		return comboEmpresaCategoriaCardapio;
 	}
 
-	public void setComboCategoria(List<SelectItem> comboCategoria) {
-		this.comboCategoria = comboCategoria;
+	public void setComboEmpresaCategoriaCardapio(List<SelectItem> comboEmpresaCategoriaCardapio) {
+		this.comboEmpresaCategoriaCardapio = comboEmpresaCategoriaCardapio;
+	}
+
+	public List<SelectItem> getComboQTDS() {
+		return comboQTDS;
+	}
+
+	public void setComboQTDS(List<SelectItem> comboQTDS) {
+		this.comboQTDS = comboQTDS;
 	}
 
 	public SubItem getSubItemSelecionado() {

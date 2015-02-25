@@ -45,7 +45,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:ellipsize="end"
             android:lines="6"
             android:maxLines="6"
             android:scrollbars="none"

@@ -2,98 +2,75 @@ package com.login.cardapio.util;
 
 import java.text.Normalizer;
 import java.util.Calendar;
-import java.util.List;
 
-import br.com.topsys.exception.TSApplicationException;
 import br.com.topsys.util.TSCryptoUtil;
 import br.com.topsys.util.TSUtil;
 
-import com.login.cardapio.model.Empresa;
-
 public final class Utilitarios {
-
-	private Utilitarios() {
-
+	
+	private Utilitarios(){
+		
+		
 	}
 
-	public static String tratarString(String valor) {
-		if (!TSUtil.isEmpty(valor)) {
-			valor = valor.trim().replaceAll("  ", " ");
-		}
+    public static String tratarString(String valor) {
+        if (!TSUtil.isEmpty(valor)) {
+            valor = valor.trim().replaceAll("  ", " ");
+        }
 
-		return valor;
-	}
+        return valor;
+    }
 
-	public static Long tratarLong(Long valor) {
-		if ((!TSUtil.isEmpty(valor)) && (valor.equals(Long.valueOf(0L)))) {
-			valor = null;
-		}
+    public static Long tratarLong(Long valor) {
+        if ((!TSUtil.isEmpty(valor)) && (valor.equals(Long.valueOf(0L)))) {
+            valor = null;
+        }
 
-		return valor;
-	}
+        return valor;
+    }
 
-	public static String removerAcentos(String palavra) {
-		if (TSUtil.isEmpty(palavra)) {
-			return null;
-		}
+    public static String removerAcentos(String palavra) {
+        if (TSUtil.isEmpty(palavra)) {
+            return null;
+        }
 
-		return Normalizer.normalize(new StringBuilder(palavra), Normalizer.Form.NFKD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
-	}
+        return Normalizer.normalize(new StringBuilder(palavra), Normalizer.Form.NFKD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
+    }
 
-	public static String gerarHash(String valor) {
-		if (!TSUtil.isEmpty(valor)) {
-			valor = TSCryptoUtil.gerarHash(valor, "md5");
-		}
+    public static String gerarHash(String valor) {
+        if (!TSUtil.isEmpty(valor)) {
+            valor = TSCryptoUtil.gerarHash(valor, "md5");
+        }
 
-		return valor;
-	}
+        return valor;
+    }
 
-	public static String gerarSenha() {
-		Calendar rightNow = Calendar.getInstance();
+    public static String gerarSenha() {
+        Calendar rightNow = Calendar.getInstance();
 
-		int diaAtual = rightNow.get(Calendar.DAY_OF_MONTH);
-		int mesAtual = rightNow.get(Calendar.MONTH) + 1;
-		int anoAtual = rightNow.get(Calendar.YEAR);
-		int horaAtual = rightNow.get(Calendar.HOUR);
-		int minutoAtual = rightNow.get(Calendar.MINUTE);
-		int segAtual = rightNow.get(Calendar.SECOND);
-		int miliAtual = rightNow.get(Calendar.MILLISECOND);
+        int diaAtual = rightNow.get(Calendar.DAY_OF_MONTH);
+        int mesAtual = rightNow.get(Calendar.MONTH) + 1;
+        int anoAtual = rightNow.get(Calendar.YEAR);
+        int horaAtual = rightNow.get(Calendar.HOUR);
+        int minutoAtual = rightNow.get(Calendar.MINUTE);
+        int segAtual = rightNow.get(Calendar.SECOND);
+        int miliAtual = rightNow.get(Calendar.MILLISECOND);
 
-		String senha = anoAtual + mesAtual + diaAtual + horaAtual + minutoAtual + segAtual + miliAtual + "";
+        String senha = anoAtual + mesAtual + diaAtual + horaAtual + minutoAtual + segAtual + miliAtual + "";
 
-		return senha;
-	}
+        return senha;
+    }
+    
+    public static String gerarNomeArquivo(){
+    	
+    	return String.valueOf(System.currentTimeMillis());
+    }
 
-	public static String gerarNomeArquivo() {
+    public static String getSituacao(Boolean flagAtivo) {
+        if ((!TSUtil.isEmpty(flagAtivo)) && (flagAtivo.booleanValue())) {
+            return "Ativo";
+        }
 
-		return String.valueOf(System.currentTimeMillis());
-	}
-
-	public static String getSituacao(Boolean flagAtivo) {
-		if ((!TSUtil.isEmpty(flagAtivo)) && (flagAtivo.booleanValue())) {
-			return "Ativo";
-		}
-
-		return "Inativo";
-	}
-
-	public static void gerarNovoCodigoCardapio() throws TSApplicationException {
-
-		List<Empresa> empresas = new Empresa().findAll("id");
-		Empresa empresa;
-
-		if (empresas.size() == 0) {
-			
-			empresa = new Empresa();
-			empresa.setKeyCardapio(Utilitarios.gerarNomeArquivo());
-			empresa.save();
-			
-		} else {
-			
-			empresa = empresas.get(0);
-			empresa.setKeyCardapio(Utilitarios.gerarNomeArquivo());
-			empresa.update();
-			
-		}
-	}
+        return "Inativo";
+    }
 }

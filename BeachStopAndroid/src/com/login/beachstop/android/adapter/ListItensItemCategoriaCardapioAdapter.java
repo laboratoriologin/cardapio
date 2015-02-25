@@ -3,6 +3,7 @@ package com.login.beachstop.android.adapter;
 import java.util.List;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,6 +55,7 @@ public class ListItensItemCategoriaCardapioAdapter extends BaseAdapter {
 		}
 
 		((TextView) convertView.findViewById(R.id.fragment_list_view_item_categoria_cardapio_text_view_nome)).setText(itemCardapio.getNome());
+		
 		((TextView) convertView.findViewById(R.id.fragment_list_view_item_categoria_cardapio_text_view_ingrediente)).setText(itemCardapio.getIngredientes());
 
 		// TableLayout tb = (TableLayout)

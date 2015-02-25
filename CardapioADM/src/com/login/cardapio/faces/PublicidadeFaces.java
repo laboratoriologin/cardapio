@@ -23,8 +23,10 @@ import com.login.cardapio.model.Agenda;
 import com.login.cardapio.model.Publicidade;
 import com.login.cardapio.model.TipoAgenda;
 import com.login.cardapio.model.TipoPublicidade;
+import com.login.cardapio.model.Token;
 import com.login.cardapio.util.CardapioUtil;
 import com.login.cardapio.util.Constantes;
+import com.login.cardapio.util.EnviarMensagem;
 import com.login.cardapio.util.UsuarioUtil;
 
 @ViewScoped
@@ -55,17 +57,19 @@ public class PublicidadeFaces extends CrudFaces<Publicidade> {
 	@Override
 	protected void prePersist() {
 
+		super.getCrudModel().setEmpresa(UsuarioUtil.obterUsuarioConectado().getEmpresa());
+
 		super.getCrudModel().setAgenda(new HashSet<Agenda>());
 		Agenda agenda;
-		if ( TipoAgenda.DIARIAMENTE.equals(this.tipoAgenda.getId()) ) {
-		
+		if (TipoAgenda.DIARIAMENTE.equals(this.tipoAgenda.getId())) {
+
 			agenda = new Agenda();
 			agenda.setPublicidade(getCrudModel());
 			agenda.setTipoAgenda(new TipoAgenda(this.tipoAgenda.getId()));
 			super.getCrudModel().getAgenda().add(agenda);
-		
-		} else if (TipoAgenda.SEMANALMENTE.equals(this.tipoAgenda.getId()) ) {
-		
+
+		} else if (TipoAgenda.SEMANALMENTE.equals(this.tipoAgenda.getId())) {
+
 			for (String diaSemana : selectedOptionsDiaSemana) {
 				agenda = new Agenda();
 				agenda.setTipoAgenda(new TipoAgenda(this.tipoAgenda.getId()));
@@ -73,9 +77,9 @@ public class PublicidadeFaces extends CrudFaces<Publicidade> {
 				agenda.setPublicidade(getCrudModel());
 				super.getCrudModel().getAgenda().add(agenda);
 			}
-			
-		} else if ( TipoAgenda.MENSALMENTE.equals(this.tipoAgenda.getId()) ) {
-		
+
+		} else if (TipoAgenda.MENSALMENTE.equals(this.tipoAgenda.getId())) {
+
 			agenda = new Agenda();
 			agenda.setTipoAgenda(new TipoAgenda(this.tipoAgenda.getId()));
 			agenda.setValor(inicio);
@@ -86,7 +90,7 @@ public class PublicidadeFaces extends CrudFaces<Publicidade> {
 			agenda.setValor(fim);
 			agenda.setPublicidade(getCrudModel());
 			super.getCrudModel().getAgenda().add(agenda);
-			
+
 		}
 	}
 
@@ -96,19 +100,19 @@ public class PublicidadeFaces extends CrudFaces<Publicidade> {
 
 		this.tipoAgenda = (super.getCrudModel().getAgenda().iterator().next()).getTipoAgenda();
 
-		if (TipoAgenda.SEMANALMENTE.equals(this.tipoAgenda.getId()) ) {
-		
+		if (TipoAgenda.SEMANALMENTE.equals(this.tipoAgenda.getId())) {
+
 			this.selectedOptionsDiaSemana = new ArrayList<String>();
-			
-			for (Agenda agenda: super.getCrudModel().getAgenda()) {
+
+			for (Agenda agenda : super.getCrudModel().getAgenda()) {
 				this.selectedOptionsDiaSemana.add(agenda.getValor());
 			}
-		
+
 		} else if (TipoAgenda.MENSALMENTE.equals(this.tipoAgenda.getId())) {
-		
+
 			this.inicio = ((Agenda) (super.getCrudModel().getAgenda().toArray()[0])).getValor();
 			this.fim = ((Agenda) (super.getCrudModel().getAgenda().toArray()[1])).getValor();
-		
+
 		}
 
 		return null;
@@ -116,7 +120,8 @@ public class PublicidadeFaces extends CrudFaces<Publicidade> {
 
 	@Override
 	public String limparPesquisa() {
-		String retorno = super.limparPesquisa();		
+		String retorno = super.limparPesquisa();
+		super.getCrudPesquisaModel().setEmpresa(UsuarioUtil.obterUsuarioConectado().getEmpresa());
 		return retorno;
 	}
 
@@ -172,6 +177,110 @@ public class PublicidadeFaces extends CrudFaces<Publicidade> {
 
 		return valido;
 
+	}
+
+	public String enviarPush() {
+		// int pushsIphone = enviarPushIphone();
+		int pushAndroid = enviarPushAndroid();
+		this.addInfoMessage("Alerta enviado com sucesso! \n"
+		// + "Quantidade de iPhones atingidos: " + pushsIphone + "\n" + ""
+				+ "Quantidade de Androids atingidos: " + pushAndroid);
+		return null;
+
+	}
+
+	// private int enviarPushIphone() {
+	//
+	// int retorno = 0;
+	//
+	// TokenIphoneDAO tokenIphoneDAO = new TokenIphoneDAO();
+	//
+	// List<Token> iphones = tokenIphoneDAO.pesquisar();
+	//
+	// PushNotificationPayload payload = PushNotificationPayload.complex();
+	//
+	// try {
+	//
+	// payload.addAlert(getCrudModel().getDescricao());
+	//
+	// payload.addSound("default");
+	//
+	// payload.addBadge(0);
+	//
+	// String[] tokens = new String[iphones.size()];
+	//
+	// for (int i = 0; i < iphones.size(); i++) {
+	// tokens[i] = iphones.get(i).getToken();
+	// }
+	//
+	// Token iphoneInvalido = new Token();
+	//
+	// String caminhoP12 = TSFacesUtil.getServletContext().getRealPath("WEB-INF"
+	// + File.separator + "assets" + File.separator + Constantes.P12);
+	//
+	// List<PushedNotification> notifications = Push.payload(payload,
+	// caminhoP12, Constantes.CHAVE_P12, false, tokens);
+	//
+	// for (PushedNotification notification : notifications) {
+	//
+	// if (!notification.isSuccessful()) {
+	//
+	// iphoneInvalido.setToken(notification.getDevice().getToken());
+	//
+	// try {
+	//
+	// tokenIphoneDAO.excluir(iphoneInvalido);
+	//
+	// } catch (TSApplicationException ex) {
+	// ex.printStackTrace();
+	// }
+	//
+	// } else {
+	// retorno++;
+	// }
+	//
+	// }
+	//
+	// } catch (JSONException e) {
+	//
+	// e.printStackTrace();
+	// } catch (CommunicationException e) {
+	//
+	// e.printStackTrace();
+	// } catch (KeystoreException e) {
+	//
+	// e.printStackTrace();
+	// }
+	//
+	// return retorno;
+	// }
+
+	private int enviarPushAndroid() {
+
+		int retorno = 0;
+		List<Token> token = new Token().findAll();
+
+		int a = 1000;
+		for (int i = 0; i < token.size(); i = i + a) {
+
+			List<String> tokenString = new ArrayList<String>();
+
+			if (token.size() >= (i + a)) {
+				for (Token token2 : token.subList(i, i + a - 1)) {
+					tokenString.add(token2.getToken());
+				}
+			} else {
+				for (Token token2 : token) {
+					tokenString.add(token2.getToken());
+					retorno++;
+				}
+			}
+
+			EnviarMensagem.enviar(tokenString, getCrudModel().getDescricao());
+
+		}
+
+		return retorno;
 	}
 
 	public List<SelectItem> getComboTipoPublicidade() {

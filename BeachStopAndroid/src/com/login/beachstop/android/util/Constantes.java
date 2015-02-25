@@ -47,5 +47,11 @@ public final class Constantes {
 	public static final String INPUTSTREAM = "INPUTSTREAM";
 	public static final String FILETYPE = "FILETYPE";
 	public static final String FILENAME = "FILENAME";
+	
+	public static final String ID_FLAG = "idFlag";
+	public static final String ID = "id";
+	public static final String TAG = "gcm";
+	public static final String SENDER_ID = "551712768207";
+	public static final String SHARED_PREFS = "prefs";
 
 }
