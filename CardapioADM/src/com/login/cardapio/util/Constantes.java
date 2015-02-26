@@ -27,7 +27,7 @@ public final class Constantes {
 	public static final String SENHA_GMAIL = "mobsecopa2013";
 	public static final String ASSUNTO_EMAIL = "E-mail enviado pelo portal";
 	
-	public static final String P12 = "CertificadoSemutDev.p12";
+	public static final String P12 = "BeachStopServer.p12";
 	public static final String CHAVE_P12 = "L0G1n.L@b";
 	
 	public static final Long SITUACAO_RESOLVIDA = 4L;

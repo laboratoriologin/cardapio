@@ -31,6 +31,13 @@ public class TokenDAO  implements RestDAO<Token> {
 		broker.execute();
 		return model;
 	}
+	
+	public Token insertIPhone(Token model) throws TSApplicationException {
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		broker.setPropertySQL("tokendao.insertiphone",model.getToken());
+		broker.execute();
+		return model;
+	}
 
 	@Override
 	public Token update(final Token model) throws TSApplicationException {

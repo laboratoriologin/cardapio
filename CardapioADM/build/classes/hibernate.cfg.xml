@@ -34,6 +34,7 @@
 		<mapping class="com.login.cardapio.model.Metrica" />
 		<mapping class="com.login.cardapio.model.TipoAlerta" />
 		<mapping class="com.login.cardapio.model.Token" />
+		<mapping class="com.login.cardapio.model.TokenIPhone" />
 		
 	</session-factory>
 

@@ -36,6 +36,8 @@
    
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
+    [self requireTokenPush];
+    
     [self initDataBase];
     
     [self configureSplash];
@@ -329,7 +331,7 @@
     }
     
 }
-							
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -356,6 +358,57 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     [self checkContaAtual:NO];
+}
+
+#pragma mark - PUSH
+
+
+-(void) requireTokenPush {
+    
+    if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)])
+    {
+        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+        
+    }
+    else
+    {
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+         (UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)];
+    }
+}
+
+#ifdef __IPHONE_8_0
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:   (UIUserNotificationSettings *)notificationSettings
+{
+    //register to receive notifications
+    [application registerForRemoteNotifications];
+}
+
+#endif
+
+- (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken {
+    
+    NSString *tokenStr = [deviceToken description];
+    
+    tokenStr = [[[tokenStr stringByReplacingOccurrencesOfString:@"<" withString:@""] stringByReplacingOccurrencesOfString:@">" withString:@""] stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    NSDictionary *parameters = @{@"token": tokenStr};
+    
+    if(![tokenStr isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]]) {
+        
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        
+        [manager POST:[CLAppBaseUrl stringByAppendingString:@"tokens/iphone"] parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            
+            [[NSUserDefaults standardUserDefaults] setObject:tokenStr forKey:@"token"];
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"%@",[error description]);
+        }];
+        
+    }
+    
+    
 }
 
 @end

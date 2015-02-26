@@ -7,6 +7,12 @@ import java.util.Calendar;
 import java.util.HashSet;
 import java.util.List;
 
+import javapns.Push;
+import javapns.communication.exceptions.CommunicationException;
+import javapns.communication.exceptions.KeystoreException;
+import javapns.notification.PushNotificationPayload;
+import javapns.notification.PushedNotification;
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -14,16 +20,19 @@ import javax.faces.model.SelectItem;
 import javax.imageio.ImageIO;
 
 import org.apache.commons.io.FilenameUtils;
+import org.json.JSONException;
 import org.primefaces.event.FileUploadEvent;
 
 import br.com.topsys.exception.TSSystemException;
 import br.com.topsys.util.TSUtil;
+import br.com.topsys.web.util.TSFacesUtil;
 
 import com.login.cardapio.model.Agenda;
 import com.login.cardapio.model.Publicidade;
 import com.login.cardapio.model.TipoAgenda;
 import com.login.cardapio.model.TipoPublicidade;
 import com.login.cardapio.model.Token;
+import com.login.cardapio.model.TokenIPhone;
 import com.login.cardapio.util.CardapioUtil;
 import com.login.cardapio.util.Constantes;
 import com.login.cardapio.util.EnviarMensagem;
@@ -180,80 +189,52 @@ public class PublicidadeFaces extends CrudFaces<Publicidade> {
 	}
 
 	public String enviarPush() {
-		// int pushsIphone = enviarPushIphone();
-		int pushAndroid = enviarPushAndroid();
-		this.addInfoMessage("Alerta enviado com sucesso! \n"
-		// + "Quantidade de iPhones atingidos: " + pushsIphone + "\n" + ""
-				+ "Quantidade de Androids atingidos: " + pushAndroid);
+		enviarPushIphone();
+		enviarPushAndroid();
+		this.addInfoMessage("Alerta enviado com sucesso!");
 		return null;
 
 	}
 
-	// private int enviarPushIphone() {
-	//
-	// int retorno = 0;
-	//
-	// TokenIphoneDAO tokenIphoneDAO = new TokenIphoneDAO();
-	//
-	// List<Token> iphones = tokenIphoneDAO.pesquisar();
-	//
-	// PushNotificationPayload payload = PushNotificationPayload.complex();
-	//
-	// try {
-	//
-	// payload.addAlert(getCrudModel().getDescricao());
-	//
-	// payload.addSound("default");
-	//
-	// payload.addBadge(0);
-	//
-	// String[] tokens = new String[iphones.size()];
-	//
-	// for (int i = 0; i < iphones.size(); i++) {
-	// tokens[i] = iphones.get(i).getToken();
-	// }
-	//
-	// Token iphoneInvalido = new Token();
-	//
-	// String caminhoP12 = TSFacesUtil.getServletContext().getRealPath("WEB-INF"
-	// + File.separator + "assets" + File.separator + Constantes.P12);
-	//
-	// List<PushedNotification> notifications = Push.payload(payload,
-	// caminhoP12, Constantes.CHAVE_P12, false, tokens);
-	//
-	// for (PushedNotification notification : notifications) {
-	//
-	// if (!notification.isSuccessful()) {
-	//
-	// iphoneInvalido.setToken(notification.getDevice().getToken());
-	//
-	// try {
-	//
-	// tokenIphoneDAO.excluir(iphoneInvalido);
-	//
-	// } catch (TSApplicationException ex) {
-	// ex.printStackTrace();
-	// }
-	//
-	// } else {
-	// retorno++;
-	// }
-	//
-	// }
-	//
-	// } catch (JSONException e) {
-	//
-	// e.printStackTrace();
-	// } catch (CommunicationException e) {
-	//
-	// e.printStackTrace();
-	// } catch (KeystoreException e) {
-	//
-	// e.printStackTrace();
-	// }
-	//
-	// return retorno;
-	// }
+	private int enviarPushIphone() {
+
+		int retorno = 0;
+
+		List<TokenIPhone> iphones = new TokenIPhone().findAll();
+
+		PushNotificationPayload payload = PushNotificationPayload.complex();
+
+		try {
+
+			payload.addAlert(getCrudModel().getDescricao());
+
+			payload.addSound("default");
+
+			payload.addBadge(0);
+
+			String[] tokens = new String[iphones.size()];
+
+			for (int i = 0; i < iphones.size(); i++) {
+				tokens[i] = iphones.get(i).getToken();
+			}
+
+			String caminhoP12 = TSFacesUtil.getServletContext().getRealPath("WEB-INF" + File.separator + "assets" + File.separator + Constantes.P12);
+
+			Push.payload(payload, caminhoP12, Constantes.CHAVE_P12, false, tokens);
+			
+		} catch (JSONException e) {
+
+			e.printStackTrace();
+		} catch (CommunicationException e) {
+
+			e.printStackTrace();
+		} catch (KeystoreException e) {
+
+			e.printStackTrace();
+		}
+
+		return retorno;
+	}
 
 	private int enviarPushAndroid() {
 
