@@ -14,6 +14,7 @@
 #import "CLPublicidade.h"
 #import "CLConstants.h"
 #import "CLNoTextTitleView.h"
+#import "CLPublicidadeController.h"
 #import <Social/Social.h>
 #define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
 const int CALarguraMenuCardapio  = 70;
@@ -28,6 +29,8 @@ const CGFloat CAlarguraImagemSlide = 320;
 @interface CLCardapioController ()
 
 @property NSMutableArray *publicidades;
+
+@property CLPublicidade *publicidade;
 
 
 @end
@@ -64,6 +67,8 @@ const CGFloat CAlarguraImagemSlide = 320;
     
 }
 
+#pragma mark - Slide
+
 - (void)initSlide {
     
     self.pageControl.alpha = 0;
@@ -78,11 +83,19 @@ const CGFloat CAlarguraImagemSlide = 320;
         
     }
     
+    UITapGestureRecognizer *tapImageView = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(detalharPublicidade:)];
+    
     for (int i = 0; i < [_publicidades count]; i++) {
         
-        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.frame.size.width * i, 0, 320, altura)];
+        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(CGRectGetWidth(self.view.frame), 0, CGRectGetWidth(self.view.frame), altura)];
+        
+        imageView.tag = i;
         
         imageView.image = [UIImage imageNamed:@"placeholder"];
+        
+        imageView.userInteractionEnabled = YES;
+        
+        [imageView addGestureRecognizer:tapImageView];
         
         publicidade = [_publicidades objectAtIndex:i];
         
@@ -97,10 +110,14 @@ const CGFloat CAlarguraImagemSlide = 320;
             dispatch_sync(dispatch_get_main_queue(), ^{
                 
                 if(img) {
+                    
                     _pageControl.alpha = 1;
+                    
                     imageView.image = img;
-                    imageView.contentMode = UIViewContentModeScaleAspectFill;
+                
                     [imageView setNeedsLayout];
+                    
+               
                 }
                 
             });
@@ -118,6 +135,18 @@ const CGFloat CAlarguraImagemSlide = 320;
     _pageControl.numberOfPages = [_publicidades count];
     
 }
+
+- (void)detalharPublicidade:(UITapGestureRecognizer *)tapGesture {
+
+    CLPublicidadeController *controller = [[CLPublicidadeController alloc]initWithNibName:@"CLPublicidadeController" bundle:nil];
+    
+    controller.publicidade = [_publicidades objectAtIndex:tapGesture.view.tag];
+    
+    [self.navigationController pushViewController:controller animated:YES];
+
+    
+}
+
 
 //método executado pelo app delegate após ser baixado o cardapio para o celular
 - (void)initCardapioWithObjects:(NSMutableArray *) objects {

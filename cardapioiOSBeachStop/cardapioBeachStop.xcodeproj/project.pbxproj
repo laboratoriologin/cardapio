@@ -29,6 +29,8 @@
 		064A9BD819BE382600D0AC98 /* icone_topo_acompanhamentos@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 064A9BD519BE382600D0AC98 /* icone_topo_acompanhamentos@2x.png */; };
 		064A9BD919BE382600D0AC98 /* icone_topo_diversos@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 064A9BD619BE382600D0AC98 /* icone_topo_diversos@2x.png */; };
 		064A9BDA19BE382600D0AC98 /* icone_topo_pratos_do_mar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 064A9BD719BE382600D0AC98 /* icone_topo_pratos_do_mar@2x.png */; };
+		068A3D561A9F997B006A8CA5 /* CLPublicidadeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 068A3D541A9F997B006A8CA5 /* CLPublicidadeController.m */; };
+		068A3D571A9F997B006A8CA5 /* CLPublicidadeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 068A3D551A9F997B006A8CA5 /* CLPublicidadeController.xib */; };
 		06C8A73719B8A26F004702B1 /* placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06C8A73619B8A26F004702B1 /* placeholder@2x.png */; };
 		06C8E88519A38E9000F21841 /* icone_compartilhar.png in Resources */ = {isa = PBXBuildFile; fileRef = 06C8E88319A38E9000F21841 /* icone_compartilhar.png */; };
 		06C8E88619A38E9000F21841 /* icone_compartilhar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06C8E88419A38E9000F21841 /* icone_compartilhar@2x.png */; };
@@ -207,6 +209,9 @@
 		064A9BD519BE382600D0AC98 /* icone_topo_acompanhamentos@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icone_topo_acompanhamentos@2x.png"; sourceTree = "<group>"; };
 		064A9BD619BE382600D0AC98 /* icone_topo_diversos@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icone_topo_diversos@2x.png"; sourceTree = "<group>"; };
 		064A9BD719BE382600D0AC98 /* icone_topo_pratos_do_mar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icone_topo_pratos_do_mar@2x.png"; sourceTree = "<group>"; };
+		068A3D531A9F997B006A8CA5 /* CLPublicidadeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLPublicidadeController.h; sourceTree = "<group>"; };
+		068A3D541A9F997B006A8CA5 /* CLPublicidadeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLPublicidadeController.m; sourceTree = "<group>"; };
+		068A3D551A9F997B006A8CA5 /* CLPublicidadeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CLPublicidadeController.xib; sourceTree = "<group>"; };
 		06C8A73619B8A26F004702B1 /* placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholder@2x.png"; sourceTree = "<group>"; };
 		06C8E88319A38E9000F21841 /* icone_compartilhar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icone_compartilhar.png; sourceTree = "<group>"; };
 		06C8E88419A38E9000F21841 /* icone_compartilhar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icone_compartilhar@2x.png"; sourceTree = "<group>"; };
@@ -772,6 +777,9 @@
 				62526FC61921423700C222EA /* CLItemController.xib */,
 				625779EA195222D000CE36B9 /* CLChamarGarcomController.h */,
 				625779EB195222D000CE36B9 /* CLChamarGarcomController.m */,
+				068A3D531A9F997B006A8CA5 /* CLPublicidadeController.h */,
+				068A3D541A9F997B006A8CA5 /* CLPublicidadeController.m */,
+				068A3D551A9F997B006A8CA5 /* CLPublicidadeController.xib */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -1052,6 +1060,7 @@
 				6297564A18FC052D00DC8D61 /* bt_menu_pedidos@2x.png in Resources */,
 				629F654318FEC185009B1F52 /* bt_refresh@2x.png in Resources */,
 				62695A60199B905F002C1799 /* logo_topo@2x.png in Resources */,
+				068A3D571A9F997B006A8CA5 /* CLPublicidadeController.xib in Resources */,
 				6201AB9718F85627005B5DB9 /* Images.xcassets in Resources */,
 				62738685190FCAD6004D2E46 /* CLCollectionViewCell.xib in Resources */,
 				064A9BC519BE26D100D0AC98 /* bt_home_diversos@2x.png in Resources */,
@@ -1200,6 +1209,7 @@
 				6297567418FC493800DC8D61 /* CLPedidosController.m in Sources */,
 				62E7F29B1913CF0B00A93235 /* CLDBUtil.m in Sources */,
 				62526FC71921423700C222EA /* CLItemController.m in Sources */,
+				068A3D561A9F997B006A8CA5 /* CLPublicidadeController.m in Sources */,
 				62A4A53B190AF47400A9B9F7 /* IconDownloader.m in Sources */,
 				62526FBE1920F78A00C222EA /* UIFont+DAHFontUtil.m in Sources */,
 				62B1AFE5191A68E000707E46 /* CLCollectionViewNoImageCell.m in Sources */,

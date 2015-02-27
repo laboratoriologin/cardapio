@@ -32,11 +32,38 @@
                     <connections>
                         <outlet property="pageControl" destination="FP9-Ns-QUU" id="If2-b0-fxk"/>
                         <outlet property="scrollView" destination="n0S-bk-Drx" id="13W-DV-4t2"/>
+                        <segue destination="PV7-ZQ-loc" kind="push" identifier="sg_detalhe_publicidade" id="aMA-km-XEv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1009" y="-1145"/>
+            <point key="canvasLocation" x="993" y="-1145"/>
+        </scene>
+        <!--Detalhe Publicidade Controller-->
+        <scene sceneID="bnv-cz-S2p">
+            <objects>
+                <viewController id="PV7-ZQ-loc" customClass="CLDetalhePublicidadeController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aF3-by-sVK">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="fUJ-MP-RFy">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="gnw-dS-7rj"/>
+                    <connections>
+                        <outlet property="tableView" destination="fUJ-MP-RFy" id="cth-SZ-CVg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Az6-Mw-zM4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1414" y="-1145"/>
         </scene>
         <!--Sobre Restaurante Controller-->
         <scene sceneID="Msk-tY-9JQ">
@@ -430,7 +457,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dod-Zg-beV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="426" y="312"/>
+            <point key="canvasLocation" x="305" y="317"/>
         </scene>
         <!--Chamar Garcom Controller-->
         <scene sceneID="2rK-eR-KxH">
