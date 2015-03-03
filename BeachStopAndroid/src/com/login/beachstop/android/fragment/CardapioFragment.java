@@ -1,7 +1,6 @@
 package com.login.beachstop.android.fragment;
 
 import java.util.List;
-import java.util.Locale;
 
 import org.brickred.socialauth.android.SocialAuthError;
 import org.brickred.socialauth.android.SocialAuthListener;
@@ -106,7 +105,7 @@ public class CardapioFragment extends Fragment implements BusinessResult {
 
 				if (listChaves.size() != 0) {
 					Empresa empresa = listChaves.get(0);
-					
+
 					Uri gmmIntentUri = Uri.parse("google.navigation:q=" + empresa.getLat() + "," + empresa.getLon());
 					Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
 					mapIntent.setPackage("com.google.android.apps.maps");
