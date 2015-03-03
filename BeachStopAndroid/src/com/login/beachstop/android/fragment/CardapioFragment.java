@@ -1,11 +1,14 @@
 package com.login.beachstop.android.fragment;
 
 import java.util.List;
+import java.util.Locale;
 
 import org.brickred.socialauth.android.SocialAuthError;
 import org.brickred.socialauth.android.SocialAuthListener;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -14,10 +17,12 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -30,6 +35,7 @@ import com.login.beachstop.android.business.BusinessResult;
 import com.login.beachstop.android.business.PublicidadeBS;
 import com.login.beachstop.android.model.CatagoriaCardapio;
 import com.login.beachstop.android.model.CategoriaCardapioItemSys;
+import com.login.beachstop.android.model.Empresa;
 import com.login.beachstop.android.model.Publicidade;
 import com.login.beachstop.android.model.ServerResponse;
 import com.login.beachstop.android.util.Constantes;
@@ -91,6 +97,23 @@ public class CardapioFragment extends Fragment implements BusinessResult {
 		//
 		// socialAuthAdapter.enable((Button)
 		// this.view.findViewById(R.id.fragment_cardapio_btn_compartilhar_checkin));
+
+		((Button) this.view.findViewById(R.id.fragment_cardapio_btn_como_chegar)).setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				List<Empresa> listChaves = activity.getDataManager().getChaveCardapioEmpresaDAO().getAll();
+
+				if (listChaves.size() != 0) {
+					Empresa empresa = listChaves.get(0);
+					
+					Uri gmmIntentUri = Uri.parse("google.navigation:q=" + empresa.getLat() + "," + empresa.getLon());
+					Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+					mapIntent.setPackage("com.google.android.apps.maps");
+					startActivity(mapIntent);
+				}
+			}
+		});
 
 		this.viewPagerMidia.setOnTouchListener(new OnTouchListener() {
 

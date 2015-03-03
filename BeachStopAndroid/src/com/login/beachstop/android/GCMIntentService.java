@@ -32,7 +32,7 @@ public class GCMIntentService extends GCMBaseIntentService {
 		String mensagem = "ID de registro no GCM: " + regId;
 		Log.i(Constantes.TAG, mensagem);
 
-		new TokenBS(null).inserir(regId);
+		new TokenBS(null).inserir(regId, Constantes.KEYMOBILE);
 	}
 
 	/**

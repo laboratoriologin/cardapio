@@ -22,12 +22,14 @@ public class JSONTokenUtil extends AsyncTask<String, Void, ServerResponse> {
 	@Override
 	protected ServerResponse doInBackground(String... params) {
 		String regId = params == null || params.length == 0 ? null : params[0];
-		return new HttpUtil().getJSONFromURLPost(getUrl(), parseToNameValuePair(regId));
+		String keyMobile = params == null || params.length == 1 ? null : params[1];
+		return new HttpUtil().getJSONFromURLPost(getUrl(), parseToNameValuePair(regId, keyMobile));
 	}
 
-	private List<NameValuePair> parseToNameValuePair(String regId) {
+	private List<NameValuePair> parseToNameValuePair(String regId, String keyMobile) {
 		List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 		nameValuePairs.add(new BasicNameValuePair("token", regId));
+		nameValuePairs.add(new BasicNameValuePair("empresa", keyMobile));
 		return nameValuePairs;
 	}
 

@@ -10,8 +10,8 @@ public class TokenBS implements Observable {
 		this.businessResult = businessResult;
 	}
 
-	public void inserir(String regId) {
-		new JSONTokenUtil(this).execute(regId);
+	public void inserir(String regId, String keyMobile) {
+		new JSONTokenUtil(this).execute(regId, keyMobile);
 	}
 
 	@Override

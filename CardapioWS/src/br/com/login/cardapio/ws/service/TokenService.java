@@ -7,6 +7,7 @@ import javax.ws.rs.Produces;
 import org.apache.catalina.connector.Response;
 import org.jboss.resteasy.annotations.Form;
 
+import br.com.login.cardapio.ws.dao.EmpresaDAO;
 import br.com.login.cardapio.ws.dao.TokenDAO;
 import br.com.login.cardapio.ws.exception.ApplicationException;
 import br.com.login.cardapio.ws.model.Token;
@@ -20,7 +21,35 @@ public class TokenService extends RestService<Token> {
 	public void initDAO() {
 		this.restDAO = new TokenDAO();
 	}
-	
+
+	@Override
+	@POST
+	@Path("")
+	@Produces("application/json; charset=UTF-8")
+	public Token insert(@Form Token form) throws ApplicationException {
+		try {
+
+			this.validate(form);
+
+			// converter a chave em id para inserir no banco de dados
+			EmpresaDAO dao = new EmpresaDAO();
+			form.setEmpresa(dao.get(form.getEmpresa().getKeyMobile()));
+
+			return restDAO.insert(form);
+
+		} catch (TSApplicationException ex) {
+
+			throw new ApplicationException(ex.getMessage(), Response.SC_BAD_REQUEST);
+
+		} catch (TSSystemException ex) {
+
+			ex.printStackTrace();
+			throw new ApplicationException(ex.getMessage(), Response.SC_INTERNAL_SERVER_ERROR);
+
+		}
+
+	}
+
 	@POST
 	@Path("/iphone")
 	@Produces("application/json; charset=UTF-8")
@@ -28,6 +57,10 @@ public class TokenService extends RestService<Token> {
 		try {
 
 			this.validate(form);
+
+			// converter a chave em id para inserir no banco de dados
+			EmpresaDAO dao = new EmpresaDAO();
+			form.setEmpresa(dao.get(form.getEmpresa().getKeyMobile()));
 
 			return new TokenDAO().insertIPhone(form);
 
@@ -43,5 +76,5 @@ public class TokenService extends RestService<Token> {
 		}
 
 	}
-	
+
 }

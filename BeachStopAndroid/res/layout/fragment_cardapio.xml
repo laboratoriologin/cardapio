@@ -23,21 +23,16 @@
                 android:layout_centerVertical="true"
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/logo_topo" />
-            
-            
-            <!--
+
             <Button
-                android:id="@+id/fragment_cardapio_btn_compartilhar_checkin"
+                android:id="@+id/fragment_cardapio_btn_como_chegar"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="5dp"
-                android:background="@drawable/icone_check_in"
+                android:background="@drawable/icone_topo_como_chegar"
                 android:scaleType="centerCrop" />
-
-            -->
-
         </RelativeLayout>
     </com.login.beachstop.android.view.ActionBar>
 

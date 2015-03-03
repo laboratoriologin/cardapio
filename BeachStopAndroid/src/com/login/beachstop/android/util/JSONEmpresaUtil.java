@@ -20,7 +20,7 @@ public class JSONEmpresaUtil extends AsyncTask<String, Void, ServerResponse> {
 	@Override
 	protected ServerResponse doInBackground(String... params) {
 
-		ServerResponse serverResponse = new HttpUtil().getJSONFromURL(Constantes.URL_WS + "/empresas/keymobile/" + Constantes.KEYMOBILE + "/keyCardapio/qtdMesa/dadosEmpresa");
+		ServerResponse serverResponse = new HttpUtil().getJSONFromURL(Constantes.URL_WS + "/empresas/keymobile/" + Constantes.KEYMOBILE + "/keyCardapio/qtdMesa/dadosEmpresa/latitude/longitude");
 
 		if (serverResponse.isOK()) {
 			try {
@@ -38,7 +38,12 @@ public class JSONEmpresaUtil extends AsyncTask<String, Void, ServerResponse> {
 		String keyCardapio = jsonObject.getJSONObject("empresa").getString(Constantes.KEY_CARDAPIO);
 		Long qtdMesa = jsonObject.getJSONObject("empresa").getLong(Constantes.QTD_MESA);
 		String dados = jsonObject.getJSONObject("empresa").getString(Constantes.DADOS_EMPRESA);
-		return new Empresa(keyCardapio, qtdMesa, dados);
+		String lat = jsonObject.getJSONObject("empresa").getString("latitude");
+		String lon = jsonObject.getJSONObject("empresa").getString("longitude");
+		Empresa empresa =  new Empresa(keyCardapio, qtdMesa, dados);
+		empresa.setLat(lat);
+		empresa.setLon(lon);
+		return empresa;
 	}
 
 	@Override

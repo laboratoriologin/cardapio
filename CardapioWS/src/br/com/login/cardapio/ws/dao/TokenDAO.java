@@ -13,21 +13,21 @@ public class TokenDAO  implements RestDAO<Token> {
 	public Token get(Long id) {
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		broker.setPropertySQL("tokendao.get", id);
-		return (Token) broker.getObjectBean(Token.class, "token", "id");
+		return (Token) broker.getObjectBean(Token.class, "token", "id", "empresa.id");
 	}
 
 	@Override
 	public List<Token> getAll() {
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		broker.setPropertySQL("tokendao.findall");
-		return broker.getCollectionBean(Token.class, "token", "id");
+		return broker.getCollectionBean(Token.class, "token", "id", "empresa.id");
 	}
 
 	@Override
 	public Token insert(Token model) throws TSApplicationException {
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		model.setId(broker.getSequenceNextValue("token_id_seq"));
-		broker.setPropertySQL("tokendao.insert",model.getToken());
+		broker.setPropertySQL("tokendao.insert",model.getToken(), model.getEmpresa().getId());
 		broker.execute();
 		return model;
 	}
@@ -42,7 +42,7 @@ public class TokenDAO  implements RestDAO<Token> {
 	@Override
 	public Token update(final Token model) throws TSApplicationException {
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
-		broker.setPropertySQL("tokendao.update", model.getToken(), model.getId());
+		broker.setPropertySQL("tokendao.update", model.getToken(), model.getEmpresa().getId(), model.getId());
 		broker.execute();
 		return model;
 	}
