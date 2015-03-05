@@ -174,7 +174,7 @@ body div.body .direita {
 	font-size: 35px;
 }
 
-@media screen and (max-width: 1919px) {
+@media screen and (max-width: 1900px) {
 	#imgmesa {
 		display: none;
 	}
@@ -219,6 +219,8 @@ body div.body .direita {
 
 #pedido {
 	height: 82.5%;
+	font-family: Century Gothic;
+	color: #4f3833;
 }
 
 #pedidopronto {
@@ -228,22 +230,22 @@ body div.body .direita {
 }
 
 #alinhartexto {
-	margin-left: 35px;
-	margin-top: 12px;
-	margin-bottom: 12px;
+	padding-left: 35px;
+	padding-top: 12px;
+	padding-bottom: 12px;
 	height: 26px;
 }
 
 @-moz-document url-prefix() { 
 	#alinhartexto {		
-		margin-top: 9px;
-		margin-bottom: 9px;		
+		padding-top: 9px;
+		padding-bottom: 9px;		
 	}
 }
 @media screen and (-webkit-min-device-pixel-ratio:0) {
 	#alinhartexto {		
-		margin-top: 10px;
-		margin-bottom: 10px;		
+		padding-top: 10px;
+		padding-bottom: 10px;		
 	}
 }
 
@@ -400,6 +402,22 @@ body div.body .direita {
 
 .error{
 	color: red;
-}	
-	
-	
+}
+
+#pedidosAtuais{
+	height: 93%; 
+	width: 99%;
+	padding-left: 15px;
+	padding-top: 10px;
+}
+
+.listaPedido{	
+	width: 350px;
+	background-color: #ebebeb;
+}
+
+.topoMesaPedido{
+	background-color: #ffffff;
+	padding: 15px 20px;
+	font-size: 20px;
+}

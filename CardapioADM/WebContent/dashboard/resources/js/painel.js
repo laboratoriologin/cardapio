@@ -14,6 +14,10 @@ function loadInit(){
 	$("#maisitens2").hide();
 	$("#maisitens").hide();
 	$("#maisitensfooter").hide();
+
+	var wall = new freewall("#containerPedidos");
+	//wall.fitZone($("#pedidosAtuais").width() - 30 , $("#pedidosAtuais").height() - 30);
+	wall.fitWidth();
 	
 	loadData();
 }
