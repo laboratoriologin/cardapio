@@ -19,4 +19,4 @@
 	
 	<item android:state_pressed="true" android:drawable="@drawable/tab_press" />
 </selector>
-<!-- From: file:/C:/Login/PROJETO/CardapioGIT/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/drawable/tab_indicator.xml -->
+<!-- From: file:/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/drawable/tab_indicator.xml -->

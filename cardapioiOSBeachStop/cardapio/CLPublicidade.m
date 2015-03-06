@@ -24,6 +24,7 @@
         self.imagem      = [publicidade objectForKey:@"imagem"];
         self.link        = [publicidade objectForKey:@"link"];
         self.preco       = [publicidade objectForKey:@"preco"];
+        self.texto       = [publicidade objectForKey:@"texto"];
         
     }
     

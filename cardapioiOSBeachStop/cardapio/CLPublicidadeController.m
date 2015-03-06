@@ -172,7 +172,7 @@ const NSInteger CLSectionDescricao = 2;
     
     _descricaoLabel = [[UILabel alloc]initWithFrame:labelFrame];
     
-    _descricaoLabel.text = self.publicidade.descricao;
+    _descricaoLabel.text = [self.publicidade.descricao stringByAppendingFormat:@"\n\n %@",self.publicidade.texto];
     
     _descricaoLabel.textColor = [UIColor appButtonColor];
     

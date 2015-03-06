@@ -26,6 +26,10 @@
 
 			<p:outputLabel for="descricao" value="Descrição" />
 			<p:inputText id="descricao" required="true" requiredMessage="Descrição Campo obrigatário" maxlength="50" value="#{mbeanModel.descricao}" styleClass="coluna90" />
+			
+			<p:outputLabel for="texto" value="Texto" />
+			<p:inputTextarea id="texto" rows="6" required="true" requiredMessage="Texto Campo obrigatário" maxlength="1000" value="#{mbeanModel.texto}" styleClass="coluna90" />
+			
 
 			<p:fieldset legend="Banner" style="width:95%">
 
@@ -118,8 +122,7 @@
 	<ui:define name="colunasTabela">
 
 		<p:column headerText="Descrição">
-			<h:outputText value="#{linha.nome}" />
-			<h:outputText value="#{linha.descricao}" />
+			<h:outputText value="#{linha.nome} - #{linha.descricao}" />
 		</p:column>
 
 	</ui:define>

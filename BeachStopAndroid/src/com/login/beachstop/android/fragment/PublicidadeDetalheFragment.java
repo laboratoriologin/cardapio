@@ -67,7 +67,7 @@ public class PublicidadeDetalheFragment extends Fragment {
 
 		((ActionBar) this.view.findViewById(R.id.actionbar)).setDisplayHomeAsUpEnabled(Boolean.TRUE);
 		
-		((TextView) this.view.findViewById(R.id.fragment_detalhe_publicidade_text_view_descricao)).setText(publicidade.getDescricao());
+		((TextView) this.view.findViewById(R.id.fragment_detalhe_publicidade_text_view_descricao)).setText(publicidade.getNome() + "\n" + publicidade.getDescricao() + "\n\n" + publicidade.getTexto());
 
 		this.imageView = (ImageView) this.view.findViewById(R.id.fragment_detalhe_publicidade_image_view);
 

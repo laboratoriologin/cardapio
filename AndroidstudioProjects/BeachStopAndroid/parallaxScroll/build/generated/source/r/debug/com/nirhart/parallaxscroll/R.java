@@ -98,7 +98,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.nirhart.parallaxscroll:alpha_factor
         */
-        public static final int ParallaxScroll_alpha_factor = 1;
+        public static int ParallaxScroll_alpha_factor = 1;
         /**
           <p>This symbol is the offset where the {@link com.nirhart.parallaxscroll.R.attr#circular_parallax}
           attribute's value can be found in the {@link #ParallaxScroll} array.
@@ -112,7 +112,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.nirhart.parallaxscroll:circular_parallax
         */
-        public static final int ParallaxScroll_circular_parallax = 4;
+        public static int ParallaxScroll_circular_parallax = 4;
         /**
           <p>This symbol is the offset where the {@link com.nirhart.parallaxscroll.R.attr#inner_parallax_factor}
           attribute's value can be found in the {@link #ParallaxScroll} array.
@@ -126,7 +126,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.nirhart.parallaxscroll:inner_parallax_factor
         */
-        public static final int ParallaxScroll_inner_parallax_factor = 2;
+        public static int ParallaxScroll_inner_parallax_factor = 2;
         /**
           <p>This symbol is the offset where the {@link com.nirhart.parallaxscroll.R.attr#parallax_factor}
           attribute's value can be found in the {@link #ParallaxScroll} array.
@@ -140,7 +140,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.nirhart.parallaxscroll:parallax_factor
         */
-        public static final int ParallaxScroll_parallax_factor = 0;
+        public static int ParallaxScroll_parallax_factor = 0;
         /**
           <p>This symbol is the offset where the {@link com.nirhart.parallaxscroll.R.attr#parallax_views_num}
           attribute's value can be found in the {@link #ParallaxScroll} array.
@@ -154,6 +154,6 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.nirhart.parallaxscroll:parallax_views_num
         */
-        public static final int ParallaxScroll_parallax_views_num = 3;
+        public static int ParallaxScroll_parallax_views_num = 3;
     };
 }

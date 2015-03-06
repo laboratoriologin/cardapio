@@ -10,6 +10,7 @@ public class Publicidade implements Serializable {
 	private String imagem;
 	private String link;
 	private String nome;
+	private String texto;
 	private Double valor;
 
 	public Long getId() {
@@ -59,4 +60,13 @@ public class Publicidade implements Serializable {
 	public void setValor(Double valor) {
 		this.valor = valor;
 	}
+
+	public String getTexto() {
+		return texto;
+	}
+
+	public void setTexto(String texto) {
+		this.texto = texto;
+	}
+
 }

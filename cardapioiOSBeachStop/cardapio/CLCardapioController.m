@@ -15,6 +15,7 @@
 #import "CLConstants.h"
 #import "CLNoTextTitleView.h"
 #import "CLPublicidadeController.h"
+#import "UIView+DAHMessages.h"
 #import <Social/Social.h>
 #define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
 const int CALarguraMenuCardapio  = 70;
@@ -64,6 +65,32 @@ const CGFloat CAlarguraImagemSlide = 320;
     CLNoTextTitleView *titleView = [[[NSBundle mainBundle] loadNibNamed:@"CLNoTextTitleView" owner:nil options:nil] lastObject];
     
     self.navigationItem.titleView = titleView;
+
+    self.navigationItem.rightBarButtonItem =    [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"icone_topo_como_chegar"]  style:UIBarButtonItemStylePlain target:self action:@selector(comoChegar)];
+    
+}
+
+- (void)comoChegar {
+    
+    if ([[UIApplication sharedApplication] canOpenURL: [NSURL URLWithString:@"comgooglemaps://"]]) {
+        
+        [[UIApplication sharedApplication] openURL: [NSURL URLWithString:@"comgooglemaps://?daddr=Beach+Stop+Ipitanga&directionsmode=car"]];
+ 
+    } else {
+
+        if ([[UIApplication sharedApplication]
+             canOpenURL:[NSURL URLWithString:@"waze://"]]) {
+            
+            // Waze is installed. Launch Waze and start navigation
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"waze://?ll=-12.916778,-38.309905&navigate=yes"]];
+            
+        } else {
+            
+           [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://maps.apple.com/?daddr=-12.916580,-38.309884"]];
+           
+        }
+        
+    }
     
 }
 
@@ -87,7 +114,8 @@ const CGFloat CAlarguraImagemSlide = 320;
     
     for (int i = 0; i < [_publicidades count]; i++) {
         
-        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(CGRectGetWidth(self.view.frame), 0, CGRectGetWidth(self.view.frame), altura)];
+        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(CGRectGetWidth(self.view.frame) * i
+                                                                              , 0, CGRectGetWidth(self.view.frame), altura)];
         
         imageView.tag = i;
         

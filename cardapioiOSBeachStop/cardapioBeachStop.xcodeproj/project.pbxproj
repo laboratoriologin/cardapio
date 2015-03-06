@@ -29,6 +29,8 @@
 		064A9BD819BE382600D0AC98 /* icone_topo_acompanhamentos@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 064A9BD519BE382600D0AC98 /* icone_topo_acompanhamentos@2x.png */; };
 		064A9BD919BE382600D0AC98 /* icone_topo_diversos@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 064A9BD619BE382600D0AC98 /* icone_topo_diversos@2x.png */; };
 		064A9BDA19BE382600D0AC98 /* icone_topo_pratos_do_mar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 064A9BD719BE382600D0AC98 /* icone_topo_pratos_do_mar@2x.png */; };
+		0667F99C1AA88FC8001EE7FC /* icone_topo_como_chegar.png in Resources */ = {isa = PBXBuildFile; fileRef = 0667F99A1AA88FC7001EE7FC /* icone_topo_como_chegar.png */; };
+		0667F99D1AA88FC8001EE7FC /* icone_topo_como_chegar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0667F99B1AA88FC8001EE7FC /* icone_topo_como_chegar@2x.png */; };
 		068A3D561A9F997B006A8CA5 /* CLPublicidadeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 068A3D541A9F997B006A8CA5 /* CLPublicidadeController.m */; };
 		068A3D571A9F997B006A8CA5 /* CLPublicidadeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 068A3D551A9F997B006A8CA5 /* CLPublicidadeController.xib */; };
 		06C8A73719B8A26F004702B1 /* placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06C8A73619B8A26F004702B1 /* placeholder@2x.png */; };
@@ -209,6 +211,8 @@
 		064A9BD519BE382600D0AC98 /* icone_topo_acompanhamentos@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icone_topo_acompanhamentos@2x.png"; sourceTree = "<group>"; };
 		064A9BD619BE382600D0AC98 /* icone_topo_diversos@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icone_topo_diversos@2x.png"; sourceTree = "<group>"; };
 		064A9BD719BE382600D0AC98 /* icone_topo_pratos_do_mar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icone_topo_pratos_do_mar@2x.png"; sourceTree = "<group>"; };
+		0667F99A1AA88FC7001EE7FC /* icone_topo_como_chegar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icone_topo_como_chegar.png; sourceTree = "<group>"; };
+		0667F99B1AA88FC8001EE7FC /* icone_topo_como_chegar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icone_topo_como_chegar@2x.png"; sourceTree = "<group>"; };
 		068A3D531A9F997B006A8CA5 /* CLPublicidadeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLPublicidadeController.h; sourceTree = "<group>"; };
 		068A3D541A9F997B006A8CA5 /* CLPublicidadeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLPublicidadeController.m; sourceTree = "<group>"; };
 		068A3D551A9F997B006A8CA5 /* CLPublicidadeController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CLPublicidadeController.xib; sourceTree = "<group>"; };
@@ -689,6 +693,8 @@
 		6297564118FC052D00DC8D61 /* res */ = {
 			isa = PBXGroup;
 			children = (
+				0667F99A1AA88FC7001EE7FC /* icone_topo_como_chegar.png */,
+				0667F99B1AA88FC8001EE7FC /* icone_topo_como_chegar@2x.png */,
 				9C739B3C1A47B3A90029A374 /* icone_check_in.png */,
 				9C739B3D1A47B3A90029A374 /* icone_check_in@2x.png */,
 				62187AA11998E7B7009BEDCD /* AppIcon */,
@@ -1091,6 +1097,7 @@
 				629756B518FC608700DC8D61 /* icone_topo_sugestao_chef@2x.png in Resources */,
 				62FBFA591994FDD60079107E /* seta_para_esquerda@2x.png in Resources */,
 				629756AC18FC608700DC8D61 /* icone_topo_todos_pratos.png in Resources */,
+				0667F99C1AA88FC8001EE7FC /* icone_topo_como_chegar.png in Resources */,
 				62187AB91998FD17009BEDCD /* icone_ios_120.png in Resources */,
 				629756B318FC608700DC8D61 /* icone_topo_saladas@2x.png in Resources */,
 				629756B418FC608700DC8D61 /* icone_topo_sobremesas@2x.png in Resources */,
@@ -1105,6 +1112,7 @@
 				629756A918FC608700DC8D61 /* icone_topo_saladas.png in Resources */,
 				064A9BC719BE26D100D0AC98 /* bt_home_massas@2x.png in Resources */,
 				6201AB8918F85627005B5DB9 /* InfoPlist.strings in Resources */,
+				0667F99D1AA88FC8001EE7FC /* icone_topo_como_chegar@2x.png in Resources */,
 				9C739B3F1A47B3A90029A374 /* icone_check_in@2x.png in Resources */,
 				6201AB9218F85627005B5DB9 /* Main.storyboard in Resources */,
 				629756B218FC608700DC8D61 /* icone_topo_pizzas@2x.png in Resources */,

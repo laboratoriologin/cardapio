@@ -57,6 +57,7 @@ public class JSONPublicidadeUtil extends AsyncTask<String, Void, ServerResponse>
 			publicidade.setImagem(item.getString("imagem"));
 			publicidade.setLink(item.getString("link"));
 			publicidade.setNome(item.getString("nome"));
+			publicidade.setTexto(item.getString("texto"));
 			publicidade.setValor(item.getDouble("preco"));
 
 			listPublicidade.add(publicidade);

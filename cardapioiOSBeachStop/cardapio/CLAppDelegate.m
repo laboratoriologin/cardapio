@@ -392,7 +392,7 @@
     
     tokenStr = [[[tokenStr stringByReplacingOccurrencesOfString:@"<" withString:@""] stringByReplacingOccurrencesOfString:@">" withString:@""] stringByReplacingOccurrencesOfString:@" " withString:@""];
     
-    NSDictionary *parameters = @{@"token": tokenStr};
+    NSDictionary *parameters = @{@"token": tokenStr, @"empresa" : CLKeyEmpresa};
     
     if(![tokenStr isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]]) {
         

@@ -15,6 +15,7 @@
 @property(nonatomic,strong) NSString *descricao;
 @property(nonatomic,strong) NSString *imagem;
 @property(nonatomic,strong) NSString *link;
+@property(nonatomic,strong) NSString *texto;
 @property(nonatomic,strong) NSNumber *preco;
 
 

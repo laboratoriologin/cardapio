@@ -10,9 +10,9 @@ public final class Constantes {
 	// public static final String URL = "http://177.1.212.50:9004/CardapioADM/servlet";
 	// public static final String URL_IMG = "http://177.1.212.50:9004/arquivos_cardapio/";
 	
-	public static final String URL = "http://10.0.0.33:8080/CardapioADM/servlet";
+	public static final String URL = "http://10.0.0.103:8080/CardapioADM/servlet";
 //	public static final String URL_IMG = "http://10.0.0.33:8080/arquivos_cardapio/";
-	public static final String URL_WS = "http://10.0.0.33:8080/CardapioWS";
+	public static final String URL_WS = "http://10.0.0.103:8080/CardapioWS";
 	
 //	public static final String URL = "http://177.1.212.50:9004/CardapioADM/servlet";
 	public static final String URL_IMG = "http://177.1.212.50:9004/arquivos_cardapio/";

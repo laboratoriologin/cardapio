@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\ParallaxScroll\src\main\assets"/></dataSet><dataSet config="release"><source path="C:\Login\PROJETO\CardapioGIT\AndroidstudioProjects\BeachStopAndroid\ParallaxScroll\src\release\assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/ParallaxScroll/src/main/assets"/></dataSet><dataSet config="release"><source path="/Users/login/Documents/dev/repositorio_git/cardapio/AndroidstudioProjects/BeachStopAndroid/ParallaxScroll/src/release/assets"/></dataSet></merger>

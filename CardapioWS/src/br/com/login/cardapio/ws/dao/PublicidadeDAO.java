@@ -29,7 +29,7 @@ public class PublicidadeDAO  implements RestDAO<Publicidade> {
 
 		broker.setPropertySQL("publicidadedao.findall");
 
-		return broker.getCollectionBean(Publicidade.class, "descricao", "id", "empresa.id", "tipoPublicidade.id", "imagem", "link", "nome", "preco", "vigenciaFinal", "vigenciaInicial");
+		return broker.getCollectionBean(Publicidade.class, "descricao", "id", "empresa.id", "tipoPublicidade.id", "imagem", "link", "nome", "preco", "vigenciaFinal", "vigenciaInicial", "texto");
 
 	}
 	
@@ -39,7 +39,7 @@ public class PublicidadeDAO  implements RestDAO<Publicidade> {
 
 		broker.setPropertySQL("publicidadedao.findallbyempresa",empresa.getKeyMobile());
 
-		return broker.getCollectionBean(Publicidade.class, "id", "tipoAgenda", "nome", "descricao", "imagem", "link", "preco","valor");
+		return broker.getCollectionBean(Publicidade.class, "id", "tipoAgenda", "nome", "descricao", "imagem", "link", "preco","valor", "texto");
 
 	}
 
