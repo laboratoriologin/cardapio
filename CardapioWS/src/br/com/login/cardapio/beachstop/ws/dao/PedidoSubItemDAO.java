@@ -24,6 +24,12 @@ public class PedidoSubItemDAO implements RestDAO<PedidoSubItem> {
 
 	}
 
+	public List<PedidoSubItem> getAllOuterStatus(Pedido pedido, Status status) {
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		broker.setPropertySQL("pedidosubitemdao.getbypedidostatus", pedido.getId(), status.getId());
+		return broker.getCollectionBean(PedidoSubItem.class, "id", "subItem.id", "quantidade");
+	}
+
 	@Override
 	public List<PedidoSubItem> getAll() {
 
@@ -54,7 +60,7 @@ public class PedidoSubItemDAO implements RestDAO<PedidoSubItem> {
 		return broker.getCollectionBean(PedidoSubItem.class, "id", "pedido.id", "quantidade", "subItem.id", "valorUnitario");
 
 	}
-	
+
 	public List<PedidoSubItem> getAll(Pedido pedido, Status status) {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();

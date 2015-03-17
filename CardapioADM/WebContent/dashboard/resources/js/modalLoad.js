@@ -20,7 +20,7 @@ function updateCompletedEventProgress(){
 	
 	if(nEventoTotal != 0){
 		nEventoAtual++;		
-		if( nEventoAtual == nEventoTotal)
+		if( nEventoAtual >= nEventoTotal)
 			closeModalLoad();
 		else
 			$( "#progressbar" ).progressbar({ value: (nEventoAtual * 100)/ nEventoTotal });

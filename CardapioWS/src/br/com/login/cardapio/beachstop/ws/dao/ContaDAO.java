@@ -18,7 +18,7 @@ public class ContaDAO implements RestDAO<Conta> {
 		broker.setPropertySQL("contadao.get", id);
 		Conta conta = (Conta) broker.getObjectBean(Conta.class, "cliente.id", "dataAbertura", "dataFechamento", "id", "numero", "qtdPessoa", "tipoConta");
 		if (conta != null) {
-			conta.setPedidoSubItens(new PedidoSubItemDAO().getAll(conta));			
+			conta.setPedidoSubItens(new PedidoSubItemDAO().getAll(conta));
 			conta.setValor(BigDecimal.ZERO);
 			for (PedidoSubItem pedidoSubItem : conta.getPedidoSubItens()) {
 				conta.setValor(conta.getValor().add(pedidoSubItem.getValorCalculado()));
@@ -27,25 +27,32 @@ public class ContaDAO implements RestDAO<Conta> {
 		}
 		return conta;
 	}
-	
-	public Conta getByNumeroAnalitico(Long numero){
-		Conta conta = getByMesa(numero);		
+
+	public Conta getAnalytic(Long id) {
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		broker.setPropertySQL("contadao.get", id);
+		Conta conta = (Conta) broker.getObjectBean(Conta.class, "cliente.id", "dataAbertura", "dataFechamento", "id", "numero", "qtdPessoa", "tipoConta");
+		return conta;
+	}
+
+	public Conta getByNumeroAnalitico(Long numero) {
+		Conta conta = getByMesa(numero);
 		if (conta != null) {
-			conta.setPedidoSubItens(new PedidoSubItemDAO().getAll(conta));			
+			conta.setPedidoSubItens(new PedidoSubItemDAO().getAll(conta));
 			conta.setValor(BigDecimal.ZERO);
 			for (PedidoSubItem pedidoSubItem : conta.getPedidoSubItens()) {
 				conta.setValor(conta.getValor().add(pedidoSubItem.getValorCalculado()));
 			}
 			conta.setValorPago(new PagamentoDAO().getValorTotalPagoByConta(conta).getValor());
-		}		
+		}
 		return conta;
 	}
-	
+
 	public Conta getByMesa(Long numero) {
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		broker.setPropertySQL("contadao.getbymesa", numero);
 		Conta conta = (Conta) broker.getObjectBean(Conta.class, "cliente.id", "dataAbertura", "dataFechamento", "id", "numero", "qtdPessoa", "tipoConta");
-		return conta;		
+		return conta;
 	}
 
 	public Conta getByNumeroTipoConta(Integer numero, Boolean tipoMesa, Boolean isAnalitico) {
@@ -91,7 +98,7 @@ public class ContaDAO implements RestDAO<Conta> {
 		broker.execute();
 	}
 
-	public Conta fecharConta(Conta model)throws TSApplicationException {
+	public Conta fecharConta(Conta model) throws TSApplicationException {
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		broker.setPropertySQL("contadao.updatefecharconta", model.getId());
 		broker.execute();

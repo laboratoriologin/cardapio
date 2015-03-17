@@ -21,12 +21,12 @@ public class PedidoDAO implements RestDAO<Pedido> {
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
 		broker.setPropertySQL("pedidodao.get", id);
-		
+
 		Pedido pedido = (Pedido) broker.getObjectBean(Pedido.class, "conta.id", "id", "observacao");
-		
+
 		pedido.setSubItens(new PedidoSubItemDAO().getAll(pedido));
-		
-		return pedido; 
+
+		return pedido;
 	}
 
 	@Override
@@ -38,6 +38,12 @@ public class PedidoDAO implements RestDAO<Pedido> {
 
 		return broker.getCollectionBean(Pedido.class, "conta.id", "id", "observacao");
 
+	}
+
+	public List<Pedido> getAllByOuterJoinStatus(Status status) {
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		broker.setPropertySQL("pedidodao.findallbyouterjoinstatus", status.getId());
+		return broker.getCollectionBean(Pedido.class, "id", "conta.id");
 	}
 
 	@Override
@@ -57,7 +63,7 @@ public class PedidoDAO implements RestDAO<Pedido> {
 
 			pedidoSubItem.setId(broker.getSequenceNextValue("dbo.pedidos_sub_itens"));
 
-			broker.setPropertySQL("pedidosubitemdao.insertbypedido", model.getId(), pedidoSubItem.getQuantidade(), pedidoSubItem.getSubItem().getId(), pedidoSubItem.getSubItem().getId(), pedidoSubItem.getKit() != null ? pedidoSubItem.getKit().getId() : null );
+			broker.setPropertySQL("pedidosubitemdao.insertbypedido", model.getId(), pedidoSubItem.getQuantidade(), pedidoSubItem.getSubItem().getId(), pedidoSubItem.getSubItem().getId(), pedidoSubItem.getKit() != null ? pedidoSubItem.getKit().getId() : null);
 
 			broker.execute();
 
@@ -122,43 +128,43 @@ public class PedidoDAO implements RestDAO<Pedido> {
 
 	public void cancelar(Pedido model, Usuario usuario) throws TSApplicationException {
 
-		if(model.getSubItens() == null || model.getSubItens().size() == 0)
+		if (model.getSubItens() == null || model.getSubItens().size() == 0)
 			model.setSubItens(new PedidoSubItemDAO().getAll(model));
-		
+
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		broker.beginTransaction();
-		
+
 		Log log;
 		for (PedidoSubItem pedidoSubItem : model.getSubItens()) {
 			log = new Log();
 			log.setPedidoSubItem(pedidoSubItem);
 			log.setStatus(new Status(Constantes.StatusPedido.CANCELADO));
 			log.setUsuario(usuario);
-			
+
 			new LogDAO().insert(log, broker);
 		}
-		
+
 		broker.endTransaction();
 	}
-	
+
 	public void aprovar(Pedido model, Usuario usuario) throws TSApplicationException {
 
-		if(model.getSubItens() == null || model.getSubItens().size() == 0)
+		if (model.getSubItens() == null || model.getSubItens().size() == 0)
 			model.setSubItens(new PedidoSubItemDAO().getAll(model));
-		
+
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		broker.beginTransaction();
-		
+
 		Log log;
 		for (PedidoSubItem pedidoSubItem : model.getSubItens()) {
 			log = new Log();
 			log.setPedidoSubItem(pedidoSubItem);
 			log.setStatus(new Status(Constantes.StatusPedido.PENDENTE_ENTREGA));
 			log.setUsuario(usuario);
-			
+
 			new LogDAO().insert(log, broker);
 		}
-		
+
 		broker.endTransaction();
 	}
 

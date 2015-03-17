@@ -37,16 +37,21 @@ body div.body {
 body div.footer {
 	width: 100%;
 	height: 2%;
-	text-align: center;
+	display: table;
 	background-image: url("../img/bg.png");
 	background-repeat: repeat;
+}
+
+body div.footer div{
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
 }
 
 body div.footer p {
 	font-family: Century Gothic;
 	color: #f2dbb3;
-	font-size: 13px;
-	padding-top: 3px;
+	font-size: 70%;	
 }
 
 /*
@@ -57,7 +62,7 @@ body div.footer p {
 *
 */
 #Date {
-	font-size: 12px;
+	font-size: 70%;
 	text-align: center;
 	font-family: Century Gothic;
 	color: white;
@@ -116,21 +121,48 @@ body div.body .direita {
 }
 
 .diviconetopoalerta {
-	text-align: center;
 	border-bottom: 2px solid #CFC4B1;
+	width: 100%;
+	height: 15%;
 }
 
-.diviconetopoalerta img {
-	height: 35px;
-	width: 50px;
+.diviconetopoalerta div{
+	height: 100%;
+	width: 100%; 
 }
 
-.diviconetopoalerta p {
+.diviconetopoalerta>div>p:nth-child(1) {
+	height: 65%;
+	text-align: center;	
+}
+
+.diviconetopoalerta>div>p:nth-child(1) img {
+	width: 40%	
+}
+
+.diviconetopoalerta>div>p:nth-child(2) {
 	text-align: center;
 	font-family: Century Gothic;
 	color: #4f3833;
-	font-size: 12px;
-	margin-bottom: 2px;
+	font-size: 92%;	
+}
+
+@media screen and (max-width: 1450px) {
+	.diviconetopoalerta>div>p:nth-child(1) {
+		display: none;	
+	}
+	.diviconetopoalerta>div>p:nth-child(2) {
+		padding-top: 10px;	
+	}
+}
+
+@media screen and (max-height: 660px) {
+	.diviconetopoalerta>div>p:nth-child(1) {
+		display: none;	
+	}
+	.diviconetopoalerta>div>p:nth-child(2) {
+		padding-top: 10px;	
+	}
 }
 
 .divalerta {
@@ -182,7 +214,7 @@ body div.body .direita {
 
 #maisitens, #maisitensfooter {
 	position: absolute;
-	bottom: 4px;
+	bottom: 5px;
 	width: 80px;
 	left: 50%;
 	margin-left: -40px;
@@ -224,41 +256,38 @@ body div.body .direita {
 }
 
 #pedidopronto {
-	height: 15%;
+	height: 17.49%;
 	font-family: Century Gothic;
 	color: #4f3833;
 }
 
 #alinhartexto {
 	padding-left: 35px;
-	padding-top: 12px;
-	padding-bottom: 12px;
-	height: 26px;
+	height: 20%;
 }
 
-@-moz-document url-prefix() { 
-	#alinhartexto {		
-		padding-top: 9px;
-		padding-bottom: 9px;		
-	}
-}
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-	#alinhartexto {		
-		padding-top: 10px;
-		padding-bottom: 10px;		
-	}
+#alinhartextoTopo {
+	padding-left: 35px;
+	height: 5%;
 }
 
 #alinhartexto>div:nth-child(1) {
+	float: left;	
+}
+
+#alinhartextoTopo>div:nth-child(1) {
 	float: left;
-	height: 100%;
+	margin-top: 0.3%;
+}
+
+#alinhartextoTopo>div:nth-child(2) {
+	float: left;
+	margin-top: 0.7%;	
 }
 
 #alinhartexto>div:nth-child(2) {
 	float: left;
-	height: 100%;
-	position: relative;
-	top: 22%;
+	margin-top: 0.4%;	
 }
 
 #alertapedidoentregue {
@@ -280,6 +309,7 @@ body div.body .direita {
 	height: 100%;
 	width: 8%;
 	position: relative;
+	margin-left: 10px;
 }
 
 .alertapedidoentrega {
@@ -315,12 +345,12 @@ body div.body .direita {
 }
 
 #container>div:nth-child(1)>div {
-	padding-top: 5px;
+	padding-top: 10px;
 	padding-left: 5px;
 	font-weight: bold;
 	font-size: 16px;
 	_font-size: 16px;
-	height: 88%;
+	/*height: 88%;*/
 	overflow: hidden;
 }
 
@@ -400,24 +430,84 @@ body div.body .direita {
 	border-top-left-radius: 0px;	
 }
 
-.error{
+.error {
 	color: red;
 }
 
-#pedidosAtuais{
-	height: 93%; 
-	width: 99%;
-	padding-left: 15px;
-	padding-top: 10px;
+#pedidosAtuais {
+	height: 94%; 
+	width: 100%;
 }
 
-.listaPedido{	
+.listaPedido {	
 	width: 350px;
 	background-color: #ebebeb;
 }
 
-.topoMesaPedido{
+.topoMesaPedido {
 	background-color: #ffffff;
 	padding: 15px 20px;
 	font-size: 20px;
+}
+
+.colunaMaior {
+	height: 100%; 
+	width: 415px; 
+	float: left;
+}
+
+.bordaEsquerda {
+	width: 400px;	
+	/*height: 160px;*/ 
+	float: right;
+}
+
+.divTamanhaReal {
+	background-color: #ebebeb; 
+	width: 100%;
+}
+
+.divTamanhaReal>div:nth-child(1) {
+	background-color: white; 
+	width: 100%		
+}
+
+.divTamanhaReal>div:nth-child(1)>div {
+	padding-top: 10px; 
+	padding-left: 10px; 
+	padding-bottom: 10px;
+}
+
+.divTamanhaReal>div:nth-child(1)>div>span {
+	font-family: Century Gothic; 
+	font-size: 25px;
+	color: #4f3833;
+}
+
+.divTamanhaReal>div:nth-child(2) {
+	display: table; 
+	height: 100%; 
+	width: 100%; 
+	font-size: 18px; 
+	font-family: Century Gothic;
+	color: #4f3833;	
+}
+
+.linhaSubItem {
+	display: table-row; 
+	height: auto; 
+	width: 100%;
+}
+
+.linhaSubItem>div {
+	display: table-cell; 
+	vertical-align: middle;
+}
+
+.linhaSubItem>div:nth-child(2) {
+	width: 80%;
+}
+
+.linhaSubItem>div>div {
+	padding: 10px;
 }

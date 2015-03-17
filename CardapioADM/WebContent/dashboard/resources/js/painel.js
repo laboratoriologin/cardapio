@@ -3,21 +3,19 @@
  */
 var templateAlertaPedidoEntregue;
 var templateAcao;
+var templateDivLinhaSubItem;
+var templateDivTable;
 $(document).ready(function() {
 	loadInit();
 });
 
 function loadInit(){
 	
-	startModalLoad(5);
+	startModalLoad(8);
 	
 	$("#maisitens2").hide();
 	$("#maisitens").hide();
 	$("#maisitensfooter").hide();
-
-	var wall = new freewall("#containerPedidos");
-	//wall.fitZone($("#pedidosAtuais").width() - 30 , $("#pedidosAtuais").height() - 30);
-	wall.fitWidth();
 	
 	loadData();
 }
@@ -120,7 +118,203 @@ function getAlertaPedidoEntregue(){
 	});
 }
 
+function getPedidosNaoFinalizado(){
+	$.getJSON(url + "pedidos/pedidosnaoconcluido/", function(data) {
+		var pedido;
+		var divColuna = createDivColunaMaior();
+		
+		for (var i = 0; i < data.length; i++) {
+			pedido = data[i];
+			console.log(i);
+			
+			if(crateDivPedidos(pedido, false, divColuna) == "0"){
+				console.log(divColuna);
+				break;
+			}
+				
+		}
+		
+		updateCompletedEventProgress();
+	}).fail(function() {
+		console.log("error");
+		updataMsgErro();
+	});
+}
+
+
+/*
+ * Retornos:
+ * 
+ * 0 - break
+ * 1 - sucesso
+ * */
+function crateDivPedidos(pedido, novaDivColunaMaior, divColuna){
+	
+	var divPedido;
+	var divRowSubItem;
+	var pedidoSubItem;
+	
+	if(novaDivColunaMaior){
+		divColuna = createDivColunaMaior();
+	}
+	
+	if(divColuna == false){
+		console.log(divColuna);
+		//Colocar o simbolo que exitem mais pedidos do que a tela possa imprimi
+		return "0";
+	}else{
+		divPedido = createDivPedido(divColuna, pedido.pedido.conta.numero);
+		
+		if(divPedido == false){
+			//console.log(divPedido);
+			//crateDivPedidos(pedido, true, divColuna);
+		}else{
+			if(Array.isArray(pedido.pedido.subItens)){
+				for (var j = 0; j < pedido.pedido.subItens.length; j++) {
+					pedidoSubItem = pedido.pedido.subItens[j];				
+					divRowSubItem = createRowSubItem(divColuna, divPedido, pedidoSubItem.quantidade, pedidoSubItem.subItem.item.nome + " - " +  pedidoSubItem.subItem.nome, "1");				
+					if(divRowSubItem == false){
+						//Colocar o simbolo que exitem mais pedidos do que a tela possa imprimi
+						break;
+					}
+				}
+			}else{
+				pedidoSubItem = pedido.pedido.subItens;				
+				divRowSubItem = createRowSubItem(divColuna, divPedido, pedidoSubItem.quantidade, pedidoSubItem.subItem.item.nome + " - " +  pedidoSubItem.subItem.nome, "1");				
+				if(divRowSubItem == false){
+					//Colocar o simbolo que exitem mais pedidos do que a tela possa imprimi
+				}
+			}
+			
+			$(divPedido).height(($("#divTamanhaReal", divPedido).height() + 20));
+			return "1";
+		}
+	}
+}
+
+var widthDivColunaParcial = 0;
+var widthDivColunaPrevisao = 0;
+var qtdDivColuna = 0;
+function createDivColunaMaior() {
+	var widthDivColunaTotal = $("#pedidosAtuais").width();
+	
+	if( (widthDivColunaParcial + widthDivColunaPrevisao) >= widthDivColunaTotal){
+		//alert("não cabe mais uma coluna");
+		console.log("não cabe mais uma coluna");
+		return false;				
+	}else if( widthDivColunaParcial < widthDivColunaTotal){
+		qtdDivColuna++;
+		
+		var divColuna = jQuery('<div/>', {
+		    id: 'coluna_' + qtdDivColuna,
+		    class: 'colunaMaior'		    
+		});
+		
+		divColuna.appendTo('#pedidosAtuais');
+		widthDivColunaParcial += $("#coluna_" + qtdDivColuna).width();
+		widthDivColunaPrevisao = $("#coluna_" + qtdDivColuna).width();
+		
+		return divColuna;		
+	}
+}
+
+
+var heightDivPedidoParcial = 0;
+var heightDivPedidoPrevisao = 0;
+var qtdDivPedido = 0;
+function createDivPedido(divColuna, numeroMesa){
+	var heightDivPedidoTotal= $("#pedidosAtuais").height();
+	
+	if( (heightDivPedidoParcial + heightDivPedidoPrevisao) >= heightDivPedidoTotal){
+		//alert("não cabe mais pedido na coluna");
+		console.log("não cabe mais pedido na coluna");
+		return false;				
+	}else if( heightDivPedidoParcial < heightDivPedidoTotal){
+		qtdDivPedido++;
+		
+		var divPedido = templateDivTable.clone();
+		divPedido.attr("id", "divPedido_" + qtdDivColuna + "_" + qtdDivPedido);
+		$("#numeroMesa", divPedido).html(numeroMesa);
+				
+
+		divColuna.append(divPedido);
+		heightDivPedidoParcial += $("#divPedido_" + qtdDivColuna + "_" + qtdDivPedido).height();
+		heightDivPedidoPrevisao = $("#divPedido_" + qtdDivColuna + "_" + qtdDivPedido).height();
+		
+		return divPedido;		
+	}
+}
+
+var heightDivRowSubItemParcial = 0;
+var heightDivRowSubItemPrevisao = 0;
+var qtdDivRowSubItem = 0;
+function createRowSubItem(divColuna, divPedido, qtd, descricao, img){
+	var heightDivRowSubItemTotal= divColuna.height() - $("#cabecalho").height();;
+	
+	if( (heightDivRowSubItemParcial + heightDivRowSubItemPrevisao) >= heightDivRowSubItemTotal){
+		//alert("não cabe linha na tabela do pedido");
+		console.log("não cabe linha na tabela do pedido");
+		return false;				
+	}else if( heightDivRowSubItemParcial < heightDivRowSubItemTotal){
+		qtdDivRowSubItem++;
+		
+		var divRowSubItem = templateDivLinhaSubItem.clone();
+		divRowSubItem.attr("id", "divRowSubItem_" + qtdDivColuna + "_" + qtdDivPedido + "_" + qtdDivRowSubItem);
+		$("#qtd", divRowSubItem).html(qtd);
+		$("#descricao", divRowSubItem).html(descricao);
+		
+		switch (img) {
+		    case "1":
+		        text = "Pedente Validação";
+		        src = "resources/img/icone_confirmar_marrom.png"
+		        break; 
+		    case "2":
+		        text = "Em produção";
+		        src = "resources/img/icone_preparo_marrom.png"
+		        break;
+		    default: 
+		        text = "";
+		    	src = "";
+		}
+		
+		var htmlImg = $('<img />',
+	             { id: 'icone_' + qtdDivColuna + "_" + qtdDivPedido + "_" + qtdDivRowSubItem,
+	               src: src,
+	               align: 'middle',
+	               alt: text
+	             });
+		
+		$("#icone", divRowSubItem).append(htmlImg);
+				
+
+		$("#divLinhasSubItem", divPedido).append(divRowSubItem);
+		heightDivRowSubItemParcial += $("#divRowSubItem_" + qtdDivColuna + "_" + qtdDivPedido + "_" + qtdDivRowSubItem).height();
+		heightDivRowSubItemPrevisao = $("#divRowSubItem_" + qtdDivColuna + "_" + qtdDivPedido + "_" + qtdDivRowSubItem).height();
+		
+		return divRowSubItem;		
+	}
+}
+
+
 function loadData(){
+	
+	$.get('resources/templates/pedido/divLinhaSubItem.xhtml', function(data) {
+		templateDivLinhaSubItem = $(data);
+		updateCompletedEventProgress();
+	}).done(function() {
+		$.get('resources/templates/pedido/divTabela.xhtml', function(data) {
+			templateDivTable = $(data);
+			updateCompletedEventProgress();
+		}).done(function() {
+			getPedidosNaoFinalizado();
+		}).fail(function() {
+			console.log("error");
+			updataMsgErro();
+		});
+	}).fail(function() {
+		console.log("error");
+		updataMsgErro();
+	});
 	
 	$.get('resources/templates/alertaacao.xhtml', function(data) {
 		templateAcao = $(data);

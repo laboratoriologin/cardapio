@@ -15,10 +15,12 @@ import org.jboss.resteasy.annotations.Form;
 
 import br.com.login.cardapio.beachstop.ws.dao.AcaoContaDAO;
 import br.com.login.cardapio.beachstop.ws.dao.ContaDAO;
+import br.com.login.cardapio.beachstop.ws.dao.ItemDAO;
 import br.com.login.cardapio.beachstop.ws.dao.KitDAO;
 import br.com.login.cardapio.beachstop.ws.dao.LogDAO;
 import br.com.login.cardapio.beachstop.ws.dao.PedidoDAO;
 import br.com.login.cardapio.beachstop.ws.dao.PedidoSubItemDAO;
+import br.com.login.cardapio.beachstop.ws.dao.StatusDAO;
 import br.com.login.cardapio.beachstop.ws.dao.SubItemDAO;
 import br.com.login.cardapio.beachstop.ws.exception.ApplicationException;
 import br.com.login.cardapio.beachstop.ws.model.Acao;
@@ -41,6 +43,31 @@ public class PedidoService extends RestService<Pedido> {
 	@Override
 	public void initDAO() {
 		this.restDAO = new PedidoDAO();
+	}
+
+	@GET
+	@Path("pedidosnaoconcluido/")
+	@Produces("application/json; charset=UTF-8")
+	public List<Pedido> get() {
+
+		List<Pedido> pedidos = new PedidoDAO().getAllByOuterJoinStatus(new Status(3l));
+		ContaDAO contaDAO = new ContaDAO();
+		PedidoSubItemDAO pedidoSubItemDAO = new PedidoSubItemDAO();
+		ItemDAO itemDAO = new ItemDAO();
+		SubItemDAO subItemDAO = new SubItemDAO();
+		StatusDAO statusDAO = new StatusDAO();
+
+		for (Pedido pedido : pedidos) {
+			pedido.setConta(contaDAO.getAnalytic(pedido.getConta().getId()));
+			pedido.setSubItens(pedidoSubItemDAO.getAllOuterStatus(pedido, new Status(3l)));
+
+			for (PedidoSubItem pedidoSubItem : pedido.getSubItens()) {
+				pedidoSubItem.setSubItem(subItemDAO.get(pedidoSubItem.getSubItem().getId()));
+				pedidoSubItem.getSubItem().setItem(itemDAO.get(pedidoSubItem.getSubItem().getItem().getId()));
+			}
+		}
+
+		return pedidos;
 	}
 
 	@Override
@@ -83,27 +110,27 @@ public class PedidoService extends RestService<Pedido> {
 		Kit kit;
 		KitDAO kitDAO = new KitDAO();
 		SubItemDAO subItemDAO = new SubItemDAO();
-		
-		for(PedidoSubItem pedidoSubItem : form.getSubItens()){
-			if(pedidoSubItem.getKit() != null){
+
+		for (PedidoSubItem pedidoSubItem : form.getSubItens()) {
+			if (pedidoSubItem.getKit() != null) {
 				kit = kitDAO.get(pedidoSubItem.getKit().getId());
-				
-				for(KitSubItem kitSubItem : kit.getKitSubItens()){
+
+				for (KitSubItem kitSubItem : kit.getKitSubItens()) {
 					subItem = subItemDAO.get(kitSubItem.getSubItem().getId());
-					
+
 					pedidoSubItemKit = new PedidoSubItem();
 					pedidoSubItemKit.setKit(kit);
 					pedidoSubItemKit.setPedido(form);
 					pedidoSubItemKit.setQuantidade(Integer.valueOf(kitSubItem.getQtd().toString()));
 					pedidoSubItemKit.setSubItem(subItem);
-					
+
 					pedidoSubItemFinal.add(pedidoSubItemKit);
 				}
-			}else{
+			} else {
 				pedidoSubItemFinal.add(pedidoSubItem);
 			}
 		}
-		
+
 		form.setSubItens(pedidoSubItemFinal);
 		final boolean pedidoPeloGarcom = form.getUsuario() != null;
 		Status status = new Status();
@@ -119,11 +146,11 @@ public class PedidoService extends RestService<Pedido> {
 
 		if (form.getUsuario() == null) {
 			form.setUsuario(new Usuario());
-		}else{
+		} else {
 			form.setConta(new ContaDAO().getByMesa(form.getNumero()));
 		}
-		
-		super.insert(form);		
+
+		super.insert(form);
 		this.gerarLog(form, status);
 		this.gerarAcaoConta(form);
 		return new Pedido();
@@ -134,27 +161,27 @@ public class PedidoService extends RestService<Pedido> {
 	@Path("/{id}")
 	@Produces("application/json; charset=UTF-8")
 	public Pedido update(@Form Pedido form, @PathParam("id") Long id) throws ApplicationException {
-		
+
 		form.setId(id);
 
 		Pedido pedidoAnterior = new PedidoDAO().get(id);
-		Pedido pedidoCancelado = new PedidoDAO().get(id); 
+		Pedido pedidoCancelado = new PedidoDAO().get(id);
 		PedidoSubItemDAO pedidoSubItemDAO = new PedidoSubItemDAO();
 		SubItem subItem;
-		
-		if(pedidoCancelado.getSubItens().removeAll(form.getSubItens())){
+
+		if (pedidoCancelado.getSubItens().removeAll(form.getSubItens())) {
 			pedidoCancelado.setUsuario(form.getUsuario());
-			gerarLog(pedidoCancelado, new Status(Constantes.StatusPedido.CANCELADO));			
+			gerarLog(pedidoCancelado, new Status(Constantes.StatusPedido.CANCELADO));
 		}
-		
-		try {		
+
+		try {
 			for (PedidoSubItem pedidoSubItem : form.getSubItens()) {
-				if(pedidoAnterior.getSubItens().contains(pedidoSubItem))
+				if (pedidoAnterior.getSubItens().contains(pedidoSubItem))
 					pedidoSubItemDAO.update(pedidoSubItem);
-				else{
-					
+				else {
+
 					subItem = new SubItemDAO().get(pedidoSubItem.getSubItem().getId());
-					
+
 					pedidoSubItem.setPedido(form);
 					pedidoSubItem.setSubItem(subItem);
 					pedidoSubItem.setValorUnitario(subItem.getValor());
@@ -163,11 +190,11 @@ public class PedidoService extends RestService<Pedido> {
 			}
 			gerarLog(form, new Status(Constantes.StatusPedido.PENDENTE_ENTREGA));
 			new AcaoContaDAO().finalizarAcaoConta(form.getUsuario().getId(), form.getAcaoContaId());
-			
+
 		} catch (TSApplicationException e) {
 			e.printStackTrace();
 		}
-		
+
 		return new Pedido();
 	}
 
@@ -195,7 +222,7 @@ public class PedidoService extends RestService<Pedido> {
 			throw new ApplicationException(ex.getMessage(), Response.SC_INTERNAL_SERVER_ERROR);
 		}
 	}
-	
+
 	@PUT
 	@Path("/cancelar/{id}")
 	@Produces("application/json; charset=UTF-8")
@@ -217,20 +244,20 @@ public class PedidoService extends RestService<Pedido> {
 		}
 		return pedido;
 	}
-	
-	private void gerarAcaoConta(Pedido pedido){
-		
+
+	private void gerarAcaoConta(Pedido pedido) {
+
 		AcaoConta acaoConta = new AcaoConta();
 		acaoConta.setConta(pedido.getConta());
 		acaoConta.setAcao(new Acao(Constantes.Acoes.NovoPedido.toString()));
-		
-		if(pedido.getUsuario() == null)
+
+		if (pedido.getUsuario() == null)
 			acaoConta.setUsuario(new Usuario());
 		else
 			acaoConta.setUsuario(pedido.getUsuario());
-		
+
 		acaoConta.setPedido(pedido);
-		
+
 		try {
 			new AcaoContaDAO().insert(acaoConta);
 		} catch (Exception ex) {
