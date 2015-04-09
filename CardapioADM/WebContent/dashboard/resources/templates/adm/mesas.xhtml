@@ -1,0 +1,77 @@
+<div class="page">
+	<input type="hidden" value="#{param['idSetor']}" id="setorId" />
+
+	<div id="dialog-abrirconta" title="Nova Conta">
+		<input type="hidden" value="" id="numeroMesaNovaConta" />
+		<p>
+			<span class="ui-icon ui-icon-alert"></span>Não foi encontrado uma conta para essa mesa, deseja criar uma nova conta?
+		</p>
+		<br />
+		<p>
+			<span class="ui-icon ui-icon-bullet"></span>Escolha o tipo de conta:
+		</p>
+		<p>
+			<select id="tipoConta" style="margin-top: 5px;">
+				<option value="0">Mesa</option>
+				<option value="1">Comanda</option>
+			</select>
+		</p>
+	</div>
+
+	<div id="dialog-historicoconta" title="Gerenciar Mesa">
+		<input type="hidden" value="" id="numeroMesaHistorico" />
+
+		<div style="margin-top: 1%; margin-bottom: 2%; overflow: hidden;">
+			<div style="float: left;">
+				<input type="text" style="width: 30px;" placeholder="Qtd" name="qtd" id="qtd" /> <input type="text" style="width: 400px;" placeholder="Item" name="produto" id="produto" /> <button>Add</button>
+			</div>
+			<div style="float: right;">
+				<button>Fechar Conta</button>
+			</div>
+		</div>
+
+		<div style="height: 85%;">
+			<div style="overflow: auto; height: 100%; float: left; width: 65%;">
+				<table class="reference" style="width: 100%;">
+					<tr>
+						<th>QTD</th>
+						<th>Produto</th>
+						<th>Status</th>
+						<th></th>
+					</tr>
+					<tr>
+						<th colspan="4" class="agrupador">Pedido 2</th>
+					</tr>
+					<tr>
+						<td>99</td>
+						<td>Pastel de Camarão não sei mais lá o que</td>
+						<td>Em produção</td>
+						<td><div style="display: flex;"><span class="ui-icon ui-icon-pencil"></span><span class="ui-icon  ui-icon-trash"></span></div></td>
+					</tr>
+				</table>
+			</div>
+
+			<div style="overflow: auto; height: 100%; float: right; width: 30%;">
+				<table class="reference" style="width: 100%;">
+					<tr>
+						<th>QTD</th>
+						<th>Produto</th>						
+					</tr>					
+					<tr>
+						<td>99</td>
+						<td>Pastel de Camarão não sei mais lá o que</td>						
+					</tr>
+					<tr>
+						<td>99</td>
+						<td>Pastel de Camarão não sei mais lá o que</td>						
+					</tr>
+				</table>
+			</div>
+
+		</div>
+	</div>
+
+	<div id="bodyMesas" class="page"></div>
+
+	<script type="text/javascript" src="resources/templates/adm/mesas.js" />
+</div>

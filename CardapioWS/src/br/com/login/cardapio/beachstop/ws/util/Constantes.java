@@ -25,5 +25,6 @@ public final class Constantes {
     	Long ChamarGarcom = 3l;
     	Long PedirConta = 4l;
     	Long NovoPedido = 5l;
+    	Long MudarMesa = 6l;
     }
 }

@@ -25,6 +25,7 @@ import br.com.login.cardapio.beachstop.ws.dao.SubItemDAO;
 import br.com.login.cardapio.beachstop.ws.exception.ApplicationException;
 import br.com.login.cardapio.beachstop.ws.model.Acao;
 import br.com.login.cardapio.beachstop.ws.model.AcaoConta;
+import br.com.login.cardapio.beachstop.ws.model.Area;
 import br.com.login.cardapio.beachstop.ws.model.Kit;
 import br.com.login.cardapio.beachstop.ws.model.KitSubItem;
 import br.com.login.cardapio.beachstop.ws.model.Pedido;
@@ -49,22 +50,28 @@ public class PedidoService extends RestService<Pedido> {
 	@Path("pedidosnaoconcluido/")
 	@Produces("application/json; charset=UTF-8")
 	public List<Pedido> get() {
-
 		List<Pedido> pedidos = new PedidoDAO().getAllByOuterJoinStatus(new Status(3l));
-		ContaDAO contaDAO = new ContaDAO();
 		PedidoSubItemDAO pedidoSubItemDAO = new PedidoSubItemDAO();
-		ItemDAO itemDAO = new ItemDAO();
-		SubItemDAO subItemDAO = new SubItemDAO();
-		StatusDAO statusDAO = new StatusDAO();
 
 		for (Pedido pedido : pedidos) {
-			pedido.setConta(contaDAO.getAnalytic(pedido.getConta().getId()));
 			pedido.setSubItens(pedidoSubItemDAO.getAllOuterStatus(pedido, new Status(3l)));
+		}
 
-			for (PedidoSubItem pedidoSubItem : pedido.getSubItens()) {
-				pedidoSubItem.setSubItem(subItemDAO.get(pedidoSubItem.getSubItem().getId()));
-				pedidoSubItem.getSubItem().setItem(itemDAO.get(pedidoSubItem.getSubItem().getItem().getId()));
-			}
+		return pedidos;
+	}
+
+	@GET
+	@Path("pedidosafazer/{id}")
+	@Produces("application/json; charset=UTF-8")
+	public List<Pedido> getPedidoCozinha(@PathParam("id") String id) {
+		
+		Area area = new Area(id);
+		
+		List<Pedido> pedidos = new PedidoDAO().getAllByAreaAndStatus(area, new Status(2l));
+		PedidoSubItemDAO pedidoSubItemDAO = new PedidoSubItemDAO();
+
+		for (Pedido pedido : pedidos) {
+			pedido.setSubItens(pedidoSubItemDAO.getAllPedidoStatusArea(pedido, new Status(2l), area));
 		}
 
 		return pedidos;
@@ -217,6 +224,32 @@ public class PedidoService extends RestService<Pedido> {
 			return form;
 		} catch (TSApplicationException ex) {
 			throw new ApplicationException(ex.getMessage(), Response.SC_BAD_REQUEST);
+		} catch (TSSystemException ex) {
+			ex.printStackTrace();
+			throw new ApplicationException(ex.getMessage(), Response.SC_INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@PUT
+	@Path("/pedidopronto/usuario/{id}/pedidosubitem/{pedido_sub_item_id}/pedido/{pedido_id}")
+	@Produces("application/json; charset=UTF-8")
+	public Pedido pedidoPronto(@PathParam("id") String usuarioId, @PathParam("pedido_sub_item_id") String pedidoSubItemId,  @PathParam("pedido_id") String pedidoId) throws ApplicationException {
+		
+		try {
+			
+			Pedido pedido = new Pedido(pedidoId);
+			pedido.setUsuario(new Usuario(usuarioId));
+			pedido.setSubItens(new ArrayList<PedidoSubItem>());
+			PedidoSubItem pedidoSubItem;
+			for (String  strPedidoSubItemId : pedidoSubItemId.split(",")) {
+				pedidoSubItem = new PedidoSubItem(strPedidoSubItemId);
+				pedido.getSubItens().add(pedidoSubItem);
+			}
+			
+			gerarLog(pedido, new Status(3l));
+			
+			return new Pedido();
+			
 		} catch (TSSystemException ex) {
 			ex.printStackTrace();
 			throw new ApplicationException(ex.getMessage(), Response.SC_INTERNAL_SERVER_ERROR);

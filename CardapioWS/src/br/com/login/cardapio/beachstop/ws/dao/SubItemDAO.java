@@ -21,6 +21,15 @@ public class SubItemDAO implements RestDAO<SubItem> {
 		return (SubItem) broker.getObjectBean(SubItem.class, "codigo", "descricao", "flagAtivo", "id", "item.id", "nome", "ordem", "valor");
 
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<SubItem> getAll(String autoComplete) {
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		autoComplete = "%" + autoComplete + "%";
+		broker.setPropertySQL("subitemdao.findallbyautocomplete", autoComplete);
+		List<SubItem> listaSubItem = broker.getCollectionBean(SubItem.class, "item.id", "item.nome", "codigo", "nome", "id");
+		return listaSubItem;
+	}
 
 	@Override
 	public List<SubItem> getAll() {

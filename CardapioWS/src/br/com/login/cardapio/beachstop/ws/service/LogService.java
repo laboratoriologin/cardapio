@@ -27,6 +27,6 @@ public class LogService extends RestService<Log> {
 	@Produces("application/json; charset=UTF-8")
 	public List<Log> getAllByStatus(@PathParam("statusId") String statusId) {
 		Status status = new Status(statusId);
-		return new LogDAO().getAll(status);
+		return new LogDAO().getAll(status, "10000000000000");
 	}
 }

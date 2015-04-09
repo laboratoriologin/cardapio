@@ -21,6 +21,7 @@ import br.com.login.cardapio.beachstop.ws.dao.UsuarioSetorDAO;
 import br.com.login.cardapio.beachstop.ws.exception.ApplicationException;
 import br.com.login.cardapio.beachstop.ws.model.Acao;
 import br.com.login.cardapio.beachstop.ws.model.AcaoConta;
+import br.com.login.cardapio.beachstop.ws.model.Conta;
 import br.com.login.cardapio.beachstop.ws.model.Pedido;
 import br.com.login.cardapio.beachstop.ws.model.Usuario;
 import br.com.login.cardapio.beachstop.ws.model.UsuarioSetor;
@@ -36,10 +37,22 @@ public class AcaoContaService extends RestService<AcaoConta> {
 		this.restDAO = new AcaoContaDAO();
 	}
 
+	// @GET
+	// @Path("/acao/{acaoId}")
+	// @Produces("application/json; charset=UTF-8")
+	// public List<AcaoConta> getlOpenByTipoAcao(@PathParam("acaoId") String
+	// acaoId) {
+	//
+	// if (acaoId != null && !acaoId.isEmpty())
+	// return new AcaoContaDAO().getOpenByTipoConta(acaoId);
+	// else
+	// return new ArrayList<AcaoConta>();
+	// }
+
 	@GET
 	@Path("/acao/{acaoId}")
 	@Produces("application/json; charset=UTF-8")
-	public List<AcaoConta> getlOpenByTipoAcao(@PathParam("acaoId") String acaoId) {
+	public List<AcaoConta> getAlllOpenByTipoAcao(@PathParam("acaoId") String acaoId) {
 
 		if (acaoId != null && !acaoId.isEmpty())
 			return new AcaoContaDAO().getOpenByTipoConta(acaoId);
@@ -142,6 +155,27 @@ public class AcaoContaService extends RestService<AcaoConta> {
 		try {
 			new AcaoContaDAO().updateResolverAcao(form);
 			new PedidoDAO().aprovar(form.getPedido(), form.getUsuario());
+			return form;
+		} catch (TSApplicationException ex) {
+			throw new ApplicationException(ex.getMessage(), Response.SC_BAD_REQUEST);
+		} catch (TSSystemException ex) {
+			throw new ApplicationException(ex.getMessage(), Response.SC_INTERNAL_SERVER_ERROR);
+		}
+	}
+
+	@POST
+	@Path("/mudarmesa/{mesa_para}")
+	@Produces("application/json; charset=UTF-8")
+	public AcaoConta mudarMesa(@Form AcaoConta form, @PathParam("mesa_para") Integer mesaPara) throws ApplicationException {
+
+		try {
+			form.setAcao(new Acao(Constantes.Acoes.MudarMesa.toString()));
+			form.setPedido(new Pedido());
+			form = new AcaoContaDAO().insert(form);
+			
+			form.getConta().setNumero(mesaPara);
+			
+			new ContaDAO().updateMesa(form.getConta());
 			return form;
 		} catch (TSApplicationException ex) {
 			throw new ApplicationException(ex.getMessage(), Response.SC_BAD_REQUEST);

@@ -44,27 +44,26 @@ public class LogDAO implements RestDAO<Log> {
 
 	}
 
-	public List<Log> getAll(Status status) {
+	public List<Log> getAll(Status status, String filtroMinuto) {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("logdao.findallbystatus", status.getId());
 
-		List<Log> listLog = broker.getCollectionBean(Log.class, "horario", "id", "pedidoSubItem.id", "status.id", "usuario.id");
+		StringBuilder sql = new StringBuilder(" SELECT C.NUMERO, I.NOME, SI.NOME ");
+					                 sql.append(" FROM LOGS AS L ")
+					              .append(" INNER JOIN PEDIDOS_SUB_ITENS AS PSI ON PSI.ID = L.PEDIDO_SUB_ITEM_ID ")
+					              .append(" INNER JOIN SUB_ITENS AS SI ON SI.ID = PSI.SUB_ITEM_ID ")
+					              .append(" INNER JOIN ITENS AS I ON I.ID = SI.ITEM_ID ")
+					              .append(" INNER JOIN PEDIDOS AS P ON P.ID = PSI.PEDIDO_ID ")
+					              .append(" INNER JOIN CONTAS AS C ON C.ID = P.CONTA_ID  ")
+					              .append(" WHERE DATEDIFF(MINUTE, HORARIO, GETDATE()) <= ").append(filtroMinuto) 
+					                .append(" GROUP BY C.NUMERO, I.NOME, SI.NOME ")
+					                 .append("  HAVING MAX(L.STATUS_ID) = ").append(status.getId());
+					                 
+     	broker.setSQL(sql.toString());
+					                  
+		List<Log> listLog = broker.getCollectionBean(Log.class, "pedidoSubItem.pedido.conta.numero", "pedidoSubItem.subItem.item.nome", "pedidoSubItem.subItem.nome");
 
-		PedidoSubItemDAO pedidoSubItemDAO = new PedidoSubItemDAO();
-		PedidoDAO pedidoDAO = new PedidoDAO();
-		ContaDAO conta = new ContaDAO();
-		SubItemDAO subItemDAO = new SubItemDAO();
-		ItemDAO itemDAO = new ItemDAO();
-
-		for (Log log : listLog) {
-			log.setPedidoSubItem(pedidoSubItemDAO.get(log.getPedidoSubItem().getId()));
-			log.getPedidoSubItem().setPedido(pedidoDAO.get(log.getPedidoSubItem().getPedido().getId()));
-			log.getPedidoSubItem().getPedido().setConta(conta.get(log.getPedidoSubItem().getPedido().getConta().getId()));
-			log.getPedidoSubItem().setSubItem(subItemDAO.get(log.getPedidoSubItem().getSubItem().getId()));
-			log.getPedidoSubItem().getSubItem().setItem(itemDAO.get(log.getPedidoSubItem().getSubItem().getItem().getId()));
-		}
 		return listLog;
 	}
 

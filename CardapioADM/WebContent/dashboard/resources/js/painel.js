@@ -17,10 +17,10 @@ function loadInit(){
 	$("#maisitens").hide();
 	$("#maisitensfooter").hide();
 	
-	loadData();
+	loadData();	
 }
 
-function getAcaoFecharConta(){
+function getAcaoFecharConta(atualizaProgress){
 	var heightDivTotal = $("#alertaAcaoFecharPedido").height() - $(".diviconetopoalerta").height();
 	var heightDivParcial = 0;
 	var heightDivPrevisao = 0;
@@ -28,6 +28,9 @@ function getAcaoFecharConta(){
 	$.getJSON(url + "acoes_contas/acao/4", function(data) {
 		var acaoConta;
 		var alertaAcao;
+		
+		$(".divalerta", $("#alertaAcaoFecharPedido")).remove();
+		
 		for (i = 0; i < data.length; i++) {
 			if( (heightDivParcial + heightDivPrevisao) >= heightDivTotal){
 				$("#maisitensspan").html("+ " + (data.length - i) + " Itens");
@@ -46,17 +49,19 @@ function getAcaoFecharConta(){
 			}
 		}
 		
-		updateCompletedEventProgress();
-	}).fail(function() {
-		console.log("error");
+		if(atualizaProgress)
+			updateCompletedEventProgress();
+	}).fail(function() {		
 		updataMsgErro();
 	});
 }
 
-function getAcaoSolicitarGarcom(){
+function getAcaoSolicitarGarcom(atualizaProgress){
 	var heightDivTotal = $("#alertaSolicitarGarcom").height() - $(".diviconetopoalerta").height();
 	var heightDivParcial = 0;
 	var heightDivPrevisao = 0;
+	
+	$(".divalerta", $("#alertaSolicitarGarcom")).remove();
 	
 	$.getJSON(url + "acoes_contas/acao/3", function(data) {
 		var acaoConta;
@@ -79,14 +84,14 @@ function getAcaoSolicitarGarcom(){
 			}
 		}
 		
-		updateCompletedEventProgress();
-	}).fail(function() {
-		console.log("error");
+		if(atualizaProgress)
+			updateCompletedEventProgress();
+	}).fail(function() {		
 		updataMsgErro();
 	});
 }
 
-function getAlertaPedidoEntregue(){
+function getAlertaPedidoEntregue(atualizaProgress){
 	var widthDivTotal = $("#alertapedidoentregue").width();
 	var widthDivParcial = 0;
 	var widthDivPrevisao = 0;
@@ -94,6 +99,9 @@ function getAlertaPedidoEntregue(){
 	$.getJSON(url + "logs/status/3", function(data) {
 		var log;
 		var alertaLog;
+		
+		$(".alertapedidoentrega1").remove();
+		
 		for (i = 0; i < data.length; i++) {
 			if( (widthDivParcial + widthDivPrevisao) >= widthDivTotal){
 				$("#maisitens2span").html("+ " + (data.length - i));
@@ -111,32 +119,42 @@ function getAlertaPedidoEntregue(){
 			}
 		}
 		
-		updateCompletedEventProgress();
-	}).fail(function() {
-		console.log("error");
+		if(atualizaProgress)
+			updateCompletedEventProgress();
+		
+	}).fail(function() {		
 		updataMsgErro();
 	});
 }
 
-function getPedidosNaoFinalizado(){
+var divColuna;
+function getPedidosNaoFinalizado(atualizaProgress){
 	$.getJSON(url + "pedidos/pedidosnaoconcluido/", function(data) {
-		var pedido;
-		var divColuna = createDivColunaMaior();
+		var pedido = null;
+		
+		consumoWidthDivPedidoAtuais = 0;
+		previsaoConsumoWidthDivPedidoAtuais = 0;
+		qtdDivColuna = 0;
+		consumoHeightDivColuna2 = 0;
+		qtdDivPedido = 0;	
+		consumoHeightDivColuna = 0;
+		previsaoConsumoHeightDivColuna = 0;
+		qtdDivRowSubItem = 0;
+		
+		$(".colunaMaior").remove();
+		
+		divColuna = createDivColunaMaior();
 		
 		for (var i = 0; i < data.length; i++) {
-			pedido = data[i];
-			console.log(i);
-			
-			if(crateDivPedidos(pedido, false, divColuna) == "0"){
-				console.log(divColuna);
-				break;
-			}
-				
+			pedido = data[i];			
+			if(crateDivPedidos(pedido) == 0)
+				//Colocar o simbolo que exitem mais pedidos do que a tela possa imprimi
+				break;			
 		}
-		
-		updateCompletedEventProgress();
+
+		if(atualizaProgress)
+			updateCompletedEventProgress();
 	}).fail(function() {
-		console.log("error");
 		updataMsgErro();
 	});
 }
@@ -148,61 +166,73 @@ function getPedidosNaoFinalizado(){
  * 0 - break
  * 1 - sucesso
  * */
-function crateDivPedidos(pedido, novaDivColunaMaior, divColuna){
-	
-	var divPedido;
-	var divRowSubItem;
-	var pedidoSubItem;
-	
-	if(novaDivColunaMaior){
-		divColuna = createDivColunaMaior();
-	}
+function crateDivPedidos(pedido){
 	
 	if(divColuna == false){
-		console.log(divColuna);
-		//Colocar o simbolo que exitem mais pedidos do que a tela possa imprimi
-		return "0";
+		return 0;
 	}else{
-		divPedido = createDivPedido(divColuna, pedido.pedido.conta.numero);
+		var divPedido = createDivPedido("Mesa " + pedido.pedido.conta.numero);
 		
-		if(divPedido == false){
-			//console.log(divPedido);
-			//crateDivPedidos(pedido, true, divColuna);
-		}else{
 			if(Array.isArray(pedido.pedido.subItens)){
 				for (var j = 0; j < pedido.pedido.subItens.length; j++) {
 					pedidoSubItem = pedido.pedido.subItens[j];				
-					divRowSubItem = createRowSubItem(divColuna, divPedido, pedidoSubItem.quantidade, pedidoSubItem.subItem.item.nome + " - " +  pedidoSubItem.subItem.nome, "1");				
+					divRowSubItem = createRowSubItem(divPedido, pedidoSubItem.quantidade, pedidoSubItem.subItem.item.nome + " - " +  pedidoSubItem.subItem.nome, pedidoSubItem.status.id);				
 					if(divRowSubItem == false){
 						//Colocar o simbolo que exitem mais pedidos do que a tela possa imprimi
+						var qtdRestante = pedido.pedido.subItens.length - j;
+						var textoItem;
+
+						if(qtdRestante == 1)
+							textoItem = "+1 Item";
+						else
+							textoItem = "+" + qtdRestante  + " Item";						
+						
+						$("#maisItemPedidospan", divPedido).html(textoItem);
+						$("#maisItemPedido", divPedido).show();
 						break;
 					}
 				}
 			}else{
 				pedidoSubItem = pedido.pedido.subItens;				
-				divRowSubItem = createRowSubItem(divColuna, divPedido, pedidoSubItem.quantidade, pedidoSubItem.subItem.item.nome + " - " +  pedidoSubItem.subItem.nome, "1");				
-				if(divRowSubItem == false){
-					//Colocar o simbolo que exitem mais pedidos do que a tela possa imprimi
-				}
+				divRowSubItem = createRowSubItem(divPedido, pedidoSubItem.quantidade, pedidoSubItem.subItem.item.nome + " - " +  pedidoSubItem.subItem.nome, pedidoSubItem.status.id);				
 			}
 			
-			$(divPedido).height(($("#divTamanhaReal", divPedido).height() + 20));
-			return "1";
-		}
+			divPedido.height(($("#divTamanhaReal", divPedido).height() + 20));
+			
+			if( (divPedido.height() + consumoHeightDivColuna2) >= divColuna.height()){
+				consumoHeightDivColuna2 = 0;
+				consumoHeightDivColuna = 0;
+				previsaoConsumoHeightDivColuna = 0;	
+				divColuna = createDivColunaMaior();
+				
+				if(divColuna == false){				
+					return 0;
+				}else{
+					divColuna.append(divPedido);
+					$("#tempoPedido").empty();
+					
+					consumoHeightDivColuna2 += $(divPedido).height();
+				}
+			}else{
+				divColuna.append(divPedido);
+				$("#tempoPedido").empty();
+				
+				consumoHeightDivColuna2 += $(divPedido).height();			
+			}
 	}
+	
+	return 1;
 }
 
-var widthDivColunaParcial = 0;
-var widthDivColunaPrevisao = 0;
+var consumoWidthDivPedidoAtuais = 0;
+var previsaoConsumoWidthDivPedidoAtuais = 0;
 var qtdDivColuna = 0;
 function createDivColunaMaior() {
-	var widthDivColunaTotal = $("#pedidosAtuais").width();
+	var maxWidthDivPedidosAtuais = $("#pedidosAtuais").width();
 	
-	if( (widthDivColunaParcial + widthDivColunaPrevisao) >= widthDivColunaTotal){
-		//alert("não cabe mais uma coluna");
-		console.log("não cabe mais uma coluna");
+	if( (consumoWidthDivPedidoAtuais + previsaoConsumoWidthDivPedidoAtuais) >= maxWidthDivPedidosAtuais){
 		return false;				
-	}else if( widthDivColunaParcial < widthDivColunaTotal){
+	}else if( consumoWidthDivPedidoAtuais < maxWidthDivPedidosAtuais){
 		qtdDivColuna++;
 		
 		var divColuna = jQuery('<div/>', {
@@ -211,51 +241,39 @@ function createDivColunaMaior() {
 		});
 		
 		divColuna.appendTo('#pedidosAtuais');
-		widthDivColunaParcial += $("#coluna_" + qtdDivColuna).width();
-		widthDivColunaPrevisao = $("#coluna_" + qtdDivColuna).width();
+		consumoWidthDivPedidoAtuais += $("#coluna_" + qtdDivColuna).width();
+		previsaoConsumoWidthDivPedidoAtuais = $("#coluna_" + qtdDivColuna).width();
 		
 		return divColuna;		
 	}
 }
 
-
-var heightDivPedidoParcial = 0;
-var heightDivPedidoPrevisao = 0;
+var consumoHeightDivColuna2 = 0;
 var qtdDivPedido = 0;
-function createDivPedido(divColuna, numeroMesa){
-	var heightDivPedidoTotal= $("#pedidosAtuais").height();
-	
-	if( (heightDivPedidoParcial + heightDivPedidoPrevisao) >= heightDivPedidoTotal){
-		//alert("não cabe mais pedido na coluna");
-		console.log("não cabe mais pedido na coluna");
-		return false;				
-	}else if( heightDivPedidoParcial < heightDivPedidoTotal){
+function createDivPedido(numeroMesa){
 		qtdDivPedido++;
-		
+
 		var divPedido = templateDivTable.clone();
 		divPedido.attr("id", "divPedido_" + qtdDivColuna + "_" + qtdDivPedido);
 		$("#numeroMesa", divPedido).html(numeroMesa);
-				
+		
+		$("#maisItemPedido", divPedido).hide();
 
-		divColuna.append(divPedido);
-		heightDivPedidoParcial += $("#divPedido_" + qtdDivColuna + "_" + qtdDivPedido).height();
-		heightDivPedidoPrevisao = $("#divPedido_" + qtdDivColuna + "_" + qtdDivPedido).height();
+		$("#tempoPedido").append(divPedido);
 		
 		return divPedido;		
-	}
+
 }
 
-var heightDivRowSubItemParcial = 0;
-var heightDivRowSubItemPrevisao = 0;
+var consumoHeightDivColuna = 0;
+var previsaoConsumoHeightDivColuna = 0;
 var qtdDivRowSubItem = 0;
-function createRowSubItem(divColuna, divPedido, qtd, descricao, img){
-	var heightDivRowSubItemTotal= divColuna.height() - $("#cabecalho").height();;
+function createRowSubItem(divPedido, qtd, descricao, img){
+	var maxHeightDivColuna = divColuna.height() - $("#cabecalho", divPedido).height();
 	
-	if( (heightDivRowSubItemParcial + heightDivRowSubItemPrevisao) >= heightDivRowSubItemTotal){
-		//alert("não cabe linha na tabela do pedido");
-		console.log("não cabe linha na tabela do pedido");
+	if( (consumoHeightDivColuna + previsaoConsumoHeightDivColuna) >= maxHeightDivColuna){		
 		return false;				
-	}else if( heightDivRowSubItemParcial < heightDivRowSubItemTotal){
+	}else if( consumoHeightDivColuna < maxHeightDivColuna){
 		qtdDivRowSubItem++;
 		
 		var divRowSubItem = templateDivLinhaSubItem.clone();
@@ -264,11 +282,11 @@ function createRowSubItem(divColuna, divPedido, qtd, descricao, img){
 		$("#descricao", divRowSubItem).html(descricao);
 		
 		switch (img) {
-		    case "1":
+		    case 1:
 		        text = "Pedente Validação";
 		        src = "resources/img/icone_confirmar_marrom.png"
 		        break; 
-		    case "2":
+		    case 2:
 		        text = "Em produção";
 		        src = "resources/img/icone_preparo_marrom.png"
 		        break;
@@ -288,15 +306,16 @@ function createRowSubItem(divColuna, divPedido, qtd, descricao, img){
 				
 
 		$("#divLinhasSubItem", divPedido).append(divRowSubItem);
-		heightDivRowSubItemParcial += $("#divRowSubItem_" + qtdDivColuna + "_" + qtdDivPedido + "_" + qtdDivRowSubItem).height();
-		heightDivRowSubItemPrevisao = $("#divRowSubItem_" + qtdDivColuna + "_" + qtdDivPedido + "_" + qtdDivRowSubItem).height();
+		consumoHeightDivColuna += $("#divRowSubItem_" + qtdDivColuna + "_" + qtdDivPedido + "_" + qtdDivRowSubItem).height();
+		previsaoConsumoHeightDivColuna = $("#divRowSubItem_" + qtdDivColuna + "_" + qtdDivPedido + "_" + qtdDivRowSubItem).height();
 		
 		return divRowSubItem;		
 	}
 }
 
-
 function loadData(){
+	
+	var tempoAtualizacao = 60000;
 	
 	$.get('resources/templates/pedido/divLinhaSubItem.xhtml', function(data) {
 		templateDivLinhaSubItem = $(data);
@@ -305,14 +324,15 @@ function loadData(){
 		$.get('resources/templates/pedido/divTabela.xhtml', function(data) {
 			templateDivTable = $(data);
 			updateCompletedEventProgress();
-		}).done(function() {
-			getPedidosNaoFinalizado();
+		}).done(function() {			
+			getPedidosNaoFinalizado(true);
+			setInterval(function() {
+				getPedidosNaoFinalizado(false);			
+			}, 60000);
 		}).fail(function() {
-			console.log("error");
 			updataMsgErro();
 		});
 	}).fail(function() {
-		console.log("error");
 		updataMsgErro();
 	});
 	
@@ -320,10 +340,17 @@ function loadData(){
 		templateAcao = $(data);
 		updateCompletedEventProgress();
 	}).done(function() {
-		getAcaoFecharConta();
-		getAcaoSolicitarGarcom();
+		getAcaoFecharConta(true);
+		setInterval(function() {
+			getAcaoFecharConta(false);			
+		}, tempoAtualizacao);
+		
+		getAcaoSolicitarGarcom(true);
+		setInterval(function() {
+			getAcaoSolicitarGarcom(false);			
+		}, tempoAtualizacao);
+		
 	}).fail(function() {
-		console.log( "error" );
 		updataMsgErro();
 	});
 
@@ -331,9 +358,11 @@ function loadData(){
 		templateAlertaPedidoEntregue = $(data);
 		updateCompletedEventProgress();
 	}).done(function() {
-		getAlertaPedidoEntregue();
+		getAlertaPedidoEntregue(true);		
+		setInterval(function() {
+			getAlertaPedidoEntregue(false);			
+		}, tempoAtualizacao);		
 	}).fail(function() {
-		console.log( "error" );
 		updataMsgErro();
 	});	
 }

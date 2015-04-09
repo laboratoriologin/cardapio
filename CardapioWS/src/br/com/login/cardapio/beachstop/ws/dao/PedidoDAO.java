@@ -2,6 +2,7 @@ package br.com.login.cardapio.beachstop.ws.dao;
 
 import java.util.List;
 
+import br.com.login.cardapio.beachstop.ws.model.Area;
 import br.com.login.cardapio.beachstop.ws.model.Log;
 import br.com.login.cardapio.beachstop.ws.model.Pedido;
 import br.com.login.cardapio.beachstop.ws.model.PedidoSubItem;
@@ -43,7 +44,13 @@ public class PedidoDAO implements RestDAO<Pedido> {
 	public List<Pedido> getAllByOuterJoinStatus(Status status) {
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		broker.setPropertySQL("pedidodao.findallbyouterjoinstatus", status.getId());
-		return broker.getCollectionBean(Pedido.class, "id", "conta.id");
+		return broker.getCollectionBean(Pedido.class, "id", "conta.numero");
+	}
+
+	public List<Pedido> getAllByAreaAndStatus(Area area, Status status) {
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		broker.setPropertySQL("pedidodao.findallbystatusandarea", area.getId(), status.getId());
+		return broker.getCollectionBean(Pedido.class, "id", "conta.numero");
 	}
 
 	@Override

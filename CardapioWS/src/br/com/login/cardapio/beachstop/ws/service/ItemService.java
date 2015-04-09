@@ -42,5 +42,5 @@ public class ItemService extends RestService<Item> {
 
 		return listRetorno;
 	}
-
+	
 }

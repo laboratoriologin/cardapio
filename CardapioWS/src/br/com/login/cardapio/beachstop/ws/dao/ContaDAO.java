@@ -90,6 +90,13 @@ public class ContaDAO implements RestDAO<Conta> {
 		broker.execute();
 		return model;
 	}
+	
+	public Conta updateMesa(final Conta model) throws TSApplicationException {
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		broker.setPropertySQL("contadao.updatemesa", model.getNumero(), model.getId());
+		broker.execute();
+		return model;
+	}	
 
 	@Override
 	public void delete(Long id) throws TSApplicationException {

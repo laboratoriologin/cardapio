@@ -7,6 +7,8 @@ import java.util.Date;
 import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.jboss.resteasy.annotations.Form;
+
 
 @SuppressWarnings("serial")
 @XmlRootElement(name ="acaoconta")
@@ -23,7 +25,7 @@ public final class AcaoConta extends RestModel {
 		this.acao=acao;
 	}
 
-	@FormParam("conta")
+	@Form(prefix = "conta")
 	private Conta conta;
 
 	public Conta getConta() {

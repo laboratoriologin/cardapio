@@ -45,7 +45,7 @@ public class AcaoContaDAO  implements RestDAO<AcaoConta> {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		StringBuilder sql = new StringBuilder(" SELECT AC.ID, AC.CONTA_ID, AC.HORARIO_SOLICITACAO, AC.ACAO_ID, C.CLIENTE_ID, C.DATA_ABERTURA, C.NUMERO, C.QTD_PESSOA, AC.PEDIDO_ID");
+		StringBuilder sql = new StringBuilder(" SELECT C.NUMERO");
 					                 sql.append(" FROM ACOES_CONTAS AS AC")
 					              .append(" INNER JOIN CONTAS AS C ON C.ID = AC.CONTA_ID")
 					                   .append(" WHERE AC.USUARIO_ID IS NULL ")
@@ -56,23 +56,8 @@ public class AcaoContaDAO  implements RestDAO<AcaoConta> {
 
 		broker.setSQL(sql.toString());
 		
-		List<AcaoConta> list = broker.getCollectionBean(AcaoConta.class, "id", "conta.id", "horarioSolicitacao", "acao.id", "conta.cliente.id", "conta.dataAbertura", "conta.numero", "conta.qtdPessoa", "pedido.id");
-//		Pedido pedido;
-//		Status status;
-//		
-//		for (AcaoConta acaoConta : list) {
-//			if(Constantes.Acoes.NovoPedido.equals(acaoConta.getAcao().getId())){
-//				status = new Status(Constantes.StatusPedido.PENDENTE_APROVACAO.toString());
-//				pedido = new PedidoDAO().get(acaoConta.getPedido().getId());
-//				pedido.setSubItens(new PedidoSubItemDAO().getAll(pedido, status));
-//				
-//				if(pedido.getSubItens().size() == 0)
-//					list.remove(acaoConta);
-//				else
-//					acaoConta.setPedido(pedido);
-//			}
-		// }
-		
+		List<AcaoConta> list = broker.getCollectionBean(AcaoConta.class, "conta.numero");
+
 		return list;
 	}
 	
@@ -123,16 +108,16 @@ public class AcaoContaDAO  implements RestDAO<AcaoConta> {
 		
 		model.setId(broker.getSequenceNextValue("dbo.acoes_contas"));
 		
-		StringBuilder sql = new StringBuilder("INSERT INTO ACOES_CONTAS (ACAO_ID, CONTA_ID, HORARIO_ATENDIMENTO, HORARIO_SOLICITACAO, USUARIO_ID, PEDIDO_ID) VALUES ( ?, ?,");
+		StringBuilder sql = new StringBuilder("INSERT INTO ACOES_CONTAS (ACAO_ID, CONTA_ID, HORARIO_ATENDIMENTO, HORARIO_SOLICITACAO, USUARIO_ID, PEDIDO_ID, NUMERO) VALUES ( ?, ?,");
 		
 		if(model.getUsuario().getId() != null)
 			sql.append(" GETDATE() ");
 		else
 			sql.append(" NULL ");
 		
-		sql.append(", GETDATE(), ?, ?)");
+		sql.append(", GETDATE(), ?, ?, ?)");
 
-		broker.setSQL(sql.toString(), model.getAcao().getId(), model.getConta().getId(), model.getUsuario().getId(), model.getPedido().getId());
+		broker.setSQL(sql.toString(), model.getAcao().getId(), model.getConta().getId(), model.getUsuario().getId(), model.getPedido().getId(), model.getConta().getNumero());
 
 		broker.execute();
 

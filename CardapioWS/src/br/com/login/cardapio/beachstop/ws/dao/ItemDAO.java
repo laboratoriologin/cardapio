@@ -49,7 +49,7 @@ public class ItemDAO implements RestDAO<Item> {
 
 		return listaItem;
 	}
-
+	
 	@Override
 	public Item insert(Item model) throws TSApplicationException {
 
