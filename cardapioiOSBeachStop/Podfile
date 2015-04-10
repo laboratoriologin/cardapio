@@ -1,2 +1,4 @@
 pod 'MBProgressHUD', '~> 0.8'
 pod 'AFNetworking', '~> 2.2'
+pod 'ZBarSDK'
+pod 'SDWebImage'

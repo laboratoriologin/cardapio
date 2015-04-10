@@ -1,6 +1,7 @@
 package br.com.login.cardapio.beachstop.ws.model;
 
 import java.io.Serializable;
+
 import javax.ws.rs.FormParam;
 @SuppressWarnings("serial")
 public class RestModel implements Serializable {
@@ -15,5 +16,4 @@ public class RestModel implements Serializable {
 	public void setId(Long id) {
 		this.id=id;
 	}
-
 }

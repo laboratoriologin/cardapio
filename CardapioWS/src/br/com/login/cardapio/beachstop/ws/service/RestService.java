@@ -22,7 +22,7 @@ import br.com.login.cardapio.beachstop.ws.model.RestModel;
 import br.com.topsys.exception.TSApplicationException;
 import br.com.topsys.exception.TSSystemException;
 
-public abstract class RestService<T extends RestModel>{ 
+public abstract class RestService<T extends RestModel> {
 
 	protected RestDAO<T> restDAO;
 
@@ -48,13 +48,7 @@ public abstract class RestService<T extends RestModel>{
 
 		if (fields != null && !"".equals(fields)) {
 
-			List<String> filteringFields = Arrays.asList(fields.split("/"));
-
-			if (filteringFields.size() > 0) {
-
-				this.configureReturnObject(object, filteringFields);
-
-			}
+			this.configureReturnObject(object, fields);
 
 		}
 
@@ -64,7 +58,8 @@ public abstract class RestService<T extends RestModel>{
 
 	@POST
 	@Path("")
-	public T insert(@Form T form)  throws ApplicationException {
+	@Produces("application/json; charset=UTF-8")
+	public T insert(@Form T form) throws ApplicationException {
 		try {
 
 			this.validate(form);
@@ -85,8 +80,8 @@ public abstract class RestService<T extends RestModel>{
 
 	@PUT
 	@Path("/{id}")
-	@Produces("application/json")
-	public T update(@Form T form, @PathParam("id") Long id)  throws ApplicationException {
+	@Produces("application/json; charset=UTF-8")
+	public T update(@Form T form, @PathParam("id") Long id) throws ApplicationException {
 
 		try {
 
@@ -110,7 +105,7 @@ public abstract class RestService<T extends RestModel>{
 
 	@DELETE
 	@Path("/{id}")
-	public void delete(@PathParam("id") Long id)  throws ApplicationException {
+	public void delete(@PathParam("id") Long id) throws ApplicationException {
 		try {
 			restDAO.delete(id);
 		} catch (TSApplicationException ex) {
@@ -127,26 +122,48 @@ public abstract class RestService<T extends RestModel>{
 
 	public abstract void initDAO();
 
-	protected void validate(T object) throws ApplicationException {}
+	protected void validate(T object) throws ApplicationException {
+	}
 
-	private void configureReturnObject(T object, List<String> fields) {
+	protected void configureReturnObject(T object, String fields) {
 
-		if (!fields.contains(ID)) {
+		if (object != null && fields != null && !"".equals(fields)) {
 
-			object.setId(null);
-		}
+			List<String> filteringFields = Arrays.asList(fields.split("/"));
 
-		for (Field classField : object.getClass().getDeclaredFields()) {
+			if (filteringFields.size() > 0) {
 
-			if (!fields.contains(classField.getName())) {
+				if (!fields.contains(ID)) {
 
-				try {
+					object.setId(null);
+				}
 
-					BeanUtils.setProperty(object, classField.getName(), null);
+				for (Field classField : object.getClass().getDeclaredFields()) {
 
-				} catch (Exception e) {}
+					if (!fields.contains(classField.getName())) {
+
+						try {
+
+							BeanUtils.setProperty(object, classField.getName(), null);
+
+						} catch (Exception e) {
+						}
+
+					}
+
+				}
 
 			}
+
+		}
+
+	}
+
+	protected void configureReturnObjects(List<T> objects, String fields) {
+
+		for (T object : objects) {
+
+			this.configureReturnObject(object, fields);
 
 		}
 

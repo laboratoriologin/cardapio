@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
+	<h:form>
+
+		<h:panelGrid>
+
+			<p:panel header="Selecione os Kit's que deseja no seu aplicativo. Ordene as linhas de acordo com a exibição do aplicativo" style="width:50%">
+
+				<p:dataTable value="#{escolhaKitFaces.listKit}" var="kit" style="width:90%">
+
+					<p:column style="width:10%" headerText="Ativo?">
+						<p:selectBooleanCheckbox value="#{kit.flagAtivo}" />
+					</p:column>
+					<p:column style="width:60%" headerText="Kit">
+						#{kit.nome}
+					</p:column>
+
+					<p:column style="width:15%" headerText="Ordem de exibição">
+						<p:spinner value="#{kit.ordem}" size="2" min="0" stepFactor="1" onkeyup="return Mascara(this,Integer)" />
+					</p:column>
+
+				</p:dataTable>
+
+			</p:panel>
+
+			<p:commandButton id="btnAlterar" value="Alterar" icon="salvar" action="#{escolhaKitFaces.updateEvent}" update="@form" style="height:28px; width: 110px;margin-left: 2px;" />
+
+		</h:panelGrid>
+
+	</h:form>
+
+
+</ui:composition>

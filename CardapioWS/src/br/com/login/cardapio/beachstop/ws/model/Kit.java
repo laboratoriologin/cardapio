@@ -1,5 +1,7 @@
 package br.com.login.cardapio.beachstop.ws.model;
 
+import java.util.List;
+
 import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -60,6 +62,28 @@ public final class Kit extends RestModel {
 
 	public void setOrdem(Integer ordem) {
 		this.ordem=ordem;
+	}
+	
+	@FormParam("kitsubitens")
+	private List<KitSubItem> kitSubItens;
+	
+	public List<KitSubItem> getKitSubItens(){
+		return this.kitSubItens;
+	}
+	
+	public void setKitSubItens(List<KitSubItem> kitSubItens){
+		this.kitSubItens = kitSubItens;
+	}
+	
+	@FormParam("imagem")
+	private String imagem;
+
+	public String getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
 	}
 
 	public Kit(){}

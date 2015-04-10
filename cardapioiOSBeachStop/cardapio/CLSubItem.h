@@ -13,6 +13,7 @@
 
 @property(nonatomic,strong) NSNumber *codigo;
 @property(nonatomic,strong) NSNumber *quantidade;
+@property(nonatomic,strong) NSString *nome;
 @property(nonatomic,strong) NSString *tipoDescricao;
 @property(nonatomic,strong) NSNumber *valor;
 @property(nonatomic,strong) NSNumber *valorTotalPedido;

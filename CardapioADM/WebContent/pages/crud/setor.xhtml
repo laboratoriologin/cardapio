@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="/resources/templates/templateCRUD.xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
+
+	<ui:param name="mbean" value="${setorFaces}" />
+	<ui:param name="mbeanModel" value="${setorFaces.crudModel}" />
+	<ui:param name="mbeanPesquisaModel" value="${setorFaces.crudPesquisaModel}" />
+	<ui:param name="reload" value="true" />
+
+	<ui:define name="cadastro">
+
+		<h:panelGrid columns="1" style="width:50%">
+
+			<p:outputLabel for="descricao" value="Descrição" />
+			<p:inputText id="descricao" required="true" requiredMessage="Descrição Campo obrigatório" maxlength="50" value="#{mbeanModel.descricao}" styleClass="coluna50" />
+
+			<p:outputLabel for="mesaMenor" value="Da mesa:" />
+			<p:spinner id="mesaMenor" value="#{mbean.mesaMenor}" size="2" min="0" stepFactor="1" onkeyup="return Mascara(this,Integer)" />
+
+			<p:outputLabel for="mesaMaior" value="Até:" />
+			<p:spinner id="mesaMaior" value="#{mbean.mesaMaior}" size="2" min="0" stepFactor="1" onkeyup="return Mascara(this,Integer)" />
+
+		</h:panelGrid>
+
+	</ui:define>
+
+	<ui:define name="pesquisaCampos">
+
+		<h:panelGrid columns="1" style="width:50%">
+
+			<p:outputLabel for="descricaoPesquisa" value="Descrição" />
+			<p:inputText id="descricaoPesquisa" value="#{mbeanPesquisaModel.descricao}" styleClass="coluna90" />
+
+		</h:panelGrid>
+
+	</ui:define>
+
+	<ui:define name="colunasTabela">
+
+		<p:column headerText="Descrição">
+			<h:outputText value="#{linha.descricao}" />
+		</p:column>
+
+	</ui:define>
+
+
+</ui:composition>

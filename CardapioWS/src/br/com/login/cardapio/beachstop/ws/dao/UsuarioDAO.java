@@ -70,5 +70,36 @@ public class UsuarioDAO  implements RestDAO<Usuario> {
 		broker.execute();
 
 	}
+	
+	public Usuario login(Usuario usuario) {
+
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+
+		broker.setPropertySQL("usuariodao.login", usuario.getLogin(), usuario.getSenha());
+
+		return (Usuario) broker.getObjectBean(Usuario.class,  "id", "email", "flagAtivo", "login", "nome", "senha");
+
+	}
+	
+	public Usuario getByEmail(Usuario usuario) {
+
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+
+		broker.setPropertySQL("usuariodao.getbyemail", usuario.getEmail());
+
+		return (Usuario) broker.getObjectBean(Usuario.class,  "id", "email", "flagAtivo", "login", "nome", "senha");
+
+	}
+
+	public void alterarSenha(Usuario form) throws TSApplicationException {
+
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+
+		broker.setPropertySQL("usuariodao.alterarsenha", form.getSenha(), form.getId());
+
+		broker.execute();
+	}
+
+
 
 }

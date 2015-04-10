@@ -85,6 +85,26 @@ public final class Publicidade extends RestModel {
 	public void setVigenciaInicial(Date vigenciaInicial) {
 		this.vigenciaInicial=vigenciaInicial;
 	}
+	
+	private Integer tipoAgenda;
+
+	public Integer getTipoAgenda() {
+		return tipoAgenda;
+	}
+
+	public void setTipoAgenda(Integer tipoAgenda) {
+		this.tipoAgenda = tipoAgenda;
+	}
+	
+	private Integer valor;
+
+	public Integer getValor() {
+		return valor;
+	}
+
+	public void setValor(Integer valor) {
+		this.valor = valor;
+	}
 
 	public Publicidade(){}
 

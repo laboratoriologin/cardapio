@@ -1,0 +1,2 @@
+include ':galeriaImg', ':ParallaxScroll', ':facebook'
+include ':beachStopAndroid'

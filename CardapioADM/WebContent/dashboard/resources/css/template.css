@@ -1,0 +1,636 @@
+@charset "utf-8";
+
+html, body {
+	height: 100%;
+	margin: 0;
+}
+
+body {
+	background-color: #F2DCB3;
+}
+
+body div.head {
+	background-image: url("../img/bg.png");
+	background-repeat: repeat;
+	width: 100%;
+	height: 10%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+body div.head .headesquerda {
+	float: left;
+	margin-left: 40px;
+}
+
+body div.head .headdireita {
+	float: right;
+	margin-right: 40px;
+}
+
+body div.body {
+	width: 100%;
+	height: 88%;
+}
+
+body div.footer {
+	width: 100%;
+	height: 2%;
+	display: table;
+	background-image: url("../img/bg.png");
+	background-repeat: repeat;
+}
+
+body div.footer div{
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+
+body div.footer p {
+	font-family: Century Gothic;
+	color: #f2dbb3;
+	font-size: 70%;	
+}
+
+/*
+*
+*
+*   CSS do relógio
+*
+*
+*/
+#Date {
+	font-size: 70%;
+	text-align: center;
+	font-family: Century Gothic;
+	color: white;
+}
+
+body div.head .headdireita ul {
+	text-align: center;
+	font-family: Century Gothic;
+	color: white;
+}
+
+body div.head .headdireita ul li {
+	display: inline;
+	font-size: 1.5em;
+	text-align: center;
+	font-family: Century Gothic;
+	color: white;
+}
+
+#point {
+	position: relative;
+	font-family: Century Gothic;
+	color: white;
+}
+/*
+*
+*
+*   CSS do relógio - FIM
+*
+*
+*/
+body div.body .esquerda {
+	float: left;
+	width: 93%;
+	height: 100%;
+}
+
+body div.body .direita {
+	float: right;
+	width: 7%;
+	height: 100%;
+}
+
+.divsolicitargarcom, .divfecharpedido {
+	height: 50%;
+	position: relative;
+}
+
+.borderleft {
+	height: 100%;
+	border-left: 2px solid #CFC4B1;
+}
+
+.bordertop {
+	border-top: 2px solid #CFC4B1;
+}
+
+.diviconetopoalerta {
+	border-bottom: 2px solid #CFC4B1;
+	width: 100%;
+	height: 15%;
+}
+
+.diviconetopoalerta div{
+	height: 100%;
+	width: 100%; 
+}
+
+.diviconetopoalerta>div>p:nth-child(1) {
+	height: 65%;
+	text-align: center;	
+}
+
+.diviconetopoalerta>div>p:nth-child(1) img {
+	width: 40%	
+}
+
+.diviconetopoalerta>div>p:nth-child(2) {
+	text-align: center;
+	font-family: Century Gothic;
+	color: #4f3833;
+	font-size: 92%;	
+}
+
+@media screen and (max-width: 1450px) {
+	.diviconetopoalerta>div>p:nth-child(1) {
+		display: none;	
+	}
+	.diviconetopoalerta>div>p:nth-child(2) {
+		padding-top: 10px;	
+	}
+}
+
+@media screen and (max-height: 660px) {
+	.diviconetopoalerta>div>p:nth-child(1) {
+		display: none;	
+	}
+	.diviconetopoalerta>div>p:nth-child(2) {
+		padding-top: 10px;	
+	}
+}
+
+.divalerta {
+	overflow: hidden;
+}
+
+.divalerta .border {
+	overflow: hidden;
+	margin-left: 15px;
+	border-bottom: 2px solid #CFC4B1;
+}
+
+.divalerta .border .margin {
+	overflow: hidden;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-right: 15px;
+	height: 35px;
+}
+
+.divalerta .border .margin .margindireita {
+	float: left;
+	height: 100%;
+}
+
+.divalerta .border .margin .marginesquerda {
+	float: left;
+	height: 100%;
+	width: 45%;
+}
+
+.divalerta img {
+	height: 70%;
+	position: relative;
+	top: 18%;
+}
+
+.divalerta p {
+	text-align: center;
+	font-family: Century Gothic;
+	color: #4f3833;
+	font-size: 35px;
+}
+
+@media screen and (max-width: 1900px) {
+	#imgmesa {
+		display: none;
+	}
+}
+
+#maisitens, #maisitensfooter {
+	position: absolute;
+	bottom: 5px;
+	width: 80px;
+	left: 50%;
+	margin-left: -40px;
+	text-align: center;
+}
+
+#maisitens2 {
+	position: absolute;		
+	text-align: center;
+	bottom: 7px;
+	right: 2px;
+}
+
+#maisitensfooter {
+	bottom: 5px
+}
+
+#maisitens span, #maisitensfooter span, #maisitens2 span {
+	font-family: Century Gothic;
+	font-weight: bold;
+	color: #4f3833;
+	font-size: 10px;
+	background-color: #edda54;	
+}
+
+#maisitens2 span {
+	font-size: 12px;
+	padding: 5px;	
+}
+
+#maisitens span, #maisitensfooter span {
+	padding: 2px 20px 2px 20px;	
+}
+
+#pedido {
+	height: 82.5%;
+	font-family: Century Gothic;
+	color: #4f3833;
+}
+
+#pedidopronto {
+	height: 17.49%;
+	font-family: Century Gothic;
+	color: #4f3833;
+}
+
+#alinhartexto {
+	padding-left: 35px;
+	height: 20%;
+}
+
+#alinhartextoTopo {
+	padding-left: 35px;
+	height: 5%;
+}
+
+#alinhartexto>div:nth-child(1) {
+	float: left;	
+}
+
+#alinhartextoTopo>div:nth-child(1) {
+	float: left;
+	margin-top: 0.3%;
+}
+
+#alinhartextoTopo>div:nth-child(2) {
+	float: left;
+	margin-top: 0.7%;	
+}
+
+#alinhartexto>div:nth-child(2) {
+	float: left;
+	margin-top: 0.4%;	
+}
+
+#alertapedidoentregue {
+	height: 80%;
+	background-color: #ebebeb;
+	position: relative;
+}
+
+/* regra exclusiva para o chrome e safari*/
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	#alertapedidoentregue {
+		height: 79.80%;
+		background-color: #ebebeb;
+	}
+}
+
+.alertapedidoentrega, .alertapedidoentrega1 {
+	float: left;
+	height: 100%;
+	width: 8%;
+	position: relative;
+	margin-left: 10px;
+}
+
+.alertapedidoentrega {
+	margin-left: 2px;
+}
+
+#borderright {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 70%;
+	z-index: -1px;
+	border-right: 2px solid #CFC4B1;
+	margin-bottom: 15px;
+	margin-top: 15px;
+}
+
+#container {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+#container>div:nth-child(1) {
+	height: 60%;
+}
+
+#container>div:nth-child(2) {
+	height: 40%;
+}
+
+#container>div:nth-child(1)>div {
+	padding-top: 10px;
+	padding-left: 5px;
+	font-weight: bold;
+	font-size: 16px;
+	_font-size: 16px;
+	/*height: 88%;*/
+	overflow: hidden;
+}
+
+@-moz-document url-prefix() { 
+	#container >div: nth-child(1)>div{ 
+		font-size: 15px;
+	}
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	#container>div:nth-child(1)>div {
+		font-size: 15px;
+	}
+}
+
+#container>div:nth-child(2)>div:nth-child(1) {
+	float: left;
+	height: 100%;
+	padding-left: 5px;
+	width: 40%;
+}
+
+#container>div:nth-child(2)>div:nth-child(1)>img {
+	height: 65%;
+	position: relative;
+	top: 5%;
+}
+
+#container>div:nth-child(2)>div:nth-child(2) {
+	float: left;
+	height: 100%;
+	width: 40%;
+}
+
+#container>div:nth-child(2)>div:nth-child(2)>p {
+	font-size: 35px;
+	text-align: center;
+}
+
+#modalload {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background-color: white;
+	top: 0px;
+	left: 0px;
+	z-index: 10;
+}
+
+@-moz-document url-prefix() { 
+	#modalload {		
+		height: 100%;
+	}
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	#modalload {		
+		height: 100%;
+	}
+}
+
+#modalload>div {
+	font-family: Century Gothic;	
+	color: #4f3833;
+	font-size: 15px;
+	margin: 0 auto;
+	margin-top: 100px;
+	width: 420px;
+}
+
+#progressbar {
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
+
+#modalload>div .ui-progressbar {
+	height: 0.5em;
+	border-bottom-right-radius: 0px;
+	border-bottom-left-radius: 0px;
+	border-top-right-radius: 0px;
+	border-top-left-radius: 0px;	
+}
+
+.error {
+	color: red;
+}
+
+#pedidosAtuais {
+	height: 94%; 
+	width: 100%;
+}
+
+.listaPedido {	
+	width: 350px;
+	background-color: #ebebeb;
+}
+
+.topoMesaPedido {
+	background-color: #ffffff;
+	padding: 15px 20px;
+	font-size: 20px;
+}
+
+.colunaMaior {
+	height: 100%; 
+	width: 415px; 
+	float: left;
+}
+
+.bordaEsquerda {
+	width: 400px;	
+	/*height: 160px;*/ 
+	float: right;
+}
+
+.divTamanhaReal {
+	background-color: #ebebeb; 
+	width: 100%;
+}
+
+.divTamanhaReal>div:nth-child(1) {
+	background-color: white; 
+	width: 100%		
+}
+
+.divTamanhaReal>div:nth-child(1)>div {
+	padding-top: 10px; 
+	padding-left: 10px; 
+	padding-bottom: 10px;
+	padding-right: 10px;
+}
+
+.divTamanhaReal>div:nth-child(1)>div>span {
+	font-family: Century Gothic; 
+	font-size: 25px;
+	color: #4f3833;
+}
+
+.divTamanhaReal>div:nth-child(2) {
+	display: table; 
+	height: 100%; 
+	width: 100%; 
+	font-size: 18px; 
+	font-family: Century Gothic;
+	color: #4f3833;	
+}
+
+.linhaSubItem {
+	display: table-row; 
+	height: auto; 
+	width: 100%;
+}
+
+.linhaSubItem>div {
+	display: table-cell; 
+	vertical-align: middle;
+}
+
+.linhaSubItem>div:nth-child(2) {
+	width: 80%;
+}
+
+.linhaSubItem>div>div {
+	padding: 10px;
+}
+
+#maisItemPedido {
+	background-color: #edda54; 
+	font-size: 12px; 
+	width: 15%; 
+	padding: 3px; 
+	text-align: center; 
+	position: relative; 
+	bottom: 7px; 
+	left: 400px; 
+	margin-left: -235px;
+}
+
+.divTamanhaReal>div:nth-child(1)>div>div {
+	float: right;
+}
+
+#tempoPedido {
+	position: absolute; 
+	top: 0px; 
+	left: 0px; 
+	z-index: -100;
+}
+
+.page {
+	height: 100%;
+	width: 100%;
+}
+
+.mesaVerde {	 
+	float: left; 
+	margin-top: 15px; 
+	margin-left: 15px; 
+	color: white; 
+	text-align: center; 
+	width: 100px; 
+	height: 100px; 
+	font-size: 3em;
+	cursor: pointer;
+	background: #008000 !important;
+}
+
+.mesaVermelho {	 
+	float: left; 
+	margin-top: 15px; 
+	margin-left: 15px; 
+	color: white; 
+	text-align: center; 
+	width: 100px; 
+	height: 100px; 
+	font-size: 3em;
+	cursor: pointer;
+	background: #ff0000 !important;
+}
+
+.mesaVermelho>p,.mesaVerde>p {
+	padding-top: 27px; 
+	font-family: Century Gothic;
+}
+
+#dialog-abrirconta span {
+	float: left; 
+	margin: 0 7px 0px 0;
+}
+
+.div10095 {
+	width: 100%; 
+	height: 95%;
+}
+
+.div100 {
+	width: 100%; 
+	height: 100%;
+}
+
+
+table.reference {
+    border-bottom: 1px solid #dddddd;
+    border-left: 1px solid #dddddd;
+    border-right: 1px solid #dddddd;
+    max-width: 100%;
+    width: 100%;
+}
+table.reference > thead > tr > th, table.reference > tbody > tr > th, table.reference > tfoot > tr > th, table.reference > thead > tr > td, table.reference > tbody > tr > td, table.reference > tfoot > tr > td {
+    border-top: 1px solid #ddd;
+    line-height: 1.42857;
+    padding: 8px;
+    vertical-align: top;
+}
+table.reference tr:nth-child(2n+1) {
+    background-color: #ffffff;
+}
+table.reference tr:nth-child(2n) {
+    background-color: #f1f1f1;
+}
+table.reverse tr:nth-child(2n+1) {
+    background-color: #f1f1f1;
+}
+table.reverse tr:nth-child(2n) {
+    background-color: #ffffff;
+}
+table.tecspec {
+    border-bottom: 1px solid #dddddd;
+    max-width: 100%;
+    width: 100%;
+}
+
+th {
+    text-align: left;
+}
+
+th.agrupador {
+	background-color: #d7d7d7 !important;
+}
+
+.ui-icon-pencil,  .ui-icon-trash{
+	cursor: pointer;
+	margin-right: 5px;
+}

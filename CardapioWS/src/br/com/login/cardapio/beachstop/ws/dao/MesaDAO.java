@@ -3,12 +3,13 @@ package br.com.login.cardapio.beachstop.ws.dao;
 import java.util.List;
 
 import br.com.login.cardapio.beachstop.ws.model.Mesa;
+import br.com.login.cardapio.beachstop.ws.model.Setor;
 import br.com.topsys.database.TSDataBaseBrokerIf;
 import br.com.topsys.database.factory.TSDataBaseBrokerFactory;
 import br.com.topsys.exception.TSApplicationException;
 import br.com.topsys.util.TSUtil;
 
-public class MesaDAO  implements RestDAO<Mesa> {
+public class MesaDAO implements RestDAO<Mesa> {
 
 	@Override
 	public Mesa get(Long id) {
@@ -19,6 +20,12 @@ public class MesaDAO  implements RestDAO<Mesa> {
 
 		return (Mesa) broker.getObjectBean(Mesa.class, "id", "numero", "setor.id");
 
+	}
+
+	public List<Mesa> getAll(Setor setor) {
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		broker.setPropertySQL("mesadao.getocupadabysetor", setor.getId());
+		return broker.getCollectionBean(Mesa.class, "id", "numero", "setor.id");
 	}
 
 	@Override
@@ -39,7 +46,7 @@ public class MesaDAO  implements RestDAO<Mesa> {
 
 		model.setId(broker.getSequenceNextValue("dbo.mesas "));
 
-		broker.setPropertySQL("mesadao.insert",model.getNumero(), model.getSetor().getId());
+		broker.setPropertySQL("mesadao.insert", model.getNumero(), model.getSetor().getId());
 
 		broker.execute();
 

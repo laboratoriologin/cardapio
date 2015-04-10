@@ -1,5 +1,9 @@
 package com.login.cardapio.model;
 
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,13 +11,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.Cascade;
+
 import br.com.topsys.database.hibernate.TSActiveRecordAb;
 import br.com.topsys.util.TSUtil;
-
-import com.login.cardapio.util.Utilitarios;
 
 /**
  * 
@@ -24,219 +29,212 @@ import com.login.cardapio.util.Utilitarios;
 @Table(name = "usuarios")
 public class Usuario extends TSActiveRecordAb<Usuario> {
 
-	/**
-	 * Propriedade identificadora do objeto Usu�rio.
-	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	/**
-	 * Propriedade nome do objeto Usu�rio.
-	 */
 	private String nome;
-	/**
-	 * Propriedade login do objeto Usu�rio.
-	 */
+
 	private String login;
-	/**
-	 * Propriedade senha do objeto Usu�rio.
-	 */
+
 	private String senha;
-	/**
-	 * Propriedade email do objeto Usu�rio.
-	 */
-	private String email;
-	/**
-	 * Propriedade confirma senha do objeto Usu�rio.
-	 */
-	@Transient
-	private String confirmaSenha;
-	/**
-	 * Propriedade ativo do objeto Usu�rio.
-	 */
+
 	@Column(name = "flag_ativo")
 	private Boolean flagAtivo;
-	/**
-	 * Propriedade grupo de usu�rio do objeto Usu�rio.
-	 */
-	@ManyToOne
-	@JoinColumn(name = "empresa_id")
-	private Empresa empresa;
 
-	/**
-	 * M�todo construtor da classe, sem a��o.
-	 */
+	@ManyToOne
+	@JoinColumn(name = "grupo_usuario_id")
+	private GrupoUsuario grupoUsuario;
+
+	private String cpf;
+
+	@Column(name = "data_nascimento")
+	private Date dataNascimento;
+
+	private String endereco;
+
+	private String telefone;
+
+	private String celular;
+
+	private String email;
+
+	private String rg;
+
+	private String contato;
+
+	@Column(name = "telefone_contato")
+	private String telefoneContato;
+
+	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+	private List<UsuarioSetor> listUsuarioSetor;
+
+	@Transient
+	private String confirmaSenha;
+
 	public Usuario() {
 
 	}
 
-	/**
-	 * Obt�m a propriedade identificadora do objeto Usu�rio.
-	 * 
-	 * @return id Inteiro longo. Identificador do objeto usu�rio.
-	 */
 	public final Long getId() {
 		return TSUtil.tratarLong(id);
 	}
 
-	/**
-	 * Seta a prorpiedade Id do objeto Usu�rio.
-	 * 
-	 * @param pId
-	 *            Identificador do objeto Usu�rio.
-	 */
 	public final void setId(final Long pId) {
 		this.id = TSUtil.tratarLong(pId);
 	}
 
-	/**
-	 * Obt�m a propriedade nome do objeto Usu�rio.
-	 * 
-	 * @return String. Nome do objeto Usu�rio.
-	 */
-	public final String getNome() {
+	public String getNome() {
 		return nome;
 	}
 
-	/**
-	 * Seta a propriedade nome do objeto Usu�rio.
-	 * 
-	 * @param pNome
-	 *            String. Nome do objeto Usu�rio.
-	 */
-	public final void setNome(final String pNome) {
-		this.nome = pNome;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	/**
-	 * Obt�m a propriedade login do objeto Usu�rio.
-	 * 
-	 * @return String. Propriedade Login do objeto Usu�rio.
-	 */
-	public final String getLogin() {
-
+	public String getLogin() {
 		return login;
 	}
 
-	/**
-	 * Seta a propriedade login do objeto Usu�rio.
-	 * 
-	 * @param pLogin
-	 *            String. Login do objeto Usu�rio.
-	 */
-	public final void setLogin(final String pLogin) {
-		this.login = pLogin;
+	public void setLogin(String login) {
+		this.login = login;
 	}
 
-	/**
-	 * Obt�m a senha do objeto Usu�rio.
-	 * 
-	 * @return String. Retorna a propriedade senha do objeto usu�rio.
-	 */
-	public final String getSenha() {
-
+	public String getSenha() {
 		return senha;
-
 	}
 
-	/**
-	 * Seta a propriedade senha do objeto Usu�rio.
-	 * 
-	 * @param pSenha
-	 *            String. A senha do objeto Usu�rio.
-	 */
-	public final void setSenha(final String pSenha) {
-		this.senha = pSenha;
-
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
-	/**
-	 * Obt�m a propriedade ativo do objeto Usu�rio.
-	 * 
-	 * @return Verdadeiro ou False. Se o objeto usu�rio est� ativo.
-	 */
-	public final Boolean getFlagAtivo() {
+	public Boolean getFlagAtivo() {
 		return flagAtivo;
 	}
 
-	/**
-	 * Seta a propriedade ativo do objeto Usu�rio.
-	 * 
-	 * @param pFlagAtivo
-	 *            Verdadeiro ou False. Se o objeto usu�rio est� ativo.
-	 */
-	public final void setFlagAtivo(final Boolean pFlagAtivo) {
-		this.flagAtivo = pFlagAtivo;
+	public void setFlagAtivo(Boolean flagAtivo) {
+		this.flagAtivo = flagAtivo;
 	}
 
-	/**
-	 * Obt�m a propriedade ativo do objeto Usu�rio.
-	 * 
-	 * @return String. Situa��o do objeto Usu�rio. Ativo ou n�o
-	 */
-	public final String getSituacao() {
-		return Utilitarios.getSituacao(flagAtivo);
+	public GrupoUsuario getGrupoUsuario() {
+		return grupoUsuario;
 	}
 
-	/**
-	 * Obt�m a propriedade confirmar senha do objeto Usu�rio.
-	 * 
-	 * @return String. A confirma��o da senha do objeto Usu�rio.
-	 */
-	public final String getConfirmaSenha() {
-		return confirmaSenha;
+	public void setGrupoUsuario(GrupoUsuario grupoUsuario) {
+		this.grupoUsuario = grupoUsuario;
 	}
 
-	/**
-	 * Seta a propriedade confirmar senha do objeto usu�rio.
-	 * 
-	 * @param pConfirmaSenha
-	 *            String. A confirma��o da senha do objeto Usu�rio.
-	 */
-	public final void setConfirmaSenha(final String pConfirmaSenha) {
-		this.confirmaSenha = pConfirmaSenha;
+	public String getCpf() {
+		return cpf;
 	}
 
-	/**
-	 * Obt�m a propriedade email do objeto Usu�rio.
-	 * 
-	 * @return String. Retorna o email do objeto Usu�rio.
-	 */
-	public final String getEmail() {
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public Date getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	public String getCelular() {
+		return celular;
+	}
+
+	public void setCelular(String celular) {
+		this.celular = celular;
+	}
+
+	public String getEmail() {
 		return email;
 	}
 
-	/**
-	 * Seta o email do objeto usu�rio.
-	 * 
-	 * @param pEmail
-	 *            String. Envia o e-mail do objeto usu�rio.
-	 */
-	public final void setEmail(final String pEmail) {
-		this.email = pEmail;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public Empresa getEmpresa() {
-		return empresa;
+	public String getRg() {
+		return rg;
 	}
 
-	public void setEmpresa(Empresa empresa) {
-		this.empresa = empresa;
+	public void setRg(String rg) {
+		this.rg = rg;
+	}
+
+	public String getContato() {
+		return contato;
+	}
+
+	public void setContato(String contato) {
+		this.contato = contato;
+	}
+
+	public String getTelefoneContato() {
+		return telefoneContato;
+	}
+
+	public void setTelefoneContato(String telefoneContato) {
+		this.telefoneContato = telefoneContato;
+	}
+
+	public String getConfirmaSenha() {
+		return confirmaSenha;
+	}
+
+	public void setConfirmaSenha(String confirmaSenha) {
+		this.confirmaSenha = confirmaSenha;
+	}
+
+	public List<UsuarioSetor> getListUsuarioSetor() {
+		return listUsuarioSetor;
+	}
+
+	public void setListUsuarioSetor(List<UsuarioSetor> listUsuarioSetor) {
+		this.listUsuarioSetor = listUsuarioSetor;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((celular == null) ? 0 : celular.hashCode());
 		result = prime * result + ((confirmaSenha == null) ? 0 : confirmaSenha.hashCode());
+		result = prime * result + ((contato == null) ? 0 : contato.hashCode());
+		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + ((empresa == null) ? 0 : empresa.hashCode());
+		result = prime * result + ((endereco == null) ? 0 : endereco.hashCode());
 		result = prime * result + ((flagAtivo == null) ? 0 : flagAtivo.hashCode());
+		result = prime * result + ((grupoUsuario == null) ? 0 : grupoUsuario.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((listUsuarioSetor == null) ? 0 : listUsuarioSetor.hashCode());
 		result = prime * result + ((login == null) ? 0 : login.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + ((rg == null) ? 0 : rg.hashCode());
 		result = prime * result + ((senha == null) ? 0 : senha.hashCode());
+		result = prime * result + ((telefone == null) ? 0 : telefone.hashCode());
+		result = prime * result + ((telefoneContato == null) ? 0 : telefoneContato.hashCode());
 		return result;
 	}
 
@@ -249,30 +247,55 @@ public class Usuario extends TSActiveRecordAb<Usuario> {
 		if (getClass() != obj.getClass())
 			return false;
 		Usuario other = (Usuario) obj;
+		if (celular == null) {
+			if (other.celular != null)
+				return false;
+		} else if (!celular.equals(other.celular))
+			return false;
 		if (confirmaSenha == null) {
 			if (other.confirmaSenha != null)
 				return false;
 		} else if (!confirmaSenha.equals(other.confirmaSenha))
+			return false;
+		if (contato == null) {
+			if (other.contato != null)
+				return false;
+		} else if (!contato.equals(other.contato))
+			return false;
+		if (cpf == null) {
+			if (other.cpf != null)
+				return false;
+		} else if (!cpf.equals(other.cpf))
 			return false;
 		if (email == null) {
 			if (other.email != null)
 				return false;
 		} else if (!email.equals(other.email))
 			return false;
-		if (empresa == null) {
-			if (other.empresa != null)
+		if (endereco == null) {
+			if (other.endereco != null)
 				return false;
-		} else if (!empresa.equals(other.empresa))
+		} else if (!endereco.equals(other.endereco))
 			return false;
 		if (flagAtivo == null) {
 			if (other.flagAtivo != null)
 				return false;
 		} else if (!flagAtivo.equals(other.flagAtivo))
 			return false;
+		if (grupoUsuario == null) {
+			if (other.grupoUsuario != null)
+				return false;
+		} else if (!grupoUsuario.equals(other.grupoUsuario))
+			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
+			return false;
+		if (listUsuarioSetor == null) {
+			if (other.listUsuarioSetor != null)
+				return false;
+		} else if (!listUsuarioSetor.equals(other.listUsuarioSetor))
 			return false;
 		if (login == null) {
 			if (other.login != null)
@@ -284,10 +307,25 @@ public class Usuario extends TSActiveRecordAb<Usuario> {
 				return false;
 		} else if (!nome.equals(other.nome))
 			return false;
+		if (rg == null) {
+			if (other.rg != null)
+				return false;
+		} else if (!rg.equals(other.rg))
+			return false;
 		if (senha == null) {
 			if (other.senha != null)
 				return false;
 		} else if (!senha.equals(other.senha))
+			return false;
+		if (telefone == null) {
+			if (other.telefone != null)
+				return false;
+		} else if (!telefone.equals(other.telefone))
+			return false;
+		if (telefoneContato == null) {
+			if (other.telefoneContato != null)
+				return false;
+		} else if (!telefoneContato.equals(other.telefoneContato))
 			return false;
 		return true;
 	}

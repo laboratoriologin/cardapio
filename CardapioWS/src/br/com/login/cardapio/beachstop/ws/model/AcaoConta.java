@@ -1,9 +1,14 @@
 package br.com.login.cardapio.beachstop.ws.model;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import java.util.Date;
+import org.jboss.resteasy.annotations.Form;
+
 
 @SuppressWarnings("serial")
 @XmlRootElement(name ="acaoconta")
@@ -20,7 +25,7 @@ public final class AcaoConta extends RestModel {
 		this.acao=acao;
 	}
 
-	@FormParam("conta")
+	@Form(prefix = "conta")
 	private Conta conta;
 
 	public Conta getConta() {
@@ -31,26 +36,43 @@ public final class AcaoConta extends RestModel {
 		this.conta=conta;
 	}
 
-	@FormParam("hararioatendimento")
-	private Date hararioAtendimento;
+	@FormParam("horarioAtendimento")
+	private Date horarioAtendimento;
 
-	public Date getHararioAtendimento() {
-		return hararioAtendimento;
+	public Date getHorarioAtendimento() {
+		return horarioAtendimento;
 	}
 
-	public void setHararioAtendimento(Date hararioAtendimento) {
-		this.hararioAtendimento=hararioAtendimento;
+	public void setHorarioAtendimento(Date horarioAtendimento) {
+		this.horarioAtendimento=horarioAtendimento;
 	}
 
-	@FormParam("horariosolocitacao")
-	private Date horarioSolocitacao;
+	@FormParam("horarioSolicitacao")
+	private Date horarioSolicitacao;
 
-	public Date getHorarioSolocitacao() {
-		return horarioSolocitacao;
+	public Date getHorarioSolicitacao() {
+		return horarioSolicitacao;
 	}
 
-	public void setHorarioSolocitacao(Date horarioSolocitacao) {
-		this.horarioSolocitacao=horarioSolocitacao;
+	public void setHorarioSolicitacao(Date horarioSolicitacao) {
+		this.horarioSolicitacao=horarioSolicitacao;
+	}
+	
+	@FormParam("diffhorarioSolicitacao")
+	private String diffHorarioSolitacao;
+
+	public String getDiffHorarioSolitacao() {
+		if(horarioSolicitacao != null){
+	        Calendar cal = Calendar.getInstance();            
+	        cal.setTime(horarioSolicitacao);        
+	        return String.valueOf((int) (((System.currentTimeMillis() - cal.getTimeInMillis())/ (1000*60)) ));
+		}else{
+			return "";
+		}
+	}
+
+	public void setDiffHorarioSolitacao(String diffHorarioSolitacao) {
+		this.diffHorarioSolitacao=diffHorarioSolitacao;
 	}
 
 	@FormParam("usuario")
@@ -62,6 +84,17 @@ public final class AcaoConta extends RestModel {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario=usuario;
+	}
+	
+	@FormParam("pedido")
+	private Pedido pedido;
+
+	public Pedido getPedido() {
+		return pedido;
+	}
+
+	public void setPedido(Pedido pedido) {
+		this.pedido=pedido;
 	}
 
 	public AcaoConta(){}

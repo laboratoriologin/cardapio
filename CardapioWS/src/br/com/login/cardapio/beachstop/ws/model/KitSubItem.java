@@ -28,6 +28,17 @@ public final class KitSubItem extends RestModel {
 	public void setSubItem(SubItem subItem) {
 		this.subItem=subItem;
 	}
+	
+	@FormParam("qtd")
+	private Long qtd;
+	
+	public Long getQtd(){
+		return this.qtd;
+	}
+	
+	public void setQtd(Long qtd){
+		this.qtd = qtd;
+	}
 
 	public KitSubItem(){}
 

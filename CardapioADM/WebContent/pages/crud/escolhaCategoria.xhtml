@@ -6,17 +6,13 @@
 
 			<p:panel header="Selecione as categorias que deseja no seu aplicativo. Ordene as linhas de acordo com a exibição do aplicativo" style="width:50%">
 
-				<p:dataTable value="#{escolhaCategoriaFaces.empresa.categorias}" var="categoria" style="width:90%">
+				<p:dataTable value="#{escolhaCategoriaFaces.listCategoria}" var="categoria" style="width:90%">
 
-					<p:column style="width:10%">
+					<p:column style="width:10%" headerText="Ativo?">
 						<p:selectBooleanCheckbox value="#{categoria.flagAtivo}" />
 					</p:column>
 					<p:column style="width:60%" headerText="Categoria">
-						#{categoria.categoriaCardapio.descricao}
-					</p:column>
-
-					<p:column style="width:15%" headerText="Peso da métrica">
-						<p:inputText onkeyup="return Mascara(this,Integer)" style="text-align:right; width:85%" value="#{categoria.pesoMetrica}" />
+						#{categoria.descricao}
 					</p:column>
 
 					<p:column style="width:15%" headerText="Ordem de exibição">

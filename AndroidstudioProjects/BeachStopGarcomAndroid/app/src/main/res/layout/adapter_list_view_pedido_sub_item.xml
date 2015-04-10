@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_system">
+
+    <LinearLayout
+        android:id="@+id/adapter_list_view_pedido_sub_item_relative_layout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="1dp"
+        android:background="@color/branco"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp">
+
+        <ImageView
+            android:id="@+id/adapter_list_view_pedido_sub_item_image_view_menos"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:contentDescription="@string/menos"
+            android:src="@drawable/seta_para_esquerda" />
+
+        <TextView
+            android:id="@+id/adapter_list_view_pedido_sub_item_text_view_qtd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00" />
+
+        <ImageView
+            android:id="@+id/adapter_list_view_pedido_sub_item_image_view_mais"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:contentDescription="@string/mais"
+            android:src="@drawable/seta_para_direita" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/adapter_list_view_pedido_sub_item_relative_layout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/adapter_list_view_pedido_sub_item_relative_layout1"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/adapter_list_view_pedido_sub_item_relative_layout1"
+        android:background="@color/branco"
+        android:gravity="center_vertical"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/adapter_list_view_pedido_sub_item_text_view_descricao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Água mineral - Garrafa (111909)"
+            android:textColor="#4F3832" />
+    </LinearLayout>
+
+</RelativeLayout>

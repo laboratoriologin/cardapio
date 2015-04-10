@@ -23,4 +23,9 @@ public final class Setor extends RestModel {
 	public Setor(String id){
 		this.id = Long.valueOf(id);
 	}
+
+	@Override
+	public String toString() {
+		return id.toString();
+	}	
 }

@@ -18,7 +18,7 @@ import br.com.topsys.database.hibernate.TSActiveRecordAb;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name = "agendas_publicidade")
+@Table(name = "agendas_publicidades")
 public class Agenda extends TSActiveRecordAb<Agenda> {
 
 	@Id
@@ -26,13 +26,13 @@ public class Agenda extends TSActiveRecordAb<Agenda> {
 	private Long id;
 
 	@ManyToOne
-	@JoinColumn(name = "id_tipo_agenda")
+	@JoinColumn(name = "tipo_agenda_id")
 	private TipoAgenda tipoAgenda;
 
 	private String valor;
 
 	@ManyToOne
-	@JoinColumn(name = "id_publicidade")
+	@JoinColumn(name = "publicidade_id")
 	private Publicidade publicidade;
 	
 	public Long getId() {

@@ -10,30 +10,42 @@
 		<property name="current_session_context_class">thread</property>
 
 		<property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
-		<property name="hibernate.connection.datasource">java:/comp/env/jdbc/bdCardapio</property>
+		<property name="hibernate.connection.datasource">java:/comp/env/jdbc/bdCardapioV2</property>
 		<property name="hibernate.query.substitutions">true 1, false 0</property>
 
 		<property name="hibernate.show_sql">true</property>
 
-		<mapping class="com.login.cardapio.model.Menu" />
-
-		<mapping class="com.login.cardapio.model.Usuario" />
-		<mapping class="com.login.cardapio.model.Permissao" />
-		<mapping class="com.login.cardapio.model.CategoriaCardapio" />
-		<mapping class="com.login.cardapio.model.EmpresaCategoriaCardapio" />
-		<mapping class="com.login.cardapio.model.Empresa" />
-		<mapping class="com.login.cardapio.model.TipoPublicidade" />
-		<mapping class="com.login.cardapio.model.Publicidade" />
-		<mapping class="com.login.cardapio.model.Item" />
-		<mapping class="com.login.cardapio.model.TipoAgenda" />
+		<mapping class="com.login.cardapio.model.Acao" />
+		<mapping class="com.login.cardapio.model.AcaoConta" />
 		<mapping class="com.login.cardapio.model.Agenda" />
+		<mapping class="com.login.cardapio.model.Area" />
+		<mapping class="com.login.cardapio.model.Categoria" />
+		<mapping class="com.login.cardapio.model.Cliente" />
+		<mapping class="com.login.cardapio.model.Conta" />
+		<mapping class="com.login.cardapio.model.Empresa" />
+		<mapping class="com.login.cardapio.model.GrupoUsuario" />
+		<mapping class="com.login.cardapio.model.Item" />
+		<mapping class="com.login.cardapio.model.Kit" />
+		<mapping class="com.login.cardapio.model.KitSubItem" />
+		<mapping class="com.login.cardapio.model.Log" />
+		<mapping class="com.login.cardapio.model.Menu" />
+		<mapping class="com.login.cardapio.model.Mesa" />
+		<mapping class="com.login.cardapio.model.Pagamento" />
+		<mapping class="com.login.cardapio.model.Pausa" />
+		<mapping class="com.login.cardapio.model.Pedido" />
+		<mapping class="com.login.cardapio.model.PedidoSubItem" />
+		<mapping class="com.login.cardapio.model.Permissao" />
+		<mapping class="com.login.cardapio.model.Publicidade" />
+		<mapping class="com.login.cardapio.model.Setor" />
+		<mapping class="com.login.cardapio.model.Status" />
 		<mapping class="com.login.cardapio.model.SubItem" />
-		<mapping class="com.login.cardapio.model.TiposQuantidade" />
-		<mapping class="com.login.cardapio.model.TipoFuncionario" />
-		<mapping class="com.login.cardapio.model.Funcionario" />
-		<mapping class="com.login.cardapio.model.Metrica" />
-		<mapping class="com.login.cardapio.model.TipoAlerta" />
-		
+		<mapping class="com.login.cardapio.model.TipoAgenda" />
+		<mapping class="com.login.cardapio.model.TipoPagamento" />
+		<mapping class="com.login.cardapio.model.TipoPublicidade" />
+		<mapping class="com.login.cardapio.model.Usuario" />
+		<mapping class="com.login.cardapio.model.UsuarioSetor" />
+
+
 	</session-factory>
 
 </hibernate-configuration>

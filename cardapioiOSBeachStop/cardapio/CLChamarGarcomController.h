@@ -11,5 +11,6 @@
 @interface CLChamarGarcomController : UIViewController
 - (IBAction)chamarGarcom:(id)sender;
 - (IBAction)pedirConta:(id)sender;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicatorView;
 
 @end

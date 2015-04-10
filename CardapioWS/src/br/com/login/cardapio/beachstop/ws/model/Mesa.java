@@ -34,4 +34,9 @@ public final class Mesa extends RestModel {
 	public Mesa(String id){
 		this.id = Long.valueOf(id);
 	}
+
+	@Override
+	public String toString() {
+		return this.setor.id.toString();
+	}	
 }

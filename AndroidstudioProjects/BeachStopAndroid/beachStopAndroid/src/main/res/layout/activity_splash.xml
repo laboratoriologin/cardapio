@@ -1,0 +1,47 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/activity_splash_imagem_welcome"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/splash" />
+
+    <ImageButton
+        android:id="@+id/activity_splash_image_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/activity_splash_textView"
+        android:background="@color/transparent"
+        android:padding="5dp"
+        android:src="@drawable/bt_refresh"
+        android:visibility="gone" />
+
+    <ProgressBar
+        android:id="@+id/activity_splash_progressBar"
+        style="?android:attr/progressBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/activity_splash_textView"
+        android:padding="5dp"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/activity_splash_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignTop="@+id/activity_splash_image_button"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:padding="5dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        android:visibility="invisible"/>
+
+</RelativeLayout>

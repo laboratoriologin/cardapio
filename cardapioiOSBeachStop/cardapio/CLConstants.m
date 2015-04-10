@@ -10,13 +10,14 @@
 
 @implementation CLConstants
 
-NSString* const CLAppBaseUrl = @"http://177.1.212.50:9004/CardapioWS/";
-NSString* const CLTipoAlertaChamarGarcom = @"1";
-NSString* const CLTipoAlertaPedirConta = @"2";
+NSString* const CLAppBaseUrl = @"http://10.0.0.106:8080/CardapioWS/";
+NSString* const CLTipoAlertaChamarGarcom = @"3";
+NSString* const CLTipoAlertaPedirConta = @"4";
 NSString* const CLKeyEmpresa = @"123";
-NSString* const CLUrlHtml = @"http://177.1.212.50:9004/CardapioWS/empresas/keymobile/%@/dadosEmpresa";
-NSString* const CLUrlImagem = @"http://177.1.212.50:9004/arquivos_cardapio/%@";
+NSString* const CLUrlHtml = @"http://10.0.0.106:8080/CardapioWS/empresas/keymobile/%@/dadosEmpresa";
+NSString* const CLUrlImagem = @"http://10.0.0.33:8080/arquivos_cardapio/%@";
 NSString* const CLParamConta = @"conta";
+NSString* const CLParamIDCliente = @"cliente";
 NSString* const CLParamMesa = @"mesa";
 NSString* const CLURLAppEncode = @"application/x-www-form-urlencoded";
 NSString* const CLParamContaSolicitada = @"conta_solicitada";

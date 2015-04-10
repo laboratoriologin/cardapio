@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="/resources/templates/templateCRUD.xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
+
+	<ui:param name="mbean" value="${categoriaFaces}" />
+	<ui:param name="mbeanModel" value="${categoriaFaces.crudModel}" />
+	<ui:param name="mbeanPesquisaModel" value="${categoriaFaces.crudPesquisaModel}" />
+	<ui:param name="reload" value="true" />
+
+	<ui:define name="cadastro">
+
+		<h:panelGrid columns="1" style="width:50%">
+
+			<p:outputLabel for="descricao" value="Descrição" />
+			<p:inputText id="descricao" required="true" requiredMessage="Descrição Campo obrigatório" maxlength="50" value="#{mbeanModel.descricao}" styleClass="coluna50" />
+
+			<p:outputLabel for="ordem" value="Ordem de Exibição" />
+			<p:inputText id="ordem" required="true" requiredMessage="Ordem Campo obrigatório" maxlength="50" value="#{mbeanModel.ordem}" styleClass="coluna20" />
+
+			<p:outputLabel for="flagAtivo" value="Ativo?" />
+			<p:selectBooleanCheckbox id="flagAtivo" value="#{mbeanModel.flagAtivo}" />
+
+			<p:outputLabel for="area" value="Área" />
+			<p:selectOneMenu id="area" value="#{mbeanModel.area.id}" required="true" requiredMessage="Área Campo obrigatório" style="width:50%">
+				<f:selectItem itemLabel="Não Selecionado" itemValue="" />
+				<f:selectItems value="#{mbean.comboArea}" />
+			</p:selectOneMenu>
+
+
+			<p:fieldset legend="Imagem do menu principal" style="width:95%">
+
+				<p:fileUpload id="uploadArquivo" label="Adicionar Imagem (230 x 260)" fileUploadListener="#{mbean.uploadMidia}" auto="true" multiple="false" allowTypes="/(\.|\/)(|jpe?g|png)$/" process="@this" style="width: 95%" />
+
+				<br />
+				<br />
+				<br />
+				<p:outputPanel autoUpdate="true">
+					<img src="/arquivos_cardapio/#{mbeanModel.imagem}" style="max-height: 95px; max-width: 245px" alt="Categoria Imagem" />
+				</p:outputPanel>
+			</p:fieldset>
+			
+			<p:fieldset legend="Imagem do topo" style="width:95%">
+
+				<p:fileUpload id="uploadArquivoTopo" label="Adicionar Imagem (51 x 51)" fileUploadListener="#{mbean.uploadMidiaTopo}" auto="true" multiple="false" allowTypes="/(\.|\/)(|jpe?g|png)$/" process="@this" style="width: 95%" />
+
+				<br />
+				<br />
+				<br />
+				<p:outputPanel autoUpdate="true">
+					<img src="/arquivos_cardapio/#{mbeanModel.imagemTopo}" style="max-height: 95px; max-width: 245px" alt="Categoria Imagem" />
+				</p:outputPanel>
+			</p:fieldset>
+
+		</h:panelGrid>
+
+	</ui:define>
+
+	<ui:define name="pesquisaCampos">
+
+		<h:panelGrid columns="1" style="width:50%">
+
+			<p:outputLabel for="descricaoPesquisa" value="Descrição" />
+			<p:inputText id="descricaoPesquisa" value="#{mbeanPesquisaModel.descricao}" styleClass="coluna90" />
+
+		</h:panelGrid>
+
+	</ui:define>
+
+	<ui:define name="colunasTabela">
+
+		<p:column headerText="Descrição">			
+			<h:outputText value="#{linha.descricao}" />
+		</p:column>
+
+	</ui:define>
+
+
+</ui:composition>

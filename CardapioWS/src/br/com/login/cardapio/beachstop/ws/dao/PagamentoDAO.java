@@ -2,6 +2,7 @@ package br.com.login.cardapio.beachstop.ws.dao;
 
 import java.util.List;
 
+import br.com.login.cardapio.beachstop.ws.model.Conta;
 import br.com.login.cardapio.beachstop.ws.model.Pagamento;
 import br.com.topsys.database.TSDataBaseBrokerIf;
 import br.com.topsys.database.factory.TSDataBaseBrokerFactory;
@@ -17,7 +18,17 @@ public class PagamentoDAO  implements RestDAO<Pagamento> {
 
 		broker.setPropertySQL("pagamentodao.get", id);
 
-		return (Pagamento) broker.getObjectBean(Pagamento.class, "conta.id", "data", "id", "tipoPagamento.id");
+		return (Pagamento) broker.getObjectBean(Pagamento.class, "conta.id", "data", "id", "tipoPagamento.id", "valor");
+
+	}
+	
+	public Pagamento getValorTotalPagoByConta(Conta conta) {
+
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+
+		broker.setPropertySQL("pagamentodao.getvalortotalpagobyconta", conta.getId());
+
+		return (Pagamento) broker.getObjectBean(Pagamento.class, "valor");
 
 	}
 
@@ -28,7 +39,7 @@ public class PagamentoDAO  implements RestDAO<Pagamento> {
 
 		broker.setPropertySQL("pagamentodao.findall");
 
-		return broker.getCollectionBean(Pagamento.class, "conta.id", "data", "id", "tipoPagamento.id");
+		return broker.getCollectionBean(Pagamento.class, "conta.id", "data", "id", "tipoPagamento.id", "valor");
 
 	}
 
@@ -39,7 +50,7 @@ public class PagamentoDAO  implements RestDAO<Pagamento> {
 
 		model.setId(broker.getSequenceNextValue("dbo.pagamentos "));
 
-		broker.setPropertySQL("pagamentodao.insert",model.getConta().getId(), model.getData(), model.getTipoPagamento().getId());
+		broker.setPropertySQL("pagamentodao.insert",model.getConta().getId(), model.getData(), model.getTipoPagamento().getId(), model.getValor());
 
 		broker.execute();
 
@@ -52,7 +63,7 @@ public class PagamentoDAO  implements RestDAO<Pagamento> {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("pagamentodao.update", model.getConta().getId(), model.getData(), model.getTipoPagamento().getId(), model.getId());
+		broker.setPropertySQL("pagamentodao.update", model.getConta().getId(), model.getData(), model.getTipoPagamento().getId(), model.getValor(), model.getId());
 
 		broker.execute();
 

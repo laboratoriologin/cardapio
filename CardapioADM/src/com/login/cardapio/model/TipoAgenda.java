@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import br.com.topsys.database.hibernate.TSActiveRecordAb;
 
 @Entity
-@Table(name = "tipos_agenda")
+@Table(name = "tipos_agendas")
 public class TipoAgenda extends TSActiveRecordAb<TipoAgenda> {
 	/**
 	 * 

@@ -3,12 +3,14 @@ package br.com.login.cardapio.beachstop.ws.dao;
 import java.util.List;
 
 import br.com.login.cardapio.beachstop.ws.model.Log;
+import br.com.login.cardapio.beachstop.ws.model.Pedido;
+import br.com.login.cardapio.beachstop.ws.model.PedidoSubItem;
+import br.com.login.cardapio.beachstop.ws.model.Status;
 import br.com.topsys.database.TSDataBaseBrokerIf;
 import br.com.topsys.database.factory.TSDataBaseBrokerFactory;
 import br.com.topsys.exception.TSApplicationException;
-import br.com.topsys.util.TSUtil;
 
-public class LogDAO  implements RestDAO<Log> {
+public class LogDAO implements RestDAO<Log> {
 
 	@Override
 	public Log get(Long id) {
@@ -32,6 +34,39 @@ public class LogDAO  implements RestDAO<Log> {
 
 	}
 
+	public List<Log> getAll(PedidoSubItem pedido) {
+
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+
+		broker.setPropertySQL("logdao.findallbypedido", pedido.getId());
+
+		return broker.getCollectionBean(Log.class, "id", "usuario.id", "usuario.nome", "status.id", "status.descricao", "horario");
+
+	}
+
+	public List<Log> getAll(Status status, String filtroMinuto) {
+
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+
+
+		StringBuilder sql = new StringBuilder(" SELECT C.NUMERO, I.NOME, SI.NOME ");
+					                 sql.append(" FROM LOGS AS L ")
+					              .append(" INNER JOIN PEDIDOS_SUB_ITENS AS PSI ON PSI.ID = L.PEDIDO_SUB_ITEM_ID ")
+					              .append(" INNER JOIN SUB_ITENS AS SI ON SI.ID = PSI.SUB_ITEM_ID ")
+					              .append(" INNER JOIN ITENS AS I ON I.ID = SI.ITEM_ID ")
+					              .append(" INNER JOIN PEDIDOS AS P ON P.ID = PSI.PEDIDO_ID ")
+					              .append(" INNER JOIN CONTAS AS C ON C.ID = P.CONTA_ID  ")
+					              .append(" WHERE DATEDIFF(MINUTE, HORARIO, GETDATE()) <= ").append(filtroMinuto) 
+					                .append(" GROUP BY C.NUMERO, I.NOME, SI.NOME ")
+					                 .append("  HAVING MAX(L.STATUS_ID) = ").append(status.getId());
+					                 
+     	broker.setSQL(sql.toString());
+					                  
+		List<Log> listLog = broker.getCollectionBean(Log.class, "pedidoSubItem.pedido.conta.numero", "pedidoSubItem.subItem.item.nome", "pedidoSubItem.subItem.nome");
+
+		return listLog;
+	}
+
 	@Override
 	public Log insert(Log model) throws TSApplicationException {
 
@@ -39,12 +74,19 @@ public class LogDAO  implements RestDAO<Log> {
 
 		model.setId(broker.getSequenceNextValue("dbo.logs "));
 
-		broker.setPropertySQL("logdao.insert",model.getHorario(), model.getPedidoSubItem().getId(), model.getStatus().getId(), model.getUsuario().getId());
+		broker.setPropertySQL("logdao.insert", model.getPedidoSubItem().getId(), model.getStatus().getId(), model.getUsuario().getId());
 
 		broker.execute();
 
 		return model;
 
+	}
+
+	public Log insert(Log model, TSDataBaseBrokerIf broker) throws TSApplicationException {
+		model.setId(broker.getSequenceNextValue("dbo.logs "));
+		broker.setPropertySQL("logdao.insert", model.getPedidoSubItem().getId(), model.getStatus().getId(), model.getUsuario().getId());
+		broker.execute();
+		return model;
 	}
 
 	@Override
@@ -71,4 +113,17 @@ public class LogDAO  implements RestDAO<Log> {
 
 	}
 
+	public void insert(Pedido pedido) throws TSApplicationException {
+
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+
+		broker.beginTransaction();
+
+		for (PedidoSubItem item : pedido.getSubItens()) {
+			broker.setPropertySQL("logdao.insert", item.getId(), item.getStatus().getId(), pedido.getUsuario().getId());
+			broker.execute();
+		}
+
+		broker.endTransaction();
+	}
 }

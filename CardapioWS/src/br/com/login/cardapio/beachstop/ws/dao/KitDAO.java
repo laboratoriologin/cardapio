@@ -6,7 +6,6 @@ import br.com.login.cardapio.beachstop.ws.model.Kit;
 import br.com.topsys.database.TSDataBaseBrokerIf;
 import br.com.topsys.database.factory.TSDataBaseBrokerFactory;
 import br.com.topsys.exception.TSApplicationException;
-import br.com.topsys.util.TSUtil;
 
 public class KitDAO  implements RestDAO<Kit> {
 
@@ -14,10 +13,14 @@ public class KitDAO  implements RestDAO<Kit> {
 	public Kit get(Long id) {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
-
 		broker.setPropertySQL("kitdao.get", id);
+		
+		KitSubItemDAO kitSubItemDAO = new KitSubItemDAO();
+		
+		Kit kit = (Kit) broker.getObjectBean(Kit.class, "desconto", "descricao", "flagAtivo", "id", "nome", "ordem", "imagem");
+		kit.setKitSubItens(kitSubItemDAO.getAll(kit));
 
-		return (Kit) broker.getObjectBean(Kit.class, "desconto", "descricao", "flagAtivo", "id", "nome", "ordem");
+		return kit;
 
 	}
 
@@ -27,8 +30,16 @@ public class KitDAO  implements RestDAO<Kit> {
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
 		broker.setPropertySQL("kitdao.findall");
+		
+		KitSubItemDAO kitSubItemDAO = new KitSubItemDAO();
 
-		return broker.getCollectionBean(Kit.class, "desconto", "descricao", "flagAtivo", "id", "nome", "ordem");
+		List<Kit> kits = broker.getCollectionBean(Kit.class, "desconto", "descricao", "flagAtivo", "id", "nome", "ordem", "imagem");
+		
+		for (Kit kit : kits) {
+			kit.setKitSubItens(kitSubItemDAO.getAll(kit));
+		}
+		
+		return kits;
 
 	}
 
@@ -39,7 +50,7 @@ public class KitDAO  implements RestDAO<Kit> {
 
 		model.setId(broker.getSequenceNextValue("dbo.kits "));
 
-		broker.setPropertySQL("kitdao.insert",model.getDesconto(), model.getDescricao(), model.getFlagAtivo(), model.getNome(), model.getOrdem());
+		broker.setPropertySQL("kitdao.insert",model.getDesconto(), model.getDescricao(), model.getFlagAtivo(), model.getNome(), model.getOrdem(), model.getImagem());
 
 		broker.execute();
 
@@ -52,7 +63,7 @@ public class KitDAO  implements RestDAO<Kit> {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("kitdao.update", model.getDesconto(), model.getDescricao(), model.getFlagAtivo(), model.getNome(), model.getOrdem(), model.getId());
+		broker.setPropertySQL("kitdao.update", model.getDesconto(), model.getDescricao(), model.getFlagAtivo(), model.getNome(), model.getOrdem(), model.getId(), model.getImagem());
 
 		broker.execute();
 

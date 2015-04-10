@@ -16,6 +16,7 @@ const int CAMPizzas            = 5;
 const int CAMPratosMar         = 6;
 const int CAMPratosTerra       = 7;
 const int CAMSobremesa         = 8;
+const int CAMPasteis          = 14;
 const int CAMTodosPratos       = 0;
 
 @interface CLMenu : NSObject
@@ -26,7 +27,7 @@ const int CAMTodosPratos       = 0;
 @property(nonatomic,strong) NSString * imagemTopo;
 @property(nonatomic,strong) NSMutableArray * itens;
 @property(nonatomic,assign) BOOL showItem;
-@property(nonatomic,assign) NSInteger ordem;
+@property(nonatomic,strong) NSNumber * ordem;
 
 - (instancetype) initWithID:(NSNumber *) code;
 - (instancetype) initWithDictionary:(NSDictionary *) dictionary;
