@@ -32,13 +32,15 @@ public class PedidoDAO implements RestDAO<Pedido> {
 
 	@Override
 	public List<Pedido> getAll() {
-
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
-
 		broker.setPropertySQL("pedidodao.findall");
-
 		return broker.getCollectionBean(Pedido.class, "conta.id", "id", "observacao");
-
+	}
+	
+	public List<Pedido> getAll(String contaId) {
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		broker.setPropertySQL("pedidodao.findallbyconta", contaId);
+		return broker.getCollectionBean(Pedido.class, "conta.id", "id", "observacao");
 	}
 
 	public List<Pedido> getAllByOuterJoinStatus(Status status) {

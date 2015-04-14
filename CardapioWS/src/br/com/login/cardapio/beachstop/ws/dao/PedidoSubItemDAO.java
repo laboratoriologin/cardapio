@@ -30,6 +30,12 @@ public class PedidoSubItemDAO implements RestDAO<PedidoSubItem> {
 		broker.setPropertySQL("pedidosubitemdao.getbypedidostatus", pedido.getId(), status.getId());
 		return broker.getCollectionBean(PedidoSubItem.class, "quantidade", "subItem.item.nome", "subItem.nome", "status.id");
 	}
+	
+	public List<PedidoSubItem> getAllByPedidoHasStatus(Pedido pedido) {
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		broker.setPropertySQL("pedidosubitemdao.getallbypedidohasstatus", pedido.getId());
+		return broker.getCollectionBean(PedidoSubItem.class, "id", "quantidade", "subItem.item.nome", "subItem.nome", "status.id", "status.descricao");
+	}
 
 	public List<PedidoSubItem> getAllPedidoStatusArea(Pedido pedido, Status status, Area area) {
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
@@ -49,13 +55,15 @@ public class PedidoSubItemDAO implements RestDAO<PedidoSubItem> {
 	}
 
 	public List<PedidoSubItem> getAll(Conta conta) {
-
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
-
 		broker.setPropertySQL("pedidosubitemdao.findallbyconta", conta.getId());
-
 		return broker.getCollectionBean(PedidoSubItem.class, "id", "pedido.id", "quantidade", "subItem.id", "valorUnitario", "valorCalculado");
+	}
 
+	public List<PedidoSubItem> getAllGroupQtd(Conta conta) {
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		broker.setPropertySQL("pedidosubitemdao.getallbycontagroupqtd", conta.getId());
+		return broker.getCollectionBean(PedidoSubItem.class, "quantidade", "subItem.nome", "subItem.codigo", "subItem.item.nome");
 	}
 
 	public List<PedidoSubItem> getAll(Pedido pedido) {

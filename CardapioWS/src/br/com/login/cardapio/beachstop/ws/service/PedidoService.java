@@ -61,12 +61,26 @@ public class PedidoService extends RestService<Pedido> {
 	}
 
 	@GET
+	@Path("pedidohistorico/{conta_id}")
+	@Produces("application/json; charset=UTF-8")
+	public List<Pedido> getPedidoHistorico(@PathParam("conta_id") String contaId) {
+		List<Pedido> pedidos = new PedidoDAO().getAll(contaId);
+		PedidoSubItemDAO pedidoSubItemDAO = new PedidoSubItemDAO();
+
+		for (Pedido pedido : pedidos) {
+			pedido.setSubItens(pedidoSubItemDAO.getAllByPedidoHasStatus(pedido));
+		}
+
+		return pedidos;
+	}
+
+	@GET
 	@Path("pedidosafazer/{id}")
 	@Produces("application/json; charset=UTF-8")
 	public List<Pedido> getPedidoCozinha(@PathParam("id") String id) {
-		
+
 		Area area = new Area(id);
-		
+
 		List<Pedido> pedidos = new PedidoDAO().getAllByAreaAndStatus(area, new Status(2l));
 		PedidoSubItemDAO pedidoSubItemDAO = new PedidoSubItemDAO();
 
@@ -151,6 +165,9 @@ public class PedidoService extends RestService<Pedido> {
 			item.setStatus(status);
 		}
 
+		// quando não tem o usuário, significa que o cliente realizou o pedido e
+		// tem que buscar o id da conta pelo número da mesa
+		// Caso tenha usuario já tem que passar o numero da mesa
 		if (form.getUsuario() == null) {
 			form.setUsuario(new Usuario());
 		} else {
@@ -229,27 +246,27 @@ public class PedidoService extends RestService<Pedido> {
 			throw new ApplicationException(ex.getMessage(), Response.SC_INTERNAL_SERVER_ERROR);
 		}
 	}
-	
+
 	@PUT
 	@Path("/pedidopronto/usuario/{id}/pedidosubitem/{pedido_sub_item_id}/pedido/{pedido_id}")
 	@Produces("application/json; charset=UTF-8")
-	public Pedido pedidoPronto(@PathParam("id") String usuarioId, @PathParam("pedido_sub_item_id") String pedidoSubItemId,  @PathParam("pedido_id") String pedidoId) throws ApplicationException {
-		
+	public Pedido pedidoPronto(@PathParam("id") String usuarioId, @PathParam("pedido_sub_item_id") String pedidoSubItemId, @PathParam("pedido_id") String pedidoId) throws ApplicationException {
+
 		try {
-			
+
 			Pedido pedido = new Pedido(pedidoId);
 			pedido.setUsuario(new Usuario(usuarioId));
 			pedido.setSubItens(new ArrayList<PedidoSubItem>());
 			PedidoSubItem pedidoSubItem;
-			for (String  strPedidoSubItemId : pedidoSubItemId.split(",")) {
+			for (String strPedidoSubItemId : pedidoSubItemId.split(",")) {
 				pedidoSubItem = new PedidoSubItem(strPedidoSubItemId);
 				pedido.getSubItens().add(pedidoSubItem);
 			}
-			
+
 			gerarLog(pedido, new Status(3l));
-			
+
 			return new Pedido();
-			
+
 		} catch (TSSystemException ex) {
 			ex.printStackTrace();
 			throw new ApplicationException(ex.getMessage(), Response.SC_INTERNAL_SERVER_ERROR);

@@ -77,7 +77,7 @@ public final class PedidoSubItem extends RestModel {
 	public void setLogs(List<Log> logs) {
 		this.logs = logs;
 	}
-
+	
 	@FormParam("status")
 	private Status status;
 
@@ -88,25 +88,25 @@ public final class PedidoSubItem extends RestModel {
 	public void setStatus(Status status) {
 		this.status = status;
 	}
-	
+
 	@FormParam("kit")
 	private Kit kit;
-	
-	public Kit getKit(){
+
+	public Kit getKit() {
 		return this.kit;
 	}
 
-	public void setKit(Kit kit){
-		this.kit=kit;
+	public void setKit(Kit kit) {
+		this.kit = kit;
 	}
-	
+
 	public PedidoSubItem() {
 	}
 
 	public PedidoSubItem(String id) {
 		this.id = Long.valueOf(id);
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
