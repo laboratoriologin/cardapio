@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14297908424810" configfile="/CardapioADM/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="178" id="pf14298171136341" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf14298171136342 pf14298171136343 pf14298171136344" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/dashboard" x="338" y="178" id="pf14298171136345" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf14298171136342 pf14298171136343" path="/pages/dashboard.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/login" x="338" y="562" id="pf14298171136346" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" inlinks="pf14298171136344" path="/pages/login.xhtml"/>
+  <links id="pf14298171136342" target="pf14298171136345" source="pf14298171136341" outcome="sucesso"/>
+  <links id="pf14298171136343" target="pf14298171136345" source="pf14298171136341" outcome="entrar"/>
+  <links id="pf14298171136344" target="pf14298171136346" source="pf14298171136341" outcome="sair"/>
+</pageflow:Pageflow>

@@ -77,6 +77,17 @@ public final class Pedido extends RestModel {
 		this.acaoContaId = acaoContaId;
 	}
 	
+	@FormParam("isCancelado")
+	private Boolean cancelado;
+	
+	public Boolean isCancelado() {
+		return cancelado;
+	}
+
+	public void setCancelado(Boolean cancelado) {
+		this.cancelado = cancelado;
+	}
+	
 	public Pedido() {
 	}
 	

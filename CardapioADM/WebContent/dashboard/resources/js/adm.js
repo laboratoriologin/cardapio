@@ -15,7 +15,7 @@ $(document).ready(function() {
 				setor = data[i];				
 				var liMesas = $('<li />', {});
 				var a = $('<a />', {
-					page : 'resources/templates/adm/mesas.xhtml',
+					page : '../resources/templates/adm/mesas.xhtml',
 					idSetor: setor.setor.id,
 					text : setor.setor.descricao
 				});				
@@ -26,7 +26,7 @@ $(document).ready(function() {
 		} else {
 			var liMesas = $('<li />', {});
 			var a = $('<a />', {
-				page : 'resources/templates/adm/mesas.xhtml',
+				page : '../resources/templates/adm/mesas.xhtml',
 				idSetor: data.setor.id,
 				text : data.setor.descricao
 			});

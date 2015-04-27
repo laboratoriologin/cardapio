@@ -143,7 +143,7 @@ function createDivPedido(id, numeroMesa){
 		$("#numeroMesa", divPedido).html(numeroMesa);
 		
         text = "Pedente Validação";
-        src = "resources/img/icone_confirmar_marrom.png"
+        src = "../resources/img/icone_confirmar_marrom.png"
 		
 		var htmlImg = $('<img />',
 	             { id: id,
@@ -183,7 +183,7 @@ function createDivPedido(id, numeroMesa){
            	};
        	
 				$.ajax({
-					url: url + "pedidos/pedidopronto/usuario/1/pedidosubitem/" + pedidoSubItemId + "/pedido/" + $(this).attr('id'),
+					url: url + "pedidos/pedidopronto/usuario/" + $("#usuarioId").val() + "/pedidosubitem/" + pedidoSubItemId + "/pedido/" + $(this).attr('id'),
 					type: 'PUT'
 				}).done(function (result){
 					getPedidosNaoFinalizado(false);
@@ -223,7 +223,7 @@ function createRowSubItem(divPedido, qtd, descricao, img, id, pedidoId){
 		$("#descricao", divRowSubItem).html(descricao);
 		
         text = "Pedente Validação";
-        src = "resources/img/icone_confirmar_marrom.png"
+        src = "../resources/img/icone_confirmar_marrom.png"
 	
     		var htmlImg = $('<img />', { 
     			id: id,
@@ -253,7 +253,7 @@ function createRowSubItem(divPedido, qtd, descricao, img, id, pedidoId){
 	           	};
            	
 					$.ajax({
-						url: url + "pedidos/pedidopronto/usuario/1/pedidosubitem/" + $(this).attr('id') + "/pedido/" + $(this).attr('pedidoid'),
+						url: url + "pedidos/pedidopronto/usuario/" + $("#usuarioId").val() + "/pedidosubitem/" + $(this).attr('id') + "/pedido/" + $(this).attr('pedidoid'),
 						type: 'PUT'
 					}).done(function (result){
 						getPedidosNaoFinalizado(false);
@@ -275,11 +275,11 @@ function loadData(){
 	
 	var tempoAtualizacao = 60000;
 	
-	$.get('resources/templates/pedido/divLinhaSubItem.xhtml', function(data) {
+	$.get('../resources/templates/pedido/divLinhaSubItem.xhtml', function(data) {
 		templateDivLinhaSubItem = $(data);
 		updateCompletedEventProgress();
 	}).done(function() {
-		$.get('resources/templates/pedido/divTabela.xhtml', function(data) {
+		$.get('../resources/templates/pedido/divTabela.xhtml', function(data) {
 			templateDivTable = $(data);
 			updateCompletedEventProgress();
 		}).done(function() {			

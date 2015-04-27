@@ -27,7 +27,7 @@ public class UsuarioRequest extends ObjectRequest<Usuario> {
     }
 
     public void logar(Usuario usuario) {
-        String urlLogar = Constantes.URL_WS + "/" + usuario.getServiceName() + "/login";
+        String urlLogar = Constantes.URL_WS + "/" + usuario.getServiceName() + "/loginAppGarcom";
         try {
             usuario.setSenha(CryptoUtil.gerarHash(usuario.getSenha(), "MD5"));
             ServerRequest serverRequest = new ServerRequest(ServerRequest.POST, urlLogar, createParameters(usuario));

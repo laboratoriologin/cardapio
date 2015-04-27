@@ -1,6 +1,8 @@
 /**
  * 
  */
+var url = "http://localhost:8080/CardapioWS/"; 
+
 $(document).ready(function() {
 
 	$("#esqueciSenha").hide();
@@ -44,17 +46,26 @@ $(document).ready(function() {
 	});
 
 	$("#btnEntrar").click(function() {
-		if ($("#login").valid())
-			alert('Sim');
-		else
-			alert('Não');
+		$("#login").valid()		
 	});
 	
 	$("#btnLembrarSenha").click(function() {
-		if ($("#esqueciSenha").valid())
-			alert('Sim');
-		else
-			alert('Não');
+		if ($("#esqueciSenha").valid()){
+			$.ajax({
+				url: url + "usuarios/enviarEmail/",
+				type: 'POST',
+				cache : false,
+				data : {
+							'email' : $("#txtEmail").val()							
+				   		} 	
+			}).done(function (result){
+				$("#esqueciSenha").hide("blind", callbackShowLogin());
+				$("#acaoEsqueciSenha").hide("blind");
+				alert("Foi enviado para o seu e-mail uma nova senha!");									
+			}).fail(function(result) {
+				alert('erro');
+			});	
+		}
 	});	
 
 	function callbackShowEsqueciSenha() {

@@ -284,11 +284,11 @@ function createRowSubItem(divPedido, qtd, descricao, img){
 		switch (img) {
 		    case 1:
 		        text = "Pedente Validação";
-		        src = "resources/img/icone_confirmar_marrom.png"
+		        src = "../resources/img/icone_confirmar_marrom.png"
 		        break; 
 		    case 2:
 		        text = "Em produção";
-		        src = "resources/img/icone_preparo_marrom.png"
+		        src = "../resources/img/icone_preparo_marrom.png"
 		        break;
 		    default: 
 		        text = "";
@@ -317,11 +317,11 @@ function loadData(){
 	
 	var tempoAtualizacao = 60000;
 	
-	$.get('resources/templates/pedido/divLinhaSubItem.xhtml', function(data) {
+	$.get('../resources/templates/pedido/divLinhaSubItem.xhtml', function(data) {
 		templateDivLinhaSubItem = $(data);
 		updateCompletedEventProgress();
 	}).done(function() {
-		$.get('resources/templates/pedido/divTabela.xhtml', function(data) {
+		$.get('../resources/templates/pedido/divTabela.xhtml', function(data) {
 			templateDivTable = $(data);
 			updateCompletedEventProgress();
 		}).done(function() {			
@@ -336,7 +336,7 @@ function loadData(){
 		updataMsgErro();
 	});
 	
-	$.get('resources/templates/alertaacao.xhtml', function(data) {
+	$.get('../resources/templates/alertaacao.xhtml', function(data) {
 		templateAcao = $(data);
 		updateCompletedEventProgress();
 	}).done(function() {
@@ -354,7 +354,7 @@ function loadData(){
 		updataMsgErro();
 	});
 
-	$.get('resources/templates/alertapedidoentregue.xhtml', function(data) {
+	$.get('../resources/templates/alertapedidoentregue.xhtml', function(data) {
 		templateAlertaPedidoEntregue = $(data);
 		updateCompletedEventProgress();
 	}).done(function() {

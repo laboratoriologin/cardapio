@@ -19,66 +19,40 @@
 	</div>
 
 	<div id="dialog-historicoconta" title="Gerenciar Mesa">
-		<input type="hidden" value="" id="contaId" /> <input type="hidden" value="" id="numeroMesa" />
+		<input type="hidden" value="" id="contaId" /> 
+		<input type="hidden" value="" id="numeroMesa" />
 
-		<div style="margin-top: 1%; margin-bottom: 2%; overflow: hidden;">
-			<div style="float: left;">
+		<div class="dialogtopo">
+			<div>
 				<button id="novoPedido">Novo Pedido</button>
 			</div>
-			<div id="loader" style="position: fixed; left: 50%;">
+			<div id="loader">
 				<div class='loaderBranco'>Loading...</div>
 			</div>
-			<div style="float: right;">
+			<div>
 				<button>Fechar Conta</button>
 			</div>
 		</div>
 
-		<div style="height: 85%;">
-			<div style="overflow: auto; height: 100%; float: left; width: 65%;">
-				<table id="historicoPedido" class="reference" style="width: 100%;">
+		<div class="dialogbody">
+			<div>
+				<table id="historicoPedido" class="reference">
 					<tr>
 						<th>QTD</th>
 						<th>Produto</th>
 						<th>Status</th>
 						<th></th>
 					</tr>
-					<!-- 
-					<tr>
-						<th colspan="1" class="agrupador">P: 54</th>
-						<th colspan="2" class="agrupador">Obs: Não colocar pimenta do reino</th>
-						<th colspan="1" class="agrupador"><span class="ui-icon  ui-icon-trash"></span></th>
-					</tr>
-					<tr>
-						<td>99</td>
-						<td>Pastel de Camarão não sei mais lá o que</td>
-						<td>Em produção</td>
-						<td><div style="display: flex;">
-								<span class="ui-icon ui-icon-pencil"></span><span class="ui-icon  ui-icon-trash"></span>
-							</div></td>
-					</tr>
-					 -->
 				</table>
 			</div>
 
-			<div style="overflow: auto; height: 100%; float: right; width: 30%;">
-				<table id="pedidoAgrupado" class="reference" style="width: 100%;">
+			<div>
+				<table id="pedidoAgrupado" class="reference">
 					<tr>
 						<th>QTD</th>
 						<th>Cód</th>
 						<th>Produto</th>
 					</tr>
-					<!-- 
-					<tr>
-						<td>99</td>
-						<td>99</td>
-						<td>Pastel de Camarão não sei mais lá o que</td>
-					</tr>
-					<tr>
-						<td>99</td>
-						<td>99</td>
-						<td>Pastel de Camarão não sei mais lá o que</td>
-					</tr>
-					-->
 				</table>
 			</div>
 
@@ -87,22 +61,23 @@
 
 	<div id="dialog-novopedido" title="Novo Pedido">
 
-		<div style="">
-			<div style="margin-top: 5px; margin-bottom: 10px;">
+		<div class="dialogtopoNovoPedido">
+			<div>
 				<button id="salvarPedido">Salvar</button>
 				<button id="cancelarPedido">Cancelar</button>
 			</div>
-			<div style="margin-top: 5px; margin-bottom: 10px;">
-				<textarea style="width: 92%;" id="obsnovopedido" placeholder="Observações"></textarea>
+			<div >
+				<textarea id="obsnovopedido" placeholder="Observações"></textarea>
 			</div>
-			<div style="margin-top: 10px; margin-bottom: 10px;">
-				<input type="text" style="width: 30px;" placeholder="Qtd" name="qtd" id="qtd" /> <input type="text" style="width: 400px;" idsubitem="" placeholder="Item" name="produto" id="produto" />
+			<div>
+				<input type="text" placeholder="Qtd" name="qtd" id="qtd" />
+				<input type="text" idsubitem="" placeholder="Item" name="produto" id="produto" />
 				<button id="addSubItem">Add</button>
 			</div>
 		</div>
 
-		<div style="margin-top: 15px; overflow: auto;">
-			<table id="pedidoSubItem" class="reference" style="width: 100%;">
+		<div class="dialogbodyNovoPedido">
+			<table id="pedidoSubItem" class="reference">
 				<tr>
 					<th>QTD</th>
 					<th>Produto</th>
@@ -115,5 +90,5 @@
 
 	<div id="bodyMesas" class="page"></div>
 
-	<script type="text/javascript" src="resources/templates/adm/mesas.js" />
+	<script type="text/javascript" src="../resources/templates/adm/mesas.js" />
 </div>

@@ -41,7 +41,7 @@ public final class Constantes {
     public static final String INPUTSTREAM = "INPUTSTREAM";
     public static final String FILETYPE = "FILETYPE";
     public static final String FILENAME = "FILENAME";
-    public static final String MSG_ERRO_LOGAR = "Usuário ou senha incorreto!";
+    public static final String MSG_ERRO_LOGAR = "Usuário ou senha incorretos! Ou você não tem permissão para sistema!";
     public static final String PARAMETRO_PEDIDO_EDITAR = "ppe";
 
 

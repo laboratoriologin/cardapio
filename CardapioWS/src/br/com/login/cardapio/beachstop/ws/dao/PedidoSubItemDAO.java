@@ -112,7 +112,7 @@ public class PedidoSubItemDAO implements RestDAO<PedidoSubItem> {
 		return model;
 
 	}
-
+	
 	@Override
 	public PedidoSubItem update(final PedidoSubItem model) throws TSApplicationException {
 

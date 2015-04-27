@@ -8,6 +8,11 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.model.SelectItem;
 
+import org.eclipse.jdt.internal.compiler.util.Util;
+
+import br.com.topsys.constant.TSConstant;
+import br.com.topsys.util.TSCryptoUtil;
+
 import com.login.cardapio.model.GrupoUsuario;
 import com.login.cardapio.model.Setor;
 import com.login.cardapio.model.Usuario;
@@ -65,6 +70,8 @@ public class UsuarioFaces extends CrudFaces<Usuario> {
 
 		}
 
+		getCrudModel().setSenha(TSCryptoUtil.gerarHash(getCrudModel().getSenha(), TSConstant.CRIPTOGRAFIA_MD5));
+		
 		super.prePersist();
 	}
 

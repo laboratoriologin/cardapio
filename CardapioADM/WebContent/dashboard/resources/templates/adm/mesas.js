@@ -1,7 +1,6 @@
 /**
  * 
  */
-
 $(document).ready(function() {
 	$.ajaxSetup({cache : false});
 	
@@ -18,7 +17,7 @@ $(document).ready(function() {
 	$("#dialog-historicoconta").dialog({
 		resizable : false,
 		height : ($("#bodyMesas").height() - 50),
-		width : ($("#bodyMesas").width() - 300),
+		width : ($("#bodyMesas").width() - 500),
 		modal : true,
 		autoOpen : false
 	});
@@ -39,7 +38,6 @@ $(document).ready(function() {
 								'tipoconta' : $("#tipoConta").val()
 					   		} 		
 				}).done(function(result) {
-					console.log(result);
 					loadMesas();
 				}).fail(function(result) {
 					alert('erro');
@@ -67,11 +65,14 @@ $(document).ready(function() {
 	});
 
 	$("#salvarPedido").click(function (){
+		
+		$(this).prop("disabled", true);
+		
 		var postData= new Object();
 		postData["observacao"] = $("#obsnovopedido").val();
 		postData["conta"] = $("#contaId").val();
 		postData["numero"] = $("#numeroMesa").val();
-		postData["usuario"] = "1";
+		postData["usuario"] = $("#usuarioId").val();
 	
 		if($("#pedidoSubItem tr:not(:first-child)").size() != 0) {				
 			
@@ -87,14 +88,17 @@ $(document).ready(function() {
 				cache : false
 			}).done(function(result) {
 				alert('Pedido realizado com sucesso!');
+				$("#salvarPedido").prop("disabled", false);
 				$("#dialog-novopedido").dialog("close");		
-				// 	TODO: Atualizar as tabelas do dialog do histórico do pedido
+				getHistoricoMesa($("#contaId").val());				
 			}).fail(function(result) {
 				alert('erro');
+				$("#salvarPedido").prop("disabled", false);
 			});
 		
 		} else {
-			alert('É necessário incluir algum item!')
+			alert('É necessário incluir algum item!');
+			$("#salvarPedido").prop("disabled", false);
 		} 
 	});
 			
@@ -163,7 +167,7 @@ function postChangeTable(conta, mesaDe, mesaPara) {
 		data : {
 					'conta.id' : conta,
 					'conta.numero' : mesaDe,
-					'usuario' : '1'
+					'usuario' : $("#usuarioId").val()
 		}
 	}).done(function(result) {
 		loadMesas();
@@ -285,15 +289,35 @@ function getHistoricoMesa(conta) {
 				url : url + "pedidos/pedidohistorico/" + conta,
 				dataType : "json",
 				success : function(data) {					
-					console.log(data);
 					$.each( data, function( key, val ) {
 						
-						var btnExcluir = $("<span />", { class : "ui-icon  ui-icon-trash", pedidoId : val.pedido.id});
-						
-						btnExcluir.click(function(){
-							var pedidoId = $(this).attr("pedidoId");
-							alert(pedidoId);
-						});
+						var btnExcluir;
+						if(!val.pedido.cancelado){
+							btnExcluir = $("<span />", { class : "ui-icon  ui-icon-trash", pedidoId : val.pedido.id});						
+							btnExcluir.click(function(){								
+								$(this).hide();
+								
+								if(confirm("Deseja cancelar o pedido?")){
+									var pedidoId = $(this).attr("pedidoId");								
+									$("#loader").show();
+									
+									$.ajax({
+										url : url + "pedidos/cancelar/" + pedidoId,
+										type : 'PUT',
+										cache : false,
+										data : { "usuario" : $("#usuarioId").val(), "id" : pedidoId}
+									}).done(function(result) {
+										getHistoricoMesa($("#contaId").val());
+									}).fail(function(result) {
+										alert('erro');
+									});
+								} else {
+									$(this).show();
+								}								
+							});
+						} else {
+							btnExcluir = $("<span />");
+						}
 						
 						$("#historicoPedido").append(
 								$("<tr />").append(
@@ -307,62 +331,10 @@ function getHistoricoMesa(conta) {
 						
 						if(Array.isArray(val.pedido.subItens)){
 							$.each( val.pedido.subItens, function( chave, valor) {
-
-								var editarPedidoSubItem = $("<span />", { class : "ui-icon ui-icon-pencil", pedidoSubItem : valor.id});
-								editarPedidoSubItem.click(function(){
-									var pedidoSubItemId = $(this).attr("pedidoSubItem");
-									alert(pedidoSubItemId);
-								});
-								
-								var cancelarPedidoSubItem = $("<span />", { class : "ui-icon ui-icon-trash", pedidoSubItem : valor.id});
-								cancelarPedidoSubItem.click(function(){
-									var pedidoSubItemId = $(this).attr("pedidoSubItem");
-									alert(pedidoSubItemId);
-								});
-								
-								$("#historicoPedido").append(
-								
-									$("<tr />").append(
-											$("<td />", {text : valor.quantidade})
-									).append(
-											$("<td />", {text : valor.subItem.item.nome + " - " + valor.subItem.nome})
-									).append(
-											$("<td />", {text : valor.status.descricao})
-									).append(
-											$("<td />").append(
-													$("<div />", { style : "display: flex;" }).append(editarPedidoSubItem).append(cancelarPedidoSubItem)
-											)
-									)
-								);
-								
+								createRowPedidoSubItem(valor, val.pedido.id);
 							});
 						} else {
-							
-							var editarPedidoSubItem = $("<span />", { class : "ui-icon ui-icon-pencil", pedidoSubItem : val.pedido.subItens.id});
-							editarPedidoSubItem.click(function(){
-								var pedidoSubItemId = $(this).attr("pedidoSubItem");
-								alert(pedidoSubItemId);
-							});
-							
-							var cancelarPedidoSubItem = $("<span />", { class : "ui-icon ui-icon-trash", pedidoSubItem : val.pedido.subItens.id});
-							cancelarPedidoSubItem.click(function(){
-								var pedidoSubItemId = $(this).attr("pedidoSubItem");
-								alert(pedidoSubItemId);
-							});
-							
-							$("#historicoPedido").append(
-								$("<tr />").append(
-										$("<td />", {text : val.pedido.subItens.quantidade})
-								).append(
-										$("<td />", {text : val.pedido.subItens.subItem.item.nome + " - " + val.pedido.subItens.subItem.nome})
-								).append(
-										$("<td />", {text : val.pedido.subItens.status.descricao})
-								).append(
-										$("<td />").append(
-												$("<div />", { style : "display: flex;" }).append(editarPedidoSubItem).append(cancelarPedidoSubItem)
-										)
-								)
-							);
+							createRowPedidoSubItem(val.pedido.subItens, val.pedido.id);
 						}
 					});
 					
@@ -371,4 +343,66 @@ function getHistoricoMesa(conta) {
 			});
 		}
 	});	
+}
+
+function createRowPedidoSubItem(valor, pedidoID){
+	
+	
+//	var editarPedidoSubItem;	
+//	if(valor.status.id != 4){
+//		editarPedidoSubItem = $("<span />", { class : "ui-icon ui-icon-pencil", pedidoSubItem : valor.id});
+//		editarPedidoSubItem.click(function(){
+//			var pedidoSubItemId = $(this).attr("pedidoSubItem");
+//			alert(pedidoSubItemId);
+//		});
+//	}else{
+//		editarPedidoSubItem = $("<span />");
+//	}
+	
+	var cancelarPedidoSubItem;
+	if(valor.status.id != 4){
+		cancelarPedidoSubItem = $("<span />", { class : "ui-icon ui-icon-trash", pedidoSubItem : valor.id, pedidoId : pedidoID});
+		cancelarPedidoSubItem.click(function(){			
+			$(this).hide();			
+			if(confirm("Deseja cancelar o item?")){
+				var pedidoId = $(this).attr("pedidoId");
+				var pedidoSubItemId = $(this).attr("pedidoSubItem");
+				$("#loader").show();
+				
+				$.ajax({
+					url : url + "pedidos/cancelar/" + pedidoId,
+					type : 'PUT',
+					cache : false,
+					data : { "usuario" : $("#usuarioId").val(), "id" : pedidoId, "subItens[0].id" : pedidoSubItemId }
+				}).done(function(result) {
+					getHistoricoMesa($("#contaId").val());
+				}).fail(function(result) {
+					alert('erro');
+				});
+			} else {
+				$(this).show();
+			}								
+		});
+	} else {
+		cancelarPedidoSubItem = $("<span />"); 
+	}
+	
+	var btnPedidoSubItem = function(valor){
+		console.log(valor);
+	};
+	
+	$("#historicoPedido").append(
+	
+		$("<tr />").append(
+				$("<td />", {text : valor.quantidade})
+		).append(
+				$("<td />", {text : valor.subItem.item.nome + " - " + valor.subItem.nome})
+		).append(
+				$("<td />", {text : valor.status.descricao})
+		).append(
+				$("<td />").append(						
+						$("<div />", { style : "display: flex;" }).append(cancelarPedidoSubItem)
+				)
+		)
+	);
 }

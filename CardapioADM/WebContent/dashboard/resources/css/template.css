@@ -634,3 +634,76 @@ th.agrupador {
 	cursor: pointer;
 	margin-right: 5px;
 }
+
+.dialogtopo {
+	margin-top: 1%; 
+	margin-bottom: 2%; 
+	overflow: hidden;
+}
+
+.dialogtopo>div:nth-child(1) {
+	float: left;
+}
+
+.dialogtopo>div:nth-child(2) {
+	position: fixed; 
+	left: 50%;
+}
+
+.dialogtopo>div:nth-child(3) {
+	float: right;
+}
+
+.dialogbody {
+	height: 85%;
+}
+
+.dialogbody>div {
+	overflow: auto; 
+	height: 100%; 
+}  
+
+.dialogbody>div:nth-child(1) {
+	float: left; 
+	width: 68%;"
+}
+
+.dialogbody>div:nth-child(2) {
+	float: right; 
+	width: 30%;
+}
+
+.dialogbody table {
+	width: 100%;
+}
+
+.dialogtopoNovoPedido>div:nth-child(1), .dialogtopoNovoPedido>div:nth-child(2) {
+	margin-top: 5px; 
+	margin-bottom: 10px;
+}
+
+.dialogtopoNovoPedido>div:nth-child(2)>textarea {
+	width: 92%; 
+}
+
+.dialogtopoNovoPedido>div:nth-child(3) {
+	margin-top: 10px; 
+	margin-bottom: 10px;
+}
+
+.dialogtopoNovoPedido>div:nth-child(3)>input:nth-child(1) {
+	width: 6%;
+}
+
+.dialogtopoNovoPedido>div:nth-child(3)>input:nth-child(2) {
+	width: 74%;
+}
+
+.dialogbodyNovoPedido {
+	margin-top: 15px; 
+	overflow: auto;
+}
+
+.dialogbodyNovoPedido table {
+	width: 100%;
+}

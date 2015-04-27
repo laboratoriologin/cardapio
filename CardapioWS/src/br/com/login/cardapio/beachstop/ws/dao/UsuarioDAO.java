@@ -31,6 +31,12 @@ public class UsuarioDAO  implements RestDAO<Usuario> {
 		return broker.getCollectionBean(Usuario.class, "celular", "contato", "cpf", "dataNascimento", "email", "endereco", "flagAtivo", "grupoUsuario.id", "id", "login", "nome", "rg", "senha", "telefone", "telefoneContato");
 
 	}
+	
+	public List<Usuario> getAllByFiltro(String filtro) {
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		broker.setPropertySQL("usuariodao.findall");
+		return null;
+	}
 
 	@Override
 	public Usuario insert(Usuario model) throws TSApplicationException {
@@ -71,11 +77,11 @@ public class UsuarioDAO  implements RestDAO<Usuario> {
 
 	}
 	
-	public Usuario login(Usuario usuario) {
+	public Usuario loginAppGarcom(Usuario usuario) {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("usuariodao.login", usuario.getLogin(), usuario.getSenha());
+		broker.setPropertySQL("usuariodao.loginappgarcom", usuario.getLogin(), usuario.getSenha());
 
 		return (Usuario) broker.getObjectBean(Usuario.class,  "id", "email", "flagAtivo", "login", "nome", "senha");
 
@@ -99,7 +105,4 @@ public class UsuarioDAO  implements RestDAO<Usuario> {
 
 		broker.execute();
 	}
-
-
-
 }

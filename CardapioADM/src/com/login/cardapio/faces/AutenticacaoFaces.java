@@ -1,5 +1,6 @@
 package com.login.cardapio.faces;
 
+import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
@@ -87,6 +88,48 @@ public class AutenticacaoFaces extends TSMainFaces {
 		carregarMenu();
 
 		return SUCESSO;
+	}
+
+	public String loginPainel() {
+
+		usuario = UsuarioUtil.usuarioAutenticado(usuario);
+
+		if (TSUtil.isEmpty(usuario)) {
+			clearFields();
+			CardapioUtil.addWarnMessage("Login/Senha sem credencial para acesso.");
+			return null;
+		}
+
+		TSFacesUtil.addObjectInSession(Constantes.USUARIO_CONECTADO, usuario);
+
+		if (usuario.getGrupoUsuario().getId() == 1l) {
+			carregarMenu();
+			return SUCESSO;
+		}
+
+		try {
+
+			if (usuario.getGrupoUsuario().getId() == 3l) {
+				// adm nivel 2
+				TSFacesUtil.getResponse().sendRedirect("pages/adm.xhtml");
+			}
+
+			if (usuario.getGrupoUsuario().getId() == 4l) {
+				TSFacesUtil.getResponse().sendRedirect("pages/pedidosafazer.xhtml");
+			}
+
+			if (usuario.getGrupoUsuario().getId() == 5l) {
+				TSFacesUtil.getResponse().sendRedirect("pages/painel.xhtml");
+			}
+
+			if (usuario.getGrupoUsuario().getId() == 6l) {
+				TSFacesUtil.getResponse().sendRedirect("pages/pedidosafazer.xhtml");
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public String logout() {

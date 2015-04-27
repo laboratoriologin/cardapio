@@ -329,4 +329,10 @@ public class Usuario extends TSActiveRecordAb<Usuario> {
 			return false;
 		return true;
 	}
+	
+	@Override
+	public String toString() {
+		return id==null?null:id.toString();
+	}
+	
 }

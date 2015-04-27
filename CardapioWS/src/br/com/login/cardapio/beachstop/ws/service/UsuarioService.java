@@ -22,6 +22,7 @@ import br.com.login.cardapio.beachstop.ws.util.EmailUtil;
 import br.com.topsys.exception.TSApplicationException;
 import br.com.topsys.exception.TSSystemException;
 import br.com.topsys.util.TSCryptoUtil;
+
 @Path("/usuarios")
 public class UsuarioService extends RestService<Usuario> {
 
@@ -29,36 +30,43 @@ public class UsuarioService extends RestService<Usuario> {
 	public void initDAO() {
 		this.restDAO = new UsuarioDAO();
 	}
-	
+
+	@GET
+	@Path("/pesquisa/{filtro}")
+	@Produces("application/json; charset=UTF-8")
+	public List<Usuario> getUsuarioByFiltro(@PathParam(value = "filtro") String filtro) {
+		return new UsuarioDAO().getAllByFiltro(filtro);
+	}
+
 	@POST
-	@Path("/login")
+	@Path("/loginAppGarcom")
 	@Produces("application/json; charset=UTF-8")
 	public Usuario login(@Form Usuario form) throws ApplicationException {
 
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 
-		form = usuarioDAO.login(form);
+		form = usuarioDAO.loginAppGarcom(form);
 
 		if (form == null) {
 
 			throw new ApplicationException("Usuário inválido", Response.SC_BAD_REQUEST);
 
 		}
-//
-//		List<UsuariosMesas> list = new UsuariosMesasDAO().get(form);
-//
-//		form.setListMesa(new ArrayList<String>());
-//
-//		for (UsuariosMesas mesas : list) {
-//
-//			form.getListMesa().add(mesas.getNumeroMesa().toString());
-//
-//		}
+		//
+		// List<UsuariosMesas> list = new UsuariosMesasDAO().get(form);
+		//
+		// form.setListMesa(new ArrayList<String>());
+		//
+		// for (UsuariosMesas mesas : list) {
+		//
+		// form.getListMesa().add(mesas.getNumeroMesa().toString());
+		//
+		// }
 
 		return form;
 
 	}
-	
+
 	@POST
 	@Path("/enviarEmail")
 	@Produces("application/json; charset=UTF-8")
@@ -66,7 +74,7 @@ public class UsuarioService extends RestService<Usuario> {
 
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 		form = usuarioDAO.getByEmail(form);
-		
+
 		if (form == null) {
 			throw new ApplicationException("Usuário não existe", Response.SC_BAD_REQUEST);
 		}
@@ -91,35 +99,36 @@ public class UsuarioService extends RestService<Usuario> {
 		return form;
 	}
 
-//	@GET
-//	@Path("/garcons/{empresa}{fields : (/.*?)?}")
-//	@Produces("application/json; charset=UTF-8")
-//	public List<Usuario> getGargons(@PathParam(value = "empresa") String keymobile, @PathParam("fields") String fields) {
-//
-//		List<Usuario> garcons = new UsuarioDAO().getAll();
-//
-//		UsuariosMesasDAO usuariosMesasDAO = new UsuariosMesasDAO();
-//
-//		List<UsuariosMesas> list = null;
-//
-//		for (Usuario usuario : garcons) {
-//
-//			list = usuariosMesasDAO.get(usuario);
-//
-//			usuario.setListMesa(new ArrayList<String>());
-//
-//			for (UsuariosMesas mesas : list) {
-//
-//				usuario.getListMesa().add(mesas.getNumeroMesa().toString());
-//
-//			}
-//
-//		}
-//
-//		this.configureReturnObjects(garcons, fields);
-//
-//		return garcons;
-//
-//	}
+	// @GET
+	// @Path("/garcons/{empresa}{fields : (/.*?)?}")
+	// @Produces("application/json; charset=UTF-8")
+	// public List<Usuario> getGargons(@PathParam(value = "empresa") String
+	// keymobile, @PathParam("fields") String fields) {
+	//
+	// List<Usuario> garcons = new UsuarioDAO().getAll();
+	//
+	// UsuariosMesasDAO usuariosMesasDAO = new UsuariosMesasDAO();
+	//
+	// List<UsuariosMesas> list = null;
+	//
+	// for (Usuario usuario : garcons) {
+	//
+	// list = usuariosMesasDAO.get(usuario);
+	//
+	// usuario.setListMesa(new ArrayList<String>());
+	//
+	// for (UsuariosMesas mesas : list) {
+	//
+	// usuario.getListMesa().add(mesas.getNumeroMesa().toString());
+	//
+	// }
+	//
+	// }
+	//
+	// this.configureReturnObjects(garcons, fields);
+	//
+	// return garcons;
+	//
+	// }
 
 }

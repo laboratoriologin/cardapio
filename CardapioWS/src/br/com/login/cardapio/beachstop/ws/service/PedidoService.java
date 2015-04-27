@@ -2,6 +2,7 @@ package br.com.login.cardapio.beachstop.ws.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -67,10 +68,18 @@ public class PedidoService extends RestService<Pedido> {
 		List<Pedido> pedidos = new PedidoDAO().getAll(contaId);
 		PedidoSubItemDAO pedidoSubItemDAO = new PedidoSubItemDAO();
 
+		Long qtd;
 		for (Pedido pedido : pedidos) {
 			pedido.setSubItens(pedidoSubItemDAO.getAllByPedidoHasStatus(pedido));
-		}
 
+			qtd = pedido.getSubItens().stream().filter(u -> u.getStatus().getId().equals(Constantes.StatusPedido.CANCELADO)).count();
+
+			if (qtd.equals(new Long(pedido.getSubItens().size()))) {
+				pedido.setCancelado(true);
+			} else {
+				pedido.setCancelado(false);
+			}
+		}
 		return pedidos;
 	}
 
@@ -276,18 +285,11 @@ public class PedidoService extends RestService<Pedido> {
 	@PUT
 	@Path("/cancelar/{id}")
 	@Produces("application/json; charset=UTF-8")
-	public Pedido cancelar(@Form Pedido pedido, @PathParam("id") Long id) throws ApplicationException {
-
+	public Pedido cancelarADM(@Form Pedido pedido, @PathParam("id") Long id) throws ApplicationException {
 		try {
-			PedidoDAO pedidoDAO = new PedidoDAO();
-			Pedido order = pedidoDAO.get(id);
-			// se ninguem fez nenhuma operacao antes, pode alterar o registro.
-			// Apenas um controle de transação
-			if (TSUtil.isEmpty(order.getUsuario().getId())) {
-				pedido.setId(id);
-				pedido.setSubItens(new PedidoSubItemDAO().getAll(pedido));
-				this.gerarLog(pedido, new Status(Constantes.StatusPedido.CANCELADO));
-			}
+			new PedidoDAO().cancelar(pedido, pedido.getUsuario());
+		} catch (TSApplicationException ex) {
+			throw new ApplicationException(ex.getMessage(), Response.SC_BAD_REQUEST);
 		} catch (TSSystemException ex) {
 			ex.printStackTrace();
 			throw new ApplicationException(ex.getMessage(), Response.SC_INTERNAL_SERVER_ERROR);
