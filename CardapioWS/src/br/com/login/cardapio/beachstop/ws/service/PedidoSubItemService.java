@@ -7,12 +7,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
-import br.com.login.cardapio.beachstop.ws.model.Conta;
-import br.com.login.cardapio.beachstop.ws.model.Pedido;
-import br.com.login.cardapio.beachstop.ws.model.PedidoSubItem;
-import br.com.login.cardapio.beachstop.ws.model.Status;
-import br.com.login.cardapio.beachstop.ws.dao.PedidoDAO;
 import br.com.login.cardapio.beachstop.ws.dao.PedidoSubItemDAO;
+import br.com.login.cardapio.beachstop.ws.model.Conta;
+import br.com.login.cardapio.beachstop.ws.model.PedidoSubItem;
+import br.com.login.cardapio.beachstop.ws.model.SubItem;
 
 @Path("/pedidos_sub_itens")
 public class PedidoSubItemService extends RestService<PedidoSubItem> {
@@ -28,6 +26,15 @@ public class PedidoSubItemService extends RestService<PedidoSubItem> {
 	public List<PedidoSubItem> get(@PathParam("conta_id") String contaId) {
 		Conta conta = new Conta(contaId);
 		return new PedidoSubItemDAO().getAllGroupQtd(conta);
+	}
+
+	@GET
+	@Path("getbycontasubitem/conta/{conta_id}/subitem/{sub_item_id}")
+	@Produces("application/json; charset=UTF-8")
+	public List<PedidoSubItem> getByContaSubItem(@PathParam("conta_id") String contaId, @PathParam("sub_item_id") String subItemId) {
+		Conta conta = new Conta(contaId);
+		SubItem subItem = new SubItem(subItemId);
+		return new PedidoSubItemDAO().getByContaSubItem(conta, subItem);
 	}
 
 }

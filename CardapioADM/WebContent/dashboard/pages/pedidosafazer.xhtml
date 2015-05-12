@@ -2,10 +2,10 @@
 <ui:composition template="../resources/templates/template.xhtml" xmlns:ui="http://java.sun.com/jsf/facelets">
 	<ui:define name="body">
 		<script type="text/javascript" src="../resources/js/pedidosafazer.js"></script>
-		
+
 		<div id="tempoPedido"></div>
 
-		<div class="esquerda">
+		<div class="div100">
 			<div id="pedido">
 				<div id="alinhartextoTopo">
 					<div>
@@ -14,9 +14,27 @@
 					<div>
 						<span>Pedidos</span>
 					</div>
+					<div>
+						<span id="codeSend"></span>
+					</div>
 				</div>
 
 				<div id="pedidosAtuais"></div>
+			</div>
+			<div id="pedidopronto">
+				<div id="alinhartexto">
+					<div>
+						<img align="middle" alt="Fechar Conta" src="../resources/img/icone_pedidos_icone_pedidos.png" />
+					</div>
+					<div>
+						<span>Recentes</span>
+					</div>
+				</div>
+				<div id="alertapedidoentregue">
+					<div id="maisitens2">
+						<span id="maisitens2span"></span>
+					</div>
+				</div>
 			</div>
 		</div>
 	</ui:define>

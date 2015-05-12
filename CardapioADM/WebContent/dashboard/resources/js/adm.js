@@ -5,6 +5,8 @@ $(document).ready(function() {
 	
 	startModalLoad(1);
 	updateCompletedEventProgress();
+	
+	$("#page").load("../resources/templates/adm/index.xhtml");
 
 	$.getJSON(url + "setores/", function(data) {
 		var ulMesas = $('<ul />', {});

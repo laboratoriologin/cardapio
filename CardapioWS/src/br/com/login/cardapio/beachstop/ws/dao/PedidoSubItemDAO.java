@@ -7,6 +7,7 @@ import br.com.login.cardapio.beachstop.ws.model.Conta;
 import br.com.login.cardapio.beachstop.ws.model.Pedido;
 import br.com.login.cardapio.beachstop.ws.model.PedidoSubItem;
 import br.com.login.cardapio.beachstop.ws.model.Status;
+import br.com.login.cardapio.beachstop.ws.model.SubItem;
 import br.com.login.cardapio.beachstop.ws.util.Constantes;
 import br.com.topsys.database.TSDataBaseBrokerIf;
 import br.com.topsys.database.factory.TSDataBaseBrokerFactory;
@@ -23,6 +24,31 @@ public class PedidoSubItemDAO implements RestDAO<PedidoSubItem> {
 
 		return (PedidoSubItem) broker.getObjectBean(PedidoSubItem.class, "id", "pedido.id", "quantidade", "subItem.id", "valorUnitario");
 
+	}
+	
+	public List<PedidoSubItem> getByContaSubItem(Conta conta, SubItem subItem) {
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+
+		StringBuilder sql = new StringBuilder(" SELECT PSI.ID, PSI.QUANTIDADE, CONVERT(VARCHAR(8), L.HORARIO, 108) AS HORARIO, U.NOME, (SELECT DESCRICAO FROM STATUS WHERE ID = (SELECT MAX(STATUS_ID) FROM LOGS AS L1 WHERE L1.PEDIDO_SUB_ITEM_ID = PSI.ID)) AS STATUS  ");
+         							 sql.append(" FROM CONTAS AS C  ")
+     			                  .append(" INNER JOIN PEDIDOS AS P ON C.ID = P.CONTA_ID ")
+     			                  .append(" INNER JOIN PEDIDOS_SUB_ITENS AS PSI ON P.ID = PSI.PEDIDO_ID ")
+     			                  .append(" INNER JOIN SUB_ITENS AS SI ON PSI.SUB_ITEM_ID = SI.ID ")
+     			                  .append(" INNER JOIN LOGS AS L ON PSI.ID = L.PEDIDO_SUB_ITEM_ID ")
+     			                  .append(" INNER JOIN USUARIOS AS U ON L.USUARIO_ID = U.ID ")
+     			                    .append("    WHERE C.ID = ").append(conta.getId()).append("AND SI.ID = ").append(subItem.getId()).append("AND L.STATUS_ID = 2 ")
+     			                  .append(" UNION ")  
+     			                      .append(" SELECT PSI.ID, PSI.QUANTIDADE, CONVERT(VARCHAR(8), L.HORARIO, 108) AS HORARIO, U.NOME, (SELECT DESCRICAO FROM STATUS WHERE ID = (SELECT MAX(STATUS_ID) FROM LOGS AS L1 WHERE L1.PEDIDO_SUB_ITEM_ID = PSI.ID)) AS STATUS  ")
+      							        .append(" FROM CONTAS AS C  ")
+    			                  .append(" INNER JOIN PEDIDOS AS P ON C.ID = P.CONTA_ID ")
+    			                  .append(" INNER JOIN PEDIDOS_SUB_ITENS AS PSI ON P.ID = PSI.PEDIDO_ID ")
+    			                  .append(" INNER JOIN SUB_ITENS AS SI ON PSI.SUB_ITEM_ID = SI.ID ")
+    			                  .append(" INNER JOIN LOGS AS L ON PSI.ID = L.PEDIDO_SUB_ITEM_ID ")
+    			                  .append(" INNER JOIN USUARIOS AS U ON L.USUARIO_ID = U.ID ")
+    			                    .append("    WHERE C.ID = ").append(conta.getId()).append("AND SI.ID = ").append(subItem.getId()).append("AND L.STATUS_ID = 1 ");
+		
+		broker.setSQL(sql.toString());
+		return broker.getCollectionBean(PedidoSubItem.class, "id", "quantidade", "log.strHorario", "log.usuario.nome", "status.descricao");
 	}
 
 	public List<PedidoSubItem> getAllOuterStatus(Pedido pedido, Status status) {
@@ -63,7 +89,7 @@ public class PedidoSubItemDAO implements RestDAO<PedidoSubItem> {
 	public List<PedidoSubItem> getAllGroupQtd(Conta conta) {
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		broker.setPropertySQL("pedidosubitemdao.getallbycontagroupqtd", conta.getId());
-		return broker.getCollectionBean(PedidoSubItem.class, "quantidade", "subItem.nome", "subItem.codigo", "subItem.item.nome");
+		return broker.getCollectionBean(PedidoSubItem.class, "quantidade", "subItem.id", "subItem.nome", "subItem.codigo", "subItem.item.nome");
 	}
 
 	public List<PedidoSubItem> getAll(Pedido pedido) {

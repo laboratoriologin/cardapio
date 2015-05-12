@@ -20,6 +20,16 @@ public class AreasDAO  implements RestDAO<Area> {
 		return (Area) broker.getObjectBean(Area.class, "descricao", "id");
 
 	}
+	
+	public Area getByGrupoUsuario(Long grupoUsuarioId){
+
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+
+		broker.setPropertySQL("areasdao.getbygrupousuario", grupoUsuarioId);
+
+		return (Area) broker.getObjectBean(Area.class, "descricao", "id");
+
+	}
 
 	@Override
 	public List<Area> getAll() {

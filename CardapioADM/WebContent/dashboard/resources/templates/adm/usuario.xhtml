@@ -1,14 +1,17 @@
 <div class="page">
 	<script type="text/javascript" src="../resources/templates/adm/usuario.js" />
 
-	<div style="width: 100%; height: 100%; font-family: Century Gothic;">
-		<div style="height: 98%; margin-left: 0.5%; margin-top: 0.5%; width: 99%;">
+	<div style="font-family: Century Gothic; padding-left: 0.5%; padding-top: 0.5%; height: 100%; width: 99%;">
+		<div style="height: 100%; width: 100%;">
 			<div style="width: 100%; overflow: hidden; margin-bottom: 1%;">
 				<div style="float: left;">
 					<input type="text" id="pesquisaUsuario" placeholder="Pesquisar" style="height: 25px; width: 450px;" />
 				</div>
+				<div id="loader" style="position: relative; display: inline-flex; left: 20%; margin-top: 0.3%;">
+					<div class='loaderMarrom'>Loading...</div>
+				</div>
 				<div style="float: right;">
-					<button style="height: 31px; width: 115px;">Novo</button>
+					<button id="novoUsuario" style="height: 31px; width: 115px;">Novo</button>
 				</div>
 			</div>
 			<div style="width: 100%; height: 90%; overflow: auto;">
@@ -24,60 +27,78 @@
 							<th>E-mail</th>
 							<th></th>
 						</tr>
-						<tr>
-							<td>3</td>
-							<td>Garçom</td>
-							<td>garcom</td>
-							<td>Garçons</td>
-							<td>71-8888-8888</td>
-							<td>71-8888-8888</td>
-							<td>teste@teste.com.br</td>
-							<td>ação</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>Garçom</td>
-							<td>garcom</td>
-							<td>Garçons</td>
-							<td>71-8888-8888</td>
-							<td>71-8888-8888</td>
-							<td>teste@teste.com.br</td>
-							<td>ação</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>Garçom</td>
-							<td>garcom</td>
-							<td>Garçons</td>
-							<td>71-8888-8888</td>
-							<td>71-8888-8888</td>
-							<td>teste@teste.com.br</td>
-							<td>ação</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>Garçom</td>
-							<td>garcom</td>
-							<td>Garçons</td>
-							<td>71-8888-8888</td>
-							<td>71-8888-8888</td>
-							<td>teste@teste.com.br</td>
-							<td>ação</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>Garçom</td>
-							<td>garcom</td>
-							<td>Garçons</td>
-							<td>71-8888-8888</td>
-							<td>71-8888-8888</td>
-							<td>teste@teste.com.br</td>
-							<td>ação</td>
-						</tr>
-
 					</tbody>
 				</table>
 			</div>
 		</div>
 	</div>
+
+	<div id="dialog-formusuario" title="Usuário">
+		<form>
+			<input type="hidden" id="usuarioId" name="usuarioId" />
+
+			<div style="padding-bottom: 1%; margin-top: 0.5%; margin-top: 0.5%; margin-bottom: 1%; border-bottom: 1px solid #CDCDCD; overflow: hidden;">
+				<div style="float: left;">
+					<input id="btnSalvar" type="button" value="Salvar" />
+				</div>
+				<div id="loaderDialog" style="float: right;">
+					<div class='loaderBranco'>Loading...</div>
+				</div>
+			</div>
+			<div style="border-bottom: 1px solid #CDCDCD; padding-bottom: 1%;">
+				<table style="width: 100%;">
+					<tr>
+						<td style="line-height: 1.42857; padding: 8px; vertical-align: 8px;"><input id="nome" name="nome" type="text" placeholder="Nome" style="width: 90%" data-rule-required="true" data-msg-required="*" /></td>
+						<td style="line-height: 1.42857; padding: 8px; vertical-align: 8px;"><input id="ativo" name="ativo" type="checkbox" checked="checked" /> Ativo?</td>
+					</tr>
+					<tr>
+						<td style="line-height: 1.42857; padding: 8px; vertical-align: 8px;"><input id="login" name="login" type="text" placeholder="Login" style="width: 90%" data-rule-required="true" data-msg-required="*" /></td>
+						<td style="line-height: 1.42857; padding: 8px; vertical-align: 8px;"><input id="senha" name="senha" type="password" placeholder="Senha" style="width: 90%" data-rule-required="true" data-msg-required="*" /></td>
+					</tr>
+					<tr>
+						<td style="line-height: 1.42857; padding: 8px; vertical-align: 8px;"><select id="grupousuario" name="grupousuario" style="width: 91%;" data-rule-required="true" data-msg-required="*">
+								<option value=""></option>
+						</select></td>
+						<td style="line-height: 1.42857; padding: 8px; vertical-align: 8px;"><input id="dataAniversario" name="dataAniversario" type="text" placeholder="Data Aniversário" style="width: 90%" data-rule-required="true" data-msg-required="*" /></td>
+					</tr>
+					<tr>
+						<td style="line-height: 1.42857; padding: 8px; vertical-align: 8px;"><input id="rg" name="rg" type="text" placeholder="RG" style="width: 90%" data-rule-required="true" data-msg-required="*" /></td>
+						<td style="line-height: 1.42857; padding: 8px; vertical-align: 8px;"><input id="cpf" name="cpf" type="text" placeholder="CPF" style="width: 90%" data-rule-required="true" data-msg-required="*" /></td>
+					</tr>
+					<tr>
+						<td colspan="2" style="line-height: 1.42857; padding: 8px; vertical-align: 8px;"><input id="endereco" name="endereco" type="text" placeholder="Endereço" style="width: 95%" data-rule-required="true" data-msg-required="*" /></td>
+					</tr>
+				</table>
+			</div>
+
+			<div>
+				<div id="tabs" style="width: 94%; margin-left: 5px; margin-top: 1.5%">
+					<ul>
+						<li><a href="#tabs-1">Contatos Pessoais</a></li>
+						<li><a href="#tabs-2">Outros Contatos</a></li>
+					</ul>
+					<div id="tabs-1">
+						<div style="padding-bottom: 1%; padding-top: 1%;">
+							<input id="telefone" name="telefone" type="text" placeholder="Telefone" style="width: 47%" data-rule-required="true" data-msg-required="*" />
+						</div>
+						<div style="padding-bottom: 1%; padding-top: 1%;">
+							<input id="celular" name="celular" type="text" placeholder="Celular" style="width: 47%" data-rule-required="true" data-msg-required="*" />
+						</div>
+						<div style="padding-bottom: 1%; padding-top: 1%;">
+							<input id="email" name="email" type="text" placeholder="E-mail" style="width: 47%" data-rule-required="true" data-msg-required="*" />
+						</div>
+					</div>
+					<div id="tabs-2">
+						<div style="padding-bottom: 1%; padding-top: 1%;">
+							<input id="contato" name="contato" type="text" placeholder="Pessoa para Contato" style="width: 47%" data-rule-required="true" data-msg-required="*" />
+						</div>
+						<div style="padding-bottom: 1%; padding-top: 1%;">
+							<input id="telefoneContato" name="telefoneContato" type="text" placeholder="Telefone do contato" style="width: 47%" data-rule-required="true" data-msg-required="*" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+
 </div>

@@ -5,7 +5,7 @@ $(document).ready(function() {
 	$.ajaxSetup({cache : false});
 	
 	$("#loader").hide();
-
+	
 	$("#dialog-novopedido").dialog({
 		resizable : false,
 		height : (($("#bodyMesas").height() - ($("#bodyMesas").height() * 0.20))),
@@ -78,7 +78,8 @@ $(document).ready(function() {
 			
 			$("#pedidoSubItem tr:not(:first-child)").each(function( index ) {	
 				postData["subItens[" + index + "].subitem"] = $("td:nth-child(2)", $(this)).attr("idsubitem");
-				postData["subItens[" + index + "].quantidade"] = $("td:nth-child(1)", $(this)).text();		
+				postData["subItens[" + index + "].quantidade"] = $("td:nth-child(1)", $(this)).text();				
+				postData["subItens[" + index + "].finished"] = $("input", $("td:nth-child(3)", $(this))).prop("checked");
 			});
 	
 			$.ajax({
@@ -94,8 +95,7 @@ $(document).ready(function() {
 			}).fail(function(result) {
 				alert('erro');
 				$("#salvarPedido").prop("disabled", false);
-			});
-		
+			});		
 		} else {
 			alert('É necessário incluir algum item!');
 			$("#salvarPedido").prop("disabled", false);
@@ -113,7 +113,12 @@ $(document).ready(function() {
 		
 				var htmlTdQtd = $('<td />', { text : $("#qtd").val() });
 				
-				var htmlTdProduto = $('<td />', { idsubitem : $("#produto").attr("idsubitem"), text : $("#produto").val() });	
+				var htmlTdProduto = $('<td />', { idsubitem : $("#produto").attr("idsubitem"), text : $("#produto").val() });
+				
+				var htmlTdCheckImprimir = $('<td />', { idsubitem : $("#produto").attr("idsubitem") });
+				var inputCheckImprimir = $('<input />', { type : "checkbox", idsubitem : $("#produto").attr("idsubitem"), name : "imprimir_" + $("#produto").attr("idsubitem"), id : "imprimir_" + $("#produto").attr("idsubitem") });
+				
+				htmlTdCheckImprimir.append(inputCheckImprimir);
 			
 				var spanIcon = $('<span />', { class : 'ui-icon ui-icon-trash'});
 				
@@ -126,6 +131,7 @@ $(document).ready(function() {
 				htmlTdIcon.append(spanIcon);
 				htmlTr.append(htmlTdQtd);
 				htmlTr.append(htmlTdProduto);
+				htmlTr.append(htmlTdCheckImprimir);
 				htmlTr.append(htmlTdIcon);
 			
 				$("#pedidoSubItem").append(htmlTr);
@@ -269,20 +275,84 @@ function getHistoricoMesa(conta) {
 	$("#historicoPedido tr:not(:first-child)").remove();
 	$("#pedidoAgrupado tr:not(:first-child)").remove();
 	
+	var tr;	
 	$.ajax({
 		url : url + "pedidos_sub_itens/pedidosubitemgroupqtd/" + conta,
 		dataType : "json",
 		success : function(data) {			
 			$.each( data, function( key, val ) {
-				$("#pedidoAgrupado").append(
-						$("<tr />").append(
-								$("<td />", { text : val.pedidosubitem.quantidade})
+				
+				tr = $("<tr />", {subItemId : val.pedidosubitem.subItem.id});
+				
+				tr.click(function(){
+					
+				   	var extraStuff = {				   			
+				   			thisTr : $(this)
+			   		}; 
+				   	
+				   	var callBackError = function(extraStuff) {
+				   	    return function(result) {
+							$("#pedidoAgrupado tr[tranalitico='true']").remove();
+
+							var tdAnalitico = $("<td />", { colspan : "3" });
+							
+							var tableAnalitico = $("<table />", { class : "reference" });
+							tableAnalitico.append(
+									$("<tr />").append(									
+										$("<th />", {text : "Qtd"})
+									).append(									
+										$("<th />", {text : "Atendimento"})
+									).append(									
+										$("<th />", {text : "Garçom"})
+									).append(									
+										$("<th />", {text : "Status"})
+									)
+							);
+							$.each( result, function( key, val ) {
+								tableAnalitico.append(
+										$("<tr />").append(									
+											$("<td />", {text : val.pedidosubitem.quantidade})
+										).append(									
+											$("<td />", {text : val.pedidosubitem.log.strHorario})
+										).append(									
+											$("<td />", {text : val.pedidosubitem.log.usuario.nome})
+										).append(									
+											$("<td />", {text : val.pedidosubitem.status.descricao})
+										)
+								);
+							});
+							
+							tdAnalitico.append(tableAnalitico);
+							
+							var trAnalitico = $("<tr />", {tranalitico : true, class : 'subTable'});
+														
+							trAnalitico.append(tdAnalitico);
+							trAnalitico.hide();
+
+							extraStuff.thisTr.after(trAnalitico);
+							trAnalitico.show( "Blind" );
+				   	    };
+				   	};
+				
+					$.ajax({
+						url : url + "pedidos_sub_itens/getbycontasubitem/conta/" + $("#contaId").val() + "/subitem/" + $(this).attr("subitemid"),
+						type : 'GET',
+						cache : false,						
+					}).done(callBackError(extraStuff))
+					.fail(function(result) {
+						alert('erro');
+					});
+				});
+				
+				tr.append(
+							$("<td />", { text : val.pedidosubitem.quantidade})
 						).append(
-								$("<td />", { text : val.pedidosubitem.subItem.codigo})
+							$("<td />", { text : val.pedidosubitem.subItem.codigo})
 						).append(
-								$("<td />", { text : val.pedidosubitem.subItem.item.nome + " - " + val.pedidosubitem.subItem.nome})
-						)
-				);
+							$("<td />", { text : val.pedidosubitem.subItem.item.nome + " - " + val.pedidosubitem.subItem.nome})
+						);
+				
+				$("#pedidoAgrupado").append(tr);
 			});
 			
 			$.ajax({
@@ -323,7 +393,9 @@ function getHistoricoMesa(conta) {
 								$("<tr />").append(
 										$("<th />", { text : "P: " + val.pedido.id, colspan : "1", class : "agrupador"})
 								).append(
-										$("<th />", { text : "Obs: " + val.pedido.observacao, colspan : "2", class : "agrupador"})
+										$("<th />", { text : "Obs: " + val.pedido.observacao, colspan : "1", class : "agrupador"})
+								).append(
+										$("<th />", { text : "Horário: " + val.pedido.horarioSolicitacao, colspan : "1", class : "agrupador"})
 								).append(
 										$("<th />", { colspan : "1", class : "agrupador"}).append(btnExcluir)
 								)

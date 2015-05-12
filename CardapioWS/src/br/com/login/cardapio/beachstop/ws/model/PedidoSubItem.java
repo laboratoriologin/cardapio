@@ -78,6 +78,17 @@ public final class PedidoSubItem extends RestModel {
 		this.logs = logs;
 	}
 	
+	@FormParam("log")
+	private Log log;
+
+	public Log getLog() {
+		return log;
+	}
+
+	public void setLog(Log log) {
+		this.log = log;
+	}
+	
 	@FormParam("status")
 	private Status status;
 
@@ -98,6 +109,21 @@ public final class PedidoSubItem extends RestModel {
 
 	public void setKit(Kit kit) {
 		this.kit = kit;
+	}
+	
+	@FormParam("finished")
+	private Boolean finished;
+
+	public Boolean isFinished(){
+		return this.finished;
+	}
+	
+	public Boolean getFinished(){
+		return this.finished;
+	}
+
+	public void setFinished(Boolean finished) {
+		this.finished = finished;
 	}
 
 	public PedidoSubItem() {

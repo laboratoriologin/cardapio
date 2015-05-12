@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 
 @SuppressWarnings("serial")
-@XmlRootElement(name ="pausa")
+@XmlRootElement(name = "pausa")
 public final class Pausa extends RestModel {
 
 	@FormParam("horariofinal")
@@ -17,7 +17,7 @@ public final class Pausa extends RestModel {
 	}
 
 	public void setHorarioFinal(Date horarioFinal) {
-		this.horarioFinal=horarioFinal;
+		this.horarioFinal = horarioFinal;
 	}
 
 	@FormParam("horarioinicial")
@@ -28,7 +28,29 @@ public final class Pausa extends RestModel {
 	}
 
 	public void setHorarioInicial(Date horarioInicial) {
-		this.horarioInicial=horarioInicial;
+		this.horarioInicial = horarioInicial;
+	}
+
+	@FormParam("strHorarioinicial")
+	private String strHorarioInicial;
+
+	public String getStrHorarioInicial() {
+		return strHorarioInicial;
+	}
+
+	public void setStrHorarioInicial(String strHorarioInicial) {
+		this.strHorarioInicial = strHorarioInicial;
+	}
+
+	@FormParam("diffminuto")
+	private String diffMinuto;
+
+	public String getDiffMinuto() {
+		return diffMinuto;
+	}
+
+	public void setDiffMinuto(String diffMinuto) {
+		this.diffMinuto = diffMinuto;
 	}
 
 	@FormParam("usuario")
@@ -39,12 +61,13 @@ public final class Pausa extends RestModel {
 	}
 
 	public void setUsuario(Usuario usuario) {
-		this.usuario=usuario;
+		this.usuario = usuario;
 	}
 
-	public Pausa(){}
+	public Pausa() {
+	}
 
-	public Pausa(String id){
+	public Pausa(String id) {
 		this.id = Long.valueOf(id);
 	}
 }

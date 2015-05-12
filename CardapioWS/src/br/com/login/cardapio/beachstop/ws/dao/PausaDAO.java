@@ -20,6 +20,13 @@ public class PausaDAO  implements RestDAO<Pausa> {
 		return (Pausa) broker.getObjectBean(Pausa.class, "horarioFinal", "horarioInicial", "id", "usuario.id");
 
 	}
+	
+	public List<Pausa> getEmPausa() {
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		broker.setPropertySQL("pausadao.getempausa");
+		return broker.getCollectionBean(Pausa.class, "id", "usuario.nome", "strHorarioInicial", "diffMinuto");
+	}
+
 
 	@Override
 	public List<Pausa> getAll() {

@@ -19,6 +19,17 @@ public final class Log extends RestModel {
 	public void setHorario(Date horario) {
 		this.horario=horario;
 	}
+	
+	@FormParam("strHorario")
+	private String strHorario;
+
+	public String getStrHorario() {
+		return strHorario;
+	}
+
+	public void setStrHorario(String strHorario) {
+		this.strHorario=strHorario;
+	}
 
 	@FormParam("pedidosubitem")
 	private PedidoSubItem pedidoSubItem;

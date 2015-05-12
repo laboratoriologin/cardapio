@@ -15,6 +15,7 @@ import org.apache.catalina.connector.Response;
 import org.jboss.resteasy.annotations.Form;
 
 import br.com.login.cardapio.beachstop.ws.dao.AcaoContaDAO;
+import br.com.login.cardapio.beachstop.ws.dao.AreasDAO;
 import br.com.login.cardapio.beachstop.ws.dao.ContaDAO;
 import br.com.login.cardapio.beachstop.ws.dao.ItemDAO;
 import br.com.login.cardapio.beachstop.ws.dao.KitDAO;
@@ -23,6 +24,7 @@ import br.com.login.cardapio.beachstop.ws.dao.PedidoDAO;
 import br.com.login.cardapio.beachstop.ws.dao.PedidoSubItemDAO;
 import br.com.login.cardapio.beachstop.ws.dao.StatusDAO;
 import br.com.login.cardapio.beachstop.ws.dao.SubItemDAO;
+import br.com.login.cardapio.beachstop.ws.dao.UsuarioDAO;
 import br.com.login.cardapio.beachstop.ws.exception.ApplicationException;
 import br.com.login.cardapio.beachstop.ws.model.Acao;
 import br.com.login.cardapio.beachstop.ws.model.AcaoConta;
@@ -51,7 +53,12 @@ public class PedidoService extends RestService<Pedido> {
 	@Path("pedidosnaoconcluido/")
 	@Produces("application/json; charset=UTF-8")
 	public List<Pedido> get() {
-		List<Pedido> pedidos = new PedidoDAO().getAllByOuterJoinStatus(new Status(3l));
+
+		List<Status> listStatus = new ArrayList<Status>();
+		listStatus.add(new Status(3l));
+		listStatus.add(new Status(4l));
+
+		List<Pedido> pedidos = new PedidoDAO().getAllByOuterJoinStatus(listStatus);
 		PedidoSubItemDAO pedidoSubItemDAO = new PedidoSubItemDAO();
 
 		for (Pedido pedido : pedidos) {
@@ -67,10 +74,13 @@ public class PedidoService extends RestService<Pedido> {
 	public List<Pedido> getPedidoHistorico(@PathParam("conta_id") String contaId) {
 		List<Pedido> pedidos = new PedidoDAO().getAll(contaId);
 		PedidoSubItemDAO pedidoSubItemDAO = new PedidoSubItemDAO();
+		LogDAO log = new LogDAO();
 
 		Long qtd;
 		for (Pedido pedido : pedidos) {
 			pedido.setSubItens(pedidoSubItemDAO.getAllByPedidoHasStatus(pedido));
+
+			pedido.setHorarioSolicitacao(log.getHorarioSolicitacaoPedido(pedido).getStrHorario());
 
 			qtd = pedido.getSubItens().stream().filter(u -> u.getStatus().getId().equals(Constantes.StatusPedido.CANCELADO)).count();
 
@@ -86,9 +96,10 @@ public class PedidoService extends RestService<Pedido> {
 	@GET
 	@Path("pedidosafazer/{id}")
 	@Produces("application/json; charset=UTF-8")
-	public List<Pedido> getPedidoCozinha(@PathParam("id") String id) {
+	public List<Pedido> getPedidoCozinha(@PathParam("id") Long usuarioId) {
 
-		Area area = new Area(id);
+		Usuario usuario = new UsuarioDAO().get(usuarioId);
+		Area area = new AreasDAO().getByGrupoUsuario(usuario.getGrupoUsuario().getId());
 
 		List<Pedido> pedidos = new PedidoDAO().getAllByAreaAndStatus(area, new Status(2l));
 		PedidoSubItemDAO pedidoSubItemDAO = new PedidoSubItemDAO();
@@ -171,7 +182,12 @@ public class PedidoService extends RestService<Pedido> {
 			status.setId(Constantes.StatusPedido.PENDENTE_APROVACAO);
 
 		for (PedidoSubItem item : form.getSubItens()) {
-			item.setStatus(status);
+
+			if (item.getFinished() != null && item.isFinished())
+				item.setStatus(new Status(Constantes.StatusPedido.ENTREGUE));
+			else
+				item.setStatus(status);
+
 		}
 
 		// quando não tem o usuário, significa que o cliente realizou o pedido e
@@ -184,7 +200,7 @@ public class PedidoService extends RestService<Pedido> {
 		}
 
 		super.insert(form);
-		this.gerarLog(form, status);
+		this.gerarLog(form);
 		this.gerarAcaoConta(form);
 		return new Pedido();
 	}
@@ -260,7 +276,6 @@ public class PedidoService extends RestService<Pedido> {
 	@Path("/pedidopronto/usuario/{id}/pedidosubitem/{pedido_sub_item_id}/pedido/{pedido_id}")
 	@Produces("application/json; charset=UTF-8")
 	public Pedido pedidoPronto(@PathParam("id") String usuarioId, @PathParam("pedido_sub_item_id") String pedidoSubItemId, @PathParam("pedido_id") String pedidoId) throws ApplicationException {
-
 		try {
 
 			Pedido pedido = new Pedido(pedidoId);

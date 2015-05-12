@@ -1,5 +1,6 @@
 package br.com.login.cardapio.beachstop.ws.model;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ws.rs.FormParam;
@@ -54,10 +55,10 @@ public final class Pedido extends RestModel {
 	public void setSubItens(List<PedidoSubItem> subItens) {
 		this.subItens = subItens;
 	}
-	
+
 	@FormParam("numero")
 	private Long numero;
-	
+
 	public Long getNumero() {
 		return numero;
 	}
@@ -65,10 +66,10 @@ public final class Pedido extends RestModel {
 	public void setNumero(Long numero) {
 		this.numero = numero;
 	}
-	
+
 	@FormParam("acaoContaId")
 	private Long acaoContaId;
-	
+
 	public Long getAcaoContaId() {
 		return acaoContaId;
 	}
@@ -76,10 +77,10 @@ public final class Pedido extends RestModel {
 	public void setAcaoContaId(Long acaoContaId) {
 		this.acaoContaId = acaoContaId;
 	}
-	
+
 	@FormParam("isCancelado")
 	private Boolean cancelado;
-	
+
 	public Boolean isCancelado() {
 		return cancelado;
 	}
@@ -87,10 +88,21 @@ public final class Pedido extends RestModel {
 	public void setCancelado(Boolean cancelado) {
 		this.cancelado = cancelado;
 	}
-	
+
+	@FormParam("horarioSolicitacao")
+	private String horarioSolicitacao;
+
+	public String getHorarioSolicitacao() {
+		return this.horarioSolicitacao;
+	}
+
+	public void setHorarioSolicitacao(String horarioSolicitacao) {
+		this.horarioSolicitacao = horarioSolicitacao;
+	}
+
 	public Pedido() {
 	}
-	
+
 	public Pedido(String id) {
 		this.id = Long.valueOf(id);
 	}

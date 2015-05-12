@@ -31,6 +31,16 @@ public class GrupoUsuarioDAO  implements RestDAO<GrupoUsuario> {
 		return broker.getCollectionBean(GrupoUsuario.class, "descricao", "id");
 
 	}
+	
+	public List<GrupoUsuario> getAllN2() {
+
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+
+		broker.setPropertySQL("grupousuariodao.findalln2");
+
+		return broker.getCollectionBean(GrupoUsuario.class, "descricao", "id");
+
+	}
 
 	@Override
 	public GrupoUsuario insert(GrupoUsuario model) throws TSApplicationException {

@@ -52,6 +52,17 @@ public final class Usuario extends RestModel {
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento=dataNascimento;
 	}
+	
+	@FormParam("strDatanascimento")
+	private String strDataNascimento;
+
+	public String getStrDataNascimento() {
+		return strDataNascimento;
+	}
+
+	public void setStrDataNascimento(String strDataNascimento) {
+		this.strDataNascimento=strDataNascimento;
+	}
 
 	@FormParam("email")
 	private String email;
