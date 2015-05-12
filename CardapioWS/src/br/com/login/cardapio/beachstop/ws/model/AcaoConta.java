@@ -1,6 +1,5 @@
 package br.com.login.cardapio.beachstop.ws.model;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -58,6 +57,28 @@ public final class AcaoConta extends RestModel {
 		this.horarioSolicitacao=horarioSolicitacao;
 	}
 	
+	@FormParam("strHorarioSolicitacao")
+	private String strHorarioSolicitacao;
+
+	public String getStrHorarioSolicitacao() {
+		return strHorarioSolicitacao;
+	}
+
+	public void setStrHorarioSolicitacao(String strHorarioSolicitacao) {
+		this.strHorarioSolicitacao = strHorarioSolicitacao;
+	}	
+
+	@FormParam("strDifMinuto")
+	private String strDifMinuto;
+	
+	public String getStrDifMinuto() {
+		return strDifMinuto;
+	}
+
+	public void setStrDifMinuto(String strDifMinuto) {
+		this.strDifMinuto = strDifMinuto;
+	}	
+
 	@FormParam("diffhorarioSolicitacao")
 	private String diffHorarioSolitacao;
 

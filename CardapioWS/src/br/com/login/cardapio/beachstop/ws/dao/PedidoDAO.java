@@ -67,7 +67,7 @@ public class PedidoDAO implements RestDAO<Pedido> {
 	public List<Pedido> getAllByAreaAndStatus(Area area, Status status) {
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		broker.setPropertySQL("pedidodao.findallbystatusandarea", area.getId(), status.getId());
-		return broker.getCollectionBean(Pedido.class, "id", "observacao", "conta.numero");
+		return broker.getCollectionBean(Pedido.class, "id", "observacao", "conta.numero", "horarioSolicitacao");
 	}
 
 	@Override

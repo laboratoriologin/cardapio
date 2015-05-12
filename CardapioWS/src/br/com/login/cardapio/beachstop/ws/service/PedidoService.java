@@ -110,6 +110,23 @@ public class PedidoService extends RestService<Pedido> {
 
 		return pedidos;
 	}
+	
+	@GET
+	@Path("pedidosafazer/area/{area_id}")
+	@Produces("application/json; charset=UTF-8")
+	public List<Pedido> getPedidoAFazerByArea(@PathParam("area_id") String areaId) {
+
+		Area area = new Area(areaId); 
+
+		List<Pedido> pedidos = new PedidoDAO().getAllByAreaAndStatus(area, new Status(2l));
+		PedidoSubItemDAO pedidoSubItemDAO = new PedidoSubItemDAO();
+
+		for (Pedido pedido : pedidos) {
+			pedido.setSubItens(pedidoSubItemDAO.getAllPedidoStatusArea(pedido, new Status(2l), area));
+		}
+
+		return pedidos;
+	}
 
 	@Override
 	@GET

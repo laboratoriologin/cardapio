@@ -41,6 +41,16 @@ public class AcaoContaDAO  implements RestDAO<AcaoConta> {
 
 	}
 	
+	public List<AcaoConta> getSolicitacaoFecharConta() {
+
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+
+		broker.setPropertySQL("acaocontadao.getsolicitacaofecharconta");
+
+		return broker.getCollectionBean(AcaoConta.class, "conta.id", "conta.numero", "conta.setor.descricao", "strHorarioSolicitacao", "strDifMinuto");
+
+	}
+	
 	public List<AcaoConta> getOpenByTipoConta(String acaoId) {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();

@@ -48,6 +48,13 @@ public class AcaoContaService extends RestService<AcaoConta> {
 	// else
 	// return new ArrayList<AcaoConta>();
 	// }
+	
+	@GET
+	@Path("/getsolicitacaofecharconta")
+	@Produces("application/json; charset=UTF-8")
+	public List<AcaoConta> getSolicitacaoFecharConta() {
+		return new AcaoContaDAO().getSolicitacaoFecharConta();
+	}
 
 	@GET
 	@Path("/acao/{acaoId}")

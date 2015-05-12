@@ -3,6 +3,8 @@ package br.com.login.cardapio.beachstop.ws.model;
 import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.jboss.resteasy.annotations.Form;
+
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -53,6 +55,17 @@ public final class Conta extends RestModel {
 
 	public void setNumero(Integer numero) {
 		this.numero = numero;
+	}
+	
+	@Form(prefix = "setor")
+	private Setor setor;
+
+	public Setor getSetor() {
+		return setor;
+	}
+
+	public void setSetor(Setor setor) {
+		this.setor = setor;
 	}
 
 	@FormParam("qtdpessoa")
