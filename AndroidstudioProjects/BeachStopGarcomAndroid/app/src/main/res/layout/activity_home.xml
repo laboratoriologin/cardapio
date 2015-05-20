@@ -25,11 +25,21 @@
                 android:src="@drawable/logo" />
 
             <ImageView
-                android:id="@+id/imagem_action_bar_novo_pedido"
+                android:id="@+id/imagem_action_bar_menu"
                 android:layout_width="40dp"
                 android:layout_height="45dp"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="10dp"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitXY"
+                android:src="@drawable/bt_mesa" />
+
+            <ImageView
+                android:id="@+id/imagem_action_bar_novo_pedido"
+                android:layout_width="40dp"
+                android:layout_height="45dp"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@+id/imagem_action_bar_menu"
                 android:contentDescription="@string/app_name"
                 android:scaleType="fitXY"
                 android:src="@drawable/bt_novo_pedido" />
@@ -43,6 +53,7 @@
                 android:contentDescription="@string/app_name"
                 android:scaleType="fitXY"
                 android:src="@drawable/bt_mesa" />
+
         </RelativeLayout>
     </com.login.beachstop.garcom.android.views.actionbar.ActionBar>
 

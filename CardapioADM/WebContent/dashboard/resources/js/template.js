@@ -2,8 +2,10 @@
  * 
  */
 var url = "http://localhost:8080/CardapioWS/";
-$(document).ready(
+$(document).ready(		
 		function() {
+			$.ajaxSetup({cache : false});
+			
 			// Create two variable with the names of the months and days in an
 			// array
 			var monthNames = [ "Janeiro", "Fevereiro", "Março", "Abril",

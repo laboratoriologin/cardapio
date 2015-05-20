@@ -3,12 +3,12 @@ package br.com.login.cardapio.beachstop.ws.dao;
 import java.util.List;
 
 import br.com.login.cardapio.beachstop.ws.model.Pausa;
+import br.com.login.cardapio.beachstop.ws.model.Usuario;
 import br.com.topsys.database.TSDataBaseBrokerIf;
 import br.com.topsys.database.factory.TSDataBaseBrokerFactory;
 import br.com.topsys.exception.TSApplicationException;
-import br.com.topsys.util.TSUtil;
 
-public class PausaDAO  implements RestDAO<Pausa> {
+public class PausaDAO implements RestDAO<Pausa> {
 
 	@Override
 	public Pausa get(Long id) {
@@ -20,13 +20,32 @@ public class PausaDAO  implements RestDAO<Pausa> {
 		return (Pausa) broker.getObjectBean(Pausa.class, "horarioFinal", "horarioInicial", "id", "usuario.id");
 
 	}
+
+	public Pausa get(Pausa pausa) {
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		broker.setPropertySQL("pausadao.getdiff", pausa.getId());
+		return (Pausa) broker.getObjectBean(Pausa.class, "id", "usuario.id", "usuario.nome", "strHorarioInicial", "diffMinuto");
+	}
 	
+	public Pausa get(Usuario usuario) {
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		broker.setPropertySQL("pausadao.getdiffbyusuario", usuario.getId());
+		return (Pausa) broker.getObjectBean(Pausa.class, "id", "usuario.id", "usuario.nome", "strHorarioInicial", "diffMinuto");
+	}
+
 	public List<Pausa> getEmPausa() {
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		broker.setPropertySQL("pausadao.getempausa");
 		return broker.getCollectionBean(Pausa.class, "id", "usuario.nome", "strHorarioInicial", "diffMinuto");
 	}
-
+	
+	public Boolean usuarioPaused(Usuario usuario) {
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		broker.setPropertySQL("pausadao.getusuariopaused", usuario.getId());
+		Pausa pausa = (Pausa) broker.getObjectBean(Pausa.class, "usuario.id");
+		
+		return pausa != null;
+	}
 
 	@Override
 	public List<Pausa> getAll() {
@@ -44,13 +63,13 @@ public class PausaDAO  implements RestDAO<Pausa> {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		model.setId(broker.getSequenceNextValue("dbo.pausas "));
+		model.setId(broker.getSequenceNextValue("dbo.pausas"));
 
-		broker.setPropertySQL("pausadao.insert",model.getHorarioFinal(), model.getHorarioInicial(), model.getUsuario().getId());
+		broker.setPropertySQL("pausadao.insert", model.getUsuario().getId());
 
 		broker.execute();
 
-		return model;
+		return this.get(model);
 
 	}
 
@@ -59,7 +78,7 @@ public class PausaDAO  implements RestDAO<Pausa> {
 
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 
-		broker.setPropertySQL("pausadao.update", model.getHorarioFinal(), model.getHorarioInicial(), model.getUsuario().getId(), model.getId());
+		broker.setPropertySQL("pausadao.update", model.getId());
 
 		broker.execute();
 

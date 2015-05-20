@@ -4,12 +4,10 @@ import java.util.List;
 import java.util.StringJoiner;
 
 import br.com.login.cardapio.beachstop.ws.model.Area;
-import br.com.login.cardapio.beachstop.ws.model.Conta;
 import br.com.login.cardapio.beachstop.ws.model.Log;
 import br.com.login.cardapio.beachstop.ws.model.Pedido;
 import br.com.login.cardapio.beachstop.ws.model.PedidoSubItem;
 import br.com.login.cardapio.beachstop.ws.model.Status;
-import br.com.login.cardapio.beachstop.ws.model.SubItem;
 import br.com.login.cardapio.beachstop.ws.model.Usuario;
 import br.com.login.cardapio.beachstop.ws.util.Constantes;
 import br.com.topsys.database.TSDataBaseBrokerIf;
@@ -53,21 +51,16 @@ public class PedidoDAO implements RestDAO<Pedido> {
 		status.forEach((obj) -> joiner.add(obj.getId().toString()));
 
 		StringBuilder sql = new StringBuilder(" SELECT P.ID, C.NUMERO  ");
-         							 sql.append(" FROM PEDIDOS AS P ")
-     			                  .append(" INNER JOIN PEDIDOS_SUB_ITENS AS PSI ON PSI.PEDIDO_ID = P.ID ")
-     			                  .append(" INNER JOIN LOGS AS L ON L.PEDIDO_SUB_ITEM_ID = PSI.ID ")
-     			                  .append(" INNER JOIN CONTAS AS C ON P.CONTA_ID = C.ID ")
-     			                    .append(" GROUP BY P.ID, C.NUMERO ")
-     			                      .append(" HAVING MAX(L.STATUS_ID) NOT IN ( ").append(joiner.toString()).append(" ) ");
-		
+		sql.append(" FROM PEDIDOS AS P ").append(" INNER JOIN PEDIDOS_SUB_ITENS AS PSI ON PSI.PEDIDO_ID = P.ID ").append(" INNER JOIN LOGS AS L ON L.PEDIDO_SUB_ITEM_ID = PSI.ID ").append(" INNER JOIN CONTAS AS C ON P.CONTA_ID = C.ID ").append(" GROUP BY P.ID, C.NUMERO ").append(" HAVING MAX(L.STATUS_ID) NOT IN ( ").append(joiner.toString()).append(" ) ");
+
 		broker.setSQL(sql.toString());
 		return broker.getCollectionBean(Pedido.class, "id", "conta.numero");
 	}
-	
+
 	public List<Pedido> getAllByAreaAndStatus(Area area, Status status) {
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		broker.setPropertySQL("pedidodao.findallbystatusandarea", area.getId(), status.getId());
-		return broker.getCollectionBean(Pedido.class, "id", "observacao", "conta.numero", "horarioSolicitacao");
+		return broker.getCollectionBean(Pedido.class, "id", "observacao", "conta.numero");
 	}
 
 	@Override

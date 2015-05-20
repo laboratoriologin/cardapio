@@ -6,6 +6,8 @@ var templateAcao;
 var templateDivLinhaSubItem;
 var templateDivTable;
 $(document).ready(function() {
+	$.ajaxSetup({cache : false});
+	
 	loadInit();
 });
 

@@ -55,15 +55,28 @@ public class AcaoContaRequest extends ObjectRequest<AcaoConta> {
         this.execute(serverRequest);
     }
 
+    public void fecharConta(AcaoConta acaoConta) {
+        String url = String.format("%s/%s/fercharconta", Constantes.URL_WS, new AcaoConta().getServiceName());
+        ServerRequest serverRequest = new ServerRequest(ServerRequest.POST, url, createParameters(acaoConta));
+        this.execute(serverRequest);
+    }
+
     @Override
     protected List<NameValuePair> createParameters(AcaoConta obj) {
-        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-        nameValuePairs.add(new BasicNameValuePair("id", obj.getId().toString()));
-        nameValuePairs.add(new BasicNameValuePair("usuario", obj.getUsuario().getId().toString()));
-        nameValuePairs.add(new BasicNameValuePair("acao", obj.getAcao().getId().toString()));
 
-        if (Constantes.Acao.PEDIDOS.equals(obj.getAcao().getId()))
-            nameValuePairs.add(new BasicNameValuePair("pedido", obj.getPedido().getId().toString()));
+        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+        if (obj.getId() != null)
+            nameValuePairs.add(new BasicNameValuePair("id", obj.getId().toString()));
+        if (obj.getUsuario() != null)
+            nameValuePairs.add(new BasicNameValuePair("usuario", obj.getUsuario().getId().toString()));
+        if (obj.getAcao() != null) {
+            nameValuePairs.add(new BasicNameValuePair("acao", obj.getAcao().getId().toString()));
+
+            if (Constantes.Acao.PEDIDOS.equals(obj.getAcao().getId()))
+                nameValuePairs.add(new BasicNameValuePair("pedido", obj.getPedido().getId().toString()));
+        }
+        if (obj.getConta() != null)
+            nameValuePairs.add(new BasicNameValuePair("conta.id", obj.getConta().getId().toString()));
 
         return nameValuePairs;
     }
@@ -129,7 +142,7 @@ public class AcaoContaRequest extends ObjectRequest<AcaoConta> {
                                             kit.setDescricao(jsonObjectItem.getJSONObject("kit").getString("descricao"));
 
                                             pedidoSubItem.setKit(kit);
-                                        }catch (Exception e){
+                                        } catch (Exception e) {
 
                                         }
                                     }

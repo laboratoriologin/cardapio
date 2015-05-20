@@ -103,8 +103,10 @@ public class PedidoService extends RestService<Pedido> {
 
 		List<Pedido> pedidos = new PedidoDAO().getAllByAreaAndStatus(area, new Status(2l));
 		PedidoSubItemDAO pedidoSubItemDAO = new PedidoSubItemDAO();
+		LogDAO logDAO = new LogDAO();
 
-		for (Pedido pedido : pedidos) {
+		for (Pedido pedido : pedidos) {			
+			pedido.setHorarioSolicitacao(logDAO.getHorarioSolicitacaoPedido(pedido).getStrHorario());
 			pedido.setSubItens(pedidoSubItemDAO.getAllPedidoStatusArea(pedido, new Status(2l), area));
 		}
 
@@ -120,8 +122,10 @@ public class PedidoService extends RestService<Pedido> {
 
 		List<Pedido> pedidos = new PedidoDAO().getAllByAreaAndStatus(area, new Status(2l));
 		PedidoSubItemDAO pedidoSubItemDAO = new PedidoSubItemDAO();
+		LogDAO logDAO = new LogDAO();
 
 		for (Pedido pedido : pedidos) {
+			pedido.setHorarioSolicitacao(logDAO.getHorarioSolicitacaoPedido(pedido).getStrHorario());
 			pedido.setSubItens(pedidoSubItemDAO.getAllPedidoStatusArea(pedido, new Status(2l), area));
 		}
 

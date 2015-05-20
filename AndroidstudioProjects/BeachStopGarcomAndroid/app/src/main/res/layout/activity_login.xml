@@ -45,7 +45,7 @@
             android:background="#7AACD0"
             android:ems="10"
             android:paddingLeft="10dp"
-            android:text="argus"
+            android:text="garcom"
             android:textSize="18sp">
 
             <requestFocus />

@@ -637,7 +637,7 @@ th.agrupador {
 	background-color: #d7d7d7 !important;
 }
 
-.ui-icon-pencil,  .ui-icon-trash{
+.ui-icon-pencil, .ui-icon-trash, .ui-icon-play {
 	cursor: pointer;
 	margin-right: 5px;
 }

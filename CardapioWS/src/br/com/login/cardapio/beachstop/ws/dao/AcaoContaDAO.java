@@ -1,5 +1,6 @@
 package br.com.login.cardapio.beachstop.ws.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -92,6 +93,7 @@ public class AcaoContaDAO  implements RestDAO<AcaoConta> {
 		broker.setSQL(sql.toString());
 		
 		List<AcaoConta> list = broker.getCollectionBean(AcaoConta.class, "id", "conta.id", "horarioSolicitacao", "acao.id", "conta.cliente.id", "conta.dataAbertura", "conta.numero", "conta.qtdPessoa", "pedido.id");
+		List<AcaoConta> listRemove = new ArrayList<AcaoConta>(); 
 		Pedido pedido;
 		Status status;
 		
@@ -102,11 +104,13 @@ public class AcaoContaDAO  implements RestDAO<AcaoConta> {
 				pedido.setSubItens(new PedidoSubItemDAO().getAll(pedido, status));
 				
 				if(pedido.getSubItens().size() == 0)
-					list.remove(acaoConta);
+					listRemove.add(acaoConta);
 				else
 					acaoConta.setPedido(pedido);
 			}
 		}
+		
+		list.removeAll(listRemove);
 		
 		return list;
 	}

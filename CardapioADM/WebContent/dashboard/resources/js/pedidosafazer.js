@@ -10,6 +10,7 @@ var createCodSender = 0;
 var isCommit = false;
 
 $(document).ready(function() {
+	$.ajaxSetup({cache : false});
 	jQuery.fn.exists = function(){return this.length>0;}
 
 	$("#maisitens2").hide();

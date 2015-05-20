@@ -40,6 +40,7 @@ public class DataManager {
         this.setKitSubItemDAO(new KitSubItemDAO(new KitSubItemTableDefinition(), this));
         this.setAcaoDAO(new AcaoDAO(new AcaoTableDefinition(), this));
         this.setSetorDAO(new SetorDAO(new SetorTableDefinition(), this));
+        this.setSetorDAO(new SetorDAO(new SetorTableDefinition(), this));
     }
 
     public SQLiteDatabase getDatabase() {

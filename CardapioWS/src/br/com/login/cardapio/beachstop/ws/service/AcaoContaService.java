@@ -92,7 +92,10 @@ public class AcaoContaService extends RestService<AcaoConta> {
 	public AcaoConta insertFecharConta(@Form AcaoConta form) throws ApplicationException {
 		try {
 			form.setAcao(new Acao(Constantes.Acoes.PedirConta.toString()));
-			form.setUsuario(new Usuario());
+			
+			if(form.getUsuario() == null)
+				form.setUsuario(new Usuario());
+			
 			form.setPedido(new Pedido());
 			return this.insert(form);
 		} catch (TSSystemException ex) {

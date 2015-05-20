@@ -24,6 +24,8 @@
     <string name="mesas">Mesas</string>
     <string name="setor">Setor</string>
     <string name="historico_conta">Histórico da Conta</string>
+    <string name="pausa">Pausa</string>
+    <string name="pausa_off">Retirar Pausa</string>
     <string name="enviar">Enviar</string>
     <string name="email">E-mail:</string>
 

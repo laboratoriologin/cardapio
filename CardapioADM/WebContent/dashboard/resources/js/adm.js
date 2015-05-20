@@ -2,6 +2,7 @@
  * 
  */
 $(document).ready(function() {
+	$.ajaxSetup({cache : false});
 	
 	startModalLoad(1);
 	updateCompletedEventProgress();

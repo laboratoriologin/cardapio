@@ -15,7 +15,6 @@ import org.json.JSONObject;
 
 import java.security.MessageDigest;
 import java.text.DateFormat;
-import java.text.Normalizer;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -142,6 +141,7 @@ public class Utilitarios {
      * Converte uma String para um objeto Date. Caso a String seja vazia ou nula,
      * retorna null - para facilitar em casos onde formulários podem ter campos
      * de datas vazios.
+     *
      * @param data String no formato dd/MM/yyyy a ser formatada
      * @return Date Objeto Date ou null caso receba uma String vazia ou nula
      * @throws Exception Caso a String esteja no formato errado
@@ -153,30 +153,30 @@ public class Utilitarios {
         java.sql.Date date = null;
         try {
             DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-            date = new java.sql.Date( ((java.util.Date)formatter.parse(data)).getTime() );
+            date = new java.sql.Date(((java.util.Date) formatter.parse(data)).getTime());
         } catch (ParseException e) {
             throw e;
         }
         return date;
     }
 
-    public static String removerAcento (String passa){
-        passa = passa.replaceAll("[ÂÀÁÄÃ]","A");
-        passa = passa.replaceAll("[âãàáä]","a");
-        passa = passa.replaceAll("[ÊÈÉË]","E");
-        passa = passa.replaceAll("[êèéë]","e");
-        passa = passa.replaceAll("ÎÍÌÏ","I");
-        passa = passa.replaceAll("îíìï","i");
-        passa = passa.replaceAll("[ÔÕÒÓÖ]","O");
-        passa = passa.replaceAll("[ôõòóö]","o");
-        passa = passa.replaceAll("[ÛÙÚÜ]","U");
-        passa = passa.replaceAll("[ûúùü]","u");
-        passa = passa.replaceAll("Ç","C");
-        passa = passa.replaceAll("ç","c");
-        passa = passa.replaceAll("[ýÿ]","y");
-        passa = passa.replaceAll("Ý","Y");
-        passa = passa.replaceAll("ñ","n");
-        passa = passa.replaceAll("Ñ","N");
+    public static String removerAcento(String passa) {
+        passa = passa.replaceAll("[ÂÀÁÄÃ]", "A");
+        passa = passa.replaceAll("[âãàáä]", "a");
+        passa = passa.replaceAll("[ÊÈÉË]", "E");
+        passa = passa.replaceAll("[êèéë]", "e");
+        passa = passa.replaceAll("ÎÍÌÏ", "I");
+        passa = passa.replaceAll("îíìï", "i");
+        passa = passa.replaceAll("[ÔÕÒÓÖ]", "O");
+        passa = passa.replaceAll("[ôõòóö]", "o");
+        passa = passa.replaceAll("[ÛÙÚÜ]", "U");
+        passa = passa.replaceAll("[ûúùü]", "u");
+        passa = passa.replaceAll("Ç", "C");
+        passa = passa.replaceAll("ç", "c");
+        passa = passa.replaceAll("[ýÿ]", "y");
+        passa = passa.replaceAll("Ý", "Y");
+        passa = passa.replaceAll("ñ", "n");
+        passa = passa.replaceAll("Ñ", "N");
         return passa;
     }
 
@@ -195,5 +195,26 @@ public class Utilitarios {
             sepValueBuilder.setLength(sepValueBuilder.length() - separator.length());
             return sepValueBuilder.toString();
         }
+    }
+
+    public static boolean isEmpty(String str) {
+        return (str == null || str.trim().length() == 0);
+    }
+
+    public static boolean isNotEmpty(String str) {
+        return (str != null && str.length() > 0);
+    }
+
+    public static boolean isEmpty(Object value) {
+
+        if (value == null) {
+            return true;
+        } else if (value instanceof Collection) {
+            return ((Collection) value).isEmpty();
+        } else if (value instanceof String) {
+            return isEmpty((String) value);
+        }
+
+        return false;
     }
 }

@@ -4,6 +4,7 @@
 var url = "http://localhost:8080/CardapioWS/"; 
 
 $(document).ready(function() {
+	$.ajaxSetup({cache : false});
 
 	$("#esqueciSenha").hide();
 	$("#acaoEsqueciSenha").hide();

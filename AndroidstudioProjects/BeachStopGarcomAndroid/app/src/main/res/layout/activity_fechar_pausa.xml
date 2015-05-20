@@ -1,0 +1,108 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_system"
+    android:orientation="vertical"
+    tools:context=".HomeActivity">
+
+    <com.login.beachstop.garcom.android.views.actionbar.ActionBar
+        android:id="@+id/actionbar"
+        style="@style/ActionBar"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imagem_action_bar"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:contentDescription="@string/app_name"
+                android:gravity="center"
+                android:scaleType="fitXY" />
+
+            <TextView
+                android:id="@+id/text_view_action_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:gravity="center"
+                android:textColor="@color/branco"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </com.login.beachstop.garcom.android.views.actionbar.ActionBar>
+
+    <TextView
+        android:id="@+id/activity_fechar_pausa_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:singleLine="false"
+        android:text="Você está em pausa."
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/activity_fechar_pausa_text_view_pausa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:padding="10dp"
+        android:singleLine="false"
+        android:text="Seu tempo:"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/activity_fechar_pausa_text_view_tempo_pausa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:padding="10dp"
+        android:singleLine="false"
+        android:textColor="#0B405F"
+        android:textSize="75sp"
+        android:textStyle="bold" />
+
+    <ProgressBar
+        android:id="@+id/activity_fechar_pausa_progresbar"
+        style="@android:style/Widget.ProgressBar.Small.Inverse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginRight="5dp"
+        android:gravity="center"
+        android:padding="10dp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/activity_fechar_pausa_textview_msg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:padding="10dp"
+        android:singleLine="false"
+        android:textSize="12sp"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/activity_fechar_pausa_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/transparent"
+        android:drawableLeft="@drawable/icone_sair"
+        android:drawablePadding="10dp"
+        android:gravity="right"
+        android:padding="10dp"
+        android:visibility="visible" />
+
+</LinearLayout>

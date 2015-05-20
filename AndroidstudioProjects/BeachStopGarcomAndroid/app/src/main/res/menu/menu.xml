@@ -6,7 +6,13 @@
         android:icon="@drawable/icone_historico"
         android:title="@string/historico_conta"/>
     <item
+        android:id="@+id/menu_pausa"
+        android:icon="@drawable/icone_historico"
+        android:checked="false"
+        android:title="@string/pausa"/>
+    <item
         android:id="@+id/menu_sair"
         android:icon="@drawable/icone_sair"
         android:title="@string/sair"/>
-</menu>
+
+</menu>

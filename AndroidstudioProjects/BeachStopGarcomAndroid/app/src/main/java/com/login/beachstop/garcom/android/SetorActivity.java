@@ -36,18 +36,20 @@ public class SetorActivity extends DefaultActivity {
     private ProgressBar progressBar;
     private ProgressDialog progressDialog;
     private List<UsuarioSetor> usuarioSetores;
-    private ResponseListener responseListenerGetSetor = new ResponseListener() {
+    private ResponseListener responseListenerGetUsuarioSetor = new ResponseListener() {
         @Override
         public void onResult(ServerResponse serverResponse) {
             if (serverResponse != null) {
                 if (serverResponse.isOK()) {
-                    try {
-                        getDataManager().getSetorDAO().save((List<Setor>) serverResponse.getReturnObject());
-                        new UsuarioSetorRequest(responseListenerGetUsuarioSetor).get(getUsuario());
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        Toast.makeText(SetorActivity.this, Constantes.MSG_ERRO_GRAVAR_DADOS, Toast.LENGTH_LONG).show();
-                    }
+
+                        if (serverResponse.getReturnObject() != null) {
+                            usuarioSetores = (List<UsuarioSetor>) serverResponse.getReturnObject();
+                        } else {
+                            usuarioSetores = new ArrayList<UsuarioSetor>();
+                        }
+                        loadSetorRow();
+                        changeVibilityProgressBar(false);
+
                 } else {
                     Toast.makeText(SetorActivity.this, serverResponse.getMsgErro(), Toast.LENGTH_SHORT).show();
                 }
@@ -56,15 +58,15 @@ public class SetorActivity extends DefaultActivity {
             }
         }
     };
-    private ResponseListener responseListenerGetUsuarioSetor = new ResponseListener() {
+    private ResponseListener responseListenerGetSetor = new ResponseListener() {
         @Override
         public void onResult(ServerResponse serverResponse) {
             if (serverResponse != null) {
                 if (serverResponse.isOK()) {
                     try {
-                        usuarioSetores = (List<UsuarioSetor>) serverResponse.getReturnObject();
-                        loadSetorRow();
-                        changeVibilityProgressBar(false);
+                        getDataManager().getSetorDAO().save((List<Setor>) serverResponse.getReturnObject());
+                        setores = (List<Setor>) serverResponse.getReturnObject();
+                        new UsuarioSetorRequest(responseListenerGetUsuarioSetor).get(getUsuario());
                     } catch (Exception e) {
                         e.printStackTrace();
                         Toast.makeText(SetorActivity.this, Constantes.MSG_ERRO_GRAVAR_DADOS, Toast.LENGTH_LONG).show();

@@ -8,6 +8,7 @@ import com.login.beachstop.garcom.android.utils.Constantes;
 public class ServerResponse {
 
     public static final int SC_OK = 200;
+    public static final int SC_NO_CONTENT = 204;
     public static final int SC_CREATED = 201;
     public static final int SC_BAD_REQUEST = 400;
     public static final int SC_PRECONDITION_FAILED = 412;

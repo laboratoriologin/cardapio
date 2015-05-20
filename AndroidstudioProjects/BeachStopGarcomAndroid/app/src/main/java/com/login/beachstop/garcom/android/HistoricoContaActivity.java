@@ -2,18 +2,22 @@ package com.login.beachstop.garcom.android;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.login.beachstop.garcom.android.models.AcaoConta;
 import com.login.beachstop.garcom.android.models.Conta;
 import com.login.beachstop.garcom.android.models.PedidoSubItem;
 import com.login.beachstop.garcom.android.models.ServerResponse;
 import com.login.beachstop.garcom.android.models.SubItem;
+import com.login.beachstop.garcom.android.network.AcaoContaRequest;
 import com.login.beachstop.garcom.android.network.ContaRequest;
 import com.login.beachstop.garcom.android.network.http.ResponseListener;
 import com.login.beachstop.garcom.android.utils.Constantes;
@@ -28,9 +32,11 @@ import java.util.Locale;
 public class HistoricoContaActivity extends DefaultActivity {
 
     private Conta conta;
+    private Button buttonFecharConta;
     private TableLayout tableLayout;
     private TextView textViewSemPedido;
     private TextView textViewValorTotal;
+    private TextView textViewFecharConta;
     private Double valorTotal;
     private ProgressDialog progressDialog;
     private ResponseListener responseListenerGetContaByNumero = new ResponseListener() {
@@ -48,6 +54,7 @@ public class HistoricoContaActivity extends DefaultActivity {
                             tableLayout.setVisibility(TableLayout.VISIBLE);
                             bindTableItemConta();
                         } else {
+                            conta = null;
                             textViewSemPedido.setVisibility(TextView.VISIBLE);
                             tableLayout.setVisibility(TableLayout.GONE);
                         }
@@ -73,25 +80,62 @@ public class HistoricoContaActivity extends DefaultActivity {
         this.tableLayout = (TableLayout) this.findViewById(R.id.activity_conta_list_view_item_conta);
         this.textViewSemPedido = (TextView) this.findViewById(R.id.activity_conta_text_view_sem_conta);
         this.textViewValorTotal = (TextView) this.findViewById(R.id.activity_conta_text_view_valor);
+        this.textViewFecharConta = (TextView) this.findViewById(R.id.activity_conta_textview_fechar_conta);
 
         this.findViewById(R.id.activity_conta_button_pesquisa_mesa).setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 String nMesa = ((EditText) findViewById(R.id.activity_conta_edittext_pesquisa_mesa)).getEditableText().toString();
-
                 if (!"".equals(nMesa)) {
-
                     progressDialog = new ProgressDialog(HistoricoContaActivity.this);
-
                     progressDialog.setMessage("Buscando histórico...");
-
                     progressDialog.show();
                     progressDialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                    progressDialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                    new ContaRequest(responseListenerGetContaByNumero).getByNumero(Long.parseLong(nMesa));
+                }
+            }
+        });
 
+        this.buttonFecharConta = (Button) this.findViewById(R.id.activity_conta_button_fechar_conta);
+        this.buttonFecharConta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (conta != null) {
+                    progressDialog = new ProgressDialog(HistoricoContaActivity.this);
+                    progressDialog.setMessage("Processando solicitação...");
+                    progressDialog.show();
+                    progressDialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                     progressDialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
-                    new ContaRequest(responseListenerGetContaByNumero).getByNumero(Long.parseLong(nMesa));
+                    AcaoConta acaoConta = new AcaoConta();
+                    acaoConta.setUsuario(getUsuario());
+                    acaoConta.setConta(conta);
+
+                    new AcaoContaRequest(new ResponseListener() {
+                        @Override
+                        public void onResult(ServerResponse serverResponse) {
+                            if (serverResponse != null) {
+                                if (serverResponse.isOK()) {
+                                    textViewFecharConta.setVisibility(TextView.VISIBLE);
+                                    buttonFecharConta.setVisibility(Button.GONE);
+                                } else
+                                    progressDialog.setMessage(serverResponse.getMsgErro());
+                            } else
+                                progressDialog.setMessage(Constantes.MSG_ERRO_NET);
+
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    progressDialog.dismiss();
+                                    conta = null;
+                                }
+                            }, 1000);
+                        }
+                    }).fecharConta(acaoConta);
+                } else {
+                    Toast.makeText(getApplicationContext(), "Procure por uma conta em aberta...", Toast.LENGTH_SHORT).show();
                 }
             }
         });
