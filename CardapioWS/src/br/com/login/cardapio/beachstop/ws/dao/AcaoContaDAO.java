@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import com.sun.xml.internal.ws.util.StringUtils;
 
 import br.com.login.cardapio.beachstop.ws.model.AcaoConta;
+import br.com.login.cardapio.beachstop.ws.model.Conta;
 import br.com.login.cardapio.beachstop.ws.model.Mesa;
 import br.com.login.cardapio.beachstop.ws.model.Pedido;
 import br.com.login.cardapio.beachstop.ws.model.Setor;
@@ -40,6 +41,13 @@ public class AcaoContaDAO  implements RestDAO<AcaoConta> {
 
 		return broker.getCollectionBean(AcaoConta.class, "acao.id", "conta.id", "horarioAtendimento", "horarioSolicitacao", "id", "usuario.id", "pedido.id");
 
+	}
+	
+	public Boolean isFechando(Conta conta){
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		broker.setPropertySQL("acaocontadao.getfechandobyconta", conta.getId());		
+		AcaoConta acaoConta = (AcaoConta) broker.getObjectBean(AcaoConta.class, "id");		
+		return acaoConta != null;
 	}
 	
 	public List<AcaoConta> getSolicitacaoFecharConta() {
@@ -159,6 +167,23 @@ public class AcaoContaDAO  implements RestDAO<AcaoConta> {
 		broker.setSQL(sql.toString(), usuarioId, acaoContaId);
 		return broker.execute();
 	}
+	
+	public int changeIdFechadoTOReabrir(Long acaoContaId) throws TSApplicationException {
+
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		StringBuilder sql = new StringBuilder("UPDATE ACOES_CONTAS SET HORARIO_ATENDIMENTO = GETDATE(), ACAO_ID = 7 WHERE ID = ?");		
+		broker.setSQL(sql.toString(), acaoContaId);
+		return broker.execute();
+	}
+	
+	public int changeIdFechadoTOReabrir(Conta conta) throws TSApplicationException {
+
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		StringBuilder sql = new StringBuilder("UPDATE ACOES_CONTAS SET HORARIO_ATENDIMENTO = GETDATE(), ACAO_ID = 7 WHERE CONTA_ID = ? AND ACAO_ID = 4");		
+		broker.setSQL(sql.toString(), conta.getId());
+		return broker.execute();
+	}
+
 
 	@Override
 	public void delete(Long id) throws TSApplicationException {

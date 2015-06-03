@@ -31,6 +31,12 @@ public class PagamentoDAO  implements RestDAO<Pagamento> {
 		return (Pagamento) broker.getObjectBean(Pagamento.class, "valor");
 
 	}
+	
+	public List<Pagamento> getAllByConta(Conta conta) {
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		broker.setPropertySQL("pagamentodao.findallbyconta", conta.getId());
+		return broker.getCollectionBean(Pagamento.class, "conta.id", "strHorairo", "id", "tipoPagamento.id", "tipoPagamento.descricao", "valor");
+	}
 
 	@Override
 	public List<Pagamento> getAll() {
@@ -50,7 +56,7 @@ public class PagamentoDAO  implements RestDAO<Pagamento> {
 
 		model.setId(broker.getSequenceNextValue("dbo.pagamentos "));
 
-		broker.setPropertySQL("pagamentodao.insert",model.getConta().getId(), model.getData(), model.getTipoPagamento().getId(), model.getValor());
+		broker.setPropertySQL("pagamentodao.insert",model.getConta().getId(), model.getTipoPagamento().getId(), model.getValor());
 
 		broker.execute();
 

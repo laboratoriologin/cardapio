@@ -28,6 +28,17 @@ public final class Mesa extends RestModel {
 	public void setSetor(Setor setor) {
 		this.setor=setor;
 	}
+	
+	@FormParam("conta")
+	private Conta conta;
+
+	public Conta getConta() {
+		return conta;
+	}
+
+	public void setConta(Conta conta) {
+		this.conta=conta;
+	}
 
 	public Mesa(){}
 

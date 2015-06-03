@@ -3,6 +3,8 @@ package br.com.login.cardapio.beachstop.ws.model;
 import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.jboss.resteasy.annotations.Form;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -10,7 +12,7 @@ import java.util.Date;
 @XmlRootElement(name = "pagamento")
 public final class Pagamento extends RestModel {
 
-	@FormParam("conta")
+	@Form(prefix = "conta")
 	private Conta conta;
 
 	public Conta getConta() {
@@ -31,8 +33,19 @@ public final class Pagamento extends RestModel {
 	public void setData(Date data) {
 		this.data = data;
 	}
+	
+	@FormParam("strHorairo")
+	private String strHorairo;
 
-	@FormParam("tipopagamento")
+	public String getStrHorairo() {
+		return this.strHorairo;
+	}
+
+	public void setStrHorairo(String strHorairo) {
+		this.strHorairo = strHorairo;
+	}
+
+	@Form(prefix = "tipopagamento")
 	private TipoPagamento tipoPagamento;
 
 	public TipoPagamento getTipoPagamento() {
@@ -44,16 +57,16 @@ public final class Pagamento extends RestModel {
 	}
 
 	@FormParam("valor")
-	private BigDecimal valor;
+	private Double valor;
 
-	public BigDecimal getValor() {
+	public Double getValor() {
 		return valor;
 	}
 
-	public void setValor(BigDecimal valor) {
+	public void setValor(Double valor) {
 		this.valor = valor;
 	}
-
+	
 	public Pagamento() {
 	}
 

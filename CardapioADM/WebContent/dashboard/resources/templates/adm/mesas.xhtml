@@ -1,6 +1,11 @@
 <div class="page">
 	<input type="hidden" value="#{param['idSetor']}" id="setorId" />
 
+	<div id="loading" style="background-color: rgb(242, 220, 179); width: 100%; position: fixed; height: 83.6%;">
+		<div class='loaderMarrom' style="margin-top: 1%; margin-left: 50%;">Loading...</div>
+		<div id="msgLoading" style="margin-left: 47%; color: red;">Erro ao carregar a página.</div>
+	</div>
+
 	<div id="dialog-abrirconta" title="Nova Conta">
 		<input type="hidden" value="" id="numeroMesaNovaConta" />
 		<p>
@@ -19,17 +24,18 @@
 	</div>
 
 	<div id="dialog-historicoconta" title="Gerenciar Mesa">
-		<input type="hidden" value="" id="contaId" /> 
-		<input type="hidden" value="" id="numeroMesa" />
+		<input type="hidden" value="" id="contaId" /> <input type="hidden" value="" id="acaoContaId" /> <input type="hidden" value="" id="numeroMesa" />
 
 		<div class="dialogtopo">
 			<div>
 				<button id="novoPedido">Novo Pedido</button>
+				<button id="mudarMesa">Mudar a mesa</button>
 			</div>
 			<div id="loader">
 				<div class='loaderBranco'>Loading...</div>
 			</div>
 			<div>
+				<button id="reabrir">Reabrir conta</button>
 				<button>Fechar Conta</button>
 			</div>
 		</div>
@@ -56,9 +62,62 @@
 				</table>
 			</div>
 
+			<div id="editPagamento">
+				<div class="theaddiv">
+					<table id="valorPagoThead" class="reference">
+						<thead>
+							<tr>
+								<th>Horário</th>
+								<th>Tipo Pag.</th>
+								<th>$</th>
+								<th></th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody class="invspacer">
+						</tbody>
+						<tfoot class="invspacer">
+						</tfoot>
+					</table>
+				</div>
+				<div class="tbodydiv" style="overflow-x: hidden; overflow-y: scroll; height: 74.5%;">
+					<table id="valorPagoTbody" class="reference">
+						<thead  class="invspacer">
+							<tr>
+								<th>Horário</th>
+								<th>Tipo Pag.</th>
+								<th>$</th>
+								<th></th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+						<tfoot class="invspacer">
+						</tfoot>
+					</table>
+				</div>
+				<div class="tfootdiv">
+					<table id="valorPagoTfood" class="reference">
+						<thead  class="invspacer">
+							<tr>
+								<th>Horário</th>
+								<th>Tipo Pag.</th>
+								<th>$</th>
+								<th></th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody class="invspacer">								
+						</tbody>
+						<tfoot>													
+						</tfoot>
+					</table>
+				</div>
+			</div>
 		</div>
 	</div>
-
+	
 	<div id="dialog-novopedido" title="Novo Pedido">
 
 		<div class="dialogtopoNovoPedido">
@@ -66,12 +125,11 @@
 				<button id="salvarPedido">Salvar</button>
 				<button id="cancelarPedido">Cancelar</button>
 			</div>
-			<div >
+			<div>
 				<textarea id="obsnovopedido" placeholder="Observações"></textarea>
 			</div>
 			<div>
-				<input type="text" placeholder="Qtd" name="qtd" id="qtd" />
-				<input type="text" idsubitem="" placeholder="Item" name="produto" id="produto" />
+				<input type="text" placeholder="Qtd" name="qtd" id="qtd" /> <input type="text" idsubitem="" placeholder="Item" name="produto" id="produto" />
 				<button id="addSubItem">Add</button>
 			</div>
 		</div>
@@ -85,6 +143,29 @@
 					<th></th>
 				</tr>
 
+			</table>
+		</div>
+	</div>
+
+	<div id="dialog-mudarmesa" title="Mudar de mesa">
+
+		<div class="dialogtopoNovoPedido">
+			<div>
+				<input type="text" placeholder="Mudar para mesa..." name="novaMesa" id="novaMesa" />
+			</div>
+		</div>
+	</div>
+
+	<div id="dialog-reabrirconta" title="Reabrir Conta">
+
+		<div class="dialogbodyNovoPedido">
+			<table id="contasFechadas" class="reference">
+				<tr>
+					<th>Id</th>
+					<th>Horário</th>
+					<th>Valor Total</th>
+					<th></th>
+				</tr>
 			</table>
 		</div>
 	</div>

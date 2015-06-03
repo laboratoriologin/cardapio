@@ -1,6 +1,7 @@
 package br.com.login.cardapio.beachstop.ws.service;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -15,6 +16,7 @@ import br.com.login.cardapio.beachstop.ws.dao.ContaDAO;
 import br.com.login.cardapio.beachstop.ws.exception.ApplicationException;
 import br.com.login.cardapio.beachstop.ws.model.Cliente;
 import br.com.login.cardapio.beachstop.ws.model.Conta;
+import br.com.login.cardapio.beachstop.ws.model.Mesa;
 
 @Path("/contas")
 public class ContaService extends RestService<Conta> {
@@ -44,6 +46,19 @@ public class ContaService extends RestService<Conta> {
 		Conta conta = new ContaDAO().getByNumeroAnalitico(numero);
 		if (fields != null && !"".equals(fields)) {
 			this.configureReturnObject(conta, fields);
+		}
+		return conta;
+	}
+	
+	@GET
+	@Path("/contafechada/{numero}{fields : (/.*?)?}")
+	@Produces("application/json; charset=UTF-8")
+	public List<Conta> getContaFechadaByMesa(@PathParam("numero") Integer numero, @PathParam("fields") String fields) {
+		Mesa mesa = new Mesa();
+		mesa.setNumero(numero);
+		List<Conta> conta = new ContaDAO().getContaFechadaByMesa(mesa);
+		if (fields != null && !"".equals(fields)) {
+			this.configureReturnObjects(conta, fields);
 		}
 		return conta;
 	}

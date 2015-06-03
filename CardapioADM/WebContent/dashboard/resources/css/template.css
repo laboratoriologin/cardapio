@@ -561,7 +561,7 @@ body div.body .direita {
 	height: 100px; 
 	font-size: 3em;
 	cursor: pointer;
-	background: #008000 !important;
+	background: #008000;
 }
 
 .mesaVermelho {	 
@@ -574,12 +574,18 @@ body div.body .direita {
 	height: 100px; 
 	font-size: 3em;
 	cursor: pointer;
-	background: #ff0000 !important;
+	background: #ff0000;
 }
 
-.mesaVermelho>p,.mesaVerde>p {
-	padding-top: 27px; 
+.mesaVermelho .numero,.mesaVerde .numero {
+	padding-top: 5px; 
 	font-family: Century Gothic;
+}
+
+.mesaVermelho .mesaDetalhe,.mesaVerde .mesaDetalhe {	
+	font-family: Century Gothic;
+	font-size: 15px;
+	padding-top: 5px;		
 }
 
 #dialog-abrirconta span {
@@ -637,7 +643,7 @@ th.agrupador {
 	background-color: #d7d7d7 !important;
 }
 
-.ui-icon-pencil, .ui-icon-trash, .ui-icon-play {
+.ui-icon-pencil, .ui-icon-trash, .ui-icon-play, .ui-icon-arrowreturn-1-e {
 	cursor: pointer;
 	margin-right: 5px;
 }
@@ -678,6 +684,14 @@ th.agrupador {
 .dialogbody>div:nth-child(2) {
 	float: right; 
 	width: 31.5%;
+	height: 50%;
+}
+
+.dialogbody>div:nth-child(3) {
+	float: right; 
+	width: 31.5%;
+	height: 50%;
+	overflow: hidden;
 }
 
 .dialogbody table {
@@ -767,9 +781,80 @@ th.agrupador {
 }
 
 .subTable{
-	background-color: white !important;;
+	background-color: white !important;
 }
 
 .subTable:hover {
-	background-color: white !important;;
+	background-color: white !important;
+}
+
+/* Scrollable table specific CSS */
+
+.invspacer {
+	height: 0px !important;
+	line-height: 0px !important;
+	overflow : hidden !important;
+}
+
+/* last is empty TD for scroll bar overlap */
+.theaddiv TH:last-child, 
+.tbodydiv TH:last-child, 
+.tfootdiv TH:last-child { 
+	width: 15px !important;
+	padding: 0px !important;
+	margin: 0px !important;
+	max-height: 0px !important; 
+	min-height: 0px !important; 
+	line-height: 0px !important; 
+}
+
+.invspacer TH:last-child,
+.theaddiv TD:last-child,
+.tbodydiv TD:last-child,
+.tfootdiv TD:last-child { 
+	display: none !important;
+}
+
+.invspacer TR, 
+.invspacer TD, 
+.invspacer TH { 
+	line-height: 0px !important; 
+	height: 0px !important; 
+	max-height: 0px !important; 
+	min-height: 0px !important; 
+	overflow: hidden !important; 
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+	/* border:none; same as TABLE border="0" */
+	/* TABLE border="1" needs border:none; PADDING-RIGHT: 1px; PADDING-LEFT: 1px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; */
+	border-top-width: 0px !important;
+	border-bottom-width: 0px !important;
+	min-height: 0px !important;	
+	max-height: 0px !important;
+}
+THEAD.invspacer,
+TBODY.invspacer,
+TFOOT.invspacer {	
+	line-height: 0px !important; 
+	height: 0px !important; 
+	max-height: 0px !important;
+	min-height: 0px !important;
+	overflow: hidden !important; 
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+}
+
+/* WebKit - hide middle table headers */
+.invspacer DIV {
+	height: 0px !important;
+	line-height: 0px !important;
+	max-height: 0px !important;
+	min-height: 0px !important;
+	overflow: hidden !important; 
+	margin: 0px !important;
+	padding: 0px !important;
 }

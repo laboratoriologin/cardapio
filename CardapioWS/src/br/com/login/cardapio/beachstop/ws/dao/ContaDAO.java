@@ -4,11 +4,11 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import br.com.login.cardapio.beachstop.ws.model.Conta;
+import br.com.login.cardapio.beachstop.ws.model.Mesa;
 import br.com.login.cardapio.beachstop.ws.model.PedidoSubItem;
 import br.com.topsys.database.TSDataBaseBrokerIf;
 import br.com.topsys.database.factory.TSDataBaseBrokerFactory;
 import br.com.topsys.exception.TSApplicationException;
-import br.com.topsys.util.TSUtil;
 
 public class ContaDAO implements RestDAO<Conta> {
 
@@ -26,6 +26,15 @@ public class ContaDAO implements RestDAO<Conta> {
 			conta.setValorPago(new PagamentoDAO().getValorTotalPagoByConta(conta).getValor());
 		}
 		return conta;
+	}
+	
+	public Boolean isFechado(Conta conta){
+		
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		broker.setPropertySQL("contadao.getfechada", conta.getId());
+		Conta contaFechada = (Conta) broker.getObjectBean(Conta.class, "id"); 
+		
+		return contaFechada == null;
 	}
 
 	public Conta getAnalytic(Long id) {
@@ -46,6 +55,12 @@ public class ContaDAO implements RestDAO<Conta> {
 			conta.setValorPago(new PagamentoDAO().getValorTotalPagoByConta(conta).getValor());
 		}
 		return conta;
+	}
+	
+	public List<Conta> getContaFechadaByMesa(Mesa mesa){	
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		broker.setPropertySQL("contadao.getcontafechadbymesa", mesa.getNumero());
+		return broker.getCollectionBean(Conta.class, "id", "strDataFechamento", "valor");		
 	}
 
 	public Conta getByMesa(Long numero) {
@@ -110,5 +125,12 @@ public class ContaDAO implements RestDAO<Conta> {
 		broker.setPropertySQL("contadao.updatefecharconta", model.getId());
 		broker.execute();
 		return model;
+	}
+	
+	public int reabrirConta(Conta model) throws TSApplicationException {
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		StringBuilder sql = new StringBuilder("UPDATE CONTAS SET DATA_FECHAMENTO = NULL WHERE ID = ?");		
+		broker.setSQL(sql.toString(), model.getId());
+		return broker.execute();
 	}
 }

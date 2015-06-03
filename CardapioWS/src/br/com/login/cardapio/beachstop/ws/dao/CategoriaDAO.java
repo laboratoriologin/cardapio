@@ -20,6 +20,16 @@ public class CategoriaDAO  implements RestDAO<Categoria> {
 		return (Categoria) broker.getObjectBean(Categoria.class, "area.id", "descricao", "flagAtivo", "id", "imagem", "ordem");
 
 	}
+	
+	public Categoria getBySubItem(Long id) {
+
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+
+		broker.setPropertySQL("categoriadao.getbysubitem", id);
+
+		return (Categoria) broker.getObjectBean(Categoria.class, "area.id", "descricao", "flagAtivo", "id", "imagem", "ordem");
+
+	}
 
 	@Override
 	public List<Categoria> getAll() {

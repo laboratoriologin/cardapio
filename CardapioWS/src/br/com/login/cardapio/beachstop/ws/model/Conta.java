@@ -45,6 +45,17 @@ public final class Conta extends RestModel {
 	public void setDataFechamento(Date dataFechamento) {
 		this.dataFechamento = dataFechamento;
 	}
+	
+	@FormParam("strdatafechamento")
+	private String strDataFechamento;
+
+	public String getStrDataFechamento() {
+		return strDataFechamento;
+	}
+
+	public void setStrDataFechamento(String strDataFechamento) {
+		this.strDataFechamento = strDataFechamento;
+	}
 
 	@FormParam("numero")
 	private Integer numero;
@@ -119,6 +130,17 @@ public final class Conta extends RestModel {
 		return pedidoSubItens;
 	}
 
+	@FormParam("acaoconta")
+	private AcaoConta acaoConta;
+
+	public AcaoConta getAcaoConta() {
+		return acaoConta;
+	}
+	
+	public void setAcaoConta(AcaoConta acaoConta) {
+		this.acaoConta = acaoConta;
+	}
+	
 	public void setPedidoSubItens(List<PedidoSubItem> pedidoSubItens) {
 		this.pedidoSubItens = pedidoSubItens;
 	}

@@ -25,20 +25,20 @@ public class ItemRequest extends ObjectRequest<Item> {
     }
 
     public void getItemByCategorias(Long categoria) {
-
         List<Long> categorias = new ArrayList<Long>();
         categorias.add(categoria);
-
         getItemByCategorias(categorias);
-
     }
 
     public void getItemByCategorias(List<Long> categorias) {
-
         String url = Constantes.URL_WS + "/" + new Item().getServiceName() + "/categorias/" + Utilitarios.joinToString(categorias, ",");
-
         ServerRequest serverRequest = new ServerRequest(ServerRequest.GET, url, null);
+        this.execute(serverRequest);
+    }
 
+    public void getItemBySubItem(List<Long> listSubItem) {
+        String url = Constantes.URL_WS + "/" + new Item().getServiceName() + "/subItem/" + Utilitarios.joinToString(listSubItem, ",");
+        ServerRequest serverRequest = new ServerRequest(ServerRequest.GET, url, null);
         this.execute(serverRequest);
     }
 

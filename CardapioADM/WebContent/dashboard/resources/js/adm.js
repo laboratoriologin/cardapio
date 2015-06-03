@@ -4,8 +4,7 @@
 $(document).ready(function() {
 	$.ajaxSetup({cache : false});
 	
-	startModalLoad(1);
-	updateCompletedEventProgress();
+	startModalLoad(1);	
 	
 	$("#page").load("../resources/templates/adm/index.xhtml");
 
@@ -41,11 +40,20 @@ $(document).ready(function() {
 		$("#menu").superfish({});
 
 		$("#menu a").click(function() {
-			if($(this).attr("page") != "")
-				$("#page").load($(this).attr("page"), {'idSetor': $(this).attr('idSetor')});
+			if($(this).attr("page") != ""){
+				stopInterval();
+				$("#page").load($(this).attr("page"), {'idSetor': $(this).attr('idSetor')});				
+			}
 		});
 		updateCompletedEventProgress();
 	}).fail(function() {
 		updataMsgErro();
 	});
 });
+
+var arrayInterval = [];
+function stopInterval(){
+	for	(index = 0; index < arrayInterval.length; index++) {
+		clearInterval(arrayInterval[index]);
+	}
+}

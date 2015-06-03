@@ -128,8 +128,6 @@ public class AcaoContaService extends RestService<AcaoConta> {
 
 			if (Constantes.Acoes.PedirConta.equals(form.getAcao().getId())) {
 				new ContaDAO().fecharConta(form.getConta());
-				// TODO: incluir rotina de aviso ao adm, que a conta foi fechar
-				// para imprimir a comanda de verificação e nota fiscal
 			}
 
 			return form;
@@ -150,6 +148,48 @@ public class AcaoContaService extends RestService<AcaoConta> {
 			new AcaoContaDAO().updateResolverAcao(form);
 			new PedidoDAO().cancelar(form.getPedido(), form.getUsuario());
 			return form;
+		} catch (TSApplicationException ex) {
+			throw new ApplicationException(ex.getMessage(), Response.SC_BAD_REQUEST);
+		} catch (TSSystemException ex) {
+			throw new ApplicationException(ex.getMessage(), Response.SC_INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@PUT
+	@Path("/reabrirconta/{id}")
+	@Produces("application/json; charset=UTF-8")
+	public AcaoConta reabrirConta(@Form AcaoConta form, @PathParam("id") Long id) throws ApplicationException {
+
+		try {
+			
+			AcaoContaDAO acaoContaDAO = new AcaoContaDAO();
+			acaoContaDAO.changeIdFechadoTOReabrir(id);
+			
+			AcaoConta acaoConta = acaoContaDAO.get(id);
+			
+			new ContaDAO().reabrirConta(acaoConta.getConta());
+			
+			return acaoConta;
+			
+		} catch (TSApplicationException ex) {
+			throw new ApplicationException(ex.getMessage(), Response.SC_BAD_REQUEST);
+		} catch (TSSystemException ex) {
+			throw new ApplicationException(ex.getMessage(), Response.SC_INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@PUT
+	@Path("/reabrirconta/conta/{id}")
+	@Produces("application/json; charset=UTF-8")
+	public AcaoConta reabrirContaByConta(@Form AcaoConta form, @PathParam("id") String id) throws ApplicationException {
+
+		try {
+			Conta conta = new Conta(id);
+			new ContaDAO().reabrirConta(conta);
+			new AcaoContaDAO().changeIdFechadoTOReabrir(conta);
+			
+			return new AcaoConta();
+			
 		} catch (TSApplicationException ex) {
 			throw new ApplicationException(ex.getMessage(), Response.SC_BAD_REQUEST);
 		} catch (TSSystemException ex) {

@@ -1,16 +1,55 @@
 /**
  * 
  */
+var tempoAtualizacao = 60000;
 $(document).ready(function() {
 	$.ajaxSetup({cache : false});
 	
 	$(document).tooltip({ track: true });
 	
+	$("#msgLoading").hide();
+		
 	loadTableItervaloFuncionario();
 	loadTableFecharConta();
 	loadTableCozinha();
 	loadTableBar();
+	
+	startInterval();
 });
+
+function startInterval(){
+	arrayInterval.push(setInterval(function() {
+		loadTableItervaloFuncionario();			
+	}, tempoAtualizacao));
+	arrayInterval.push(setInterval(function() {
+		loadTableFecharConta();			
+	}, tempoAtualizacao));
+	arrayInterval.push(setInterval(function() {
+		loadTableCozinha();			
+	}, tempoAtualizacao));
+	arrayInterval.push(setInterval(function() {
+		loadTableBar();			
+	}, tempoAtualizacao));	
+}
+
+var end = 4;
+var nowEndLoading = 0;
+var error = false;
+var autorizedCount = true;
+function endLoading(isError){	
+	if(autorizedCount){	
+		if(!error && !isError){
+			nowEndLoading++;			
+			if(nowEndLoading >= end){
+				$("#loading").hide();
+				autorizedCount = false;
+			}
+		} else {
+			$("#msgLoading").show();
+			error = true;
+		}
+	}
+}
 
 
 function loadTableItervaloFuncionario(){
@@ -64,8 +103,11 @@ function loadTableItervaloFuncionario(){
 					)
 			);	
 		}
+		
+		endLoading(false);
 	}).fail(function(result) {
-		alert('erro');
+		//alert('erro');
+		endLoading(true);
 	});	
 }
 
@@ -99,8 +141,9 @@ function loadTableFecharConta(){
 					)
 			);
 		}
+		endLoading(false);
 	}).fail(function(result) {
-		alert('erro');
+		endLoading(true);
 	});	
 }
 
@@ -112,8 +155,9 @@ function loadTableCozinha(){
 	}).done(function (result){
 		$("#cozinha tr:not(:first-child)").remove();
 		loadPedidoAFazer($("#cozinha"), result);
+		endLoading(false);
 	}).fail(function(result) {
-		alert('erro');
+		endLoading(true);
 	});	
 }
 
@@ -125,8 +169,9 @@ function loadTableBar(){
 	}).done(function (result){
 		$("#bar tr:not(:first-child)").remove();
 		loadPedidoAFazer($("#bar"), result);
+		endLoading(false);
 	}).fail(function(result) {
-		alert('erro');
+		endLoading(true);
 	});	
 }
 

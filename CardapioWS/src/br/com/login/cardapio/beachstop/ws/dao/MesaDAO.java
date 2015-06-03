@@ -25,7 +25,7 @@ public class MesaDAO implements RestDAO<Mesa> {
 	public List<Mesa> getAll(Setor setor) {
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		broker.setPropertySQL("mesadao.getocupadabysetor", setor.getId());
-		return broker.getCollectionBean(Mesa.class, "id", "numero", "setor.id");
+		return broker.getCollectionBean(Mesa.class, "id", "numero", "conta.id", "conta.qtdPessoa", "conta.valor", "conta.acaoConta.id");
 	}
 
 	@Override

@@ -2,7 +2,6 @@ package br.com.login.cardapio.beachstop.ws.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collector;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -17,12 +16,10 @@ import org.jboss.resteasy.annotations.Form;
 import br.com.login.cardapio.beachstop.ws.dao.AcaoContaDAO;
 import br.com.login.cardapio.beachstop.ws.dao.AreasDAO;
 import br.com.login.cardapio.beachstop.ws.dao.ContaDAO;
-import br.com.login.cardapio.beachstop.ws.dao.ItemDAO;
 import br.com.login.cardapio.beachstop.ws.dao.KitDAO;
 import br.com.login.cardapio.beachstop.ws.dao.LogDAO;
 import br.com.login.cardapio.beachstop.ws.dao.PedidoDAO;
 import br.com.login.cardapio.beachstop.ws.dao.PedidoSubItemDAO;
-import br.com.login.cardapio.beachstop.ws.dao.StatusDAO;
 import br.com.login.cardapio.beachstop.ws.dao.SubItemDAO;
 import br.com.login.cardapio.beachstop.ws.dao.UsuarioDAO;
 import br.com.login.cardapio.beachstop.ws.exception.ApplicationException;
@@ -220,10 +217,18 @@ public class PedidoService extends RestService<Pedido> {
 			form.setConta(new ContaDAO().getByMesa(form.getNumero()));
 		}
 
-		super.insert(form);
-		this.gerarLog(form);
-		this.gerarAcaoConta(form);
-		return new Pedido();
+		if ( new ContaDAO().isFechado(form.getConta()) || new AcaoContaDAO().isFechando(form.getConta())) {
+			if (form.getUsuario() == null) {
+				throw new ApplicationException("Sua conta já foi encerrada, deseja algo mais? Solicite ao garçom!", Response.SC_PRECONDITION_FAILED);
+			} else {
+				throw new ApplicationException("Conta fechada ou em fechamento, solicite a administradora a reabertura.", Response.SC_PRECONDITION_FAILED);
+			}			
+		} else {
+			super.insert(form);
+			this.gerarLog(form);
+			this.gerarAcaoConta(form);
+			return new Pedido();			
+		}
 	}
 
 	@Override
