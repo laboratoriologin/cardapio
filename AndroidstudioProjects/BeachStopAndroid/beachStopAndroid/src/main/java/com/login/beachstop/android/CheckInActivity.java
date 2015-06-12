@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import com.login.beachstop.android.managers.sqlite.dao.ContaDAO;
 import com.login.beachstop.android.models.Cliente;
 import com.login.beachstop.android.models.Conta;
 import com.login.beachstop.android.models.ServerResponse;
@@ -86,6 +87,8 @@ public class CheckInActivity extends DefaultActivity {
             IntentIntegrator integrator = new IntentIntegrator(this);
             integrator.addExtra("SAVE_HISTORY", false);
             integrator.initiateScan();
+        }else{
+            getNumeroMesa();
         }
     }
 
@@ -100,8 +103,7 @@ public class CheckInActivity extends DefaultActivity {
         this.conta = this.getDataManager().getContaDAO().get();
 
         if (this.conta != null) {
-            this.textViewNumero.setText(this.conta.getNumero().toString());
-            this.changeStatusView(false, false, false, true);
+            getNumeroMesa();
         }
 
         this.actionBar.setDisplayHomeAsUpEnabled(Boolean.FALSE);
@@ -234,5 +236,42 @@ public class CheckInActivity extends DefaultActivity {
                 Toast.makeText(CheckInActivity.this, "Erro ao compartilhar! Tente novamente mais tarde!", Toast.LENGTH_LONG).show();
             }
         }
+    }
+
+    private void getNumeroMesa(){
+        this.textViewNumero.setText("");
+        this.changeStatusView(true, false, false, true);
+
+        new ContaRequest(new ResponseListener() {
+            @Override
+            public void onResult(ServerResponse serverResponse) {
+                if (serverResponse != null) {
+                    if (serverResponse.isOK()) {
+                        try {
+                            Conta serverConta  = (Conta)serverResponse.getReturnObject();
+                            conta.setNumero(serverConta.getNumero());
+
+                            getDataManager().getContaDAO().update(conta, conta.getId());
+
+                            textViewNumero.setText(conta.getNumero().toString());
+                            changeStatusView(false, false, false, true);
+                        } catch (Exception e) {
+                            Toast.makeText(CheckInActivity.this, Constantes.MSG_ERRO_GRAVAR_DADOS, Toast.LENGTH_SHORT).show();
+                            e.printStackTrace();
+                            changeStatusView(false, false, false, true);
+                            textViewNumero.setText(conta.getNumero().toString());
+                        }
+                    } else {
+                        Toast.makeText(CheckInActivity.this, serverResponse.getMsgErro(), Toast.LENGTH_LONG).show();
+                        changeStatusView(false, false, false, true);
+                        textViewNumero.setText(conta.getNumero().toString());
+                    }
+                } else {
+                    Toast.makeText(CheckInActivity.this, Constantes.MSG_ERRO_NET, Toast.LENGTH_LONG).show();
+                    changeStatusView(false, false, false, true);
+                    textViewNumero.setText(conta.getNumero().toString());
+                }
+            }
+        }).getNumeroConta(this.conta);
     }
 }

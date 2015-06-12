@@ -102,13 +102,13 @@ public final class Conta extends RestModel {
 	}
 	
 	@FormParam("valorPago")
-	private BigDecimal valorPago;
+	private Double valorPago;
 
-	public BigDecimal getValorPago() {
+	public Double getValorPago() {
 		return valorPago;
 	}
 
-	public void setValorPago(BigDecimal valorPago) {
+	public void setValorPago(Double valorPago) {
 		this.valorPago = valorPago;
 	}	
 

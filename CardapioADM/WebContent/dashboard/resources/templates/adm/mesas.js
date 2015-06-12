@@ -380,8 +380,7 @@ function createMesa(obj) {
 				postJoinTable();
 			else {
 				if (confirm("Deseja trocar a mesa da conta?"))
-					postChangeTable(ui.draggable.attr("contaId"), ui.draggable
-							.text(), $(this).text());
+					postChangeTable(ui.draggable.attr("contaId"), ui.draggable.attr("nmesa"), $(this).attr("nmesa"));
 			}
 		}
 	});

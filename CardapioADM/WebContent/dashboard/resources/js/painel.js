@@ -7,313 +7,9 @@ var templateDivLinhaSubItem;
 var templateDivTable;
 $(document).ready(function() {
 	$.ajaxSetup({cache : false});
-	
-	loadInit();
-});
-
-function loadInit(){
-	
 	startModalLoad(8);
-	
-	$("#maisitens2").hide();
-	$("#maisitens").hide();
-	$("#maisitensfooter").hide();
-	
-	loadData();	
-}
-
-function getAcaoFecharConta(atualizaProgress){
-	var heightDivTotal = $("#alertaAcaoFecharPedido").height() - $(".diviconetopoalerta").height();
-	var heightDivParcial = 0;
-	var heightDivPrevisao = 0;
-	
-	$.getJSON(url + "acoes_contas/acao/4", function(data) {
-		var acaoConta;
-		var alertaAcao;
-		
-		$(".divalerta", $("#alertaAcaoFecharPedido")).remove();
-		
-		for (i = 0; i < data.length; i++) {
-			if( (heightDivParcial + heightDivPrevisao) >= heightDivTotal){
-				$("#maisitensspan").html("+ " + (data.length - i) + " Itens");
-				$("#maisitens").show();
-				break;				
-			}else if( heightDivParcial < heightDivTotal){			
-				acaoConta = data[i];
-				alertaAcao = templateAcao.clone();
-				
-				alertaAcao.attr("id", "acaoconta_4_" + i);
-				$('#numero', alertaAcao).html(data[i].acaoconta.conta.numero);
-				$("#alertaAcaoFecharPedido").append(alertaAcao);
-	
-				heightDivParcial += $("#acaoconta_4_" + i).height();
-				heightDivPrevisao = $("#acaoconta_4_" + i).height();
-			}
-		}
-		
-		if(atualizaProgress)
-			updateCompletedEventProgress();
-	}).fail(function() {		
-		updataMsgErro();
-	});
-}
-
-function getAcaoSolicitarGarcom(atualizaProgress){
-	var heightDivTotal = $("#alertaSolicitarGarcom").height() - $(".diviconetopoalerta").height();
-	var heightDivParcial = 0;
-	var heightDivPrevisao = 0;
-	
-	$(".divalerta", $("#alertaSolicitarGarcom")).remove();
-	
-	$.getJSON(url + "acoes_contas/acao/3", function(data) {
-		var acaoConta;
-		var alertaAcao;
-		for (i = 0; i < data.length; i++) {
-			if( (heightDivParcial + heightDivPrevisao) >= heightDivTotal){
-				$("#maisitensfooterspan").html("+ " + (data.length - i) + " Itens");
-				$("#maisitensfooter").show();
-				break;				
-			}else if( heightDivParcial < heightDivTotal){			
-				acaoConta = data[i];
-				alertaAcao = templateAcao.clone();
-				
-				alertaAcao.attr("id", "acaoconta_3_" + i);
-				$('#numero', alertaAcao).html(data[i].acaoconta.conta.numero);
-				$("#alertaSolicitarGarcom").append(alertaAcao);
-	
-				heightDivParcial += $("#acaoconta_3_" + i).height();
-				heightDivPrevisao = $("#acaoconta_3_" + i).height();
-			}
-		}
-		
-		if(atualizaProgress)
-			updateCompletedEventProgress();
-	}).fail(function() {		
-		updataMsgErro();
-	});
-}
-
-function getAlertaPedidoEntregue(atualizaProgress){
-	var widthDivTotal = $("#alertapedidoentregue").width();
-	var widthDivParcial = 0;
-	var widthDivPrevisao = 0;
-	
-	$.getJSON(url + "logs/status/3", function(data) {
-		var log;
-		var alertaLog;
-		
-		$(".alertapedidoentrega1").remove();
-		
-		for (i = 0; i < data.length; i++) {
-			if( (widthDivParcial + widthDivPrevisao) >= widthDivTotal){
-				$("#maisitens2span").html("+ " + (data.length - i));
-				$("#maisitens2").show();
-				break;				
-			}else if( widthDivParcial < widthDivTotal){			
-				log = data[i].log;				
-				alertaLog = templateAlertaPedidoEntregue.clone();				
-				alertaLog.attr("id", "alertalog_3_" + i);
-				$('#descricao', alertaLog).html(log.pedidoSubItem.subItem.item.nome + "-" + log.pedidoSubItem.subItem.nome);
-				$('#numero', alertaLog).html(log.pedidoSubItem.pedido.conta.numero);
-				$("#alertapedidoentregue").append(alertaLog);	
-				widthDivParcial += $("#alertalog_3_" + i).width();
-				widthDivPrevisao = $("#alertalog_3_" + i).width();
-			}
-		}
-		
-		if(atualizaProgress)
-			updateCompletedEventProgress();
-		
-	}).fail(function() {		
-		updataMsgErro();
-	});
-}
-
-var divColuna;
-function getPedidosNaoFinalizado(atualizaProgress){
-	$.getJSON(url + "pedidos/pedidosnaoconcluido/", function(data) {
-		var pedido = null;
-		
-		consumoWidthDivPedidoAtuais = 0;
-		previsaoConsumoWidthDivPedidoAtuais = 0;
-		qtdDivColuna = 0;
-		consumoHeightDivColuna2 = 0;
-		qtdDivPedido = 0;	
-		consumoHeightDivColuna = 0;
-		previsaoConsumoHeightDivColuna = 0;
-		qtdDivRowSubItem = 0;
-		
-		$(".colunaMaior").remove();
-		
-		divColuna = createDivColunaMaior();
-		
-		for (var i = 0; i < data.length; i++) {
-			pedido = data[i];			
-			if(crateDivPedidos(pedido) == 0)
-				//Colocar o simbolo que exitem mais pedidos do que a tela possa imprimi
-				break;			
-		}
-
-		if(atualizaProgress)
-			updateCompletedEventProgress();
-	}).fail(function() {
-		updataMsgErro();
-	});
-}
-
-
-/*
- * Retornos:
- * 
- * 0 - break
- * 1 - sucesso
- * */
-function crateDivPedidos(pedido){
-	
-	if(divColuna == false){
-		return 0;
-	}else{
-		var divPedido = createDivPedido("Mesa " + pedido.pedido.conta.numero);
-		
-			if(Array.isArray(pedido.pedido.subItens)){
-				for (var j = 0; j < pedido.pedido.subItens.length; j++) {
-					pedidoSubItem = pedido.pedido.subItens[j];				
-					divRowSubItem = createRowSubItem(divPedido, pedidoSubItem.quantidade, pedidoSubItem.subItem.item.nome + " - " +  pedidoSubItem.subItem.nome, pedidoSubItem.status.id);				
-					if(divRowSubItem == false){
-						//Colocar o simbolo que exitem mais pedidos do que a tela possa imprimi
-						var qtdRestante = pedido.pedido.subItens.length - j;
-						var textoItem;
-
-						if(qtdRestante == 1)
-							textoItem = "+1 Item";
-						else
-							textoItem = "+" + qtdRestante  + " Item";						
-						
-						$("#maisItemPedidospan", divPedido).html(textoItem);
-						$("#maisItemPedido", divPedido).show();
-						break;
-					}
-				}
-			}else{
-				pedidoSubItem = pedido.pedido.subItens;				
-				divRowSubItem = createRowSubItem(divPedido, pedidoSubItem.quantidade, pedidoSubItem.subItem.item.nome + " - " +  pedidoSubItem.subItem.nome, pedidoSubItem.status.id);				
-			}
-			
-			divPedido.height(($("#divTamanhaReal", divPedido).height() + 20));
-			
-			if( (divPedido.height() + consumoHeightDivColuna2) >= divColuna.height()){
-				consumoHeightDivColuna2 = 0;
-				consumoHeightDivColuna = 0;
-				previsaoConsumoHeightDivColuna = 0;	
-				divColuna = createDivColunaMaior();
-				
-				if(divColuna == false){				
-					return 0;
-				}else{
-					divColuna.append(divPedido);
-					$("#tempoPedido").empty();
-					
-					consumoHeightDivColuna2 += $(divPedido).height();
-				}
-			}else{
-				divColuna.append(divPedido);
-				$("#tempoPedido").empty();
-				
-				consumoHeightDivColuna2 += $(divPedido).height();			
-			}
-	}
-	
-	return 1;
-}
-
-var consumoWidthDivPedidoAtuais = 0;
-var previsaoConsumoWidthDivPedidoAtuais = 0;
-var qtdDivColuna = 0;
-function createDivColunaMaior() {
-	var maxWidthDivPedidosAtuais = $("#pedidosAtuais").width();
-	
-	if( (consumoWidthDivPedidoAtuais + previsaoConsumoWidthDivPedidoAtuais) >= maxWidthDivPedidosAtuais){
-		return false;				
-	}else if( consumoWidthDivPedidoAtuais < maxWidthDivPedidosAtuais){
-		qtdDivColuna++;
-		
-		var divColuna = jQuery('<div/>', {
-		    id: 'coluna_' + qtdDivColuna,
-		    class: 'colunaMaior'		    
-		});
-		
-		divColuna.appendTo('#pedidosAtuais');
-		consumoWidthDivPedidoAtuais += $("#coluna_" + qtdDivColuna).width();
-		previsaoConsumoWidthDivPedidoAtuais = $("#coluna_" + qtdDivColuna).width();
-		
-		return divColuna;		
-	}
-}
-
-var consumoHeightDivColuna2 = 0;
-var qtdDivPedido = 0;
-function createDivPedido(numeroMesa){
-		qtdDivPedido++;
-
-		var divPedido = templateDivTable.clone();
-		divPedido.attr("id", "divPedido_" + qtdDivColuna + "_" + qtdDivPedido);
-		$("#numeroMesa", divPedido).html(numeroMesa);
-		
-		$("#maisItemPedido", divPedido).hide();
-
-		$("#tempoPedido").append(divPedido);
-		
-		return divPedido;		
-
-}
-
-var consumoHeightDivColuna = 0;
-var previsaoConsumoHeightDivColuna = 0;
-var qtdDivRowSubItem = 0;
-function createRowSubItem(divPedido, qtd, descricao, img){
-	var maxHeightDivColuna = divColuna.height() - $("#cabecalho", divPedido).height();
-	
-	if( (consumoHeightDivColuna + previsaoConsumoHeightDivColuna) >= maxHeightDivColuna){		
-		return false;				
-	}else if( consumoHeightDivColuna < maxHeightDivColuna){
-		qtdDivRowSubItem++;
-		
-		var divRowSubItem = templateDivLinhaSubItem.clone();
-		divRowSubItem.attr("id", "divRowSubItem_" + qtdDivColuna + "_" + qtdDivPedido + "_" + qtdDivRowSubItem);
-		$("#qtd", divRowSubItem).html(qtd);
-		$("#descricao", divRowSubItem).html(descricao);
-		
-		switch (img) {
-		    case 1:
-		        text = "Pedente Validação";
-		        src = "../resources/img/icone_confirmar_marrom.png"
-		        break; 
-		    case 2:
-		        text = "Em produção";
-		        src = "../resources/img/icone_preparo_marrom.png"
-		        break;
-		    default: 
-		        text = "";
-		    	src = "";
-		}
-		
-		var htmlImg = $('<img />',
-	             { id: 'icone_' + qtdDivColuna + "_" + qtdDivPedido + "_" + qtdDivRowSubItem,
-	               src: src,
-	               align: 'middle',
-	               alt: text
-	             });
-		
-		$("#icone", divRowSubItem).append(htmlImg);
-				
-
-		$("#divLinhasSubItem", divPedido).append(divRowSubItem);
-		consumoHeightDivColuna += $("#divRowSubItem_" + qtdDivColuna + "_" + qtdDivPedido + "_" + qtdDivRowSubItem).height();
-		previsaoConsumoHeightDivColuna = $("#divRowSubItem_" + qtdDivColuna + "_" + qtdDivPedido + "_" + qtdDivRowSubItem).height();
-		
-		return divRowSubItem;		
-	}
-}
+	loadData();
+});
 
 function loadData(){
 	
@@ -367,4 +63,314 @@ function loadData(){
 	}).fail(function() {
 		updataMsgErro();
 	});	
+}
+
+function getAcaoFecharConta(atualizaProgress){
+	var heightDivTotal = $("#alertaAcaoFecharPedido").height() - $(".diviconetopoalerta").height();
+	var heightDivParcial = 0;
+	var heightDivPrevisao = 0;
+	
+	$("#maisitens").hide();
+	$(".divalerta", $("#alertaAcaoFecharPedido")).remove();
+	
+	$.getJSON(url + "acoes_contas/acao/4", function(data) {
+		var acaoConta;
+		var alertaAcao;
+		
+		for (var i = 0; i < data.length; i++) {
+			if( (heightDivParcial + heightDivPrevisao) >= heightDivTotal){
+				$("#maisitensspan").html("+ " + (data.length - i) + " Itens");
+				$("#maisitens").show();
+				break;				
+			}else if( heightDivParcial < heightDivTotal){			
+				acaoConta = data[i];
+				alertaAcao = templateAcao.clone();
+				
+				alertaAcao.attr("id", "acaoconta_4_" + i);
+				$('#numero', alertaAcao).html(data[i].acaoconta.conta.numero);
+				$("#alertaAcaoFecharPedido").append(alertaAcao);
+	
+				heightDivParcial += $("#acaoconta_4_" + i).height();
+				heightDivPrevisao = $("#acaoconta_4_" + i).height();
+			}
+		}
+		
+		if(atualizaProgress)
+			updateCompletedEventProgress();
+	}).fail(function() {		
+		updataMsgErro();
+	});
+}
+
+function getAcaoSolicitarGarcom(atualizaProgress){
+	var heightDivTotal = $("#alertaSolicitarGarcom").height() - $(".diviconetopoalerta").height();
+	var heightDivParcial = 0;
+	var heightDivPrevisao = 0;
+	
+	$("#maisitensfooter").hide();	
+	$(".divalerta", $("#alertaSolicitarGarcom")).remove();
+	
+	$.getJSON(url + "acoes_contas/acao/3", function(data) {
+		var acaoConta;
+		var alertaAcao;
+		for (var i = 0; i < data.length; i++) {
+			if( (heightDivParcial + heightDivPrevisao) >= heightDivTotal){
+				$("#maisitensfooterspan").html("+ " + (data.length - i) + " Itens");
+				$("#maisitensfooter").show();
+				break;				
+			}else if( heightDivParcial < heightDivTotal){			
+				acaoConta = data[i];
+				alertaAcao = templateAcao.clone();
+				
+				alertaAcao.attr("id", "acaoconta_3_" + i);
+				$('#numero', alertaAcao).html(data[i].acaoconta.conta.numero);
+				$("#alertaSolicitarGarcom").append(alertaAcao);
+	
+				heightDivParcial += $("#acaoconta_3_" + i).height();
+				heightDivPrevisao = $("#acaoconta_3_" + i).height();
+			}
+		}
+		
+		if(atualizaProgress)
+			updateCompletedEventProgress();
+	}).fail(function() {		
+		updataMsgErro();
+	});
+}
+
+function getAlertaPedidoEntregue(atualizaProgress){
+	var widthDivTotal = $("#alertapedidoentregue").width();
+	var widthDivParcial = 0;
+	var widthDivPrevisao = 0;
+	
+	$.getJSON(url + "logs/status/3", function(data) {
+		var log;
+		var alertaLog;
+		
+		$(".alertapedidoentrega1").remove();
+		
+		for (var i = 0; i < data.length; i++) {			
+			if( (widthDivParcial + widthDivPrevisao) >= widthDivTotal){
+				$("#maisitens2span").html("+ " + (data.length - i));
+				$("#maisitens2").show();
+				break;				
+			}else if( widthDivParcial < widthDivTotal){			
+				log = data[i].log;				
+				alertaLog = templateAlertaPedidoEntregue.clone();				
+				alertaLog.attr("id", "alertalog_3_" + i);
+				$('#descricao', alertaLog).html(log.pedidoSubItem.subItem.item.nome + "-" + log.pedidoSubItem.subItem.nome);
+				$('#numero', alertaLog).html(log.pedidoSubItem.pedido.conta.numero);
+				
+				$("#alertapedidoentregue").append(alertaLog);
+				
+				widthDivParcial += $("#alertalog_3_" + i).outerWidth(true);
+				widthDivPrevisao = $("#alertalog_3_" + i).outerWidth(true);
+			}
+		}
+		
+		if(atualizaProgress)
+			updateCompletedEventProgress();
+		
+	}).fail(function() {		
+		updataMsgErro();
+	});
+}
+
+function getPedidosNaoFinalizado(atualizaProgress){	
+	$.getJSON(url + "pedidos/pedidosnaoconcluido/", function(data) {
+		
+		$(".colunaMaior").remove();	
+		var divTotal = new DivTotal($("#pedidosAtuais"));
+		var divColuna = new DivColuna(divTotal);
+		
+		for (var i = 0; i < data.length; i++) {
+
+			var pedido = data[i].pedido;
+			
+			var divItem = new DivItem(divColuna, pedido);
+			if(Array.isArray(pedido.subItens)){
+				for (var j = 0; j < pedido.subItens.length; j++) {
+					var pedidoSubItem = pedido.subItens[j];
+					var qtdRestante = pedido.subItens.length - j;
+					var divSubItem = new DivSubItem(divItem, pedidoSubItem, qtdRestante);				
+				}
+			} else {
+				var divSubItem = new DivSubItem(divItem, pedido.subItens, 0);
+			}
+			
+			if(divColuna.isFull(divItem)){
+				var divColuna = new DivColuna(divTotal);
+				
+				if(divColuna.html == null)
+					//TODO: COlocar o simbolo de mais itens na tela
+					break;
+			}
+
+			divColuna.append(divItem);
+		}
+		
+		divItem.clearTemp();
+		
+		if(atualizaProgress)
+			updateCompletedEventProgress();
+	}).fail(function() {
+		updataMsgErro();
+	});
+}
+
+function DivTotal(pHtml){
+	
+	this.html = pHtml;
+	this.max = pHtml.width();
+	
+	this.total = 0; 
+	this.previsao = 0;
+	this.qtdColuna = 0;	
+	
+	this.addQtd = function(){
+		this.qtdColuna++;
+	};
+	
+	this.isFull = function(){
+		if( (this.total + this.previsao) >= this.max)
+			return true;				
+		else if( this.total < this.max)
+			return false;
+		else
+			return true;
+	};
+	
+	this.append = function(divColuna){
+		this.html.append(divColuna.html);
+		this.total += $("#coluna_" + this.qtdColuna).width();
+		this.previsao = $("#coluna_" + this.qtdColuna).width();
+	};
+}
+
+function DivColuna(pDivTotal){
+	
+	this.divTotal = pDivTotal;
+	
+	this.max = 0;
+	this.total = 0;
+	this.qtdItem = 0;
+	
+	this.html = null;
+	
+	this.addQtd = function(){
+		this.qtdItem++;
+	};
+
+	this.isFull = function(divItem) {
+		return ( this.total + divItem.html.outerHeight() ) >= this.max;		
+	};
+	
+	this.append = function(divItem){
+		
+		divItem.html.height(($("#divTamanhaReal", divItem.html).height() + divItem.margin));		
+		this.html.append(divItem.html);
+		divItem.clearTemp();
+		this.total += divItem.html.outerHeight();		
+	};
+
+	if(!this.divTotal.isFull()) {
+		this.divTotal.addQtd();
+		this.html = jQuery('<div/>', { id: 'coluna_' + this.divTotal.qtdColuna, class: 'colunaMaior' });		
+		this.divTotal.append(this);		
+		this.max =  $("#coluna_" + this.divTotal.qtdColuna).height();		
+	}
+}
+
+function DivItem(pDivColuna, pPedido){
+
+	this.divColuna = pDivColuna;
+	this.html = templateDivTable.clone();
+	this.pedido = pPedido;
+	this.margin = 20;
+	
+	this.total = 0;	
+	this.qtdSubItem = 0;
+
+	this.addQtd = function(){
+		this.qtdSubItem++;
+	};
+	
+	this.isFull = function() {
+		return (this.total + this.margin) >= this.divColuna.max;		
+	};
+	
+	this.clearTemp = function(){
+		$("#tempoPedido").empty();
+	};
+	
+	this.append = function(divSubItem, qtdRestante){
+		
+		if(this.isFull()) {
+			var textoItem;
+			if(qtdRestante == 1)
+				textoItem = "+1 Item";
+			else
+				textoItem = "+" + qtdRestante  + " Item";
+			
+			$("#maisItemPedidospan", this.html).html(textoItem);
+			$("#maisItemPedido", this.html).show();			
+		} else {		
+			$("#divLinhasSubItem" ,this.html).append(divSubItem.html);
+			this.total += divSubItem.html.outerHeight();
+		}
+	};
+	
+	this.divColuna.addQtd();
+	
+	this.html.attr("id", "divPedido_" + this.divColuna.divTotal.qtdColuna + "_" + this.divColuna.qtdItem);
+	
+	$("#numeroMesa", this.html).html("Mesa " + this.pedido.conta.numero);	
+	$("#maisItemPedido", this.html).hide();
+	$("#tempoPedido").append(this.html);	
+	
+	this.total += $("#cabecalho", this.html).outerHeight();
+}
+
+function DivSubItem(pDivItem, pSubItemPedido, qtdRestante){
+	this.divItem = pDivItem;
+	this.subItemPedido = pSubItemPedido;
+	this.html = templateDivLinhaSubItem.clone();
+	
+	this.divItem.addQtd();
+	
+	var qtdColuna = this.divItem.divColuna.divTotal.qtdColuna;
+	var qtdItem = this.divItem.divColuna.qtdItem;
+	var qtdSubItem = this.divItem.qtdSubItem;
+
+	
+	this.html.attr("id", "divRowSubItem_" + qtdColuna + "_" + qtdItem + "_" + qtdSubItem);
+	$("#qtd", this.html).html(this.subItemPedido.quantidade);
+	$("#descricao", this.html).html(this.subItemPedido.subItem.item.nome + " - " +  this.subItemPedido.subItem.nome);
+	
+	var text = "";
+	var src = "";
+	switch (this.subItemPedido.status.id) {
+	    case 1:
+	        text = "Pedente Validação";
+	        src = "../resources/img/icone_confirmar_marrom.png"
+	        break; 
+	    case 2:
+	        text = "Em produção";
+	        src = "../resources/img/icone_preparo_marrom.png"
+	        break;
+	    default: 
+	        text = "";
+	    	src = "";
+	}
+	
+	var htmlImg = $('<img />',
+            { id: 'icone_' + qtdColuna + "_" + qtdItem + "_" + qtdSubItem,
+              src: src,
+              align: 'middle',
+              alt: text
+            }
+	);
+	
+	$("#icone", this.html).append(htmlImg);
+	this.divItem.append(this, qtdRestante);
 }

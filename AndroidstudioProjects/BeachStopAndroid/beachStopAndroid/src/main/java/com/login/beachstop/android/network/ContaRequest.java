@@ -40,6 +40,12 @@ public class ContaRequest extends ObjectRequest<Conta> {
         this.execute(serverRequest);
     }
 
+    public void getNumeroConta(Conta conta){
+        String urlgetAtivo = String.format("%s/%s/%s/numero", Constantes.URL_WS, new Conta().getServiceName(), conta.getSistemaId().toString());
+        ServerRequest serverRequest = new ServerRequest(ServerRequest.GET, urlgetAtivo, null);
+        this.execute(serverRequest);
+    }
+
     public void verificarContaAberta(Conta conta) {
         String urlgetAtivo = String.format("%s/%s/aberto/%s", Constantes.URL_WS, new Conta().getServiceName(), conta.getSistemaId().toString());
         ServerRequest serverRequest = new ServerRequest(ServerRequest.GET, urlgetAtivo, null);

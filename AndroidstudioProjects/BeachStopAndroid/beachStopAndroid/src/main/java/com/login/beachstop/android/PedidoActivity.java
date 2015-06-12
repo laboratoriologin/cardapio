@@ -52,7 +52,7 @@ public class PedidoActivity extends DefaultActivity implements TabHost.OnTabChan
         setContentView(R.layout.activity_pedido);
 
         ((ActionBar) findViewById(R.id.actionbar)).setDisplayHomeAsUpEnabled(Boolean.FALSE);
-        ((ImageView) (findViewById(R.id.actionbar)).findViewById(R.id.imagem_action_bar)).setBackgroundResource(R.drawable.tab_pedido);
+        ((findViewById(R.id.actionbar)).findViewById(R.id.imagem_action_bar)).setBackgroundResource(R.drawable.tab_pedido);
         ((TextView) (findViewById(R.id.actionbar)).findViewById(R.id.text_view_action_bar)).setText("Meus pedidos");
 
         startTab(null);

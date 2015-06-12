@@ -404,7 +404,7 @@ body div.body .direita {
 	background-color: white;
 	top: 0px;
 	left: 0px;
-	z-index: 10;
+	z-index: 10;	
 }
 
 @-moz-document url-prefix() { 
@@ -549,6 +549,7 @@ body div.body .direita {
 .page {
 	height: 100%;
 	width: 100%;
+	font-family: Century Gothic;
 }
 
 .mesaVerde {	 

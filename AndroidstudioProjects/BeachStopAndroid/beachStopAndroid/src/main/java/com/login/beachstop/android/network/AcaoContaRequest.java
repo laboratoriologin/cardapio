@@ -38,7 +38,7 @@ public class AcaoContaRequest extends ObjectRequest<AcaoConta> {
 
         List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
         nameValuePairs.add(new BasicNameValuePair("acao", acaoContao.getAcaoId().toString()));
-        nameValuePairs.add(new BasicNameValuePair("conta", acaoContao.getConta().getSistemaId().toString()));
+        nameValuePairs.add(new BasicNameValuePair("conta.id", acaoContao.getConta().getSistemaId().toString()));
 
         return nameValuePairs;
     }

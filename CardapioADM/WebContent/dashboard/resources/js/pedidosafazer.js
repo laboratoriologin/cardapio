@@ -59,8 +59,45 @@ $(document).ready(function() {
 });
 
 function loadInit(){
-	startModalLoad(3);
+	startModalLoad(5);
 	loadData();
+}
+
+function loadData(){
+	
+	var tempoAtualizacao = 60000;
+	
+	$.get('../resources/templates/pedido/divLinhaSubItem.xhtml', function(data) {
+		templateDivLinhaSubItem = $(data);
+		updateCompletedEventProgress();
+	}).done(function() {
+		$.get('../resources/templates/pedido/divTabela.xhtml', function(data) {
+			templateDivTable = $(data);
+			updateCompletedEventProgress();
+		}).done(function() {			
+			getPedidosNaoFinalizado(true);
+			setInterval(function() {
+				if(!isPaused)
+					getPedidosNaoFinalizado(false);			
+			}, 60000);
+		}).fail(function() {
+			updataMsgErro();
+		});
+	}).fail(function() {
+		updataMsgErro();
+	});	
+	
+	$.get('../resources/templates/alertapedidoentregue.xhtml', function(data) {
+		templateAlertaPedidoEntregue = $(data);
+		updateCompletedEventProgress();
+	}).done(function() {
+		getAlertaPedidoEntregue(true);		
+		setInterval(function() {
+			getAlertaPedidoEntregue(false);			
+		}, tempoAtualizacao);		
+	}).fail(function() {
+		updataMsgErro();
+	});	
 }
 
 function sendPedidoSubItemByCodeSender(div){
@@ -87,8 +124,7 @@ function sendPedidoSubItemByCodeSender(div){
 		url: url + "pedidos/pedidopronto/usuario/" + $("#usuarioId").val() + "/pedidosubitem/" + div.attr('pedidosubitemid') + "/pedido/" + div.attr('pedidoidCs'),
 		type: 'PUT'
 	}).done(function (result){
-		getPedidosNaoFinalizado(false);
-		
+		getPedidosNaoFinalizado(false);		
 	}).fail(callBackError(extraStuff));	
 }
 
@@ -125,291 +161,6 @@ function sendPedidoByCodeSender(div){
 	
 }
 
-var divColuna;
-function getPedidosNaoFinalizado(atualizaProgress){
-	$.getJSON(url + "pedidos/pedidosafazer/" + $("#usuarioId").val(), function(data) {
-		var pedido = null;
-		
-		consumoWidthDivPedidoAtuais = 0;
-		previsaoConsumoWidthDivPedidoAtuais = 0;
-		qtdDivColuna = 0;
-		consumoHeightDivColuna2 = 0;
-		qtdDivPedido = 0;	
-		consumoHeightDivColuna = 0;
-		previsaoConsumoHeightDivColuna = 0;
-		qtdDivRowSubItem = 0;
-		createCodSender = 0;
-		
-		$(".colunaMaior").remove();
-		
-		divColuna = createDivColunaMaior();
-		
-		for (var i = 0; i < data.length; i++) {
-			pedido = data[i];			
-			if(crateDivPedidos(pedido) == 0)
-				//Colocar o simbolo que exitem mais pedidos do que a tela possa imprimi
-				break;			
-		}
-		
-		isCommit = false;
-
-		if(atualizaProgress)
-			updateCompletedEventProgress();
-	}).fail(function() {
-		updataMsgErro();
-	});
-}
-
-
-/*
- * Retornos:
- * 
- * 0 - break
- * 1 - sucesso
- * */
-function crateDivPedidos(pedido){
-	
-	if(divColuna == false){
-		return 0;
-	}else{
-		var divPedido = createDivPedido(pedido.pedido.id, "Mesa " + pedido.pedido.conta.numero);
-		
-		if(pedido.pedido.observacao != ""){
-			createRowSubItem(divPedido, "Obs:", pedido.pedido.observacao, 1, 1, pedido.pedido.id, true);
-		}
-		
-			if(Array.isArray(pedido.pedido.subItens)){
-				for (var j = 0; j < pedido.pedido.subItens.length; j++) {
-					pedidoSubItem = pedido.pedido.subItens[j];				
-					divRowSubItem = createRowSubItem(divPedido, pedidoSubItem.quantidade, pedidoSubItem.subItem.item.nome + " - " +  pedidoSubItem.subItem.nome, pedidoSubItem.status.id, pedidoSubItem.id, pedido.pedido.id, false);				
-					if(divRowSubItem == false){
-						//Colocar o simbolo que exitem mais pedidos do que a tela possa imprimi
-						var qtdRestante = pedido.pedido.subItens.length - j;
-						var textoItem;
-
-						if(qtdRestante == 1)
-							textoItem = "+1 Item";
-						else
-							textoItem = "+" + qtdRestante  + " Item";						
-						
-						$("#maisItemPedidospan", divPedido).html(textoItem);
-						$("#maisItemPedido", divPedido).show();
-						break;
-					}
-				}
-				
-				
-			}else{
-				pedidoSubItem = pedido.pedido.subItens;				
-				divRowSubItem = createRowSubItem(divPedido, pedidoSubItem.quantidade, pedidoSubItem.subItem.item.nome + " - " +  pedidoSubItem.subItem.nome, pedidoSubItem.status.id, pedidoSubItem.id, pedido.pedido.id, false);				
-			}
-			
-			divPedido.height(($("#divTamanhaReal", divPedido).height() + 20));
-			
-			if( (divPedido.height() + consumoHeightDivColuna2) >= divColuna.height()){
-				consumoHeightDivColuna2 = 0;
-				consumoHeightDivColuna = 0;
-				previsaoConsumoHeightDivColuna = 0;	
-				divColuna = createDivColunaMaior();
-				
-				if(divColuna == false){				
-					return 0;
-				}else{
-					divColuna.append(divPedido);
-					$("#tempoPedido").empty();
-					
-					consumoHeightDivColuna2 += $(divPedido).height();
-				}
-			}else{
-				divColuna.append(divPedido);
-				$("#tempoPedido").empty();
-				
-				consumoHeightDivColuna2 += $(divPedido).height();			
-			}
-	}
-	
-	return 1;
-}
-
-var consumoWidthDivPedidoAtuais = 0;
-var previsaoConsumoWidthDivPedidoAtuais = 0;
-var qtdDivColuna = 0;
-function createDivColunaMaior() {
-	var maxWidthDivPedidosAtuais = $("#pedidosAtuais").width();
-	
-	if( (consumoWidthDivPedidoAtuais + previsaoConsumoWidthDivPedidoAtuais) >= maxWidthDivPedidosAtuais){
-		return false;				
-	}else if( consumoWidthDivPedidoAtuais < maxWidthDivPedidosAtuais){
-		qtdDivColuna++;
-		
-		var divColuna = jQuery('<div/>', {
-		    id: 'coluna_' + qtdDivColuna,
-		    class: 'colunaMaior'		    
-		});
-		
-		divColuna.appendTo('#pedidosAtuais');
-		consumoWidthDivPedidoAtuais += $("#coluna_" + qtdDivColuna).width();
-		previsaoConsumoWidthDivPedidoAtuais = $("#coluna_" + qtdDivColuna).width();
-		
-		return divColuna;		
-	}
-}
-
-var consumoHeightDivColuna2 = 0;
-var qtdDivPedido = 0;
-function createDivPedido(id, numeroMesa){
-		qtdDivPedido++;
-
-		var divPedido = templateDivTable.clone();
-		divPedido.attr("id", "divPedido_" + qtdDivColuna + "_" + qtdDivPedido);
-		createCodSender++;
-		divPedido.attr("codesender", createCodSender);
-		divPedido.attr("pedidoIdCs", id);
-		
-		$("#numeroMesa", divPedido).html(numeroMesa);
-		
-        text = "Pedente Validação";
-        src = "../resources/img/icone_confirmar_marrom.png"
-		
-		var htmlDiv = $('<div />',
-	             { id: id,	               
-	               align: 'middle',
-	               text: createCodSender,
-	               style: 'cursor: pointer;',
-	               class: 'circuloCinza'
-	             });
-        
-        htmlDiv.click(function(){
-      	
-        	$("div[pedidoid='" + $(this).attr('id') + "']").hide();        	
-           	$(this).hide();           	
-           	var parent = $(this).parent();           	
-           	parent.append("<div class='loaderBranco'>Loading...</div>");
-
-        	var pedidoSubItemId="";
-        	$("div[pedidoid='" + $(this).attr('id') + "']" ).each(function( index ) {
-        		pedidoSubItemId += $(this).attr('id') + ",";
-        	});
-        	
-        	pedidoSubItemId = pedidoSubItemId.substring(0, (pedidoSubItemId.length - 1));
-        	
-           	var extraStuff = {
-           	        cabeca: $(this),
-           	        parent: parent,
-           	        subitens: $("div[pedidoid='" + $(this).attr('id') + "']")
-           	    }; 
-           	
-           	var callBackError = function(extraStuff) {
-           	    return function(data, textStatus, jqXHR) {
-           	    	extraStuff.cabeca.show();
-           	    	$(".loaderBranco", extraStuff.parent).remove();
-           	    	extraStuff.subitens.show();
-           	    };
-           	};
-       	
-				$.ajax({
-					url: url + "pedidos/pedidopronto/usuario/" + $("#usuarioId").val() + "/pedidosubitem/" + pedidoSubItemId + "/pedido/" + $(this).attr('id'),
-					type: 'PUT'
-				}).done(function (result){
-					getPedidosNaoFinalizado(false);
-				}).fail(callBackError(extraStuff));        	
-        });
-       
-		var divColuna = jQuery('<div/>', {
-		    id: 'icone'		    
-		});		
-
-		divColuna.append(htmlDiv);	
-		
-		$("#cabecalho div:first-child", divPedido).append(divColuna);		
-		$("#maisItemPedido", divPedido).hide();
-		$("#tempoPedido").append(divPedido);
-		
-		return divPedido;
-}
-
-var consumoHeightDivColuna = 0;
-var previsaoConsumoHeightDivColuna = 0;
-var qtdDivRowSubItem = 0;
-function createRowSubItem(divPedido, qtd, descricao, img, id, pedidoId, isObs){
-	var maxHeightDivColuna = divColuna.height() - $("#cabecalho", divPedido).height();
-	
-	if( (consumoHeightDivColuna + previsaoConsumoHeightDivColuna) >= maxHeightDivColuna){		
-		return false;				
-	}else if( consumoHeightDivColuna < maxHeightDivColuna){
-		var divRowSubItem = templateDivLinhaSubItem.clone();
-		
-		if(isObs){	
-			divRowSubItem.attr("id", "divRowSubItem_" + qtdDivColuna + "_" + qtdDivPedido + "_obs");		
-			divRowSubItem.css("color", "red");
-			
-			$("#qtd", divRowSubItem).html("");
-			$("#descricao", divRowSubItem).html(qtd + " " + descricao);
-			
-		}else{
-			qtdDivRowSubItem++;
-			divRowSubItem.attr("id", "divRowSubItem_" + qtdDivColuna + "_" + qtdDivPedido + "_" + qtdDivRowSubItem);
-			divRowSubItem.attr("pedidosubitemid", "divRowSubItem_" + qtdDivColuna + "_" + qtdDivPedido + "_" + qtdDivRowSubItem);
-			createCodSender++;
-			divRowSubItem.attr("codesender", createCodSender);
-			divRowSubItem.attr("pedidoIdCs", pedidoId);
-			divRowSubItem.attr("pedidosubitemid", id);
-			
-			$("#qtd", divRowSubItem).html(qtd);
-			$("#descricao", divRowSubItem).html(descricao);
-		}
-		
-		
-		if(!isObs){		
-	        text = "Pedente Validação";
-	        src = "../resources/img/icone_confirmar_marrom.png"
-		
-	    		var htmlDiv = $('<div />', { 
-	    			id: id,	   	            
-	   	            align: 'middle',
-	   	            text: createCodSender,
-	   	            pedidoid: pedidoId,
-	   	            style: 'cursor: pointer;',
-	   	            class: 'circuloBranco'
-	            });
-	           
-	        	htmlDiv.click(function(){
-		           	$(this).hide();
-		            $(this).parent().append("<div class='loaderCinza'>Loading...</div>");           	
-		           	$("#" + $(this).attr("pedidoid")).hide();
-		           	
-		           	var extraStuff = {
-		           	        img: $(this),
-		           	        parent:  $(this).parent()
-		           	    }; 
-		           	
-		           	var callBackError = function(extraStuff) {
-		           	    return function(data, textStatus, jqXHR) {
-							$(".loaderCinza", extraStuff.parent).remove();
-							extraStuff.img.show();
-							$("#" + extraStuff.img.attr("pedidoid")).show();
-		           	    };
-		           	};
-	           	
-						$.ajax({
-							url: url + "pedidos/pedidopronto/usuario/" + $("#usuarioId").val() + "/pedidosubitem/" + $(this).attr('id') + "/pedido/" + $(this).attr('pedidoid'),
-							type: 'PUT'
-						}).done(function (result){
-							getPedidosNaoFinalizado(false);
-						}).fail(callBackError(extraStuff));	
-	           });
-	           
-			$("#icone", divRowSubItem).append(htmlDiv);
-		}
-				
-
-		$("#divLinhasSubItem", divPedido).append(divRowSubItem);
-		consumoHeightDivColuna += divRowSubItem.height();
-		previsaoConsumoHeightDivColuna = divRowSubItem.height();
-		
-		return divRowSubItem;		
-	}
-}
 
 function getAlertaPedidoEntregue(atualizaProgress){
 	var widthDivTotal = $("#alertapedidoentregue").width();
@@ -422,7 +173,7 @@ function getAlertaPedidoEntregue(atualizaProgress){
 		
 		$(".alertapedidoentrega1").remove();
 		
-		for (i = 0; i < data.length; i++) {
+		for (var i = 0; i < data.length; i++) {
 			if( (widthDivParcial + widthDivPrevisao) >= widthDivTotal){
 				$("#maisitens2span").html("+ " + (data.length - i));
 				$("#maisitens2").show();
@@ -434,8 +185,8 @@ function getAlertaPedidoEntregue(atualizaProgress){
 				$('#descricao', alertaLog).html(log.pedidoSubItem.quantidade + " " + log.pedidoSubItem.subItem.item.nome + "-" + log.pedidoSubItem.subItem.nome);
 				$('#numero', alertaLog).html(log.pedidoSubItem.pedido.conta.numero);
 				$("#alertapedidoentregue").append(alertaLog);	
-				widthDivParcial += $("#alertalog_3_" + i).width();
-				widthDivPrevisao = $("#alertalog_3_" + i).width();
+				widthDivParcial += $("#alertalog_3_" + i).outerWidth(true);
+				widthDivPrevisao = $("#alertalog_3_" + i).outerWidth(true);
 			}
 		}
 		
@@ -447,39 +198,293 @@ function getAlertaPedidoEntregue(atualizaProgress){
 	});
 }
 
-function loadData(){
-	
-	var tempoAtualizacao = 60000;
-	
-	$.get('../resources/templates/pedido/divLinhaSubItem.xhtml', function(data) {
-		templateDivLinhaSubItem = $(data);
-		updateCompletedEventProgress();
-	}).done(function() {
-		$.get('../resources/templates/pedido/divTabela.xhtml', function(data) {
-			templateDivTable = $(data);
+function getPedidosNaoFinalizado(atualizaProgress){
+	$.getJSON(url + "pedidos/pedidosafazer/" + $("#usuarioId").val(), function(data) {
+		$(".colunaMaior").remove();	
+		var divTotal = new DivTotal($("#pedidosAtuais"));
+		var divColuna = new DivColuna(divTotal);
+		
+		createCodSender = 0;
+		
+		isCommit = false;
+		
+		for (var i = 0; i < data.length; i++) {
+			var pedido = data[i].pedido;
+			var divItem = new DivItem(divColuna, pedido);
+			
+			if(pedido.observacao != ""){
+				var divSubItem = new DivSubItem(divItem, pedido, 0, true);				
+			}
+						
+			if(Array.isArray(pedido.subItens)){
+				for (var j = 0; j < pedido.subItens.length; j++) {
+					var pedidoSubItem = pedido.subItens[j];
+					var qtdRestante = pedido.subItens.length - j;
+					var divSubItem = new DivSubItem(divItem, pedidoSubItem, qtdRestante, false);				
+				}
+			} else {
+				var divSubItem = new DivSubItem(divItem, pedido.subItens, 0, false);
+			}
+			
+			if(divColuna.isFull(divItem)){
+				var divColuna = new DivColuna(divTotal);
+				
+				if(divColuna.html == null)
+					//TODO: COlocar o simbolo de mais itens na tela
+					break;
+			}
+
+			divColuna.append(divItem);
+		}
+		
+		divItem.clearTemp();
+		
+		if(atualizaProgress)
 			updateCompletedEventProgress();
-		}).done(function() {			
-			getPedidosNaoFinalizado(true);
-			setInterval(function() {
-				//if(!isPaused)
-					//getPedidosNaoFinalizado(false);			
-			}, 60000);
-		}).fail(function() {
-			updataMsgErro();
-		});
 	}).fail(function() {
 		updataMsgErro();
-	});	
+	});
+}
+
+function DivTotal(pHtml){
 	
-	$.get('../resources/templates/alertapedidoentregue.xhtml', function(data) {
-		templateAlertaPedidoEntregue = $(data);
-		updateCompletedEventProgress();
-	}).done(function() {
-		getAlertaPedidoEntregue(true);		
-		setInterval(function() {
-			getAlertaPedidoEntregue(false);			
-		}, tempoAtualizacao);		
-	}).fail(function() {
-		updataMsgErro();
-	});	
+	this.html = pHtml;
+	this.max = pHtml.width();
+	
+	this.total = 0; 
+	this.previsao = 0;
+	this.qtdColuna = 0;	
+	
+	this.addQtd = function(){
+		this.qtdColuna++;
+	};
+	
+	this.isFull = function(){
+		if( (this.total + this.previsao) >= this.max)
+			return true;				
+		else if( this.total < this.max)
+			return false;
+		else
+			return true;
+	};
+	
+	this.append = function(divColuna){
+		this.html.append(divColuna.html);
+		this.total += $("#coluna_" + this.qtdColuna).width();
+		this.previsao = $("#coluna_" + this.qtdColuna).width();
+	};
+}
+
+function DivColuna(pDivTotal){
+	
+	this.divTotal = pDivTotal;
+	
+	this.max = 0;
+	this.total = 0;
+	this.qtdItem = 0;
+	
+	this.html = null;
+	
+	this.addQtd = function(){
+		this.qtdItem++;
+	};
+
+	this.isFull = function(divItem) {
+		return ( this.total + divItem.html.outerHeight() ) >= this.max;		
+	};
+	
+	this.append = function(divItem){
+		
+		divItem.html.height(($("#divTamanhaReal", divItem.html).height() + divItem.margin));		
+		this.html.append(divItem.html);
+		divItem.clearTemp();
+		this.total += divItem.html.outerHeight();		
+	};
+
+	if(!this.divTotal.isFull()) {
+		this.divTotal.addQtd();
+		this.html = jQuery('<div/>', { id: 'coluna_' + this.divTotal.qtdColuna, class: 'colunaMaior' });		
+		this.divTotal.append(this);		
+		this.max =  $("#coluna_" + this.divTotal.qtdColuna).height();		
+	};
+};
+
+function DivItem(pDivColuna, pPedido){
+
+	this.divColuna = pDivColuna;
+	this.html = templateDivTable.clone();
+	this.pedido = pPedido;
+	this.margin = 20;
+	
+	this.total = 0;	
+	this.qtdSubItem = 0;
+
+	this.addQtd = function(){
+		this.qtdSubItem++;
+	};
+	
+	this.isFull = function() {
+		return (this.total + this.margin) >= this.divColuna.max;		
+	};
+	
+	this.clearTemp = function(){
+		$("#tempoPedido").empty();
+	};
+	
+	this.append = function(divSubItem, qtdRestante){
+		
+		if(this.isFull()) {
+			var textoItem;
+			if(qtdRestante == 1)
+				textoItem = "+1 Item";
+			else
+				textoItem = "+" + qtdRestante  + " Item";
+			
+			$("#maisItemPedidospan", this.html).html(textoItem);
+			$("#maisItemPedido", this.html).show();			
+		} else {	
+			$("#divLinhasSubItem" ,this.html).append(divSubItem.html);
+			this.total += divSubItem.html.outerHeight();
+		}
+	};
+	
+	this.divColuna.addQtd();
+	createCodSender++;
+	
+	this.html.attr("id", "divPedido_" + this.divColuna.divTotal.qtdColuna + "_" + this.divColuna.qtdItem);	
+	this.html.attr("codesender", createCodSender);
+	this.html.attr("pedidoIdCs", this.pedido.id);
+
+	var htmlDiv = $('<div />',
+             { id: this.pedido.id,	               
+               align: 'middle',
+               text: createCodSender,
+               style: 'cursor: pointer;',
+               class: 'circuloCinza'
+             }
+	);
+	
+    htmlDiv.click(function(){
+      	
+    	$("div[pedidoid='" + $(this).attr('id') + "']").hide();        	
+       	$(this).hide();           	
+       	var parent = $(this).parent();           	
+       	parent.append("<div class='loaderBranco'>Loading...</div>");
+
+    	var pedidoSubItemId="";
+    	$("div[pedidoid='" + $(this).attr('id') + "']" ).each(function( index ) {
+    		pedidoSubItemId += $(this).attr('id') + ",";
+    	});
+    	
+    	pedidoSubItemId = pedidoSubItemId.substring(0, (pedidoSubItemId.length - 1));
+    	
+       	var extraStuff = {
+       	        cabeca: $(this),
+       	        parent: parent,
+       	        subitens: $("div[pedidoid='" + $(this).attr('id') + "']")
+   	    }; 
+       	
+       	var callBackError = function(extraStuff) {
+       	    return function(data, textStatus, jqXHR) {
+       	    	extraStuff.cabeca.show();
+       	    	$(".loaderBranco", extraStuff.parent).remove();
+       	    	extraStuff.subitens.show();
+       	    };
+       	};
+   	
+			$.ajax({
+				url: url + "pedidos/pedidopronto/usuario/" + $("#usuarioId").val() + "/pedidosubitem/" + pedidoSubItemId + "/pedido/" + $(this).attr('id'),
+				type: 'PUT'
+			}).done(function (result){
+				getPedidosNaoFinalizado(false);
+			}).fail(callBackError(extraStuff));        	
+    });
+    
+	var divColuna = jQuery('<div/>', {
+	    id: 'icone'		    
+	});		
+
+	divColuna.append(htmlDiv);
+	
+	$("#numeroMesa", this.html).html("Mesa " + this.pedido.conta.numero);
+	$("#cabecalho div:first-child", this.html).append(divColuna);
+	
+	$("#maisItemPedido", this.html).hide();
+	$("#tempoPedido").append(this.html);	
+	
+	this.total += $("#cabecalho", this.html).outerHeight();
+}
+
+function DivSubItem(pDivItem, pSubItemPedido, qtdRestante, isObs){
+	this.divItem = pDivItem;
+	this.subItemPedido = pSubItemPedido;
+	this.html = templateDivLinhaSubItem.clone();
+	
+	this.divItem.addQtd();
+	
+	var qtdColuna = this.divItem.divColuna.divTotal.qtdColuna;
+	var qtdItem = this.divItem.divColuna.qtdItem;
+	var qtdSubItem = this.divItem.qtdSubItem;
+	
+	this.html.attr("id", "divRowSubItem_" + qtdColuna + "_" + qtdItem + "_" + qtdSubItem);
+
+	
+	if(isObs){	
+		this.html.attr("id", "divRowSubItem_" + qtdColuna + "_" + qtdItem + "_" + qtdSubItem + "_obs");
+		this.html.css("color", "red");
+		
+		$("#qtd", this.html).html("");
+		$("#descricao", this.html).html("Obs: " + this.subItemPedido.observacao);
+		
+	}else{
+		createCodSender++;
+		
+		this.html.attr("id", "divRowSubItem_" + qtdColuna + "_" + qtdItem + "_" + qtdSubItem);
+		this.html.attr("pedidosubitemid", "divRowSubItem_" + qtdColuna + "_" + qtdItem + "_" + qtdSubItem);		
+		this.html.attr("codesender", createCodSender);
+		this.html.attr("pedidoIdCs", this.divItem.pedido.id);
+		this.html.attr("pedidosubitemid", this.subItemPedido.id);
+		
+		$("#qtd", this.html).html(this.subItemPedido.quantidade);
+		$("#descricao", this.html).html(this.subItemPedido.subItem.item.nome + " - " +  this.subItemPedido.subItem.nome);
+
+		var htmlDiv = $('<div />', { 
+			id: this.subItemPedido.id,	   	            
+            align: 'middle',
+            text: createCodSender,
+            pedidoid:  this.divItem.pedido.id,
+            style: 'cursor: pointer;',
+            class: 'circuloBranco'
+        });
+           
+    	htmlDiv.click(function(){
+           	$(this).hide();
+            $(this).parent().append("<div class='loaderCinza'>Loading...</div>");           	
+           	$("#" + $(this).attr("pedidoid")).hide();
+           	
+           	var extraStuff = {
+           	        img: $(this),
+           	        parent:  $(this).parent()
+       	    }; 
+           	
+           	var callBackError = function(extraStuff) {
+           	    return function(data, textStatus, jqXHR) {
+					$(".loaderCinza", extraStuff.parent).remove();
+					extraStuff.img.show();
+					$("#" + extraStuff.img.attr("pedidoid")).show();
+           	    };
+           	};
+       	
+			$.ajax({
+				url: url + "pedidos/pedidopronto/usuario/" + $("#usuarioId").val() + "/pedidosubitem/" + $(this).attr('id') + "/pedido/" + $(this).attr('pedidoid'),
+				type: 'PUT'
+			}).done(function (result){
+				getPedidosNaoFinalizado(false);
+			}).fail(callBackError(extraStuff));	
+       });
+           
+    	$("#icone", this.html).append(htmlDiv);
+	}
+	
+	this.divItem.append(this, qtdRestante);
 }

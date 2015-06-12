@@ -163,9 +163,7 @@ function savePag(){
 		postSender["valor"] = $("#inputValor").val().replace(".", "").replace(",", ".");
 		postSender["tipopagamento.id"] = $("#selectTipoPagamento").val();
 		postSender["conta.id"] = $("#contaId").val();
-		
-		console.log(postSender);
-		
+				
 		$.ajax({
 			url : url + "pagamentos/",
 			data : postSender,

@@ -36,7 +36,7 @@ public class PedidoSubItemDAO implements RestDAO<PedidoSubItem> {
      			                  .append(" INNER JOIN SUB_ITENS AS SI ON PSI.SUB_ITEM_ID = SI.ID ")
      			                  .append(" INNER JOIN LOGS AS L ON PSI.ID = L.PEDIDO_SUB_ITEM_ID ")
      			                  .append(" INNER JOIN USUARIOS AS U ON L.USUARIO_ID = U.ID ")
-     			                    .append("    WHERE C.ID = ").append(conta.getId()).append("AND SI.ID = ").append(subItem.getId()).append("AND L.STATUS_ID = 2 ")
+     			                    .append("    WHERE C.ID = ").append(conta.getId()).append(" AND SI.ID = ").append(subItem.getId()).append("AND L.STATUS_ID = ").append(Constantes.StatusPedido.ENTREGUE)
      			                  .append(" UNION ")  
      			                      .append(" SELECT PSI.ID, PSI.QUANTIDADE, CONVERT(VARCHAR(8), L.HORARIO, 108) AS HORARIO, U.NOME, (SELECT DESCRICAO FROM STATUS WHERE ID = (SELECT MAX(STATUS_ID) FROM LOGS AS L1 WHERE L1.PEDIDO_SUB_ITEM_ID = PSI.ID)) AS STATUS  ")
       							        .append(" FROM CONTAS AS C  ")
@@ -45,9 +45,18 @@ public class PedidoSubItemDAO implements RestDAO<PedidoSubItem> {
     			                  .append(" INNER JOIN SUB_ITENS AS SI ON PSI.SUB_ITEM_ID = SI.ID ")
     			                  .append(" INNER JOIN LOGS AS L ON PSI.ID = L.PEDIDO_SUB_ITEM_ID ")
     			                  .append(" INNER JOIN USUARIOS AS U ON L.USUARIO_ID = U.ID ")
-    			                    .append("    WHERE C.ID = ").append(conta.getId()).append("AND SI.ID = ").append(subItem.getId()).append("AND L.STATUS_ID = 1 ");
+    			                    .append("    WHERE C.ID = ").append(conta.getId()).append(" AND SI.ID = ").append(subItem.getId()).append("AND L.STATUS_ID = ").append(Constantes.StatusPedido.PENDENTE_ENTREGA)
+		                    	  .append(" UNION ")  
+     			                      .append(" SELECT PSI.ID, PSI.QUANTIDADE, CONVERT(VARCHAR(8), L.HORARIO, 108) AS HORARIO, U.NOME, (SELECT DESCRICAO FROM STATUS WHERE ID = (SELECT MAX(STATUS_ID) FROM LOGS AS L1 WHERE L1.PEDIDO_SUB_ITEM_ID = PSI.ID)) AS STATUS  ")
+      							        .append(" FROM CONTAS AS C  ")
+    			                  .append(" INNER JOIN PEDIDOS AS P ON C.ID = P.CONTA_ID ")
+    			                  .append(" INNER JOIN PEDIDOS_SUB_ITENS AS PSI ON P.ID = PSI.PEDIDO_ID ")
+    			                  .append(" INNER JOIN SUB_ITENS AS SI ON PSI.SUB_ITEM_ID = SI.ID ")
+    			                  .append(" INNER JOIN LOGS AS L ON PSI.ID = L.PEDIDO_SUB_ITEM_ID ")
+    			                  .append(" INNER JOIN USUARIOS AS U ON L.USUARIO_ID = U.ID ")
+    			                    .append("    WHERE C.ID = ").append(conta.getId()).append(" AND SI.ID = ").append(subItem.getId()).append("AND L.STATUS_ID = ").append(Constantes.StatusPedido.PENDENTE_APROVACAO);
 		
-		broker.setSQL(sql.toString());
+        broker.setSQL(sql.toString());
 		return broker.getCollectionBean(PedidoSubItem.class, "id", "quantidade", "log.strHorario", "log.usuario.nome", "status.descricao");
 	}
 
