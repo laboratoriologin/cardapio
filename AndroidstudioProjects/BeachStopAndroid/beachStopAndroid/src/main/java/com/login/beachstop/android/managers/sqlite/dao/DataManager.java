@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.login.beachstop.android.managers.sqlite.AcaoContaTableDefinition;
 import com.login.beachstop.android.managers.sqlite.CategoriaTableDefinition;
 import com.login.beachstop.android.managers.sqlite.ClienteTableDefinition;
 import com.login.beachstop.android.managers.sqlite.ContaTableDefinition;
@@ -30,6 +31,7 @@ public class DataManager {
     private SubItemDAO subItemDAO;
     private PedidoDAO pedidoDAO;
     private PedidoSubItemDAO pedidoSubItemDAO;
+    private AcaoContaDAO acaoContaDAO;
 
     public DataManager(Context context) {
 
@@ -45,7 +47,7 @@ public class DataManager {
         this.setSubItemDAO(new SubItemDAO(new SubItemTableDefinition(), this));
         this.setPedidoDAO(new PedidoDAO(new PedidoTableDefinition(), this));
         this.setPedidoSubItemDAO(new PedidoSubItemDAO(new PedidoSubItemTableDefinition(), this));
-
+        this.setAcaoContaDAO(new AcaoContaDAO(new AcaoContaTableDefinition(), this));
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
@@ -152,5 +154,13 @@ public class DataManager {
 
     public void setKitSubItemDAO(KitSubItemDAO kitSubItemDAO) {
         this.kitSubItemDAO = kitSubItemDAO;
+    }
+
+    public AcaoContaDAO getAcaoContaDAO() {
+        return acaoContaDAO;
+    }
+
+    public void setAcaoContaDAO(AcaoContaDAO acaoContaDAO) {
+        this.acaoContaDAO = acaoContaDAO;
     }
 }

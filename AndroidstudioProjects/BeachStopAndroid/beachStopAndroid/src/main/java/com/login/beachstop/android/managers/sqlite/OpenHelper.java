@@ -34,6 +34,7 @@ public class OpenHelper extends SQLiteOpenHelper {
             new SubItemTableDefinition().onCreate(db);
             new PedidoTableDefinition().onCreate(db);
             new PedidoSubItemTableDefinition().onCreate(db);
+            new AcaoContaTableDefinition().onCreate(db);
 
         } catch (Exception e) {
 
@@ -57,6 +58,7 @@ public class OpenHelper extends SQLiteOpenHelper {
             new SubItemTableDefinition().onUpgrade(db, oldVersion, newVersion);
             new PedidoTableDefinition().onUpgrade(db, oldVersion, newVersion);
             new PedidoSubItemTableDefinition().onUpgrade(db, oldVersion, newVersion);
+            new AcaoContaTableDefinition().onUpgrade(db, oldVersion, newVersion);
 
         } catch (Exception e) {
 

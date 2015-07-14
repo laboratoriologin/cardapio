@@ -7,6 +7,40 @@ $(document).ready(function() {
 	startModalLoad(1);	
 	
 	$("#page").load("../resources/templates/adm/index.xhtml");
+	
+	$("#dialog-juntarmesa").dialog({
+		resizable : false,
+		height : (($("#page").height() - ($("#page").height() * 0.65))),
+		width : (($("#page").width() - ($("#page").width() * 0.85))),
+		modal : true,
+		autoOpen : false,
+		 buttons: [
+		           {
+		               id: "button-unir",
+		               text: "Unir",
+		               click: function() {
+		            	   
+		            	   if($("#mesaDestino").val() != ""){
+		            		   if($("#mesaOrigem").val() != ""){
+		            			   postJoinTable($("#mesaOrigem").val(), $("#mesaDestino").val());
+		            		   } else {
+			            		   alert("Digite as mesas de origem.");			            		   		            			   
+		            		   }
+		            		   
+		            	   } else {
+		            		   alert("Digite uma mesa de destino.");
+		            	   }		                   
+		               }
+		           },
+		           {
+		               id: "button-cancelar",
+		               text: "Cancelar",
+		               click: function() {		            	   
+		                   $(this).dialog("close");
+		               }
+		           }
+		       ]
+	});
 
 	$.getJSON(url + "setores/", function(data) {
 		var ulMesas = $('<ul />', {});
@@ -39,17 +73,39 @@ $(document).ready(function() {
 		
 		$("#menu").superfish({});
 
-		$("#menu a").click(function() {
-			if($(this).attr("page") != ""){
-				stopInterval();
-				$("#page").load($(this).attr("page"), {'idSetor': $(this).attr('idSetor')});				
-			}
+		$("#menu a").click(function() {			
+			var attr = $(this).attr('page');
+			if (typeof attr !== typeof undefined && attr !== false) {
+				$("#page").load($(this).attr("page"), {'idSetor': $(this).attr('idSetor')});
+			} else {
+				if($(this).attr('dialog')){
+					$("#dialog-juntarmesa").dialog("open");
+				}
+			}			
 		});
 		updateCompletedEventProgress();
 	}).fail(function() {
 		updataMsgErro();
 	});
 });
+
+function postJoinTable(mesasOrigem, mesaDestino) {
+	
+	if(confirm("Deseja unir as mesas?")){	
+		$.ajax({
+			url : url + "acoes_contas/juntarmesa/origem/" + mesasOrigem + "/destino/" + mesaDestino + "/usuario/" + $("#usuarioId").val(),
+			type : 'POST',
+			cache : false,
+			data : {
+						'usuario' : $("#usuarioId").val()
+			}
+		}).done(function(result) {
+			alert('União realizada com sucesso!');
+		}).fail(function(result) {
+			alert('Erro, tente novamente mais tarde.');
+		});
+	}
+}
 
 var arrayInterval = [];
 function stopInterval(){

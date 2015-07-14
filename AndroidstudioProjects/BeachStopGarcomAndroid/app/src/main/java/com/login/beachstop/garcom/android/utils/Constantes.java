@@ -61,6 +61,7 @@ public final class Constantes {
         Long CHAMARGARCOM = 3l;
         Long PEDIRCONTA = 4l;
         Long PEDIDOS = 5l;
+        Long AUTORIZACAO = 8l;
 
     }
 

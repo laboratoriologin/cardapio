@@ -81,7 +81,7 @@ public class ContaFragment extends Fragment implements IPedidoFragment {
                         }
 
                         NumberFormat format = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
-                        valorTotal = new Double(conta.getValorTotal()) - new Double(conta.getValorTotalPago());
+                        valorTotal = new Double(conta.getValorTotal());
                         textViewValorTotal.setText(format.format(valorTotal));
                         checkBoxDez.setText(" + 10% (" + format.format(valorTotal * 0.1) + ")");
 
@@ -134,7 +134,7 @@ public class ContaFragment extends Fragment implements IPedidoFragment {
                             }
 
                             NumberFormat format = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
-                            valorTotal = new Double(conta.getValorTotal()) - new Double(conta.getValorTotalPago());
+                            valorTotal = new Double(conta.getValorTotal()) ;
                             textViewValorTotal.setText(format.format(valorTotal));
                             checkBoxDez.setText(" + 10% (" + format.format(valorTotal * 0.1) + ")");
 

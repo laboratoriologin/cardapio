@@ -263,8 +263,22 @@ function endLoading(isError){
 	}
 }
 
-function postJoinTable() {
-
+function postJoinTable(mesaOrigem, mesaDestino) {
+	
+	$.ajax({
+		url : url + "acoes_contas/juntarmesa/origem/" + mesaOrigem + "/destino/" + mesaDestino + "/usuario/" + $("#usuarioId").val(),
+		type : 'POST',
+		cache : false,
+		data : {
+					'usuario' : $("#usuarioId").val()
+		}
+	}).done(function(result) {
+		loadMesas();
+		$("#dialog-mudarmesa").dialog("close");
+		$("#dialog-historicoconta").dialog("close");
+	}).fail(function(result) {
+		alert('Erro, tente novamente mais tarde.');
+	});
 }
 
 function loadMesas() {
@@ -377,7 +391,8 @@ function createMesa(obj) {
 		drop : function(event, ui) {
 			var attr = $(this).attr('contaId');
 			if (typeof attr !== typeof undefined && attr !== false)
-				postJoinTable();
+				if (confirm("Deseja unir as mesas?"))
+					postJoinTable(ui.draggable.attr("nmesa"), $(this).attr("nmesa"));
 			else {
 				if (confirm("Deseja trocar a mesa da conta?"))
 					postChangeTable(ui.draggable.attr("contaId"), ui.draggable.attr("nmesa"), $(this).attr("nmesa"));
@@ -609,7 +624,7 @@ function loadHistoricoConta(conta){
 				
 				$("#historicoPedido").append(
 						$("<tr />").append(
-								$("<th />", { text : "P: " + val.pedido.id, colspan : "1", class : "agrupador"})
+								$("<th />", { text : "Mesa: " + val.pedido.acaoConta.numero, colspan : "1", class : "agrupador"})
 						).append(
 								$("<th />", { text : "Obs: " + val.pedido.observacao, colspan : "1", class : "agrupador"})
 						).append(

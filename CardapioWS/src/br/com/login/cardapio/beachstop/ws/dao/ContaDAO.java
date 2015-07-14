@@ -4,8 +4,11 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import br.com.login.cardapio.beachstop.ws.model.Conta;
+import br.com.login.cardapio.beachstop.ws.model.Log;
 import br.com.login.cardapio.beachstop.ws.model.Mesa;
+import br.com.login.cardapio.beachstop.ws.model.Pedido;
 import br.com.login.cardapio.beachstop.ws.model.PedidoSubItem;
+import br.com.login.cardapio.beachstop.ws.model.Status;
 import br.com.topsys.database.TSDataBaseBrokerIf;
 import br.com.topsys.database.factory.TSDataBaseBrokerFactory;
 import br.com.topsys.exception.TSApplicationException;
@@ -18,7 +21,7 @@ public class ContaDAO implements RestDAO<Conta> {
 		broker.setPropertySQL("contadao.get", id);
 		Conta conta = (Conta) broker.getObjectBean(Conta.class, "cliente.id", "dataAbertura", "dataFechamento", "id", "numero", "qtdPessoa", "tipoConta");
 		if (conta != null) {
-			conta.setPedidoSubItens(new PedidoSubItemDAO().getAll(conta));
+			conta.setPedidoSubItens(new PedidoSubItemDAO().getAllGroupQtdCelular(conta));
 			conta.setValor(BigDecimal.ZERO);
 			for (PedidoSubItem pedidoSubItem : conta.getPedidoSubItens()) {
 				conta.setValor(conta.getValor().add(pedidoSubItem.getValorCalculado()));
@@ -45,13 +48,23 @@ public class ContaDAO implements RestDAO<Conta> {
 	}
 
 	public Conta getByNumeroAnalitico(Long numero) {
+		Log log;
+		LogDAO logDAO = new LogDAO();
 		Conta conta = getByMesa(numero);
-		if (conta != null) {
-			conta.setPedidoSubItens(new PedidoSubItemDAO().getAll(conta));
+		if (conta != null) {			
+			conta.setPedidos(new PedidoDAO().getAllWithAcaoConta(conta));
 			conta.setValor(BigDecimal.ZERO);
-			for (PedidoSubItem pedidoSubItem : conta.getPedidoSubItens()) {
-				conta.setValor(conta.getValor().add(pedidoSubItem.getValorCalculado()));
+			
+			for(Pedido pedido : conta.getPedidos()){
+				pedido.setSubItens(new PedidoSubItemDAO().getAll(pedido));
+				
+				for (PedidoSubItem pedidoSubItem : pedido.getSubItens()) {
+					conta.setValor(conta.getValor().add(pedidoSubItem.getValorCalculado()));
+					log = logDAO.getStatusAtual(pedidoSubItem);
+					pedidoSubItem.setStatus(log.getStatus());
+				}
 			}
+			
 			conta.setValorPago(new PagamentoDAO().getValorTotalPagoByConta(conta).getValor());
 		}
 		return conta;
@@ -93,7 +106,7 @@ public class ContaDAO implements RestDAO<Conta> {
 	public Conta insert(Conta model) throws TSApplicationException {
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		model.setId(broker.getSequenceNextValue("dbo.contas"));
-		broker.setPropertySQL("contadao.insert", model.getCliente().getId(), model.getDataAbertura(), model.getDataFechamento(), model.getNumero(), model.getQtdPessoa(), model.getTipoConta());
+		broker.setPropertySQL("contadao.insert", model.getCliente() != null ? model.getCliente().getId() : null  , model.getDataAbertura(), model.getDataFechamento(), model.getNumero(), model.getQtdPessoa(), model.getTipoConta());
 		broker.execute();
 		return model;
 	}

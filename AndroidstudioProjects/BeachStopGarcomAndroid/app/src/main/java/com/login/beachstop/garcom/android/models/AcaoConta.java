@@ -16,6 +16,7 @@ public class AcaoConta extends Base implements Serializable, Comparable<AcaoCont
     private Usuario usuario;
     private String diffHorarioSolicitacao;
     private Pedido pedido;
+    private String numero;
 
     public AcaoConta() {
         setServiceName("acoes_contas");
@@ -93,6 +94,15 @@ public class AcaoConta extends Base implements Serializable, Comparable<AcaoCont
         this.diffHorarioSolicitacao = diffHorarioSolicitacao;
     }
 
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
     public Pedido getPedido() {
         return pedido;
     }
@@ -122,4 +132,5 @@ public class AcaoConta extends Base implements Serializable, Comparable<AcaoCont
     public int hashCode() {
         return id != null ? id.hashCode() : 0;
     }
+
 }

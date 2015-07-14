@@ -36,6 +36,9 @@ public class Pedido extends Base {
     @Transient
     private Integer numero;
 
+    @Transient
+    private AcaoConta acaoConta;
+
     public Pedido() {
         this.setServiceName("pedidos");
     }
@@ -115,5 +118,13 @@ public class Pedido extends Base {
 
     public void setNumero(Integer numero) {
         this.numero = numero;
+    }
+
+    public AcaoConta getAcaoConta() {
+        return acaoConta;
+    }
+
+    public void setAcaoConta(AcaoConta acaoConta) {
+        this.acaoConta = acaoConta;
     }
 }

@@ -6,16 +6,36 @@
 		<script type="text/javascript" src="../resources/js/adm.js"></script>
 
 		<div class="div100">
-		
+
 			<div style="background-color: #bdd2ff; height: 41px; width: 100%;">
 				<ul class="sf-menu" id="menu">
 					<li class="current"><a page="../resources/templates/adm/index.xhtml">Início</a></li>
-					<li id="mesas"><a page="">Mesas</a></li>
+					<li id="mesas" dialog="false"><a page="">Mesas</a></li>
 					<li><a page="../resources/templates/adm/usuario.xhtml">Usuário</a></li>
+					<li><a dialog="true">Unir Mesas</a></li>
 					<li><a page="../resources/templates/adm/historico.xhtml">Hitórico</a></li>
 				</ul>
 			</div>
-			<div id="page" class="div10095" ></div>
+			<div id="page" class="div10095"></div>
 		</div>
+
+
+		<div id="dialog-juntarmesa" title="Unir mesas">
+			<p>
+				<span class="ui-icon ui-icon-alert"></span>Digite as mesas que deseja unir seperadas por vírgulas
+			</p>
+			<br />
+			<p>Mesas Origens</p>
+			<br />
+			<p>
+				<input value="" id="mesaOrigem" type="text" placeholder="1,2,3,4..." />
+			</p>			
+			<br />
+			<p>Mesa Destino</p>
+			<p>
+				<input value="" id="mesaDestino" type="text" placeholder="10" />
+			</p>
+		</div>
+
 	</ui:define>
 </ui:composition>

@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.login.beachstop.garcom.android.models.AcaoConta;
 import com.login.beachstop.garcom.android.models.Conta;
+import com.login.beachstop.garcom.android.models.Pedido;
 import com.login.beachstop.garcom.android.models.PedidoSubItem;
 import com.login.beachstop.garcom.android.models.ServerResponse;
 import com.login.beachstop.garcom.android.models.SubItem;
@@ -142,31 +143,49 @@ public class HistoricoContaActivity extends DefaultActivity {
     }
 
     public void bindTableItemConta() {
-
         PedidoSubItem pedidoSubItem;
+        AcaoConta acaoContaTemp = new AcaoConta();
         SubItem subItem;
-        View itemContaView;
+        View pedidoSubItemView;
+        View pedidoView;
         NumberFormat format = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
 
         this.tableLayout.removeAllViews();
 
-        for (int position = 0; position < this.conta.getPedidos().get(0).getPedidoSubItens().size(); position++) {
-            pedidoSubItem = this.conta.getPedidos().get(0).getPedidoSubItens().get(position);
-            subItem = getDataManager().getSubItemDAO().getWithItem(pedidoSubItem.getSubItemId());
-            itemContaView = TableRow.inflate(this, R.layout.activity_historico_conta_item, null);
+        for (Pedido pedido : this.conta.getPedidos()) {
 
-            if ((position % 2) == 0)
-                itemContaView.findViewById(R.id.activity_conta_item_adapeter_linear_layout).setBackgroundResource(R.color.branco);
-            else
-                itemContaView.findViewById(R.id.activity_conta_item_adapeter_linear_layout).setBackgroundResource(R.color.bg_system);
+            pedidoView = TableRow.inflate(this, R.layout.activity_historico_conta_item, null);
+            pedidoView.findViewById(R.id.activity_conta_item_adapeter_linear_layout).setBackgroundResource(R.color.button_marrom);
+            ((TextView) pedidoView.findViewById(R.id.activity_conta_item_adapeter_text_view_nome)).setText(String.format("Hora Solicitado: %s", pedido.getAcaoConta().getHorarioSolicitacao()));
+            ((TextView) pedidoView.findViewById(R.id.activity_conta_item_adapeter_text_view_valor_unitario)).setText(" ");
+            ((TextView) pedidoView.findViewById(R.id.activity_conta_item_adapeter_text_view_qtd)).setText(" ");
 
-            ((TextView) itemContaView.findViewById(R.id.activity_conta_item_adapeter_text_view_nome)).setText(String.format("%s - %s (%s)", subItem.getItem().getNome(), subItem.getNome(), subItem.getCodigo()));
-            ((TextView) itemContaView.findViewById(R.id.activity_conta_item_adapeter_text_view_valor_unitario)).setText(format.format(new Double(subItem.getValor())));
-            ((TextView) itemContaView.findViewById(R.id.activity_conta_item_adapeter_text_view_qtd)).setText(String.valueOf(pedidoSubItem.getQuantidade()));
-            ((TextView) itemContaView.findViewById(R.id.activity_conta_item_adapeter_text_view_valor_total)).setText(format.format((new Double(pedidoSubItem.getValorUnitario()) * new Double(pedidoSubItem.getQuantidade()))));
+            if (pedido.getAcaoConta().getNumero() != acaoContaTemp.getNumero()) {
+                ((TextView) pedidoView.findViewById(R.id.activity_conta_item_adapeter_text_view_valor_total)).setText(String.format("Mesa: %s", pedido.getAcaoConta().getNumero()));
+            } else {
+                ((TextView) pedidoView.findViewById(R.id.activity_conta_item_adapeter_text_view_valor_total)).setText("");
+            }
+            this.tableLayout.addView(pedidoView);
 
-            this.tableLayout.addView(itemContaView);
+            for (int position = 0; position < pedido.getPedidoSubItens().size(); position++) {
+                pedidoSubItem = pedido.getPedidoSubItens().get(position);
+                subItem = getDataManager().getSubItemDAO().getWithItem(pedidoSubItem.getSubItemId());
+                pedidoSubItemView = TableRow.inflate(this, R.layout.activity_historico_conta_item, null);
 
+                if ((position % 2) == 0)
+                    pedidoSubItemView.findViewById(R.id.activity_conta_item_adapeter_linear_layout).setBackgroundResource(R.color.branco);
+                else
+                    pedidoSubItemView.findViewById(R.id.activity_conta_item_adapeter_linear_layout).setBackgroundResource(R.color.bg_system);
+
+                ((TextView) pedidoSubItemView.findViewById(R.id.activity_conta_item_adapeter_text_view_nome)).setText(String.format("%s - %s (%s)", subItem.getItem().getNome(), subItem.getNome(), subItem.getCodigo()));
+                ((TextView) pedidoSubItemView.findViewById(R.id.activity_conta_item_adapeter_text_view_valor_unitario)).setText(format.format(new Double(subItem.getValor())));
+                ((TextView) pedidoSubItemView.findViewById(R.id.activity_conta_item_adapeter_text_view_qtd)).setText(String.valueOf(pedidoSubItem.getQuantidade()));
+                ((TextView) pedidoSubItemView.findViewById(R.id.activity_conta_item_adapeter_text_view_valor_total)).setText(format.format((new Double(pedidoSubItem.getValorUnitario()) * new Double(pedidoSubItem.getQuantidade()))));
+
+                this.tableLayout.addView(pedidoSubItemView);
+            }
+
+            acaoContaTemp = pedido.getAcaoConta();
         }
     }
 }

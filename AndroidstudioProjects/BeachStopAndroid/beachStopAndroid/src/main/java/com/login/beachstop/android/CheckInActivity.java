@@ -1,7 +1,10 @@
 package com.login.beachstop.android;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -13,10 +16,10 @@ import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
-import com.login.beachstop.android.managers.sqlite.dao.ContaDAO;
-import com.login.beachstop.android.models.Cliente;
+import com.login.beachstop.android.models.AcaoConta;
 import com.login.beachstop.android.models.Conta;
 import com.login.beachstop.android.models.ServerResponse;
+import com.login.beachstop.android.network.AcaoContaRequest;
 import com.login.beachstop.android.network.ContaRequest;
 import com.login.beachstop.android.network.http.ResponseListener;
 import com.login.beachstop.android.utils.Constantes;
@@ -34,6 +37,7 @@ import static com.login.beachstop.android.R.layout.activity_checkin;
 
 public class CheckInActivity extends DefaultActivity {
 
+    private final int REFRESH_MILIS = 10000;
     protected ProgressBar progressBar;
     protected TextView textViewMsg;
     protected TextView textViewNumero;
@@ -42,52 +46,33 @@ public class CheckInActivity extends DefaultActivity {
     protected ActionBar actionBar;
     protected ImageView imageViewActionBar;
     protected TextView textViewActionBar;
-
-    private Conta conta;
-    private ResponseListener listenerGetConta = new ResponseListener() {
-
-        @Override
-        public void onResult(ServerResponse serverResponse) {
-
-            if (serverResponse != null) {
-                if (serverResponse.isOK()) {
-                    Long contaId = ((Conta) serverResponse.getReturnObject()).getId();
-                    changeStatusView(false, false, false, false);
-                    try {
-                        Cliente cliente = getDataManager().getClienteDAO().get();
-                        conta.setClienteId(cliente != null ? cliente.getId() : 1);
-                        conta.setSistemaId(contaId);
-
-                        if (getDataManager().getContaDAO().get() != null) {
-                            getDataManager().getContaDAO().update(conta, conta.getId());
-                        } else {
-                            getDataManager().getContaDAO().save(conta);
-                        }
-
-                        textViewNumero.setText(conta.getNumero().toString());
-                        changeStatusView(false, false, false, true);
-                    } catch (Exception e) {
-                        Toast.makeText(CheckInActivity.this, Constantes.MSG_ERRO_GRAVAR_DADOS, Toast.LENGTH_SHORT).show();
-                        e.printStackTrace();
-                    }
-                } else {
-                    Toast.makeText(CheckInActivity.this, serverResponse.getMsgErro(), Toast.LENGTH_LONG).show();
-                }
-            } else {
-                Toast.makeText(CheckInActivity.this, Constantes.MSG_ERRO_NET, Toast.LENGTH_LONG).show();
-            }
-        }
-    };
     private SocialAuthAdapter socialAuthAdapter;
+    private Conta conta;
+    private Boolean autoQrCode;
+
 
     @Override
     protected void onResume() {
         super.onResume();
-        if (this.conta == null) {
-            IntentIntegrator integrator = new IntentIntegrator(this);
-            integrator.addExtra("SAVE_HISTORY", false);
-            integrator.initiateScan();
-        }else{
+        if (getDataManager().getContaDAO().get() == null) {
+            if (getDataManager().getAcaoContaDAO().get() == null) {
+                if (autoQrCode) {
+                    IntentIntegrator integrator = new IntentIntegrator(this);
+                    integrator.addExtra("SAVE_HISTORY", false);
+                    integrator.initiateScan();
+                }
+            } else {
+                AcaoConta acaoConta = getDataManager().getAcaoContaDAO().get();
+
+                if (acaoConta.isAutorizado()) {
+                    getNumeroMesa();
+                } else {
+                    changeStatusView(true, true, false, false);
+                    textViewMsg.setText("Sua autorização está em andamento, aguarde!");
+                    verificarAutorizacao();
+                }
+            }
+        } else {
             getNumeroMesa();
         }
     }
@@ -100,10 +85,11 @@ public class CheckInActivity extends DefaultActivity {
 
         loadViews();
 
-        this.conta = this.getDataManager().getContaDAO().get();
-
-        if (this.conta != null) {
+        if (this.getDataManager().getContaDAO().get() != null) {
             getNumeroMesa();
+            autoQrCode = false;
+        } else {
+            autoQrCode = true;
         }
 
         this.actionBar.setDisplayHomeAsUpEnabled(Boolean.FALSE);
@@ -140,16 +126,14 @@ public class CheckInActivity extends DefaultActivity {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
+        autoQrCode = false;
         if (result != null) {
             String contents = result.getContents();
             if (contents != null) {
                 String mesaSelecionada = contents.split("&")[0].split("=")[1];
                 String keyMobile = contents.split("&")[1].split("=")[1];
                 this.abrirConta(mesaSelecionada, keyMobile);
-            } else {
-                this.conta = new Conta(-1l);
             }
         }
     }
@@ -157,8 +141,8 @@ public class CheckInActivity extends DefaultActivity {
     private void abrirConta(String mesaSelecionada, String keyMobile) {
         try {
             if (Utilitarios.isDigit(mesaSelecionada) && Constantes.KEYMOBILE.equals(keyMobile)) {
-                this.conta = this.getDataManager().getContaDAO().get();
-                if (this.conta == null) {
+
+                if (this.getDataManager().getContaDAO().get() == null) {
 
                     String horaAtual = Utilitarios.getHourNow();
                     this.conta = new Conta(Long.valueOf(horaAtual));
@@ -169,26 +153,185 @@ public class CheckInActivity extends DefaultActivity {
                     this.conta.setDataFechamento("");
                     this.conta.setValorTotal("");
                     this.conta.setValorTotalPago("");
-
-                    Cliente cliente = this.getDataManager().getClienteDAO().get();
-                    this.conta.setClienteId(cliente != null ? cliente.getId() : null);
+                    this.conta.setClienteId(this.getDataManager().getClienteDAO().get().getId());
 
                     changeStatusView(false, false, false, true);
-
-                    this.textViewNumero.setText(this.conta.getNumero().toString());
                 }
 
-                new ContaRequest(listenerGetConta).post(this.conta);
+                new ContaRequest(new ResponseListener() {
+                    @Override
+                    public void onResult(ServerResponse serverResponse) {
+
+                        if (serverResponse != null) {
+                            if (serverResponse.isOK()) {
+                                Long contaId = ((Conta) serverResponse.getReturnObject()).getId();
+                                changeStatusView(false, false, false, false);
+                                try {
+                                    conta.setSistemaId(contaId);
+
+                                    if (getDataManager().getContaDAO().get() != null) {
+                                        getDataManager().getContaDAO().update(conta, conta.getId());
+                                    } else {
+                                        getDataManager().getContaDAO().save(conta);
+                                    }
+
+                                    textViewNumero.setText(conta.getNumero().toString());
+                                    changeStatusView(false, false, false, true);
+                                } catch (Exception e) {
+                                    textViewMsg.setText(Constantes.MSG_ERRO_GRAVAR_DADOS);
+                                    changeStatusView(false, true, true, false);
+                                }
+                            } else {
+
+                                if ("false".equals(serverResponse.getMsgErro())) {
+                                    abrirAcaoContaAutorizacao();
+                                } else {
+                                    textViewMsg.setText(serverResponse.getMsgErro());
+                                    changeStatusView(false, true, true, false);
+                                }
+                            }
+                        } else {
+                            textViewMsg.setText(Constantes.MSG_ERRO_NET);
+                            changeStatusView(false, true, true, false);
+                        }
+                    }
+                }).post(conta);
+
+                this.textViewMsg.setText("Analisando as condições da mesa!");
                 changeStatusView(true, true, false, false);
-                ((TextView) findViewById(R.id.activity_checkin_text_view_lbl_msg)).setText("Analisando as condições da mesa!");
             } else {
-                Toast.makeText(this, "Erro no Qr Code!", Toast.LENGTH_SHORT).show();
+                this.textViewMsg.setText("Erro no QR Code!");
+                changeStatusView(false, true, true, false);
             }
         } catch (Exception e) {
-            Toast.makeText(this, "Erro no Qr Code!", Toast.LENGTH_SHORT).show();
+            this.textViewMsg.setText("Erro no QR Code!");
+            changeStatusView(false, true, true, false);
         }
+    }
 
+    private void abrirAcaoContaAutorizacao() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Autorização");
+        builder.setMessage("Essa conta necessita de uma permissão para realizar pedidos.");
+        builder.setPositiveButton("Solicitar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                new AcaoContaRequest(new ResponseListener() {
+                    @Override
+                    public void onResult(ServerResponse serverResponse) {
+                        if (serverResponse != null) {
+                            if (serverResponse.isOK()) {
+                                try {
+                                    AcaoConta acaoConta = (AcaoConta) serverResponse.getReturnObject();
+                                    acaoConta.setIsAutorizado(false);
+                                    getDataManager().getAcaoContaDAO().save(acaoConta);
 
+                                    textViewMsg.setText("Sua autorização está em andamento, aguarde!");
+                                    changeStatusView(true, true, false, false);
+
+                                    verificarAutorizacao();
+
+                                } catch (Exception e) {
+                                    textViewMsg.setText(Constantes.MSG_ERRO_GRAVAR_DADOS);
+                                    changeStatusView(false, true, true, false);
+                                }
+                            } else {
+
+                                if ("false".equals(serverResponse.getMsgErro())) {
+                                    abrirAcaoContaAutorizacao();
+                                } else {
+                                    textViewMsg.setText(serverResponse.getMsgErro());
+                                    changeStatusView(false, true, true, false);
+                                }
+                            }
+                        } else {
+                            textViewMsg.setText(Constantes.MSG_ERRO_NET);
+                            changeStatusView(false, true, true, false);
+                        }
+                    }
+                }).solicitarAutorizacao(conta.getNumero().toString());
+            }
+        });
+        builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+                changeStatusView(false, false, true, false);
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    private void verificarAutorizacao() {
+        new AcaoContaRequest(new ResponseListener() {
+            @Override
+            public void onResult(ServerResponse serverResponse) {
+                if (serverResponse != null) {
+                    if (serverResponse.isOK()) {
+                        AcaoConta acaoConta = (AcaoConta) serverResponse.getReturnObject();
+
+                        if (acaoConta.isAutorizado()) {
+                            getConta(getDataManager().getAcaoContaDAO().get().getNumero());
+                        } else {
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    verificarAutorizacao();
+                                }
+                            }, REFRESH_MILIS);
+                        }
+                    } else {
+                        //TODO: VERIFICAR SE A AUTORIZACAO FOI NEGADA E INFORMAR AO CLIENTE
+                        if (ServerResponse.SC_UNAUTHORIZED == serverResponse.getStatusCode()) {
+                            changeStatusView(false, false, true, false);
+                            Toast.makeText(getBaseContext(), "Sua autorização foi negada!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+            }
+        }).isAuthorized(getDataManager().getAcaoContaDAO().get());
+    }
+
+    private void getConta(final Long numero) {
+        new ContaRequest(new ResponseListener() {
+            @Override
+            public void onResult(ServerResponse serverResponse) {
+                if (serverResponse != null) {
+                    if (serverResponse.isOK()) {
+                        try {
+                            getDataManager().getAcaoContaDAO().deleteAll();
+                            Conta conta = (Conta) serverResponse.getReturnObject();
+                            conta.setSistemaId(conta.getId());
+                            conta.setTipoConta(1l);
+                            getDataManager().getContaDAO().save(conta);
+                            textViewNumero.setText(conta.getNumero().toString());
+                            changeStatusView(false, false, false, true);
+                        } catch (Exception e) {
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    getConta(numero);
+                                }
+                            }, REFRESH_MILIS);
+                        }
+                    } else {
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                getConta(numero);
+                            }
+                        }, REFRESH_MILIS);
+                    }
+                } else {
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            getConta(numero);
+                        }
+                    }, REFRESH_MILIS);
+                }
+            }
+        }).associarCliente(numero, this.getDataManager().getClienteDAO().get().getId());
     }
 
     private void changeStatusView(Boolean isVisibilityProgressBar, Boolean isVisibilityTextView, Boolean isVisibilityButtonQrCode, Boolean isVisibilityButtonShare) {
@@ -196,6 +339,41 @@ public class CheckInActivity extends DefaultActivity {
         this.textViewMsg.setVisibility(isVisibilityTextView ? TextView.VISIBLE : TextView.GONE);
         this.buttonQrCode.setVisibility(isVisibilityButtonQrCode ? Button.VISIBLE : Button.GONE);
         this.buttonShared.setVisibility(isVisibilityButtonShare ? Button.VISIBLE : Button.GONE);
+    }
+
+    private void getNumeroMesa() {
+        this.textViewNumero.setText("");
+        this.changeStatusView(true, false, false, true);
+
+        new ContaRequest(new ResponseListener() {
+            @Override
+            public void onResult(ServerResponse serverResponse) {
+                if (serverResponse != null) {
+                    if (serverResponse.isOK()) {
+                        try {
+                            Conta serverConta = (Conta) serverResponse.getReturnObject();
+                            conta.setNumero(serverConta.getNumero());
+                            getDataManager().getContaDAO().update(conta, conta.getId());
+                            textViewNumero.setText(conta.getNumero().toString());
+                            changeStatusView(false, false, false, true);
+                        } catch (Exception e) {
+                            Toast.makeText(CheckInActivity.this, Constantes.MSG_ERRO_GRAVAR_DADOS, Toast.LENGTH_SHORT).show();
+                            e.printStackTrace();
+                            changeStatusView(false, false, false, true);
+                            textViewNumero.setText(conta.getNumero().toString());
+                        }
+                    } else {
+                        Toast.makeText(CheckInActivity.this, serverResponse.getMsgErro(), Toast.LENGTH_LONG).show();
+                        changeStatusView(false, false, false, true);
+                        textViewNumero.setText(conta.getNumero().toString());
+                    }
+                } else {
+                    Toast.makeText(CheckInActivity.this, Constantes.MSG_ERRO_NET, Toast.LENGTH_LONG).show();
+                    changeStatusView(false, false, false, true);
+                    textViewNumero.setText(conta.getNumero().toString());
+                }
+            }
+        }).getNumeroConta(this.conta);
     }
 
     private final class ResponseListenerSocialAuth implements DialogListener {
@@ -213,7 +391,8 @@ public class CheckInActivity extends DefaultActivity {
         }
 
         @Override
-        public void onBack() {}
+        public void onBack() {
+        }
 
         @Override
         public void onError(SocialAuthError arg0) {
@@ -236,42 +415,5 @@ public class CheckInActivity extends DefaultActivity {
                 Toast.makeText(CheckInActivity.this, "Erro ao compartilhar! Tente novamente mais tarde!", Toast.LENGTH_LONG).show();
             }
         }
-    }
-
-    private void getNumeroMesa(){
-        this.textViewNumero.setText("");
-        this.changeStatusView(true, false, false, true);
-
-        new ContaRequest(new ResponseListener() {
-            @Override
-            public void onResult(ServerResponse serverResponse) {
-                if (serverResponse != null) {
-                    if (serverResponse.isOK()) {
-                        try {
-                            Conta serverConta  = (Conta)serverResponse.getReturnObject();
-                            conta.setNumero(serverConta.getNumero());
-
-                            getDataManager().getContaDAO().update(conta, conta.getId());
-
-                            textViewNumero.setText(conta.getNumero().toString());
-                            changeStatusView(false, false, false, true);
-                        } catch (Exception e) {
-                            Toast.makeText(CheckInActivity.this, Constantes.MSG_ERRO_GRAVAR_DADOS, Toast.LENGTH_SHORT).show();
-                            e.printStackTrace();
-                            changeStatusView(false, false, false, true);
-                            textViewNumero.setText(conta.getNumero().toString());
-                        }
-                    } else {
-                        Toast.makeText(CheckInActivity.this, serverResponse.getMsgErro(), Toast.LENGTH_LONG).show();
-                        changeStatusView(false, false, false, true);
-                        textViewNumero.setText(conta.getNumero().toString());
-                    }
-                } else {
-                    Toast.makeText(CheckInActivity.this, Constantes.MSG_ERRO_NET, Toast.LENGTH_LONG).show();
-                    changeStatusView(false, false, false, true);
-                    textViewNumero.setText(conta.getNumero().toString());
-                }
-            }
-        }).getNumeroConta(this.conta);
     }
 }

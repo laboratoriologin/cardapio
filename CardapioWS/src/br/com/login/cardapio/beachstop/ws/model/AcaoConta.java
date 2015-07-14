@@ -106,7 +106,7 @@ public final class AcaoConta extends RestModel {
 	public void setUsuario(Usuario usuario) {
 		this.usuario=usuario;
 	}
-	
+		
 	@FormParam("pedido")
 	private Pedido pedido;
 
@@ -117,7 +117,40 @@ public final class AcaoConta extends RestModel {
 	public void setPedido(Pedido pedido) {
 		this.pedido=pedido;
 	}
+	
+	@FormParam("numero")
+	private String numero;
 
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero=numero;
+	}
+
+	@FormParam("autorizacao")
+	private Boolean autorizacao;
+
+	public Boolean getAutorizacao() {
+		return autorizacao;
+	}
+
+	public void setAutorizacao(Boolean autorizacao) {
+		this.autorizacao = autorizacao;
+	}
+	
+	@Form(prefix = "conta_destino")
+	private Conta contaDestino;
+
+	public Conta getContaDestino() {
+		return contaDestino;
+	}
+
+	public void setContaDestino(Conta contaDestino) {
+		this.contaDestino=contaDestino;
+	}
+	
 	public AcaoConta(){}
 
 	public AcaoConta(String id){

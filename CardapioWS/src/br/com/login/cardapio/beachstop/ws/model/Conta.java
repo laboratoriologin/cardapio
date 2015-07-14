@@ -13,7 +13,7 @@ import java.util.List;
 @XmlRootElement(name = "conta")
 public final class Conta extends RestModel {
 
-	@FormParam("cliente")
+	@Form(prefix = "cliente")
 	private Cliente cliente;
 
 	public Cliente getCliente() {
@@ -129,7 +129,22 @@ public final class Conta extends RestModel {
 	public List<PedidoSubItem> getPedidoSubItens() {
 		return pedidoSubItens;
 	}
+	
+	public void setPedidoSubItens(List<PedidoSubItem> pedidoSubItens) {
+		this.pedidoSubItens = pedidoSubItens;
+	}
 
+	@FormParam("pedidos")
+	private List<Pedido> pedidos;
+
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+	
+	public void setPedidos(List<Pedido> pedidos){
+		this.pedidos = pedidos;
+	}
+	
 	@FormParam("acaoconta")
 	private AcaoConta acaoConta;
 
@@ -141,12 +156,8 @@ public final class Conta extends RestModel {
 		this.acaoConta = acaoConta;
 	}
 	
-	public void setPedidoSubItens(List<PedidoSubItem> pedidoSubItens) {
-		this.pedidoSubItens = pedidoSubItens;
-	}
-
 	public Conta() {
-	}
+	}	
 
 	public Conta(String id) {
 		this.id = Long.valueOf(id);

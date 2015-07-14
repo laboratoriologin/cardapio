@@ -1,6 +1,7 @@
 package br.com.login.cardapio.beachstop.ws.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.ws.rs.GET;
@@ -26,6 +27,7 @@ import br.com.login.cardapio.beachstop.ws.exception.ApplicationException;
 import br.com.login.cardapio.beachstop.ws.model.Acao;
 import br.com.login.cardapio.beachstop.ws.model.AcaoConta;
 import br.com.login.cardapio.beachstop.ws.model.Area;
+import br.com.login.cardapio.beachstop.ws.model.Conta;
 import br.com.login.cardapio.beachstop.ws.model.Kit;
 import br.com.login.cardapio.beachstop.ws.model.KitSubItem;
 import br.com.login.cardapio.beachstop.ws.model.Pedido;
@@ -69,7 +71,7 @@ public class PedidoService extends RestService<Pedido> {
 	@Path("pedidohistorico/{conta_id}")
 	@Produces("application/json; charset=UTF-8")
 	public List<Pedido> getPedidoHistorico(@PathParam("conta_id") String contaId) {
-		List<Pedido> pedidos = new PedidoDAO().getAll(contaId);
+		List<Pedido> pedidos = new PedidoDAO().getAllWithAcaoConta(new Conta(contaId));
 		PedidoSubItemDAO pedidoSubItemDAO = new PedidoSubItemDAO();
 		LogDAO log = new LogDAO();
 
@@ -213,8 +215,28 @@ public class PedidoService extends RestService<Pedido> {
 		// Caso tenha usuario já tem que passar o numero da mesa
 		if (form.getUsuario() == null) {
 			form.setUsuario(new Usuario());
+			form.setConta(new ContaDAO().get(form.getConta().getId()));
 		} else {
-			form.setConta(new ContaDAO().getByMesa(form.getNumero()));
+			
+			Conta conta = new ContaDAO().getByMesa(form.getNumero());
+			
+			if(conta != null) {			
+				form.setConta(conta);
+			} else {
+				conta = new Conta();
+				conta.setNumero(form.getNumero().intValue());
+				conta.setTipoConta(false);
+				conta.setQtdPessoa(1);
+				conta.setDataAbertura(new Date(System.currentTimeMillis()));
+				conta.setPedidos(new ArrayList<Pedido>());
+				try {
+					conta = new ContaDAO().insert(conta);
+					form.setConta(conta);
+				} catch (TSApplicationException e) {					
+					throw new ApplicationException("Erro ao criar a conta.", Response.SC_INTERNAL_SERVER_ERROR);
+				}
+			}
+				
 		}
 
 		if ( new ContaDAO().isFechado(form.getConta()) || new AcaoContaDAO().isFechando(form.getConta())) {
@@ -338,7 +360,7 @@ public class PedidoService extends RestService<Pedido> {
 		return pedido;
 	}
 
-	private void gerarAcaoConta(Pedido pedido) {
+	protected void gerarAcaoConta(Pedido pedido) {
 
 		AcaoConta acaoConta = new AcaoConta();
 		acaoConta.setConta(pedido.getConta());
@@ -357,8 +379,14 @@ public class PedidoService extends RestService<Pedido> {
 			ex.printStackTrace();
 		}
 	}
+	
+	protected void inserPedidoJoinMesa(Pedido pedido) throws ApplicationException {
+		super.insert(pedido);
+		this.gerarLog(pedido);
+		this.gerarAcaoConta(pedido);		
+	}
 
-	private void gerarLog(Pedido pedido, Status status) {
+	protected void gerarLog(Pedido pedido, Status status) {
 		try {
 			for (PedidoSubItem subItem : pedido.getSubItens()) {
 				subItem.setStatus(status);
@@ -369,7 +397,7 @@ public class PedidoService extends RestService<Pedido> {
 		}
 	}
 
-	private void gerarLog(Pedido pedido) {
+	protected void gerarLog(Pedido pedido) {
 		try {
 			new LogDAO().insert(pedido);
 		} catch (Exception ex) {

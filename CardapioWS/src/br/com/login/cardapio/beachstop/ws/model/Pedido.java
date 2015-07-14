@@ -1,6 +1,5 @@
 package br.com.login.cardapio.beachstop.ws.model;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.ws.rs.FormParam;
@@ -76,6 +75,17 @@ public final class Pedido extends RestModel {
 
 	public void setAcaoContaId(Long acaoContaId) {
 		this.acaoContaId = acaoContaId;
+	}
+	
+	@FormParam("acaoconta")
+	private AcaoConta acaoConta;
+
+	public AcaoConta getAcaoConta() {
+		return acaoConta;
+	}
+
+	public void setAcaoConta(AcaoConta acaoConta){
+		this.acaoConta = acaoConta;
 	}
 
 	@FormParam("isCancelado")

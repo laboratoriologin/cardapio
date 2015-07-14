@@ -1,7 +1,7 @@
 /**
  * 
  */
-var url = "http://localhost:8080/CardapioWS/";
+var url = "http://10.0.0.33:8080/CardapioWS/";
 $(document).ready(		
 		function() {
 			$.ajaxSetup({cache : false});

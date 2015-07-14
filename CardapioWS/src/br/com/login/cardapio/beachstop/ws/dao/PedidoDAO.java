@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.StringJoiner;
 
 import br.com.login.cardapio.beachstop.ws.model.Area;
+import br.com.login.cardapio.beachstop.ws.model.Conta;
 import br.com.login.cardapio.beachstop.ws.model.Log;
 import br.com.login.cardapio.beachstop.ws.model.Pedido;
 import br.com.login.cardapio.beachstop.ws.model.PedidoSubItem;
@@ -42,6 +43,12 @@ public class PedidoDAO implements RestDAO<Pedido> {
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
 		broker.setPropertySQL("pedidodao.findallbyconta", contaId);
 		return broker.getCollectionBean(Pedido.class, "conta.id", "id", "observacao");
+	}
+	
+	public List<Pedido> getAllWithAcaoConta(Conta conta) {
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		broker.setPropertySQL("pedidodao.findallbycontawithacaoconta", conta.getId());
+		return broker.getCollectionBean(Pedido.class, "conta.id", "id", "observacao", "acaoConta.strHorarioSolicitacao", "acaoConta.usuario.id", "acaoConta.numero");
 	}
 
 	public List<Pedido> getAllByOuterJoinStatus(List<Status> status) {

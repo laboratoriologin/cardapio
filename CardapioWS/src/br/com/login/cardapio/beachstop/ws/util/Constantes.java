@@ -18,7 +18,8 @@ public final class Constantes {
 		public static final Long PENDENTE_APROVACAO = 1L;
 		public static final Long PENDENTE_ENTREGA = 2L;
 		public static final Long ENTREGUE = 3L;
-		public static final Long CANCELADO = 4L;	
+		public static final Long CANCELADO = 4L;
+		public static final Long TRANSFERIDO = 5L;
 	}
 	
     public interface Acoes {
@@ -26,5 +27,8 @@ public final class Constantes {
     	Long PedirConta = 4l;
     	Long NovoPedido = 5l;
     	Long MudarMesa = 6l;
+    	Long ReabrirConta = 7l;
+    	Long AutorizacaoAssociacao = 8l;
+    	Long JuntarMesa = 9l;
     }
 }

@@ -111,7 +111,14 @@ public class AcaoContaRequest extends ObjectRequest<AcaoConta> {
                             conta.setId(jsonConta.getLong("id"));
                             conta.setDataAbertura(jsonConta.has("dataAbertura") ? jsonConta.getString("dataAbertura") : "");
                             conta.setNumero(jsonConta.has("numero") ? jsonConta.getLong("numero") : 0l);
-                            conta.setClienteId(jsonConta.has("cliente") ? jsonConta.getJSONObject("cliente").getLong("id") : 0l);
+
+                            if(jsonConta.has("cliente") ){
+                                try {
+                                    conta.setClienteId(jsonConta.getJSONObject("cliente").getLong("id"));
+                                } catch (Exception e){
+                                    conta.setClienteId(0l);
+                                }
+                            }
 
                             acaoConta.setConta(conta);
                         }

@@ -130,16 +130,16 @@ public class AcaoContaDAO  implements RestDAO<AcaoConta> {
 		
 		model.setId(broker.getSequenceNextValue("dbo.acoes_contas"));
 		
-		StringBuilder sql = new StringBuilder("INSERT INTO ACOES_CONTAS (ACAO_ID, CONTA_ID, HORARIO_ATENDIMENTO, HORARIO_SOLICITACAO, USUARIO_ID, PEDIDO_ID, NUMERO) VALUES ( ?, ?,");
+		StringBuilder sql = new StringBuilder("INSERT INTO ACOES_CONTAS (ACAO_ID, CONTA_ID, HORARIO_ATENDIMENTO, HORARIO_SOLICITACAO, USUARIO_ID, PEDIDO_ID, NUMERO, DESTINO_CONTA_ID) VALUES ( ?, ?,");
 		
 		if(model.getUsuario().getId() != null)
 			sql.append(" GETDATE() ");
 		else
 			sql.append(" NULL ");
 		
-		sql.append(", GETDATE(), ?, ?, ?)");
+		sql.append(", GETDATE(), ?, ?, ?, ?)");
 
-		broker.setSQL(sql.toString(), model.getAcao().getId(), model.getConta().getId(), model.getUsuario().getId(), model.getPedido().getId(), model.getConta().getNumero());
+		broker.setSQL(sql.toString(), model.getAcao().getId(), model.getConta().getId(), model.getUsuario().getId(), model.getPedido().getId(), model.getConta().getNumero(), model.getContaDestino() != null ? model.getContaDestino().getId() : null);
 
 		broker.execute();
 

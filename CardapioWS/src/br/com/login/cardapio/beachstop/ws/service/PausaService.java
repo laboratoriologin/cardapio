@@ -35,7 +35,7 @@ public class PausaService extends RestService<Pausa> {
 	
 	@GET
 	@Path("getempausa/{usuario_id}")
-	@Produces("application/json; charset=UTF-8")
+	@Produces("application/json; charset=UTF-8;")
 	public Pausa getEmPausa(@PathParam("usuario_id") String usuarioId) {
 		return new PausaDAO().get(new Usuario(usuarioId));
 	}

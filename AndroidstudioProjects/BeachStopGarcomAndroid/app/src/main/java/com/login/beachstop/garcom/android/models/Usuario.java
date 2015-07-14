@@ -37,6 +37,11 @@ public class Usuario extends Base {
         setServiceName("usuarios");
     }
 
+    public Usuario(String id) {
+        super();
+        this.id = Long.getLong(id);
+    }
+
     @Override
     public Long getId() {
         return this.id;

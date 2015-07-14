@@ -15,13 +15,15 @@ public class LogDAO implements RestDAO<Log> {
 
 	@Override
 	public Log get(Long id) {
-
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
-
 		broker.setPropertySQL("logdao.get", id);
-
 		return (Log) broker.getObjectBean(Log.class, "horario", "id", "pedidoSubItem.id", "status.id", "usuario.id");
-
+	}
+	
+	public Log getStatusAtual(PedidoSubItem pedidoSubItem){
+		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
+		broker.setPropertySQL("logdao.getstatusatualbypedidoitem", pedidoSubItem.getId());
+		return (Log) broker.getObjectBean(Log.class, "horario", "id", "pedidoSubItem.id", "status.id", "usuario.id");
 	}
 
 	@Override

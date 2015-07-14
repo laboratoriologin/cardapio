@@ -1,6 +1,7 @@
 package com.login.beachstop.android.network;
 
 import com.login.beachstop.android.models.AcaoConta;
+import com.login.beachstop.android.models.Conta;
 import com.login.beachstop.android.models.ServerRequest;
 import com.login.beachstop.android.models.ServerResponse;
 import com.login.beachstop.android.network.http.ResponseListener;
@@ -8,6 +9,8 @@ import com.login.beachstop.android.utils.Constantes;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +36,18 @@ public class AcaoContaRequest extends ObjectRequest<AcaoConta> {
         this.execute(serverRequest);
     }
 
+    public void solicitarAutorizacao(String numero) {
+        String url = String.format("%s/%s/autorizacao/%s", Constantes.URL_WS, new AcaoConta().getServiceName(), numero);
+        ServerRequest serverRequest = new ServerRequest(ServerRequest.POST, url, new ArrayList<NameValuePair>());
+        this.execute(serverRequest);
+    }
+
+    public void isAuthorized(AcaoConta acaoConta) {
+        String url = String.format("%s/%s/isautorizado/%s", Constantes.URL_WS, new AcaoConta().getServiceName(), acaoConta.getId());
+        ServerRequest serverRequest = new ServerRequest(ServerRequest.GET, url, null);
+        this.execute(serverRequest);
+    }
+
     @Override
     protected List<NameValuePair> createParameters(AcaoConta acaoContao) {
 
@@ -46,6 +61,30 @@ public class AcaoContaRequest extends ObjectRequest<AcaoConta> {
     @Override
     protected void handleResponse(ServerResponse serverResponse) {
         if (serverResponse.isOK()) {
+            AcaoConta acaoConta;
+            JSONObject jsonObject;
+
+            try {
+                if (((JSONObject) serverResponse.getReturnObject()).has("acaoconta")) {
+                    jsonObject = ((JSONObject) serverResponse.getReturnObject()).getJSONObject("acaoconta");
+
+                    acaoConta = new AcaoConta();
+                    acaoConta.setId(jsonObject.has("id") ? jsonObject.getLong("id") : null);
+                    acaoConta.setAcaoId(jsonObject.has("acao") ? jsonObject.getJSONObject("acao").getLong("id") : null);
+                    acaoConta.setContaId(jsonObject.has("conta") ? jsonObject.getJSONObject("conta").getLong("id") : null);
+                    acaoConta.setNumero(jsonObject.has("numero") ? jsonObject.getLong("numero") : null);
+                    acaoConta.setIsAutorizado(jsonObject.has("autorizacao") ? jsonObject.getBoolean("autorizacao") : false);
+                    acaoConta.setConta(new Conta());
+
+                    serverResponse.setReturnObject(acaoConta);
+
+                } else {
+                    serverResponse.setReturnObject(null);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+                serverResponse.setStatusCode(-1);
+            }
         }
     }
 }

@@ -203,6 +203,7 @@ function getPedidosNaoFinalizado(atualizaProgress){
 		$(".colunaMaior").remove();	
 		var divTotal = new DivTotal($("#pedidosAtuais"));
 		var divColuna = new DivColuna(divTotal);
+		var divItem = null;
 		
 		createCodSender = 0;
 		
@@ -237,7 +238,8 @@ function getPedidosNaoFinalizado(atualizaProgress){
 			divColuna.append(divItem);
 		}
 		
-		divItem.clearTemp();
+		if(divItem != null)
+			divItem.clearTemp();
 		
 		if(atualizaProgress)
 			updateCompletedEventProgress();

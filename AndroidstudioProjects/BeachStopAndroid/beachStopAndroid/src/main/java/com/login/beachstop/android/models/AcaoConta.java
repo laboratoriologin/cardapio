@@ -1,15 +1,38 @@
 package com.login.beachstop.android.models;
 
+import org.droidpersistence.annotation.Column;
+import org.droidpersistence.annotation.PrimaryKey;
+import org.droidpersistence.annotation.Table;
+import org.droidpersistence.annotation.Transient;
+
 /**
  * Created by Argus on 13/01/2015.
  */
+@SuppressWarnings("serial")
+@Table(name = "ACAO_CONTA")
 public class AcaoConta extends Base {
 
+    @PrimaryKey
+    @Column(name = "ID")
     protected Long id;
+
+    @Transient
     protected String serviceName;
 
+    @Column(name = "ACAO_ID")
     private Long acaoId;
+
+    @Transient
     private Conta conta;
+
+    @Column(name = "CONTA_ID")
+    private Long contaId;
+
+    @Column(name = "NUMERO")
+    private Long numero;
+
+    @Column(name = "IS_AUTORIZADO")
+    private Long isAutorizado;
 
     public AcaoConta() {
         setServiceName("acoes_contas");
@@ -49,5 +72,37 @@ public class AcaoConta extends Base {
 
     public void setConta(Conta conta) {
         this.conta = conta;
+    }
+
+    public Long getNumero() {
+        return numero;
+    }
+
+    public void setNumero(Long numero) {
+        this.numero = numero;
+    }
+
+    public Long getContaId() {
+        return contaId;
+    }
+
+    public void setContaId(Long contaId) {
+        this.contaId = contaId;
+    }
+
+    public Long getIsAutorizado() {
+        return isAutorizado;
+    }
+
+    public Boolean isAutorizado() {
+        return isAutorizado == 1;
+    }
+
+    public void setIsAutorizado(Long isAutorizado) {
+        this.isAutorizado = isAutorizado;
+    }
+
+    public void setIsAutorizado(Boolean isAutorizado) {
+        this.isAutorizado = isAutorizado ? 1l : 0l ;
     }
 }

@@ -8,6 +8,9 @@ var templateDivTable;
 $(document).ready(function() {
 	$.ajaxSetup({cache : false});
 	startModalLoad(8);
+	
+	$("#maisitens2").hide();
+	
 	loadData();
 });
 
@@ -182,6 +185,7 @@ function getPedidosNaoFinalizado(atualizaProgress){
 		$(".colunaMaior").remove();	
 		var divTotal = new DivTotal($("#pedidosAtuais"));
 		var divColuna = new DivColuna(divTotal);
+		var divItem = null;
 		
 		for (var i = 0; i < data.length; i++) {
 
@@ -209,7 +213,8 @@ function getPedidosNaoFinalizado(atualizaProgress){
 			divColuna.append(divItem);
 		}
 		
-		divItem.clearTemp();
+		if(divItem != null)		
+			divItem.clearTemp();
 		
 		if(atualizaProgress)
 			updateCompletedEventProgress();
@@ -352,16 +357,16 @@ function DivSubItem(pDivItem, pSubItemPedido, qtdRestante){
 	switch (this.subItemPedido.status.id) {
 	    case 1:
 	        text = "Pedente Validação";
-	        src = "../resources/img/icone_confirmar_marrom.png"
+	        src = "../resources/img/icone_confirmar_marrom.png";
 	        break; 
 	    case 2:
 	        text = "Em produção";
-	        src = "../resources/img/icone_preparo_marrom.png"
+	        src = "../resources/img/icone_preparo_marrom.png";
 	        break;
 	    default: 
 	        text = "";
 	    	src = "";
-	}
+	};
 	
 	var htmlImg = $('<img />',
             { id: 'icone_' + qtdColuna + "_" + qtdItem + "_" + qtdSubItem,

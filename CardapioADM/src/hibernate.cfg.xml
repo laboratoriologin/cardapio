@@ -13,7 +13,7 @@
 		<property name="hibernate.connection.datasource">java:/comp/env/jdbc/bdCardapioV2</property>
 		<property name="hibernate.query.substitutions">true 1, false 0</property>
 
-		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.show_sql">false</property>
 
 		<mapping class="com.login.cardapio.model.Acao" />
 		<mapping class="com.login.cardapio.model.AcaoConta" />

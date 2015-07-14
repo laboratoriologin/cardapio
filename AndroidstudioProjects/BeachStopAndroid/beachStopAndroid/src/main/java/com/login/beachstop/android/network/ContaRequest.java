@@ -1,5 +1,6 @@
 package com.login.beachstop.android.network;
 
+import com.login.beachstop.android.models.Cliente;
 import com.login.beachstop.android.models.Conta;
 import com.login.beachstop.android.models.Pedido;
 import com.login.beachstop.android.models.PedidoSubItem;
@@ -27,20 +28,14 @@ public class ContaRequest extends ObjectRequest<Conta> {
         super(listener);
     }
 
-//    public void get(Long contaId) {
-//        String urlgetAtivo = String.format("%s/%s/%s", Constantes.URL_WS, new Conta().getServiceName(), contaId.toString());
-//        ServerRequest serverRequest = new ServerRequest(ServerRequest.GET, urlgetAtivo, null);
-//        this.execute(serverRequest);
-//    }
-
     @Override
-    public void get(Conta conta){
+    public void get(Conta conta) {
         String urlgetAtivo = String.format("%s/%s/%s", Constantes.URL_WS, new Conta().getServiceName(), conta.getSistemaId().toString());
         ServerRequest serverRequest = new ServerRequest(ServerRequest.GET, urlgetAtivo, null);
         this.execute(serverRequest);
     }
 
-    public void getNumeroConta(Conta conta){
+    public void getNumeroConta(Conta conta) {
         String urlgetAtivo = String.format("%s/%s/%s/numero", Constantes.URL_WS, new Conta().getServiceName(), conta.getSistemaId().toString());
         ServerRequest serverRequest = new ServerRequest(ServerRequest.GET, urlgetAtivo, null);
         this.execute(serverRequest);
@@ -52,6 +47,11 @@ public class ContaRequest extends ObjectRequest<Conta> {
         this.execute(serverRequest);
     }
 
+    public void associarCliente(Long mesa, Long clienteId) {
+        String url = String.format("%s/%s/associar/%s/cliente/%s", Constantes.URL_WS, new Conta().getServiceName(), mesa, clienteId);
+        ServerRequest serverRequest = new ServerRequest(ServerRequest.PUT, url, new ArrayList<NameValuePair>());
+        this.execute(serverRequest);
+    }
 
     @Override
     protected List<NameValuePair> createParameters(Conta conta) {
@@ -79,10 +79,10 @@ public class ContaRequest extends ObjectRequest<Conta> {
                     conta.setId(jsonObject.has("id") ? jsonObject.getLong("id") : null);
                     conta.setClienteId(jsonObject.has("cliente") ? jsonObject.getJSONObject("cliente").getLong("id") : null);
                     conta.setTipoConta(Long.getLong((jsonObject.has("tipoconta") ? jsonObject.getBoolean("tipoconta") : "").toString()));
-                    conta.setDataAbertura((jsonObject.has("dataabertura") ? jsonObject.getString("dataabertura") : "").toString());
-                    conta.setDataFechamento((jsonObject.has("datafechamento") ? jsonObject.getString("datafechamento") : "").toString());
+                    conta.setDataAbertura((jsonObject.has("dataAbertura") ? jsonObject.getString("dataAbertura") : "").toString());
+                    conta.setDataFechamento((jsonObject.has("dataFechamento") ? jsonObject.getString("dataFechamento") : "").toString());
                     conta.setNumero(jsonObject.has("numero") ? jsonObject.getLong("numero") : null);
-                    conta.setValorTotal((jsonObject.has("valor") ? jsonObject.getLong("valor") : "").toString());
+                    conta.setValorTotal((jsonObject.has("valor") ? jsonObject.getString("valor") : ""));
                     conta.setValorTotalPago((jsonObject.has("valorPago") ? jsonObject.getString("valorPago") : "0.0"));
 
                     if (jsonObject.has("pedidoSubItens")) {
@@ -106,7 +106,7 @@ public class ContaRequest extends ObjectRequest<Conta> {
                         }
 
                         conta.getPedidos().add(pedido);
-                    }else{
+                    } else {
                         conta.setPedidos(new ArrayList<Pedido>());
                     }
                     serverResponse.setReturnObject(conta);

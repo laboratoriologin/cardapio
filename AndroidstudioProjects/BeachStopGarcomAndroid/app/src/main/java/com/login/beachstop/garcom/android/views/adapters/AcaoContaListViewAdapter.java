@@ -51,7 +51,7 @@ public class AcaoContaListViewAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         AcaoConta acaoConta = this.acaoContas.get(i);
-        if (Constantes.Acao.CHAMARGARCOM.equals(acaoConta.getAcao().getId()) || Constantes.Acao.PEDIRCONTA.equals(acaoConta.getAcao().getId())) {
+        if (Constantes.Acao.CHAMARGARCOM.equals(acaoConta.getAcao().getId()) || Constantes.Acao.PEDIRCONTA.equals(acaoConta.getAcao().getId()) || Constantes.Acao.AUTORIZACAO.equals(acaoConta.getAcao().getId())) {
             return this.getViewSynthetic(acaoConta, viewGroup);
         } else if (Constantes.Acao.PEDIDOS.equals(acaoConta.getAcao().getId())) {
             return this.getViewAnalytic(acaoConta, viewGroup);
