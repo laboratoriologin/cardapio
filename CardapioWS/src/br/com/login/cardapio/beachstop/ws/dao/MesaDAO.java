@@ -24,7 +24,22 @@ public class MesaDAO implements RestDAO<Mesa> {
 
 	public List<Mesa> getAll(Setor setor) {
 		TSDataBaseBrokerIf broker = TSDataBaseBrokerFactory.getDataBaseBrokerIf();
-		broker.setPropertySQL("mesadao.getocupadabysetor", setor.getId());
+		
+		String sql = "SELECT M.ID, M.NUMERO, C.ID, C.QTD_PESSOA, SUM( (PSI.QUANTIDADE * PSI.VALOR_UNITARIO) ) AS VALOR_TOTAL, (SELECT AC.ID FROM ACOES_CONTAS AS AC WHERE C.ID = AC.CONTA_ID AND ACAO_ID = 4) AS ACAO_CONTA_ID "
+				+ "     FROM MESAS AS M "
+				+ "LEFT JOIN CONTAS AS C ON M.NUMERO = C.NUMERO AND C.DATA_FECHAMENTO IS NULL "
+				+ "LEFT JOIN PEDIDOS AS P ON P.CONTA_ID = C.ID "
+				+ "LEFT JOIN PEDIDOS_SUB_ITENS AS PSI ON PSI.PEDIDO_ID = P.ID "
+				+ "    WHERE NOT EXISTS (SELECT 1 FROM LOGS AS L WHERE PSI.ID = L.PEDIDO_SUB_ITEM_ID AND L.STATUS_ID = 4) ";
+		
+		if(setor != null){
+			sql += "AND SETOR_ID = " + setor.getId(); 
+		}
+				
+		sql += "GROUP BY M.ID, M.NUMERO, C.ID, C.QTD_PESSOA";
+		
+		broker.setSQL(sql);
+		
 		return broker.getCollectionBean(Mesa.class, "id", "numero", "conta.id", "conta.qtdPessoa", "conta.valor", "conta.acaoConta.id");
 	}
 

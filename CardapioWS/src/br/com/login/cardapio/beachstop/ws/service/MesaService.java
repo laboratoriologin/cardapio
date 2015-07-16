@@ -28,8 +28,12 @@ public class MesaService extends RestService<Mesa> {
 	@Path("setor/{id}")
 	@Produces("application/json; charset=UTF-8")
 	public List<Mesa> getMesasOcupadasBySetor(@PathParam("id") String id) {
-
-		Setor setor = new Setor(id);
+		Setor setor;
+		if (!"0".equals(id)) {
+			setor = new Setor(id);
+		} else {
+			setor = null;
+		}
 		return new MesaDAO().getAll(setor);
 	}
 }

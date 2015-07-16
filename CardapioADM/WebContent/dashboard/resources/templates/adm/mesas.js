@@ -223,6 +223,17 @@ $(document).ready(function() {
 			$(this).attr("idsubitem", "");
 		}
 	});
+	
+	$("input[name='filtromesa']").change(function(){
+		$(".mesaVermelho").show();
+		$(".mesaVerde").show();
+		
+		if($(this).val() == 1){
+			$(".mesaVerde").hide();
+		}else if($(this).val() == 2){
+			$(".mesaVermelho").hide();
+		}
+	});
 
 	loadMesas();
 });
@@ -283,7 +294,7 @@ function postJoinTable(mesaOrigem, mesaDestino) {
 
 function loadMesas() {
 
-	$("#bodyMesas").empty();
+	$("#bodyMesas div:not(#filtro)").empty();
 
 	$.getJSON(url + "mesas/setor/" + $("#setorId").val(), function(data) {
 		if (Array.isArray(data)) {

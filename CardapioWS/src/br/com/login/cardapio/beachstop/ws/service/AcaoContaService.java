@@ -1,6 +1,5 @@
 package br.com.login.cardapio.beachstop.ws.service;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -31,7 +30,6 @@ import br.com.login.cardapio.beachstop.ws.model.Pagamento;
 import br.com.login.cardapio.beachstop.ws.model.Pedido;
 import br.com.login.cardapio.beachstop.ws.model.PedidoSubItem;
 import br.com.login.cardapio.beachstop.ws.model.Status;
-import br.com.login.cardapio.beachstop.ws.model.SubItem;
 import br.com.login.cardapio.beachstop.ws.model.Usuario;
 import br.com.login.cardapio.beachstop.ws.model.UsuarioSetor;
 import br.com.login.cardapio.beachstop.ws.util.Constantes;
@@ -336,9 +334,9 @@ public class AcaoContaService extends RestService<AcaoConta> {
 					}
 
 					listPagamento = new PagamentoDAO().getAllByConta(conta);
-					
+
 					if (listPagamento.size() != 0) {
-						for(Pagamento pagamento : listPagamento){
+						for (Pagamento pagamento : listPagamento) {
 							pagamento.setConta(contaDestino);
 							try {
 								pagamentoDAO.insert(pagamento);
