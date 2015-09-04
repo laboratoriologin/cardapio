@@ -3,14 +3,15 @@
 html, body {
 	height: 100%;
 	margin: 0;
+	font-family: Century Gothic;
 }
 
 body {
-	background-color: #F2DCB3;
+	background-color: #f3f3ad;
 }
 
 body div.head {
-	background-image: url("../img/bg.png");
+	background-image: url("../img/bg_topo.png");
 	background-repeat: repeat;
 	width: 100%;
 	height: 10%;
@@ -29,6 +30,17 @@ body div.head .headdireita {
 	margin-right: 40px;
 }
 
+body div.head .headdireita>div:first-child {
+	float: left; 
+	margin-right: 25px;
+}
+
+body div.head .headdireita>div:last-child {
+	float: right; 
+	margin-top: 5px;
+	cursor: pointer;
+}
+
 body div.body {
 	width: 100%;
 	height: 88%;
@@ -38,7 +50,7 @@ body div.footer {
 	width: 100%;
 	height: 2%;
 	display: table;
-	background-image: url("../img/bg.png");
+	background-image: url("../img/bg_topo_login.png");
 	background-repeat: repeat;
 }
 
@@ -50,7 +62,7 @@ body div.footer div{
 
 body div.footer p {
 	font-family: Century Gothic;
-	color: #f2dbb3;
+	color: #ffffff;
 	font-size: 70%;	
 }
 
@@ -143,7 +155,7 @@ body div.body .direita {
 .diviconetopoalerta>div>p:nth-child(2) {
 	text-align: center;
 	font-family: Century Gothic;
-	color: #4f3833;
+	color: #0b405f;
 	font-size: 92%;	
 }
 
@@ -167,6 +179,7 @@ body div.body .direita {
 
 .divalerta {
 	overflow: hidden;
+	background: #ebebeb;
 }
 
 .divalerta .border {
@@ -203,7 +216,7 @@ body div.body .direita {
 .divalerta p {
 	text-align: center;
 	font-family: Century Gothic;
-	color: #4f3833;
+	color: #0b405f;
 	font-size: 35px;
 }
 
@@ -236,7 +249,7 @@ body div.body .direita {
 #maisitens span, #maisitensfooter span, #maisitens2 span {
 	font-family: Century Gothic;
 	font-weight: bold;
-	color: #4f3833;
+	color: #0b405f;
 	font-size: 10px;
 	background-color: #edda54;	
 }
@@ -253,13 +266,13 @@ body div.body .direita {
 #pedido {
 	height: 82.5%;
 	font-family: Century Gothic;
-	color: #4f3833;
+	color: #0b405f;
 }
 
 #pedidopronto {
 	height: 17.49%;
 	font-family: Century Gothic;
-	color: #4f3833;
+	color: #0b405f;
 }
 
 #alinhartexto {
@@ -269,7 +282,7 @@ body div.body .direita {
 
 #alinhartextoTopo {
 	padding-left: 35px;
-	height: 5%;
+	height: 6%;
 }
 
 #alinhartexto>div:nth-child(1) {
@@ -278,25 +291,43 @@ body div.body .direita {
 
 #alinhartextoTopo>div:nth-child(1) {
 	float: left;
-	margin-top: 0.3%;
+	margin-top: 0.4%;
 }
 
 #alinhartextoTopo>div:nth-child(2) {
 	float: left;
-	margin-top: 0.7%;	
+	margin-top: 0.8%;	
+}
+
+
+.legendateclado {
+	float: right;
+	margin-right: 1.5%;
+	margin-top: 0.7%;
+}
+	
+
+.legenda {
+	float: right;
+	padding: 5px 15px;
+	background: #ebc890;
+	margin-top: 5px; 
+	margin-right: 10px;
+}
+
+.legenda>div {
+	display: flex;
+}
+
+.legenda p {
+	padding-right: 8px; 
+	padding-top: 4px;
 }
 
 #alinhartexto>div:nth-child(2) {
 	float: left;
 	margin-top: 0.4%;	
 }
-
-#alinhartextoTopo>div:nth-child(3) {
-	float: right;
-	margin-right: 1.5%;
-	margin-top: 0.7%;
-}	
-
 
 #alertapedidoentregue {
 	height: 80%;
@@ -401,7 +432,7 @@ body div.body .direita {
 	position: absolute;
 	height: 100%;
 	width: 100%;
-	background-color: white;
+	background-color: #f3f3ad;
 	top: 0px;
 	left: 0px;
 	z-index: 10;	
@@ -430,6 +461,7 @@ body div.body .direita {
 #progressbar {
 	margin-bottom: 5px;
 	margin-top: 5px;
+	background: transparent;
 }
 
 #modalload>div .ui-progressbar {
@@ -440,12 +472,16 @@ body div.body .direita {
 	border-top-left-radius: 0px;	
 }
 
+#modalload span{
+	color: #0b405f;
+}
+
 .error {
 	color: red;
 }
 
 #pedidosAtuais {
-	height: 94%; 
+	height: 93%; 
 	width: 100%;
 }
 
@@ -492,7 +528,7 @@ body div.body .direita {
 .divTamanhaReal>div:nth-child(1)>div>span {
 	font-family: Century Gothic; 
 	font-size: 25px;
-	color: #4f3833;
+	color: #0b405f;
 }
 
 .divTamanhaReal>div:nth-child(2) {
@@ -501,7 +537,7 @@ body div.body .direita {
 	width: 100%; 
 	font-size: 18px; 
 	font-family: Century Gothic;
-	color: #4f3833;	
+	color: #0b405f;	
 }
 
 .linhaSubItem {
@@ -571,11 +607,12 @@ body div.body .direita {
 	margin-left: 15px; 
 	color: white; 
 	text-align: center; 
-	width: 100px; 
-	height: 100px; 
+	width: 98px; 
+	height: 98px; 
 	font-size: 3em;
 	cursor: pointer;
-	background: #ff0000;
+	background: #ff3333;
+	border: 1px solid #5e0d0d;
 }
 
 .mesaVermelho .numero,.mesaVerde .numero {
@@ -617,15 +654,16 @@ table.reference > thead > tr > th, table.reference > tbody > tr > th, table.refe
     line-height: 1.42857;
     padding: 8px;
     vertical-align: top;
+    color: #0b405f;
 }
 table.reference tr:nth-child(2n+1) {
     background-color: #ffffff;
 }
 table.reference tr:nth-child(2n) {
-    background-color: #f1f1f1;
+    background-color: #d7d7d7;
 }
 table.reverse tr:nth-child(2n+1) {
-    background-color: #f1f1f1;
+    background-color: #d7d7d7;
 }
 table.reverse tr:nth-child(2n) {
     background-color: #ffffff;
@@ -641,7 +679,14 @@ th {
 }
 
 th.agrupador {
-	background-color: #d7d7d7 !important;
+	background-color: #a6d1e2 !important;
+	color: #0b405f !important;
+	
+}
+
+tr.tableheader {
+	background-color: #a6d1e2 !important;
+	color: #0b405f !important;
 }
 
 .ui-icon-pencil, .ui-icon-trash, .ui-icon-play, .ui-icon-arrowreturn-1-e {
@@ -835,6 +880,7 @@ th.agrupador {
 	min-height: 0px !important;	
 	max-height: 0px !important;
 }
+
 THEAD.invspacer,
 TBODY.invspacer,
 TFOOT.invspacer {	
@@ -859,3 +905,5 @@ TFOOT.invspacer {
 	margin: 0px !important;
 	padding: 0px !important;
 }
+
+.

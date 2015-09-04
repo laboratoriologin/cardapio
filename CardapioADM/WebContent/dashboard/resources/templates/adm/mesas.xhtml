@@ -1,7 +1,7 @@
 <div class="page">
 	<input type="hidden" value="#{param['idSetor']}" id="setorId" />
 
-	<div id="loading" style="background-color: rgb(242, 220, 179); width: 100%; position: fixed; height: 83.6%;">
+	<div id="loading" style="background-color: #f3f3ad; width: 100%; position: fixed; height: 83.6%;">
 		<div class='loaderMarrom' style="margin-top: 1%; margin-left: 50%;">Loading...</div>
 		<div id="msgLoading" style="margin-left: 47%; color: red;">Erro ao carregar a página.</div>
 	</div>
@@ -29,21 +29,21 @@
 		<div class="dialogtopo">
 			<div>
 				<button id="novoPedido">Novo Pedido</button>
-				<button id="mudarMesa">Mudar a mesa</button>				
+				<button id="mudarMesa">Mudar a mesa</button>
 			</div>
 			<div id="loader">
 				<div class='loaderBranco'>Loading...</div>
 			</div>
 			<div>
-				<button id="reabrir">Reabrir conta</button>
-				<button>Fechar Conta</button>
+				<button id="btnReabrir">Reabrir conta</button>
+				<button id="btnFecharConta">Fechar Conta</button>
 			</div>
 		</div>
 
 		<div class="dialogbody">
 			<div>
 				<table id="historicoPedido" class="reference">
-					<tr>
+					<tr class="tableheader">
 						<th>QTD</th>
 						<th>Produto</th>
 						<th>Status</th>
@@ -54,7 +54,7 @@
 
 			<div>
 				<table id="pedidoAgrupado" class="reference">
-					<tr>
+					<tr class="tableheader">
 						<th>QTD</th>
 						<th>Cód</th>
 						<th>Produto</th>
@@ -66,7 +66,7 @@
 				<div class="theaddiv">
 					<table id="valorPagoThead" class="reference">
 						<thead>
-							<tr>
+							<tr class="tableheader">
 								<th>Horário</th>
 								<th>Tipo Pag.</th>
 								<th>$</th>
@@ -82,8 +82,8 @@
 				</div>
 				<div class="tbodydiv" style="overflow-x: hidden; overflow-y: scroll; height: 74.5%;">
 					<table id="valorPagoTbody" class="reference">
-						<thead  class="invspacer">
-							<tr>
+						<thead class="invspacer">
+							<tr class="tableheader">
 								<th>Horário</th>
 								<th>Tipo Pag.</th>
 								<th>$</th>
@@ -99,8 +99,8 @@
 				</div>
 				<div class="tfootdiv">
 					<table id="valorPagoTfood" class="reference">
-						<thead  class="invspacer">
-							<tr>
+						<thead class="invspacer">
+							<tr class="tableheader">
 								<th>Horário</th>
 								<th>Tipo Pag.</th>
 								<th>$</th>
@@ -108,16 +108,16 @@
 								<th></th>
 							</tr>
 						</thead>
-						<tbody class="invspacer">								
+						<tbody class="invspacer">
 						</tbody>
-						<tfoot>													
+						<tfoot>
 						</tfoot>
 					</table>
 				</div>
 			</div>
 		</div>
 	</div>
-	
+
 	<div id="dialog-novopedido" title="Novo Pedido">
 
 		<div class="dialogtopoNovoPedido">
@@ -136,7 +136,7 @@
 
 		<div class="dialogbodyNovoPedido">
 			<table id="pedidoSubItem" class="reference">
-				<tr>
+				<tr class="tableheader">
 					<th>QTD</th>
 					<th>Produto</th>
 					<th>Não Imprimir?</th>
@@ -160,7 +160,7 @@
 
 		<div class="dialogbodyNovoPedido">
 			<table id="contasFechadas" class="reference">
-				<tr>
+				<tr class="tableheader">
 					<th>Id</th>
 					<th>Horário</th>
 					<th>Valor Total</th>
@@ -171,7 +171,16 @@
 	</div>
 
 	<div id="bodyMesas" class="page" style="overflow: auto">
-		<div id="filtro" style="padding-left: 15px; margin-top: 10px;">Filtros :  <input type="radio" value="0" name="filtromesa" checked="checked" /> Todas <input type="radio" value="1" name="filtromesa" /> Ocupadas <input type="radio" value="2" name="filtromesa" /> Livres</div>
+		<div class="filtro" style="color: #0b405f; padding-left: 15px; margin-top: 10px; overflow: auto; padding-right: 4%;">
+			<div class="filtro" style="float: left; padding: 5px 10px;">Mesas</div>
+			<div class="filtro" style="float: right; padding: 5px 10px; background: #ebc890;">
+				Filtros : <input type="radio" value="0" name="filtromesa" checked="checked" /> Todas <input type="radio" value="1" name="filtromesa" />
+				<div id="quadradoLivre" style="background: #ff3333; width: 23px; display: inline-flex; height: 13px; border: 1px solid #5e0d0d; position: relative; top: 2px;"></div>
+				Ocupadas <input type="radio" value="2" name="filtromesa" />
+				<div id="quadradoLivre" style="background: green; width: 25px; display: inline-flex; height: 15px; position: relative; top: 2px;"></div>
+				Livres
+			</div>
+		</div>
 	</div>
 
 	<script type="text/javascript" src="../resources/templates/adm/mesas.js" />

@@ -20,7 +20,7 @@ $(document).ready(function() {
 	$("#dialog-mudarmesa").dialog({
 		resizable : false,
 		height : (($("#bodyMesas").height() - ($("#bodyMesas").height() * 0.80))),
-		width : (($("#bodyMesas").width() - ($("#bodyMesas").width() * 0.90))),
+		width : (($("#bodyMesas").width() - ($("#bodyMesas").width() * 0.85))),
 		modal : true,
 		autoOpen : false,
 		buttons : { 
@@ -44,8 +44,8 @@ $(document).ready(function() {
 
 	$("#dialog-historicoconta").dialog({
 		resizable : false,
-		height : ($("#bodyMesas").height() - 50),
-		width : ($("#bodyMesas").width() - 500),
+		height : (($("#bodyMesas").height() - ($("#bodyMesas").height() * 0.1))),
+		width : (($("#bodyMesas").width() - ($("#bodyMesas").width() * 0.10))),
 		modal : true,
 		autoOpen : false
 	});
@@ -83,7 +83,7 @@ $(document).ready(function() {
 		}
 	});
 
-	$("#novoPedido").click(function() {
+	$("#novoPedido").button({ icons: { primary: "ui-icon-plus" } }).click(function() {
 		$("#pedidoSubItem tr:not(:first-child)").remove();
 		$("#qtd").val("");
 		$("#produto").val("");
@@ -91,15 +91,19 @@ $(document).ready(function() {
 		$("#dialog-novopedido").dialog("open");
 	});
 	
-	$("#mudarMesa").click(function() {
+	$("#mudarMesa").button({ icons: { primary: "ui-icon-copy" } }).click(function() {
 		$("#dialog-mudarmesa").dialog("open");
 	});
 			
-	$("#cancelarPedido").click(function() {
+	$("#cancelarPedido").button({ icons: { primary: "ui-icon-close" } }).click(function() {
 		$("#dialog-novopedido").dialog("close");
 	});
 	
-	$("#reabrir").click(function(){
+	$("#btnFecharConta").button({ icons: { primary: "ui-icon-close" } }).click(function() {
+		alert('Fechar Conta');
+	});	
+	
+	$("#btnReabrir").button({ icons: { primary: " ui-icon-arrowrefresh-1-n" } }).click(function(){
 		$("#loader").show();
 		$(this).prop("disabled", true);
 		
@@ -112,14 +116,14 @@ $(document).ready(function() {
 			}).done(function(result) {
 				alert('Conta reaberta!');
 				$("#loader").hide();
-				$("#reabrir").prop("disabled", false);
-				$("#reabrir").hide();
+				$("#btnReabrir").prop("disabled", false);
+				$("#btnReabrir").hide();
 				$("#novoPedido").show();
 				$("#mudarMesa").show();
 			}).fail(function(result) {
 				alert('Erro, tente novamente mais tarde.');
 				$("#loader").hide();
-				$("#reabrir").prop("disabled", false);
+				$("#btnReabrir").prop("disabled", false);
 			});	
 		} else {
 			$("#loader").hide();
@@ -127,7 +131,7 @@ $(document).ready(function() {
 		}		
 	});
 
-	$("#salvarPedido").click(function (){
+	$("#salvarPedido").button({ icons: { primary: "ui-icon-disk" } }).click(function (){
 		
 		$(this).prop("disabled", true);
 		
@@ -294,7 +298,7 @@ function postJoinTable(mesaOrigem, mesaDestino) {
 
 function loadMesas() {
 
-	$("#bodyMesas div:not(#filtro)").empty();
+	$("#bodyMesas div:not(.filtro)").empty();
 
 	$.getJSON(url + "mesas/setor/" + $("#setorId").val(), function(data) {
 		if (Array.isArray(data)) {
@@ -424,11 +428,11 @@ function createMesa(obj) {
 			if (typeof acaoContaId !== typeof undefined && acaoContaId !== false) {
 				$("#novoPedido").hide();
 				$("#mudarMesa").hide();
-				$("#reabrir").show();
+				$("#btnReabrir").show();
 			} else {
 				$("#novoPedido").show();
 				$("#mudarMesa").show();
-				$("#reabrir").hide();				
+				$("#btnReabrir").hide();				
 			}
 			
 			getHistoricoMesa(attr);
@@ -679,7 +683,7 @@ function loadTabelaAnalitica(button){
 			
 			var tableAnalitico = $("<table />", { class : "reference" });
 			tableAnalitico.append(
-					$("<tr />").append(									
+					$("<tr />", {class : "tableheader"}).append(									
 						$("<th />", {text : "Qtd"})
 					).append(									
 						$("<th />", {text : "Atendimento"})

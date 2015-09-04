@@ -1,11 +1,19 @@
 package com.login.beachstop.android;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.AttributeSet;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -14,8 +22,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.zxing.integration.android.IntentIntegrator;
-import com.google.zxing.integration.android.IntentResult;
 import com.login.beachstop.android.models.AcaoConta;
 import com.login.beachstop.android.models.Conta;
 import com.login.beachstop.android.models.ServerResponse;
@@ -31,6 +37,8 @@ import org.brickred.socialauth.android.SocialAuthAdapter;
 import org.brickred.socialauth.android.SocialAuthAdapter.Provider;
 import org.brickred.socialauth.android.SocialAuthError;
 import org.brickred.socialauth.android.SocialAuthListener;
+
+import me.dm7.barcodescanner.core.ViewFinderView;
 
 import static com.login.beachstop.android.R.layout.activity_checkin;
 
@@ -48,22 +56,15 @@ public class CheckInActivity extends DefaultActivity {
     protected TextView textViewActionBar;
     private SocialAuthAdapter socialAuthAdapter;
     private Conta conta;
-    private Boolean autoQrCode;
-
 
     @Override
     protected void onResume() {
         super.onResume();
-        if (getDataManager().getContaDAO().get() == null) {
-            if (getDataManager().getAcaoContaDAO().get() == null) {
-                if (autoQrCode) {
-                    IntentIntegrator integrator = new IntentIntegrator(this);
-                    integrator.addExtra("SAVE_HISTORY", false);
-                    integrator.initiateScan();
-                }
-            } else {
-                AcaoConta acaoConta = getDataManager().getAcaoContaDAO().get();
 
+        if (getDataManager().getContaDAO().get() == null) {
+            AcaoConta acaoConta = getDataManager().getAcaoContaDAO().get();
+
+            if (acaoConta != null) {
                 if (acaoConta.isAutorizado()) {
                     getNumeroMesa();
                 } else {
@@ -85,13 +86,6 @@ public class CheckInActivity extends DefaultActivity {
 
         loadViews();
 
-        if (this.getDataManager().getContaDAO().get() != null) {
-            getNumeroMesa();
-            autoQrCode = false;
-        } else {
-            autoQrCode = true;
-        }
-
         this.actionBar.setDisplayHomeAsUpEnabled(Boolean.FALSE);
         this.imageViewActionBar.setBackgroundResource(R.drawable.tab_check_in);
         this.textViewActionBar.setText("Check-In");
@@ -100,9 +94,8 @@ public class CheckInActivity extends DefaultActivity {
 
             @Override
             public void onClick(View v) {
-                IntentIntegrator integrator = new IntentIntegrator(CheckInActivity.this);
-                integrator.addExtra("SAVE_HISTORY", false);
-                integrator.initiateScan();
+                Intent mainIntent = new Intent(CheckInActivity.this, CheckInQrCodeActivity.class);
+                startActivityForResult(mainIntent, 1);
             }
 
         });
@@ -111,6 +104,17 @@ public class CheckInActivity extends DefaultActivity {
         socialAuthAdapter.addProvider(Provider.FACEBOOK, R.drawable.facebook);
         socialAuthAdapter.enable(((Button) findViewById(R.id.activity_checkin_share)));
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1) {
+            if(resultCode == RESULT_OK){
+                String mesa = data.getStringExtra("mesa");
+                String key = data.getStringExtra("key");
+                this.abrirConta(mesa, key);
+            }
+        }
     }
 
     private void loadViews() {
@@ -122,20 +126,6 @@ public class CheckInActivity extends DefaultActivity {
         this.actionBar = (ActionBar) findViewById(R.id.actionbar);
         this.imageViewActionBar = (ImageView) this.actionBar.findViewById(R.id.imagem_action_bar);
         this.textViewActionBar = (TextView) this.actionBar.findViewById(R.id.text_view_action_bar);
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
-        autoQrCode = false;
-        if (result != null) {
-            String contents = result.getContents();
-            if (contents != null) {
-                String mesaSelecionada = contents.split("&")[0].split("=")[1];
-                String keyMobile = contents.split("&")[1].split("=")[1];
-                this.abrirConta(mesaSelecionada, keyMobile);
-            }
-        }
     }
 
     private void abrirConta(String mesaSelecionada, String keyMobile) {
@@ -374,6 +364,53 @@ public class CheckInActivity extends DefaultActivity {
                 }
             }
         }).getNumeroConta(this.conta);
+    }
+
+    private static class CustomViewFinderView extends ViewFinderView {
+        public static final String TRADE_MARK_TEXT = "BeachStop Ipitanga";
+        public static final int TRADE_MARK_TEXT_SIZE_SP = 40;
+        public final Paint PAINT = new Paint();
+
+        public CustomViewFinderView(Context context) {
+            super(context);
+            init();
+        }
+
+        public CustomViewFinderView(Context context, AttributeSet attrs) {
+            super(context, attrs);
+            init();
+        }
+
+        private void init() {
+            PAINT.setColor(Color.WHITE);
+            PAINT.setAntiAlias(true);
+            float textPixelSize = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,
+                    TRADE_MARK_TEXT_SIZE_SP, getResources().getDisplayMetrics());
+            PAINT.setTextSize(textPixelSize);
+        }
+
+        @Override
+        public void onDraw(Canvas canvas) {
+            super.onDraw(canvas);
+            drawTradeMark(canvas);
+        }
+
+        private void drawTradeMark(Canvas canvas) {
+            Rect framingRect = getFramingRect();
+            float tradeMarkTop;
+            float tradeMarkLeft;
+            if (framingRect != null) {
+                tradeMarkTop = framingRect.bottom + PAINT.getTextSize() + 10;
+                tradeMarkLeft = framingRect.left;
+            } else {
+                tradeMarkTop = 10;
+                tradeMarkLeft = canvas.getHeight() - PAINT.getTextSize() - 10;
+            }
+
+            BitmapDrawable drawable = (BitmapDrawable) getResources().getDrawable(R.drawable.ic_launcher);
+
+            canvas.drawBitmap(drawable.getBitmap(), tradeMarkLeft, tradeMarkTop, PAINT);
+        }
     }
 
     private final class ResponseListenerSocialAuth implements DialogListener {

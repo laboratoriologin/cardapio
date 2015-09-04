@@ -1,41 +1,81 @@
 @charset "utf-8";
 
+html, body {
+	height: 100%;
+	margin: 0;
+}
+
 body {
-	background-image: url("../img/bg.png");
+	width: 100%;
+	height: 100%;
+	background-color: #f3f3ad;
+}
+
+body div.header {
+	background-image: url("../img/bg_topo_login.png");
+	background-repeat: repeat;
+	width: 100%;
+	height: 28%;
+}
+
+body div.header div {
+	text-align: center;
+}
+
+body div.header img {
+	position: relative;
+	top: 20%;
+	transform: translateY(20%);
+	width: 19%;
+	height: auto;
+}
+
+body div.footer {
+	width: 100%;
+	height: 2%;
+	display: table;
+	background-image: url("../img/bg_topo_login.png");
 	background-repeat: repeat;
 }
 
-body .div {
-	width: 400px;
-	height: 600px;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin-top: -300px;
-	margin-left: -200px;
+body div.body {
+	width: 100%;
+	height: 70%;
 }
 
-body .div .divimg {
+body div.footer div {
+	display: table-cell;
+	vertical-align: middle;
 	text-align: center;
-	margin-bottom: 50px;
 }
 
-body .div p {
+body div.footer p {
 	font-family: Century Gothic;
-	color: #f2dbb3;
-	margin-top: 25px
+	color: #ffffff;
+	font-size: 95%;
+}
+
+body div.body>div {
+	margin: 0 auto;
+	width: 20%;
+	padding-top: 60px;
 }
 
 .loginText {
 	width: 95%;
 	padding: 10px;
-	background-color: #F2DCB3;
-	margin: 5px 0px;
+	background-color: #a6d1e2;
+	margin: 10px 0px;
 	border: none;
 	text-indent: 5px;
 	font-family: Century Gothic;
-	color: #4f3833;
+	color: #0b405f;
 	font-size: 20px;
+}
+
+#login p, #esqueciSenha p {
+	font-family: Century Gothic;
+	color: #0b405f;
 }
 
 .divacao {
@@ -49,7 +89,7 @@ body .div p {
 
 .divacao .esquerda {
 	font-family: Century Gothic;
-	color: #f2dbb3;
+	color: #0b405f;
 	padding: 10px 10px 0px 0px;
 	float: left;
 	margin-top: 19px;
@@ -62,15 +102,17 @@ body .div p {
 }
 
 .divacao .direita input {
-	background-image: url("../img/bgbotao.png");
-	width: 148px;
+	background-color: #2ca2dd;
+	width: 165px;
 	height: 35px;
 	font-size: 20px;
-	color: #385700;
-	border: none;
+	color: #0b405f;
+	border-style: solid;
+	border-color: #0b405f;
+	border-width: 0px 0px 2px 0px;
 	font-family: 'Century Gothic';
-	font-weight: bold;
 	cursor: pointer;
+	outline: 0;
 }
 
 .error {

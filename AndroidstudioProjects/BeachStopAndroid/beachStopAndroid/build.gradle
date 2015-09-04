@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.login.beachstop.android"
-        minSdkVersion 8
+        minSdkVersion 9
         targetSdkVersion 18
     }
 
@@ -28,4 +28,5 @@ dependencies {
     compile project(':galeriaImg')
     compile project(':facebook')
     compile project(':ParallaxScroll')
+    compile 'me.dm7.barcodescanner:zbar:1.8.1'
 }

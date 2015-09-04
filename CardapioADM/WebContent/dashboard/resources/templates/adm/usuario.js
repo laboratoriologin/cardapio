@@ -70,7 +70,7 @@ $(document).ready(function() {
 	
 	loadDados();
 	
-	$("#novoUsuario").click(  function(event) {
+	$("#novoUsuario").button({ icons: { primary: "ui-icon-plus" }}).click(  function(event) {
 		$("#dialog-formusuario").dialog("open");
 		$('form').clearForm();
 		var form = $("form").validate();
@@ -79,7 +79,7 @@ $(document).ready(function() {
 		$("#senha").prop('disabled', false);
 	});
 	
-	$("#btnSalvar").click(function(){
+	$("#btnSalvar").button({ icons: { primary: "ui-icon-disk" }}).click(function(){
 		$("#loaderDialog").show();
 		if ($("form").valid()){
 			sendForm();

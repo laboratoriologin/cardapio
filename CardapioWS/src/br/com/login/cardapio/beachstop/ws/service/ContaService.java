@@ -40,7 +40,7 @@ public class ContaService extends RestService<Conta> {
 	@Produces("application/json; charset=UTF-8")
 	public Conta isAberta(@PathParam("id") Long id) {
 		Conta conta = new ContaDAO().get(id);
-		if(conta.getDataFechamento() == null)
+		if(conta != null && conta.getDataFechamento() == null)
 			return new Conta("1");
 		else
 			return new Conta("0");

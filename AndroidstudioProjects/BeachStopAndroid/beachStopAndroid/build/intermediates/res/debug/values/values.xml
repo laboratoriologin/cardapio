@@ -56,6 +56,11 @@
     <color name="tabTransparent">#10ffffff</color>
     <color name="transparent">#00000000</color>
     <color name="verde">#2175B1</color>
+    <!-- From: file:/C:/Login/PROJETO/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/exploded-aar/me.dm7.barcodescanner/core/1.8.1/res/values/values.xml -->
+    <eat-comment/>
+    <color name="viewfinder_border">#ffafed44</color>
+    <color name="viewfinder_laser">#ffcc0000</color>
+    <color name="viewfinder_mask">#60000000</color>
     <!-- From: file:/C:/Login/PROJETO/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/exploded-aar/BeachStopAndroid/galeriaImg/unspecified/res/values/values.xml -->
     <eat-comment/>
     <color name="vpi__background_holo_dark">#ff000000</color>
@@ -155,6 +160,10 @@
     <integer name="default_title_indicator_line_position">0</integer>
     <integer name="default_underline_indicator_fade_delay">300</integer>
     <integer name="default_underline_indicator_fade_length">400</integer>
+    <!-- From: file:/C:/Login/PROJETO/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/build/intermediates/exploded-aar/me.dm7.barcodescanner/core/1.8.1/res/values/values.xml -->
+    <eat-comment/>
+    <integer name="viewfinder_border_length">60</integer>
+    <integer name="viewfinder_border_width">4</integer>
     <!-- From: file:/C:/Login/PROJETO/cardapio/AndroidstudioProjects/BeachStopAndroid/beachStopAndroid/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="Salvar">Salvar</string>

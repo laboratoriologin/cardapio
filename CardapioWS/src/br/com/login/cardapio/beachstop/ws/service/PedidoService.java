@@ -56,6 +56,7 @@ public class PedidoService extends RestService<Pedido> {
 		List<Status> listStatus = new ArrayList<Status>();
 		listStatus.add(new Status(3l));
 		listStatus.add(new Status(4l));
+		listStatus.add(new Status(5l));
 
 		List<Pedido> pedidos = new PedidoDAO().getAllByOuterJoinStatus(listStatus);
 		PedidoSubItemDAO pedidoSubItemDAO = new PedidoSubItemDAO();

@@ -2,50 +2,64 @@
  * 
  */
 var url = "http://10.0.0.33:8080/CardapioWS/";
-$(document).ready(		
-		function() {
-			$.ajaxSetup({cache : false});
-			
-			// Create two variable with the names of the months and days in an
-			// array
-			var monthNames = [ "Janeiro", "Fevereiro", "Março", "Abril",
-					"Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro",
-					"Novembro", "Dezembro" ];
-			var dayNames = [ "Domingo", "Segunda", "Terça", "Quarta", "Quinta",
-					"Sexta", "Sábado" ]
-
-			// Create a newDate() object
-			var newDate = new Date();
-			// Extract the current date from Date object
-			newDate.setDate(newDate.getDate());
-			// Output the day, date, month and year
-			$('#Date').html(
-					dayNames[newDate.getDay()] + " " + newDate.getDate() + ' '
-							+ monthNames[newDate.getMonth()] + ' '
-							+ newDate.getFullYear());
-
-			setInterval(function() {
-				// Create a newDate() object and extract the seconds of the
-				// current time on the visitor's
-				var seconds = new Date().getSeconds();
-				// Add a leading zero to seconds value
-				$("#sec").html((seconds < 10 ? "0" : "") + seconds);
-			}, 1000);
-
-			setInterval(function() {
-				// Create a newDate() object and extract the minutes of the
-				// current time on the visitor's
-				var minutes = new Date().getMinutes();
-				// Add a leading zero to the minutes value
-				$("#min").html((minutes < 10 ? "0" : "") + minutes);
-			}, 1000);
-
-			setInterval(function() {
-				// Create a newDate() object and extract the hours of the
-				// current time on the visitor's
-				var hours = new Date().getHours();
-				// Add a leading zero to the hours value
-				$("#hours").html((hours < 10 ? "0" : "") + hours);
-			}, 1000);
-
-		});
+$(document).ready(function() {	
+	$.ajaxSetup({cache : false});
+	
+	$.ajax({
+		url : "../..//hassession",
+		type : 'GET',
+		cache : false,						
+	}).done(function (result){
+			if(result.session == false)
+				window.location.href = "../login.xhtml";
+	}).fail(function(result) {
+		window.location.href = "../login.xhtml";
+	});	
+	
+	// Create two variable with the names of the months and days in an
+	// array
+	var monthNames = [ "Janeiro", "Fevereiro", "Março", "Abril",
+			"Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro",
+			"Novembro", "Dezembro" ];
+	var dayNames = [ "Domingo", "Segunda", "Terça", "Quarta", "Quinta",
+			"Sexta", "Sábado" ]
+	
+	// Create a newDate() object
+	var newDate = new Date();
+	// Extract the current date from Date object
+	newDate.setDate(newDate.getDate());
+	// Output the day, date, month and year
+	$('#Date').html(
+			dayNames[newDate.getDay()] + " " + newDate.getDate() + ' '
+					+ monthNames[newDate.getMonth()] + ' '
+					+ newDate.getFullYear());
+	
+	setInterval(function() {
+		// Create a newDate() object and extract the seconds of the
+		// current time on the visitor's
+		var seconds = new Date().getSeconds();
+		// Add a leading zero to seconds value
+		$("#sec").html((seconds < 10 ? "0" : "") + seconds);
+	}, 1000);
+	
+	setInterval(function() {
+		// Create a newDate() object and extract the minutes of the
+		// current time on the visitor's
+		var minutes = new Date().getMinutes();
+		// Add a leading zero to the minutes value
+		$("#min").html((minutes < 10 ? "0" : "") + minutes);
+	}, 1000);
+	
+	setInterval(function() {
+		// Create a newDate() object and extract the hours of the
+		// current time on the visitor's
+		var hours = new Date().getHours();
+		// Add a leading zero to the hours value
+		$("#hours").html((hours < 10 ? "0" : "") + hours);
+	}, 1000);
+	
+	$("#sair").click(function(){
+		if(confirm("Deseja sair do sistema?"))
+			$("#formSair").submit();		
+	});
+});
